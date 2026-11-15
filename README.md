@@ -4,6 +4,8 @@
 
 玩法机制取自 [wiki](../wiki/README.md) 整理的《Probably Stolen》（深空当铺），并非常规“收货—卖货”当铺模板。纯 HTML + JS + SVG，无依赖、无构建步骤。
 
+**玩家攻略**在 [guide/](guide/README.md)：开局、经营、配方、拾荒修为、伤毒求医、人物派系、执法堂、时令战事、货物图鉴。攻略里的数字、名称、配方都由 `tools/guide/guide.mjs` 从代码里取出并对账（配方是真的开一炉跑出来的）；改了游戏代码或 `guide/src/` 后运行 `node tools/guide/guide.mjs build`，`check` 会拦下与代码对不上的攻略，`cast.mjs ready` 上线检查也会跑这一项。
+
 ## 运行
 
 直接用浏览器打开 `index.html`（支持 `file://`）。进度在每天清晨存入 `localStorage`。
@@ -284,6 +286,8 @@ js/goods.js         货品册引擎：defineItem / defineRecipe / defineMachine
 js/goods/           货品册：一个文件一条货或一条生产链
 tools/goods/goods.mjs 货品册工具：browse / list / new / new-machine / art / check
 tools/lib/          工具共用：无界面载入游戏、生图与后期
+tools/guide/        攻略 wiki：guide.mjs（build / check 生成与对账）、tables.mjs（攻略里的表格、名称引用、覆盖清单、实测探针）
+guide/src/          攻略源文件（写 {{ 表达式 }}、[[类型:id]]，不手写数字）；guide/*.md 是生成的攻略，勿手改
 tools/art/appraise.py 鉴定物的图：照妖镜下的作伪痕迹（遮罩局部改图）、照妖镜抠图与量度
 js/condition.js     状态（受伤、中毒、走火入魔……）与判定（judge 比斗、trial 难度）
 js/tourney.js       擂台：外门小比、宗门大比

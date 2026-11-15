@@ -573,6 +573,12 @@ async function ready(only) {
   if (orphans.length) { console.log(`✗ js/cast 里有没登记的文件（不会上线）：${orphans.join('、')}`); bad++; }
   const castBroken = broken.filter(b => b.startsWith('js/'));
   if (castBroken.length) { console.log(`✗ 有脚本载不进来：${castBroken.slice(0, 5).join('；')}`); bad++; }
+  // 攻略与程序对账：新人物、新货、改了数值，攻略都得重新生成（node tools/guide/guide.mjs build）
+  if (localOnly && fs.existsSync(path.join(GAME, 'guide/src'))) {
+    const gc = spawnSync(process.execPath, [path.join(GAME, 'tools/guide/guide.mjs'), 'check'], { encoding: 'utf8' });
+    if (gc.status) { console.log(`✗ 攻略与程序对不上（运行 node tools/guide/guide.mjs build 后检查差异）：\n${(gc.stderr || gc.stdout).split('\n').slice(0, 12).join('\n')}`); bad++; }
+    else if (!flag('quiet')) console.log('✓ 攻略与程序一致');
+  }
   const quiet = flag('quiet');
   let okN = 0;
   for (const def of defs) {
