@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["days_survived", "ending", "cause", "key_decisions", "summary"],
+  "properties": {
+    "days_survived": { "type": "integer", "description": "status 里的 day：结局那一日，或撑过上限时的日数" },
+    "ending": { "type": "string", "description": "结局名（锁拿入狱 / 扫地出门 / 伤重不治 / 毒发身亡 / 铺契到手），撑到上限写“到上限仍在世”" },
+    "cause": { "type": "string", "description": "你认为的主要死因，或撑下来的主要原因" },
+    "key_decisions": { "type": "array", "items": { "type": "string" }, "description": "三到六条最关键的决定" },
+    "summary": { "type": "string", "description": "一两句话的总体经过" }
+  }
+}
