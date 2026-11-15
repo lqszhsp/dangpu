@@ -1,0 +1,9 @@
+{
+  "character": "chu_zhiyan",
+  "state": "angry",
+  "asset_id": "chu_zhiyan_angry",
+  "image_file": "provider/chu_zhiyan_angry/chu_zhiyan_angry.png",
+  "sha256": "f800535aaba6c3b16df86d06e51551eaa9537f03db1094abf97b1105d165b756",
+  "seed": 151372,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "lu_pinxiang",
+  "state": "neutral",
+  "asset_id": "lu_pinxiang",
+  "image_file": "provider/lu_pinxiang/lu_pinxiang.png",
+  "sha256": "c3c9ce074cdfc45c861865fadc613dbe631b26723129c0040fa33a47e25e8a71",
+  "seed": 151400,
+  "model": "qwen-image-3.0-pro"
+}

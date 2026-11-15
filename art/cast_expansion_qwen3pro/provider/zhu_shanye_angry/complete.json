@@ -1,0 +1,9 @@
+{
+  "character": "zhu_shanye",
+  "state": "angry",
+  "asset_id": "zhu_shanye_angry",
+  "image_file": "provider/zhu_shanye_angry/zhu_shanye_angry.png",
+  "sha256": "d9847fc597248533e19790e54670a40c2f34011cc1de12c08b15cbcdc2bbb042",
+  "seed": 151152,
+  "model": "qwen-image-3.0-pro"
+}

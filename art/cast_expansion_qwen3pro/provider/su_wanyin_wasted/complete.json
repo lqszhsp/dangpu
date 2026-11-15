@@ -1,0 +1,9 @@
+{
+  "character": "su_wanyin",
+  "state": "wasted",
+  "asset_id": "su_wanyin_wasted",
+  "image_file": "provider/su_wanyin_wasted/su_wanyin_wasted.png",
+  "sha256": "ee94c825626561ad8a594df573a624d6d55cc11fe70df649d672938fc083c293",
+  "seed": 151325,
+  "model": "qwen-image-3.0-pro"
+}

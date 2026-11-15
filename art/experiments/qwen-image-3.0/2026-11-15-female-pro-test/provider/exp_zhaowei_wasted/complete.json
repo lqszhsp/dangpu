@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_zhaowei_wasted",
+  "image_file": "provider/exp_zhaowei_wasted/exp_zhaowei_wasted.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115025,
+  "sha256": "c0f6a7586014df37a48c11f52aee2b00b0e742acc1cbf33b21f0587073509304"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "qian_shiqi",
+  "state": "pleased",
+  "asset_id": "qian_shiqi_pleased",
+  "image_file": "provider/qian_shiqi_pleased/qian_shiqi_pleased.png",
+  "sha256": "39b5d1b49a889f56223115cfdd30224d52d14afa07061fa9a05a566c3ddf0230",
+  "seed": 151351,
+  "model": "qwen-image-3.0-pro"
+}

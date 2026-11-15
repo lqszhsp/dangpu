@@ -1,0 +1,9 @@
+{
+  "character": "yuanxing",
+  "state": "neutral",
+  "asset_id": "yuanxing",
+  "image_file": "provider/yuanxing/yuanxing.png",
+  "sha256": "165f85003c3a92a5f8436b2bb8741cabbb351c3ca07b83c1b8acbeec34f0d3b2",
+  "seed": 151540,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "hui_qiaosuo",
+  "state": "thrall",
+  "asset_id": "hui_qiaosuo_thrall",
+  "image_file": "provider/hui_qiaosuo_thrall/hui_qiaosuo_thrall.png",
+  "sha256": "2c3bd2636ad5528aedaa6fd61a36f502f53154ec05d59a26d00925b2e446854d",
+  "seed": 151126,
+  "model": "qwen-image-3.0-pro"
+}

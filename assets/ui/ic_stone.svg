@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ic_stone-l" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4fbff"/>
+      <stop offset="0.35" stop-color="#7fd6b5"/>
+      <stop offset="1" stop-color="#3fae8f"/>
+    </linearGradient>
+    <linearGradient id="ic_stone-r" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3fae8f"/>
+      <stop offset="1" stop-color="#1f5c4c"/>
+    </linearGradient>
+    <radialGradient id="ic_stone-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7fd6b5" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#3fae8f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#ic_stone-halo)"/>
+  <!-- facets -->
+  <path d="M32 4 L52 30 L32 60 L12 30 Z" fill="url(#ic_stone-r)" stroke="#14101a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M32 4 L12 30 L32 36 Z" fill="url(#ic_stone-l)"/>
+  <path d="M32 4 L52 30 L32 36 Z" fill="#7fd6b5"/>
+  <path d="M12 30 L32 36 L32 60 Z" fill="#3fae8f"/>
+  <path d="M32 36 L52 30 L32 60 Z" fill="#1f5c4c"/>
+  <path d="M32 4 L52 30 L32 60 L12 30 Z" fill="none" stroke="#14101a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M12 30 L32 36 L52 30 M32 4 L32 60" fill="none" stroke="#14101a" stroke-width="1.2" opacity="0.6"/>
+  <path d="M30 10 L18 28" stroke="#f4fbff" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M8 12 L8 18 M5 15 L11 15 M54 46 L54 52 M51 49 L57 49" stroke="#cfefff" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

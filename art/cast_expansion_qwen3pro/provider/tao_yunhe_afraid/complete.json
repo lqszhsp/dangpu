@@ -1,0 +1,9 @@
+{
+  "character": "tao_yunhe",
+  "state": "afraid",
+  "asset_id": "tao_yunhe_afraid",
+  "image_file": "provider/tao_yunhe_afraid/tao_yunhe_afraid.png",
+  "sha256": "1d91e137a580e2dc8dd9839eeced682a848ece003cf9c145dffa85a38a395661",
+  "seed": 151473,
+  "model": "qwen-image-3.0-pro"
+}

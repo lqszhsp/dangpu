@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <linearGradient id="m_forge-stone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1f1626"/>
+      <stop offset="0.25" stop-color="#3a3f4a"/>
+      <stop offset="0.55" stop-color="#5c6370"/>
+      <stop offset="0.85" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <linearGradient id="m_forge-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9aa88a"/>
+      <stop offset="1" stop-color="#5c6370"/>
+    </linearGradient>
+    <linearGradient id="m_forge-blade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3a3f4a"/>
+      <stop offset="0.3" stop-color="#8e1b2b"/>
+      <stop offset="0.5" stop-color="#e0524a"/>
+      <stop offset="0.62" stop-color="#ffc56b"/>
+      <stop offset="0.8" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#5c6370"/>
+    </linearGradient>
+    <radialGradient id="m_forge-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7fd6b5" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#3fae8f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="m_forge-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.4"/>
+    </filter>
+  </defs>
+  <!-- ground shadow -->
+  <ellipse cx="80" cy="143" rx="58" ry="8.5" fill="#14101a" opacity="0.5"/>
+  <!-- aura -->
+  <ellipse cx="80" cy="62" rx="58" ry="36" fill="url(#m_forge-halo)"/>
+  <!-- ring back half -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M30 64 Q30 50 80 48 Q130 50 130 64" stroke="#3fae8f" stroke-width="5" opacity="0.5" filter="url(#m_forge-blur)"/>
+    <path d="M30 64 Q30 50 80 48 Q130 50 130 64" stroke="#3fae8f" stroke-width="2" opacity="0.8"/>
+    <path d="M40 62 Q42 56 80 55 Q118 56 120 62" stroke="#7fd6b5" stroke-width="1" stroke-dasharray="3 4" opacity="0.7"/>
+  </g>
+  <!-- light beams down onto anvil -->
+  <path d="M46 70 L58 90 L102 90 L114 70 Z" fill="#7fd6b5" opacity="0.12"/>
+  <!-- base slab -->
+  <path d="M30 124 L130 124 L134 138 Q80 146 26 138 Z" fill="url(#m_forge-stone)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M30 124 Q80 118 130 124 Q80 130 30 124 Z" fill="#5c6370" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <!-- column -->
+  <path d="M54 98 Q58 112 52 126 Q80 132 108 126 Q102 112 106 98 Z" fill="url(#m_forge-stone)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M60 104 Q62 114 58 122" fill="none" stroke="#9aa88a" stroke-width="1.2" opacity="0.5" stroke-linecap="round"/>
+  <path d="M90 108 L94 114 L92 120 M70 116 L74 112" fill="none" stroke="#14101a" stroke-width="1.1" stroke-linecap="round" opacity="0.7"/>
+  <!-- anvil block -->
+  <path d="M40 86 L120 86 L124 94 Q122 100 116 102 L46 102 Q38 100 36 94 Z" fill="url(#m_forge-stone)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+  <!-- horn -->
+  <path d="M40 86 Q26 86 14 92 Q22 96 38 98 Z" fill="#3a3f4a" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M18 91.5 Q28 88 40 88" fill="none" stroke="#9aa88a" stroke-width="1" opacity="0.6"/>
+  <!-- heel -->
+  <path d="M120 86 L134 86 L136 92 L124 94 Z" fill="#3a3f4a" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- top face -->
+  <path d="M42 80 L118 80 L120 86 L40 86 Z" fill="url(#m_forge-top)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M46 81.6 L114 81.6" stroke="#e9dfcc" stroke-width="1" opacity="0.6"/>
+  <!-- carved rune band on anvil -->
+  <g fill="none" stroke="#3fae8f" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+    <path d="M56 92 L60 90 L60 96 L64 94 M72 91 Q76 89 78 93 Q76 97 72 95 M84 90 L88 96 M88 90 L84 96 M96 91 L102 91 L98 96 L104 96"/>
+  </g>
+  <!-- hot glow on anvil from blank -->
+  <ellipse cx="82" cy="80" rx="24" ry="4" fill="#e0524a" opacity="0.5" filter="url(#m_forge-blur)"/>
+  <!-- sword blank (floating, tilted) -->
+  <g transform="rotate(-12 80 66)">
+    <ellipse cx="86" cy="66" rx="30" ry="6" fill="#e0524a" opacity="0.45" filter="url(#m_forge-blur)"/>
+    <!-- tang -->
+    <path d="M34 64 L50 63 L50 69 L34 68 Z" fill="#3a3f4a" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+    <!-- rough guard lump -->
+    <path d="M50 59 L55 58 L56 74 L50 73 Z" fill="#5c6370" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+    <!-- blade, uneven edges -->
+    <path d="M56 61 L70 60.4 L78 61.4 L92 60.6 L104 61.6 L116 62.4 L128 66 L116 69.8 L104 70.6 L94 71.6 L82 70.8 L70 71.8 L56 71 Z" fill="url(#m_forge-blade)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M58 66 L124 66" stroke="#f2d27a" stroke-width="1" opacity="0.8"/>
+    <path d="M60 62.6 L110 63" stroke="#ffc56b" stroke-width="0.8" opacity="0.7"/>
+    <path d="M74 64 L76 68 M98 63.6 L96 68.4" stroke="#5e0f1c" stroke-width="0.9" opacity="0.7"/>
+  </g>
+  <!-- ring front half -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M30 64 Q30 78 80 80 Q130 78 130 64" stroke="#7fd6b5" stroke-width="6" opacity="0.55" filter="url(#m_forge-blur)"/>
+    <path d="M30 64 Q30 78 80 80 Q130 78 130 64" stroke="#7fd6b5" stroke-width="2.4"/>
+    <path d="M38 66 Q40 74 80 75 Q120 74 122 66" stroke="#cfefff" stroke-width="1" stroke-dasharray="2 5"/>
+  </g>
+  <!-- rune glyphs on ring -->
+  <g fill="none" stroke="#cfefff" stroke-width="1.3" stroke-linecap="round">
+    <path d="M44 72 L47 75 M46 71 L45 76"/>
+    <path d="M62 77 L66 77 M64 75 L64 79"/>
+    <path d="M94 77 Q97 75 98 78"/>
+    <path d="M112 74 L116 71 M113 71 L116 74"/>
+  </g>
+  <!-- floating motes -->
+  <g fill="#cfefff">
+    <circle cx="36" cy="44" r="1.3"/><circle cx="122" cy="40" r="1.1"/><circle cx="104" cy="32" r="0.9"/><circle cx="58" cy="36" r="1"/>
+  </g>
+  <g fill="#ffc56b"><circle cx="96" cy="54" r="1"/><circle cx="72" cy="50" r="0.8"/></g>
+</svg>

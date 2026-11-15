@@ -1,0 +1,9 @@
+{
+  "character": "wan_xiaomu",
+  "state": "thrall",
+  "asset_id": "wan_xiaomu_thrall",
+  "image_file": "provider/wan_xiaomu_thrall/wan_xiaomu_thrall.png",
+  "sha256": "508332d78492790d303ebffe9f9c14e9c9c3c39c81a27810fdd4c4b413370bbd",
+  "seed": 151266,
+  "model": "qwen-image-3.0-pro"
+}

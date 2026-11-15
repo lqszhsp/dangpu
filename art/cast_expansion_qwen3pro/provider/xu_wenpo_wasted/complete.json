@@ -1,0 +1,9 @@
+{
+  "character": "xu_wenpo",
+  "state": "wasted",
+  "asset_id": "xu_wenpo_wasted",
+  "image_file": "provider/xu_wenpo_wasted/xu_wenpo_wasted.png",
+  "sha256": "37f5d2fc42faadde78acb6e50f5b451435acb7d5d6f0fffd71c9506394dbad16",
+  "seed": 151085,
+  "model": "qwen-image-3.0-pro"
+}

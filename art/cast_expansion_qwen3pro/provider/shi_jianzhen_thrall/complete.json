@@ -1,0 +1,9 @@
+{
+  "character": "shi_jianzhen",
+  "state": "thrall",
+  "asset_id": "shi_jianzhen_thrall",
+  "image_file": "provider/shi_jianzhen_thrall/shi_jianzhen_thrall.png",
+  "sha256": "64a6a1ffdb7fa44e4cf547fbdbc90c6c9a2bf52a94536b45c26dd3e5ee17d010",
+  "seed": 151536,
+  "model": "qwen-image-3.0-pro"
+}

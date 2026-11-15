@@ -1,0 +1,9 @@
+{
+  "character": "lin_shoujuan",
+  "state": "thrall",
+  "asset_id": "lin_shoujuan_thrall",
+  "image_file": "provider/lin_shoujuan_thrall/lin_shoujuan_thrall.png",
+  "sha256": "e0485c05ac412a4effafdae16d5b03921675509abdeff926300adeccbf2427c5",
+  "seed": 151456,
+  "model": "qwen-image-3.0-pro"
+}

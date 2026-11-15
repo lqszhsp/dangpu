@@ -1,0 +1,9 @@
+{
+  "character": "leng_zhiyuan",
+  "state": "thrall",
+  "asset_id": "leng_zhiyuan_thrall",
+  "image_file": "provider/leng_zhiyuan_thrall/leng_zhiyuan_thrall.png",
+  "sha256": "e2fda3090c4d6f271a2cab4403fd8693d48ea69ca9b5443056fc4ea56bbae1d8",
+  "seed": 151276,
+  "model": "qwen-image-3.0-pro"
+}

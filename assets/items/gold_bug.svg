@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="gold_bug-shell" cx="0.4" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#fff3c8"/>
+      <stop offset="0.25" stop-color="#f2d27a"/>
+      <stop offset="0.65" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#8a5a1c"/>
+    </radialGradient>
+    <linearGradient id="gold_bug-iron" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#cfd6dc"/>
+      <stop offset="0.45" stop-color="#9aa88a"/>
+      <stop offset="1" stop-color="#5c6370"/>
+    </linearGradient>
+    <filter id="gold_bug-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.8"/>
+    </filter>
+  </defs>
+  <ellipse cx="34" cy="57" rx="25" ry="4" fill="#14101a" opacity="0.4"/>
+  <!-- iron plate -->
+  <path d="M2.6 40 L14 37 L13 41 L16.4 43 L14 46 L17 49.6 L15.6 59 L4 60 Z" fill="url(#gold_bug-iron)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M5 43 L6 57.6" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.6"/>
+  <path d="M13 41 L16.4 43 L14 46 L17 49.6" fill="none" stroke="#f4fbff" stroke-width="0.8" stroke-linejoin="round"/>
+  <g fill="#9a4d12" opacity="0.6"><circle cx="9" cy="54" r="1.2"/><circle cx="8" cy="45" r="0.8"/></g>
+  <g transform="rotate(-28 32 32) translate(2 0)">
+    <!-- legs -->
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g stroke="#14101a" stroke-width="3.4">
+        <path d="M25 28 L21 19 L15.6 16 M25 40 L21 49 L15.6 52"/>
+        <path d="M33 23 L33 12 L28.6 7 M33 45 L33 56 L28.6 61"/>
+        <path d="M44 24 L50 14 L56 11.6 M44 44 L50 54 L56 56.4"/>
+      </g>
+      <g stroke="#9a4d12" stroke-width="1.6">
+        <path d="M25 28 L21 19 L15.6 16 M25 40 L21 49 L15.6 52"/>
+        <path d="M33 23 L33 12 L28.6 7 M33 45 L33 56 L28.6 61"/>
+        <path d="M44 24 L50 14 L56 11.6 M44 44 L50 54 L56 56.4"/>
+      </g>
+    </g>
+    <!-- antennae -->
+    <g fill="none" stroke-linecap="round">
+      <path d="M15.6 30.4 Q11 24 14 17.4 M15.6 37.6 Q11 44 14 50.6" stroke="#14101a" stroke-width="2"/>
+      <path d="M15.6 30.4 Q11 24 14 17.4 M15.6 37.6 Q11 44 14 50.6" stroke="#d9a441" stroke-width="0.8"/>
+    </g>
+    <!-- mandibles -->
+    <g fill="#f2d27a" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round">
+      <path d="M14.6 30.6 Q8.6 27 5.4 29.4 Q8.6 30 10 33 Q12 34 14.6 33.2 Z"/>
+      <path d="M14.6 37.4 Q8.6 41 5.4 38.6 Q8.6 38 10 35 Q12 34 14.6 34.8 Z"/>
+    </g>
+    <!-- head -->
+    <ellipse cx="17.6" cy="34" rx="5" ry="5.6" fill="#8a5a1c" stroke="#14101a" stroke-width="1.5"/>
+    <path d="M15 31 Q17 29.4 19.6 30" fill="none" stroke="#f2d27a" stroke-width="0.8" stroke-linecap="round"/>
+    <circle cx="16.4" cy="30.4" r="1.2" fill="#c43a3a" stroke="#14101a" stroke-width="0.5"/>
+    <circle cx="16.4" cy="37.6" r="1.2" fill="#c43a3a" stroke="#14101a" stroke-width="0.5"/>
+    <!-- shell glow -->
+    <ellipse cx="38" cy="34" rx="18" ry="15" fill="#f2d27a" opacity="0.55" filter="url(#gold_bug-glow)"/>
+    <!-- pronotum -->
+    <path d="M21.4 26.6 Q27 23.4 31 25 L31 43 Q27 44.6 21.4 41.4 Q19.4 34 21.4 26.6 Z" fill="url(#gold_bug-shell)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+    <!-- elytra (domed) -->
+    <path d="M30 34 L30 22 Q38 18.6 46 20.4 Q55.6 23.6 55.6 34 Z" fill="url(#gold_bug-shell)" stroke="#14101a" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M30 34 L30 46 Q38 49.4 46 47.6 Q55.6 44.4 55.6 34 Z" fill="url(#gold_bug-shell)" stroke="#14101a" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M30 46 Q38 49.4 46 47.6 Q55.6 44.4 55.6 34 L52 34 Q51 42 44 44 Q37 45.4 31 43.4 Z" fill="#8a5a1c" opacity="0.55"/>
+    <path d="M30.2 34 L55.4 34" stroke="#14101a" stroke-width="1.3"/>
+    <!-- metallic highlights -->
+    <path d="M33 26 Q40 21.6 48 23.4" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" opacity="0.9"/>
+    <path d="M34 30 L38 29" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+    <path d="M33.4 38 Q40 39 46 38" fill="none" stroke="#fff3c8" stroke-width="1.1" stroke-linecap="round" opacity="0.8"/>
+    <path d="M23 29 Q26 27 29 27.4" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.9"/>
+  </g>
+  <!-- iron filings flying -->
+  <g fill="#cfd6dc" stroke="#14101a" stroke-width="0.5" stroke-linejoin="round">
+    <path d="M3 32 L6 31 L4.8 33.6 Z"/>
+    <path d="M18 34 L20.4 33 L19.6 35.6 Z"/>
+    <path d="M22 50 L24.6 49.4 L23 52 Z"/>
+    <path d="M9 30 L10.6 28 L11.2 30.6 Z"/>
+    <path d="M2 50 L3.6 48.6 L4.2 51 Z"/>
+  </g>
+  <g fill="#f4fbff"><circle cx="14" cy="32" r="0.6"/><circle cx="20" cy="40" r="0.6"/><circle cx="6" cy="36" r="0.5"/><circle cx="24" cy="44" r="0.5"/></g>
+  <path d="M19 39 L19.7 41.4 L22 42 L19.7 42.6 L19 45 L18.3 42.6 L16 42 L18.3 41.4 Z" fill="#fff3c8"/>
+  <path d="M53 6 L53.7 8.6 L56.4 9.4 L53.7 10.2 L53 12.8 L52.3 10.2 L49.6 9.4 L52.3 8.6 Z" fill="#fff3c8"/>
+</svg>

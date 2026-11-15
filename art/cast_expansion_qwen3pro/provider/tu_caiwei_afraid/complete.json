@@ -1,0 +1,9 @@
+{
+  "character": "tu_caiwei",
+  "state": "afraid",
+  "asset_id": "tu_caiwei_afraid",
+  "image_file": "provider/tu_caiwei_afraid/tu_caiwei_afraid.png",
+  "sha256": "e37f4967091216e4c0510691cba17bece97395554582ebfbe8a9fe29a05a298c",
+  "seed": 151173,
+  "model": "qwen-image-3.0-pro"
+}

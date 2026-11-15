@@ -1,0 +1,9 @@
+{
+  "character": "mu_qingdan",
+  "state": "thrall",
+  "asset_id": "mu_qingdan_thrall",
+  "image_file": "provider/mu_qingdan_thrall/mu_qingdan_thrall.png",
+  "sha256": "e8ffbee59b72cdaf46888511b968a455e27a9b2d7b5e82d980384ae46b420e69",
+  "seed": 151286,
+  "model": "qwen-image-3.0-pro"
+}

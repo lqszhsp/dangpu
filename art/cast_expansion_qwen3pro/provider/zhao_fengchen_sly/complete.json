@@ -1,0 +1,9 @@
+{
+  "character": "zhao_fengchen",
+  "state": "sly",
+  "asset_id": "zhao_fengchen_sly",
+  "image_file": "provider/zhao_fengchen_sly/zhao_fengchen_sly.png",
+  "sha256": "03b5290c02a3df0261e1cebf892114e23a9a62e5ec1dafb7bd814d44240d37b1",
+  "seed": 151024,
+  "model": "qwen-image-3.0-pro"
+}

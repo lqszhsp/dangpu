@@ -1,0 +1,9 @@
+{
+  "character": "duan_yinghuo",
+  "state": "angry",
+  "asset_id": "duan_yinghuo_angry",
+  "image_file": "provider/duan_yinghuo_angry/duan_yinghuo_angry.png",
+  "sha256": "65b32c596534c4df56a774f0c7aa520b29b0fffdb58aa0ebaa7f7f0676a80a0a",
+  "seed": 151342,
+  "model": "qwen-image-3.0-pro"
+}

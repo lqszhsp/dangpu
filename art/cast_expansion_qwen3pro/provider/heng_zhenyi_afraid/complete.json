@@ -1,0 +1,9 @@
+{
+  "character": "heng_zhenyi",
+  "state": "afraid",
+  "asset_id": "heng_zhenyi_afraid",
+  "image_file": "provider/heng_zhenyi_afraid/heng_zhenyi_afraid.png",
+  "sha256": "a5c207726b0a10ae1789f63d0e6dd102c987c04fb27eae436fe5b5f06d4ecf47",
+  "seed": 151413,
+  "model": "qwen-image-3.0-pro"
+}

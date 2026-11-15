@@ -1,0 +1,9 @@
+{
+  "character": "duan_yinghuo",
+  "state": "afraid",
+  "asset_id": "duan_yinghuo_afraid",
+  "image_file": "provider/duan_yinghuo_afraid/duan_yinghuo_afraid.png",
+  "sha256": "5be547ea62f03cdc1e72ab7c12a3e2cf7baf9a6222d5c6d3da4277fe9748edbc",
+  "seed": 151343,
+  "model": "qwen-image-3.0-pro"
+}

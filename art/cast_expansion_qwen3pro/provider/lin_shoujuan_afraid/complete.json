@@ -1,0 +1,9 @@
+{
+  "character": "lin_shoujuan",
+  "state": "afraid",
+  "asset_id": "lin_shoujuan_afraid",
+  "image_file": "provider/lin_shoujuan_afraid/lin_shoujuan_afraid.png",
+  "sha256": "7caaf52925f5f6c86fdcb4512319436874a4997af1eb452c72f47212bdf620b7",
+  "seed": 151453,
+  "model": "qwen-image-3.0-pro"
+}

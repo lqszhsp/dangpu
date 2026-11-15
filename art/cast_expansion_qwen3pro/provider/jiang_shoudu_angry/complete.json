@@ -1,0 +1,9 @@
+{
+  "character": "jiang_shoudu",
+  "state": "angry",
+  "asset_id": "jiang_shoudu_angry",
+  "image_file": "provider/jiang_shoudu_angry/jiang_shoudu_angry.png",
+  "sha256": "81caff53d30a5fd577f9affb1d6281fa63907ab302bc465408a5927482e8eb23",
+  "seed": 151072,
+  "model": "qwen-image-3.0-pro"
+}

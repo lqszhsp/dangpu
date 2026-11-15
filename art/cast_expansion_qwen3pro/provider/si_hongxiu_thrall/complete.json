@@ -1,0 +1,9 @@
+{
+  "character": "si_hongxiu",
+  "state": "thrall",
+  "asset_id": "si_hongxiu_thrall",
+  "image_file": "provider/si_hongxiu_thrall/si_hongxiu_thrall.png",
+  "sha256": "44e752458ab9db790a1ffbf7b7e5d1f4888e5d9525e70904a04bc2a64906d628",
+  "seed": 151246,
+  "model": "qwen-image-3.0-pro"
+}

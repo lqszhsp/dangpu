@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="herb_blood-cap" cx="0.5" cy="0.15" r="0.95">
+      <stop offset="0" stop-color="#14101a"/>
+      <stop offset="0.3" stop-color="#5e0f1c"/>
+      <stop offset="0.7" stop-color="#8e1b2b"/>
+      <stop offset="1" stop-color="#e0524a"/>
+    </radialGradient>
+    <linearGradient id="herb_blood-stem" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#14101a"/>
+      <stop offset="0.4" stop-color="#8e1b2b"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <radialGradient id="herb_blood-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c43a3a" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#5e0f1c" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="herb_blood-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+  <ellipse cx="32" cy="28" rx="30" ry="24" fill="url(#herb_blood-halo)"/>
+  <ellipse cx="32" cy="58" rx="16" ry="3" fill="#14101a" opacity="0.45"/>
+  <!-- stem -->
+  <path d="M29 34 C27 42 26.5 50 24.5 57.5 C28 59 34 59 37 57.5 C35 50 35 42 35.5 34 Z" fill="url(#herb_blood-stem)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M30.4 38 C29.4 44 29 50 28 56" fill="none" stroke="#e0524a" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <!-- small cap -->
+  <path d="M35 46 C38 40 46 38.5 52 40 C57 41.2 58.5 45 55.5 47 C51 49.4 42 48.4 35.4 48.6 Z" fill="url(#herb_blood-cap)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M38.5 46.8 C43 46.2 49.5 46.6 54.5 45.6" fill="none" stroke="#14101a" stroke-width="0.8" stroke-linecap="round" opacity="0.7"/>
+  <path d="M41 44 C45 43 50 43 54 43.6" fill="none" stroke="#c43a3a" stroke-width="0.7" stroke-linecap="round" opacity="0.8"/>
+  <path d="M36 48.6 C42 49.6 50 49.6 55.5 47" fill="none" stroke="#f2d27a" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>
+  <!-- main cap underside -->
+  <path d="M7 31 C12 37 22 38.6 32 38 C43 37.4 53 37 57 31.5 C52 34.6 43 35 32 35.4 C21 35.6 12 35 7 31 Z" fill="#5e0f1c" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+  <path d="M10 33.6 C18 36.6 28 37 36 36.6 C44 36.3 50 35.6 54.5 33.6" fill="none" stroke="#d9a441" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+  <!-- main cap -->
+  <path d="M6.5 30 C5.5 18 18 8 33 7.5 C48 7.2 59 16 57.5 30 C57 34 51 35.2 44 35 C38 34.8 35 36.4 31 36 C25 35.5 20 34.6 13 34.8 C9 34.8 6.8 33 6.5 30 Z" fill="url(#herb_blood-cap)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <!-- growth rings -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M9.5 30 C9 21 20 12 33 11.6 C46 11.4 55.5 19 54.6 29.6" stroke="#14101a" stroke-width="1" opacity="0.7"/>
+    <path d="M13 28 C13 21.5 22 15.6 33 15.4 C44 15.4 51.5 20.6 51 28" stroke="#14101a" stroke-width="0.9" opacity="0.6"/>
+    <path d="M17.5 25.8 C18.5 21.5 25 19 33 19 C41 19 46.5 21.4 47 26" stroke="#14101a" stroke-width="0.8" opacity="0.5"/>
+    <path d="M9.8 31.6 C9.6 23 20.4 13.6 33 13.4 C45.6 13.4 55 20.6 54.8 31" stroke="#e0524a" stroke-width="0.7" opacity="0.6"/>
+    <path d="M14.8 29.6 C15 23 23.4 17.4 33 17.2 C42.6 17.2 49.4 22 49.2 29" stroke="#e0524a" stroke-width="0.6" opacity="0.45"/>
+  </g>
+  <!-- cloud scroll motif -->
+  <path d="M24 27 C24 24.5 27 24 28 26 C29 28 26.5 29 26 27.6 M36 27.6 C36.4 25 40 24.6 40.6 27 C41 29 38.4 29.4 38.2 28 M29 28.6 C31 27 33 27 35 28.6" fill="none" stroke="#f2d27a" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <!-- rim glow & highlight -->
+  <path d="M8.6 30.8 C10.5 33 16 33.2 22 33.6 C27 34 30 34.6 33 34.4" fill="none" stroke="#e0524a" stroke-width="2.4" stroke-linecap="round" opacity="0.8" filter="url(#herb_blood-blur)"/>
+  <path d="M13 17 C17 12.6 23 10.4 29 10" fill="none" stroke="#e0524a" stroke-width="1.3" stroke-linecap="round" opacity="0.7"/>
+  <ellipse cx="22" cy="13.5" rx="3.4" ry="1.2" fill="#f2d27a" opacity="0.4" transform="rotate(-20 22 13.5)"/>
+  <!-- sparks -->
+  <g fill="#e0524a">
+    <circle cx="5" cy="14" r="0.9" opacity="0.8"/>
+    <circle cx="60" cy="18" r="0.8" opacity="0.7"/>
+    <circle cx="12" cy="46" r="0.8" opacity="0.6"/>
+    <circle cx="48" cy="4" r="0.7" opacity="0.7"/>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "character": "lang_xiaoshan",
+  "state": "thrall",
+  "asset_id": "lang_xiaoshan_thrall",
+  "image_file": "provider/lang_xiaoshan_thrall/lang_xiaoshan_thrall.png",
+  "sha256": "555e0b74b5d34e14fa7a312759a1ab78ac41933fee57ba736d1f2adc4e65a62e",
+  "seed": 151166,
+  "model": "qwen-image-3.0-pro"
+}

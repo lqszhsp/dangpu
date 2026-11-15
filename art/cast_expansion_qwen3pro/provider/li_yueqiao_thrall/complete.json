@@ -1,0 +1,9 @@
+{
+  "character": "li_yueqiao",
+  "state": "thrall",
+  "asset_id": "li_yueqiao_thrall",
+  "image_file": "provider/li_yueqiao_thrall/li_yueqiao_thrall.png",
+  "sha256": "3877f8ea8698c5c0851906491b9941538c8936b000474ddfdbbf85c3787b1fa0",
+  "seed": 151136,
+  "model": "qwen-image-3.0-pro"
+}

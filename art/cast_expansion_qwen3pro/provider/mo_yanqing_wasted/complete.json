@@ -1,0 +1,9 @@
+{
+  "character": "mo_yanqing",
+  "state": "wasted",
+  "asset_id": "mo_yanqing_wasted",
+  "image_file": "provider/mo_yanqing_wasted/mo_yanqing_wasted.png",
+  "sha256": "781802c0a387c092f1e829bc7873de961591f9e186acc79592ccde6857b210a8",
+  "seed": 151385,
+  "model": "qwen-image-3.0-pro"
+}

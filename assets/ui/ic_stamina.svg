@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="ic_stamina-body" cx="0.38" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#ffc56b"/>
+      <stop offset="0.2" stop-color="#e0524a"/>
+      <stop offset="0.6" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </radialGradient>
+    <radialGradient id="ic_stamina-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e0524a" stop-opacity="0.65"/>
+      <stop offset="0.6" stop-color="#8e1b2b" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#5e0f1c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="34" r="30" fill="url(#ic_stamina-glow)"/>
+  <!-- pulse rings -->
+  <g fill="none" stroke="#e0524a" stroke-width="2" stroke-linecap="round" opacity="0.8">
+    <path d="M7 24 Q4 32 8 41"/>
+    <path d="M57 24 Q60 32 56 41"/>
+  </g>
+  <g fill="none" stroke="#c43a3a" stroke-width="1.6" stroke-linecap="round" opacity="0.55">
+    <path d="M2.5 21 Q-1 32 3.5 44"/>
+    <path d="M61.5 21 Q65 32 60.5 44"/>
+  </g>
+  <!-- heart -->
+  <path d="M32 56 Q22 48 14 39 Q7 31 9 22 Q11.5 12 21 11.5 Q28 11.5 32 19 Q36 11.5 43 11.5 Q52.5 12 55 22 Q57 31 50 39 Q42 48 32 56 Z" fill="url(#ic_stamina-body)" stroke="#14101a" stroke-width="2.8" stroke-linejoin="round"/>
+  <!-- inner qi swirl -->
+  <path d="M32 47 Q22 42 20 32 Q19.5 25 26 24 Q32 24 31.5 30 Q31 34 27 33.5" fill="none" stroke="#5e0f1c" stroke-width="2.4" stroke-linecap="round" opacity="0.8"/>
+  <path d="M33 47 Q43 41 44.5 32 Q45 26 40 25" fill="none" stroke="#8e1b2b" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <!-- highlight -->
+  <path d="M15.5 25 Q16 17 22 16.5" fill="none" stroke="#f2d27a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="26.5" cy="17.5" r="1.6" fill="#f2d27a"/>
+  <!-- blood drops rising -->
+  <g fill="#e0524a" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round">
+    <path d="M50 4 Q53 8 52.5 10 Q52 12.5 50 12.5 Q48 12.5 47.5 10 Q47 8 50 4 Z"/>
+    <path d="M13 3 Q15 6 14.7 7.4 Q14.3 9 13 9 Q11.7 9 11.3 7.4 Q11 6 13 3 Z"/>
+  </g>
+</svg>

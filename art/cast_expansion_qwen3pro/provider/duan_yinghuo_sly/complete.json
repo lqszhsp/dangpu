@@ -1,0 +1,9 @@
+{
+  "character": "duan_yinghuo",
+  "state": "sly",
+  "asset_id": "duan_yinghuo_sly",
+  "image_file": "provider/duan_yinghuo_sly/duan_yinghuo_sly.png",
+  "sha256": "affb6d59b178bb16147f0f631613b14a1272d907d0af4b70aed9ebbe7b74fcb2",
+  "seed": 151344,
+  "model": "qwen-image-3.0-pro"
+}

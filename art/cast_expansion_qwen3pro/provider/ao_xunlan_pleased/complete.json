@@ -1,0 +1,9 @@
+{
+  "character": "ao_xunlan",
+  "state": "pleased",
+  "asset_id": "ao_xunlan_pleased",
+  "image_file": "provider/ao_xunlan_pleased/ao_xunlan_pleased.png",
+  "sha256": "36ff873b0cb084664baa66c42483d54244cfdd8ffb55a975620e71b59b22cefa",
+  "seed": 151091,
+  "model": "qwen-image-3.0-pro"
+}

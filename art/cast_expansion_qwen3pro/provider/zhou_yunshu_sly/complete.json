@@ -1,0 +1,9 @@
+{
+  "character": "zhou_yunshu",
+  "state": "sly",
+  "asset_id": "zhou_yunshu_sly",
+  "image_file": "provider/zhou_yunshu_sly/zhou_yunshu_sly.png",
+  "sha256": "809d36ee90868ba727f1fee12adc650d6477a1d9150a93e90a4e3f2add834fac",
+  "seed": 151034,
+  "model": "qwen-image-3.0-pro"
+}

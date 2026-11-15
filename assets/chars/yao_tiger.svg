@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+  <defs>
+    <radialGradient id="yao_tiger-fur" cx="0.5" cy="0.4" r="0.65">
+      <stop offset="0" stop-color="#ffc56b"/>
+      <stop offset="0.55" stop-color="#e8902f"/>
+      <stop offset="1" stop-color="#9a4d12"/>
+    </radialGradient>
+    <linearGradient id="yao_tiger-arm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9a4d12"/>
+      <stop offset="0.45" stop-color="#e8902f"/>
+      <stop offset="0.8" stop-color="#ffc56b"/>
+      <stop offset="1" stop-color="#e8902f"/>
+    </linearGradient>
+    <linearGradient id="yao_tiger-chest" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8902f"/>
+      <stop offset="0.35" stop-color="#ffc56b"/>
+      <stop offset="0.7" stop-color="#efe2c4"/>
+      <stop offset="1" stop-color="#d8c49a"/>
+    </linearGradient>
+    <linearGradient id="yao_tiger-white" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4fbff"/>
+      <stop offset="0.6" stop-color="#efe2c4"/>
+      <stop offset="1" stop-color="#d8c49a"/>
+    </linearGradient>
+    <linearGradient id="yao_tiger-pelt" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#5c6370"/>
+      <stop offset="0.45" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <linearGradient id="yao_tiger-bone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#efe2c4"/>
+      <stop offset="1" stop-color="#d8c49a"/>
+    </linearGradient>
+    <radialGradient id="yao_tiger-iris" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.5" stop-color="#ffc56b"/>
+      <stop offset="1" stop-color="#e8902f"/>
+    </radialGradient>
+    <linearGradient id="yao_tiger-nose" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8e1b2b"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </linearGradient>
+    <radialGradient id="yao_tiger-aura" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e8902f" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#9a4d12" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="yao_tiger-eyeL"><path d="M152,142 Q166,127 190,137 Q178,152 152,142 Z"/></clipPath>
+    <clipPath id="yao_tiger-eyeR"><path d="M248,142 Q234,127 210,137 Q222,152 248,142 Z"/></clipPath>
+    <filter id="yao_tiger-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <ellipse cx="200" cy="240" rx="200" ry="220" fill="url(#yao_tiger-aura)"/>
+
+  <!-- 胸膛（斜方肌高耸以承托虎首） -->
+  <path d="M96,480 L100,320 C106,290 130,262 160,236 L240,236 C270,262 294,290 300,320 L304,480 Z" fill="url(#yao_tiger-chest)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M150,226 C170,246 230,246 250,226 L258,262 C230,280 170,280 142,262 Z" fill="url(#yao_tiger-fur)"/>
+  <path d="M168,256 Q200,270 232,256 L236,286 Q200,300 164,286 Z" fill="url(#yao_tiger-white)" opacity="0.9"/>
+  <g fill="none" stroke="#9a4d12" stroke-width="2.2" stroke-linecap="round" opacity="0.75">
+    <path d="M156,344 C172,360 190,360 200,350 C210,360 228,360 244,344"/>
+    <path d="M200,360 L200,440"/>
+    <path d="M178,384 Q188,390 195,386 M205,386 Q212,390 222,384"/>
+    <path d="M180,414 Q189,418 195,414 M205,414 Q211,418 220,414"/>
+  </g>
+  <!-- 兽皮坎肩前片 -->
+  <path d="M182,258 C160,280 146,310 136,340 C130,380 128,430 128,480 L160.0,480.0 L166.2,474.2 L160.4,468.0 L166.6,462.2 L160.8,456.0 L167.0,450.2 L161.2,444.0 L167.4,438.2 L161.6,432.0 L167.8,426.2 L162.0,420.0 L168.6,414.6 L163.2,408.0 L169.8,402.6 L164.4,396.0 L171.0,390.6 L165.6,384.0 L172.2,378.6 L166.8,372.0 L173.4,366.6 L168.0,360.0 L175.3,355.2 L171.0,347.5 L178.3,342.7 L174.0,335.0 L181.3,330.2 L177.0,322.5 L184.3,317.7 L180.0,310.0 L188.2,306.0 L185.3,297.3 L193.5,293.3 L190.7,284.7 L198.9,280.7 L196.0,272.0 Z" fill="url(#yao_tiger-pelt)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M218,258 C240,280 254,310 264,340 C270,380 272,430 272,480 L240.0,480.0 L233.8,474.2 L239.6,468.0 L233.4,462.2 L239.2,456.0 L233.0,450.2 L238.8,444.0 L232.6,438.2 L238.4,432.0 L232.2,426.2 L238.0,420.0 L231.4,414.6 L236.8,408.0 L230.2,402.6 L235.6,396.0 L229.0,390.6 L234.4,384.0 L227.8,378.6 L233.2,372.0 L226.6,366.6 L232.0,360.0 L224.7,355.2 L229.0,347.5 L221.7,342.7 L226.0,335.0 L218.7,330.2 L223.0,322.5 L215.7,317.7 L220.0,310.0 L211.8,306.0 L214.7,297.3 L206.5,293.3 L209.3,284.7 L201.1,280.7 L204.0,272.0 Z" fill="url(#yao_tiger-pelt)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- 手臂 -->
+  <path d="M22,480 C20,420 26,360 38,322 C48,292 72,280 96,282 C120,286 136,306 136,334 C134,384 130,432 130,480 Z" fill="url(#yao_tiger-arm)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M378,480 C380,420 374,360 362,322 C352,292 328,280 304,282 C280,286 264,306 264,334 C266,384 270,432 270,480 Z" fill="url(#yao_tiger-arm)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+  <g fill="#14101a">
+    <path d="M24,410 C40,404 54,410 64,420 C50,418 36,418 24,424 Z"/>
+    <path d="M28,384 C42,376 56,380 66,390 C52,390 40,390 28,396 Z"/>
+    <path d="M132,396 C118,392 108,398 102,408 C112,404 122,404 132,408 Z"/>
+    <path d="M128,428 C116,426 108,432 104,440 C112,438 120,438 130,440 Z"/>
+    <path d="M376,410 C360,404 346,410 336,420 C350,418 364,418 376,424 Z"/>
+    <path d="M372,384 C358,376 344,380 334,390 C348,390 360,390 372,396 Z"/>
+    <path d="M268,396 C282,392 292,398 298,408 C288,404 278,404 268,408 Z"/>
+    <path d="M272,428 C284,426 292,432 296,440 C288,438 280,438 270,440 Z"/>
+  </g>
+  <path d="M110,300 C122,320 124,350 120,380" fill="none" stroke="#ffc56b" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <path d="M290,300 C278,320 276,350 280,380" fill="none" stroke="#ffc56b" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <!-- 骨环 -->
+  <ellipse cx="80" cy="340" rx="44" ry="11" fill="none" stroke="#14101a" stroke-width="5"/>
+  <ellipse cx="80" cy="340" rx="44" ry="11" fill="none" stroke="#9a4d12" stroke-width="2.5"/>
+  <ellipse cx="121.5" cy="341.6" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="115.6" cy="345.3" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="103.9" cy="348.2" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="88.4" cy="349.8" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="71.6" cy="349.8" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="56.1" cy="348.2" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="44.4" cy="345.3" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="38.5" cy="341.6" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/>
+  <ellipse cx="320" cy="340" rx="44" ry="11" fill="none" stroke="#14101a" stroke-width="5"/>
+  <ellipse cx="320" cy="340" rx="44" ry="11" fill="none" stroke="#9a4d12" stroke-width="2.5"/>
+  <ellipse cx="361.5" cy="341.6" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="355.6" cy="345.3" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="343.9" cy="348.2" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="328.4" cy="349.8" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="311.6" cy="349.8" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="296.1" cy="348.2" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="284.4" cy="345.3" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/><ellipse cx="278.5" cy="341.6" rx="4.2" ry="6.5" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.4"/>
+  <!-- 兽皮披肩 -->
+  <path d="M32.0,326.0 L42.1,328.8 L46.0,319.0 L56.1,321.8 L60.0,312.0 L68.0,317.5 L73.3,309.3 L81.4,314.9 L86.7,306.7 L94.7,312.2 L100.0,304.0 L105.6,311.6 L112.7,305.3 L118.3,313.0 L125.3,306.7 L130.9,314.3 L138.0,308.0 C146,290 160,274 182,258 L150,256 C100,262 60,278 44,298 Z" fill="url(#yao_tiger-pelt)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M262.0,308.0 L267.6,300.4 L274.7,306.7 L280.3,299.0 L287.3,305.3 L292.9,297.7 L300.0,304.0 L308.0,298.5 L313.3,306.7 L321.4,301.1 L326.7,309.3 L334.7,303.8 L340.0,312.0 L350.1,309.2 L354.0,319.0 L364.1,316.2 L368.0,326.0 L356,296 C340,278 300,262 250,256 L218,258 C240,276 254,296 264,322 Z" fill="url(#yao_tiger-pelt)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <g fill="none" stroke="#9aa88a" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+    <path d="M60,300 C80,284 110,272 140,266"/>
+    <path d="M340,300 C320,284 290,272 260,266"/>
+    <path d="M70,316 l6,8 M96,304 l4,10 M122,296 l2,10 M330,316 l-6,8 M304,304 l-4,10 M278,296 l-2,10"/>
+  </g>
+  <!-- 肩头兽爪扣 -->
+  <path d="M142,276 C150,264 166,262 174,272 C166,280 152,284 142,276 Z" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.6"/>
+  <path d="M146,276 l-6,10 M156,279 l-3,12 M166,277 l1,12" stroke="#14101a" stroke-width="2" stroke-linecap="round"/>
+  <path d="M258,276 C250,264 234,262 226,272 C234,280 248,284 258,276 Z" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.6"/>
+  <path d="M254,276 l6,10 M244,279 l3,12 M234,277 l-1,12" stroke="#14101a" stroke-width="2" stroke-linecap="round"/>
+  <!-- 牙串项链 -->
+  <path d="M156,290 Q200,334 244,290" fill="none" stroke="#5e0f1c" stroke-width="2.5"/>
+  <path d="M154.0,292.0 L162.0,292.0 L158.0,307.0 Z" transform="rotate(20.0 158.0 292.0)" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/><path d="M168.0,302.0 L176.0,302.0 L172.0,317.0 Z" transform="rotate(13.3 172.0 302.0)" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/><path d="M182.0,309.3 L190.0,309.3 L186.0,324.3 Z" transform="rotate(6.7 186.0 309.3)" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/><path d="M196.0,312.0 L204.0,312.0 L200.0,327.0 Z" transform="rotate(-0.0 200.0 312.0)" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/><path d="M210.0,309.3 L218.0,309.3 L214.0,324.3 Z" transform="rotate(-6.7 214.0 309.3)" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/><path d="M224.0,302.0 L232.0,302.0 L228.0,317.0 Z" transform="rotate(-13.3 228.0 302.0)" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/><path d="M238.0,292.0 L246.0,292.0 L242.0,307.0 Z" transform="rotate(-20.0 242.0 292.0)" fill="url(#yao_tiger-bone)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/>
+
+  <!-- 耳 -->
+  <circle cx="140" cy="92" r="24" fill="url(#yao_tiger-fur)" stroke="#14101a" stroke-width="2.5"/>
+  <circle cx="142" cy="95" r="14" fill="#efe2c4" stroke="#9a4d12" stroke-width="1.5"/>
+  <path d="M120,80 Q130,68 146,68" fill="none" stroke="#14101a" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="260" cy="92" r="24" fill="url(#yao_tiger-fur)" stroke="#14101a" stroke-width="2.5"/>
+  <circle cx="258" cy="95" r="14" fill="#efe2c4" stroke="#9a4d12" stroke-width="1.5"/>
+  <path d="M280,80 Q270,68 254,68" fill="none" stroke="#14101a" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- 虎首 -->
+  <path d="M200,66 C150,66 124,100 122,140 C120,166 126,188 136,204 L118,208 L136,216 L124,228 L150,226 L146,238 C164,240 182,246 200,246 C218,246 236,240 254,238 L250,226 L276,228 L264,216 L282,208 L264,204 C274,188 280,166 278,140 C276,100 250,66 200,66 Z" fill="url(#yao_tiger-fur)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- 白色颊毛 -->
+  <path d="M132,170 C140,196 160,214 184,222 L172,232 L188,230 L184,240 L200,236 L216,240 L212,230 L228,232 L216,222 C240,214 260,196 268,170 C256,186 236,196 220,196 L180,196 C164,196 144,186 132,170 Z" fill="url(#yao_tiger-white)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <!-- 吻部 -->
+  <path d="M200,150 C182,150 168,162 166,180 C166,200 182,214 200,216 C218,214 234,200 234,180 C232,162 218,150 200,150 Z" fill="url(#yao_tiger-white)" stroke="#d8c49a" stroke-width="1.5"/>
+  <path d="M184,124 L216,124 L212,160 L200,166 L188,160 Z" fill="#ffc56b" opacity="0.7"/>
+  <!-- 眉上白斑 -->
+  <path d="M154,128 Q166,118 184,124 Q168,124 156,132 Z" fill="#f4fbff"/>
+  <path d="M246,128 Q234,118 216,124 Q232,124 244,132 Z" fill="#f4fbff"/>
+  <!-- 王字额纹 -->
+  <g fill="#14101a">
+    <path d="M182,88 Q200,82 218,88 Q200,92 182,88 Z"/>
+    <path d="M186,102 Q200,97 214,102 Q200,106 186,102 Z"/>
+    <path d="M180,116 Q200,110 220,116 Q200,121 180,116 Z"/>
+    <path d="M198,84 L202,84 L201.5,118 L198.5,118 Z"/>
+  </g>
+  <!-- 头侧条纹 -->
+  <g fill="#14101a">
+    <path d="M124,128 C140,126 152,132 160,140 C146,138 134,140 124,146 Z"/>
+    <path d="M124,158 C138,154 150,158 158,166 C144,166 134,168 126,174 Z"/>
+    <path d="M276,128 C260,126 248,132 240,140 C254,138 266,140 276,146 Z"/>
+    <path d="M276,158 C262,154 250,158 242,166 C256,166 266,168 274,174 Z"/>
+    <path d="M150,84 C160,90 166,100 168,110 C160,102 152,98 144,98 Z"/>
+    <path d="M250,84 C240,90 234,100 232,110 C240,102 248,98 256,98 Z"/>
+    <path d="M140,196 C152,196 162,200 168,206 C158,206 150,208 144,212 Z"/>
+    <path d="M260,196 C248,196 238,200 232,206 C242,206 250,208 256,212 Z"/>
+  </g>
+  <!-- 眼 -->
+  <path d="M152,142 Q166,127 190,137 Q178,152 152,142 Z" fill="url(#yao_tiger-iris)"/>
+  <path d="M248,142 Q234,127 210,137 Q222,152 248,142 Z" fill="url(#yao_tiger-iris)"/>
+  <g clip-path="url(#yao_tiger-eyeL)">
+    <ellipse cx="174" cy="139" rx="2.4" ry="8" fill="#14101a"/>
+    <path d="M150,142 Q166,127 192,137 L192,130 L150,130 Z" fill="#9a4d12" opacity="0.45"/>
+  </g>
+  <g clip-path="url(#yao_tiger-eyeR)">
+    <ellipse cx="226" cy="139" rx="2.4" ry="8" fill="#14101a"/>
+    <path d="M250,142 Q234,127 208,137 L208,130 L250,130 Z" fill="#9a4d12" opacity="0.45"/>
+  </g>
+  <g filter="url(#yao_tiger-glow)" opacity="0.6">
+    <path d="M160,141 Q172,145 184,139" fill="none" stroke="#f2d27a" stroke-width="1.5"/>
+    <path d="M240,141 Q228,145 216,139" fill="none" stroke="#f2d27a" stroke-width="1.5"/>
+  </g>
+  <circle cx="178" cy="135.5" r="1.8" fill="#f4fbff"/>
+  <circle cx="230" cy="135.5" r="1.8" fill="#f4fbff"/>
+  <path d="M190,137 Q166,124 150,142 Q146,140 142,140 Q150,132 158,132 Q172,124 194,134 Z" fill="#14101a"/>
+  <path d="M210,137 Q234,124 250,142 Q254,140 258,140 Q250,132 242,132 Q228,124 206,134 Z" fill="#14101a"/>
+  <path d="M152,142 Q176,152 190,137 L192,140 Q178,156 150,144 Z" fill="#14101a"/>
+  <path d="M248,142 Q224,152 210,137 L208,140 Q222,156 250,144 Z" fill="#14101a"/>
+  <path d="M190,139 L194,150 M210,139 L206,150" stroke="#14101a" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- 鼻 -->
+  <path d="M186,162 Q200,156 214,162 Q212,174 200,180 Q188,174 186,162 Z" fill="url(#yao_tiger-nose)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M192,163 Q198,161 203,163" fill="none" stroke="#e0524a" stroke-width="2" stroke-linecap="round"/>
+  <path d="M200,180 L200,190" stroke="#14101a" stroke-width="2"/>
+  <!-- 嘴与獠牙 -->
+  <path d="M180,194 Q190,200 200,190 Q210,200 220,194 Q214,212 200,214 Q186,212 180,194 Z" fill="#5e0f1c" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M188,206 Q200,212 212,206 Q206,213 200,213 Q194,213 188,206 Z" fill="#c43a3a"/>
+  <path d="M184,196 L188,212 L192,198 Z" fill="#f4fbff" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+  <path d="M216,196 L212,212 L208,198 Z" fill="#f4fbff" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+  <path d="M176,190 Q180,196 182,194 M224,190 Q220,196 218,194" fill="none" stroke="#14101a" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- 须点 -->
+  <g fill="#9a4d12">
+    <circle cx="180" cy="180" r="1.4"/><circle cx="174" cy="186" r="1.4"/><circle cx="184" cy="187" r="1.4"/>
+    <circle cx="220" cy="180" r="1.4"/><circle cx="226" cy="186" r="1.4"/><circle cx="216" cy="187" r="1.4"/>
+  </g>
+  <g fill="none" stroke="#efe2c4" stroke-width="1.3" stroke-linecap="round" opacity="0.9">
+    <path d="M172,184 Q144,178 118,186 M172,190 Q146,190 122,200"/>
+    <path d="M228,184 Q256,178 282,186 M228,190 Q254,190 278,200"/>
+  </g>
+  <!-- 头顶高光 -->
+  <path d="M164,76 C178,70 196,68 212,70" fill="none" stroke="#ffc56b" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+  <path d="M132,110 C134,98 140,90 148,84" fill="none" stroke="#ffc56b" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+</svg>

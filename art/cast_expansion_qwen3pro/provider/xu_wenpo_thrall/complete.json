@@ -1,0 +1,9 @@
+{
+  "character": "xu_wenpo",
+  "state": "thrall",
+  "asset_id": "xu_wenpo_thrall",
+  "image_file": "provider/xu_wenpo_thrall/xu_wenpo_thrall.png",
+  "sha256": "08acd3668ffed7df2e5f5a80fb7aca38b584523fea4c30ab25ab5e2eba697122",
+  "seed": 151086,
+  "model": "qwen-image-3.0-pro"
+}

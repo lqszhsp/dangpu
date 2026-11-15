@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128">
+  <defs>
+    <linearGradient id="scroll_manual-paper" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c8b080"/>
+      <stop offset="0.2" stop-color="#e8d8b2"/>
+      <stop offset="0.8" stop-color="#e2cfa2"/>
+      <stop offset="1" stop-color="#b89a62"/>
+    </linearGradient>
+    <linearGradient id="scroll_manual-wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6b4a2c"/>
+      <stop offset="0.35" stop-color="#4a2e1c"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <linearGradient id="scroll_manual-roll" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a88a52"/>
+      <stop offset="0.4" stop-color="#efe2c4"/>
+      <stop offset="1" stop-color="#8a6a3a"/>
+    </linearGradient>
+  </defs>
+  <!-- shadow -->
+  <rect x="12" y="12" width="44" height="110" rx="3" fill="#14101a" opacity="0.35"/>
+  <!-- top rod -->
+  <rect x="4" y="7" width="56" height="8" rx="4" fill="url(#scroll_manual-wood)" stroke="#14101a" stroke-width="1.8"/>
+  <path d="M8 9 L56 9" stroke="#a87a4a" stroke-width="1" opacity="0.7" stroke-linecap="round"/>
+  <circle cx="5" cy="11" r="3.4" fill="#2a1838" stroke="#14101a" stroke-width="1.4"/>
+  <circle cx="59" cy="11" r="3.4" fill="#2a1838" stroke="#14101a" stroke-width="1.4"/>
+  <circle cx="58.3" cy="10.2" r="0.9" fill="#d9a441"/>
+  <circle cx="4.3" cy="10.2" r="0.9" fill="#d9a441"/>
+  <!-- hanging cord -->
+  <path d="M22 7 Q32 -1 42 7" fill="none" stroke="#8e1b2b" stroke-width="1.4"/>
+  <!-- paper (torn bottom edge, burn/wear) -->
+  <path d="M9 15 L55 15 L55 88 L53 93 L55.5 99 L52 104 L47 102 L44 107 L39 104 L36 110 L31 106 L27 111 L23 105 L18 108 L15 103 L11 104 L9 98 Z" fill="url(#scroll_manual-paper)" stroke="#1f1626" stroke-width="1.6" stroke-linejoin="round"/>
+  <!-- border lines -->
+  <path d="M13 19 L51 19 L51 86 M13 19 L13 96" fill="none" stroke="#8a5a1c" stroke-width="0.9" opacity="0.8"/>
+  <!-- stains -->
+  <ellipse cx="42" cy="72" rx="7" ry="9" fill="#8a5a1c" opacity="0.18"/>
+  <ellipse cx="20" cy="40" rx="5" ry="4" fill="#8a5a1c" opacity="0.14"/>
+  <!-- script columns (right to left) -->
+  <g fill="none" stroke="#1f1626" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3">
+    <path d="M44.5 24 h3.6 M46.3 24 v4.5 M44.4 31 h3.8 M45.2 33.5 l2.2 1.8 M44.6 38.5 h3.6 l0 4 M44.6 46 h3.6 M46.3 46 v5 M44.5 55 l3.6 -0.2 M45 58 l2.6 2"/>
+    <path d="M36.5 24 h3.6 M38.3 24 v5 M36.6 32 h3.6 M37.4 34 l1.8 1.6 M36.5 39.5 h3.6 M38.3 39.5 v4.5 l-1.4 1 M36.6 49 h3.6 M37 52 l2.6 1.8 M36.5 57.5 h3.6 l0 4.5 M36.6 66 h3.6"/>
+    <path d="M28.5 24 h3.6 M30.3 24 v4 M28.6 30.5 h3.6 l0 4 M28.5 39 l3.6 0 M29 41.5 l2.4 2 M28.6 47 h3.6 M30.3 47 v5"/>
+    <path d="M20.5 24 h3.6 M22.3 24 v4.5 M20.6 31.5 h3.6 M21 34 l2.6 1.8 M20.5 39 h3.6 l0 4.5 M20.6 48 h3.6 M22.3 48 v4 M20.5 56 h3.6 M21.2 59 l2 1.6 M20.6 64 h3.6"/>
+  </g>
+  <!-- red seal at end -->
+  <rect x="16" y="76" width="8" height="8" rx="1" fill="#c43a3a" stroke="#5e0f1c" stroke-width="0.9" opacity="0.9"/>
+  <path d="M17.8 78 h4.4 M20 78 v4.5 M17.8 82.3 h4.4" stroke="#efe2c4" stroke-width="0.8" stroke-linecap="round"/>
+  <!-- worm holes -->
+  <g fill="#1f1626" stroke="#8a5a1c" stroke-width="0.6">
+    <ellipse cx="33" cy="58" rx="2.2" ry="1.8"/>
+    <ellipse cx="25.5" cy="72" rx="1.4" ry="1.2"/>
+    <ellipse cx="44" cy="84" rx="2.6" ry="2"/>
+    <ellipse cx="29" cy="92" rx="1.6" ry="1.3"/>
+    <circle cx="47.5" cy="35.5" r="1"/>
+  </g>
+  <!-- tear crack -->
+  <path d="M55 88 L49 85 L46 90" fill="none" stroke="#8a5a1c" stroke-width="0.9"/>
+  <path d="M9 98 L14 94" fill="none" stroke="#8a5a1c" stroke-width="0.9"/>
+  <!-- loose rolled remainder hanging below -->
+  <path d="M14 111 Q32 114 50 109 L50 117 Q32 121 14 118 Z" fill="url(#scroll_manual-roll)" stroke="#1f1626" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M16 113.5 Q32 116 48 112" fill="none" stroke="#fff8e6" stroke-width="0.8" opacity="0.8"/>
+  <!-- bottom rod -->
+  <rect x="7" y="114" width="50" height="7.5" rx="3.7" fill="url(#scroll_manual-wood)" stroke="#14101a" stroke-width="1.8"/>
+  <circle cx="7.5" cy="117.8" r="3.3" fill="#2a1838" stroke="#14101a" stroke-width="1.4"/>
+  <circle cx="56.5" cy="117.8" r="3.3" fill="#2a1838" stroke="#14101a" stroke-width="1.4"/>
+  <path d="M11 116 L52 116" stroke="#a87a4a" stroke-width="0.9" opacity="0.6" stroke-linecap="round"/>
+  <!-- paper highlight -->
+  <path d="M11 17 L11 94" stroke="#fff8e6" stroke-width="0.9" opacity="0.6"/>
+</svg>

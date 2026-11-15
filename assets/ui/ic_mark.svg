@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="ic_mark-disc" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#5e0f1c"/>
+      <stop offset="0.7" stop-color="#2a1838"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </radialGradient>
+    <radialGradient id="ic_mark-hand" cx="0.5" cy="0.6" r="0.6">
+      <stop offset="0" stop-color="#ffc56b"/>
+      <stop offset="0.3" stop-color="#e0524a"/>
+      <stop offset="0.75" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#8e1b2b"/>
+    </radialGradient>
+    <filter id="ic_mark-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+  </defs>
+  <!-- seal disc -->
+  <circle cx="32" cy="32" r="29" fill="url(#ic_mark-disc)" stroke="#14101a" stroke-width="2.6"/>
+  <circle cx="32" cy="32" r="25" fill="none" stroke="#8e1b2b" stroke-width="1.6"/>
+  <!-- rune ticks -->
+  <g stroke="#c43a3a" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M32 4.5 L32 8.5 M32 55.5 L32 59.5 M4.5 32 L8.5 32 M55.5 32 L59.5 32"/>
+    <path d="M12.6 12.6 L15.4 15.4 M51.4 12.6 L48.6 15.4 M12.6 51.4 L15.4 48.6 M51.4 51.4 L48.6 48.6"/>
+  </g>
+  <!-- glow under hand -->
+  <path d="M20 54 Q16 44 17 36 L13.5 27 Q12.5 23.5 15.5 23 Q18 22.6 19.5 26 L22 31 L21 14 Q21 11 23.6 11 Q26 11 26.2 14 L27 27 L28 9.5 Q28.3 6.5 31 6.5 Q33.7 6.5 33.8 9.5 L34 27 L36.2 11.5 Q36.7 8.7 39.2 9 Q41.6 9.4 41.4 12.3 L40 28 L43.5 16.5 Q44.4 14 46.6 14.6 Q48.8 15.3 48.2 18 L45 34 Q44 46 42 54 Z" fill="#e0524a" filter="url(#ic_mark-blur)" opacity="0.9"/>
+  <!-- handprint -->
+  <path d="M20 54 Q16 44 17 36 L13.5 27 Q12.5 23.5 15.5 23 Q18 22.6 19.5 26 L22 31 L21 14 Q21 11 23.6 11 Q26 11 26.2 14 L27 27 L28 9.5 Q28.3 6.5 31 6.5 Q33.7 6.5 33.8 9.5 L34 27 L36.2 11.5 Q36.7 8.7 39.2 9 Q41.6 9.4 41.4 12.3 L40 28 L43.5 16.5 Q44.4 14 46.6 14.6 Q48.8 15.3 48.2 18 L45 34 Q44 46 42 54 Z" fill="url(#ic_mark-hand)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+  <!-- burned rune in palm -->
+  <g fill="none" stroke="#5e0f1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="31" cy="41" r="5.5"/>
+    <path d="M31 35.5 L31 46.5 M26.5 41 L35.5 41"/>
+  </g>
+  <circle cx="31" cy="41" r="1.6" fill="#ffc56b"/>
+  <!-- embers -->
+  <g fill="#ffc56b"><circle cx="50" cy="44" r="1.2"/><circle cx="12" cy="42" r="1"/><circle cx="53" cy="27" r="0.9"/></g>
+</svg>

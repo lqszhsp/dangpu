@@ -1,0 +1,9 @@
+{
+  "character": "li_yueqiao",
+  "state": "angry",
+  "asset_id": "li_yueqiao_angry",
+  "image_file": "provider/li_yueqiao_angry/li_yueqiao_angry.png",
+  "sha256": "103d09ea5cb40aafc850d85660adbb9a88a4706e3d5d9a9d134987c7d74ceb1a",
+  "seed": 151132,
+  "model": "qwen-image-3.0-pro"
+}

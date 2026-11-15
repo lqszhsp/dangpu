@@ -1,0 +1,9 @@
+{
+  "character": "zhou_yunshu",
+  "state": "thrall",
+  "asset_id": "zhou_yunshu_thrall",
+  "image_file": "provider/zhou_yunshu_thrall/zhou_yunshu_thrall.png",
+  "sha256": "cd821b5e23929956940ea28f3f1ccb983d6434c1a48c2005cb2dcd84eeef3504",
+  "seed": 151036,
+  "model": "qwen-image-3.0-pro"
+}

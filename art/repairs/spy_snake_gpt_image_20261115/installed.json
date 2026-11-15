@@ -1,0 +1,362 @@
+{
+  "faces": [
+    "xian_spy",
+    "xian_spy_f1",
+    "xian_spy_f2",
+    "yao_snake",
+    "yao_snake_f1",
+    "yao_snake_f2"
+  ],
+  "states": [
+    "neutral",
+    "pleased",
+    "angry",
+    "afraid",
+    "sly",
+    "wasted",
+    "thrall"
+  ],
+  "assets": [
+    {
+      "path": "art/raw/chars/xian_spy.png",
+      "sha256": "efac76edb8e09b76867e42778bc524e8356cfad7d8d7483bf4e404f5e7f1dc5b"
+    },
+    {
+      "path": "assets/chars/xian_spy.webp",
+      "sha256": "32bbbc47b1147e71460a60094faf70994e0a452b3bde17ba254383d0ccea0ed9"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_afraid.png",
+      "sha256": "4aeeda782ef12dbea432c9d667c6c15f4c2de2e737c62d6eb6f235e4bc8cd175"
+    },
+    {
+      "path": "assets/chars/xian_spy_afraid.webp",
+      "sha256": "e56f7b2b033b62a2739ae7cef5fca6a8eda5d3eb3335003e5a5666e0754bec5b"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_angry.png",
+      "sha256": "6349eca414fb362a8e7e7ca8c41c0de8b5abb6b3085e3cb97f9666896a985094"
+    },
+    {
+      "path": "assets/chars/xian_spy_angry.webp",
+      "sha256": "94a6ef4349a962dca2de9ad19b4cc3ff09fbe19276db34ba4aab727725a28a0d"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1.png",
+      "sha256": "2f85fe332e1ac490f2f2f0c6bff41b89920bd267c891629acfb8013d124f042f"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1.webp",
+      "sha256": "6f4fb057911deffc930e1a0c1b34b2df744f6ac435a758a64ddbc063454bc7d9"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_afraid.png",
+      "sha256": "241621a0efe76fa7e68a9b5566a133c7d28ccb7401788fe7c22e88711850cdb4"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_afraid.webp",
+      "sha256": "80aaba5fa9d65300f659811d1985bacaea7b209a1122d2f5e23807180b039d5a"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_angry.png",
+      "sha256": "6a052c2f15afc04ac225d0a5d2f7512172acd16e10f40bb2a5f09c133433babf"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_angry.webp",
+      "sha256": "522beffffaa46eb9b5667ce0add67a03b86aea0f721d76e67a08b1a2da6ca85d"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_pleased.png",
+      "sha256": "66d98371abbf873215854751e711ddda3008e77bde1a72bda6c7b3ae6e705ec6"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_pleased.webp",
+      "sha256": "92671dc0d64a80823755c2dd6718d740c21fdb03b6aa69544c63d1e8c7b13417"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_sly.png",
+      "sha256": "a15120c78180cddfb9624992dde4226bbbf62bbb7de5b6f6f3b93ae9ef9a28b9"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_sly.webp",
+      "sha256": "7f5079e6abe8ac978eefe5225b5793bbbbd123c3d5fb71a227334d86023e3e40"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_thrall.png",
+      "sha256": "433dfc9ef293d3fc6d8caf6efe595a019a87d48b01c960a870c88142a27ae92c"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_thrall.webp",
+      "sha256": "8a54300c49cfb9b4275687078e5ba966a809ce090bd6591e377fd7ac38d9eda5"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_wasted.png",
+      "sha256": "0d3b539c4475b22801c21f18e9c7a75490935e20f66f7f053577d4161d81c18e"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_wasted.webp",
+      "sha256": "ae5ea1b45303a545329f1253e91f7899157d17d9badce728ebb1dd2667dd3680"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f2.png",
+      "sha256": "bf211133ba1c3d743aef474ef8c119eae8f836fbc4e662563689bab5989c03dc"
+    },
+    {
+      "path": "assets/chars/xian_spy_f2.webp",
+      "sha256": "d26755488ae883303a222cd2245a1776c005adc256e142c210908fa38a5955db"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f2_afraid.png",
+      "sha256": "1b98d438f27c56fa084499a13464251f6861321b569ef7cfc34ece861d2943ad"
+    },
+    {
+      "path": "assets/chars/xian_spy_f2_afraid.webp",
+      "sha256": "b46fe65b708f6fdcb7f848d3b004cd5139d113cec34839f7658b2da5f9234846"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f2_angry.png",
+      "sha256": "2ee663f71b46208a310afbd5927b2d0d282471306f84c5ce544a2122987a10d9"
+    },
+    {
+      "path": "assets/chars/xian_spy_f2_angry.webp",
+      "sha256": "32bd79efce20e7cdd63d3f94f119aa500ae25698e79a448b8b5e6caef0e38839"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f2_pleased.png",
+      "sha256": "3dcd858581f30eed3934737d725145eec8a07709c1f9cbf78786086818f69c67"
+    },
+    {
+      "path": "assets/chars/xian_spy_f2_pleased.webp",
+      "sha256": "18229d7364f6cd3a83b7352658f4a5a6d115bddd9d48ad13405d44a13a782794"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f2_sly.png",
+      "sha256": "69a17b4fc68cb058477702907f19a25ddbfebeb5a9f06ddc21acf21b6ed443f4"
+    },
+    {
+      "path": "assets/chars/xian_spy_f2_sly.webp",
+      "sha256": "ebe46c1686a672742a17323fbc2a81ea17859b94c4388538e649b82b53c3566e"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f2_thrall.png",
+      "sha256": "8bff339f2a8e24ba61d3c3fcea0f08faff70b9efc8e28ee7b8b317e1cd5b3240"
+    },
+    {
+      "path": "assets/chars/xian_spy_f2_thrall.webp",
+      "sha256": "2549f291f16c24064ffcf223b0870e69f6376b75d9d2faad1b7386aca914f025"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f2_wasted.png",
+      "sha256": "8f87ef1244676f6fe8d863a4d478f0822e8b2f92cc0903913cc5061773d02690"
+    },
+    {
+      "path": "assets/chars/xian_spy_f2_wasted.webp",
+      "sha256": "d4ffb9e3dd782c6dd710f55ba1c5c2aa5824ae5a7dbb19557cd9383c813affe4"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_pleased.png",
+      "sha256": "52c4142a7b805dd185827386db2c8871c16df3a189cbe419ca694c199da54460"
+    },
+    {
+      "path": "assets/chars/xian_spy_pleased.webp",
+      "sha256": "5d3d6649a98f4ab486e29b7eed1f54988a473f2c10ba6d7471117c51c5a76512"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_sly.png",
+      "sha256": "b69b6dabde4bab802aea04ce018c59041b73c64922629747d129bbf7ae0307b6"
+    },
+    {
+      "path": "assets/chars/xian_spy_sly.webp",
+      "sha256": "5d62b84ac900ec84a9508efe07dc065f99205bdb5c73602e3a261e80003f2fd3"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_thrall.png",
+      "sha256": "7e21ac577ebb783b66ff3a5f60d6897e82f63a7e48d99f24d793c5f0a60aeb99"
+    },
+    {
+      "path": "assets/chars/xian_spy_thrall.webp",
+      "sha256": "78681da37c13b41efb5097a8691f6eb4a05c12e6fab9c5d01253ec2d6839fb53"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_wasted.png",
+      "sha256": "44248e4051ef6051e9aebc6df9817c7844aefb73b0ed109a51ef23587b7a6a97"
+    },
+    {
+      "path": "assets/chars/xian_spy_wasted.webp",
+      "sha256": "53a93f69c637f185b3739ab77bd2686ea50ac543e159ce46cb6f68eb3bf4634a"
+    },
+    {
+      "path": "art/raw/chars/yao_snake.png",
+      "sha256": "0f7b47eb17268751469b307efca6e273aea81e1168652a7097f27092653b0a0f"
+    },
+    {
+      "path": "assets/chars/yao_snake.webp",
+      "sha256": "3f8a7a2fc9a56b2b50bb387a991988d372bf186fc9de726008d4ff146c76b2a1"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_afraid.png",
+      "sha256": "db4f091742b000b10c3023e9f6b48585fa2a1834620b3df90a2dd53d2ea93b98"
+    },
+    {
+      "path": "assets/chars/yao_snake_afraid.webp",
+      "sha256": "a1b109a142365f0dbad0227b7b6ddd9b2425f1adbc122b5280d1d69e55741c8d"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_angry.png",
+      "sha256": "e825fa15b226d7a1d75ddc6e730a1657d16591fb2ee96e703284e1c08ef6b717"
+    },
+    {
+      "path": "assets/chars/yao_snake_angry.webp",
+      "sha256": "55f4e51e1fd93c754c39290baf0a9ad83b45145b8b301463724b48b25a4aa702"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f1.png",
+      "sha256": "643178ff928ec913554612a0534a14ec4c492aa73a3ac3ddc64627b7920f745f"
+    },
+    {
+      "path": "assets/chars/yao_snake_f1.webp",
+      "sha256": "94b9072ded418d5bd359dd4d7097edee9935761d5885d91fb477f9e57f7fad07"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f1_afraid.png",
+      "sha256": "51d3d442f19c9ba76b7238212ebde0aaa4f3129f90d81e1aad030550c68c278e"
+    },
+    {
+      "path": "assets/chars/yao_snake_f1_afraid.webp",
+      "sha256": "08326c4fe97b488ca3c43146907a69593f54b7bccbff040e46031afa183ada3e"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f1_angry.png",
+      "sha256": "a2ff7fb8cce7ef479824001fab5d0b5ad41b1ca92d3e7430b02e1ac56f84e53e"
+    },
+    {
+      "path": "assets/chars/yao_snake_f1_angry.webp",
+      "sha256": "f4d4421b1b410bd0c9305da1a86a7eebd3dcf9188a6e59c11e8769520c8ba766"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f1_pleased.png",
+      "sha256": "9dc4baecf67feb4238372a26d0099f3ff6f097821a5daa7f2c6516306686b01e"
+    },
+    {
+      "path": "assets/chars/yao_snake_f1_pleased.webp",
+      "sha256": "5d5c614839798e4cea1299f660752d57954e31af1e5e23d86257954cdb20703c"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f1_sly.png",
+      "sha256": "a289fccd5785cb560ee21427098edcde3d607b8a7db5d38803bcf8062d2953f7"
+    },
+    {
+      "path": "assets/chars/yao_snake_f1_sly.webp",
+      "sha256": "f7600b5ba097ca272957af63a92b576d06a5e874baba7ab26e3c1d0808972285"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f1_thrall.png",
+      "sha256": "50f4ceb4ed3e49fc47f099d49bd329d94aa8f3fe16d365db00ea686c064f39e4"
+    },
+    {
+      "path": "assets/chars/yao_snake_f1_thrall.webp",
+      "sha256": "de3816107361cba6e89610d7d1a0357981bd30b44f83c0a69eb2c9742e9ab55b"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f1_wasted.png",
+      "sha256": "237f9546c6260b8433b28c241a4c0a248041c8fc5b11e55e04ac56b62932bc1d"
+    },
+    {
+      "path": "assets/chars/yao_snake_f1_wasted.webp",
+      "sha256": "cf43c56952c2c863e72f281e98c9d1224f03b6cd487349d61b290407ba21c7af"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f2.png",
+      "sha256": "853da864bcf0535c07e75a754931d9da64d1343fe5ae783603bfa2f28fa7eead"
+    },
+    {
+      "path": "assets/chars/yao_snake_f2.webp",
+      "sha256": "1d9c25c89a2ecd9551343d242d831b347b28eb925627f95e4692f6f1fa3c4dc5"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f2_afraid.png",
+      "sha256": "daec637c3537c5a4cac9539200fc319e70d02424086283c9e5f51f25cd04fe22"
+    },
+    {
+      "path": "assets/chars/yao_snake_f2_afraid.webp",
+      "sha256": "a78d853ec09e30ae2fd57bc92c704786796c70fa49bdbdef92022bdd4a909a28"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f2_angry.png",
+      "sha256": "3b09409939978f5f42f89febad554b6016298248846ba7d3c6b79e3e563ea31e"
+    },
+    {
+      "path": "assets/chars/yao_snake_f2_angry.webp",
+      "sha256": "85d47f68f4e3578ee0243a48bd39fa3e1c9fc3eaa8434f1f3ca75b7c6ef57cb1"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f2_pleased.png",
+      "sha256": "f4990e2e7bddd1df0811dff13ddc1f7dd39877075bafb45016005a8457544569"
+    },
+    {
+      "path": "assets/chars/yao_snake_f2_pleased.webp",
+      "sha256": "5723f327b5dfb0cb0ddef2c93db2d209090e7f17fc53dca42ad66cce467d99dc"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f2_sly.png",
+      "sha256": "b6f229a56ac1b18fbd22c7cd079e8e385ad7f227dfac3269d361d7ca3964d8fd"
+    },
+    {
+      "path": "assets/chars/yao_snake_f2_sly.webp",
+      "sha256": "b76b447ec3914c3600cd5e1b66dd7af94c821fa01efddca9cd57e5202c7f2842"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f2_thrall.png",
+      "sha256": "fab7113ede309254bd058f96f82c65b82996805ad613dd3d6a4d9fc0ff98a33b"
+    },
+    {
+      "path": "assets/chars/yao_snake_f2_thrall.webp",
+      "sha256": "38836c80a4b7106067c6aa27512df8cf23bc6dfa013e2147d0404f572db3f5e4"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_f2_wasted.png",
+      "sha256": "a18897eeef95aed6227ef43440e7bd876767fd06599cc3919fb85ccfc912d9bc"
+    },
+    {
+      "path": "assets/chars/yao_snake_f2_wasted.webp",
+      "sha256": "68553d56d8e0118e3931b0db89cde57846c513ecb638a3fa3cd505530464a0f3"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_pleased.png",
+      "sha256": "7a47e3c6cb376b211c299216b5906b42d8f504faa64b60909fc50e3e052661c8"
+    },
+    {
+      "path": "assets/chars/yao_snake_pleased.webp",
+      "sha256": "7368936256efe9157ef32631a8cd54ca35edfba6a7a4c8db04626d808aac8bcc"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_sly.png",
+      "sha256": "0e7a230388805248cd60ed007f3c5fe3ecfde8f52ce301f97e82be7cfc3a9314"
+    },
+    {
+      "path": "assets/chars/yao_snake_sly.webp",
+      "sha256": "476e84d619495b14f75d89207a75db7e436b3b68617747cd5313747fa9c7fb26"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_thrall.png",
+      "sha256": "9642aa3f2d60b7716bdce4a289e0c72efd42a36a21f6e93774fc6dfa3b5d26e8"
+    },
+    {
+      "path": "assets/chars/yao_snake_thrall.webp",
+      "sha256": "b26752f1dd1d4a8232bde80ec88dfdc2fa54b3694609941876e26204472a4c3f"
+    },
+    {
+      "path": "art/raw/chars/yao_snake_wasted.png",
+      "sha256": "4167f9b3408b61c6741295a7e78ee03204b7bb46e1927a390a25b0a3514db797"
+    },
+    {
+      "path": "assets/chars/yao_snake_wasted.webp",
+      "sha256": "1521bf312cacf753716c0e33e44944376c9f4fc4342399d202f95382a695c4f5"
+    }
+  ],
+  "filled_missing_originals": [
+    "art/raw/chars/xian_spy_f1_angry.png",
+    "art/raw/chars/xian_spy_f2_sly.png"
+  ],
+  "unrelated_character_assets_unchanged": true
+}

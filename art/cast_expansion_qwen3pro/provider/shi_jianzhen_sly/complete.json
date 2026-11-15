@@ -1,0 +1,9 @@
+{
+  "character": "shi_jianzhen",
+  "state": "sly",
+  "asset_id": "shi_jianzhen_sly",
+  "image_file": "provider/shi_jianzhen_sly/shi_jianzhen_sly.png",
+  "sha256": "f576a1dfefbadf19d6fa283d7dbc155738cdb767f5bd25d73b3382c43226ee3f",
+  "seed": 151534,
+  "model": "qwen-image-3.0-pro"
+}

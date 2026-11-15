@@ -1,0 +1,9 @@
+{
+  "character": "yan_fengjiu",
+  "state": "angry",
+  "asset_id": "yan_fengjiu_angry",
+  "image_file": "provider/yan_fengjiu_angry/yan_fengjiu_angry.png",
+  "sha256": "2e957d2ab4525bba73660d01f2ceb2edb1cd87d2dc12fc60e19b055e78a06aa9",
+  "seed": 151232,
+  "model": "qwen-image-3.0-pro"
+}

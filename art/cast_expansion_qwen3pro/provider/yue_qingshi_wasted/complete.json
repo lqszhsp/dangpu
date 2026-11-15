@@ -1,0 +1,9 @@
+{
+  "character": "yue_qingshi",
+  "state": "wasted",
+  "asset_id": "yue_qingshi_wasted",
+  "image_file": "provider/yue_qingshi_wasted/yue_qingshi_wasted.png",
+  "sha256": "591d5622dbf8baa20658b998a29e8d42551703ba47caa151a0a2261d399fdf72",
+  "seed": 151435,
+  "model": "qwen-image-3.0-pro"
+}

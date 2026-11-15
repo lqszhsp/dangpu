@@ -1,0 +1,9 @@
+{
+  "character": "lu_zhiyao",
+  "state": "pleased",
+  "asset_id": "lu_zhiyao_pleased",
+  "image_file": "provider/lu_zhiyao_pleased/lu_zhiyao_pleased.png",
+  "sha256": "d278d9fc7c9e2fccea625e8a47e41d6f4a690d92f60b842d0381baba0ff0e1d7",
+  "seed": 151181,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "zhao_fengchen",
+  "state": "wasted",
+  "asset_id": "zhao_fengchen_wasted",
+  "image_file": "provider/zhao_fengchen_wasted/zhao_fengchen_wasted.png",
+  "sha256": "779af5eea4d5a34bcd3c17c2f2a51c6b65fabe6594e920472ef09d98d27765b1",
+  "seed": 151025,
+  "model": "qwen-image-3.0-pro"
+}

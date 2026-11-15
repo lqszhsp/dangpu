@@ -1,0 +1,9 @@
+{
+  "character": "xiong_yanzhi",
+  "state": "wasted",
+  "asset_id": "xiong_yanzhi_wasted",
+  "image_file": "provider/xiong_yanzhi_wasted/xiong_yanzhi_wasted.png",
+  "sha256": "4c6db96019e5cc28d7c123a46eae10e9c309f03cdd52476acf47c06c4f864dd4",
+  "seed": 151115,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "he_baizhi",
+  "state": "thrall",
+  "asset_id": "he_baizhi_thrall",
+  "image_file": "provider/he_baizhi_thrall/he_baizhi_thrall.png",
+  "sha256": "a0bc92fdd9eb75a67315b5000f2c3062eea18d8f575e3f341bf6adb842dd62ea",
+  "seed": 151206,
+  "model": "qwen-image-3.0-pro"
+}

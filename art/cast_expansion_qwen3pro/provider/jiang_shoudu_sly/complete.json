@@ -1,0 +1,9 @@
+{
+  "character": "jiang_shoudu",
+  "state": "sly",
+  "asset_id": "jiang_shoudu_sly",
+  "image_file": "provider/jiang_shoudu_sly/jiang_shoudu_sly.png",
+  "sha256": "3ed1d8b024fd6da325676f00bea698a4cc77e4383e4d435ecc39e6a5f07a9b59",
+  "seed": 151074,
+  "model": "qwen-image-3.0-pro"
+}

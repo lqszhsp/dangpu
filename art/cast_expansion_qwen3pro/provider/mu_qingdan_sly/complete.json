@@ -1,0 +1,9 @@
+{
+  "character": "mu_qingdan",
+  "state": "sly",
+  "asset_id": "mu_qingdan_sly",
+  "image_file": "provider/mu_qingdan_sly/mu_qingdan_sly.png",
+  "sha256": "264bebe7c6d60b2333340851f7250133dd1257d71c507c634eaf39fcdf9ac8e5",
+  "seed": 151284,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "hui_qiaosuo",
+  "state": "sly",
+  "asset_id": "hui_qiaosuo_sly",
+  "image_file": "provider/hui_qiaosuo_sly/hui_qiaosuo_sly.png",
+  "sha256": "20b3535bf7cfc1263eca69ccd5262f8f5b5bae3bfc315e0647b839417feb50cc",
+  "seed": 151124,
+  "model": "qwen-image-3.0-pro"
+}

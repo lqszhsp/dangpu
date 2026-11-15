@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<defs>
+<linearGradient id="xian_defector-robe" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#8fb4c8"/><stop offset="0.35" stop-color="#f4fbff"/><stop offset="0.65" stop-color="#e3f3fb"/><stop offset="1" stop-color="#8fb4c8"/>
+</linearGradient>
+<linearGradient id="xian_defector-cloak" x1="0" y1="0" x2="1" y2="0.2">
+<stop offset="0" stop-color="#14101a"/><stop offset="0.3" stop-color="#2a1838"/><stop offset="0.55" stop-color="#3a2c48"/><stop offset="1" stop-color="#14101a"/>
+</linearGradient>
+<linearGradient id="xian_defector-shade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#14101a" stop-opacity="0"/><stop offset="0.5" stop-color="#14101a" stop-opacity="0.1"/><stop offset="1" stop-color="#14101a" stop-opacity="0.55"/>
+</linearGradient>
+<radialGradient id="xian_defector-skin" cx="0.45" cy="0.4" r="0.7">
+<stop offset="0" stop-color="#fbf1e2"/><stop offset="0.6" stop-color="#efd6bb"/><stop offset="1" stop-color="#b9917a"/>
+</radialGradient>
+<linearGradient id="xian_defector-hair" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2f3a50"/><stop offset="0.5" stop-color="#1f1626"/><stop offset="1" stop-color="#14101a"/>
+</linearGradient>
+<radialGradient id="xian_defector-iris" cx="0.45" cy="0.3" r="0.75">
+<stop offset="0" stop-color="#8fd3ff"/><stop offset="0.45" stop-color="#2c5a78"/><stop offset="1" stop-color="#14101a"/>
+</radialGradient>
+<linearGradient id="xian_defector-hilt" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#1f5c4c"/><stop offset="0.5" stop-color="#7fd6b5"/><stop offset="1" stop-color="#1f5c4c"/>
+</linearGradient>
+<clipPath id="xian_defector-eyeL"><path d="M163,154 Q172,147 182,146.5 Q189,147 192,152 Q185,156.5 177,156.5 Q169,157 163,154 Z"/></clipPath>
+<clipPath id="xian_defector-eyeR"><path d="M237,154 Q228,147 218,146.5 Q211,147 208,152 Q215,156.5 223,156.5 Q231,157 237,154 Z"/></clipPath>
+<filter id="xian_defector-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+<filter id="xian_defector-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+
+<!-- 灵光 -->
+<ellipse cx="200" cy="230" rx="160" ry="190" fill="#8fd3ff" opacity="0.18" filter="url(#xian_defector-glow)"/>
+<path d="M70,330 C60,280 80,240 110,226 M330,320 C346,270 322,230 292,216 M90,250 C96,210 120,190 140,186" fill="none" stroke="#cfefff" stroke-width="4" opacity="0.5" stroke-linecap="round" filter="url(#xian_defector-soft)"/>
+
+<!-- 剑柄（背负） -->
+<g stroke="#14101a" stroke-width="2" stroke-linejoin="round">
+<path d="M268,232 L292,152 L302,155 L280,236 Z" fill="url(#xian_defector-hilt)"/>
+<path d="M290,160 L300,163 M287,170 L297,173 M284,180 L294,183 M281,190 L291,193 M278,200 L288,203" stroke="#1f5c4c" stroke-width="1.2"/>
+<path d="M255,224 L296,236 L299,227 L258,214 Z" fill="#d9a441"/>
+<ellipse cx="298" cy="148" rx="8" ry="6" fill="#cfefff" transform="rotate(-16 298 148)"/>
+</g>
+<path d="M298,154 C306,170 304,190 312,206" fill="none" stroke="#4a8fb8" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M310,200 L306,214 L316,212 Z" fill="#4a8fb8" stroke="#14101a" stroke-width="1"/>
+
+<!-- 兜帽后部 -->
+<path d="M140,190 C126,140 136,80 172,60 C192,50 214,50 234,60 C268,80 276,140 262,190 C258,200 250,212 240,220 L160,220 C150,212 144,200 140,190 Z" fill="url(#xian_defector-cloak)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M150,120 C150,90 168,68 196,62 M252,124 C254,96 240,74 214,64" fill="none" stroke="#5b3474" stroke-width="2" opacity="0.7"/>
+
+<!-- 身体 白袍 -->
+<path d="M176,236 C148,246 114,252 94,272 C72,296 62,350 58,480 L342,480 C338,350 328,296 306,272 C286,252 252,246 224,236 Z" fill="url(#xian_defector-robe)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M176,236 L224,236 L203,292 Z" fill="#cfefff" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M172,236 L184,236 L208,290 L200,298 Z" fill="#4a8fb8" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M216,236 L230,236 C214,278 190,320 168,354 L156,346 C180,312 202,274 216,236 Z" fill="#4a8fb8" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M222,240 C206,278 184,318 162,350" fill="none" stroke="#cfefff" stroke-width="1.2" opacity="0.8"/>
+<path d="M214,300 C220,320 222,340 220,360 M190,330 C186,350 186,366 188,380" fill="none" stroke="#4a8fb8" stroke-width="1.3" opacity="0.6"/>
+<!-- 腰带 -->
+<path d="M140,352 Q200,362 260,352 L260,370 Q200,380 140,370 Z" fill="#4a8fb8" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M142,358 Q200,368 258,358" fill="none" stroke="#cfefff" stroke-width="1" opacity="0.7"/>
+<circle cx="214" cy="366" r="6" fill="#cfefff" stroke="#14101a" stroke-width="1.5"/>
+
+<!-- 斗篷 -->
+<path d="M160,222 C130,236 98,246 80,270 C58,300 48,360 44,480 L150,480 C146,420 150,360 160,320 C168,290 172,262 178,240 Z" fill="url(#xian_defector-cloak)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M240,222 C270,236 302,246 320,270 C342,300 352,360 356,480 L250,480 C254,420 250,360 240,320 C232,290 228,262 222,240 Z" fill="url(#xian_defector-cloak)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M44,480 L150,480 C146,420 150,360 160,320 C168,290 172,262 178,240 L160,222 C130,236 98,246 80,270 C58,300 48,360 44,480 Z M240,222 C270,236 302,246 320,270 C342,300 352,360 356,480 L250,480 C254,420 250,360 240,320 C232,290 228,262 222,240 Z" fill="url(#xian_defector-shade)"/>
+<!-- 斗篷褶与高光 -->
+<path d="M96,290 C86,340 84,400 88,480 M126,300 C120,350 118,410 120,480 M300,290 C312,340 316,400 312,480 M276,300 C282,350 284,410 282,480" fill="none" stroke="#14101a" stroke-width="2" opacity="0.6"/>
+<path d="M90,274 C108,256 136,244 160,236 C140,252 116,266 104,290 Z M310,274 C292,256 264,244 240,236 C260,252 284,266 296,290 Z" fill="#5b3474" opacity="0.55"/>
+<path d="M162,320 C156,360 152,410 154,480 M238,320 C244,360 248,410 246,480" fill="none" stroke="#8fd3ff" stroke-width="1.4" opacity="0.45"/>
+<!-- 兜帽前缘堆褶 -->
+<path d="M148,206 C150,226 166,236 182,238 C176,226 166,214 160,200 Z M252,206 C250,226 234,236 218,238 C224,226 234,214 240,200 Z" fill="#2a1838" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<!-- 系扣 -->
+<path d="M178,240 Q200,250 222,240" fill="none" stroke="#9aa88a" stroke-width="2"/>
+<circle cx="200" cy="248" r="5.5" fill="#7fd6b5" stroke="#14101a" stroke-width="1.5"/>
+<circle cx="198.5" cy="246.5" r="1.6" fill="#f4fbff"/>
+
+<!-- 颈 -->
+<path d="M184,200 L183,238 Q200,248 217,238 L216,200 Z" fill="#e3c4a6" stroke="#14101a" stroke-width="1.5"/>
+<path d="M184,208 Q200,228 216,208 L216,222 Q200,236 184,222 Z" fill="#9a7a6a" opacity="0.35"/>
+
+<!-- 长发后侧垂落 -->
+<path d="M156,140 C148,180 150,220 160,250 C164,236 164,214 164,196 Z" fill="url(#xian_defector-hair)" stroke="#14101a" stroke-width="1.5"/>
+<path d="M244,140 C252,180 250,220 240,250 C236,236 236,214 236,196 Z" fill="url(#xian_defector-hair)" stroke="#14101a" stroke-width="1.5"/>
+
+<!-- 耳 -->
+<path d="M159,146 C147,142 146,165 152,174 C155,178 159,176 160,171 Z" fill="url(#xian_defector-skin)" stroke="#14101a" stroke-width="1.6"/>
+<path d="M241,146 C253,142 254,165 248,174 C245,178 241,176 240,171 Z" fill="url(#xian_defector-skin)" stroke="#14101a" stroke-width="1.6"/>
+
+<!-- 脸 -->
+<path d="M158,126 C158,98 177,84 200,84 C223,84 242,98 242,126 L242,154 C242,182 228,206 200,218 C172,206 158,182 158,154 Z" fill="url(#xian_defector-skin)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M230,124 C242,148 240,180 222,204 C232,182 234,150 230,124 Z" fill="#b9917a" opacity="0.35"/>
+<ellipse cx="172" cy="176" rx="9" ry="4.5" fill="#e0524a" opacity="0.1"/>
+<ellipse cx="228" cy="176" rx="9" ry="4.5" fill="#e0524a" opacity="0.1"/>
+
+<!-- 头发 -->
+<path d="M152,146 C144,112 160,80 196,74 C232,72 256,100 248,146 C244,128 238,118 230,112 C226,124 218,130 208,134 C212,126 212,118 208,110 C200,124 186,132 172,136 C178,128 180,120 178,112 C164,120 156,132 152,146 Z" fill="url(#xian_defector-hair)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M170,96 C182,84 196,80 210,80" fill="none" stroke="#6c8aa8" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+<path d="M200,82 C192,96 184,110 176,126 M214,84 C214,98 210,110 206,120 M230,92 C236,104 238,116 238,126" fill="none" stroke="#3a4a66" stroke-width="1.3"/>
+<!-- 额前一缕 -->
+<path d="M202,100 C194,110 188,122 189,138 C194,128 200,118 208,110 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M152,140 C150,160 152,178 158,192 C160,174 160,156 162,140 Z M248,140 C250,160 248,178 242,192 C240,174 240,156 238,140 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.2"/>
+<!-- 发冠 -->
+<path d="M190,78 L194,68 L206,68 L210,78 Z" fill="#cfefff" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M184,74 L216,72" stroke="#4a8fb8" stroke-width="2.5" stroke-linecap="round"/>
+
+<!-- 兜帽前缘（半掀，压在头顶） -->
+<path d="M144,150 C138,110 150,76 180,62 C196,56 214,56 228,62 C256,76 266,112 258,150 C256,124 246,94 226,80 C212,72 190,72 176,80 C156,92 146,120 144,150 Z" fill="url(#xian_defector-cloak)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M150,132 C152,104 166,84 190,76 M250,132 C248,106 236,86 214,77" fill="none" stroke="#5b3474" stroke-width="2.2" opacity="0.8" stroke-linecap="round"/>
+<path d="M176,80 C190,72 212,72 226,80" fill="none" stroke="#14101a" stroke-width="3" opacity="0.7"/>
+
+<!-- 眉 警惕 -->
+<path d="M160,137 Q176,133 194,141 L193,144.5 Q176,138.5 161,141 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M240,137 Q224,133 206,141 L207,144.5 Q224,138.5 239,141 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+
+<!-- 眼 -->
+<path d="M163,154 Q172,147 182,146.5 Q189,147 192,152 Q185,156.5 177,156.5 Q169,157 163,154 Z" fill="#f4fbff"/>
+<g clip-path="url(#xian_defector-eyeL)">
+<ellipse cx="183" cy="151.5" rx="5.8" ry="6.5" fill="url(#xian_defector-iris)"/>
+<circle cx="183" cy="152" r="2.6" fill="#14101a"/>
+<path d="M160,145 L196,145 L196,149 Q180,146 160,150 Z" fill="#2a1838" opacity="0.4"/>
+</g>
+<circle cx="185" cy="149.5" r="1.7" fill="#ffffff"/>
+<path d="M159,155.5 Q167,146 182,145 Q191,145.5 194,151" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M161,153 L155,151.5" stroke="#14101a" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M167,157.5 Q178,159.5 189,155.5" fill="none" stroke="#7a5a6a" stroke-width="1"/>
+<path d="M237,154 Q228,147 218,146.5 Q211,147 208,152 Q215,156.5 223,156.5 Q231,157 237,154 Z" fill="#f4fbff"/>
+<g clip-path="url(#xian_defector-eyeR)">
+<ellipse cx="226" cy="151.5" rx="5.8" ry="6.5" fill="url(#xian_defector-iris)"/>
+<circle cx="226" cy="152" r="2.6" fill="#14101a"/>
+<path d="M240,145 L204,145 L204,149 Q220,146 240,150 Z" fill="#2a1838" opacity="0.4"/>
+</g>
+<circle cx="228" cy="149.5" r="1.7" fill="#ffffff"/>
+<path d="M241,155.5 Q233,146 218,145 Q209,145.5 206,151" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M239,153 L245,151.5" stroke="#14101a" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M233,157.5 Q222,159.5 211,155.5" fill="none" stroke="#7a5a6a" stroke-width="1"/>
+
+<!-- 鼻 -->
+<path d="M198,160 C198,168 199,174 200,180 C202,183 205,183 207,181" fill="none" stroke="#b9917a" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M195,164 C194,172 195,177 196,179" fill="none" stroke="#ffffff" stroke-width="1.4" opacity="0.5" stroke-linecap="round"/>
+<!-- 嘴 抿紧 -->
+<path d="M190,197 Q200,195.5 210,197" fill="none" stroke="#5e0f1c" stroke-width="2" stroke-linecap="round"/>
+<path d="M194,201 Q200,203 206,201" fill="none" stroke="#b9917a" stroke-width="1.2" opacity="0.7"/>
+
+<!-- 灵光粒 -->
+<g fill="#f4fbff">
+<circle cx="96" cy="230" r="2.5" opacity="0.8"/><circle cx="312" cy="250" r="2" opacity="0.8"/><circle cx="118" cy="190" r="1.6" opacity="0.7"/><circle cx="296" cy="300" r="1.8" opacity="0.6"/><circle cx="74" cy="300" r="1.5" opacity="0.6"/><circle cx="330" cy="196" r="1.5" opacity="0.7"/>
+</g>
+</svg>

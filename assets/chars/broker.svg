@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<defs>
+<linearGradient id="broker-cloak" x1="0" y1="0" x2="1" y2="0.2">
+<stop offset="0" stop-color="#0c0a10"/><stop offset="0.3" stop-color="#1f1626"/><stop offset="0.55" stop-color="#2c2434"/><stop offset="1" stop-color="#0c0a10"/>
+</linearGradient>
+<linearGradient id="broker-shade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#14101a" stop-opacity="0"/><stop offset="1" stop-color="#14101a" stop-opacity="0.6"/>
+</linearGradient>
+<linearGradient id="broker-wood" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#4a2a10"/><stop offset="0.45" stop-color="#8a5a1c"/><stop offset="1" stop-color="#4a2a10"/>
+</linearGradient>
+<radialGradient id="broker-skin" cx="0.45" cy="0.45" r="0.7">
+<stop offset="0" stop-color="#e9d6bc"/><stop offset="0.6" stop-color="#cfae8a"/><stop offset="1" stop-color="#8a6a50"/>
+</radialGradient>
+<linearGradient id="broker-mask" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#f4fbff"/><stop offset="0.5" stop-color="#e9dfcc"/><stop offset="1" stop-color="#b8a888"/>
+</linearGradient>
+<radialGradient id="broker-lamp" cx="0.5" cy="0.5" r="0.55">
+<stop offset="0" stop-color="#e8fff4"/><stop offset="0.35" stop-color="#7fd6b5"/><stop offset="0.8" stop-color="#3fae8f"/><stop offset="1" stop-color="#1f5c4c"/>
+</radialGradient>
+<radialGradient id="broker-iris" cx="0.45" cy="0.3" r="0.75">
+<stop offset="0" stop-color="#f2d27a"/><stop offset="0.5" stop-color="#8a5a1c"/><stop offset="1" stop-color="#14101a"/>
+</radialGradient>
+<clipPath id="broker-eyeL"><path d="M164,154 Q172,148 181,147.5 Q189,148 192,153 Q185,157 177,157 Q169,157.5 164,154 Z"/></clipPath>
+<filter id="broker-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="10"/></filter>
+</defs>
+
+<!-- 木架 -->
+<g stroke="#14101a" stroke-width="2.2" stroke-linejoin="round">
+<rect x="82" y="34" width="14" height="446" rx="3" fill="url(#broker-wood)"/>
+<rect x="304" y="34" width="14" height="446" rx="3" fill="url(#broker-wood)"/>
+<rect x="74" y="70" width="252" height="11" rx="3" fill="url(#broker-wood)"/>
+<rect x="74" y="168" width="252" height="10" rx="3" fill="url(#broker-wood)"/>
+<circle cx="89" cy="32" r="8" fill="#8a5a1c"/>
+<circle cx="311" cy="32" r="8" fill="#8a5a1c"/>
+</g>
+<path d="M86,40 L86,470 M308,40 L308,470" stroke="#d9a441" stroke-width="1" opacity="0.4"/>
+<!-- 架上杂货 -->
+<g stroke="#14101a" stroke-width="2" stroke-linejoin="round">
+<!-- 布包 -->
+<path d="M100,70 C96,48 112,34 132,36 C152,34 166,48 160,70 Z" fill="#6b7d5a"/>
+<path d="M124,38 L130,26 L138,38" fill="#6b7d5a"/>
+<!-- 卷轴 -->
+<rect x="160" y="50" width="62" height="16" rx="8" fill="#efe2c4"/>
+<rect x="154" y="48" width="10" height="20" rx="3" fill="#8e1b2b"/>
+<rect x="218" y="48" width="10" height="20" rx="3" fill="#8e1b2b"/>
+<!-- 坛子 -->
+<path d="M240,70 C230,60 232,42 246,36 L246,28 L270,28 L270,36 C284,42 286,60 276,70 Z" fill="#5c6370"/>
+<path d="M242,28 L274,28 L272,22 L244,22 Z" fill="#8e1b2b"/>
+<!-- 古剑 -->
+<path d="M290,70 L296,8 L302,10 L298,70 Z" fill="#9aa88a"/>
+<path d="M286,46 L306,48" stroke-width="4"/>
+<!-- 挂件：铃、葫芦、鸟笼、钱串 -->
+<path d="M116,81 L116,94" fill="none" stroke-width="1.5"/>
+<ellipse cx="116" cy="102" rx="7" ry="8" fill="#d9a441"/>
+<ellipse cx="116" cy="121" rx="12" ry="13" fill="#d9a441"/>
+<path d="M110,110 L122,110" stroke="#8e1b2b" stroke-width="3"/>
+<path d="M283,81 L283,90" fill="none" stroke-width="1.5"/>
+<path d="M270,128 L270,104 C270,88 296,88 296,104 L296,128 Z" fill="#1f1626" opacity="0.9"/>
+<path d="M276,128 L276,96 M283,128 L283,92 M290,128 L290,96" fill="none" stroke="#d9a441" stroke-width="1.2"/>
+<rect x="266" y="126" width="34" height="6" rx="2" fill="#8a5a1c"/>
+<circle cx="283" cy="114" r="4" fill="#c43a3a" stroke-width="1"/>
+<path d="M290,178 L290,240" fill="none" stroke="#c43a3a" stroke-width="2"/>
+<circle cx="290" cy="196" r="5" fill="#d9a441" stroke-width="1.2"/>
+<circle cx="290" cy="210" r="5" fill="#d9a441" stroke-width="1.2"/>
+<circle cx="290" cy="224" r="5" fill="#d9a441" stroke-width="1.2"/>
+<!-- 下层：符箓、骨头 -->
+<path d="M100,178 L100,232 L116,232 L116,178 Z" fill="#efe2c4" stroke-width="1.5"/>
+</g>
+<path d="M104,186 L112,186 M108,184 L108,226 M104,198 Q108,194 112,198 M104,210 L112,214" stroke="#c43a3a" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+<path d="M133,42 C140,44 146,50 148,58" fill="none" stroke="#9aa88a" stroke-width="2" opacity="0.7" stroke-linecap="round"/>
+<path d="M252,40 C246,46 244,54 246,62" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+<path d="M108,116 Q110,110 115,108" fill="none" stroke="#f4fbff" stroke-width="1.8" opacity="0.6" stroke-linecap="round"/>
+
+<!-- 兜帽后部 -->
+<path d="M136,200 C120,150 128,84 168,62 C188,52 212,52 232,62 C272,84 280,150 264,200 C258,214 248,224 236,230 L164,230 C152,224 142,214 136,200 Z" fill="url(#broker-cloak)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+
+<!-- 斗篷身体 -->
+<path d="M164,226 C126,238 90,248 70,274 C48,304 40,360 36,480 L364,480 C360,360 352,304 330,274 C310,248 274,238 236,226 Z" fill="url(#broker-cloak)" stroke="#14101a" stroke-width="2.6" stroke-linejoin="round"/>
+<path d="M164,226 C126,238 90,248 70,274 C48,304 40,360 36,480 L364,480 C360,360 352,304 330,274 C310,248 274,238 236,226 Z" fill="url(#broker-shade)"/>
+<path d="M80,272 C104,254 134,244 160,236 C138,254 110,268 94,292 Z M320,272 C296,254 266,244 240,236 C262,254 290,268 306,292 Z" fill="#3d2350" opacity="0.6"/>
+<path d="M200,250 C198,320 196,400 198,480" fill="none" stroke="#000000" stroke-width="2.2" opacity="0.7"/>
+<path d="M150,270 C140,330 136,400 138,480 M252,270 C262,330 266,400 264,480 M110,300 C100,350 96,410 98,480 M290,300 C300,350 304,410 302,480" fill="none" stroke="#000000" stroke-width="1.6" opacity="0.5"/>
+<path d="M204,260 C204,320 206,400 206,480" fill="none" stroke="#5b3474" stroke-width="1.2" opacity="0.6"/>
+<!-- 背带 -->
+<path d="M124,248 C140,280 160,300 182,316 M276,248 C260,280 240,300 218,316" fill="none" stroke="#14101a" stroke-width="9" stroke-linecap="round"/>
+<path d="M124,248 C140,280 160,300 182,316 M276,248 C260,280 240,300 218,316" fill="none" stroke="#8a7458" stroke-width="6" stroke-linecap="round"/>
+<path d="M126,254 L134,252 M134,268 L142,264 M144,282 L152,277 M156,294 L164,289 M168,304 L176,299 M274,254 L266,252 M266,268 L258,264 M256,282 L248,277 M244,294 L236,289 M232,304 L224,299" stroke="#4a3a2a" stroke-width="1.2"/>
+<circle cx="200" cy="322" r="9" fill="#5c6370" stroke="#14101a" stroke-width="2"/>
+<circle cx="200" cy="322" r="4" fill="#14101a"/>
+
+<!-- 兜帽内阴影与脸 -->
+<path d="M150,190 C142,140 156,96 200,92 C244,96 258,140 250,190 C246,210 230,226 200,232 C170,226 154,210 150,190 Z" fill="#0c0a10"/>
+<path d="M160,130 C160,104 178,94 200,94 C222,94 240,104 240,130 L240,158 C240,186 226,208 200,218 C174,208 160,186 160,158 Z" fill="url(#broker-skin)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M160,120 C170,104 186,98 200,98 C214,98 230,104 240,120 L240,104 C228,94 172,94 160,104 Z" fill="#14101a" opacity="0.6"/>
+<!-- 一缕乱发 -->
+<path d="M176,98 C170,110 166,124 166,140 C172,126 178,114 188,104 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.2"/>
+
+<!-- 露出的眼（左） -->
+<path d="M163,140 Q176,134 192,140" fill="none" stroke="#1f1626" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M164,154 Q172,148 181,147.5 Q189,148 192,153 Q185,157 177,157 Q169,157.5 164,154 Z" fill="#efe2c4"/>
+<g clip-path="url(#broker-eyeL)">
+<ellipse cx="182" cy="153" rx="5.5" ry="6.5" fill="url(#broker-iris)"/>
+<circle cx="182" cy="153.5" r="2.4" fill="#14101a"/>
+<path d="M160,146 L196,146 L196,152 Q180,148.5 160,153 Z" fill="#14101a" opacity="0.5"/>
+</g>
+<circle cx="184" cy="151" r="1.5" fill="#ffffff"/>
+<path d="M160,155 Q167,147 181,146.5 Q190,147 194,152" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M167,158.5 Q178,160.5 189,156.5" fill="none" stroke="#5a4038" stroke-width="1"/>
+<path d="M168,163 Q178,166 187,162" fill="none" stroke="#8a6a50" stroke-width="1" opacity="0.6"/>
+
+<!-- 鼻与嘴（坏笑） -->
+<path d="M196,170 C195,178 194,182 196,186 C198,188 202,188 204,186" fill="none" stroke="#8a6a50" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M182,200 Q196,206 212,200 Q220,196 224,190" fill="none" stroke="#5e0f1c" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M190,205 Q200,208 208,205" fill="none" stroke="#8a6a50" stroke-width="1.1" opacity="0.7"/>
+<path d="M180,198 L183,202" stroke="#5e0f1c" stroke-width="1.5" stroke-linecap="round"/>
+
+<!-- 半张鬼面具（右半） -->
+<path d="M198,96 C220,94 242,104 246,126 L262,96 L254,134 C254,150 250,164 246,176 C238,190 226,192 214,186 L206,190 L202,178 L196,170 L200,160 L196,148 L200,136 L194,124 L198,112 Z" fill="url(#broker-mask)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M226,104 C234,108 240,116 244,124 M248,116 L258,100" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
+<!-- 红纹 -->
+<path d="M206,108 C216,112 228,112 238,104 C232,116 220,120 206,118 Z" fill="#c43a3a"/>
+<path d="M240,130 C248,138 250,150 244,162 C242,150 238,142 232,136 Z" fill="#c43a3a"/>
+<path d="M204,166 C212,170 222,176 232,174 C226,182 214,182 204,176 Z" fill="#8e1b2b"/>
+<path d="M210,128 Q216,124 222,128 M206,140 Q200,146 206,152" fill="none" stroke="#c43a3a" stroke-width="1.6" stroke-linecap="round"/>
+<!-- 面具眼洞 -->
+<path d="M208,150 Q216,140 232,144 Q238,150 234,156 Q220,160 208,150 Z" fill="#14101a" stroke="#14101a" stroke-width="1.5"/>
+<circle cx="222" cy="150" r="5" fill="#7fd6b5" opacity="0.6" filter="url(#broker-glow)"/>
+<circle cx="222" cy="150" r="2.6" fill="#7fd6b5"/>
+<circle cx="221.5" cy="149.5" r="1" fill="#f4fbff"/>
+<path d="M206,144 Q218,132 236,140" fill="none" stroke="#8e1b2b" stroke-width="2.4" stroke-linecap="round"/>
+<!-- 系绳 -->
+<path d="M250,150 C254,152 256,156 254,162" fill="none" stroke="#c43a3a" stroke-width="2"/>
+
+<!-- 兜帽前缘 -->
+<path d="M140,206 C128,150 140,90 178,70 C192,64 208,64 222,70 C260,90 272,150 260,206 C262,160 250,110 220,92 C208,86 192,86 180,92 C150,110 138,160 140,206 Z" fill="url(#broker-cloak)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M146,170 C144,130 156,100 186,84 M254,170 C256,130 244,100 214,84" fill="none" stroke="#3d2350" stroke-width="2.4" stroke-linecap="round" opacity="0.9"/>
+
+<!-- 提灯手臂 -->
+<path d="M92,292 C100,276 116,266 132,262 C138,270 136,280 128,288 C118,294 104,298 92,292 Z" fill="url(#broker-cloak)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M118,266 C112,258 102,258 98,266 C96,274 102,282 110,282 C118,280 122,272 118,266 Z" fill="url(#broker-skin)" stroke="#14101a" stroke-width="1.7"/>
+<path d="M102,268 Q108,266 114,270" fill="none" stroke="#5a4038" stroke-width="1"/>
+<!-- 灯杆与灯笼 -->
+<path d="M108,262 L62,248" stroke="#14101a" stroke-width="6" stroke-linecap="round"/>
+<path d="M108,262 L62,248" stroke="#8a5a1c" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M64,250 L64,270" stroke="#14101a" stroke-width="1.5"/>
+<ellipse cx="64" cy="312" rx="50" ry="56" fill="#3fae8f" opacity="0.45" filter="url(#broker-glow)"/>
+<g stroke="#14101a" stroke-linejoin="round">
+<rect x="50" y="268" width="28" height="8" rx="2" fill="#1f1626" stroke-width="1.8"/>
+<path d="M44,280 C34,296 34,330 44,346 L84,346 C94,330 94,296 84,280 Z" fill="url(#broker-lamp)" stroke-width="2"/>
+<path d="M54,280 C48,298 48,328 54,346 M64,280 L64,346 M74,280 C80,298 80,328 74,346" fill="none" stroke="#1f5c4c" stroke-width="1.3"/>
+<path d="M42,280 L86,280 L82,276 L46,276 Z M42,346 L86,346 L82,352 L46,352 Z" fill="#1f1626" stroke-width="1.6"/>
+</g>
+<path d="M64,352 L64,368" stroke="#3fae8f" stroke-width="2"/>
+<path d="M60,368 L68,368 L66,384 L62,384 Z" fill="#3fae8f" stroke="#14101a" stroke-width="1"/>
+<path d="M56,300 Q60,292 66,290" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.7" stroke-linecap="round"/>
+<!-- 鬼火 -->
+<path d="M110,220 C104,210 110,200 116,196 C114,204 120,208 118,216 C116,222 112,224 110,220 Z" fill="#7fd6b5" opacity="0.8"/>
+<path d="M30,250 C26,242 30,236 34,232 C33,238 37,240 36,246 C35,250 32,252 30,250 Z" fill="#7fd6b5" opacity="0.7"/>
+</svg>

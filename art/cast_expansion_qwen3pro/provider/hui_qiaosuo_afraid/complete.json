@@ -1,0 +1,9 @@
+{
+  "character": "hui_qiaosuo",
+  "state": "afraid",
+  "asset_id": "hui_qiaosuo_afraid",
+  "image_file": "provider/hui_qiaosuo_afraid/hui_qiaosuo_afraid.png",
+  "sha256": "a726c11ce8cc3c78629ca3e4928045657fada0a5d6fc83c43edf40fbf6f5dfe7",
+  "seed": 151123,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<defs>
+<linearGradient id="xian_spy-robe" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#0c0a10"/><stop offset="0.3" stop-color="#1f1626"/><stop offset="0.55" stop-color="#2e2438"/><stop offset="1" stop-color="#0c0a10"/>
+</linearGradient>
+<linearGradient id="xian_spy-shade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#14101a" stop-opacity="0"/><stop offset="1" stop-color="#14101a" stop-opacity="0.6"/>
+</linearGradient>
+<radialGradient id="xian_spy-skin" cx="0.45" cy="0.38" r="0.7">
+<stop offset="0" stop-color="#fdf6ec"/><stop offset="0.6" stop-color="#f1dcc6"/><stop offset="1" stop-color="#c2a08e"/>
+</radialGradient>
+<linearGradient id="xian_spy-hair" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#34344a"/><stop offset="0.45" stop-color="#1f1626"/><stop offset="1" stop-color="#0c0a10"/>
+</linearGradient>
+<linearGradient id="xian_spy-veil" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#f4fbff" stop-opacity="0.85"/><stop offset="0.6" stop-color="#cfefff" stop-opacity="0.62"/><stop offset="1" stop-color="#8fd3ff" stop-opacity="0.4"/>
+</linearGradient>
+<radialGradient id="xian_spy-iris" cx="0.45" cy="0.3" r="0.75">
+<stop offset="0" stop-color="#8fd3ff"/><stop offset="0.45" stop-color="#3a5a78"/><stop offset="1" stop-color="#14101a"/>
+</radialGradient>
+<linearGradient id="xian_spy-jade" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#cfefff"/><stop offset="0.4" stop-color="#7fd6b5"/><stop offset="1" stop-color="#1f5c4c"/>
+</linearGradient>
+<clipPath id="xian_spy-eyeL"><path d="M162,153 Q170,146 180,145.5 Q189,146 192,151 Q185,155 177,155.5 Q168,156 162,153 Z"/></clipPath>
+<clipPath id="xian_spy-eyeR"><path d="M238,153 Q230,146 220,145.5 Q211,146 208,151 Q215,155 223,155.5 Q232,156 238,153 Z"/></clipPath>
+<filter id="xian_spy-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+
+<ellipse cx="200" cy="240" rx="150" ry="180" fill="#5b3474" opacity="0.22" filter="url(#xian_spy-glow)"/>
+<circle cx="250" cy="56" r="18" fill="#8fd3ff" opacity="0.35" filter="url(#xian_spy-glow)"/>
+
+<!-- 后发 -->
+<path d="M150,120 C132,170 128,240 120,330 C150,320 170,290 176,250 L224,250 C230,290 250,320 280,330 C272,240 268,170 250,120 Z" fill="url(#xian_spy-hair)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M140,200 C136,240 132,280 128,320 M262,200 C266,240 268,280 272,320" fill="none" stroke="#4a4a66" stroke-width="1.3" opacity="0.7"/>
+
+<!-- 身体 黑袍 -->
+<path d="M174,236 C146,246 112,252 92,272 C70,296 60,350 56,480 L344,480 C340,350 330,296 308,272 C288,252 254,246 226,236 Z" fill="url(#xian_spy-robe)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M174,236 C146,246 112,252 92,272 C70,296 60,350 56,480 L344,480 C340,350 330,296 308,272 C288,252 254,246 226,236 Z" fill="url(#xian_spy-shade)"/>
+<path d="M104,272 C124,256 150,248 170,242 C150,258 126,268 110,290 Z M296,272 C276,256 250,248 230,242 C250,258 274,268 290,290 Z" fill="#5b3474" opacity="0.45"/>
+<path d="M100,292 C92,340 88,400 90,480 M300,292 C308,340 312,400 310,480" fill="none" stroke="#000000" stroke-width="2" opacity="0.6"/>
+<path d="M110,300 C100,350 98,410 100,480 M290,300 C300,350 302,410 300,480" fill="none" stroke="#3d2350" stroke-width="1.4" opacity="0.8"/>
+<!-- 暗纹云纹 -->
+<path d="M110,330 C116,320 128,322 128,332 C128,340 118,340 118,334 M272,330 C278,320 290,322 290,332 C290,340 280,340 280,334 M120,400 C126,390 138,392 138,402 M262,400 C268,390 280,392 280,402" fill="none" stroke="#5b3474" stroke-width="1.5" opacity="0.7" stroke-linecap="round"/>
+
+<!-- 领：青—白—黑三层 -->
+<path d="M178,236 L222,236 L202,290 Z" fill="#4a8fb8" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M186,236 L214,236 L202,270 Z" fill="#8fd3ff" opacity="0.5"/>
+<path d="M168,236 L182,236 L208,292 L198,302 Z" fill="#f4fbff" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M216,236 L234,236 C218,282 188,328 160,364 L144,354 C172,318 200,278 216,236 Z" fill="#f4fbff" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M226,240 C208,284 180,326 152,358" fill="none" stroke="#8fd3ff" stroke-width="1.2" opacity="0.8"/>
+<path d="M236,238 C220,284 190,330 162,368" fill="none" stroke="#9aa88a" stroke-width="1.2" opacity="0.7"/>
+<path d="M166,240 L194,304" stroke="#9aa88a" stroke-width="1.2" opacity="0.7"/>
+<!-- 腰封 -->
+<path d="M118,350 Q200,362 282,350 L283,376 Q200,390 117,376 Z" fill="#14101a" stroke="#000000" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M120,356 Q200,368 280,356 M120,370 Q200,383 280,370" fill="none" stroke="#5c6370" stroke-width="1.2"/>
+<path d="M226,370 C230,390 228,410 224,428" fill="none" stroke="#4a8fb8" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="226" cy="368" r="5" fill="url(#xian_spy-jade)" stroke="#14101a" stroke-width="1.3"/>
+
+<!-- 颈 -->
+<path d="M185,200 L184,242 Q200,250 216,242 L215,200 Z" fill="#ead2bc" stroke="#14101a" stroke-width="1.5"/>
+<path d="M185,210 Q200,226 215,210 L215,224 Q200,236 185,224 Z" fill="#a8847a" opacity="0.3"/>
+
+<!-- 脸 -->
+<path d="M157,126 C157,98 176,84 200,84 C224,84 243,98 243,126 L243,154 C243,182 228,206 200,219 C172,206 157,182 157,154 Z" fill="url(#xian_spy-skin)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M232,124 C244,148 242,180 226,204 C234,182 236,152 232,124 Z" fill="#c2a08e" opacity="0.35"/>
+
+<!-- 前发 中分 -->
+<path d="M150,156 C140,110 164,74 200,74 C236,74 260,110 250,156 C248,128 238,106 220,96 C212,100 205,106 200,114 C195,106 188,100 180,96 C162,106 152,128 150,156 Z" fill="url(#xian_spy-hair)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M168,92 C180,82 196,78 210,80" fill="none" stroke="#8aa0c0" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+<path d="M178,90 C168,98 159,112 154,132 M222,90 C232,98 241,112 246,132" fill="none" stroke="#4a4a66" stroke-width="1.3"/>
+<!-- 鬓发垂落 -->
+<path d="M153,134 C146,180 148,240 160,300 C166,286 168,254 168,224 C168,190 164,160 162,140 Z" fill="url(#xian_spy-hair)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M247,134 C254,180 252,240 240,300 C234,286 232,254 232,224 C232,190 236,160 238,140 Z" fill="url(#xian_spy-hair)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M156,170 C154,210 156,250 162,284 M244,170 C246,210 244,250 238,284" fill="none" stroke="#4a4a66" stroke-width="1.2"/>
+
+<!-- 发髻 -->
+<path d="M174,84 C166,60 178,40 200,38 C222,40 234,60 226,84 Z" fill="url(#xian_spy-hair)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M180,78 C178,62 188,48 200,46 M220,78 C222,62 212,48 200,46 M190,82 C190,66 196,56 204,52" fill="none" stroke="#4a4a66" stroke-width="1.3"/>
+<path d="M184,56 C190,48 200,45 208,46" fill="none" stroke="#8aa0c0" stroke-width="2.5" opacity="0.5" stroke-linecap="round"/>
+<!-- 玉簪 -->
+<path d="M150,72 L252,52" stroke="#14101a" stroke-width="6.5" stroke-linecap="round"/>
+<path d="M150,72 L252,52" stroke="url(#xian_spy-jade)" stroke-width="4" stroke-linecap="round"/>
+<path d="M162,68 L240,53" stroke="#f4fbff" stroke-width="1" opacity="0.8" stroke-linecap="round"/>
+<g stroke="#14101a" stroke-width="1.4" stroke-linejoin="round">
+<path d="M250,52 C246,42 256,38 258,46 C266,40 272,48 264,53 C272,58 264,66 258,60 C254,68 244,62 250,56 Z" fill="url(#xian_spy-jade)"/>
+<circle cx="257" cy="53" r="2.6" fill="#f4fbff"/>
+</g>
+<path d="M262,60 L264,82 M266,58 L272,78" stroke="#cfefff" stroke-width="1" opacity="0.9"/>
+<circle cx="264" cy="85" r="2.5" fill="#7fd6b5" stroke="#14101a" stroke-width="0.8"/>
+<circle cx="272.5" cy="81" r="2.2" fill="#cfefff" stroke="#14101a" stroke-width="0.8"/>
+
+<!-- 眉 -->
+<path d="M161,139 Q176,133 192,137 L191,139.5 Q176,136 162,141 Z" fill="#2a2438" stroke="#14101a" stroke-width="0.8" stroke-linejoin="round"/>
+<path d="M239,139 Q224,133 208,137 L209,139.5 Q224,136 238,141 Z" fill="#2a2438" stroke="#14101a" stroke-width="0.8" stroke-linejoin="round"/>
+
+<!-- 眼 冷静 半垂 -->
+<path d="M162,153 Q170,146 180,145.5 Q189,146 192,151 Q185,155 177,155.5 Q168,156 162,153 Z" fill="#f4fbff"/>
+<g clip-path="url(#xian_spy-eyeL)">
+<ellipse cx="179" cy="152" rx="6" ry="7" fill="url(#xian_spy-iris)"/>
+<circle cx="179" cy="152.5" r="2.6" fill="#14101a"/>
+<path d="M158,144 L196,144 L196,150 Q180,147.5 158,152 Z" fill="#2a1838" opacity="0.5"/>
+</g>
+<circle cx="181" cy="150.5" r="1.5" fill="#ffffff"/>
+<path d="M158,151 Q166,144.5 180,144 Q190,144.5 193.5,150" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M160,150.5 L153,146" stroke="#14101a" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M165,155.5 Q177,158 189,154" fill="none" stroke="#7a5a6a" stroke-width="1"/>
+<path d="M238,153 Q230,146 220,145.5 Q211,146 208,151 Q215,155 223,155.5 Q232,156 238,153 Z" fill="#f4fbff"/>
+<g clip-path="url(#xian_spy-eyeR)">
+<ellipse cx="221" cy="152" rx="6" ry="7" fill="url(#xian_spy-iris)"/>
+<circle cx="221" cy="152.5" r="2.6" fill="#14101a"/>
+<path d="M242,144 L204,144 L204,150 Q220,147.5 242,152 Z" fill="#2a1838" opacity="0.5"/>
+</g>
+<circle cx="223" cy="150.5" r="1.5" fill="#ffffff"/>
+<path d="M242,151 Q234,144.5 220,144 Q210,144.5 206.5,150" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M240,150.5 L247,146" stroke="#14101a" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M235,155.5 Q223,158 211,154" fill="none" stroke="#7a5a6a" stroke-width="1"/>
+<!-- 眼尾淡红 -->
+<path d="M156,150 Q160,156 168,157" fill="none" stroke="#c43a3a" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+<path d="M244,150 Q240,156 232,157" fill="none" stroke="#c43a3a" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+<!-- 鼻梁 -->
+<path d="M199,158 C199,164 200,168 200,172" fill="none" stroke="#c2a08e" stroke-width="1.3" stroke-linecap="round"/>
+
+<!-- 面纱 -->
+<path d="M160,170 L150,152 M240,170 L250,152" stroke="#cfefff" stroke-width="1.2" opacity="0.9"/>
+<path d="M155,168 Q200,160 245,168 C252,194 251,222 242,240 C234,254 222,262 210,266 Q205,268 200,274 Q195,268 190,266 C178,262 166,254 158,240 C149,222 148,194 155,168 Z" fill="url(#xian_spy-veil)" stroke="#8fd3ff" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M156,168 Q200,160 244,168" fill="none" stroke="#f4fbff" stroke-width="2.5"/>
+<path d="M156,168 Q200,160 244,168" fill="none" stroke="#4a8fb8" stroke-width="1" stroke-dasharray="2 3"/>
+<path d="M170,176 C168,204 174,234 188,262 M186,170 C186,200 190,234 196,266 M230,176 C232,204 226,234 212,262 M214,170 C214,200 210,234 204,266" fill="none" stroke="#f4fbff" stroke-width="1.4" opacity="0.55" stroke-linecap="round"/>
+<!-- 面纱下隐约轮廓 -->
+<path d="M195,183 Q200,186 205,183" fill="none" stroke="#a8847a" stroke-width="1.2" opacity="0.5"/>
+<path d="M193,200 Q200,202 207,200" fill="none" stroke="#8e1b2b" stroke-width="1.5" opacity="0.35"/>
+<path d="M168,176 C178,174 186,176 190,180" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6" stroke-linecap="round"/>
+<circle cx="200" cy="275" r="2.5" fill="#7fd6b5" stroke="#14101a" stroke-width="0.8"/>
+<circle cx="188" cy="267" r="1.8" fill="#cfefff" stroke="#14101a" stroke-width="0.6"/>
+<circle cx="212" cy="267" r="1.8" fill="#cfefff" stroke="#14101a" stroke-width="0.6"/>
+</svg>

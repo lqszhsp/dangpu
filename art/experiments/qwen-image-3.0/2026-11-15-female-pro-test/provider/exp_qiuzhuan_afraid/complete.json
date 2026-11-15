@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_qiuzhuan_afraid",
+  "image_file": "provider/exp_qiuzhuan_afraid/exp_qiuzhuan_afraid.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115013,
+  "sha256": "6e85df565fdf7851f75d76293db3d4a1164b53c602276c0d8ac73a3f1d984b6e"
+}

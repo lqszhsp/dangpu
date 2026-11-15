@@ -1,0 +1,9 @@
+{
+  "character": "bai_chuandeng",
+  "state": "afraid",
+  "asset_id": "bai_chuandeng_afraid",
+  "image_file": "provider/bai_chuandeng_afraid/bai_chuandeng_afraid.png",
+  "sha256": "24c93821aa89dedc92e2a7972f44877ce04dd6cc8b1591a6d967972ae47b0e24",
+  "seed": 151483,
+  "model": "qwen-image-3.0-pro"
+}

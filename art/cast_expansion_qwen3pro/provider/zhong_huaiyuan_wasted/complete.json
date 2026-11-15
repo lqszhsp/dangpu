@@ -1,0 +1,9 @@
+{
+  "character": "zhong_huaiyuan",
+  "state": "wasted",
+  "asset_id": "zhong_huaiyuan_wasted",
+  "image_file": "provider/zhong_huaiyuan_wasted/zhong_huaiyuan_wasted.png",
+  "sha256": "78795c1e44f14471e0e688d9a1d08b6ef175b1b71bed8ed4c1e59ac3d2553dc3",
+  "seed": 151335,
+  "model": "qwen-image-3.0-pro"
+}

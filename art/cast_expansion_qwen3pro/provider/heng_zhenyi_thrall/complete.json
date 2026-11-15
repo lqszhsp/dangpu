@@ -1,0 +1,9 @@
+{
+  "character": "heng_zhenyi",
+  "state": "thrall",
+  "asset_id": "heng_zhenyi_thrall",
+  "image_file": "provider/heng_zhenyi_thrall/heng_zhenyi_thrall.png",
+  "sha256": "6fafdf3ba5e5b4d559fd2e77fbe3c82b38b9e96f8df078c9550fce9b2fec81d1",
+  "seed": 151416,
+  "model": "qwen-image-3.0-pro"
+}

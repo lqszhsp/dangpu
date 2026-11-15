@@ -1,0 +1,9 @@
+{
+  "character": "xu_xingzhen",
+  "state": "pleased",
+  "asset_id": "xu_xingzhen_pleased",
+  "image_file": "provider/xu_xingzhen_pleased/xu_xingzhen_pleased.png",
+  "sha256": "62eff0f33a1dbd09f5530f571d77885a41f458d2b46683090876e90eb36fe893",
+  "seed": 151521,
+  "model": "qwen-image-3.0-pro"
+}

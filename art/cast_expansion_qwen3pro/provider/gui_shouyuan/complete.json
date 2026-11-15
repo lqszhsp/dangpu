@@ -1,0 +1,9 @@
+{
+  "character": "gui_shouyuan",
+  "state": "neutral",
+  "asset_id": "gui_shouyuan",
+  "image_file": "provider/gui_shouyuan/gui_shouyuan.png",
+  "sha256": "481062a741928f76b3315ee62f504b58a7d5b2f90dae779975fd9da860627863",
+  "seed": 151190,
+  "model": "qwen-image-3.0-pro"
+}

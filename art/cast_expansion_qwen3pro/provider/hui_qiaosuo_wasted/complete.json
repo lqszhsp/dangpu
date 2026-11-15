@@ -1,0 +1,9 @@
+{
+  "character": "hui_qiaosuo",
+  "state": "wasted",
+  "asset_id": "hui_qiaosuo_wasted",
+  "image_file": "provider/hui_qiaosuo_wasted/hui_qiaosuo_wasted.png",
+  "sha256": "76c2ea5c55deb644411f2335a0c78b32cfa615c67a5825c56a8be2975ea5b3ce",
+  "seed": 151125,
+  "model": "qwen-image-3.0-pro"
+}

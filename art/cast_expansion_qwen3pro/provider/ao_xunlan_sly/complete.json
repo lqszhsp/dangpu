@@ -1,0 +1,9 @@
+{
+  "character": "ao_xunlan",
+  "state": "sly",
+  "asset_id": "ao_xunlan_sly",
+  "image_file": "provider/ao_xunlan_sly/ao_xunlan_sly.png",
+  "sha256": "4901c3c63ea1fedfcf93669c21b6ccc819c6fd3488d1db9c915422c7c5b410bb",
+  "seed": 151094,
+  "model": "qwen-image-3.0-pro"
+}

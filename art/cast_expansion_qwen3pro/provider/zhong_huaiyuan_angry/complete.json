@@ -1,0 +1,9 @@
+{
+  "character": "zhong_huaiyuan",
+  "state": "angry",
+  "asset_id": "zhong_huaiyuan_angry",
+  "image_file": "provider/zhong_huaiyuan_angry/zhong_huaiyuan_angry.png",
+  "sha256": "8f00dec13d9d3b84552b6872de14e44f411c058751c3db63f716e6940dd48c84",
+  "seed": 151332,
+  "model": "qwen-image-3.0-pro"
+}

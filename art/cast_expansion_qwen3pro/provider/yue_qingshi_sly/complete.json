@@ -1,0 +1,9 @@
+{
+  "character": "yue_qingshi",
+  "state": "sly",
+  "asset_id": "yue_qingshi_sly",
+  "image_file": "provider/yue_qingshi_sly/yue_qingshi_sly.png",
+  "sha256": "a640af4f2fb23ebfbfadf96bef9393f535601aea5fa3a25ffc003caff4f38bf0",
+  "seed": 151434,
+  "model": "qwen-image-3.0-pro"
+}

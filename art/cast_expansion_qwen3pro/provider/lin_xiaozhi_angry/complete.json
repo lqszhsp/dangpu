@@ -1,0 +1,9 @@
+{
+  "character": "lin_xiaozhi",
+  "state": "angry",
+  "asset_id": "lin_xiaozhi_angry",
+  "image_file": "provider/lin_xiaozhi_angry/lin_xiaozhi_angry.png",
+  "sha256": "85be8f0d3bbd6bfd491f6c5ec069345a275a0fe6433549f3d154366a8feb8592",
+  "seed": 151052,
+  "model": "qwen-image-3.0-pro"
+}

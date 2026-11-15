@@ -1,0 +1,9 @@
+{
+  "character": "jiang_shoudu",
+  "state": "thrall",
+  "asset_id": "jiang_shoudu_thrall",
+  "image_file": "provider/jiang_shoudu_thrall/jiang_shoudu_thrall.png",
+  "sha256": "34ceed50a4d46241faa7e2b2ef89b6603d266e0aa74a4fe2eb74b7a566019cdd",
+  "seed": 151076,
+  "model": "qwen-image-3.0-pro"
+}

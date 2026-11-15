@@ -1,0 +1,9 @@
+{
+  "character": "fu_shoumo",
+  "state": "neutral",
+  "asset_id": "fu_shoumo",
+  "image_file": "provider/fu_shoumo/fu_shoumo.png",
+  "sha256": "aa02c82abfbe118d0e342d9a4a6bda1505eca0b2ed58d249a2ea04d4a350d985",
+  "seed": 151360,
+  "model": "qwen-image-3.0-pro"
+}

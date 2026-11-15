@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ic_seal-jade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fd3ff"/>
+      <stop offset="0.45" stop-color="#4a8fb8"/>
+      <stop offset="1" stop-color="#1f5c4c"/>
+    </linearGradient>
+    <linearGradient id="ic_seal-side" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a8fb8"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <radialGradient id="ic_seal-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8fd3ff" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#4a8fb8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="34" r="30" fill="url(#ic_seal-glow)"/>
+  <!-- block top face -->
+  <path d="M14 13 L50 13 L56 21 L8 21 Z" fill="url(#ic_seal-side)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- dome knob with cord hole -->
+  <path d="M22 18 Q21 3 32 3 Q43 3 42 18 Q32 21 22 18 Z" fill="url(#ic_seal-jade)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <circle cx="32" cy="11" r="3" fill="#14101a"/>
+  <path d="M25 11 Q25.5 6 30 5" fill="none" stroke="#f4fbff" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- red tassel cord -->
+  <path d="M34.5 11.5 Q44 10 49 6" fill="none" stroke="#14101a" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M34.5 11.5 Q44 10 49 6" fill="none" stroke="#c43a3a" stroke-width="2" stroke-linecap="round"/>
+  <path d="M49 6 L53 3 L56 9 L52 10 Z" fill="#e0524a" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+  <!-- face -->
+  <rect x="8" y="19" width="48" height="40" rx="4" fill="url(#ic_seal-jade)" stroke="#14101a" stroke-width="2.8"/>
+  <rect x="12.5" y="23.5" width="39" height="31" rx="2" fill="none" stroke="#f4fbff" stroke-width="2"/>
+  <!-- sword -->
+  <g stroke="#14101a" stroke-linejoin="round">
+    <path d="M32 24.5 L35 29 L34 44 L30 44 L29 29 Z" fill="#f4fbff" stroke-width="1.6"/>
+    <path d="M25 44 L39 44 L39 47 L25 47 Z" fill="#d9a441" stroke-width="1.4"/>
+    <path d="M30.6 47 L33.4 47 L33.4 52 L30.6 52 Z" fill="#cfefff" stroke-width="1.2"/>
+  </g>
+  <path d="M32 27 L32 43" stroke="#4a8fb8" stroke-width="1" fill="none"/>
+  <!-- auspicious clouds -->
+  <g fill="#f4fbff" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round">
+    <path d="M14.5 44 Q14 39.5 18 39.5 Q19 36 22.5 37.5 Q25.5 37 26 40.5 Q28.5 41.5 27.5 44 Q24 46.5 20 45 Q16.5 46.5 14.5 44 Z"/>
+    <path d="M49.5 44 Q50 39.5 46 39.5 Q45 36 41.5 37.5 Q38.5 37 38 40.5 Q35.5 41.5 36.5 44 Q40 46.5 44 45 Q47.5 46.5 49.5 44 Z"/>
+  </g>
+  <path d="M19 42.5 Q20 41 22 41.6 M45 42.5 Q44 41 42 41.6" fill="none" stroke="#4a8fb8" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- highlight -->
+  <path d="M11 29 L11 23 Q11 21.5 13 21.5 L20 21.5" fill="none" stroke="#f4fbff" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+</svg>

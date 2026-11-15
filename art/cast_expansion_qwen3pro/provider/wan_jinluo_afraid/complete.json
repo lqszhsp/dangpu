@@ -1,0 +1,9 @@
+{
+  "character": "wan_jinluo",
+  "state": "afraid",
+  "asset_id": "wan_jinluo_afraid",
+  "image_file": "provider/wan_jinluo_afraid/wan_jinluo_afraid.png",
+  "sha256": "b657443251759a2425c51932416075ef8d9c2b187565928988e17e1cc96e2040",
+  "seed": 151253,
+  "model": "qwen-image-3.0-pro"
+}

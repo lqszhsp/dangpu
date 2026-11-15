@@ -1,0 +1,9 @@
+{
+  "character": "he_xiaoman",
+  "state": "thrall",
+  "asset_id": "he_xiaoman_thrall",
+  "image_file": "provider/he_xiaoman_thrall/he_xiaoman_thrall.png",
+  "sha256": "4d016ea5c212af87557d9dccb09b1bf835ce9c688a52966b4557c581b9125323",
+  "seed": 151046,
+  "model": "qwen-image-3.0-pro"
+}

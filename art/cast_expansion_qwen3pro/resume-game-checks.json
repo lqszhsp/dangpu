@@ -1,0 +1,17 @@
+{
+  "ecology": {
+    "characters": 55,
+    "deterministic_paths": 385,
+    "cost_and_power_gates": "passed",
+    "lifecycle_hooks": "passed",
+    "registration": "passed",
+    "active_story_cap": 4,
+    "note": "This test does not certify image quality or image completeness; use cast.mjs check after installation."
+  },
+  "installed_character_checks_passed": 55,
+  "days_per_run": 200,
+  "runs_per_character": 6,
+  "full_check_exit_code": 0,
+  "expected_uninstalled_character_failures": [],
+  "unexpected_failures": []
+}

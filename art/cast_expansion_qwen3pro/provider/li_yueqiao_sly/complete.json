@@ -1,0 +1,9 @@
+{
+  "character": "li_yueqiao",
+  "state": "sly",
+  "asset_id": "li_yueqiao_sly",
+  "image_file": "provider/li_yueqiao_sly/li_yueqiao_sly.png",
+  "sha256": "61bc1d6658e6105bf48344ee0a56bf8abdba356881b99fcfeb46aea0956f0ad1",
+  "seed": 151134,
+  "model": "qwen-image-3.0-pro"
+}

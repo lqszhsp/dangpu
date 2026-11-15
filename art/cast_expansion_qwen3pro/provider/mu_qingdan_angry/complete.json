@@ -1,0 +1,9 @@
+{
+  "character": "mu_qingdan",
+  "state": "angry",
+  "asset_id": "mu_qingdan_angry",
+  "image_file": "provider/mu_qingdan_angry/mu_qingdan_angry.png",
+  "sha256": "b88a8d6b8b758c1cbde1468e79ec967bd366d4ca51959a0127be1263d75a2f2b",
+  "seed": 151282,
+  "model": "qwen-image-3.0-pro"
+}

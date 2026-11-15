@@ -1,0 +1,9 @@
+{
+  "character": "lin_shoujuan",
+  "state": "neutral",
+  "asset_id": "lin_shoujuan",
+  "image_file": "provider/lin_shoujuan/lin_shoujuan.png",
+  "sha256": "6230488a263c8b315f6ac9993dbfacee2a6e5565fa3b0f2347fdcc92e506c1c3",
+  "seed": 151450,
+  "model": "qwen-image-3.0-pro"
+}

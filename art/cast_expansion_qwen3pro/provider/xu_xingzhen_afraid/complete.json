@@ -1,0 +1,9 @@
+{
+  "character": "xu_xingzhen",
+  "state": "afraid",
+  "asset_id": "xu_xingzhen_afraid",
+  "image_file": "provider/xu_xingzhen_afraid/xu_xingzhen_afraid.png",
+  "sha256": "d3f9653fe7f7869e8d1f7a9bf178648652cc9d9fe6f5296e6c6968dd00ddba21",
+  "seed": 151523,
+  "model": "qwen-image-3.0-pro"
+}

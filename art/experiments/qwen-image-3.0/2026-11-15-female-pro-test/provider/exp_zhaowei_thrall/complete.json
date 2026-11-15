@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_zhaowei_thrall",
+  "image_file": "provider/exp_zhaowei_thrall/exp_zhaowei_thrall.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115026,
+  "sha256": "63c9ea13f46d5c2aa5e610c8929f672db2d6bcfcdb65fc6669b53f7cb4f3efd6"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "li_duangang",
+  "state": "angry",
+  "asset_id": "li_duangang_angry",
+  "image_file": "provider/li_duangang_angry/li_duangang_angry.png",
+  "sha256": "aa6c79ba11b8ac3a9241f225f0f2805df6f8b736170c01a7f6334b071f2525e3",
+  "seed": 151212,
+  "model": "qwen-image-3.0-pro"
+}

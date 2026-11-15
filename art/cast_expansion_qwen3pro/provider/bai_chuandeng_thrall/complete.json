@@ -1,0 +1,9 @@
+{
+  "character": "bai_chuandeng",
+  "state": "thrall",
+  "asset_id": "bai_chuandeng_thrall",
+  "image_file": "provider/bai_chuandeng_thrall/bai_chuandeng_thrall.png",
+  "sha256": "8af9e6b25233d04d624f9dbd70a21b50426b1f236c3e4abbefd8438f98658a66",
+  "seed": 151486,
+  "model": "qwen-image-3.0-pro"
+}

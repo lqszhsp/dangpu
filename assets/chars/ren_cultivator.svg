@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<defs>
+<linearGradient id="ren_cultivator-robe" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#2f2a28"/><stop offset="0.3" stop-color="#5e5446"/><stop offset="0.55" stop-color="#776a56"/><stop offset="1" stop-color="#2a2524"/>
+</linearGradient>
+<linearGradient id="ren_cultivator-shade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#14101a" stop-opacity="0"/><stop offset="0.6" stop-color="#14101a" stop-opacity="0.15"/><stop offset="1" stop-color="#14101a" stop-opacity="0.6"/>
+</linearGradient>
+<radialGradient id="ren_cultivator-skin" cx="0.45" cy="0.38" r="0.7">
+<stop offset="0" stop-color="#f2e3c6"/><stop offset="0.6" stop-color="#e0c398"/><stop offset="1" stop-color="#a97e50"/>
+</radialGradient>
+<linearGradient id="ren_cultivator-hair" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#f4f0e6"/><stop offset="0.55" stop-color="#d3cbbb"/><stop offset="1" stop-color="#8d8a84"/>
+</linearGradient>
+<linearGradient id="ren_cultivator-beard" x1="0" y1="0" x2="0.3" y2="1">
+<stop offset="0" stop-color="#f4fbff"/><stop offset="0.5" stop-color="#e9dfcc"/><stop offset="1" stop-color="#9c9589"/>
+</linearGradient>
+<radialGradient id="ren_cultivator-iris" cx="0.4" cy="0.35" r="0.7">
+<stop offset="0" stop-color="#d9a441"/><stop offset="0.5" stop-color="#5a3a1a"/><stop offset="1" stop-color="#14101a"/>
+</radialGradient>
+<radialGradient id="ren_cultivator-gourd" cx="0.35" cy="0.3" r="0.75">
+<stop offset="0" stop-color="#f2d27a"/><stop offset="0.45" stop-color="#d9a441"/><stop offset="1" stop-color="#6e4614"/>
+</radialGradient>
+<clipPath id="ren_cultivator-eyeL"><path d="M164,152 Q177,144.5 190,151 Q178,156.5 164,152 Z"/></clipPath>
+<clipPath id="ren_cultivator-eyeR"><path d="M210,151 Q223,144.5 236,152 Q222,156.5 210,151 Z"/></clipPath>
+<filter id="ren_cultivator-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+
+<!-- 气息 -->
+<ellipse cx="200" cy="300" rx="170" ry="150" fill="#3fae8f" opacity="0.10" filter="url(#ren_cultivator-blur)"/>
+
+<!-- 身体 道袍 -->
+<path d="M168,236 C138,248 100,256 78,278 C54,302 44,360 38,480 L362,480 C356,360 346,302 322,278 C300,256 262,248 232,236 Z" fill="url(#ren_cultivator-robe)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M168,236 C138,248 100,256 78,278 C54,302 44,360 38,480 L362,480 C356,360 346,302 322,278 C300,256 262,248 232,236 Z" fill="url(#ren_cultivator-shade)"/>
+<!-- 袖与躯干分界 -->
+<path d="M100,292 C92,340 88,400 92,480" fill="none" stroke="#14101a" stroke-width="2" opacity="0.8"/>
+<path d="M300,292 C308,340 312,400 308,480" fill="none" stroke="#14101a" stroke-width="2" opacity="0.8"/>
+<path d="M70,330 C74,380 66,430 62,480 M84,300 C80,330 78,350 82,372" fill="none" stroke="#14101a" stroke-width="1.5" opacity="0.45"/>
+<path d="M330,330 C326,380 334,430 338,480 M316,300 C320,330 322,350 318,372" fill="none" stroke="#14101a" stroke-width="1.5" opacity="0.45"/>
+<!-- 肩部高光 -->
+<path d="M96,274 C120,258 150,250 170,244 C150,258 120,268 100,290 Z" fill="#a89a80" opacity="0.45"/>
+<path d="M304,274 C280,258 250,250 230,244 C250,258 280,268 300,290 Z" fill="#a89a80" opacity="0.25"/>
+
+<!-- 补丁 -->
+<path d="M104,292 L138,286 L142,320 L107,325 Z" fill="#8a7458" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M108,296 L134,291 L137,316 L111,320 Z" fill="none" stroke="#efe2c4" stroke-width="1" stroke-dasharray="3 3" opacity="0.8"/>
+<path d="M262,372 L296,368 L298,400 L264,404 Z" fill="#6b7d5a" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round" opacity="0.9"/>
+<path d="M266,376 L292,372 L294,396 L268,400 Z" fill="none" stroke="#efe2c4" stroke-width="1" stroke-dasharray="3 3" opacity="0.7"/>
+<path d="M314,300 L338,306 L334,332 L312,326 Z" fill="#5c6370" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M317,304 L334,308 L331,328 L315,323 Z" fill="none" stroke="#efe2c4" stroke-width="1" stroke-dasharray="3 3" opacity="0.7"/>
+<!-- 破口 -->
+<path d="M60,420 L70,428 L64,436 L74,446" fill="none" stroke="#14101a" stroke-width="1.5"/>
+
+<!-- 内衬 -->
+<path d="M170,236 L230,236 L204,300 Z" fill="#d8c49a" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M176,236 L224,236 L202,288 Z" fill="#a8946c" opacity="0.5"/>
+<!-- 交领 -->
+<path d="M168,236 L182,236 L208,296 L198,304 Z" fill="#3b342f" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M218,236 L234,236 C214,280 178,330 150,372 L136,364 C166,320 200,276 218,236 Z" fill="#3b342f" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M224,240 C206,280 174,326 146,364" fill="none" stroke="#9c8e74" stroke-width="1.2" opacity="0.6"/>
+<!-- 衣褶 -->
+<path d="M240,268 C250,300 256,330 252,360 M260,262 C276,290 282,320 280,350 M150,290 C140,310 136,330 138,350" fill="none" stroke="#14101a" stroke-width="1.6" opacity="0.5"/>
+
+<!-- 腰带 -->
+<path d="M100,326 Q200,340 300,326 L302,348 Q200,362 98,348 Z" fill="#2a2524" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M102,334 Q200,348 298,334" fill="none" stroke="#6e6354" stroke-width="1.5"/>
+<path d="M188,348 L180,384 M196,350 L196,388" stroke="#2a2524" stroke-width="5" stroke-linecap="round"/>
+
+<!-- 酒葫芦 -->
+<path d="M286,338 Q292,346 300,350" fill="none" stroke="#8e1b2b" stroke-width="2.5"/>
+<g stroke="#14101a" stroke-width="2" stroke-linejoin="round">
+<ellipse cx="304" cy="392" rx="27" ry="30" fill="url(#ren_cultivator-gourd)"/>
+<ellipse cx="303" cy="356" rx="16" ry="15" fill="url(#ren_cultivator-gourd)"/>
+<path d="M296,368 Q304,372 311,368 L310,376 Q303,379 296,376 Z" fill="#8e1b2b"/>
+<path d="M298,343 L308,343 L307,334 L299,334 Z" fill="#8a5a1c"/>
+</g>
+<path d="M293,350 Q296,345 301,344" fill="none" stroke="#f4fbff" stroke-width="2" opacity="0.7" stroke-linecap="round"/>
+<path d="M286,384 Q290,374 298,371" fill="none" stroke="#f4fbff" stroke-width="2.5" opacity="0.6" stroke-linecap="round"/>
+<path d="M309,368 L318,382" stroke="#c43a3a" stroke-width="2" stroke-linecap="round"/>
+
+<!-- 颈 -->
+<path d="M180,200 L179,246 Q200,258 221,246 L220,200 Z" fill="#c8a679" stroke="#14101a" stroke-width="1.5"/>
+<path d="M180,212 Q200,232 220,212 L220,226 Q200,240 180,226 Z" fill="#8a5a1c" opacity="0.35"/>
+
+<!-- 耳 -->
+<path d="M153,146 C141,142 139,166 146,177 C150,182 155,180 156,174 Z" fill="url(#ren_cultivator-skin)" stroke="#14101a" stroke-width="1.8"/>
+<path d="M247,146 C259,142 261,166 254,177 C250,182 245,180 244,174 Z" fill="url(#ren_cultivator-skin)" stroke="#14101a" stroke-width="1.8"/>
+<path d="M150,152 C146,158 147,168 151,172" fill="none" stroke="#8a5a1c" stroke-width="1.2"/>
+<path d="M250,152 C254,158 253,168 249,172" fill="none" stroke="#8a5a1c" stroke-width="1.2"/>
+
+<!-- 脸 -->
+<path d="M152,128 C152,98 172,82 200,82 C228,82 248,98 248,128 L248,160 C248,190 233,213 200,222 C167,213 152,190 152,160 Z" fill="url(#ren_cultivator-skin)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<!-- 面部暗部 -->
+<path d="M232,120 C246,140 246,180 230,206 C238,190 240,160 232,120 Z" fill="#8a5a1c" opacity="0.3"/>
+<path d="M160,170 Q168,184 176,190" fill="none" stroke="#8a5a1c" stroke-width="2" opacity="0.35"/>
+<path d="M240,170 Q232,184 224,190" fill="none" stroke="#8a5a1c" stroke-width="2" opacity="0.35"/>
+<!-- 抬头纹 -->
+<path d="M178,110 Q200,104 222,110 M184,118 Q200,113 216,118" fill="none" stroke="#8a5a1c" stroke-width="1.3" opacity="0.55" stroke-linecap="round"/>
+
+<!-- 头发 -->
+<path d="M146,152 C136,104 160,66 200,64 C240,66 264,104 254,152 C252,130 247,113 236,103 C222,96 210,95 200,97 C188,95 174,96 163,104 C153,114 149,130 146,152 Z" fill="url(#ren_cultivator-hair)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M160,110 C170,88 186,76 198,72 M174,100 C184,84 194,76 202,72 M240,110 C230,88 214,76 202,72 M226,100 C216,84 206,76 200,72" fill="none" stroke="#8d8a84" stroke-width="1.3" opacity="0.8"/>
+<path d="M166,84 C178,72 192,68 204,68" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+<!-- 散发 -->
+<path d="M150,140 C146,150 146,160 150,166 M252,138 C256,150 255,160 250,168" fill="none" stroke="#d3cbbb" stroke-width="2" stroke-linecap="round"/>
+<!-- 发髻与木簪 -->
+<ellipse cx="200" cy="60" rx="21" ry="15" fill="url(#ren_cultivator-hair)" stroke="#14101a" stroke-width="2"/>
+<path d="M186,56 C192,50 208,50 214,56 M184,64 C194,60 206,60 216,64" fill="none" stroke="#8d8a84" stroke-width="1.2"/>
+<path d="M182,70 Q200,76 218,70" fill="none" stroke="#5e0f1c" stroke-width="3"/>
+<path d="M162,70 L240,48" stroke="#14101a" stroke-width="6" stroke-linecap="round"/>
+<path d="M162,70 L240,48" stroke="#8a5a1c" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M170,66 L228,50" stroke="#d9a441" stroke-width="1" stroke-linecap="round" opacity="0.8"/>
+
+<!-- 眉 -->
+<path d="M158,138 C166,128 182,127 193,134 C184,133 172,134 160,142 Z" fill="#f4f0e6" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M160,140 L154,146 M164,138 L158,145" stroke="#e9dfcc" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M207,133 C217,124 233,125 243,134 C232,131 220,131 207,137 Z" fill="#f4f0e6" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M240,134 L247,140 M236,132 L243,139" stroke="#e9dfcc" stroke-width="1.4" stroke-linecap="round"/>
+
+<!-- 眼 -->
+<path d="M164,152 Q177,144.5 190,151 Q178,156.5 164,152 Z" fill="#efe2c4"/>
+<g clip-path="url(#ren_cultivator-eyeL)">
+<circle cx="179" cy="151" r="5.5" fill="url(#ren_cultivator-iris)"/>
+<circle cx="179" cy="151" r="2.3" fill="#14101a"/>
+<path d="M164,148 Q177,143 190,148 L190,150 Q177,146 164,151 Z" fill="#8a5a1c" opacity="0.5"/>
+</g>
+<circle cx="181" cy="149" r="1.4" fill="#f4fbff"/>
+<path d="M161,152.5 Q176,142 193,150" fill="none" stroke="#14101a" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M166,155 Q178,157.5 189,153" fill="none" stroke="#14101a" stroke-width="1" opacity="0.6"/>
+<path d="M166,159 Q177,163 188,158" fill="none" stroke="#8a5a1c" stroke-width="1" opacity="0.55"/>
+<path d="M210,151 Q223,144.5 236,152 Q222,156.5 210,151 Z" fill="#efe2c4"/>
+<g clip-path="url(#ren_cultivator-eyeR)">
+<circle cx="221" cy="151" r="5.5" fill="url(#ren_cultivator-iris)"/>
+<circle cx="221" cy="151" r="2.3" fill="#14101a"/>
+<path d="M210,148 Q223,143 236,148 L236,151 Q223,146 210,150 Z" fill="#8a5a1c" opacity="0.5"/>
+</g>
+<circle cx="223" cy="149" r="1.4" fill="#f4fbff"/>
+<path d="M207,150 Q224,142 239,152.5" fill="none" stroke="#14101a" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M211,153 Q222,157.5 234,155" fill="none" stroke="#14101a" stroke-width="1" opacity="0.6"/>
+<path d="M212,158 Q223,163 234,159" fill="none" stroke="#8a5a1c" stroke-width="1" opacity="0.55"/>
+<!-- 鱼尾纹 -->
+<path d="M193,151 L198,149 M241,151 L247,148 M241,154 L247,156 M159,151 L153,148 M159,154 L153,156" stroke="#8a5a1c" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+<!-- 鼻 -->
+<path d="M196,150 C195,165 192,176 190,184" fill="none" stroke="#8a5a1c" stroke-width="1.4" opacity="0.5"/>
+<path d="M189,184 C192,191 199,192 203,189 C207,192 213,190 212,184" fill="none" stroke="#14101a" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M198,170 C201,176 203,182 202,186" fill="none" stroke="#f4fbff" stroke-width="1.6" opacity="0.5" stroke-linecap="round"/>
+<ellipse cx="170" cy="178" rx="9" ry="5" fill="#c43a3a" opacity="0.12"/>
+<ellipse cx="230" cy="178" rx="9" ry="5" fill="#c43a3a" opacity="0.12"/>
+
+<!-- 胡须 -->
+<path d="M152,160 C152,198 166,226 180,258 C190,282 196,304 200,330 C206,302 214,280 222,256 C236,224 248,198 248,160 C245,186 234,206 220,212 C212,206 188,206 180,212 C166,206 155,186 152,160 Z" fill="url(#ren_cultivator-beard)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M200,192 C186,190 172,198 164,212 C178,203 190,201 200,201 C210,201 222,203 236,212 C228,198 214,190 200,192 Z" fill="#f4fbff" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M190,208 Q200,212 212,206" fill="none" stroke="#5e0f1c" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M176,226 C184,250 192,276 198,310 M188,222 C194,248 198,280 200,318 M224,226 C216,250 208,276 203,310 M210,222 C206,250 203,280 201,316" fill="none" stroke="#9c9589" stroke-width="1.2" opacity="0.8"/>
+<path d="M166,210 C170,230 178,246 186,260" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6" stroke-linecap="round"/>
+</svg>

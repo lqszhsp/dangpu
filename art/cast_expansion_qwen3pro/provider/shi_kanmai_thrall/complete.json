@@ -1,0 +1,9 @@
+{
+  "character": "shi_kanmai",
+  "state": "thrall",
+  "asset_id": "shi_kanmai_thrall",
+  "image_file": "provider/shi_kanmai_thrall/shi_kanmai_thrall.png",
+  "sha256": "2363775562a7a46482f6a7aa8f6d923b9a233a7e5c6b225ad8b004bb24ec10d2",
+  "seed": 151426,
+  "model": "qwen-image-3.0-pro"
+}

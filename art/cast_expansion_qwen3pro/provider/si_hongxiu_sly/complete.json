@@ -1,0 +1,9 @@
+{
+  "character": "si_hongxiu",
+  "state": "sly",
+  "asset_id": "si_hongxiu_sly",
+  "image_file": "provider/si_hongxiu_sly/si_hongxiu_sly.png",
+  "sha256": "e4421f230f5d538968cbd54c992ed68bc9a87a788dbf9725980488a7be042de1",
+  "seed": 151244,
+  "model": "qwen-image-3.0-pro"
+}

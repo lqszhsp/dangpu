@@ -1,0 +1,9 @@
+{
+  "character": "gui_shouyuan",
+  "state": "thrall",
+  "asset_id": "gui_shouyuan_thrall",
+  "image_file": "provider/gui_shouyuan_thrall/gui_shouyuan_thrall.png",
+  "sha256": "3ffc7917cbdc9e307ac443c074d85dd04d55830c515677699d49a50422edfd50",
+  "seed": 151196,
+  "model": "qwen-image-3.0-pro"
+}

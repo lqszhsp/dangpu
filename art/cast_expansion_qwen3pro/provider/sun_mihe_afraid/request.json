@@ -1,0 +1,16 @@
+{
+  "model": "qwen-image-3.0-pro",
+  "character": "sun_mihe",
+  "state": "afraid",
+  "prompt": "Edit this reference. Same actor, same recognizable face and age, same costume, hair, accessories, props, hand positions, full-body framing, camera and lighting. Only change the facial expression and visible state to: terrified: wide eyes, pale face, leaning back. Keep the same human or humanoid identity. Keep the uniform bright green background. Cinematic photorealistic high-budget Chinese dark xianxia costume drama actor photograph. Exactly one human or humanoid person standing naturally, facing camera, full body from head to both feet visible with small margin, centered, occupying about 90 percent height, consistent 85mm portrait perspective. Real skin pores and worn fabric and metal. Warm red lantern key light from left, cool purple rim light from right, muted dark cinematic colors, face and clothes still readable. Background flat uniform bright green RGB(0,255,0), no floor, no cast shadow, no gradient, no green clothing or green reflections. No text, label, border, UI or watermark. ",
+  "negative_prompt": "anime, cartoon, illustration, painting, plastic CGI skin, beauty smoothing, collage, multiple people, cropped head, cropped feet, half body, extra limbs, extra fingers, background scenery, text, watermark, nudity, lingerie, sexual pose, green clothes, green skin, checkerboard",
+  "size": "1024*1536",
+  "seed": 151063,
+  "reference": "references/sun_mihe.png",
+  "reference_sha256": "5b3a7dc74c3ed3508b0970940adc1a641d613976ad1f79ef4cb02819e6cdc4a5",
+  "endpoint_override": "https://token-plan.cn-beijing.maas.aliyuncs.com",
+  "proxy_environment": "removed for this subprocess only",
+  "n": 1,
+  "watermark": false,
+  "prompt_extend": false
+}

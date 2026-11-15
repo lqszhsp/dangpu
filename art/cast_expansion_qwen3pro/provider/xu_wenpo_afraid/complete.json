@@ -1,0 +1,9 @@
+{
+  "character": "xu_wenpo",
+  "state": "afraid",
+  "asset_id": "xu_wenpo_afraid",
+  "image_file": "provider/xu_wenpo_afraid/xu_wenpo_afraid.png",
+  "sha256": "e2e837d41105cbdccc7dbc8f4c29a40fd9d25dfc42e9e71a285500ff1037cc93",
+  "seed": 151083,
+  "model": "qwen-image-3.0-pro"
+}

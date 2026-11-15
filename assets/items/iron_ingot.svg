@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="iron_ingot-top" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5c6370"/>
+      <stop offset="0.45" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#2a1838"/>
+    </linearGradient>
+    <linearGradient id="iron_ingot-front" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#3a3f4a"/>
+      <stop offset="0.5" stop-color="#1f1626"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="iron_ingot-side" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a1838"/>
+      <stop offset="0.6" stop-color="#3d2350"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <filter id="iron_ingot-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+  <path d="M2 43 L36 59.5 L62 44 L36 54 Z" fill="#14101a" opacity="0.4"/>
+  <ellipse cx="33" cy="51" rx="29" ry="8" fill="#14101a" opacity="0.3"/>
+  <!-- faces -->
+  <path d="M4 40 L36 55 L35 40 L12 27 Z" fill="url(#iron_ingot-front)"/>
+  <path d="M36 55 L60 41 L53 28 L35 40 Z" fill="url(#iron_ingot-side)"/>
+  <path d="M12 27 L35 40 L53 28 L30 15 Z" fill="url(#iron_ingot-top)"/>
+  <!-- edges -->
+  <path d="M12 27 L35 40 L53 28 M35 40 L36 55" fill="none" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+  <path d="M12.8 27.6 L34.8 39.6 L52.4 28.4" fill="none" stroke="#cfefff" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  <path d="M13.5 26.2 L29.8 16.4" fill="none" stroke="#9aa88a" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <path d="M36.6 53 L58.4 40.6" fill="none" stroke="#4a8fb8" stroke-width="0.8" stroke-linecap="round" opacity="0.55"/>
+  <path d="M6.5 40.2 L34.4 53.2" fill="none" stroke="#5c6370" stroke-width="0.7" stroke-linecap="round" opacity="0.6"/>
+  <!-- sheen -->
+  <path d="M17 26.6 L24 22.4 L40 31.6 L33 35.8 Z" fill="#cfefff" opacity="0.12"/>
+  <path d="M14 35 L20 38" stroke="#8fd3ff" stroke-width="1.6" stroke-linecap="round" opacity="0.25"/>
+  <g fill="#14101a" opacity="0.7">
+    <circle cx="19" cy="41" r="0.7"/>
+    <circle cx="27" cy="47.5" r="0.6"/>
+    <circle cx="47" cy="44" r="0.7"/>
+    <circle cx="44" cy="23" r="0.6"/>
+  </g>
+  <!-- rune -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0.62 0.35 -0.48 0.32 32.5 27.5)">
+    <path d="M-14 0 L-8 0 M-8 -7 L-8 8 M-8 -2 C-4 -6 0 -6 0 -2 C0 2 4 2 6 -2 C8 -6 12 -4 14 0 M0 -2 L0 9 M-3.5 6 L3.5 6 M5 -8 L9 -11" stroke="#c43a3a" stroke-width="3.6" opacity="0.85" filter="url(#iron_ingot-blur)"/>
+    <path d="M-14 0 L-8 0 M-8 -7 L-8 8 M-8 -2 C-4 -6 0 -6 0 -2 C0 2 4 2 6 -2 C8 -6 12 -4 14 0 M0 -2 L0 9 M-3.5 6 L3.5 6 M5 -8 L9 -11" stroke="#8e1b2b" stroke-width="2"/>
+    <path d="M-8 -6 L-8 -1 M-3 -4.6 C-1 -4.4 0 -3 0 -2" stroke="#e0524a" stroke-width="0.9" opacity="0.9"/>
+  </g>
+  <!-- outline -->
+  <path d="M4 40 L12 27 L30 15 L53 28 L60 41 L36 55 Z" fill="none" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+</svg>

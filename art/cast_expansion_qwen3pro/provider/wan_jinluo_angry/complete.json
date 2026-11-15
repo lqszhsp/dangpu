@@ -1,0 +1,9 @@
+{
+  "character": "wan_jinluo",
+  "state": "angry",
+  "asset_id": "wan_jinluo_angry",
+  "image_file": "provider/wan_jinluo_angry/wan_jinluo_angry.png",
+  "sha256": "19f27a3d84a22078cfbc4815af84bd6607eb1dfe42a62c4b64e5e50b00e994be",
+  "seed": 151252,
+  "model": "qwen-image-3.0-pro"
+}

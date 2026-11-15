@@ -1,0 +1,9 @@
+{
+  "character": "su_cailing",
+  "state": "thrall",
+  "asset_id": "su_cailing_thrall",
+  "image_file": "provider/su_cailing_thrall/su_cailing_thrall.png",
+  "sha256": "1c698bc647436f5434b79dff3dd0621795adc210130c486222840400f5602f1e",
+  "seed": 151516,
+  "model": "qwen-image-3.0-pro"
+}

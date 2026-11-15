@@ -1,0 +1,9 @@
+{
+  "character": "qian_shiqi",
+  "state": "neutral",
+  "asset_id": "qian_shiqi",
+  "image_file": "provider/qian_shiqi/qian_shiqi.png",
+  "sha256": "bfb4f37cde5517a461e3563ffc412ef58b434ca610eabdc2d04ff971c6df2ebf",
+  "seed": 151350,
+  "model": "qwen-image-3.0-pro"
+}

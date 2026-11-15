@@ -1,0 +1,9 @@
+{
+  "character": "bai_chuandeng",
+  "state": "angry",
+  "asset_id": "bai_chuandeng_angry",
+  "image_file": "provider/bai_chuandeng_angry/bai_chuandeng_angry.png",
+  "sha256": "21a6bae52ed83373845c7efae80b51e631a125ef6afc9fb45bea15e0d11c68a6",
+  "seed": 151482,
+  "model": "qwen-image-3.0-pro"
+}

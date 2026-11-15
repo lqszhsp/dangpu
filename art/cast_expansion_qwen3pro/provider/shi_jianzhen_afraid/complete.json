@@ -1,0 +1,9 @@
+{
+  "character": "shi_jianzhen",
+  "state": "afraid",
+  "asset_id": "shi_jianzhen_afraid",
+  "image_file": "provider/shi_jianzhen_afraid/shi_jianzhen_afraid.png",
+  "sha256": "b85d0900698d310fbbeb6b7d46906cd9e5136fb4bb9071f501ce2037d56be9cd",
+  "seed": 151533,
+  "model": "qwen-image-3.0-pro"
+}

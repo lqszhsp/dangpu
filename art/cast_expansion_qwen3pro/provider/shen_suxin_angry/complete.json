@@ -1,0 +1,9 @@
+{
+  "character": "shen_suxin",
+  "state": "angry",
+  "asset_id": "shen_suxin_angry",
+  "image_file": "provider/shen_suxin_angry/shen_suxin_angry.png",
+  "sha256": "5f1e059a726ca1c7d3b04d98699998c8a51c2ea065899523a932d6524fe0f455",
+  "seed": 151002,
+  "model": "qwen-image-3.0-pro"
+}

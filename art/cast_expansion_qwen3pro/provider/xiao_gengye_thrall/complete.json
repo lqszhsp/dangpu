@@ -1,0 +1,9 @@
+{
+  "character": "xiao_gengye",
+  "state": "thrall",
+  "asset_id": "xiao_gengye_thrall",
+  "image_file": "provider/xiao_gengye_thrall/xiao_gengye_thrall.png",
+  "sha256": "a15331c8f8f07ce8efcf402f509151acc1a2be32eb1ff93dc8060dd801c14f60",
+  "seed": 151146,
+  "model": "qwen-image-3.0-pro"
+}

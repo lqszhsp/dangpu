@@ -1,0 +1,72 @@
+{
+  "face": "xian_spy_f1",
+  "model": "qwen-image-3.0-pro",
+  "states": [
+    "neutral",
+    "pleased",
+    "angry",
+    "afraid",
+    "sly",
+    "wasted",
+    "thrall"
+  ],
+  "assets": [
+    {
+      "path": "art/raw/chars/xian_spy_f1.png",
+      "sha256": "8a39baa47139c54706c1748b0cc67c16e2bb41f30c185ec805c40cb2dd441968"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1.webp",
+      "sha256": "d7e8902f7448a0ba7b80ee2c72fdf5820b26ff708b0099a643bf05b7929d8dae"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_pleased.png",
+      "sha256": "b95bc478c04834a609435ca0c543ab65cd67fb76f621eef3b952a16565650249"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_pleased.webp",
+      "sha256": "958208587b27b48bcd633a13194b3d4e8d0219ab7eb5e1887c8bed727b73f1e5"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_angry.png",
+      "sha256": "a83956e9b45557515d981e95532cfd3778fb54ba3c489e861ae82198c4d0fecc"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_angry.webp",
+      "sha256": "48c140106ffb81b556c9f21e9c42d3f83e2bf15b694ed4cf3c71b8e51e0d6630"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_afraid.png",
+      "sha256": "a974858fe95d52f81491479cb4578c7191813a4415288c0824314e293a3604e6"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_afraid.webp",
+      "sha256": "041d8b04aa2c387b524c4abcdcbf2754b377de77c9de4cac4ab3e9403a791841"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_sly.png",
+      "sha256": "d338bffe65a67f24aa42ac2f6682db552565a41107cefa5b88df496e08c01814"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_sly.webp",
+      "sha256": "5f063ef083ae57ec815914153b7ac6d1aa39eab28d8d095322a6fe08314248b0"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_wasted.png",
+      "sha256": "b61d6e41531dde121b52ae7b0ba6d33b122cccd0254bc50ffa415019230ce567"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_wasted.webp",
+      "sha256": "2a2eae7f12d47c9f48e2d2e4d4c883aacdd21a3009546fd5aba320afa71b5b3d"
+    },
+    {
+      "path": "art/raw/chars/xian_spy_f1_thrall.png",
+      "sha256": "85a548d46c0d9377cff3b4024abbccb6ee1b2548c24d121a8af1c014b16ea3c2"
+    },
+    {
+      "path": "assets/chars/xian_spy_f1_thrall.webp",
+      "sha256": "09660612572c1f509f8f455c49659a459ab429c53fa8380b926f43735c2c31bc"
+    }
+  ],
+  "installed_at": "2026-11-15T06:15:30.947945+00:00"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "qin_zhengxian",
+  "state": "wasted",
+  "asset_id": "qin_zhengxian_wasted",
+  "image_file": "provider/qin_zhengxian_wasted/qin_zhengxian_wasted.png",
+  "sha256": "7c0354581fd367153dd9107554aca3eda0683e20f8a80e35319c57da0d21cc5f",
+  "seed": 151315,
+  "model": "qwen-image-3.0-pro"
+}

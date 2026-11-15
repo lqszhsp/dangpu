@@ -1,0 +1,9 @@
+{
+  "character": "he_baizhi",
+  "state": "angry",
+  "asset_id": "he_baizhi_angry",
+  "image_file": "provider/he_baizhi_angry/he_baizhi_angry.png",
+  "sha256": "a80aa88789bc1c0df9d198b8c02fd4e08fce980ed9199544831a12591e97e46e",
+  "seed": 151202,
+  "model": "qwen-image-3.0-pro"
+}

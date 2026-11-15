@@ -1,0 +1,9 @@
+{
+  "character": "zhao_fengchen",
+  "state": "pleased",
+  "asset_id": "zhao_fengchen_pleased",
+  "image_file": "provider/zhao_fengchen_pleased/zhao_fengchen_pleased.png",
+  "sha256": "ed932e8b1b0e25bbc93231f6782b207acafa44e27b3e46d6121fe690992e3a5e",
+  "seed": 151021,
+  "model": "qwen-image-3.0-pro"
+}

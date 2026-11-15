@@ -1,0 +1,9 @@
+{
+  "character": "su_cailing",
+  "state": "angry",
+  "asset_id": "su_cailing_angry",
+  "image_file": "provider/su_cailing_angry/su_cailing_angry.png",
+  "sha256": "0d5800825b34b3e84a08b9becb13bc0fb3214c78289d91805a1d34922d4bc2cb",
+  "seed": 151512,
+  "model": "qwen-image-3.0-pro"
+}

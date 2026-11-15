@@ -1,0 +1,9 @@
+{
+  "character": "su_cailing",
+  "state": "sly",
+  "asset_id": "su_cailing_sly",
+  "image_file": "provider/su_cailing_sly/su_cailing_sly.png",
+  "sha256": "a5431f30beee1debf7744ee4b24fdef1cc46ed5467e9f0c2b69412bf0c75ea2b",
+  "seed": 151514,
+  "model": "qwen-image-3.0-pro"
+}

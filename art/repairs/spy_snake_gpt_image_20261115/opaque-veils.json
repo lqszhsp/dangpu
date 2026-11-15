@@ -1,0 +1,38 @@
+[
+  {
+    "id": "xian_spy:opaque-veil",
+    "refs": [
+      "attempts/first-pass-veils/xian_spy.png"
+    ],
+    "out": "generated/xian_spy.png",
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Fix ONLY the face covering of this exact woman. Replace the ENTIRE existing sheer veil with a THICK, TRIPLE-LAYER, FULLY OPAQUE ivory white SILK SCARF. Ancient Chinese folded silk face covering. The only visible facial features are her eyes, brows and forehead. Upper edge immediately below the eyes. Thick overlapping diagonal cloth folds cover ALL of the nose and mouth, then the scarf hangs down to the chest. Paint out EVERY trace of the previous nose, lips and mouth with solid fabric. There must be NO skin color, nose ridge, nostrils, lips, teeth or face-shaped shadows below the eyes. The entire lower face is obscured by visible opaque folded silk, like a thick folded bedsheet. No thin gauze, no translucency, no facial silhouette inside the fabric. Preserve her exact eyes, hair, crown, costume, body, hand pose, full-body composition and lighting. Transparent image background, opaque face scarf."
+  },
+  {
+    "id": "xian_spy_f1:opaque-veil",
+    "refs": [
+      "attempts/first-pass-veils/xian_spy_f1.png"
+    ],
+    "out": "generated/xian_spy_f1.png",
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Fix ONLY the face covering of this exact woman. Replace the ENTIRE existing sheer veil with a THICK, TRIPLE-LAYER, FULLY OPAQUE ivory white SILK SCARF. Ancient Chinese folded silk face covering. The only visible facial features are her eyes, brows and forehead. Upper edge immediately below the eyes. Thick overlapping diagonal cloth folds cover ALL of the nose and mouth, then the scarf hangs down to the chest. Paint out EVERY trace of the previous nose, lips and mouth with solid fabric. There must be NO skin color, nose ridge, nostrils, lips, teeth or face-shaped shadows below the eyes. The entire lower face is obscured by visible opaque folded silk, like a thick folded bedsheet. No thin gauze, no translucency, no facial silhouette inside the fabric. Preserve her exact eyes, hair, crown, costume, body, hand pose, full-body composition and lighting. Transparent image background, opaque face scarf."
+  },
+  {
+    "id": "xian_spy_f2:opaque-veil",
+    "refs": [
+      "attempts/first-pass-veils/xian_spy_f2.png"
+    ],
+    "out": "generated/xian_spy_f2.png",
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Fix ONLY the face covering of this exact woman. Replace the ENTIRE existing sheer veil with a THICK, TRIPLE-LAYER, FULLY OPAQUE charcoal black SILK SCARF. Ancient Chinese folded silk face covering. The only visible facial features are her eyes, brows and forehead. Upper edge immediately below the eyes. Thick overlapping diagonal cloth folds cover ALL of the nose and mouth, then the scarf hangs down to the chest. Paint out EVERY trace of the previous nose, lips and mouth with solid fabric. There must be NO skin color, nose ridge, nostrils, lips, teeth or face-shaped shadows below the eyes. The entire lower face is obscured by visible opaque folded silk, like a thick folded bedsheet. No thin gauze, no translucency, no facial silhouette inside the fabric. Preserve her exact eyes, hair, crown, costume, body, hand pose, full-body composition and lighting. Transparent image background, opaque face scarf."
+  }
+]

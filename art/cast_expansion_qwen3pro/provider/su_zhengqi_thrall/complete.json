@@ -1,0 +1,9 @@
+{
+  "character": "su_zhengqi",
+  "state": "thrall",
+  "asset_id": "su_zhengqi_thrall",
+  "image_file": "provider/su_zhengqi_thrall/su_zhengqi_thrall.png",
+  "sha256": "b9d11b4a057a51433162a5797e3c8c0978141267d4a62f699873a28ea5164a22",
+  "seed": 151466,
+  "model": "qwen-image-3.0-pro"
+}

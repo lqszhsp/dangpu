@@ -1,0 +1,9 @@
+{
+  "character": "he_baizhi",
+  "state": "wasted",
+  "asset_id": "he_baizhi_wasted",
+  "image_file": "provider/he_baizhi_wasted/he_baizhi_wasted.png",
+  "sha256": "aa103f8cab2c5c384b22fb6271e5ca09c362506932c4340d0efc86531c47db5b",
+  "seed": 151205,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "ao_xunlan",
+  "state": "wasted",
+  "asset_id": "ao_xunlan_wasted",
+  "image_file": "provider/ao_xunlan_wasted/ao_xunlan_wasted.png",
+  "sha256": "223ba72005e27b6ac0015d96be93aa0586d261fdc6e84dac773745b9ea3590bc",
+  "seed": 151095,
+  "model": "qwen-image-3.0-pro"
+}

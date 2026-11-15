@@ -1,0 +1,9 @@
+{
+  "character": "xu_xingzhen",
+  "state": "thrall",
+  "asset_id": "xu_xingzhen_thrall",
+  "image_file": "provider/xu_xingzhen_thrall/xu_xingzhen_thrall.png",
+  "sha256": "9365c908d6be7c6b44a21536455feb04e0260cd825f219342a787390308eba00",
+  "seed": 151526,
+  "model": "qwen-image-3.0-pro"
+}

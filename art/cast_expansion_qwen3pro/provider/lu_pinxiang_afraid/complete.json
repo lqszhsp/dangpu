@@ -1,0 +1,9 @@
+{
+  "character": "lu_pinxiang",
+  "state": "afraid",
+  "asset_id": "lu_pinxiang_afraid",
+  "image_file": "provider/lu_pinxiang_afraid/lu_pinxiang_afraid.png",
+  "sha256": "5742f3063402b38613675ce8fd80acbcc1e1eec3db5579ac10583bfe6a1dc551",
+  "seed": 151403,
+  "model": "qwen-image-3.0-pro"
+}

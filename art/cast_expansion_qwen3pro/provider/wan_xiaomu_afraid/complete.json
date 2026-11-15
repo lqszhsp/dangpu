@@ -1,0 +1,9 @@
+{
+  "character": "wan_xiaomu",
+  "state": "afraid",
+  "asset_id": "wan_xiaomu_afraid",
+  "image_file": "provider/wan_xiaomu_afraid/wan_xiaomu_afraid.png",
+  "sha256": "d1508d926179b7821adc5b7ebaefb59471316b161a2df91bbc8c26006c85f4af",
+  "seed": 151263,
+  "model": "qwen-image-3.0-pro"
+}

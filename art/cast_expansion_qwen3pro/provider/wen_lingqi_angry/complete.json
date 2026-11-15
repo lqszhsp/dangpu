@@ -1,0 +1,9 @@
+{
+  "character": "wen_lingqi",
+  "state": "angry",
+  "asset_id": "wen_lingqi_angry",
+  "image_file": "provider/wen_lingqi_angry/wen_lingqi_angry.png",
+  "sha256": "43d3482818ac872746c7d19ae0cddbd56827e434b742ee8e00754837ffd027f7",
+  "seed": 151442,
+  "model": "qwen-image-3.0-pro"
+}

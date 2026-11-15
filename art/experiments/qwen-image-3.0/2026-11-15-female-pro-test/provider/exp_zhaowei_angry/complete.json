@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_zhaowei_angry",
+  "image_file": "provider/exp_zhaowei_angry/exp_zhaowei_angry.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115022,
+  "sha256": "a1be8266d79476a0c6485009eb49e895bdfec2c5560304af9f40ea0ace9dae35"
+}

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128">
+  <defs>
+    <linearGradient id="bone_flute-bone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a8946a"/>
+      <stop offset="0.3" stop-color="#f6f0e2"/>
+      <stop offset="0.65" stop-color="#e9dfcc"/>
+      <stop offset="1" stop-color="#8a7a5c"/>
+    </linearGradient>
+    <radialGradient id="bone_flute-skull" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#f6f0e2"/>
+      <stop offset="0.6" stop-color="#d8c49a"/>
+      <stop offset="1" stop-color="#8a7a5c"/>
+    </radialGradient>
+    <filter id="bone_flute-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+  <!-- shadow -->
+  <rect x="22" y="8" width="23" height="92" rx="9" fill="#14101a" opacity="0.35"/>
+  <!-- flute body with bone knuckles -->
+  <path d="M17 6.5 Q32 1.5 47 6.5 L45 13 Q43 17 43 24 L43 82 Q43 89 45 93 L47 98 Q32 103 17 98 L19 93 Q21 89 21 82 L21 24 Q21 17 19 13 Z" fill="url(#bone_flute-bone)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- top opening -->
+  <ellipse cx="32" cy="6.5" rx="15" ry="3.4" fill="#d8c49a" stroke="#14101a" stroke-width="1.6"/>
+  <ellipse cx="32" cy="6.6" rx="7" ry="1.8" fill="#1f1626"/>
+  <!-- bone texture -->
+  <g fill="none" stroke="#a8946a" stroke-width="0.9" stroke-linecap="round" opacity="0.8">
+    <path d="M38 40 q-1 6 0 11 M37 66 q-1 4 0 8 M19.5 14 q4 2 6 0 M38.5 95 q3 1.5 6 -0.5"/>
+  </g>
+  <path d="M25.5 12 L25.5 94" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
+  <!-- blow hole -->
+  <ellipse cx="32" cy="20" rx="3.6" ry="2.4" fill="#1f1626" stroke="#8a7a5c" stroke-width="0.9"/>
+  <!-- black & red thread binding -->
+  <g stroke-linecap="round">
+    <path d="M20.8 27 L43.2 29.5 M20.8 30.2 L43.2 32.7 M20.8 33.4 L43.2 35.9" stroke="#14101a" stroke-width="2.4"/>
+    <path d="M20.8 28.6 L43.2 31.1 M20.8 31.8 L43.2 34.3" stroke="#c43a3a" stroke-width="1.4"/>
+    <path d="M20.8 76 L43.2 78.5 M20.8 79.2 L43.2 81.7 M20.8 82.4 L43.2 84.9" stroke="#14101a" stroke-width="2.4"/>
+    <path d="M20.8 77.6 L43.2 80.1 M20.8 80.8 L43.2 83.3" stroke="#c43a3a" stroke-width="1.4"/>
+  </g>
+  <!-- thread tails -->
+  <path d="M43.2 34 Q50 39 48 48 M43.2 35.5 Q53 40 52.5 50" fill="none" stroke="#c43a3a" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M43.2 33 Q49 36 50.5 44" fill="none" stroke="#14101a" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- finger holes -->
+  <g fill="#1f1626" stroke="#8a7a5c" stroke-width="0.9">
+    <ellipse cx="32" cy="42" rx="3.2" ry="2.4"/>
+    <ellipse cx="32" cy="51" rx="3.2" ry="2.4"/>
+    <ellipse cx="32" cy="60" rx="3.2" ry="2.4"/>
+    <ellipse cx="32" cy="69" rx="3.2" ry="2.4"/>
+  </g>
+  <g fill="#e0524a" opacity="0.9" filter="url(#bone_flute-glow)">
+    <circle cx="32" cy="42" r="1.1"/>
+    <circle cx="32" cy="51" r="1.1"/>
+    <circle cx="32" cy="60" r="1.1"/>
+    <circle cx="32" cy="69" r="1.1"/>
+  </g>
+  <!-- carved blood runes -->
+  <path d="M36.5 88 l2.4 -2.4 M36.5 85.6 l2.4 2.4 M24 46 l2 2 M24 56 l2 -2" stroke="#8e1b2b" stroke-width="1.1" stroke-linecap="round"/>
+  <!-- cord from tail to skull -->
+  <path d="M32 100.5 Q29 105 32 108 Q35 110 32 112" fill="none" stroke="#14101a" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M32 100.5 Q29 105 32 108 Q35 110 32 112" fill="none" stroke="#c43a3a" stroke-width="1.4" stroke-linecap="round"/>
+  <circle cx="32" cy="104.5" r="1.8" fill="#d9a441" stroke="#14101a" stroke-width="0.9"/>
+  <!-- little skull charm -->
+  <path d="M24.5 117 Q24.5 109.5 32 109.5 Q39.5 109.5 39.5 117 Q39.5 120.5 37 121.5 L36.6 124.5 L27.4 124.5 L27 121.5 Q24.5 120.5 24.5 117 Z" fill="url(#bone_flute-skull)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <ellipse cx="29.2" cy="116.8" rx="2.2" ry="2.4" fill="#14101a"/>
+  <ellipse cx="34.8" cy="116.8" rx="2.2" ry="2.4" fill="#14101a"/>
+  <circle cx="29.2" cy="116.8" r="0.8" fill="#e0524a"/>
+  <circle cx="34.8" cy="116.8" r="0.8" fill="#e0524a"/>
+  <path d="M32 119.2 l-1 1.8 h2 Z" fill="#14101a"/>
+  <path d="M29.8 122.5 v2 M32 122.5 v2 M34.2 122.5 v2" stroke="#14101a" stroke-width="0.7"/>
+  <ellipse cx="28.4" cy="112.6" rx="2" ry="1.1" fill="#ffffff" opacity="0.6" transform="rotate(-25 28.4 112.6)"/>
+</svg>

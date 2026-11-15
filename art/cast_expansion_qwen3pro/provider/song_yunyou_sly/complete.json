@@ -1,0 +1,9 @@
+{
+  "character": "song_yunyou",
+  "state": "sly",
+  "asset_id": "song_yunyou_sly",
+  "image_file": "provider/song_yunyou_sly/song_yunyou_sly.png",
+  "sha256": "082f6b44a81de9b5b8f7ab61776a1f81a2616909611df3b5f9de50a142527443",
+  "seed": 151494,
+  "model": "qwen-image-3.0-pro"
+}

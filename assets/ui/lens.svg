@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="lens-bronze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.25" stop-color="#9aa88a"/>
+      <stop offset="0.6" stop-color="#6b7d5a"/>
+      <stop offset="1" stop-color="#3a3f4a"/>
+    </linearGradient>
+    <linearGradient id="lens-handle" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5e0f1c"/>
+      <stop offset="0.45" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </linearGradient>
+    <path id="lens-cloud" d="M89 22 Q86 16 91 14 Q96 13 96 17 Q95.6 20 92.6 19.4 M111 22 Q114 16 109 14 Q104 13 104 17 Q104.4 20 107.4 19.4 M96 17 Q100 12 104 17 M89 22 Q100 26 111 22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </defs>
+  <!-- handle -->
+  <g transform="rotate(-45 172 172)">
+    <path d="M164 150 L180 150 L180 194 Q172 199 164 194 Z" fill="url(#lens-handle)" stroke="#14101a" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M164 166 L180 166 M164 178 L180 178" stroke="#14101a" stroke-width="1.6"/>
+    <path d="M168 154 L168 190" stroke="#e0524a" stroke-width="1.6" stroke-linecap="round" opacity="0.8"/>
+    <path d="M160 146 L184 146 L182 154 L162 154 Z" fill="#d9a441" stroke="#14101a" stroke-width="2.6" stroke-linejoin="round"/>
+    <circle cx="172" cy="195" r="4" fill="#d9a441" stroke="#14101a" stroke-width="2"/>
+  </g>
+  <!-- bronze ring -->
+  <path d="M11 100 A89 89 0 1 0 189 100 A89 89 0 1 0 11 100 Z M25 100 A75 75 0 1 1 175 100 A75 75 0 1 1 25 100 Z" fill="url(#lens-bronze)" fill-rule="evenodd" stroke="#14101a" stroke-width="3"/>
+  <circle cx="100" cy="100" r="77.4" fill="none" stroke="#3a3f4a" stroke-width="2"/>
+  <circle cx="100" cy="100" r="86.8" fill="none" stroke="#f2d27a" stroke-width="1" opacity="0.6"/>
+  <!-- ruyi cloud carvings -->
+  <g stroke="#14101a" stroke-width="3.2" opacity="0.6"><use href="#lens-cloud" transform="rotate(0 100 100)"/><use href="#lens-cloud" transform="rotate(30 100 100)"/><use href="#lens-cloud" transform="rotate(60 100 100)"/><use href="#lens-cloud" transform="rotate(90 100 100)"/><use href="#lens-cloud" transform="rotate(180 100 100)"/><use href="#lens-cloud" transform="rotate(210 100 100)"/><use href="#lens-cloud" transform="rotate(240 100 100)"/><use href="#lens-cloud" transform="rotate(270 100 100)"/><use href="#lens-cloud" transform="rotate(300 100 100)"/><use href="#lens-cloud" transform="rotate(330 100 100)"/></g>
+  <g stroke="#f2d27a" stroke-width="1.4"><use href="#lens-cloud" transform="rotate(0 100 100)"/><use href="#lens-cloud" transform="rotate(30 100 100)"/><use href="#lens-cloud" transform="rotate(60 100 100)"/><use href="#lens-cloud" transform="rotate(90 100 100)"/><use href="#lens-cloud" transform="rotate(180 100 100)"/><use href="#lens-cloud" transform="rotate(210 100 100)"/><use href="#lens-cloud" transform="rotate(240 100 100)"/><use href="#lens-cloud" transform="rotate(270 100 100)"/><use href="#lens-cloud" transform="rotate(300 100 100)"/><use href="#lens-cloud" transform="rotate(330 100 100)"/></g>
+  <!-- highlight arc -->
+  <path d="M30 70 A76 76 0 0 1 70 30" fill="none" stroke="#f4fbff" stroke-width="2.2" stroke-linecap="round" opacity="0.7" transform="translate(-6 -6)"/>
+  <!-- inner glass rim (transparent interior) -->
+  <circle cx="100" cy="100" r="75" fill="none" stroke="#8fd3ff" stroke-width="1.4" opacity="0.7"/>
+</svg>

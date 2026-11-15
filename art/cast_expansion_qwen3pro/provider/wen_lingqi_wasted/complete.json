@@ -1,0 +1,9 @@
+{
+  "character": "wen_lingqi",
+  "state": "wasted",
+  "asset_id": "wen_lingqi_wasted",
+  "image_file": "provider/wen_lingqi_wasted/wen_lingqi_wasted.png",
+  "sha256": "3aab4a47bb57ea0b8b1e410dfe4df287e010f96727851c58546243e34675ff25",
+  "seed": 151445,
+  "model": "qwen-image-3.0-pro"
+}

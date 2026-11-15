@@ -1,0 +1,9 @@
+{
+  "character": "mo_yanqing",
+  "state": "pleased",
+  "asset_id": "mo_yanqing_pleased",
+  "image_file": "provider/mo_yanqing_pleased/mo_yanqing_pleased.png",
+  "sha256": "42781e2409a9d8df8fdd9051cb7330221517ad0b0f539eb7d4de9c930e911ab4",
+  "seed": 151381,
+  "model": "qwen-image-3.0-pro"
+}

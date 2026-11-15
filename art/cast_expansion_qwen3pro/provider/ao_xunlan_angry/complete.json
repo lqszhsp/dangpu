@@ -1,0 +1,9 @@
+{
+  "character": "ao_xunlan",
+  "state": "angry",
+  "asset_id": "ao_xunlan_angry",
+  "image_file": "provider/ao_xunlan_angry/ao_xunlan_angry.png",
+  "sha256": "8268c414d21cdbf0b8aeba4ad31f943db2f3356132cd88066217514b202ada04",
+  "seed": 151092,
+  "model": "qwen-image-3.0-pro"
+}

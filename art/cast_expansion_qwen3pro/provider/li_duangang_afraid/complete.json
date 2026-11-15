@@ -1,0 +1,9 @@
+{
+  "character": "li_duangang",
+  "state": "afraid",
+  "asset_id": "li_duangang_afraid",
+  "image_file": "provider/li_duangang_afraid/li_duangang_afraid.png",
+  "sha256": "96fa1c716134d799213667f7cf26619fe398dc0050a3d8ea3d86514f6b05c1d4",
+  "seed": 151213,
+  "model": "qwen-image-3.0-pro"
+}

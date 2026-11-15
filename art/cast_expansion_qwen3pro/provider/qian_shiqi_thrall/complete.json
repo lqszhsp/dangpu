@@ -1,0 +1,9 @@
+{
+  "character": "qian_shiqi",
+  "state": "thrall",
+  "asset_id": "qian_shiqi_thrall",
+  "image_file": "provider/qian_shiqi_thrall/qian_shiqi_thrall.png",
+  "sha256": "fa282821d4e92ee0ea47fa5e719d381afe01919517554c7784ceb8d8c2823921",
+  "seed": 151356,
+  "model": "qwen-image-3.0-pro"
+}

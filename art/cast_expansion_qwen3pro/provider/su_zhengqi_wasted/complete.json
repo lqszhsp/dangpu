@@ -1,0 +1,9 @@
+{
+  "character": "su_zhengqi",
+  "state": "wasted",
+  "asset_id": "su_zhengqi_wasted",
+  "image_file": "provider/su_zhengqi_wasted/su_zhengqi_wasted.png",
+  "sha256": "cdeb78e2fc69552a37d3ab16aa59c55491986386490d603f037f6a2cc4e3bd6c",
+  "seed": 151465,
+  "model": "qwen-image-3.0-pro"
+}

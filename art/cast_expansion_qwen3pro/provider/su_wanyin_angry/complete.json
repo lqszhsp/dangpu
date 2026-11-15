@@ -1,0 +1,9 @@
+{
+  "character": "su_wanyin",
+  "state": "angry",
+  "asset_id": "su_wanyin_angry",
+  "image_file": "provider/su_wanyin_angry/su_wanyin_angry.png",
+  "sha256": "a9ecacf77880ff5076a4a66599c1a1ab05f801a8169301fad934064ab7633d82",
+  "seed": 151322,
+  "model": "qwen-image-3.0-pro"
+}

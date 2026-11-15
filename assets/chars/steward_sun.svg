@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<defs>
+<linearGradient id="steward_sun-robe" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#2a2232"/><stop offset="0.3" stop-color="#4f4360"/><stop offset="0.55" stop-color="#655878"/><stop offset="1" stop-color="#241c2c"/>
+</linearGradient>
+<linearGradient id="steward_sun-shade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#14101a" stop-opacity="0"/><stop offset="0.5" stop-color="#14101a" stop-opacity="0.12"/><stop offset="1" stop-color="#14101a" stop-opacity="0.6"/>
+</linearGradient>
+<radialGradient id="steward_sun-skin" cx="0.45" cy="0.4" r="0.7">
+<stop offset="0" stop-color="#f4e4cc"/><stop offset="0.6" stop-color="#e2c4a2"/><stop offset="1" stop-color="#b08a66"/>
+</radialGradient>
+<linearGradient id="steward_sun-hair" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2a1838"/><stop offset="0.4" stop-color="#1f1626"/><stop offset="1" stop-color="#14101a"/>
+</linearGradient>
+<linearGradient id="steward_sun-iron" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#9aa88a"/><stop offset="0.5" stop-color="#5c6370"/><stop offset="1" stop-color="#3a3f4a"/>
+</linearGradient>
+<linearGradient id="steward_sun-book" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#5c6370"/><stop offset="0.6" stop-color="#3a3f4a"/><stop offset="1" stop-color="#2a2d34"/>
+</linearGradient>
+<radialGradient id="steward_sun-iris" cx="0.45" cy="0.3" r="0.75">
+<stop offset="0" stop-color="#8a5a1c"/><stop offset="0.45" stop-color="#3a2618"/><stop offset="1" stop-color="#14101a"/>
+</radialGradient>
+<clipPath id="steward_sun-eyeL"><path d="M165,149 Q172,144.5 182,145 Q189,147 191,151.5 Q184,155 175,154.5 Q168,153.5 165,149 Z"/></clipPath>
+<clipPath id="steward_sun-eyeR"><path d="M235,149 Q228,144.5 218,145 Q211,147 209,151.5 Q216,155 225,154.5 Q232,153.5 235,149 Z"/></clipPath>
+</defs>
+
+<!-- 身体 管事袍 -->
+<path d="M180,236 C156,244 122,250 104,268 C84,290 78,350 74,480 L326,480 C322,350 316,290 296,268 C278,250 244,244 220,236 Z" fill="url(#steward_sun-robe)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M180,236 C156,244 122,250 104,268 C84,290 78,350 74,480 L326,480 C322,350 316,290 296,268 C278,250 244,244 220,236 Z" fill="url(#steward_sun-shade)"/>
+<path d="M112,266 C130,254 152,248 174,242 C154,256 134,264 120,282 Z" fill="#cfc4dc" opacity="0.25"/>
+<path d="M236,280 C246,306 250,334 248,364 M140,286 C132,310 130,336 132,364" fill="none" stroke="#14101a" stroke-width="1.4" opacity="0.4"/>
+
+<!-- 交领 -->
+<path d="M182,234 L218,234 L200,276 Z" fill="#e9dfcc" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M188,234 L212,234 L200,262 Z" fill="#d8c49a" opacity="0.5"/>
+<path d="M176,234 L190,234 L206,274 L198,282 Z" fill="#2a1838" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M210,234 L225,234 C211,268 189,302 167,330 L156,322 C178,294 198,264 210,234 Z" fill="#2a1838" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M216,240 C204,268 186,296 164,322" fill="none" stroke="#d8c49a" stroke-width="1" opacity="0.6"/>
+<path d="M182,240 L200,280" fill="none" stroke="#d8c49a" stroke-width="1" opacity="0.6"/>
+
+<!-- 腰带 -->
+<path d="M114,352 Q200,366 286,352 L287,370 Q200,386 113,370 Z" fill="#2a1838" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M118,358 Q200,372 282,358" fill="none" stroke="#5b3474" stroke-width="1.2" opacity="0.8"/>
+
+<!-- 账册 -->
+<g transform="rotate(-8 232 322)">
+<path d="M196,272 L270,272 L270,374 L196,374 Z" fill="#efe2c4" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M198,370 L268,370 M198,366 L268,366" stroke="#d8c49a" stroke-width="1"/>
+<path d="M192,268 L266,268 L266,368 L192,368 Z" fill="url(#steward_sun-book)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M200,268 L200,368" stroke="#14101a" stroke-width="1" opacity="0.5"/>
+<path d="M192,280 L200,280 M192,302 L200,302 M192,324 L200,324 M192,346 L200,346" stroke="#efe2c4" stroke-width="1.6"/>
+<path d="M214,278 L232,278 L232,334 L214,334 Z" fill="#efe2c4" stroke="#14101a" stroke-width="1.4"/>
+<path d="M223,284 L223,292 M219,288 L227,288 M220,298 Q223,302 226,298 M223,304 L223,314 M219,318 L227,318 M221,322 L225,328" fill="none" stroke="#14101a" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M219,326 L227,326 L227,331 L219,331 Z" fill="#c43a3a"/>
+<path d="M240,272 L262,272" stroke="#9aa0aa" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+</g>
+
+<!-- 右臂（执笔） -->
+<path d="M104,268 C86,298 80,358 88,394 C96,412 116,412 128,400 L188,326 L168,298 C152,316 140,332 130,344 C128,318 130,296 136,280 Z" fill="url(#steward_sun-robe)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M96,330 C94,360 96,382 104,396" fill="none" stroke="#14101a" stroke-width="1.3" opacity="0.4"/>
+<path d="M164,294 L192,326 L184,334 L156,302 Z" fill="#2a1838" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<!-- 左臂（托册） -->
+<path d="M296,268 C314,298 320,358 312,394 C304,412 284,412 272,400 L236,356 L250,330 C260,340 268,350 276,358 C278,330 276,298 270,282 Z" fill="url(#steward_sun-robe)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M304,330 C306,360 304,382 296,396" fill="none" stroke="#14101a" stroke-width="1.3" opacity="0.4"/>
+<path d="M254,326 L232,354 L240,362 L262,334 Z" fill="#2a1838" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<!-- 托册之手 -->
+<path d="M252,318 C262,316 268,326 266,336 C264,344 256,348 248,346 L236,342 C232,340 232,334 236,332 L246,334 C244,328 246,320 252,318 Z" fill="url(#steward_sun-skin)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M240,337 L247,338 M254,324 Q258,330 256,338" fill="none" stroke="#a87a54" stroke-width="1.1"/>
+
+<!-- 毛笔 -->
+<path d="M171,248 L176,246 L197,330 L192,332 Z" fill="#8a5a1c" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M173,252 L190,318" stroke="#d9a441" stroke-width="1" opacity="0.7"/>
+<path d="M169,244 L176,242 L177,248 L171,250 Z" fill="#14101a"/>
+<path d="M192,330 L198,328 C202,336 202,344 201,352 C197,346 193,338 192,330 Z" fill="#efe2c4" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/>
+<path d="M196,340 C199,344 200,348 201,352 C198,348 196,344 196,340 Z" fill="#14101a"/>
+<!-- 执笔之手 -->
+<path d="M176,288 C184,282 196,286 198,296 C200,306 194,314 186,316 C178,318 170,312 168,304 C166,296 170,290 176,288 Z" fill="url(#steward_sun-skin)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M178,286 C184,280 190,282 190,288 C188,292 182,292 178,290" fill="url(#steward_sun-skin)" stroke="#14101a" stroke-width="1.4"/>
+<path d="M190,298 Q196,300 197,304 M188,306 Q194,308 195,311" fill="none" stroke="#a87a54" stroke-width="1.1"/>
+
+<!-- 颈 -->
+<path d="M189,198 L187,240 Q200,248 213,240 L211,198 Z" fill="#d8b48c" stroke="#14101a" stroke-width="1.5"/>
+<path d="M189,206 Q200,224 211,206 L211,218 Q200,232 189,218 Z" fill="#8a5a1c" opacity="0.3"/>
+
+<!-- 铁簪 -->
+<path d="M150,82 L246,46" stroke="#14101a" stroke-width="5" stroke-linecap="round"/>
+<path d="M150,82 L246,46" stroke="url(#steward_sun-iron)" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M240,44 L254,40 L256,46 L246,52 Z" fill="url(#steward_sun-iron)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M244,46 L252,43" stroke="#cfefff" stroke-width="1" opacity="0.6"/>
+
+<!-- 发髻 -->
+<path d="M174,74 C172,52 186,40 202,40 C220,40 230,54 226,72 C222,84 206,88 196,86 C184,86 176,82 174,74 Z" fill="url(#steward_sun-hair)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M180,64 C188,52 206,48 220,58 M178,74 C190,66 210,64 224,70" fill="none" stroke="#5b3474" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+<path d="M186,52 C192,46 200,44 208,46" fill="none" stroke="#7a6a90" stroke-width="2.2" stroke-linecap="round" opacity="0.6"/>
+<!-- 耳 -->
+<path d="M164,146 C152,140 150,164 156,174 C160,179 164,176 165,170 Z" fill="url(#steward_sun-skin)" stroke="#14101a" stroke-width="1.5"/>
+<path d="M236,146 C248,140 250,164 244,174 C240,179 236,176 235,170 Z" fill="url(#steward_sun-skin)" stroke="#14101a" stroke-width="1.5"/>
+<path d="M160,152 C157,158 158,165 160,169 M240,152 C243,158 242,165 240,169" fill="none" stroke="#a87a54" stroke-width="1"/>
+
+<!-- 脸 -->
+<path d="M163,126 C163,100 180,86 200,86 C220,86 237,100 237,126 L237,156 C237,186 222,208 200,219 C178,208 163,186 163,156 Z" fill="url(#steward_sun-skin)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M226,124 C238,148 236,182 222,202 C230,182 232,152 226,124 Z" fill="#a87a54" opacity="0.32"/>
+
+<ellipse cx="176" cy="178" rx="8" ry="4.5" fill="#c43a3a" opacity="0.08"/>
+<ellipse cx="224" cy="178" rx="8" ry="4.5" fill="#c43a3a" opacity="0.08"/>
+<!-- 法令纹 细纹 -->
+<path d="M189,186 Q187,190 188,193 M211,186 Q213,190 212,193" fill="none" stroke="#a87a54" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+
+<!-- 头发 中分紧梳 -->
+<path d="M157,152 C150,112 166,82 200,80 C234,82 250,112 243,152 C241,138 238,126 230,118 C220,112 208,110 200,116 C192,110 180,112 170,118 C162,126 159,138 157,152 Z" fill="url(#steward_sun-hair)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M200,84 L200,114" stroke="#5b3474" stroke-width="1.2" opacity="0.7"/>
+<path d="M196,88 C184,90 172,98 166,112 M204,88 C216,90 228,98 234,112 M194,96 C184,100 176,106 170,116 M206,96 C216,100 224,106 230,116" fill="none" stroke="#5b3474" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+<path d="M163,118 C162,126 160,134 160,142" fill="none" stroke="#9aa0aa" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+<path d="M176,88 C186,82 196,82 200,84" fill="none" stroke="#7a6a90" stroke-width="2.2" stroke-linecap="round" opacity="0.5"/>
+
+<!-- 眉 平直微压 -->
+<path d="M162,136 Q177,129 193,135 L192,138.5 Q178,134 163,139 Z" fill="#1f1626"/>
+<path d="M238,136 Q223,129 207,135 L208,138.5 Q222,134 237,139 Z" fill="#1f1626"/>
+
+<!-- 眼 锐利 上挑 -->
+<path d="M165,149 Q172,144.5 182,145 Q189,147 191,151.5 Q184,155 175,154.5 Q168,153.5 165,149 Z" fill="#f4fbff"/>
+<g clip-path="url(#steward_sun-eyeL)">
+<circle cx="180" cy="150.5" r="5.3" fill="url(#steward_sun-iris)"/>
+<circle cx="180" cy="150.8" r="2.4" fill="#14101a"/>
+<path d="M160,142 L196,142 L196,150.5 Q180,147.5 160,150.5 Z" fill="#3a3f4a" opacity="0.45"/>
+</g>
+<circle cx="181.8" cy="148.8" r="1.4" fill="#ffffff"/>
+<path d="M163,149.5 Q171,143 182,143.8 Q190,145.5 192.5,151" fill="none" stroke="#14101a" stroke-width="2.8" stroke-linecap="round"/>
+<path d="M164,149 L159.5,145.5" stroke="#14101a" stroke-width="2" stroke-linecap="round"/>
+<path d="M169,156 Q180,157.5 189,153.5" fill="none" stroke="#7a4a3a" stroke-width="0.9" opacity="0.8"/>
+<path d="M235,149 Q228,144.5 218,145 Q211,147 209,151.5 Q216,155 225,154.5 Q232,153.5 235,149 Z" fill="#f4fbff"/>
+<g clip-path="url(#steward_sun-eyeR)">
+<circle cx="220" cy="150.5" r="5.3" fill="url(#steward_sun-iris)"/>
+<circle cx="220" cy="150.8" r="2.4" fill="#14101a"/>
+<path d="M240,142 L204,142 L204,150.5 Q220,147.5 240,150.5 Z" fill="#3a3f4a" opacity="0.45"/>
+</g>
+<circle cx="221.8" cy="148.8" r="1.4" fill="#ffffff"/>
+<path d="M237,149.5 Q229,143 218,143.8 Q210,145.5 207.5,151" fill="none" stroke="#14101a" stroke-width="2.8" stroke-linecap="round"/>
+<path d="M236,149 L240.5,145.5" stroke="#14101a" stroke-width="2" stroke-linecap="round"/>
+<path d="M231,156 Q220,157.5 211,153.5" fill="none" stroke="#7a4a3a" stroke-width="0.9" opacity="0.8"/>
+
+<!-- 鼻 -->
+<path d="M201,162 C202,170 203,176 200,181 C202,183 205,183 207,181" fill="none" stroke="#a87a54" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M197,164 C196,170 196,175 197,178" fill="none" stroke="#ffffff" stroke-width="1.4" opacity="0.5" stroke-linecap="round"/>
+
+<!-- 薄唇紧抿 -->
+<path d="M191,197 Q200,196.2 209,197" fill="none" stroke="#8e1b2b" stroke-width="2" stroke-linecap="round"/>
+<path d="M194,196.6 Q200,195.4 206,196.6" fill="none" stroke="#c43a3a" stroke-width="0.9" opacity="0.6"/>
+<path d="M189.5,196.8 L188,196.4 M210.5,196.8 L212,196.4" stroke="#a87a54" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+<path d="M195,201 Q200,202 205,201" fill="none" stroke="#a87a54" stroke-width="1" opacity="0.55"/>
+</svg>

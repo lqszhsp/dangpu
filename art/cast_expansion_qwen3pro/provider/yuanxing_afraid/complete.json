@@ -1,0 +1,9 @@
+{
+  "character": "yuanxing",
+  "state": "afraid",
+  "asset_id": "yuanxing_afraid",
+  "image_file": "provider/yuanxing_afraid/yuanxing_afraid.png",
+  "sha256": "590fea4519528d07b3c91d8ee13533bc3fa51697015b5f29fcd4fcbf224eca45",
+  "seed": 151543,
+  "model": "qwen-image-3.0-pro"
+}

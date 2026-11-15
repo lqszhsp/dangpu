@@ -1,0 +1,9 @@
+{
+  "character": "wen_lingqi",
+  "state": "pleased",
+  "asset_id": "wen_lingqi_pleased",
+  "image_file": "provider/wen_lingqi_pleased/wen_lingqi_pleased.png",
+  "sha256": "b31736ef00c92f66d1e6a18abc440ae110ead45b5be98ce153b3ef8fb1e67580",
+  "seed": 151441,
+  "model": "qwen-image-3.0-pro"
+}

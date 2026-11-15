@@ -1,0 +1,9 @@
+{
+  "character": "hui_qiaosuo",
+  "state": "angry",
+  "asset_id": "hui_qiaosuo_angry",
+  "image_file": "provider/hui_qiaosuo_angry/hui_qiaosuo_angry.png",
+  "sha256": "f76b7d4cf4d17349953b56134de10cea7a851de2dff3c5740c7022bed4b994a0",
+  "seed": 151122,
+  "model": "qwen-image-3.0-pro"
+}

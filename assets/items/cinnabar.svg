@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="cinnabar-stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5c6370"/>
+      <stop offset="0.5" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <radialGradient id="cinnabar-ink" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#ff8a70"/>
+      <stop offset="0.35" stop-color="#e0524a"/>
+      <stop offset="0.75" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#8e1b2b"/>
+    </radialGradient>
+    <linearGradient id="cinnabar-ore" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0524a"/>
+      <stop offset="0.5" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="32" cy="55.6" rx="28" ry="4.2" fill="#14101a" opacity="0.45"/>
+  <!-- inkstone: side -->
+  <path d="M3 30 L3 38 Q3 50 18 50.6 L34 50.6 Q49 50 49 38 L49 30 Z" fill="url(#cinnabar-stone)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M5.6 40 Q7 47.4 17 48.4" fill="none" stroke="#9aa88a" stroke-width="0.9" stroke-linecap="round" opacity="0.5"/>
+  <!-- inkstone top -->
+  <ellipse cx="26" cy="30" rx="23" ry="15" fill="#5c6370" stroke="#14101a" stroke-width="1.8"/>
+  <ellipse cx="26" cy="30" rx="19.6" ry="12" fill="#3a3f4a" stroke="#14101a" stroke-width="1"/>
+  <!-- carved cloud rim -->
+  <path d="M11 20 q2.6 -3 5.2 0 q2.6 -3 5.2 0 M31 18.6 q2.6 -3 5.2 0 q2.6 -3 5.2 0" fill="none" stroke="#9aa88a" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M5 26 Q7 17.6 18 15.6" fill="none" stroke="#cfd6dc" stroke-width="1.1" stroke-linecap="round" opacity="0.6"/>
+  <!-- ink pool (crescent at top) -->
+  <path d="M10.6 26 Q14 19.6 26 19.4 Q38 19.6 41.4 26 Q34 23.4 26 23.4 Q18 23.4 10.6 26 Z" fill="#8e1b2b" stroke="#14101a" stroke-width="0.9" stroke-linejoin="round"/>
+  <!-- cinnabar ink on grinding hall -->
+  <path d="M9 32 Q10 25.4 26 25.4 Q42 25.4 43 32 Q42 39.6 26 39.8 Q10 39.6 9 32 Z" fill="url(#cinnabar-ink)" stroke="#5e0f1c" stroke-width="1"/>
+  <path d="M13 30 Q16 27.6 24 27.4" fill="none" stroke="#ffe0d0" stroke-width="1.3" stroke-linecap="round" opacity="0.85"/>
+  <ellipse cx="31" cy="35" rx="5" ry="1.4" fill="#ff8a70" opacity="0.5"/>
+  <!-- ink stick resting -->
+  <g transform="rotate(-24 30 14)">
+    <rect x="19" y="10.6" width="20" height="5.4" rx="1" fill="#c43a3a" stroke="#14101a" stroke-width="1.3"/>
+    <rect x="35" y="10.6" width="4" height="5.4" fill="#8e1b2b" stroke="#14101a" stroke-width="1"/>
+    <path d="M21 12 L33 12" stroke="#f2d27a" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M24 14 h2 M28 14 h2" stroke="#f2d27a" stroke-width="0.7"/>
+  </g>
+  <!-- drip on side -->
+  <path d="M40.6 43 Q41.2 46.6 40.2 48 Q39 49 39 46.4 Q39 44.4 38.6 43.6 Z" fill="#c43a3a" stroke="#5e0f1c" stroke-width="0.6"/>
+  <!-- cinnabar ore -->
+  <path d="M40 54 L37 44 L42 34.6 L50 30 L58 35 L60 46 L55 54.6 Z" fill="url(#cinnabar-ore)" stroke="#14101a" stroke-width="1.7" stroke-linejoin="round"/>
+  <g stroke="#5e0f1c" stroke-width="0.8" fill="none" stroke-linejoin="round">
+    <path d="M42 34.6 L47 41 L50 30 M47 41 L58 35 M47 41 L48 54.4 M47 41 L37 44"/>
+  </g>
+  <path d="M42 34.6 L47 41 L50 30 Z" fill="#ff8a70" opacity="0.7"/>
+  <path d="M47 41 L58 35 L60 46 Z" fill="#8e1b2b" opacity="0.6"/>
+  <path d="M43.6 35.2 L48.4 32" stroke="#ffe0d0" stroke-width="1" stroke-linecap="round" opacity="0.9"/>
+  <!-- gangue (grey matrix) -->
+  <path d="M40 54 L37 44 L39.4 47 L44 50 L48 54.4 Z" fill="#9aa88a" stroke="#14101a" stroke-width="1" stroke-linejoin="round"/>
+  <!-- glints -->
+  <g fill="#fff3c8">
+    <path d="M52 22 L52.7 24.6 L55.4 25.4 L52.7 26.2 L52 28.8 L51.3 26.2 L48.6 25.4 L51.3 24.6 Z"/>
+    <circle cx="54" cy="40" r="0.8"/>
+  </g>
+  <g fill="#e0524a"><circle cx="34" cy="53.6" r="0.8"/><circle cx="31" cy="52.6" r="0.5"/></g>
+</svg>

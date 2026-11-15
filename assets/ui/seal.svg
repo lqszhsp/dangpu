@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <defs>
+    <radialGradient id="seal-ink" cx="0.4" cy="0.4" r="0.8">
+      <stop offset="0" stop-color="#e0524a"/>
+      <stop offset="0.55" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#8e1b2b"/>
+    </radialGradient>
+  </defs>
+  <g transform="rotate(-3 48 48)">
+    <!-- ink body: rough square outline with worn specks punched out (evenodd) -->
+    <path fill="url(#seal-ink)" fill-rule="evenodd" d="M9 10 L20 8.4 L31 9.6 L44 8 L57 9.2 L70 8.2 L80 9.6 L87.6 9 L88.4 20 L87 32 L88.6 46 L87.4 60 L88.8 72 L87.6 87.4 L74 88.4 L61 87 L48 88.6 L34 87.2 L22 88.6 L8.6 87.8 L9.4 74 L8 62 L9.6 48 L8.2 34 L9.6 22 Z
+      M14 30 Q15.4 28.6 16.4 30.2 Q15.6 31.8 14 30 Z
+      M80 18 Q82 17 82.6 19 Q81 20.4 80 18 Z
+      M24 81 Q26 79.6 27.4 81.4 Q25.6 83 24 81 Z
+      M70 79 Q71 78 72.4 79.4 Q71 80.8 70 79 Z
+      M50 14 Q51.4 13.4 51.6 15 Q50.4 15.6 50 14 Z
+      M83 58 Q84.6 57.4 84.6 59.6 Q83 60 83 58 Z"/>
+    <!-- carved border -->
+    <path d="M16 16 L80 16 L80 80 L16 80 Z" fill="none" stroke="#efe2c4" stroke-width="3" stroke-linejoin="round"/>
+    <!-- abstract pattern: mirrored thunder-fret spirals -->
+    <g fill="none" stroke="#efe2c4" stroke-width="3.4" stroke-linecap="square" stroke-linejoin="miter">
+      <path id="seal-fret" d="M23 44 L23 23 L44 23 L44 44 L31 44 L31 31 L37 31 L37 37"/>
+      <use href="#seal-fret" transform="matrix(-1 0 0 1 96 0)"/>
+      <use href="#seal-fret" transform="matrix(1 0 0 -1 0 96)"/>
+      <use href="#seal-fret" transform="matrix(-1 0 0 -1 96 96)"/>
+    </g>
+    <path d="M48 20 L48 76 M20 48 L76 48" stroke="#efe2c4" stroke-width="1.6" stroke-dasharray="2 3"/>
+    <!-- worn ink gaps over strokes -->
+    <g fill="#c43a3a">
+      <circle cx="44" cy="34" r="1.6"/><circle cx="60" cy="73" r="1.4"/><circle cx="16" cy="54" r="1.6"/><circle cx="80" cy="40" r="1.4"/><circle cx="36" cy="80" r="1.6"/>
+    </g>
+    <path d="M12 12 L30 11 M66 85 L84 84.4" stroke="#5e0f1c" stroke-width="1.2" opacity="0.6"/>
+  </g>
+</svg>

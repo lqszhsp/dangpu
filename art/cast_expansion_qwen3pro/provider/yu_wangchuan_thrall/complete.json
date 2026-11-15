@@ -1,0 +1,9 @@
+{
+  "character": "yu_wangchuan",
+  "state": "thrall",
+  "asset_id": "yu_wangchuan_thrall",
+  "image_file": "provider/yu_wangchuan_thrall/yu_wangchuan_thrall.png",
+  "sha256": "715e3acf2b9d382288c491a5ce1ba96bda65c9f2887738d9a0ff6f2c008258a1",
+  "seed": 151506,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 192">
+  <defs>
+    <linearGradient id="demon_blade-steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3a3f4a"/>
+      <stop offset="0.35" stop-color="#1f1626"/>
+      <stop offset="0.5" stop-color="#14101a"/>
+      <stop offset="0.52" stop-color="#2a1838"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="demon_blade-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.5" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#8a5a1c"/>
+    </linearGradient>
+    <linearGradient id="demon_blade-groove" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e0524a" stop-opacity="0.2"/>
+      <stop offset="0.6" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#e0524a"/>
+    </linearGradient>
+    <linearGradient id="demon_blade-grip" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3a0a12"/>
+      <stop offset="0.45" stop-color="#8e1b2b"/>
+      <stop offset="1" stop-color="#3a0a12"/>
+    </linearGradient>
+    <filter id="demon_blade-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <!-- dark aura -->
+  <ellipse cx="32" cy="80" rx="20" ry="76" fill="#5e0f1c" opacity="0.35" filter="url(#demon_blade-blur)"/>
+  <!-- shadow -->
+  <ellipse cx="32" cy="186" rx="13" ry="3" fill="#14101a" opacity="0.55"/>
+  <!-- soul wisps behind blade (glow) -->
+  <g fill="none" stroke="#8fd3ff" stroke-linecap="round" filter="url(#demon_blade-blur)" opacity="0.75">
+    <path d="M40 118 Q52 108 40 96 Q26 84 38 70 Q48 58 36 46 Q28 38 34 24" stroke-width="4"/>
+    <path d="M22 112 Q12 100 22 88 Q30 78 22 64" stroke-width="3"/>
+  </g>
+  <!-- back halves of wisps -->
+  <path d="M40 96 Q26 84 38 70 M22 88 Q30 78 22 64" fill="none" stroke="#4a8fb8" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+  <!-- serrated blade -->
+  <path d="M23.5 128 L20.6 121 L24 115.3 L21.5 108.4 L24.5 102.7 L22.4 95.7 L25.1 90 L23.3 83 L25.7 77.3 L24.3 70.4 L26.4 64.7 L25.4 57.7 L27.1 52 L26.5 45 L28 39.3 L27.8 32.4 L29 26.7 L29.6 20 L32 6 L34.4 20 L35 26.7 L36.2 32.4 L36 39.3 L37.5 45 L36.9 52 L38.6 57.7 L37.6 64.7 L39.7 70.4 L38.3 77.3 L40.7 83 L38.9 90 L41.6 95.7 L39.5 102.7 L42.5 108.4 L40 115.3 L43.4 121 L40.5 128 Z" fill="url(#demon_blade-steel)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <!-- crimson edge temper -->
+  <path d="M24.8 124 L23.4 119.5 L25.8 114.5 L24 108.5 L26.2 102.5 L24.8 96 L26.6 90 L25.4 83.5 L27.2 77.5 L26.4 71 L28 65 L27.4 58.5 L28.6 52.5 L28.4 46 L29.5 40 L29.5 33 L30.4 27 L30.8 21 L32 12" fill="none" stroke="#c43a3a" stroke-width="1" stroke-linejoin="round" opacity="0.9"/>
+  <path d="M39.2 124 L40.6 119.5 L38.2 114.5 L40 108.5 L37.8 102.5 L39.2 96 L37.4 90 L38.6 83.5 L36.8 77.5 L37.6 71 L36 65 L36.6 58.5 L35.4 52.5 L35.6 46 L34.5 40 L34.5 33 L33.6 27 L33.2 21 L32 12" fill="none" stroke="#8e1b2b" stroke-width="1" stroke-linejoin="round" opacity="0.9"/>
+  <!-- blood groove -->
+  <path d="M31 30 L32 22 L33 30 L33.2 126 L30.8 126 Z" fill="url(#demon_blade-groove)" stroke="#14101a" stroke-width="0.8" stroke-linejoin="round"/>
+  <!-- runes along groove -->
+  <g fill="none" stroke="#f2d27a" stroke-width="0.7" stroke-linecap="round" opacity="0.8">
+    <path d="M32 50 v3 M31.2 51.5 h1.6 M32 70 l-0.8 2 h1.6 Z M31.2 90 l1.6 2 M32.8 90 l-1.6 2 M32 108 v3 M31.2 110 h1.6"/>
+  </g>
+  <!-- blade highlight -->
+  <path d="M27.5 120 L29.4 40" stroke="#9aa88a" stroke-width="1" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30.6 22 L31.4 12" stroke="#cfefff" stroke-width="0.9" stroke-linecap="round" opacity="0.8"/>
+  <!-- soul wisps in front -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M40 118 Q52 108 40 96 M38 70 Q48 58 36 46 Q28 38 34 24" stroke="#cfefff" stroke-width="2"/>
+    <path d="M22 112 Q12 100 22 88 M22 64 Q16 56 20 48" stroke="#cfefff" stroke-width="1.6"/>
+    <path d="M40 118 Q52 108 40 96 M38 70 Q48 58 36 46 Q28 38 34 24" stroke="#f4fbff" stroke-width="0.7"/>
+  </g>
+  <!-- ghost faces at wisp heads -->
+  <g stroke="#4a8fb8" stroke-width="0.8">
+    <path d="M30 24 Q30 17 35 17 Q40 17 39.5 23 Q39 28 34 29 Q30 28 30 24 Z" fill="#cfefff"/>
+    <path d="M16 48 Q16 43 20 43 Q24 43 24 47.5 Q23.5 51.5 20 52 Q16.5 51 16 48 Z" fill="#cfefff"/>
+  </g>
+  <g fill="#1f1626">
+    <ellipse cx="33.2" cy="22" rx="0.9" ry="1.3"/><ellipse cx="36.8" cy="22" rx="0.9" ry="1.3"/><ellipse cx="35" cy="26" rx="1" ry="1.4"/>
+    <circle cx="18.8" cy="46.6" r="0.7"/><circle cx="21.6" cy="46.6" r="0.7"/><ellipse cx="20.2" cy="49.6" rx="0.7" ry="1.1"/>
+  </g>
+  <!-- grip -->
+  <path d="M28.5 142 L35.5 142 L35 172 L29 172 Z" fill="url(#demon_blade-grip)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <g fill="none" stroke="#14101a" stroke-width="1" stroke-linecap="round">
+    <path d="M28.7 146 L35.3 149 M28.8 151 L35.2 154 M28.8 156 L35.2 159 M28.9 161 L35.1 164 M29 166 L35 169"/>
+  </g>
+  <path d="M30.5 144 L30.6 170" stroke="#e0524a" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <!-- pommel -->
+  <path d="M27 172 L37 172 L38.5 177 L32 186 L25.5 177 Z" fill="url(#demon_blade-gold)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <circle cx="32" cy="177.5" r="2.4" fill="#c43a3a" stroke="#14101a" stroke-width="1"/>
+  <circle cx="31.3" cy="176.8" r="0.7" fill="#ffd6cc"/>
+  <!-- guard: curved horns -->
+  <path d="M32 130 Q20 128 12 122 Q7 118 6 110 Q11 118 18 120 Q25 121 30 124 Z" fill="url(#demon_blade-gold)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M32 130 Q44 128 52 122 Q57 118 58 110 Q53 118 46 120 Q39 121 34 124 Z" fill="url(#demon_blade-gold)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M10 117 Q15 121 22 122.5 M54 117 Q49 121 42 122.5" fill="none" stroke="#8a5a1c" stroke-width="0.9"/>
+  <!-- guard: demon face -->
+  <path d="M21 128 Q22 123 27 122 L32 125 L37 122 Q42 123 43 128 Q43 136 38 140 Q35 144 32 145 Q29 144 26 140 Q21 136 21 128 Z" fill="url(#demon_blade-gold)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- small horns on face -->
+  <path d="M23.5 124 L20 117 L26.5 122.5 Z M40.5 124 L44 117 L37.5 122.5 Z" fill="#f2d27a" stroke="#14101a" stroke-width="1.1" stroke-linejoin="round"/>
+  <!-- brow and eyes -->
+  <path d="M24 128 L30 130.5 M40 128 L34 130.5" stroke="#14101a" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M25 130 Q27.5 129.5 29.5 131.5 Q27 133 25 130 Z M39 130 Q36.5 129.5 34.5 131.5 Q37 133 39 130 Z" fill="#e0524a" stroke="#14101a" stroke-width="0.7"/>
+  <!-- snarling mouth with fangs -->
+  <path d="M26.5 136 Q32 134 37.5 136 Q36 141 32 141.5 Q28 141 26.5 136 Z" fill="#14101a"/>
+  <path d="M28 136 L28.8 139 L29.6 135.5 Z M36 136 L35.2 139 L34.4 135.5 Z M30.5 140.8 L31.2 138.5 L32 141 L32.8 138.5 L33.5 140.8" fill="#efe2c4" stroke="#14101a" stroke-width="0.4" stroke-linejoin="round"/>
+  <circle cx="32" cy="127" r="1.2" fill="#c43a3a" stroke="#14101a" stroke-width="0.6"/>
+  <path d="M23 126 Q24.5 123.5 27 123.2" fill="none" stroke="#f4fbff" stroke-width="0.9" stroke-linecap="round" opacity="0.7"/>
+  <!-- soul motes -->
+  <g fill="#8fd3ff">
+    <circle cx="48" cy="40" r="1"/><circle cx="14" cy="76" r="0.9"/><circle cx="50" cy="84" r="0.8"/><circle cx="12" cy="30" r="0.8"/>
+  </g>
+</svg>

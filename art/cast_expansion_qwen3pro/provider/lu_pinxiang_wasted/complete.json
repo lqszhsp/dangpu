@@ -1,0 +1,9 @@
+{
+  "character": "lu_pinxiang",
+  "state": "wasted",
+  "asset_id": "lu_pinxiang_wasted",
+  "image_file": "provider/lu_pinxiang_wasted/lu_pinxiang_wasted.png",
+  "sha256": "7f77c6e0c97c4a15a2253fe91dc89e8e94be999ef0346ba279eac85e4cf7d718",
+  "seed": 151405,
+  "model": "qwen-image-3.0-pro"
+}

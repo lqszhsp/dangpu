@@ -1,0 +1,9 @@
+{
+  "character": "gui_dengpo",
+  "state": "afraid",
+  "asset_id": "gui_dengpo_afraid",
+  "image_file": "provider/gui_dengpo_afraid/gui_dengpo_afraid.png",
+  "sha256": "befe8af2421fda2e26e8a5e5475e3a0e322af9ce26c8b73b5e5dbfc460996bbc",
+  "seed": 151303,
+  "model": "qwen-image-3.0-pro"
+}

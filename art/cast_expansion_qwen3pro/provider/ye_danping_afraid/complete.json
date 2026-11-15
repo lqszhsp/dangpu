@@ -1,0 +1,9 @@
+{
+  "character": "ye_danping",
+  "state": "afraid",
+  "asset_id": "ye_danping_afraid",
+  "image_file": "provider/ye_danping_afraid/ye_danping_afraid.png",
+  "sha256": "6cbcfc2da6de9a949b157183bf9fc6e3f26be10806a17eeadf0659cb7e73610a",
+  "seed": 151393,
+  "model": "qwen-image-3.0-pro"
+}

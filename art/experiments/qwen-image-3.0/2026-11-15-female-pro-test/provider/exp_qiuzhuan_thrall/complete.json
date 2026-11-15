@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_qiuzhuan_thrall",
+  "image_file": "provider/exp_qiuzhuan_thrall/exp_qiuzhuan_thrall.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115016,
+  "sha256": "9465a6d5725a9bd2358e119492e6c6cbcad488fde1144ae76771815e8d293ebd"
+}

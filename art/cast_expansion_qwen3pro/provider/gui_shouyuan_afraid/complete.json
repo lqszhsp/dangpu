@@ -1,0 +1,9 @@
+{
+  "character": "gui_shouyuan",
+  "state": "afraid",
+  "asset_id": "gui_shouyuan_afraid",
+  "image_file": "provider/gui_shouyuan_afraid/gui_shouyuan_afraid.png",
+  "sha256": "372fca116ca020b5586247459d1baa5b629ee5486bdf359b1994d19426105765",
+  "seed": 151193,
+  "model": "qwen-image-3.0-pro"
+}

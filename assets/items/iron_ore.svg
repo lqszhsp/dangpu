@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="iron_ore-top" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#5c6370"/>
+      <stop offset="0.5" stop-color="#5b3474"/>
+      <stop offset="1" stop-color="#2a1838"/>
+    </linearGradient>
+    <linearGradient id="iron_ore-right" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3d2350"/>
+      <stop offset="0.6" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <linearGradient id="iron_ore-front" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a3f4a"/>
+      <stop offset="0.5" stop-color="#2a1838"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <radialGradient id="iron_ore-glow">
+      <stop offset="0" stop-color="#8fd3ff" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#5b3474" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="iron_ore-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.4"/>
+    </filter>
+  </defs>
+  <ellipse cx="33" cy="56" rx="25" ry="5" fill="#14101a" opacity="0.4"/>
+  <!-- facets -->
+  <path d="M6 40 L10 24 L24 28 L20 44 L28 58 L12 52 Z" fill="#1f1626"/>
+  <path d="M10 24 L20 12 L34 7 L48 12 L40 24 L24 28 Z" fill="url(#iron_ore-top)"/>
+  <path d="M48 12 L58 26 L57 44 L44 40 L40 24 Z" fill="url(#iron_ore-right)"/>
+  <path d="M24 28 L40 24 L44 40 L46 56 L28 58 L20 44 Z" fill="url(#iron_ore-front)"/>
+  <path d="M44 40 L57 44 L46 56 Z" fill="#14101a"/>
+  <!-- inner facet lines -->
+  <path d="M10 24 L24 28 L40 24 L48 12 M24 28 L20 44 L28 58 M40 24 L44 40 L46 56 M44 40 L57 44 M20 12 L27 18 L24 28 M34 7 L36 16 L40 24" fill="none" stroke="#14101a" stroke-width="1" stroke-linejoin="round" opacity="0.85"/>
+  <!-- metallic sheen -->
+  <path d="M11.5 23.5 L20.5 13 L33.5 8.5" fill="none" stroke="#8fd3ff" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+  <path d="M24.5 27 L39.5 23.4 L47.2 13" fill="none" stroke="#cfefff" stroke-width="0.8" stroke-linecap="round" opacity="0.55"/>
+  <path d="M41 25 L44.6 39 L56 42.6" fill="none" stroke="#4a8fb8" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <path d="M21 14.5 L26 18.4 L23 26" fill="#8fd3ff" opacity="0.18"/>
+  <path d="M35 8.6 L46.6 12.6 L39.6 22.4 L36.8 15.8 Z" fill="#cfefff" opacity="0.14"/>
+  <path d="M8 38 L11 26 L16 27.4" fill="none" stroke="#5b3474" stroke-width="0.9" stroke-linecap="round"/>
+  <g fill="#cfefff">
+    <circle cx="27" cy="15" r="0.9" opacity="0.9"/>
+    <circle cx="52" cy="25" r="0.7" opacity="0.6"/>
+    <circle cx="14" cy="31" r="0.6" opacity="0.5"/>
+  </g>
+  <!-- glowing fissure -->
+  <ellipse cx="33" cy="40" rx="10" ry="12" fill="url(#iron_ore-glow)"/>
+  <path d="M27 30 L31 35 L29.5 40 L34.5 45 L33 50 L37.5 55" fill="none" stroke="#8fd3ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#iron_ore-blur)"/>
+  <path d="M27 30 L31 35 L29.5 40 L34.5 45 L33 50 L37.5 55 M31 35 L36 34.5 M34.5 45 L39 43" fill="none" stroke="#14101a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M27.6 30.8 L30.8 35 L29.4 40 L34.2 45 L32.9 50 L36.8 54.4" fill="none" stroke="#cfefff" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M31.6 35.2 L35.4 34.8" fill="none" stroke="#8fd3ff" stroke-width="0.6" stroke-linecap="round"/>
+  <!-- outline -->
+  <path d="M6 40 L10 24 L20 12 L34 7 L48 12 L58 26 L57 44 L46 56 L28 58 L12 52 Z" fill="none" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+</svg>

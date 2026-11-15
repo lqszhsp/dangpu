@@ -1,0 +1,9 @@
+{
+  "character": "su_cailing",
+  "state": "wasted",
+  "asset_id": "su_cailing_wasted",
+  "image_file": "provider/su_cailing_wasted/su_cailing_wasted.png",
+  "sha256": "e9a340efc731a59f465ef4969fd71d046a02d483f35fc7666b0b5dc2399ac8a7",
+  "seed": 151515,
+  "model": "qwen-image-3.0-pro"
+}

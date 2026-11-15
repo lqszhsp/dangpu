@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<defs>
+<linearGradient id="ren_merchant-shirt" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#a8977a"/><stop offset="0.3" stop-color="#e9dfcc"/><stop offset="0.6" stop-color="#efe2c4"/><stop offset="1" stop-color="#8f7f66"/>
+</linearGradient>
+<linearGradient id="ren_merchant-shade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#14101a" stop-opacity="0"/><stop offset="0.5" stop-color="#14101a" stop-opacity="0.1"/><stop offset="1" stop-color="#14101a" stop-opacity="0.55"/>
+</linearGradient>
+<radialGradient id="ren_merchant-skin" cx="0.45" cy="0.4" r="0.7">
+<stop offset="0" stop-color="#fbeedb"/><stop offset="0.6" stop-color="#f0d4b4"/><stop offset="1" stop-color="#c99a72"/>
+</radialGradient>
+<linearGradient id="ren_merchant-scarf" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#6c9ab4"/><stop offset="0.5" stop-color="#3f6f8a"/><stop offset="1" stop-color="#22394a"/>
+</linearGradient>
+<linearGradient id="ren_merchant-hair" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#3a2c3e"/><stop offset="0.6" stop-color="#1f1626"/><stop offset="1" stop-color="#14101a"/>
+</linearGradient>
+<radialGradient id="ren_merchant-iris" cx="0.45" cy="0.3" r="0.75">
+<stop offset="0" stop-color="#d9a441"/><stop offset="0.45" stop-color="#7a4a1c"/><stop offset="1" stop-color="#14101a"/>
+</radialGradient>
+<linearGradient id="ren_merchant-wood" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#b0743a"/><stop offset="0.5" stop-color="#8a5a1c"/><stop offset="1" stop-color="#4a2a10"/>
+</linearGradient>
+<clipPath id="ren_merchant-eyeL"><path d="M164,155 Q170,146 180,145.5 Q189,146 192,153 Q184,158 176,158 Q169,158 164,155 Z"/></clipPath>
+<clipPath id="ren_merchant-eyeR"><path d="M236,155 Q230,146 220,145.5 Q211,146 208,153 Q216,158 224,158 Q231,158 236,155 Z"/></clipPath>
+<filter id="ren_merchant-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+
+<ellipse cx="200" cy="250" rx="150" ry="170" fill="#d9a441" opacity="0.10" filter="url(#ren_merchant-blur)"/>
+
+<!-- 头巾后摆 -->
+<path d="M238,78 C262,90 272,120 286,150 C280,128 284,108 276,92 Z" fill="#2c4a5e" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M244,84 C268,104 270,140 262,176 C276,150 282,118 268,94 Z" fill="url(#ren_merchant-scarf)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+
+<!-- 后发 -->
+<path d="M151,126 C144,160 146,190 158,208 C172,216 228,216 242,208 C254,190 256,160 249,126 Z" fill="url(#ren_merchant-hair)" stroke="#14101a" stroke-width="2"/>
+
+<!-- 身体 短衫 -->
+<path d="M174,236 C146,246 112,252 92,272 C70,296 60,350 56,480 L344,480 C340,350 330,296 308,272 C288,252 254,246 226,236 Z" fill="url(#ren_merchant-shirt)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M174,236 C146,246 112,252 92,272 C70,296 60,350 56,480 L344,480 C340,350 330,296 308,272 C288,252 254,246 226,236 Z" fill="url(#ren_merchant-shade)"/>
+<!-- 内衬与交领 -->
+<path d="M176,236 L224,236 L203,290 Z" fill="#3f6f8a" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M172,236 L184,236 L208,288 L200,296 Z" fill="#2c4a5e" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M216,236 L230,236 C214,276 186,320 162,352 L150,344 C176,310 202,272 216,236 Z" fill="#2c4a5e" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M222,240 C206,276 180,316 156,346" fill="none" stroke="#8fd3ff" stroke-width="1" opacity="0.5"/>
+<!-- 衣褶 -->
+<path d="M240,262 C252,290 258,320 256,350 M126,270 C116,300 112,330 114,360 M276,266 C290,296 296,330 294,360" fill="none" stroke="#14101a" stroke-width="1.4" opacity="0.35"/>
+<path d="M104,270 C124,256 150,248 172,242 C150,258 126,266 110,286 Z" fill="#ffffff" opacity="0.35"/>
+
+<!-- 辫子 -->
+<g stroke="#14101a" stroke-width="1.5" stroke-linejoin="round">
+<path d="M160,196 C150,214 146,232 148,246 C140,250 136,236 146,214 Z" fill="#1f1626"/>
+<ellipse cx="146" cy="252" rx="11" ry="14" fill="url(#ren_merchant-hair)"/>
+<ellipse cx="142" cy="276" rx="11" ry="14" fill="url(#ren_merchant-hair)"/>
+<ellipse cx="139" cy="300" rx="10" ry="13" fill="url(#ren_merchant-hair)"/>
+<ellipse cx="137" cy="322" rx="9" ry="12" fill="url(#ren_merchant-hair)"/>
+<path d="M131,334 L143,334 L141,340 L133,340 Z" fill="#c43a3a"/>
+<path d="M133,340 C126,352 128,364 136,370 C142,362 146,350 141,340 Z" fill="#1f1626"/>
+</g>
+<path d="M140,246 Q146,250 152,246 M136,270 Q142,274 148,270 M133,294 Q139,298 145,294 M132,316 Q137,320 142,316" fill="none" stroke="#5b4a66" stroke-width="1.5"/>
+
+<!-- 手臂袖子 -->
+<path d="M92,272 C70,300 62,360 72,398 C80,420 104,420 120,404 L162,350 L150,318 C134,334 120,350 110,362 C108,330 110,300 118,282 Z" fill="url(#ren_merchant-shirt)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M308,272 C330,300 338,360 328,398 C320,420 296,420 280,404 L238,350 L250,318 C266,334 280,350 290,362 C292,330 290,300 282,282 Z" fill="url(#ren_merchant-shirt)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M86,330 C84,360 88,384 98,398 M314,330 C316,360 312,384 302,398" fill="none" stroke="#14101a" stroke-width="1.3" opacity="0.4"/>
+<path d="M146,316 L166,352 L158,358 L138,322 Z" fill="#3f6f8a" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M254,316 L234,352 L242,358 L262,322 Z" fill="#3f6f8a" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+
+<!-- 算盘 -->
+<g stroke-linejoin="round">
+<rect x="134" y="292" width="132" height="52" rx="4" fill="url(#ren_merchant-wood)" stroke="#14101a" stroke-width="2.2"/>
+<rect x="142" y="298" width="116" height="40" fill="#2a1a12" stroke="#14101a" stroke-width="1"/>
+<rect x="142" y="307" width="116" height="4" fill="#8a5a1c"/>
+<path d="M150,298 V338 M163,298 V338 M176,298 V338 M189,298 V338 M202,298 V338 M215,298 V338 M228,298 V338 M241,298 V338 M252,298 V338" stroke="#d9a441" stroke-width="1"/>
+<g fill="#5e0f1c" stroke="#14101a" stroke-width="0.8">
+<ellipse cx="150" cy="302" rx="5" ry="2.8"/><ellipse cx="163" cy="302" rx="5" ry="2.8"/><ellipse cx="176" cy="305" rx="5" ry="2.8"/><ellipse cx="189" cy="302" rx="5" ry="2.8"/><ellipse cx="202" cy="305" rx="5" ry="2.8"/><ellipse cx="215" cy="302" rx="5" ry="2.8"/><ellipse cx="228" cy="302" rx="5" ry="2.8"/><ellipse cx="241" cy="305" rx="5" ry="2.8"/><ellipse cx="252" cy="302" rx="5" ry="2.8"/>
+<ellipse cx="150" cy="315" rx="5" ry="2.8"/><ellipse cx="150" cy="321" rx="5" ry="2.8"/><ellipse cx="150" cy="330" rx="5" ry="2.8"/><ellipse cx="150" cy="335.5" rx="5" ry="2.8"/>
+<ellipse cx="163" cy="324" rx="5" ry="2.8"/><ellipse cx="163" cy="329.5" rx="5" ry="2.8"/><ellipse cx="163" cy="335" rx="5" ry="2.8"/><ellipse cx="163" cy="315" rx="5" ry="2.8"/>
+<ellipse cx="176" cy="315" rx="5" ry="2.8"/><ellipse cx="176" cy="320.5" rx="5" ry="2.8"/><ellipse cx="176" cy="326" rx="5" ry="2.8"/><ellipse cx="176" cy="335" rx="5" ry="2.8"/>
+<ellipse cx="189" cy="324" rx="5" ry="2.8"/><ellipse cx="189" cy="329.5" rx="5" ry="2.8"/><ellipse cx="189" cy="335" rx="5" ry="2.8"/><ellipse cx="189" cy="315" rx="5" ry="2.8"/>
+<ellipse cx="202" cy="315" rx="5" ry="2.8"/><ellipse cx="202" cy="320.5" rx="5" ry="2.8"/><ellipse cx="202" cy="330" rx="5" ry="2.8"/><ellipse cx="202" cy="335.5" rx="5" ry="2.8"/>
+<ellipse cx="215" cy="324" rx="5" ry="2.8"/><ellipse cx="215" cy="329.5" rx="5" ry="2.8"/><ellipse cx="215" cy="335" rx="5" ry="2.8"/><ellipse cx="215" cy="315" rx="5" ry="2.8"/>
+<ellipse cx="228" cy="315" rx="5" ry="2.8"/><ellipse cx="228" cy="320.5" rx="5" ry="2.8"/><ellipse cx="228" cy="326" rx="5" ry="2.8"/><ellipse cx="228" cy="335" rx="5" ry="2.8"/>
+<ellipse cx="241" cy="324" rx="5" ry="2.8"/><ellipse cx="241" cy="329.5" rx="5" ry="2.8"/><ellipse cx="241" cy="335" rx="5" ry="2.8"/><ellipse cx="241" cy="315" rx="5" ry="2.8"/>
+<ellipse cx="252" cy="315" rx="5" ry="2.8"/><ellipse cx="252" cy="320.5" rx="5" ry="2.8"/><ellipse cx="252" cy="330" rx="5" ry="2.8"/><ellipse cx="252" cy="335.5" rx="5" ry="2.8"/>
+</g>
+<path d="M138,295 L262,295" stroke="#f2d27a" stroke-width="1.5" opacity="0.6"/>
+</g>
+
+<!-- 手 -->
+<path d="M150,312 C142,306 132,310 130,318 C128,328 130,340 138,346 C146,350 154,344 156,336 C158,326 156,316 150,312 Z" fill="url(#ren_merchant-skin)" stroke="#14101a" stroke-width="1.8"/>
+<path d="M140,322 Q148,322 152,326 M138,330 Q146,330 152,334 M140,338 Q146,338 150,342" fill="none" stroke="#a8745a" stroke-width="1.1"/>
+<path d="M250,312 C258,306 268,310 270,318 C272,328 270,340 262,346 C254,350 246,344 244,336 C242,326 244,316 250,312 Z" fill="url(#ren_merchant-skin)" stroke="#14101a" stroke-width="1.8"/>
+<path d="M246,318 C240,312 236,304 238,298 C241,294 246,297 248,304" fill="url(#ren_merchant-skin)" stroke="#14101a" stroke-width="1.6"/>
+<path d="M260,322 Q252,322 248,326 M262,330 Q254,330 248,334 M260,338 Q254,338 250,342" fill="none" stroke="#a8745a" stroke-width="1.1"/>
+
+<!-- 颈 -->
+<path d="M183,200 L182,244 Q200,254 218,244 L217,200 Z" fill="#e8c6a2" stroke="#14101a" stroke-width="1.5"/>
+<path d="M183,210 Q200,230 217,210 L217,224 Q200,238 183,224 Z" fill="#a8745a" opacity="0.35"/>
+
+<!-- 耳 -->
+<path d="M157,148 C146,144 145,166 151,175 C154,179 158,177 159,172 Z" fill="url(#ren_merchant-skin)" stroke="#14101a" stroke-width="1.6"/>
+<path d="M243,148 C254,144 255,166 249,175 C246,179 242,177 241,172 Z" fill="url(#ren_merchant-skin)" stroke="#14101a" stroke-width="1.6"/>
+<circle cx="152" cy="180" r="2.5" fill="#3fae8f" stroke="#14101a" stroke-width="0.8"/>
+<circle cx="248" cy="180" r="2.5" fill="#3fae8f" stroke="#14101a" stroke-width="0.8"/>
+
+<!-- 脸 -->
+<path d="M156,128 C156,98 175,84 200,84 C225,84 244,98 244,128 L244,156 C244,186 228,210 200,220 C172,210 156,186 156,156 Z" fill="url(#ren_merchant-skin)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M232,128 C244,150 242,182 226,204 C234,184 236,154 232,128 Z" fill="#c99a72" opacity="0.35"/>
+<ellipse cx="170" cy="178" rx="11" ry="6" fill="#e0524a" opacity="0.22"/>
+<ellipse cx="230" cy="178" rx="11" ry="6" fill="#e0524a" opacity="0.22"/>
+
+<!-- 头发 刘海与鬓发 -->
+<path d="M200,96 C184,98 166,110 157,142 C165,131 173,127 181,125 C177,131 175,137 175,142 C186,129 196,113 200,96 Z" fill="url(#ren_merchant-hair)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M200,96 C216,98 234,110 243,142 C235,131 227,127 219,125 C223,131 225,137 225,142 C214,129 204,113 200,96 Z" fill="url(#ren_merchant-hair)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M152,126 C154,112 162,104 176,100 L170,118 Z M248,126 C246,112 238,104 224,100 L230,118 Z" fill="#1f1626"/>
+<path d="M156,130 C150,150 150,176 158,196 C160,180 160,160 164,140 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.4"/>
+<path d="M244,130 C250,150 250,176 242,196 C240,180 240,160 236,140 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.4"/>
+<path d="M194,104 C186,112 178,122 170,130 M206,104 C214,112 222,122 230,130" fill="none" stroke="#5b4a66" stroke-width="1.4"/>
+
+<!-- 头巾 -->
+<path d="M146,128 C138,92 164,58 200,58 C238,58 264,92 254,128 C248,112 238,102 222,98 C208,94 192,94 178,98 C162,102 152,112 146,128 Z" fill="url(#ren_merchant-scarf)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M150,118 C164,98 186,92 200,92 C216,92 238,98 250,118" fill="none" stroke="#22394a" stroke-width="3"/>
+<path d="M162,86 C180,72 210,70 228,80 M156,104 C176,84 214,80 236,92 M176,66 C196,60 218,64 232,72" fill="none" stroke="#22394a" stroke-width="1.4" opacity="0.8"/>
+<path d="M166,78 C180,66 196,63 210,64" fill="none" stroke="#cfefff" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+<!-- 结 -->
+<path d="M232,70 C242,62 256,66 256,78 C254,90 240,90 232,84 Z" fill="url(#ren_merchant-scarf)" stroke="#14101a" stroke-width="1.8"/>
+<path d="M238,74 Q246,72 250,78" fill="none" stroke="#22394a" stroke-width="1.2"/>
+
+<!-- 眉 -->
+<path d="M162,139 Q176,130 191,136" fill="none" stroke="#2a1838" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M209,136 Q224,130 238,139" fill="none" stroke="#2a1838" stroke-width="2.4" stroke-linecap="round"/>
+
+<!-- 眼 -->
+<path d="M164,155 Q170,146 180,145.5 Q189,146 192,153 Q184,158 176,158 Q169,158 164,155 Z" fill="#f4fbff"/>
+<g clip-path="url(#ren_merchant-eyeL)">
+<ellipse cx="179" cy="152.5" rx="6.5" ry="7.5" fill="url(#ren_merchant-iris)"/>
+<circle cx="179" cy="153" r="3" fill="#14101a"/>
+<path d="M160,146 L196,146 L196,151 Q180,146 160,153 Z" fill="#5b3474" opacity="0.35"/>
+</g>
+<circle cx="181.5" cy="149.5" r="2" fill="#ffffff"/>
+<circle cx="176.5" cy="156" r="1" fill="#ffffff" opacity="0.8"/>
+<path d="M159,157 Q165,146 180,144.5 Q190,145 193.5,152" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M162,152 L157,151" stroke="#14101a" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M168,158.5 Q178,161 189,156.5" fill="none" stroke="#7a4a3a" stroke-width="1.1"/>
+<path d="M236,155 Q230,146 220,145.5 Q211,146 208,153 Q216,158 224,158 Q231,158 236,155 Z" fill="#f4fbff"/>
+<g clip-path="url(#ren_merchant-eyeR)">
+<ellipse cx="221" cy="152.5" rx="6.5" ry="7.5" fill="url(#ren_merchant-iris)"/>
+<circle cx="221" cy="153" r="3" fill="#14101a"/>
+<path d="M240,146 L204,146 L204,151 Q220,146 240,153 Z" fill="#5b3474" opacity="0.35"/>
+</g>
+<circle cx="223.5" cy="149.5" r="2" fill="#ffffff"/>
+<circle cx="218.5" cy="156" r="1" fill="#ffffff" opacity="0.8"/>
+<path d="M241,157 Q235,146 220,144.5 Q210,145 206.5,152" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M238,152 L243,151" stroke="#14101a" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M232,158.5 Q222,161 211,156.5" fill="none" stroke="#7a4a3a" stroke-width="1.1"/>
+
+<!-- 鼻 -->
+<path d="M201,166 C202,174 203,180 200,184 C202,186 205,186 207,184" fill="none" stroke="#a8745a" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M197,170 C196,176 196,180 197,182" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+
+<!-- 嘴 笑 -->
+<path d="M188,196 Q200,200 212,196 Q209,207 200,208 Q191,207 188,196 Z" fill="#8e1b2b" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M190,197.5 Q200,201 210,197.5 L209,200 Q200,203 191,200 Z" fill="#f4fbff"/>
+<path d="M194,205 Q200,203 206,205 Q200,208 194,205 Z" fill="#e0524a"/>
+<path d="M185,194 Q187,197 189,196 M215,194 Q213,197 211,196" fill="none" stroke="#14101a" stroke-width="1.2" stroke-linecap="round"/>
+</svg>

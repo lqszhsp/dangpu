@@ -1,0 +1,9 @@
+{
+  "character": "dan_lingyu",
+  "state": "thrall",
+  "asset_id": "dan_lingyu_thrall",
+  "image_file": "provider/dan_lingyu_thrall/dan_lingyu_thrall.png",
+  "sha256": "c78b4ff3d01c5e7b85b7ea653908455b88582d510f502424c593dc921917bb2c",
+  "seed": 151106,
+  "model": "qwen-image-3.0-pro"
+}

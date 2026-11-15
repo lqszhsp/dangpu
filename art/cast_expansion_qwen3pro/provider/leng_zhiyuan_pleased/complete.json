@@ -1,0 +1,9 @@
+{
+  "character": "leng_zhiyuan",
+  "state": "pleased",
+  "asset_id": "leng_zhiyuan_pleased",
+  "image_file": "provider/leng_zhiyuan_pleased/leng_zhiyuan_pleased.png",
+  "sha256": "8a97db021756e5b81a1a8cf085d515f7b8f20577eccf5eff67c598ce6f978861",
+  "seed": 151271,
+  "model": "qwen-image-3.0-pro"
+}

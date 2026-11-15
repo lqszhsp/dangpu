@@ -1,0 +1,9 @@
+{
+  "character": "lang_xiaoshan",
+  "state": "pleased",
+  "asset_id": "lang_xiaoshan_pleased",
+  "image_file": "provider/lang_xiaoshan_pleased/lang_xiaoshan_pleased.png",
+  "sha256": "523812d1984a0b5f970dab9fa61d24531ef30bb4a26426a7d3b976f48705d921",
+  "seed": 151161,
+  "model": "qwen-image-3.0-pro"
+}

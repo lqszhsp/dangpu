@@ -1,0 +1,9 @@
+{
+  "character": "zhong_huaiyuan",
+  "state": "afraid",
+  "asset_id": "zhong_huaiyuan_afraid",
+  "image_file": "provider/zhong_huaiyuan_afraid/zhong_huaiyuan_afraid.png",
+  "sha256": "917c59f2779a324f7ada8945b54575dde2198817ae6523512167891507488bd2",
+  "seed": 151333,
+  "model": "qwen-image-3.0-pro"
+}

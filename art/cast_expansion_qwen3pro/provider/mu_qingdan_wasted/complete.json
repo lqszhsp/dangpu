@@ -1,0 +1,9 @@
+{
+  "character": "mu_qingdan",
+  "state": "wasted",
+  "asset_id": "mu_qingdan_wasted",
+  "image_file": "provider/mu_qingdan_wasted/mu_qingdan_wasted.png",
+  "sha256": "fb02db88b391a6ff7143fcf9bf23faa442c339d4f95611f49f1d4de65a0a74b4",
+  "seed": 151285,
+  "model": "qwen-image-3.0-pro"
+}

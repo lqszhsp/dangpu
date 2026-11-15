@@ -1,0 +1,9 @@
+{
+  "character": "he_xiaoman",
+  "state": "neutral",
+  "asset_id": "he_xiaoman",
+  "image_file": "provider/he_xiaoman/he_xiaoman.png",
+  "sha256": "c183654f2830be9aeb6316e8e164113ab19cd529cd5d580d6426b80eb950eaf7",
+  "seed": 151040,
+  "model": "qwen-image-3.0-pro"
+}

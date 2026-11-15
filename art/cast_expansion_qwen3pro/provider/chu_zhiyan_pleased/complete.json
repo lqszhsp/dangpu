@@ -1,0 +1,9 @@
+{
+  "character": "chu_zhiyan",
+  "state": "pleased",
+  "asset_id": "chu_zhiyan_pleased",
+  "image_file": "provider/chu_zhiyan_pleased/chu_zhiyan_pleased.png",
+  "sha256": "e294b9afcad9b8f061adb0f96ee68f69c6b57c998c5c209faf1b695b7e9fcade",
+  "seed": 151371,
+  "model": "qwen-image-3.0-pro"
+}

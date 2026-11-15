@@ -1,0 +1,9 @@
+{
+  "character": "xiao_gengye",
+  "state": "neutral",
+  "asset_id": "xiao_gengye",
+  "image_file": "provider/xiao_gengye/xiao_gengye.png",
+  "sha256": "49609129a0b943af21e8169c4d7a542763b9228507736a59f4ad1aa51ed80b6f",
+  "seed": 151140,
+  "model": "qwen-image-3.0-pro"
+}

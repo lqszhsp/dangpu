@@ -1,0 +1,9 @@
+{
+  "character": "yuanxing",
+  "state": "thrall",
+  "asset_id": "yuanxing_thrall",
+  "image_file": "provider/yuanxing_thrall/yuanxing_thrall.png",
+  "sha256": "c0f4aa00726fbb9138965f191f9186943dac5229601e5e855588fc7d0118286e",
+  "seed": 151546,
+  "model": "qwen-image-3.0-pro"
+}

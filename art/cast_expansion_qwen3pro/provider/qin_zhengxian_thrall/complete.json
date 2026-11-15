@@ -1,0 +1,9 @@
+{
+  "character": "qin_zhengxian",
+  "state": "thrall",
+  "asset_id": "qin_zhengxian_thrall",
+  "image_file": "provider/qin_zhengxian_thrall/qin_zhengxian_thrall.png",
+  "sha256": "ffc853755e401d136c033f0bec8f46493bffd6e03368a79ec4e5afdbb7467267",
+  "seed": 151316,
+  "model": "qwen-image-3.0-pro"
+}

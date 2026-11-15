@@ -1,0 +1,9 @@
+{
+  "character": "dugu_que",
+  "state": "afraid",
+  "asset_id": "dugu_que_afraid",
+  "image_file": "provider/dugu_que_afraid/dugu_que_afraid.png",
+  "sha256": "885feb89c28c6a4ba6a157fa1da2fcaf669d45b8296e6f47b4fcb8738af184ff",
+  "seed": 151293,
+  "model": "qwen-image-3.0-pro"
+}

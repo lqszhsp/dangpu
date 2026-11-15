@@ -1,0 +1,9 @@
+{
+  "character": "heng_zhenyi",
+  "state": "angry",
+  "asset_id": "heng_zhenyi_angry",
+  "image_file": "provider/heng_zhenyi_angry/heng_zhenyi_angry.png",
+  "sha256": "e914ab3aeb1146224a8916e09e6dbce2da1aeb458ca29745f510721a4af5efa7",
+  "seed": 151412,
+  "model": "qwen-image-3.0-pro"
+}

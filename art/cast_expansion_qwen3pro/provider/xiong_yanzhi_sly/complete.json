@@ -1,0 +1,9 @@
+{
+  "character": "xiong_yanzhi",
+  "state": "sly",
+  "asset_id": "xiong_yanzhi_sly",
+  "image_file": "provider/xiong_yanzhi_sly/xiong_yanzhi_sly.png",
+  "sha256": "783f0edccb3901d5a1d8431b5188362dc2d05790033c009121757db91a981581",
+  "seed": 151114,
+  "model": "qwen-image-3.0-pro"
+}

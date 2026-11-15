@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_qiuzhuan_wasted",
+  "image_file": "provider/exp_qiuzhuan_wasted/exp_qiuzhuan_wasted.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115015,
+  "sha256": "62b07b7dfe304a5a6c493c002f14b98e06e8a7bad52e531c7ef0361ee570c0f1"
+}

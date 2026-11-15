@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_zhaowei_neutral",
+  "image_file": "provider/exp_zhaowei_neutral/exp_zhaowei_neutral.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115020,
+  "sha256": "ec97d14001a8d7c67d7087307aa2222e5880e9d0bdd96e3531c985917c2555f2"
+}

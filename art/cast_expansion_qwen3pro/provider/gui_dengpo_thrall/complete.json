@@ -1,0 +1,9 @@
+{
+  "character": "gui_dengpo",
+  "state": "thrall",
+  "asset_id": "gui_dengpo_thrall",
+  "image_file": "provider/gui_dengpo_thrall/gui_dengpo_thrall.png",
+  "sha256": "1cf7c626f70e8ff6eae0849d4cb64efbe0f9a5203e5f6b65b6678d62eac28abf",
+  "seed": 151306,
+  "model": "qwen-image-3.0-pro"
+}

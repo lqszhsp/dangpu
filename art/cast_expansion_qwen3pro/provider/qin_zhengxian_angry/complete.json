@@ -1,0 +1,9 @@
+{
+  "character": "qin_zhengxian",
+  "state": "angry",
+  "asset_id": "qin_zhengxian_angry",
+  "image_file": "provider/qin_zhengxian_angry/qin_zhengxian_angry.png",
+  "sha256": "7af81327e6b0f85ede09e624dfc7075012e54daeabf6ba4a8b13a2a4a71d06e9",
+  "seed": 151312,
+  "model": "qwen-image-3.0-pro"
+}

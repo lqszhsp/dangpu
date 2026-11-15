@@ -1,0 +1,9 @@
+{
+  "character": "lang_xiaoshan",
+  "state": "afraid",
+  "asset_id": "lang_xiaoshan_afraid",
+  "image_file": "provider/lang_xiaoshan_afraid/lang_xiaoshan_afraid.png",
+  "sha256": "4f838b072bad3c1e761fd27cd1ea010ffdbad6e45a4a691611556673854dd9be",
+  "seed": 151163,
+  "model": "qwen-image-3.0-pro"
+}

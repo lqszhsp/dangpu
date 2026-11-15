@@ -1,0 +1,9 @@
+{
+  "character": "jiang_shoudu",
+  "state": "pleased",
+  "asset_id": "jiang_shoudu_pleased",
+  "image_file": "provider/jiang_shoudu_pleased/jiang_shoudu_pleased.png",
+  "sha256": "9cd49d520005c7e4fc52d29feb773410966082ec88d759ae7546b4b83404a42f",
+  "seed": 151071,
+  "model": "qwen-image-3.0-pro"
+}

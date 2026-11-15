@@ -1,0 +1,9 @@
+{
+  "character": "xiao_gengye",
+  "state": "afraid",
+  "asset_id": "xiao_gengye_afraid",
+  "image_file": "provider/xiao_gengye_afraid/xiao_gengye_afraid.png",
+  "sha256": "92ae9774ce5f69ffe8665a85548ea5427991a74891ed05be89a60867566b3c56",
+  "seed": 151143,
+  "model": "qwen-image-3.0-pro"
+}

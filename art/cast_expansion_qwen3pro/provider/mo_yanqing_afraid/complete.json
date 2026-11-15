@@ -1,0 +1,9 @@
+{
+  "character": "mo_yanqing",
+  "state": "afraid",
+  "asset_id": "mo_yanqing_afraid",
+  "image_file": "provider/mo_yanqing_afraid/mo_yanqing_afraid.png",
+  "sha256": "560ab5c7a1074fce15c73d7447189669c87106cb08a5c0ebb51fe8d4abeade51",
+  "seed": 151383,
+  "model": "qwen-image-3.0-pro"
+}

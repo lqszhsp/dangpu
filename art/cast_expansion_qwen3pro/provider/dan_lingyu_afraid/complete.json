@@ -1,0 +1,9 @@
+{
+  "character": "dan_lingyu",
+  "state": "afraid",
+  "asset_id": "dan_lingyu_afraid",
+  "image_file": "provider/dan_lingyu_afraid/dan_lingyu_afraid.png",
+  "sha256": "2f3432a36d79c86f3650a62367d9028b791e887f778d5bd8fbf62fa5c527f971",
+  "seed": 151103,
+  "model": "qwen-image-3.0-pro"
+}

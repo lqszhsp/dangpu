@@ -1,0 +1,9 @@
+{
+  "character": "zhou_yunshu",
+  "state": "pleased",
+  "asset_id": "zhou_yunshu_pleased",
+  "image_file": "provider/zhou_yunshu_pleased/zhou_yunshu_pleased.png",
+  "sha256": "993c9b120408fdbd22f21f39c1076126023f36669c2d9467e5c2cbb2632dad21",
+  "seed": 151031,
+  "model": "qwen-image-3.0-pro"
+}

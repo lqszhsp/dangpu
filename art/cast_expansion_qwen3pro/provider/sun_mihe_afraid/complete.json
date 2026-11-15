@@ -1,0 +1,9 @@
+{
+  "character": "sun_mihe",
+  "state": "afraid",
+  "asset_id": "sun_mihe_afraid",
+  "image_file": "provider/sun_mihe_afraid/sun_mihe_afraid.png",
+  "sha256": "eea38bf412a2b99aab7de90beabb6f7a83e9a63b9b85c1cee5c02da2da1a6980",
+  "seed": 151063,
+  "model": "qwen-image-3.0-pro"
+}

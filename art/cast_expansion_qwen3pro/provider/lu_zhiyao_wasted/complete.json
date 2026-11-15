@@ -1,0 +1,9 @@
+{
+  "character": "lu_zhiyao",
+  "state": "wasted",
+  "asset_id": "lu_zhiyao_wasted",
+  "image_file": "provider/lu_zhiyao_wasted/lu_zhiyao_wasted.png",
+  "sha256": "03d5c3f7b00d6d3d4578b913a007fc6c2267cd99fa30cb7e227248abe0e9468b",
+  "seed": 151185,
+  "model": "qwen-image-3.0-pro"
+}

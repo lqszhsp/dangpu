@@ -1,0 +1,9 @@
+{
+  "character": "bai_chuandeng",
+  "state": "wasted",
+  "asset_id": "bai_chuandeng_wasted",
+  "image_file": "provider/bai_chuandeng_wasted/bai_chuandeng_wasted.png",
+  "sha256": "263e8687f27cce7bb62fea7fb891cd2cbb2c4d93235bf74d85dfa19b23920e5f",
+  "seed": 151485,
+  "model": "qwen-image-3.0-pro"
+}

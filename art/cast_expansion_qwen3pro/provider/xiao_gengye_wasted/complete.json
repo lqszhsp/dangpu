@@ -1,0 +1,9 @@
+{
+  "character": "xiao_gengye",
+  "state": "wasted",
+  "asset_id": "xiao_gengye_wasted",
+  "image_file": "provider/xiao_gengye_wasted/xiao_gengye_wasted.png",
+  "sha256": "5b1aa9d5e195d2715386c80e854620e5d1316696212538fd3f15c3bc1c5c4da0",
+  "seed": 151145,
+  "model": "qwen-image-3.0-pro"
+}

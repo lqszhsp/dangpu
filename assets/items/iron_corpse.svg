@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 192">
+  <defs>
+    <linearGradient id="iron_corpse-skin" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a2f36"/>
+      <stop offset="0.4" stop-color="#9aa88a"/>
+      <stop offset="0.7" stop-color="#6b7d5a"/>
+      <stop offset="1" stop-color="#2a2f36"/>
+    </linearGradient>
+    <linearGradient id="iron_corpse-iron" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1f1626"/>
+      <stop offset="0.35" stop-color="#5c6370"/>
+      <stop offset="0.6" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="iron_corpse-robe" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#14101a"/>
+      <stop offset="0.4" stop-color="#2a1838"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="iron_corpse-paper" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d9a441"/>
+      <stop offset="0.5" stop-color="#f2d27a"/>
+      <stop offset="1" stop-color="#d9a441"/>
+    </linearGradient>
+    <filter id="iron_corpse-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="iron_corpse-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+  <!-- corpse qi aura -->
+  <g filter="url(#iron_corpse-blur)" opacity="0.8">
+    <ellipse cx="32" cy="100" rx="26" ry="80" fill="#1f5c4c" opacity="0.6"/>
+    <path d="M8 150 Q2 130 9 112 M56 156 Q63 135 55 118 M14 40 Q8 28 14 16 M50 44 Q57 30 50 18" fill="none" stroke="#6b7d5a" stroke-width="4"/>
+  </g>
+  <!-- shadow -->
+  <ellipse cx="32" cy="184" rx="22" ry="4" fill="#14101a" opacity="0.55"/>
+  <!-- legs -->
+  <path d="M19.5 128 L31 128 L30.5 174 L20.5 174 Z" fill="url(#iron_corpse-robe)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M33 128 L44.5 128 L43.5 174 L33.5 174 Z" fill="url(#iron_corpse-robe)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- greaves -->
+  <g fill="url(#iron_corpse-iron)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round">
+    <path d="M19.5 148 L31 148 L30.5 172 L20 172 Z"/>
+    <path d="M33 148 L44.5 148 L44 172 L33.5 172 Z"/>
+  </g>
+  <g fill="none" stroke="#14101a" stroke-width="0.9">
+    <path d="M20 156 H30.8 M20 164 H30.6 M33.3 156 H44.3 M33.4 164 H44.1"/>
+  </g>
+  <g fill="#9a4d12" opacity="0.7">
+    <ellipse cx="24" cy="160" rx="2" ry="1.4"/>
+    <ellipse cx="40" cy="152" rx="1.8" ry="1.2"/>
+    <ellipse cx="37" cy="168" rx="1.5" ry="1"/>
+  </g>
+  <!-- feet -->
+  <path d="M18 172 L31.5 172 L32 181 L16 181 Q15.5 176 18 172 Z" fill="#3a3f4a" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+  <path d="M32.5 172 L46 172 Q48.5 176 48 181 L32 181 Z" fill="#3a3f4a" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+  <path d="M18.5 175 H30 M34 175 H45.5" stroke="#9aa88a" stroke-width="0.9"/>
+  <!-- torso robe -->
+  <path d="M13 56 Q20 49 32 49 Q44 49 51 56 L49 110 Q32 114 15 110 Z" fill="url(#iron_corpse-robe)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <!-- armor skirt -->
+  <path d="M15.5 108 L48.5 108 L50.5 136 L34 134 L32 130 L30 134 L13.5 136 Z" fill="url(#iron_corpse-iron)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <g fill="none" stroke="#14101a" stroke-width="0.9">
+    <path d="M14.5 116 H49.5 M14 124 H50 M20 108 L19 135 M25.5 108 L25 134.5 M38.5 108 L39 134.5 M44 108 L45 135"/>
+  </g>
+  <path d="M17 110 L16 133" stroke="#9aa88a" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+  <g fill="#9a4d12" opacity="0.75">
+    <ellipse cx="22" cy="120" rx="2.4" ry="1.5"/>
+    <ellipse cx="42" cy="128" rx="2.2" ry="1.4"/>
+    <ellipse cx="35" cy="113" rx="1.6" ry="1"/>
+  </g>
+  <!-- lamellar chest armor -->
+  <path d="M18 57 Q32 53 46 57 L45 104 L19 104 Z" fill="url(#iron_corpse-iron)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <g fill="none" stroke="#14101a" stroke-width="0.9">
+    <path d="M18.4 64 H45.7 M18.6 71 H45.5 M18.8 78 H45.4 M18.9 85 H45.3 M19 92 H45.2 M19 98 H45.1"/>
+    <path d="M23 57 V64 M28 55.5 V64 M33 55 V64 M38 55.5 V64 M43 56.5 V64 M25.5 64 V71 M30.5 64 V71 M35.5 64 V71 M40.5 64 V71 M23 71 V78 M28 71 V78 M33 71 V78 M38 71 V78 M43 71 V78 M25.5 78 V85 M30.5 78 V85 M35.5 78 V85 M40.5 78 V85 M23 85 V92 M28 85 V92 M33 85 V92 M38 85 V92 M43 85 V92 M25.5 92 V98 M30.5 92 V98 M35.5 92 V98 M40.5 92 V98"/>
+  </g>
+  <path d="M21 59 L20.5 100" stroke="#9aa88a" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+  <g fill="#9a4d12" opacity="0.75">
+    <ellipse cx="36" cy="68" rx="3" ry="1.8"/>
+    <ellipse cx="25" cy="88" rx="2.6" ry="1.6"/>
+    <ellipse cx="41" cy="95" rx="2" ry="1.3"/>
+  </g>
+  <g fill="#e8902f" opacity="0.5">
+    <circle cx="35.5" cy="67.5" r="1"/>
+    <circle cx="24.5" cy="87.6" r="0.8"/>
+  </g>
+  <!-- belt -->
+  <rect x="15" y="102" width="34" height="7" rx="2" fill="#1f1626" stroke="#14101a" stroke-width="1.6"/>
+  <path d="M28 100.5 H36 V110.5 H28 Z" fill="#6b7d5a" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+  <circle cx="32" cy="105.5" r="2" fill="#8e1b2b" stroke="#14101a" stroke-width="0.8"/>
+  <!-- arms thrust forward (sleeves) -->
+  <path d="M14 60 Q8 64 6 76 L17 78 Q19 70 20 64 Z" fill="url(#iron_corpse-robe)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M50 60 Q56 64 58 76 L47 78 Q45 70 44 64 Z" fill="url(#iron_corpse-robe)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- cuffs seen end-on -->
+  <ellipse cx="11.5" cy="77" rx="6.2" ry="3.2" fill="#14101a" stroke="#5c6370" stroke-width="1" transform="rotate(8 11.5 77)"/>
+  <ellipse cx="52.5" cy="77" rx="6.2" ry="3.2" fill="#14101a" stroke="#5c6370" stroke-width="1" transform="rotate(-8 52.5 77)"/>
+  <!-- drooping clawed hands -->
+  <g fill="url(#iron_corpse-skin)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round">
+    <path d="M7 77 Q7.5 83 7 88 L8.5 92 L9.5 87.5 L10.5 93 L11.8 88 L13 92.5 L14 87.5 L15.5 90.5 Q16 84 16 78 Z"/>
+    <path d="M48 78 Q48 84 48.5 90.5 L50 87.5 L51 92.5 L52.2 88 L53.5 93 L54.5 87.5 L55.5 92 L57 88 Q56.5 83 57 77 Z"/>
+  </g>
+  <g fill="#14101a">
+    <path d="M8.5 92 L8.8 95 L9.3 91.5 Z M10.5 93 L10.8 96.2 L11.3 92.4 Z M13 92.5 L13.2 95.6 L13.7 92 Z"/>
+    <path d="M51 92.5 L51.2 95.6 L51.7 92 Z M53.5 93 L53.8 96.2 L54.3 92.4 Z M55.5 92 L55.8 95 L56.3 91.5 Z"/>
+  </g>
+  <!-- pauldrons -->
+  <g fill="url(#iron_corpse-iron)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M7.5 62 Q9 51 21 51 L22 58 Q14 59 10.5 66 Z"/>
+    <path d="M56.5 62 Q55 51 43 51 L42 58 Q50 59 53.5 66 Z"/>
+  </g>
+  <path d="M10 58 Q13 54 19 53.8 M54 58 Q51 54 45 53.8" fill="none" stroke="#9aa88a" stroke-width="0.9" stroke-linecap="round"/>
+  <circle cx="16" cy="56" r="1.4" fill="#9a4d12"/>
+  <circle cx="48" cy="56" r="1.4" fill="#9a4d12"/>
+  <!-- neck -->
+  <path d="M27.5 42 L36.5 42 L37 51 Q32 53 27 51 Z" fill="url(#iron_corpse-skin)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <!-- head -->
+  <path d="M21.5 27 Q21.5 13 32 13 Q42.5 13 42.5 27 Q42.5 37 38.5 41.5 Q35.5 44.5 32 44.5 Q28.5 44.5 25.5 41.5 Q21.5 37 21.5 27 Z" fill="url(#iron_corpse-skin)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <!-- hair & topknot -->
+  <path d="M21.5 26 Q20 12 32 11 Q44 12 42.5 26 Q40 19 35 18.5 Q32 21 29 18.5 Q24 19 21.5 26 Z" fill="#14101a"/>
+  <circle cx="32" cy="8.5" r="4.5" fill="#14101a"/>
+  <path d="M28.5 10.5 H35.5" stroke="#8e1b2b" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M22 23 Q19.5 32 20.5 38 M42 23 Q44.5 30 43.5 37" fill="none" stroke="#14101a" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- sunken eyes with red glow -->
+  <ellipse cx="26.2" cy="29" rx="3" ry="2.2" fill="#14101a"/>
+  <ellipse cx="37.8" cy="29" rx="3" ry="2.2" fill="#14101a"/>
+  <g fill="#e0524a" filter="url(#iron_corpse-glow)">
+    <circle cx="26.2" cy="29" r="2.2"/>
+    <circle cx="37.8" cy="29" r="2.2"/>
+  </g>
+  <circle cx="26.2" cy="29" r="1" fill="#f2d27a"/>
+  <circle cx="37.8" cy="29" r="1" fill="#f2d27a"/>
+  <!-- cheek hollows & fangs -->
+  <path d="M23.5 34 Q24.5 38 26.5 39.5 M40.5 34 Q39.5 38 37.5 39.5" fill="none" stroke="#2a2f36" stroke-width="1" stroke-linecap="round"/>
+  <path d="M27.3 39.5 L28.3 42.5 L29 39.6 Z M36.7 39.5 L35.7 42.5 L35 39.6 Z" fill="#e9dfcc" stroke="#14101a" stroke-width="0.5"/>
+  <!-- forehead cinnabar talisman -->
+  <path d="M29 16.5 L35.2 16.2 L35.8 41 L33.8 39.5 L32.4 42 L31 39.5 L28.8 41 Z" fill="url(#iron_corpse-paper)" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+  <g fill="none" stroke="#c43a3a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M30.3 19.5 H34 M32.2 18 V22.5 M30.5 24 Q32.2 22.8 34.2 24.2 Q32.2 26 30.5 25"/>
+    <path d="M32.3 26.5 V37 M30.4 29 H34.3 M30.6 32 Q32.3 31 34.3 32.5 M30.6 35 H34.4"/>
+  </g>
+  <!-- iron rivets highlight -->
+  <path d="M24 16 Q27 14.5 29 15" fill="none" stroke="#9aa88a" stroke-width="0.9" stroke-linecap="round" opacity="0.6"/>
+</svg>

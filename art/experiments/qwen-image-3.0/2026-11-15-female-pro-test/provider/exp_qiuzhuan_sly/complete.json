@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_qiuzhuan_sly",
+  "image_file": "provider/exp_qiuzhuan_sly/exp_qiuzhuan_sly.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115014,
+  "sha256": "d672eb4ae9e05f48063c6721e2349894471c54171d2926e1164a3a0d38724299"
+}

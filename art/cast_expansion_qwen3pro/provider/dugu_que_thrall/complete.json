@@ -1,0 +1,9 @@
+{
+  "character": "dugu_que",
+  "state": "thrall",
+  "asset_id": "dugu_que_thrall",
+  "image_file": "provider/dugu_que_thrall/dugu_que_thrall.png",
+  "sha256": "889e212b615bd7a9abb3657717ba26c86326cdb75570a80e34ba36e67a4fd9f1",
+  "seed": 151296,
+  "model": "qwen-image-3.0-pro"
+}

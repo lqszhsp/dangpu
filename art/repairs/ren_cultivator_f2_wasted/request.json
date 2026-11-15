@@ -1,0 +1,12 @@
+{
+  "model": "qwen-image-3.0-pro",
+  "asset_id": "ren_cultivator_f2_wasted",
+  "prompt": "Edit the reference image of this specific young adult Chinese female rogue cultivator. Keep exactly the same actress, recognizable facial bone structure, dark braided hair, hairpin, tattered grey-purple layered robes, waist gourd and sword, folded-arm standing pose, camera, lighting and full-body proportions. Exactly two arms and two hands in the original pose. Only change her facial state to: gaunt and drug-addicted: hollow cheeks, dark eye circles, sweating, trembling, sickly pale skin. Make hollow cheeks and dark under-eye circles clearly visible, visibly ill and exhausted, but still unmistakably the same woman, not a different casting. Cinematic photorealistic high-budget Chinese dark xianxia costume drama actor photograph. Exactly one human or humanoid person standing naturally, facing camera, full body from head to both feet visible with small margin, centered, occupying about 90 percent height, consistent 85mm portrait perspective. Real skin pores and worn fabric and metal. Warm red lantern key light from left, cool purple rim light from right, muted dark cinematic colors, face and clothes still readable. Background flat uniform bright green RGB(0,255,0), no floor, no cast shadow, no gradient, no green clothing or green reflections. No text, label, border, UI or watermark. ",
+  "reference_sha256": "59519fe8c986e19ffa8edd7b8abe68cb1719fc0a202f3f479f56e33c12fdd61c",
+  "processed_reference_sha256": "7e7fec579265005167c65b085e93c3e2339c96eb275847da8d9a9158f414f393",
+  "previous_raw_sha256": "4a4040b6ed1d5e522e0eccb7be8efcde92494bca31812b3b55d9c3947d055fac",
+  "previous_webp_sha256": "ad85fbf8e8abddd2c3629ba468565d803cee941bd39b315596c5168765850ea9",
+  "endpoint_override": "https://token-plan.cn-beijing.maas.aliyuncs.com",
+  "size": "1024*1536",
+  "seed": 153999
+}

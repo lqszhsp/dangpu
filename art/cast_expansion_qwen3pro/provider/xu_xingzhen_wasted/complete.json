@@ -1,0 +1,9 @@
+{
+  "character": "xu_xingzhen",
+  "state": "wasted",
+  "asset_id": "xu_xingzhen_wasted",
+  "image_file": "provider/xu_xingzhen_wasted/xu_xingzhen_wasted.png",
+  "sha256": "a5bdff687d9e7205eb3e686174a322f3a7e190eb9117b3d86e2b234bc10f0cc2",
+  "seed": 151525,
+  "model": "qwen-image-3.0-pro"
+}

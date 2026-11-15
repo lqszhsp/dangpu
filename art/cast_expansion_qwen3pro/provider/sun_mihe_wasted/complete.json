@@ -1,0 +1,9 @@
+{
+  "character": "sun_mihe",
+  "state": "wasted",
+  "asset_id": "sun_mihe_wasted",
+  "image_file": "provider/sun_mihe_wasted/sun_mihe_wasted.png",
+  "sha256": "08687db8522c7d93ff72fe6d92a1d0e9125e16df4cf495a5cd87311d2f3c8442",
+  "seed": 151065,
+  "model": "qwen-image-3.0-pro"
+}

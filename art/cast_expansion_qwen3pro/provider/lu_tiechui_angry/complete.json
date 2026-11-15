@@ -1,0 +1,9 @@
+{
+  "character": "lu_tiechui",
+  "state": "angry",
+  "asset_id": "lu_tiechui_angry",
+  "image_file": "provider/lu_tiechui_angry/lu_tiechui_angry.png",
+  "sha256": "580f6ec39a4a282f5f92c0998be4b97980614156374e47adf8b97743554aa06c",
+  "seed": 151012,
+  "model": "qwen-image-3.0-pro"
+}

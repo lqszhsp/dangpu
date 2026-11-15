@@ -1,0 +1,9 @@
+{
+  "character": "tao_yunhe",
+  "state": "sly",
+  "asset_id": "tao_yunhe_sly",
+  "image_file": "provider/tao_yunhe_sly/tao_yunhe_sly.png",
+  "sha256": "4a22054407c0c8edc08cf1537512818500bb4be0773600144af35ff6517122c8",
+  "seed": 151474,
+  "model": "qwen-image-3.0-pro"
+}

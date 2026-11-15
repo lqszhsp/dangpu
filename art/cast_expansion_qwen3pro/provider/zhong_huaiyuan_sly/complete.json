@@ -1,0 +1,9 @@
+{
+  "character": "zhong_huaiyuan",
+  "state": "sly",
+  "asset_id": "zhong_huaiyuan_sly",
+  "image_file": "provider/zhong_huaiyuan_sly/zhong_huaiyuan_sly.png",
+  "sha256": "4c39b088fafc3ca268a19fc6e841e19ba48dbcc65d7ae89e8abfcc61d392af98",
+  "seed": 151334,
+  "model": "qwen-image-3.0-pro"
+}

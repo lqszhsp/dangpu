@@ -1,0 +1,9 @@
+{
+  "character": "yu_wangchuan",
+  "state": "sly",
+  "asset_id": "yu_wangchuan_sly",
+  "image_file": "provider/yu_wangchuan_sly/yu_wangchuan_sly.png",
+  "sha256": "522f0f8051784738b71fdf19e1255ad3c7d243e3824efdc8d29db9934340885f",
+  "seed": 151504,
+  "model": "qwen-image-3.0-pro"
+}

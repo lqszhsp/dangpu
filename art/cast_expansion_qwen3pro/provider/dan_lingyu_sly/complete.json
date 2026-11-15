@@ -1,0 +1,9 @@
+{
+  "character": "dan_lingyu",
+  "state": "sly",
+  "asset_id": "dan_lingyu_sly",
+  "image_file": "provider/dan_lingyu_sly/dan_lingyu_sly.png",
+  "sha256": "4f4d1439c12775c8434901bb72ef750aa3f2468861731e0d97e7d413339fcad7",
+  "seed": 151104,
+  "model": "qwen-image-3.0-pro"
+}

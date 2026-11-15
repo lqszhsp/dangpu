@@ -1,0 +1,9 @@
+{
+  "character": "lin_xiaozhi",
+  "state": "thrall",
+  "asset_id": "lin_xiaozhi_thrall",
+  "image_file": "provider/lin_xiaozhi_thrall/lin_xiaozhi_thrall.png",
+  "sha256": "106ca42620187180e7698b45e070c5f1533273df118d5b71cbefc9acbe8663a3",
+  "seed": 151056,
+  "model": "qwen-image-3.0-pro"
+}

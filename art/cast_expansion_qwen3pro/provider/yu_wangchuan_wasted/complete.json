@@ -1,0 +1,9 @@
+{
+  "character": "yu_wangchuan",
+  "state": "wasted",
+  "asset_id": "yu_wangchuan_wasted",
+  "image_file": "provider/yu_wangchuan_wasted/yu_wangchuan_wasted.png",
+  "sha256": "1be9f8098b3fa81a30bb10cd1335b44062baf7a803842d00d46645d0faac72b6",
+  "seed": 151505,
+  "model": "qwen-image-3.0-pro"
+}

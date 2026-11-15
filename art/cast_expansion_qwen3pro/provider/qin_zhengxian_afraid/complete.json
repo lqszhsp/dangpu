@@ -1,0 +1,9 @@
+{
+  "character": "qin_zhengxian",
+  "state": "afraid",
+  "asset_id": "qin_zhengxian_afraid",
+  "image_file": "provider/qin_zhengxian_afraid/qin_zhengxian_afraid.png",
+  "sha256": "317757b076255e62aa6c52d5805fdbc2168ad75143a1af948beeb1e44ce987a6",
+  "seed": 151313,
+  "model": "qwen-image-3.0-pro"
+}

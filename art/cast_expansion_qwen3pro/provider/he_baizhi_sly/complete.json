@@ -1,0 +1,9 @@
+{
+  "character": "he_baizhi",
+  "state": "sly",
+  "asset_id": "he_baizhi_sly",
+  "image_file": "provider/he_baizhi_sly/he_baizhi_sly.png",
+  "sha256": "b1386e0c388cbb0257505d3f891769c39c579b60b37441447ab746c17d6b8d57",
+  "seed": 151204,
+  "model": "qwen-image-3.0-pro"
+}

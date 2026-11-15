@@ -1,0 +1,434 @@
+[
+  {
+    "id": "xian_spy_pleased",
+    "out": "generated/xian_spy_pleased.png",
+    "refs": [
+      "generated/xian_spy.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, silver hair crown, embroidered dark cloak and pale blue/ivory layered robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Pleased and relieved, gently raised cheeks and warm relaxed smiling eyes. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_angry",
+    "out": "generated/xian_spy_angry.png",
+    "refs": [
+      "generated/xian_spy.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, silver hair crown, embroidered dark cloak and pale blue/ivory layered robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Furious, brows sharply knitted, fierce focused glare, tense brow and forehead. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_afraid",
+    "out": "generated/xian_spy_afraid.png",
+    "refs": [
+      "generated/xian_spy.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, silver hair crown, embroidered dark cloak and pale blue/ivory layered robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Frightened, wide alarmed eyes, brows raised and drawn together, pale forehead. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_sly",
+    "out": "generated/xian_spy_sly.png",
+    "refs": [
+      "generated/xian_spy.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, silver hair crown, embroidered dark cloak and pale blue/ivory layered robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Sly and calculating, one eyebrow slightly raised, knowingly narrowed mischievous eyes. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_wasted",
+    "out": "generated/xian_spy_wasted.png",
+    "refs": [
+      "generated/xian_spy.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, silver hair crown, embroidered dark cloak and pale blue/ivory layered robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Exhausted and ill, pronounced dark under-eye circles, heavy tired eyelids, pale exposed skin and beads of sweat on the forehead. Remains standing. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_thrall",
+    "out": "generated/xian_spy_thrall.png",
+    "refs": [
+      "generated/xian_spy.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, silver hair crown, embroidered dark cloak and pale blue/ivory layered robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Magically mind-controlled: both eyes are completely milky white without pupils or visible irises, blank vacant gaze, delicate dark veins at the exposed temples and neck. Remains standing. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f1_pleased",
+    "out": "generated/xian_spy_f1_pleased.png",
+    "refs": [
+      "generated/xian_spy_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same mature Chinese woman around 35, stern eyes, silver hair ornaments, long dark cloak and simple pale blue robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Pleased and relieved, gently raised cheeks and warm relaxed smiling eyes. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f1_angry",
+    "out": "generated/xian_spy_f1_angry.png",
+    "refs": [
+      "generated/xian_spy_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same mature Chinese woman around 35, stern eyes, silver hair ornaments, long dark cloak and simple pale blue robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Furious, brows sharply knitted, fierce focused glare, tense brow and forehead. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f1_afraid",
+    "out": "generated/xian_spy_f1_afraid.png",
+    "refs": [
+      "generated/xian_spy_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same mature Chinese woman around 35, stern eyes, silver hair ornaments, long dark cloak and simple pale blue robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Frightened, wide alarmed eyes, brows raised and drawn together, pale forehead. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f1_sly",
+    "out": "generated/xian_spy_f1_sly.png",
+    "refs": [
+      "generated/xian_spy_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same mature Chinese woman around 35, stern eyes, silver hair ornaments, long dark cloak and simple pale blue robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Sly and calculating, one eyebrow slightly raised, knowingly narrowed mischievous eyes. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f1_wasted",
+    "out": "generated/xian_spy_f1_wasted.png",
+    "refs": [
+      "generated/xian_spy_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same mature Chinese woman around 35, stern eyes, silver hair ornaments, long dark cloak and simple pale blue robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Exhausted and ill, pronounced dark under-eye circles, heavy tired eyelids, pale exposed skin and beads of sweat on the forehead. Remains standing. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f1_thrall",
+    "out": "generated/xian_spy_f1_thrall.png",
+    "refs": [
+      "generated/xian_spy_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same mature Chinese woman around 35, stern eyes, silver hair ornaments, long dark cloak and simple pale blue robes. Rebuild the lower-face veil as real OPAQUE pale ivory-white woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Magically mind-controlled: both eyes are completely milky white without pupils or visible irises, blank vacant gaze, delicate dark veins at the exposed temples and neck. Remains standing. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f2_pleased",
+    "out": "generated/xian_spy_f2_pleased.png",
+    "refs": [
+      "generated/xian_spy_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, slender build, dark hair crown, dark cloak over layered pale blue robes. Rebuild the lower-face veil as real OPAQUE charcoal-black woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Pleased and relieved, gently raised cheeks and warm relaxed smiling eyes. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f2_angry",
+    "out": "generated/xian_spy_f2_angry.png",
+    "refs": [
+      "generated/xian_spy_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, slender build, dark hair crown, dark cloak over layered pale blue robes. Rebuild the lower-face veil as real OPAQUE charcoal-black woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Furious, brows sharply knitted, fierce focused glare, tense brow and forehead. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f2_afraid",
+    "out": "generated/xian_spy_f2_afraid.png",
+    "refs": [
+      "generated/xian_spy_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, slender build, dark hair crown, dark cloak over layered pale blue robes. Rebuild the lower-face veil as real OPAQUE charcoal-black woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Frightened, wide alarmed eyes, brows raised and drawn together, pale forehead. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f2_sly",
+    "out": "generated/xian_spy_f2_sly.png",
+    "refs": [
+      "generated/xian_spy_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, slender build, dark hair crown, dark cloak over layered pale blue robes. Rebuild the lower-face veil as real OPAQUE charcoal-black woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Sly and calculating, one eyebrow slightly raised, knowingly narrowed mischievous eyes. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f2_wasted",
+    "out": "generated/xian_spy_f2_wasted.png",
+    "refs": [
+      "generated/xian_spy_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, slender build, dark hair crown, dark cloak over layered pale blue robes. Rebuild the lower-face veil as real OPAQUE charcoal-black woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Exhausted and ill, pronounced dark under-eye circles, heavy tired eyelids, pale exposed skin and beads of sweat on the forehead. Remains standing. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "xian_spy_f2_thrall",
+    "out": "generated/xian_spy_f2_thrall.png",
+    "refs": [
+      "generated/xian_spy_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese woman, slender build, dark hair crown, dark cloak over layered pale blue robes. Rebuild the lower-face veil as real OPAQUE charcoal-black woven silk cloth, suspended from both sides below the eyes, covering the entire nose, mouth, cheeks and chin, hanging naturally onto the upper chest. The upper edge rests high on the nose bridge directly under the eyes. Cloth is the foremost surface over the lower face: continuous visible silk weave, believable hanging folds and embroidered fabric, not facial skin. Absolutely NO visible lips, teeth, nostrils, mouth outline, face print, embossed face, or second face on the cloth. The veil itself is NOT transparent or translucent; only the image background is transparent. Brow, eyes and forehead remain fully exposed and expressive. Change only the expression/state: Magically mind-controlled: both eyes are completely milky white without pupils or visible irises, blank vacant gaze, delicate dark veins at the exposed temples and neck. Remains standing. Preserve the exact THICK, FOLDED, FULLY OPAQUE silk face scarf of the reference. Never replace it with thin gauze. No lips, nose, mouth or facial contours may appear on or through the solid fabric. Express the emotion ONLY with exposed eyes, brows and forehead; the lower face stays completely hidden behind the same opaque cloth. "
+  },
+  {
+    "id": "yao_snake_pleased",
+    "out": "generated/yao_snake_pleased.png",
+    "refs": [
+      "generated/yao_snake.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same adult Chinese woman, recognizable face and elegant updo, snake hair ornament, jade earrings, green embroidered robes, hands clasped at her waist. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Pleased and relieved, gently raised cheeks and warm relaxed smiling eyes. "
+  },
+  {
+    "id": "yao_snake_angry",
+    "out": "generated/yao_snake_angry.png",
+    "refs": [
+      "generated/yao_snake.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same adult Chinese woman, recognizable face and elegant updo, snake hair ornament, jade earrings, green embroidered robes, hands clasped at her waist. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Furious, brows sharply knitted, fierce focused glare, tense brow and forehead. "
+  },
+  {
+    "id": "yao_snake_afraid",
+    "out": "generated/yao_snake_afraid.png",
+    "refs": [
+      "generated/yao_snake.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same adult Chinese woman, recognizable face and elegant updo, snake hair ornament, jade earrings, green embroidered robes, hands clasped at her waist. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Frightened, wide alarmed eyes, brows raised and drawn together, pale forehead. "
+  },
+  {
+    "id": "yao_snake_sly",
+    "out": "generated/yao_snake_sly.png",
+    "refs": [
+      "generated/yao_snake.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same adult Chinese woman, recognizable face and elegant updo, snake hair ornament, jade earrings, green embroidered robes, hands clasped at her waist. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Sly and calculating, one eyebrow slightly raised, knowingly narrowed mischievous eyes. "
+  },
+  {
+    "id": "yao_snake_wasted",
+    "out": "generated/yao_snake_wasted.png",
+    "refs": [
+      "generated/yao_snake.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same adult Chinese woman, recognizable face and elegant updo, snake hair ornament, jade earrings, green embroidered robes, hands clasped at her waist. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Exhausted and ill, pronounced dark under-eye circles, heavy tired eyelids, pale exposed skin and beads of sweat on the forehead. Remains standing. "
+  },
+  {
+    "id": "yao_snake_thrall",
+    "out": "generated/yao_snake_thrall.png",
+    "refs": [
+      "generated/yao_snake.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same adult Chinese woman, recognizable face and elegant updo, snake hair ornament, jade earrings, green embroidered robes, hands clasped at her waist. Keep the same prominent green scales on temples, cheeks, neck and hands, same snake-demon anatomy. For this state ONLY, eyes are entirely milky white without pupils; all other snake features remain unchanged. Change only the expression/state: Magically mind-controlled: both eyes are completely milky white without pupils or visible irises, blank vacant gaze, delicate dark veins at the exposed temples and neck. Remains standing. "
+  },
+  {
+    "id": "yao_snake_f1_pleased",
+    "out": "generated/yao_snake_f1_pleased.png",
+    "refs": [
+      "generated/yao_snake_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same rugged middle-aged Chinese MAN, masculine facial structure, black mustache and short goatee, weathered face, topknot, dark green robes, holding the original scroll. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Pleased and relieved, gently raised cheeks and warm relaxed smiling eyes. "
+  },
+  {
+    "id": "yao_snake_f1_angry",
+    "out": "generated/yao_snake_f1_angry.png",
+    "refs": [
+      "generated/yao_snake_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same rugged middle-aged Chinese MAN, masculine facial structure, black mustache and short goatee, weathered face, topknot, dark green robes, holding the original scroll. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Furious, brows sharply knitted, fierce focused glare, tense brow and forehead. "
+  },
+  {
+    "id": "yao_snake_f1_afraid",
+    "out": "generated/yao_snake_f1_afraid.png",
+    "refs": [
+      "generated/yao_snake_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same rugged middle-aged Chinese MAN, masculine facial structure, black mustache and short goatee, weathered face, topknot, dark green robes, holding the original scroll. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Frightened, wide alarmed eyes, brows raised and drawn together, pale forehead. "
+  },
+  {
+    "id": "yao_snake_f1_sly",
+    "out": "generated/yao_snake_f1_sly.png",
+    "refs": [
+      "generated/yao_snake_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same rugged middle-aged Chinese MAN, masculine facial structure, black mustache and short goatee, weathered face, topknot, dark green robes, holding the original scroll. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Sly and calculating, one eyebrow slightly raised, knowingly narrowed mischievous eyes. "
+  },
+  {
+    "id": "yao_snake_f1_wasted",
+    "out": "generated/yao_snake_f1_wasted.png",
+    "refs": [
+      "generated/yao_snake_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same rugged middle-aged Chinese MAN, masculine facial structure, black mustache and short goatee, weathered face, topknot, dark green robes, holding the original scroll. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Exhausted and ill, pronounced dark under-eye circles, heavy tired eyelids, pale exposed skin and beads of sweat on the forehead. Remains standing. "
+  },
+  {
+    "id": "yao_snake_f1_thrall",
+    "out": "generated/yao_snake_f1_thrall.png",
+    "refs": [
+      "generated/yao_snake_f1.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same rugged middle-aged Chinese MAN, masculine facial structure, black mustache and short goatee, weathered face, topknot, dark green robes, holding the original scroll. Keep the same prominent green scales on temples, cheeks, neck and hands, same snake-demon anatomy. For this state ONLY, eyes are entirely milky white without pupils; all other snake features remain unchanged. Change only the expression/state: Magically mind-controlled: both eyes are completely milky white without pupils or visible irises, blank vacant gaze, delicate dark veins at the exposed temples and neck. Remains standing. "
+  },
+  {
+    "id": "yao_snake_f2_pleased",
+    "out": "generated/yao_snake_f2_pleased.png",
+    "refs": [
+      "generated/yao_snake_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese MAN, masculine face and broad shoulders, long dark hair, snake crown, dark green scale-pattern robes, jade belt and the original hand pose. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Pleased and relieved, gently raised cheeks and warm relaxed smiling eyes. "
+  },
+  {
+    "id": "yao_snake_f2_angry",
+    "out": "generated/yao_snake_f2_angry.png",
+    "refs": [
+      "generated/yao_snake_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese MAN, masculine face and broad shoulders, long dark hair, snake crown, dark green scale-pattern robes, jade belt and the original hand pose. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Furious, brows sharply knitted, fierce focused glare, tense brow and forehead. "
+  },
+  {
+    "id": "yao_snake_f2_afraid",
+    "out": "generated/yao_snake_f2_afraid.png",
+    "refs": [
+      "generated/yao_snake_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese MAN, masculine face and broad shoulders, long dark hair, snake crown, dark green scale-pattern robes, jade belt and the original hand pose. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Frightened, wide alarmed eyes, brows raised and drawn together, pale forehead. "
+  },
+  {
+    "id": "yao_snake_f2_sly",
+    "out": "generated/yao_snake_f2_sly.png",
+    "refs": [
+      "generated/yao_snake_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese MAN, masculine face and broad shoulders, long dark hair, snake crown, dark green scale-pattern robes, jade belt and the original hand pose. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Sly and calculating, one eyebrow slightly raised, knowingly narrowed mischievous eyes. "
+  },
+  {
+    "id": "yao_snake_f2_wasted",
+    "out": "generated/yao_snake_f2_wasted.png",
+    "refs": [
+      "generated/yao_snake_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese MAN, masculine face and broad shoulders, long dark hair, snake crown, dark green scale-pattern robes, jade belt and the original hand pose. Make this unmistakably a snake demon in human form: prominent contiguous patches of raised overlapping emerald-green snake scales across BOTH temples and lateral cheekbones, continuing down the sides and front of the neck to the collar. Scales are physical three-dimensional prosthetic skin with highlights and shadows, individual scales clearly visible, not faint freckles, lace, tattoos or face paint. Golden yellow-green irises with clearly defined razor-thin vertical black snake pupils, alert serpentine gaze. Both exposed hands and fingers also have visible fine green scales. Preserve a recognizable attractive HUMAN face, human head and two human legs under the original green robes; preserve the original sex and age. Keep the scale pattern strong enough to read at game portrait size. Change only the expression/state: Exhausted and ill, pronounced dark under-eye circles, heavy tired eyelids, pale exposed skin and beads of sweat on the forehead. Remains standing. "
+  },
+  {
+    "id": "yao_snake_f2_thrall",
+    "out": "generated/yao_snake_f2_thrall.png",
+    "refs": [
+      "generated/yao_snake_f2.png"
+    ],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the reference: exactly the same person and identity. Cinematic photorealistic Chinese xianxia costume-drama film still, real human actor and practical costume/prosthetic effects, detailed fabric and skin. Exactly one person, full body from hair ornament to both feet, same standing pose, same hand positions, same props, hairstyle, costume, camera distance and proportions as the reference. Looking at the viewer. Warm red light from the left and cool purple rim light. Isolated on a genuinely transparent alpha background, no scenery, floor, shadow, checkerboard, text, watermark or extra people. Leave clear margins around the whole body. The same young adult Chinese MAN, masculine face and broad shoulders, long dark hair, snake crown, dark green scale-pattern robes, jade belt and the original hand pose. Keep the same prominent green scales on temples, cheeks, neck and hands, same snake-demon anatomy. For this state ONLY, eyes are entirely milky white without pupils; all other snake features remain unchanged. Change only the expression/state: Magically mind-controlled: both eyes are completely milky white without pupils or visible irises, blank vacant gaze, delicate dark veins at the exposed temples and neck. Remains standing. "
+  }
+]

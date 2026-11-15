@@ -1,0 +1,9 @@
+{
+  "character": "chu_zhiyan",
+  "state": "thrall",
+  "asset_id": "chu_zhiyan_thrall",
+  "image_file": "provider/chu_zhiyan_thrall/chu_zhiyan_thrall.png",
+  "sha256": "f154093ed8abc0d57fe3f54945258a2df9099665f87c717af07cceadd38d4c30",
+  "seed": 151376,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "song_yunyou",
+  "state": "thrall",
+  "asset_id": "song_yunyou_thrall",
+  "image_file": "provider/song_yunyou_thrall/song_yunyou_thrall.png",
+  "sha256": "c9bb5e9da50fce2c2aaf617ed5cbf83d3a87db1cdde10f8aa4e9f747468c005a",
+  "seed": 151496,
+  "model": "qwen-image-3.0-pro"
+}

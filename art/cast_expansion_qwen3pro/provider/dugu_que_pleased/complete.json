@@ -1,0 +1,9 @@
+{
+  "character": "dugu_que",
+  "state": "pleased",
+  "asset_id": "dugu_que_pleased",
+  "image_file": "provider/dugu_que_pleased/dugu_que_pleased.png",
+  "sha256": "604bb5bbfeda136a1e4c81120725f779cb6e8d174f6ae77ef3fff1de25d8656a",
+  "seed": 151291,
+  "model": "qwen-image-3.0-pro"
+}

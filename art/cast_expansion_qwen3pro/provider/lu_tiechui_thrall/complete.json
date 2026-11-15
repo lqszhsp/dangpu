@@ -1,0 +1,9 @@
+{
+  "character": "lu_tiechui",
+  "state": "thrall",
+  "asset_id": "lu_tiechui_thrall",
+  "image_file": "provider/lu_tiechui_thrall/lu_tiechui_thrall.png",
+  "sha256": "7cf469d2cf847f44f142734578d88d85d8e25f3b532d2681b003499b5cd5114c",
+  "seed": 151016,
+  "model": "qwen-image-3.0-pro"
+}

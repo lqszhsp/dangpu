@@ -1,0 +1,9 @@
+{
+  "character": "yue_qingshi",
+  "state": "afraid",
+  "asset_id": "yue_qingshi_afraid",
+  "image_file": "provider/yue_qingshi_afraid/yue_qingshi_afraid.png",
+  "sha256": "f5cd8712f109d04a462881f80655b6f36f372076c0ef6a82958db0d75315c6c7",
+  "seed": 151433,
+  "model": "qwen-image-3.0-pro"
+}

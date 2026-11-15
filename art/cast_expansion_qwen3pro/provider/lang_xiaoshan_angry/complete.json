@@ -1,0 +1,9 @@
+{
+  "character": "lang_xiaoshan",
+  "state": "angry",
+  "asset_id": "lang_xiaoshan_angry",
+  "image_file": "provider/lang_xiaoshan_angry/lang_xiaoshan_angry.png",
+  "sha256": "cc88dd4ed8fa11c3f3d2748c1f3b467f9c299784e5a691225972aa7ae6d3718b",
+  "seed": 151162,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "yuanxing",
+  "state": "angry",
+  "asset_id": "yuanxing_angry",
+  "image_file": "provider/yuanxing_angry/yuanxing_angry.png",
+  "sha256": "3d2f403846c88e2b90bcc6c9f1ea25984a36785cd56d48953e7c9484099238c1",
+  "seed": 151542,
+  "model": "qwen-image-3.0-pro"
+}

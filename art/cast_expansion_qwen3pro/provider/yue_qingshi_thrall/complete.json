@@ -1,0 +1,9 @@
+{
+  "character": "yue_qingshi",
+  "state": "thrall",
+  "asset_id": "yue_qingshi_thrall",
+  "image_file": "provider/yue_qingshi_thrall/yue_qingshi_thrall.png",
+  "sha256": "3004b119f3eb994123376fe9814d47f3e5567d731c954dc3f8567a4fd3ff9b52",
+  "seed": 151436,
+  "model": "qwen-image-3.0-pro"
+}

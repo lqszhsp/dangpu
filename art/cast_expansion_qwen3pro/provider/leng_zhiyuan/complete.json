@@ -1,0 +1,9 @@
+{
+  "character": "leng_zhiyuan",
+  "state": "neutral",
+  "asset_id": "leng_zhiyuan",
+  "image_file": "provider/leng_zhiyuan/leng_zhiyuan.png",
+  "sha256": "cf81a86d6fcfca6a7e3e37a81cedeae2709d73b3ed21b477c2f368923c1e28d7",
+  "seed": 151270,
+  "model": "qwen-image-3.0-pro"
+}

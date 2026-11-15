@@ -1,0 +1,9 @@
+{
+  "character": "leng_zhiyuan",
+  "state": "afraid",
+  "asset_id": "leng_zhiyuan_afraid",
+  "image_file": "provider/leng_zhiyuan_afraid/leng_zhiyuan_afraid.png",
+  "sha256": "aa947ab029c79883d82a1461503ad7150d4459fc7d31dff560eb4798db5edf3d",
+  "seed": 151273,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "wen_lingqi",
+  "state": "thrall",
+  "asset_id": "wen_lingqi_thrall",
+  "image_file": "provider/wen_lingqi_thrall/wen_lingqi_thrall.png",
+  "sha256": "028435460784f6617651c6a04afa50ac9ad5cc730456f8818d393cbff6576e5f",
+  "seed": 151446,
+  "model": "qwen-image-3.0-pro"
+}

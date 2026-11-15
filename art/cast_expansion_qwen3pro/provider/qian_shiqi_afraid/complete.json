@@ -1,0 +1,9 @@
+{
+  "character": "qian_shiqi",
+  "state": "afraid",
+  "asset_id": "qian_shiqi_afraid",
+  "image_file": "provider/qian_shiqi_afraid/qian_shiqi_afraid.png",
+  "sha256": "8090dc151206242ede85485895a405d1c6a83f7bfeaeeace21f709bef36b5b30",
+  "seed": 151353,
+  "model": "qwen-image-3.0-pro"
+}

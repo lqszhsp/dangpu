@@ -1,0 +1,9 @@
+{
+  "character": "song_yunyou",
+  "state": "angry",
+  "asset_id": "song_yunyou_angry",
+  "image_file": "provider/song_yunyou_angry/song_yunyou_angry.png",
+  "sha256": "d7fc73684f2ff1d0944a82e3bd2d2e3708b9426c9547cd0ccfabf48c6ac7c179",
+  "seed": 151492,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "yan_fengjiu",
+  "state": "thrall",
+  "asset_id": "yan_fengjiu_thrall",
+  "image_file": "provider/yan_fengjiu_thrall/yan_fengjiu_thrall.png",
+  "sha256": "5f2863cbf8c50116956407f0fb75f1b9f06260ff3534639d7366608718c33a3d",
+  "seed": 151236,
+  "model": "qwen-image-3.0-pro"
+}

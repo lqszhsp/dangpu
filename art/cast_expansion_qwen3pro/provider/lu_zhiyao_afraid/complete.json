@@ -1,0 +1,9 @@
+{
+  "character": "lu_zhiyao",
+  "state": "afraid",
+  "asset_id": "lu_zhiyao_afraid",
+  "image_file": "provider/lu_zhiyao_afraid/lu_zhiyao_afraid.png",
+  "sha256": "6f57c39252cb97118c1ea8ec1fa485a004d06051004dc8c6c77e71916f1854b0",
+  "seed": 151183,
+  "model": "qwen-image-3.0-pro"
+}

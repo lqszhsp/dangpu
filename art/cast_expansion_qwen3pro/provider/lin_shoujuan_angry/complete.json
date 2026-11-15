@@ -1,0 +1,9 @@
+{
+  "character": "lin_shoujuan",
+  "state": "angry",
+  "asset_id": "lin_shoujuan_angry",
+  "image_file": "provider/lin_shoujuan_angry/lin_shoujuan_angry.png",
+  "sha256": "8a19e0d0842fd99051fbd50b316ac17d91baab8fa32594224ae3136c82f75df1",
+  "seed": 151452,
+  "model": "qwen-image-3.0-pro"
+}

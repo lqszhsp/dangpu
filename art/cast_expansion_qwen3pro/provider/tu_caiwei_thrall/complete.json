@@ -1,0 +1,9 @@
+{
+  "character": "tu_caiwei",
+  "state": "thrall",
+  "asset_id": "tu_caiwei_thrall",
+  "image_file": "provider/tu_caiwei_thrall/tu_caiwei_thrall.png",
+  "sha256": "3a9516a22628dbda3e2f2427a0647fb775efbaa22b08ceff51f4a40a7d4af497",
+  "seed": 151176,
+  "model": "qwen-image-3.0-pro"
+}

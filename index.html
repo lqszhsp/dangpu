@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#140a12">
+<title>魔门当铺·来路不明</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="stage">
+  <div id="title-screen" class="screen"></div>
+  <div id="game" class="screen hidden">
+    <header id="topbar"></header>
+    <section id="scene">
+      <div id="stagebox">
+        <img class="bg" src="assets/scene/shop_back.svg" alt="">
+        <div id="crowd"></div>
+        <button id="door" type="button"><span></span></button>
+        <button id="closesign" type="button" data-act="close">打烊</button>
+        <img id="portrait" alt="">
+        <img class="fg" src="assets/scene/shop_counter.svg" alt="">
+      </div>
+      <div id="nameplate"></div>
+      <div id="speech"></div>
+    </section>
+    <div id="dock">
+      <section id="counter-panel" class="paper win" data-win="counter"></section>
+      <section id="side" class="win" data-win="main">
+        <nav id="tabs"></nav>
+        <div id="tab-body"></div>
+      </section>
+      <section id="storage" class="win" data-win="main"></section>
+    </div>
+    <div id="itemcard"></div>
+    <nav id="nav"></nav>
+  </div>
+  <div id="modal-layer"></div>
+</div>
+<div id="tooltip"></div>
+<div id="toast"></div>
+<script src="js/data.js"></script>
+<script src="js/art.js"></script>
+<script src="js/game.js"></script>
+<script src="js/people.js"></script>
+<script src="js/stories.js"></script>
+<script src="js/world.js"></script>
+<script src="js/intrigue.js"></script>
+<script src="js/forgery.js"></script>
+<script src="js/oversight.js"></script>
+<script src="js/vitality.js"></script>
+<script src="js/crafts.js"></script>
+<script src="js/market.js"></script>
+<script src="js/intel.js"></script>
+<script src="js/trade.js"></script>
+<script src="js/dao.js"></script>
+<script src="js/politics.js"></script>
+<script src="js/karma.js"></script>
+<script src="js/condition.js"></script>
+<script src="js/tourney.js"></script>
+<script src="js/goods.js"></script>
+<!-- goods:begin 货品册：tools/goods/goods.mjs 自动维护 -->
+<script src="js/goods/beauty.js"></script>
+<script src="js/goods/silk.js"></script>
+<!-- goods:end -->
+<script src="js/cast.js"></script>
+<script src="js/cast-ecology.js"></script>
+<!-- cast:begin 角色册：tools/cast/cast.mjs 自动维护 -->
+<script src="js/cast/liu_qingluo.js"></script>
+<script src="js/cast/lu_banxian.js"></script>
+<script src="js/cast/shen_suxin.js"></script>
+<script src="js/cast/lu_tiechui.js"></script>
+<script src="js/cast/zhao_fengchen.js"></script>
+<script src="js/cast/zhou_yunshu.js"></script>
+<script src="js/cast/he_xiaoman.js"></script>
+<script src="js/cast/lin_xiaozhi.js"></script>
+<script src="js/cast/sun_mihe.js"></script>
+<script src="js/cast/jiang_shoudu.js"></script>
+<script src="js/cast/xu_wenpo.js"></script>
+<script src="js/cast/ao_xunlan.js"></script>
+<script src="js/cast/dan_lingyu.js"></script>
+<script src="js/cast/xiong_yanzhi.js"></script>
+<script src="js/cast/hui_qiaosuo.js"></script>
+<script src="js/cast/li_yueqiao.js"></script>
+<script src="js/cast/xiao_gengye.js"></script>
+<script src="js/cast/zhu_shanye.js"></script>
+<script src="js/cast/lang_xiaoshan.js"></script>
+<script src="js/cast/tu_caiwei.js"></script>
+<script src="js/cast/lu_zhiyao.js"></script>
+<script src="js/cast/gui_shouyuan.js"></script>
+<script src="js/cast/he_baizhi.js"></script>
+<script src="js/cast/li_duangang.js"></script>
+<script src="js/cast/tu_baigu.js"></script>
+<script src="js/cast/yan_fengjiu.js"></script>
+<script src="js/cast/si_hongxiu.js"></script>
+<script src="js/cast/wan_jinluo.js"></script>
+<script src="js/cast/wan_xiaomu.js"></script>
+<script src="js/cast/leng_zhiyuan.js"></script>
+<script src="js/cast/mu_qingdan.js"></script>
+<script src="js/cast/dugu_que.js"></script>
+<script src="js/cast/gui_dengpo.js"></script>
+<script src="js/cast/qin_zhengxian.js"></script>
+<script src="js/cast/su_wanyin.js"></script>
+<script src="js/cast/zhong_huaiyuan.js"></script>
+<script src="js/cast/duan_yinghuo.js"></script>
+<script src="js/cast/qian_shiqi.js"></script>
+<script src="js/cast/fu_shoumo.js"></script>
+<script src="js/cast/chu_zhiyan.js"></script>
+<script src="js/cast/mo_yanqing.js"></script>
+<script src="js/cast/ye_danping.js"></script>
+<script src="js/cast/lu_pinxiang.js"></script>
+<script src="js/cast/heng_zhenyi.js"></script>
+<script src="js/cast/shi_kanmai.js"></script>
+<script src="js/cast/yue_qingshi.js"></script>
+<script src="js/cast/wen_lingqi.js"></script>
+<script src="js/cast/lin_shoujuan.js"></script>
+<script src="js/cast/su_zhengqi.js"></script>
+<script src="js/cast/tao_yunhe.js"></script>
+<script src="js/cast/bai_chuandeng.js"></script>
+<script src="js/cast/song_yunyou.js"></script>
+<script src="js/cast/yu_wangchuan.js"></script>
+<script src="js/cast/su_cailing.js"></script>
+<script src="js/cast/xu_xingzhen.js"></script>
+<script src="js/cast/shi_jianzhen.js"></script>
+<script src="js/cast/yuanxing.js"></script>
+<!-- cast:end -->
+<script src="assets/art.js"></script>
+<script src="js/look.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

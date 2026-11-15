@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_qiuzhuan_neutral",
+  "image_file": "provider/exp_qiuzhuan_neutral/exp_qiuzhuan_neutral.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115010,
+  "sha256": "4750e9ea08fb8b7f0887b4b561fea0da6b26ce1d76ca1888c6efc4ced1e659e0"
+}

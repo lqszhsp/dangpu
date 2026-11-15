@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="ic_heat-iris" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.35" stop-color="#e0524a"/>
+      <stop offset="0.8" stop-color="#8e1b2b"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </radialGradient>
+    <radialGradient id="ic_heat-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c43a3a" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#5e0f1c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="url(#ic_heat-glow)"/>
+  <!-- flame ring -->
+  <path d="M32 2 Q36 8 40 4 Q42 10 48 8 Q48 14 54 14 Q52 20 58 22 Q54 26 60 30 Q55 33 60 38 Q54 40 56 46 Q50 46 50 52 Q44 50 42 56 Q38 52 34 58 Q31 53 26 58 Q24 52 18 54 Q18 48 12 48 Q14 42 6 40 Q10 36 4 32 Q10 28 6 22 Q12 22 10 16 Q16 16 16 10 Q22 12 24 6 Q28 10 32 2 Z" fill="#8e1b2b" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+  <circle cx="32" cy="31" r="20" fill="#14101a"/>
+  <circle cx="32" cy="31" r="20" fill="none" stroke="#e0524a" stroke-width="1.6"/>
+  <!-- vertical eye -->
+  <path d="M32 13 Q46 31 32 49 Q18 31 32 13 Z" fill="#efe2c4" stroke="#14101a" stroke-width="2.6" stroke-linejoin="round"/>
+  <ellipse cx="32" cy="31" rx="7" ry="11" fill="url(#ic_heat-iris)" stroke="#14101a" stroke-width="1.6"/>
+  <ellipse cx="32" cy="31" rx="2" ry="8" fill="#14101a"/>
+  <circle cx="29.6" cy="26" r="1.6" fill="#f4fbff"/>
+  <path d="M32 13 Q46 31 32 49 Q18 31 32 13 Z" fill="none" stroke="#c43a3a" stroke-width="1" opacity="0.8"/>
+</svg>

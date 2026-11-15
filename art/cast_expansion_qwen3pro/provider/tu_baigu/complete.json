@@ -1,0 +1,9 @@
+{
+  "character": "tu_baigu",
+  "state": "neutral",
+  "asset_id": "tu_baigu",
+  "image_file": "provider/tu_baigu/tu_baigu.png",
+  "sha256": "3feeec9a76ba6ad82847c5888763e0306715860012e2b69651028ed2aa2915d6",
+  "seed": 151220,
+  "model": "qwen-image-3.0-pro"
+}

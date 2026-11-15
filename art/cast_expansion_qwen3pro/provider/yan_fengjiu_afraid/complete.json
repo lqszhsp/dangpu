@@ -1,0 +1,9 @@
+{
+  "character": "yan_fengjiu",
+  "state": "afraid",
+  "asset_id": "yan_fengjiu_afraid",
+  "image_file": "provider/yan_fengjiu_afraid/yan_fengjiu_afraid.png",
+  "sha256": "2e39bc04439e335b564c05a77a9a6c3a55257ee5762dc558a0b8b02dfd10d7c1",
+  "seed": 151233,
+  "model": "qwen-image-3.0-pro"
+}

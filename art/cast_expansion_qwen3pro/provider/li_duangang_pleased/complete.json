@@ -1,0 +1,9 @@
+{
+  "character": "li_duangang",
+  "state": "pleased",
+  "asset_id": "li_duangang_pleased",
+  "image_file": "provider/li_duangang_pleased/li_duangang_pleased.png",
+  "sha256": "793246fa86dc6144bedc3b8cca80ff1d436b6fc49ffb19272b212773496b32d9",
+  "seed": 151211,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "shi_kanmai",
+  "state": "wasted",
+  "asset_id": "shi_kanmai_wasted",
+  "image_file": "provider/shi_kanmai_wasted/shi_kanmai_wasted.png",
+  "sha256": "c27331e4a845e68209809488a6b8d88ea6c532286fde669ee85033a6e0d59049",
+  "seed": 151425,
+  "model": "qwen-image-3.0-pro"
+}

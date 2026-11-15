@@ -1,0 +1,9 @@
+{
+  "character": "yan_fengjiu",
+  "state": "wasted",
+  "asset_id": "yan_fengjiu_wasted",
+  "image_file": "provider/yan_fengjiu_wasted/yan_fengjiu_wasted.png",
+  "sha256": "467b61dcf77b898b3b9b4df53b6785a1929e996f6a93d3cc3a04a7f3f9d98ef9",
+  "seed": 151235,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "tao_yunhe",
+  "state": "thrall",
+  "asset_id": "tao_yunhe_thrall",
+  "image_file": "provider/tao_yunhe_thrall/tao_yunhe_thrall.png",
+  "sha256": "18424a635d77793b7c28e5fc97befae26f1e6d909c20f076b97694d19fd47351",
+  "seed": 151476,
+  "model": "qwen-image-3.0-pro"
+}

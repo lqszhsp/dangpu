@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_zhaowei_afraid",
+  "image_file": "provider/exp_zhaowei_afraid/exp_zhaowei_afraid.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115023,
+  "sha256": "60b16da89edd752e72ac4e1402b49c46b16869fbe248415c1f435f20c23c8302"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "wan_jinluo",
+  "state": "thrall",
+  "asset_id": "wan_jinluo_thrall",
+  "image_file": "provider/wan_jinluo_thrall/wan_jinluo_thrall.png",
+  "sha256": "192cbfa745d8f9306802c5f9224f6f94eeddbd639d6659527135af2b41f505ec",
+  "seed": 151256,
+  "model": "qwen-image-3.0-pro"
+}

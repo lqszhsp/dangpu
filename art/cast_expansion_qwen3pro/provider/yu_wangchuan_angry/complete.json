@@ -1,0 +1,9 @@
+{
+  "character": "yu_wangchuan",
+  "state": "angry",
+  "asset_id": "yu_wangchuan_angry",
+  "image_file": "provider/yu_wangchuan_angry/yu_wangchuan_angry.png",
+  "sha256": "596ba3bc4b21b9c8a78a426f53a0008025b8faacfe1e5d3376cfb86d4d613f76",
+  "seed": 151502,
+  "model": "qwen-image-3.0-pro"
+}

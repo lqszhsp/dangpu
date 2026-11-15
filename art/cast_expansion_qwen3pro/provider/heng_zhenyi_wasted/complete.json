@@ -1,0 +1,9 @@
+{
+  "character": "heng_zhenyi",
+  "state": "wasted",
+  "asset_id": "heng_zhenyi_wasted",
+  "image_file": "provider/heng_zhenyi_wasted/heng_zhenyi_wasted.png",
+  "sha256": "88077688f98aca0446e009c790cf47a8b5e0eb6d2a0310d10b6e70d7b428d4c1",
+  "seed": 151415,
+  "model": "qwen-image-3.0-pro"
+}

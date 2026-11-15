@@ -1,0 +1,9 @@
+{
+  "character": "shi_jianzhen",
+  "state": "wasted",
+  "asset_id": "shi_jianzhen_wasted",
+  "image_file": "provider/shi_jianzhen_wasted/shi_jianzhen_wasted.png",
+  "sha256": "049b1abc6ad79276222757b45479fe3206c15a49e98833780f26ef490e6ffcad",
+  "seed": 151535,
+  "model": "qwen-image-3.0-pro"
+}

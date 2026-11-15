@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ic_scavenge-bamboo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8a5a1c"/>
+      <stop offset="0.45" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#8a5a1c"/>
+    </linearGradient>
+  </defs>
+  <!-- items poking out -->
+  <path d="M38 14 L50 2" stroke="#14101a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M38 14 L50 2" stroke="#5c6370" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M20 16 Q20 8 28 8 Q34 10 32 16 Z" fill="#3fae8f" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M23 12 Q25 10 28 10.4" fill="none" stroke="#cfefff" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- straps -->
+  <path d="M18 20 Q12 34 16 48 M46 20 Q52 34 48 48" fill="none" stroke="#14101a" stroke-width="4.6" stroke-linecap="round"/>
+  <path d="M18 20 Q12 34 16 48 M46 20 Q52 34 48 48" fill="none" stroke="#9a4d12" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- basket body (tapers to bottom) -->
+  <path d="M12 16 L52 16 L46 56 Q32 60 18 56 Z" fill="url(#ic_scavenge-bamboo)" stroke="#14101a" stroke-width="2.8" stroke-linejoin="round"/>
+  <!-- weave -->
+  <g fill="none" stroke="#1f1626" stroke-width="1.6" stroke-linecap="round">
+    <path d="M13.4 26 Q32 30 50.6 26"/>
+    <path d="M14.8 36 Q32 40 49 36"/>
+    <path d="M16.4 46 Q32 50 47.6 46"/>
+    <path d="M22 17 L23 56 M32 17 L32 58 M42 17 L41 56"/>
+  </g>
+  <g stroke="#f2d27a" stroke-width="1" stroke-linecap="round" opacity="0.7">
+    <path d="M18 31 L18 34 M27 31 L27 35 M37 31 L37 35 M46 31 L46 34 M19 42 L19 45 M27 42 L27 46 M37 42 L37 46 M45 42 L45 45"/>
+  </g>
+  <!-- rim -->
+  <path d="M10 14 Q32 20 54 14 L53 19 Q32 25 11 19 Z" fill="#8a5a1c" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M14 15.6 Q32 20.4 50 15.6" fill="none" stroke="#f2d27a" stroke-width="1" opacity="0.7"/>
+</svg>

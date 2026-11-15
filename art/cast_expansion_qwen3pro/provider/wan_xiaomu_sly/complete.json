@@ -1,0 +1,9 @@
+{
+  "character": "wan_xiaomu",
+  "state": "sly",
+  "asset_id": "wan_xiaomu_sly",
+  "image_file": "provider/wan_xiaomu_sly/wan_xiaomu_sly.png",
+  "sha256": "7579b704e93559519c822289b8d7fc5e07e057a92ef73a33cfbc7d7e8af0be09",
+  "seed": 151264,
+  "model": "qwen-image-3.0-pro"
+}

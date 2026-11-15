@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128">
+  <defs>
+    <linearGradient id="spirit_wine-glaze" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#14101a"/>
+      <stop offset="0.25" stop-color="#5e0f1c"/>
+      <stop offset="0.42" stop-color="#9a4d12"/>
+      <stop offset="0.6" stop-color="#5e0f1c"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="spirit_wine-clay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5e0f1c"/>
+      <stop offset="0.4" stop-color="#d8c49a"/>
+      <stop offset="1" stop-color="#8a5a1c"/>
+    </linearGradient>
+    <linearGradient id="spirit_wine-cloth" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0524a"/>
+      <stop offset="0.5" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </linearGradient>
+    <linearGradient id="spirit_wine-paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0524a"/>
+      <stop offset="0.6" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#8e1b2b"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="32" cy="121" rx="22" ry="4" fill="#14101a" opacity="0.45"/>
+  <!-- foot ring -->
+  <path d="M17 112 L47 112 L45.5 120 C40 122 24 122 18.5 120 Z" fill="url(#spirit_wine-clay)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- body -->
+  <path d="M22 30 C22 36 10 42 8.5 56 C7 72 12 96 18 112.5 C26 115 38 115 46 112.5 C52 96 57 72 55.5 56 C54 42 42 36 42 30 Z" fill="url(#spirit_wine-glaze)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <!-- glaze drip line -->
+  <path d="M10 70 C14 72 16 69 19 72 C22 75 24 71 27 73.5 C30 76 33 72 36 74 C39 76 42 72 45 74 C48 76 51 72 54.4 71" fill="none" stroke="#14101a" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+  <path d="M11 99 C24 103 40 103 53 99" fill="none" stroke="#d8c49a" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+  <!-- shoulder ridges -->
+  <path d="M15 43 C24 46.6 40 46.6 49 43" fill="none" stroke="#14101a" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M15.6 44.4 C24 47.8 40 47.8 48.4 44.4" fill="none" stroke="#f2d27a" stroke-width="0.6" stroke-linecap="round" opacity="0.4"/>
+  <!-- highlights -->
+  <path d="M16 52 C14 62 14.6 78 18 92" fill="none" stroke="#f2d27a" stroke-width="2.4" stroke-linecap="round" opacity="0.35"/>
+  <path d="M16.6 54 C15 62 15.4 72 16.8 80" fill="none" stroke="#fff1c8" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+  <path d="M20 39 C17.4 41 15.6 43 14.6 45" fill="none" stroke="#fff1c8" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+  <path d="M51 60 C51.6 72 50 90 46 106" fill="none" stroke="#e8902f" stroke-width="0.9" stroke-linecap="round" opacity="0.3"/>
+  <!-- seal paper (blank, diamond) -->
+  <path d="M32 54 L48 72 L32 90 L16 72 Z" fill="#14101a" opacity="0.4" transform="translate(1.2 1.6)"/>
+  <path d="M32 54 L48 72 L32 90 L16 72 Z" fill="url(#spirit_wine-paper)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M32 58.4 L44 72 L32 85.6 L20 72 Z" fill="none" stroke="#8e1b2b" stroke-width="1" stroke-linejoin="round" opacity="0.8"/>
+  <path d="M19 70 L31.4 56 M33 56.6 L35 58.8" fill="none" stroke="#f2d27a" stroke-width="0.7" stroke-linecap="round" opacity="0.6"/>
+  <path d="M40.5 80 L42 81.6 L40 82 Z" fill="#5e0f1c" opacity="0.8"/>
+  <!-- neck -->
+  <path d="M23.5 22 L40.5 22 L42 31 C36 33.4 28 33.4 22 31 Z" fill="url(#spirit_wine-clay)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <!-- red cloth over mouth -->
+  <path d="M17 28 C14.6 22 15.4 15 21 11 C26 7.6 38 7.6 43 11 C48.6 15 49.4 22 47 28 C44.4 25.4 42 30.4 38.6 27.6 C35.6 31 32.6 26.4 29.4 29.4 C26.4 26.4 24 30.6 21.4 27.6 C19.8 29 18.4 29.4 17 28 Z" fill="url(#spirit_wine-cloth)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M22.6 13 C26 10.6 30 10 34 10.2" fill="none" stroke="#ffb3a8" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+  <path d="M22 26 C22.6 21 23.6 16.4 25.6 13.6 M30 27.6 L31 15 M38.6 26.6 C39 21 39 17 38 13.6 M44.6 25 C44.6 21 44 17.6 42.4 14.6" fill="none" stroke="#5e0f1c" stroke-width="0.8" stroke-linecap="round" opacity="0.7"/>
+  <!-- cloth top knot -->
+  <path d="M26 11 C26 6.6 29 5 32 5 C35 5 38 6.6 38 11 C35 12.2 29 12.2 26 11 Z" fill="url(#spirit_wine-cloth)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- binding cord -->
+  <path d="M21.5 22 C27 24.8 37 24.8 42.5 22" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M21.5 22 C27 24.8 37 24.8 42.5 22" fill="none" stroke="#d9a441" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M41 23.2 C44 26 45 30 44 34 M41 23.2 C42 27 41.6 31 40 34.4" fill="none" stroke="#14101a" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M41 23.2 C44 26 45 30 44 34 M41 23.2 C42 27 41.6 31 40 34.4" fill="none" stroke="#d9a441" stroke-width="1" stroke-linecap="round"/>
+</svg>

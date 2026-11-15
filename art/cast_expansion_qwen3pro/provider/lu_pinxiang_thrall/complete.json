@@ -1,0 +1,9 @@
+{
+  "character": "lu_pinxiang",
+  "state": "thrall",
+  "asset_id": "lu_pinxiang_thrall",
+  "image_file": "provider/lu_pinxiang_thrall/lu_pinxiang_thrall.png",
+  "sha256": "bb3803bed475065746f0bb172212a73c9efca1155592dfc7028a7b06b48452b4",
+  "seed": 151406,
+  "model": "qwen-image-3.0-pro"
+}

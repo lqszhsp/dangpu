@@ -1,0 +1,9 @@
+{
+  "character": "fu_shoumo",
+  "state": "thrall",
+  "asset_id": "fu_shoumo_thrall",
+  "image_file": "provider/fu_shoumo_thrall/fu_shoumo_thrall.png",
+  "sha256": "201b1bf83eb9c6d9d50cce03859671997c3a3e9a23a12034a24f0f317249dc91",
+  "seed": 151366,
+  "model": "qwen-image-3.0-pro"
+}

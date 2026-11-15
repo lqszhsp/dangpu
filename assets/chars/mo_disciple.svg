@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+  <defs>
+    <radialGradient id="mo_disciple-skin" cx="0.48" cy="0.4" r="0.62">
+      <stop offset="0" stop-color="#efe2c4"/>
+      <stop offset="0.65" stop-color="#e9dfcc"/>
+      <stop offset="1" stop-color="#d8c49a"/>
+    </radialGradient>
+    <linearGradient id="mo_disciple-neck" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8c49a"/>
+      <stop offset="0.45" stop-color="#e9dfcc"/>
+      <stop offset="1" stop-color="#efe2c4"/>
+    </linearGradient>
+    <linearGradient id="mo_disciple-hair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3d2350"/>
+      <stop offset="0.45" stop-color="#1f1626"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="mo_disciple-cloth" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a1838"/>
+      <stop offset="0.45" stop-color="#1f1626"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="mo_disciple-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e0524a"/>
+      <stop offset="0.5" stop-color="#8e1b2b"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </linearGradient>
+    <linearGradient id="mo_disciple-bone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#efe2c4"/>
+      <stop offset="0.6" stop-color="#e9dfcc"/>
+      <stop offset="1" stop-color="#d8c49a"/>
+    </linearGradient>
+    <radialGradient id="mo_disciple-iris" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.45" stop-color="#e0524a"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </radialGradient>
+    <radialGradient id="mo_disciple-aura" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8e1b2b" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#5e0f1c" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="mo_disciple-eyeL"><path d="M155,154 Q170,139 191,151 Q174,162 155,154 Z"/></clipPath>
+    <clipPath id="mo_disciple-eyeR"><path d="M245,154 Q230,139 209,151 Q226,162 245,154 Z"/></clipPath>
+    <filter id="mo_disciple-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背后血煞气 -->
+  <ellipse cx="200" cy="230" rx="190" ry="210" fill="url(#mo_disciple-aura)"/>
+  <g fill="none" stroke="#c43a3a" stroke-linecap="round" opacity="0.5" filter="url(#mo_disciple-glow)">
+    <path d="M60,300 C40,250 70,220 52,180" stroke-width="2.5"/>
+    <path d="M340,310 C362,260 330,226 350,186" stroke-width="2.5"/>
+    <path d="M86,240 C78,214 92,200 86,178" stroke-width="1.5"/>
+  </g>
+
+  <!-- 身体 -->
+  <path d="M46,480 L52,342 C56,300 80,276 122,264 L176,244 L224,244 L278,264 C320,276 344,300 348,342 L354,480 Z" fill="url(#mo_disciple-cloth)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- 手臂分隔与衣褶 -->
+  <g fill="none" stroke="#14101a" stroke-width="2" stroke-linecap="round">
+    <path d="M112,318 C104,370 106,430 110,480"/>
+    <path d="M288,318 C296,370 294,430 290,480"/>
+  </g>
+  <g fill="none" stroke="#5b3474" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+    <path d="M70,330 C66,370 70,420 72,470"/>
+    <path d="M86,300 C96,320 98,340 96,360"/>
+    <path d="M330,330 C334,370 330,420 328,470"/>
+    <path d="M312,298 C302,320 300,340 304,362"/>
+    <path d="M140,420 C150,440 148,460 152,480"/>
+    <path d="M262,420 C252,440 254,460 250,480"/>
+  </g>
+  <g fill="none" stroke="#8e1b2b" stroke-width="2.5" stroke-linecap="round" opacity="0.8">
+    <path d="M60,330 C66,298 88,280 124,268"/>
+    <path d="M340,330 C334,298 312,280 276,268"/>
+  </g>
+  <!-- 敞开的胸口 -->
+  <path d="M176,244 L224,244 L232,262 L206,372 L194,372 L168,262 Z" fill="url(#mo_disciple-neck)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <g fill="none" stroke="#d8c49a" stroke-width="2" stroke-linecap="round">
+    <path d="M180,300 Q192,312 200,306 Q208,312 220,300"/>
+    <path d="M200,314 L200,360"/>
+  </g>
+  <!-- 交领红边 -->
+  <path d="M166,250 L176,244 L208,380 L196,392 Z" fill="url(#mo_disciple-red)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M234,250 L224,244 L198,368 L210,378 Z" fill="url(#mo_disciple-red)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M232,262 C250,300 262,330 270,350 L210,378 Z" fill="#1f1626" opacity="0.55"/>
+  <!-- 腰带 -->
+  <path d="M88,402 Q200,432 312,402 L314,438 Q200,468 86,438 Z" fill="url(#mo_disciple-red)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M96,412 Q200,440 304,412" fill="none" stroke="#e0524a" stroke-width="1.5" opacity="0.7"/>
+  <path d="M184,430 L216,430 L220,456 L180,456 Z" fill="#3a3f4a" stroke="#14101a" stroke-width="2"/>
+  <path d="M190,436 L210,436 L212,450 L188,450 Z" fill="none" stroke="#9aa88a" stroke-width="1.5"/>
+  <!-- 护腕 -->
+  <path d="M54,430 L110,434 L110,470 L52,468 Z" fill="#5e0f1c" stroke="#14101a" stroke-width="2"/>
+  <path d="M346,430 L290,434 L290,470 L348,468 Z" fill="#5e0f1c" stroke="#14101a" stroke-width="2"/>
+  <g stroke="#14101a" stroke-width="1.5" opacity="0.8">
+    <path d="M54,442 L110,446 M53,456 L110,458"/>
+    <path d="M346,442 L290,446 M347,456 L290,458"/>
+  </g>
+
+  <!-- 骨饰：肩甲兽颅 + 骨串 -->
+  <path d="M146,262 C170,300 200,336 236,372" fill="none" stroke="#14101a" stroke-width="2"/>
+  <g fill="url(#mo_disciple-bone)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M152,270 l9,-4 l3,14 l-8,2 Z"/>
+    <path d="M166,290 l9,-4 l4,15 l-8,2 Z"/>
+    <path d="M182,308 l9,-3 l4,15 l-8,2 Z"/>
+    <path d="M216,350 l9,-3 l3,14 l-8,2 Z"/>
+    <path d="M232,366 l8,-3 l3,13 l-7,2 Z"/>
+  </g>
+  <path d="M62,300 C60,268 84,244 116,244 C142,244 160,262 156,288 C152,312 130,326 106,326 C80,326 64,318 62,300 Z" fill="url(#mo_disciple-bone)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M74,286 Q92,270 112,284 Q96,296 74,286 Z" fill="#14101a"/>
+  <path d="M120,284 Q136,272 148,286 Q134,296 120,284 Z" fill="#14101a"/>
+  <circle cx="96" cy="284" r="2.5" fill="#e0524a" filter="url(#mo_disciple-glow)"/>
+  <circle cx="134" cy="285" r="2.3" fill="#e0524a" filter="url(#mo_disciple-glow)"/>
+  <path d="M112,296 L118,306 L124,296" fill="none" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M82,312 L88,326 L94,314 L100,328 L106,314 L112,328 L118,314 L124,326 L130,312" fill="#efe2c4" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M70,262 C60,246 58,228 66,212 C70,230 78,244 88,252 Z" fill="url(#mo_disciple-bone)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M140,252 C150,240 162,234 176,234 C164,244 158,252 154,262 Z" fill="url(#mo_disciple-bone)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M70,276 Q96,256 128,262" fill="none" stroke="#f4fbff" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+  <!-- 右肩红缨 -->
+  <path d="M300,268 C312,278 318,300 314,322 M306,270 C322,284 328,304 326,324" fill="none" stroke="#8e1b2b" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="298" cy="266" r="6" fill="#d9a441" stroke="#14101a" stroke-width="1.6"/>
+
+  <!-- 脖子 -->
+  <path d="M172,196 L168,250 Q200,264 232,250 L228,196 Z" fill="url(#mo_disciple-neck)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M174,214 Q200,238 226,214 L228,198 L172,198 Z" fill="#d8c49a" opacity="0.8"/>
+  <path d="M182,228 Q186,244 196,252 M218,228 Q214,244 204,252" fill="none" stroke="#d8c49a" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- 后发 -->
+  <path d="M136,156 L114,138 L132,124 L104,100 L136,96 L118,64 L154,76 L152,40 L180,62 L196,26 L214,58 L242,34 L246,70 L280,54 L268,92 L298,92 L270,120 L288,134 L264,156 C266,112 244,86 200,86 C156,86 134,112 136,156 Z" fill="url(#mo_disciple-hair)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- 耳 -->
+  <path d="M148,140 C136,134 132,150 136,164 C140,176 146,180 152,178 Z" fill="#d8c49a" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M252,140 C264,134 268,150 264,164 C260,176 254,180 248,178 Z" fill="#d8c49a" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="140" cy="176" r="3.5" fill="none" stroke="#d9a441" stroke-width="2"/>
+  <circle cx="260" cy="176" r="3.5" fill="none" stroke="#d9a441" stroke-width="2"/>
+
+  <!-- 脸 -->
+  <path d="M146,118 C144,164 156,198 180,216 Q200,228 220,216 C244,198 256,164 254,118 C254,92 232,78 200,78 C168,78 146,92 146,118 Z" fill="url(#mo_disciple-skin)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M154,170 C160,196 172,208 186,216 Q170,198 162,172 Z" fill="#d8c49a" opacity="0.7"/>
+  <path d="M246,170 C240,196 228,208 214,216 Q230,198 238,172 Z" fill="#d8c49a" opacity="0.7"/>
+
+  <path d="M148,128 C150,118 168,112 200,112 C232,112 250,118 252,128 L252,142 C240,132 222,128 200,130 C178,128 160,132 148,142 Z" fill="#d8c49a" opacity="0.75"/>
+  <ellipse cx="164" cy="176" rx="11" ry="6" fill="#e0524a" opacity="0.16"/>
+  <ellipse cx="236" cy="176" rx="11" ry="6" fill="#e0524a" opacity="0.16"/>
+  <!-- 魔纹刺青 -->
+  <g fill="#c43a3a" filter="url(#mo_disciple-glow)">
+    <path d="M154,166 Q166,170 174,184 Q164,178 156,176 Q166,184 168,196 Q158,186 152,184 Z"/>
+    <path d="M246,166 Q234,170 226,184 Q236,178 244,176 Q234,184 232,196 Q242,186 248,184 Z"/>
+    <path d="M196,92 L200,104 L204,92 L200,86 Z"/>
+  </g>
+
+  <!-- 眉 -->
+  <path d="M154,138 Q170,128 190,138 L188,143 Q172,136 156,143 Z" fill="#14101a"/>
+  <path d="M246,136 Q230,126 210,137 L212,142 Q228,134 244,140 Z" fill="#14101a"/>
+  <!-- 眼 -->
+  <path d="M155,154 Q170,139 191,151 Q174,162 155,154 Z" fill="#efe2c4"/>
+  <path d="M245,154 Q230,139 209,151 Q226,162 245,154 Z" fill="#efe2c4"/>
+  <g clip-path="url(#mo_disciple-eyeL)">
+    <circle cx="174" cy="151.5" r="7.8" fill="url(#mo_disciple-iris)"/>
+    <ellipse cx="174" cy="151" rx="2" ry="5" fill="#14101a"/>
+    <path d="M155,154 Q170,139 191,151 L191,144 L155,144 Z" fill="#14101a" opacity="0.25"/>
+  </g>
+  <g clip-path="url(#mo_disciple-eyeR)">
+    <circle cx="226" cy="151.5" r="7.8" fill="url(#mo_disciple-iris)"/>
+    <ellipse cx="226" cy="151" rx="2" ry="5" fill="#14101a"/>
+    <path d="M245,154 Q230,139 209,151 L209,144 L245,144 Z" fill="#14101a" opacity="0.25"/>
+  </g>
+  <circle cx="176.5" cy="148.5" r="1.6" fill="#f4fbff"/>
+  <circle cx="228.5" cy="148.5" r="1.6" fill="#f4fbff"/>
+  <path d="M152,156 Q168,136 193,150 L191,153 Q171,143 155,157 Z" fill="#14101a"/>
+  <path d="M248,156 Q232,136 207,150 L209,153 Q229,143 245,157 Z" fill="#14101a"/>
+  <path d="M161,156 Q174,161 186,154" fill="none" stroke="#8a5a1c" stroke-width="1" opacity="0.6"/>
+  <path d="M239,156 Q226,161 214,154" fill="none" stroke="#8a5a1c" stroke-width="1" opacity="0.6"/>
+
+  <!-- 鼻 -->
+  <path d="M203,158 Q206,172 207,180" fill="none" stroke="#d8c49a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M193,183 Q197,187 200,185 Q204,187 208,182" fill="none" stroke="#14101a" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+
+  <!-- 痞笑 -->
+  <path d="M184,198 Q200,204 218,192" fill="none" stroke="#14101a" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M187,199 Q201,208 216,195 Q202,203 187,199 Z" fill="#8e1b2b" opacity="0.6"/>
+  <path d="M211,196 L213,202 L215,195 Z" fill="#efe2c4" stroke="#14101a" stroke-width="0.8"/>
+  <path d="M218,192 L221,188" stroke="#14101a" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M192,210 Q200,213 208,210" fill="none" stroke="#d8c49a" stroke-width="2" stroke-linecap="round"/>
+  <!-- 面颊旧伤 -->
+  <path d="M232,120 L242,132" stroke="#8e1b2b" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- 前发刺 -->
+  <path d="M144,132 C142,96 166,76 200,76 C236,76 258,96 256,132 L248,118 L244,140 L232,110 L222,134 L212,104 L200,130 L190,102 L178,134 L170,108 L160,140 L156,114 Z" fill="url(#mo_disciple-hair)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <g fill="none" stroke="#8e1b2b" stroke-width="2" stroke-linecap="round" opacity="0.85">
+    <path d="M170,86 Q160,98 162,124"/>
+    <path d="M206,82 Q214,92 212,112"/>
+    <path d="M236,90 Q240,104 236,118"/>
+    <path d="M176,50 Q182,60 182,72"/>
+    <path d="M232,48 Q228,58 230,70"/>
+  </g>
+  <g fill="none" stroke="#5b3474" stroke-width="1.5" stroke-linecap="round" opacity="0.8">
+    <path d="M186,84 Q180,100 184,118"/>
+    <path d="M226,84 Q232,98 228,120"/>
+    <path d="M128,104 Q140,108 146,120"/>
+    <path d="M272,104 Q262,108 256,120"/>
+  </g>
+  <!-- 束发红带 -->
+  <path d="M150,104 Q200,88 250,104" fill="none" stroke="#c43a3a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M252,104 C266,110 280,104 290,116 M254,108 C266,118 276,118 284,130" fill="none" stroke="#8e1b2b" stroke-width="3" stroke-linecap="round"/>
+</svg>

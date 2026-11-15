@@ -1,0 +1,9 @@
+{
+  "character": "li_yueqiao",
+  "state": "afraid",
+  "asset_id": "li_yueqiao_afraid",
+  "image_file": "provider/li_yueqiao_afraid/li_yueqiao_afraid.png",
+  "sha256": "27737b32323d95647f06abef41aaadd59d5b80dc908a028f2ad7274ecaae511b",
+  "seed": 151133,
+  "model": "qwen-image-3.0-pro"
+}

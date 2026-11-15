@@ -1,0 +1,9 @@
+{
+  "character": "su_wanyin",
+  "state": "thrall",
+  "asset_id": "su_wanyin_thrall",
+  "image_file": "provider/su_wanyin_thrall/su_wanyin_thrall.png",
+  "sha256": "23fbbcfc6f984ec52e28fc56916ae7a8024ed48c5e3fcb60d35ebcd6ea95d312",
+  "seed": 151326,
+  "model": "qwen-image-3.0-pro"
+}

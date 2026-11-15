@@ -1,0 +1,9 @@
+{
+  "character": "chu_zhiyan",
+  "state": "wasted",
+  "asset_id": "chu_zhiyan_wasted",
+  "image_file": "provider/chu_zhiyan_wasted/chu_zhiyan_wasted.png",
+  "sha256": "32c94ca7ef6386fe5928838f5a101fbe1e82961f7a2bf4ea3eb269062fcf80da",
+  "seed": 151375,
+  "model": "qwen-image-3.0-pro"
+}

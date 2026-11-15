@@ -1,0 +1,9 @@
+{
+  "character": "sun_mihe",
+  "state": "thrall",
+  "asset_id": "sun_mihe_thrall",
+  "image_file": "provider/sun_mihe_thrall/sun_mihe_thrall.png",
+  "sha256": "19cf90c2768b206b7b5bbda734c69fdcb55d3d0105df6ed9c377f2be49615359",
+  "seed": 151066,
+  "model": "qwen-image-3.0-pro"
+}

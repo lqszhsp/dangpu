@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="xian_talisman-paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff3b8"/>
+      <stop offset="0.5" stop-color="#f2d27a"/>
+      <stop offset="1" stop-color="#d9a441"/>
+    </linearGradient>
+    <radialGradient id="xian_talisman-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f4fbff" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#8fd3ff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#8fd3ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="xian_talisman-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+  </defs>
+  <ellipse cx="32" cy="32" rx="30" ry="31" fill="url(#xian_talisman-halo)"/>
+  <!-- rays -->
+  <g stroke="#cfefff" stroke-width="1.2" stroke-linecap="round" opacity="0.7">
+    <path d="M32 1 v4 M6 12 l3 3 M58 12 l-3 3 M3 34 h4 M61 34 h-4 M8 56 l3 -3 M56 56 l-3 -3"/>
+  </g>
+  <!-- paper -->
+  <path d="M17 4.5 L47 4.5 L48 59.5 L16 59.5 Z" fill="#8fd3ff" opacity="0.8" filter="url(#xian_talisman-glow)"/>
+  <path d="M18 4.5 L46 4 Q47 32 46.5 59.5 L17.5 59.5 Q16.5 32 18 4.5 Z" fill="url(#xian_talisman-paper)" stroke="#8a5a1c" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M19.5 6.5 L44.5 6.2" stroke="#fffbe6" stroke-width="1" opacity="0.9"/>
+  <path d="M20 8.5 h24 M20 56 h24" stroke="#c43a3a" stroke-width="1" opacity="0.8"/>
+  <!-- talisman script -->
+  <g fill="none" stroke="#c43a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M25 13 h14 M27 11 Q32 9 37 11"/>
+    <path d="M32 13 v6 M26 18 Q32 22 38 18"/>
+    <path d="M24 25 h16 M32 22 v10 M26 30 l12 0"/>
+    <path d="M28 34 Q24 38 28 41 Q32 44 36 41 Q40 38 36 34 Q32 32 28 34 Z"/>
+    <path d="M32 44 v4 Q29 50 32 53 Q35 50 32 48"/>
+  </g>
+  <g fill="none" stroke="#d9a441" stroke-width="0.9" stroke-linecap="round" opacity="0.9">
+    <path d="M24 25 h16 M28 34 Q24 38 28 41 Q32 44 36 41"/>
+  </g>
+  <circle cx="32" cy="37.5" r="1.7" fill="#8a5a1c"/>
+  <path d="M21 46 l3 2 M43 46 l-3 2" stroke="#c43a3a" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- sparkles -->
+  <path d="M52 22 L52.7 25.3 L56 26 L52.7 26.7 L52 30 L51.3 26.7 L48 26 L51.3 25.3 Z" fill="#f4fbff"/>
+  <path d="M11 40 L11.5 42.5 L14 43 L11.5 43.5 L11 46 L10.5 43.5 L8 43 L10.5 42.5 Z" fill="#f4fbff"/>
+</svg>

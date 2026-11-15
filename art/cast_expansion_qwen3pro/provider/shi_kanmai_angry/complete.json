@@ -1,0 +1,9 @@
+{
+  "character": "shi_kanmai",
+  "state": "angry",
+  "asset_id": "shi_kanmai_angry",
+  "image_file": "provider/shi_kanmai_angry/shi_kanmai_angry.png",
+  "sha256": "422ba509adb519dfe9fff232093303f00b268a91e0d63eb70a00f1457b697e0e",
+  "seed": 151422,
+  "model": "qwen-image-3.0-pro"
+}

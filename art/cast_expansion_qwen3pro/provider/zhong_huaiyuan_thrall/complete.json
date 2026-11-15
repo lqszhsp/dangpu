@@ -1,0 +1,9 @@
+{
+  "character": "zhong_huaiyuan",
+  "state": "thrall",
+  "asset_id": "zhong_huaiyuan_thrall",
+  "image_file": "provider/zhong_huaiyuan_thrall/zhong_huaiyuan_thrall.png",
+  "sha256": "ec7d8c2628b48975ac37d88056d81e1e07123092b885587ded4d4a3b0e01606c",
+  "seed": 151336,
+  "model": "qwen-image-3.0-pro"
+}

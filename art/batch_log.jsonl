@@ -1,0 +1,920 @@
+{"id": "item:pill_qi", "status": "ok", "info": "28s", "t": 1794685679.2613392}
+{"id": "item:sword_std", "status": "ok", "info": "21s", "t": 1794685679.2614017}
+{"id": "item:jade_pendant", "status": "ok", "info": "26s", "t": 1794685679.2614233}
+{"id": "char:mo_disciple", "status": "ok", "info": "48s", "t": 1794685698.6433792}
+{"id": "char:mo_disciple_f1", "status": "ok", "info": "27s", "t": 1794685698.6434293}
+{"id": "char:mo_disciple_f2", "status": "ok", "info": "30s", "t": 1794685698.643451}
+{"id": "scene:shop_front", "status": "ok", "info": "36s", "t": 1794685708.10924}
+{"id": "machine:m_danlu", "status": "ok", "info": "24s", "t": 1794685708.1093264}
+{"id": "icon:ic_stone", "status": "ok", "info": "31s", "t": 1794685708.6188116}
+{"id": "item:pill_qi_low", "status": "ok", "info": "43s", "t": 1794685751.2072527}
+{"id": "item:pill_qi_high", "status": "ok", "info": "63s", "t": 1794685772.0561502}
+{"id": "item:pill_qi_top", "status": "ok", "info": "41s", "t": 1794685772.0564456}
+{"id": "item:sword_std_low", "status": "ok", "info": "41s", "t": 1794685772.0565455}
+{"id": "item:sword_std_high", "status": "ok", "info": "32s", "t": 1794685772.0565872}
+{"id": "item:sword_std_top", "status": "ok", "info": "38s", "t": 1794685772.0566165}
+{"id": "item:jade_pendant_low", "status": "ok", "info": "45s", "t": 1794685785.7995384}
+{"id": "item:jade_pendant_high", "status": "ok", "info": "34s", "t": 1794685785.7996364}
+{"id": "item:jade_pendant_top", "status": "ok", "info": "45s", "t": 1794685794.351668}
+{"id": "item:jade_pendant_revealed", "status": "ok", "info": "45s", "t": 1794685794.7718868}
+{"id": "char:mo_disciple_pleased", "status": "ok", "info": "48s", "t": 1794685799.0229714}
+{"id": "char:mo_disciple_angry", "status": "ok", "info": "35s", "t": 1794685806.81637}
+{"id": "char:mo_disciple_afraid", "status": "ok", "info": "46s", "t": 1794685826.0451424}
+{"id": "char:mo_disciple_sly", "status": "ok", "info": "46s", "t": 1794685831.886699}
+{"id": "char:mo_disciple_wasted", "status": "ok", "info": "39s", "t": 1794685833.1218402}
+{"id": "char:mo_disciple_thrall", "status": "ok", "info": "37s", "t": 1794685833.1219137}
+{"id": "char:mo_disciple_f1_pleased", "status": "ok", "info": "35s", "t": 1794685833.8198764}
+{"id": "char:mo_disciple_f1_angry", "status": "ok", "info": "45s", "t": 1794685851.440868}
+{"id": "char:mo_disciple_f1_afraid", "status": "ok", "info": "39s", "t": 1794685864.9530559}
+{"id": "char:mo_disciple_f1_sly", "status": "ok", "info": "33s", "t": 1794685864.9531069}
+{"id": "char:mo_disciple_f1_wasted", "status": "ok", "info": "46s", "t": 1794685877.4361281}
+{"id": "char:mo_disciple_f1_thrall", "status": "ok", "info": "46s", "t": 1794685878.9370282}
+{"id": "char:mo_disciple_f2_pleased", "status": "ok", "info": "45s", "t": 1794685878.937074}
+{"id": "char:mo_disciple_f2_angry", "status": "ok", "info": "43s", "t": 1794685894.5937195}
+{"id": "char:mo_disciple_f2_afraid", "status": "ok", "info": "34s", "t": 1794685898.8323576}
+{"id": "char:mo_disciple_f2_sly", "status": "ok", "info": "41s", "t": 1794685905.625511}
+{"id": "char:mo_disciple_f2_wasted", "status": "ok", "info": "34s", "t": 1794685911.0492957}
+{"id": "char:mo_disciple_f2_thrall", "status": "ok", "info": "34s", "t": 1794685912.5284767}
+{"id": "machine:m_danlu_running", "status": "ok", "info": "57s", "t": 1794685936.0625043}
+{"id": "char:mo_disciple_thrall", "status": "ok", "info": "35s gpt-image-2", "t": 1794686757.0874145}
+{"id": "char:mo_disciple_f1", "status": "ok", "info": "30s gpt-image-2", "t": 1794686757.0874615}
+{"id": "char:mo_disciple_f2", "status": "ok", "info": "31s gpt-image-2", "t": 1794686757.0874743}
+{"id": "char:mo_disciple_f1_pleased", "status": "ok", "info": "46s gpt-image-2", "t": 1794686854.7521024}
+{"id": "char:mo_disciple_f1_angry", "status": "ok", "info": "39s gpt-image-2", "t": 1794686854.7521355}
+{"id": "char:mo_disciple_f1_afraid", "status": "ok", "info": "33s gpt-image-2", "t": 1794686854.7521446}
+{"id": "char:mo_disciple_f1_sly", "status": "ok", "info": "41s gpt-image-2", "t": 1794686854.7521505}
+{"id": "char:mo_disciple_f1_wasted", "status": "ok", "info": "49s gpt-image-2", "t": 1794686854.7521567}
+{"id": "char:mo_disciple_f1_thrall", "status": "ok", "info": "40s gpt-image-2", "t": 1794686854.7521667}
+{"id": "char:mo_disciple_f2_pleased", "status": "ok", "info": "34s gpt-image-2", "t": 1794686854.7521713}
+{"id": "char:mo_disciple_f2_angry", "status": "ok", "info": "32s gpt-image-2", "t": 1794686854.752177}
+{"id": "char:mo_disciple_f2_afraid", "status": "ok", "info": "38s gpt-image-2", "t": 1794686854.7521818}
+{"id": "char:mo_disciple_f2_sly", "status": "ok", "info": "34s gpt-image-2", "t": 1794686854.7521865}
+{"id": "char:mo_disciple_f2_wasted", "status": "ok", "info": "33s gpt-image-2", "t": 1794686854.7521913}
+{"id": "char:mo_disciple_f2_thrall", "status": "ok", "info": "37s gpt-image-2", "t": 1794686860.8308692}
+{"id": "item:scrap_sword", "status": "ok", "info": "47s gpt-image-2", "t": 1794687501.95951}
+{"id": "item:iron_ore", "status": "ok", "info": "55s gpt-image-2", "t": 1794687509.7256632}
+{"id": "item:iron_ingot", "status": "ok", "info": "25s gpt-image-2", "t": 1794687509.7256966}
+{"id": "item:filter_sand", "status": "ok", "info": "57s gpt-image-2", "t": 1794687511.2319012}
+{"id": "item:herb_seed", "status": "ok", "info": "26s gpt-image-2", "t": 1794687511.2321305}
+{"id": "item:herb_dew", "status": "ok", "info": "26s gpt-image-2", "t": 1794687511.2321548}
+{"id": "item:herb_blood", "status": "ok", "info": "25s gpt-image-2", "t": 1794687511.2321715}
+{"id": "item:yao_core", "status": "ok", "info": "41s gpt-image-2", "t": 1794687511.2321858}
+{"id": "item:beast_hide", "status": "ok", "info": "34s gpt-image-2", "t": 1794687513.5188203}
+{"id": "item:bones", "status": "ok", "info": "55s gpt-image-2", "t": 1794687534.3245392}
+{"id": "item:gu_egg", "status": "ok", "info": "41s gpt-image-2", "t": 1794687534.324602}
+{"id": "item:gu_young", "status": "ok", "info": "62s gpt-image-2", "t": 1794687542.0011733}
+{"id": "item:gu_gold", "status": "ok", "info": "35s gpt-image-2", "t": 1794687542.0012197}
+{"id": "item:spirit_fruit", "status": "ok", "info": "56s gpt-image-2", "t": 1794687557.6480436}
+{"id": "item:yeast", "status": "ok", "info": "39s gpt-image-2", "t": 1794687557.6480749}
+{"id": "item:spirit_wine", "status": "ok", "info": "51s gpt-image-2", "t": 1794687561.7779408}
+{"id": "item:spirit_crystal", "status": "ok", "info": "51s gpt-image-2", "t": 1794687564.9305208}
+{"id": "item:broken_bowl", "status": "ok", "info": "32s gpt-image-2", "t": 1794687564.9305549}
+{"id": "item:pill_blood", "status": "ok", "info": "40s gpt-image-2", "t": 1794687570.4438763}
+{"id": "item:pill_found", "status": "ok", "info": "61s gpt-image-2", "t": 1794687594.824528}
+{"id": "item:pill_recipe", "status": "ok", "info": "43s gpt-image-2", "t": 1794687594.8245609}
+{"id": "item:jade_slip", "status": "ok", "info": "27s gpt-image-2", "t": 1794687614.3596659}
+{"id": "item:soul_banner", "status": "ok", "info": "26s gpt-image-2", "t": 1794687614.3597345}
+{"id": "item:xian_sword", "status": "ok", "info": "31s gpt-image-2", "t": 1794687614.359753}
+{"id": "item:xian_talisman", "status": "ok", "info": "32s gpt-image-2", "t": 1794687614.3597672}
+{"id": "item:xian_robe", "status": "ok", "info": "42s gpt-image-2", "t": 1794687614.3597791}
+{"id": "item:demon_charm", "status": "ok", "info": "34s gpt-image-2", "t": 1794687614.3597908}
+{"id": "item:bronze_mirror", "status": "ok", "info": "37s gpt-image-2", "t": 1794687617.5469143}
+{"id": "item:scroll_manual", "status": "ok", "info": "52s gpt-image-2", "t": 1794687674.773186}
+{"id": "item:fire_disk", "status": "ok", "info": "28s gpt-image-2", "t": 1794687674.7732208}
+{"id": "item:dan_fire", "status": "ok", "info": "46s gpt-image-2", "t": 1794687674.7732348}
+{"id": "item:soul_bell", "status": "ok", "info": "43s gpt-image-2", "t": 1794687674.773242}
+{"id": "item:soul_wisp", "status": "ok", "info": "38s gpt-image-2", "t": 1794687674.7732494}
+{"id": "item:soul_grudge", "status": "ok", "info": "32s gpt-image-2", "t": 1794687674.7732553}
+{"id": "item:soul_pearl", "status": "ok", "info": "42s gpt-image-2", "t": 1794687674.7732625}
+{"id": "item:corpse", "status": "fail", "info": "HTTP 500 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream gateway error\",\"type\":\"upstream_error\"}}'", "t": 1794687967.0197852}
+{"id": "item:iron_corpse", "status": "ok", "info": "43s gpt-image-2", "t": 1794687967.0198362}
+{"id": "item:corpse_poison", "status": "ok", "info": "43s gpt-image-2", "t": 1794687967.0198445}
+{"id": "item:puppet_doll", "status": "ok", "info": "27s gpt-image-2", "t": 1794687967.0198512}
+{"id": "item:puppet_scroll", "status": "ok", "info": "26s gpt-image-2", "t": 1794687967.0198565}
+{"id": "item:mihun_seed", "status": "ok", "info": "52s gpt-image-2", "t": 1794687967.019862}
+{"id": "item:mihun_flower", "status": "ok", "info": "26s gpt-image-2", "t": 1794687967.0198677}
+{"id": "item:wangyou", "status": "ok", "info": "45s gpt-image-2", "t": 1794687967.0198731}
+{"id": "item:vine_seed", "status": "ok", "info": "26s gpt-image-2", "t": 1794687967.0198781}
+{"id": "item:vine_fruit", "status": "ok", "info": "67s gpt-image-2", "t": 1794687967.0198832}
+{"id": "item:broken_relic", "status": "ok", "info": "42s gpt-image-2", "t": 1794687967.0198884}
+{"id": "item:waste_pill", "status": "ok", "info": "31s gpt-image-2", "t": 1794687967.0198932}
+{"id": "item:spirit_sand", "status": "ok", "info": "26s gpt-image-2", "t": 1794687967.0198982}
+{"id": "item:dan_guide", "status": "ok", "info": "55s gpt-image-2", "t": 1794687967.019903}
+{"id": "item:beast_feed", "status": "ok", "info": "24s gpt-image-2", "t": 1794687967.0199075}
+{"id": "item:treasure_rat", "status": "ok", "info": "29s gpt-image-2", "t": 1794687967.0199125}
+{"id": "item:gold_bug", "status": "ok", "info": "49s gpt-image-2", "t": 1794687967.0199177}
+{"id": "item:fu_paper", "status": "ok", "info": "23s gpt-image-2", "t": 1794687967.0199225}
+{"id": "item:cinnabar", "status": "ok", "info": "31s gpt-image-2", "t": 1794687967.0199275}
+{"id": "item:fu_jingang", "status": "ok", "info": "30s gpt-image-2", "t": 1794687967.0199327}
+{"id": "item:fu_shehun", "status": "ok", "info": "28s gpt-image-2", "t": 1794687967.0199378}
+{"id": "item:zhen_fu", "status": "ok", "info": "39s gpt-image-2", "t": 1794687967.0199428}
+{"id": "item:seal_xian", "status": "ok", "info": "31s gpt-image-2", "t": 1794687967.0199478}
+{"id": "item:jade_bottle", "status": "ok", "info": "41s gpt-image-2", "t": 1794687967.0199525}
+{"id": "item:xuan_essence", "status": "ok", "info": "24s gpt-image-2", "t": 1794687967.0199575}
+{"id": "item:god_blank", "status": "ok", "info": "34s gpt-image-2", "t": 1794687967.019962}
+{"id": "item:incense", "status": "ok", "info": "47s gpt-image-2", "t": 1794687967.0199678}
+{"id": "item:lens1", "status": "ok", "info": "27s gpt-image-2", "t": 1794687967.019973}
+{"id": "item:lens2", "status": "ok", "info": "36s gpt-image-2", "t": 1794687967.019978}
+{"id": "item:lens3", "status": "ok", "info": "32s gpt-image-2", "t": 1794687967.0199833}
+{"id": "item:lens4", "status": "ok", "info": "39s gpt-image-2", "t": 1794687967.0199883}
+{"id": "item:bone_flute", "status": "ok", "info": "46s gpt-image-2", "t": 1794687967.0199928}
+{"id": "item:cult_corpse", "status": "ok", "info": "49s gpt-image-2", "t": 1794687967.0199976}
+{"id": "item:live_soul", "status": "ok", "info": "49s gpt-image-2", "t": 1794687967.020003}
+{"id": "item:blood_essence", "status": "ok", "info": "25s gpt-image-2", "t": 1794687967.0200078}
+{"id": "item:soul_crystal", "status": "ok", "info": "59s gpt-image-2", "t": 1794687967.0200129}
+{"id": "item:corpse_king", "status": "ok", "info": "43s gpt-image-2", "t": 1794687967.0200174}
+{"id": "item:blood_infant", "status": "ok", "info": "47s gpt-image-2", "t": 1794687967.0200222}
+{"id": "item:demon_blade", "status": "ok", "info": "35s gpt-image-2", "t": 1794687967.0200274}
+{"id": "item:intel", "status": "ok", "info": "54s gpt-image-2", "t": 1794687967.0200322}
+{"id": "item:water_murky", "status": "ok", "info": "43s gpt-image-2", "t": 1794687967.0200374}
+{"id": "item:water_clear", "status": "ok", "info": "42s gpt-image-2", "t": 1794687967.0200422}
+{"id": "item:water_pure", "status": "ok", "info": "57s gpt-image-2", "t": 1794687967.0200472}
+{"id": "item:water_jade", "status": "ok", "info": "24s gpt-image-2", "t": 1794687967.0200517}
+{"id": "item:book_refine", "status": "ok", "info": "46s gpt-image-2", "t": 1794687967.0200586}
+{"id": "item:book_alchemy", "status": "ok", "info": "42s gpt-image-2", "t": 1794687967.020064}
+{"id": "item:book_soul", "status": "ok", "info": "63s gpt-image-2", "t": 1794687967.0200686}
+{"id": "item:book_corpse", "status": "ok", "info": "29s gpt-image-2", "t": 1794687967.0200734}
+{"id": "item:book_puppet", "status": "ok", "info": "40s gpt-image-2", "t": 1794687967.0200784}
+{"id": "item:book_plant", "status": "ok", "info": "47s gpt-image-2", "t": 1794687967.0200832}
+{"id": "item:book_brew", "status": "ok", "info": "28s gpt-image-2", "t": 1794687967.0200884}
+{"id": "item:book_water", "status": "ok", "info": "64s gpt-image-2", "t": 1794687985.201404}
+{"id": "item:book_forgery", "status": "ok", "info": "39s gpt-image-2", "t": 1794687985.201451}
+{"id": "item:book_erase", "status": "ok", "info": "67s gpt-image-2", "t": 1794688004.2569005}
+{"id": "item:book_talisman", "status": "ok", "info": "29s gpt-image-2", "t": 1794688004.256937}
+{"id": "item:book_beast", "status": "ok", "info": "43s gpt-image-2", "t": 1794688004.2569447}
+{"id": "char:beggar", "status": "ok", "info": "28s gpt-image-2", "t": 1794688004.256951}
+{"id": "char:beggar_master", "status": "ok", "info": "36s gpt-image-2", "t": 1794688004.2569566}
+{"id": "char:amu_disciple", "status": "ok", "info": "45s gpt-image-2", "t": 1794688007.3871286}
+{"id": "char:broker", "status": "ok", "info": "48s gpt-image-2", "t": 1794688015.1745267}
+{"id": "char:landlord", "status": "ok", "info": "57s gpt-image-2", "t": 1794688033.0935059}
+{"id": "char:steward_sun", "status": "ok", "info": "34s gpt-image-2", "t": 1794688033.093536}
+{"id": "char:swindler", "status": "ok", "info": "29s gpt-image-2", "t": 1794688033.0935442}
+{"id": "char:thug", "status": "ok", "info": "50s gpt-image-2", "t": 1794688042.2885706}
+{"id": "char:mo_enforcer", "status": "ok", "info": "38s gpt-image-2", "t": 1794688042.2887194}
+{"id": "char:mo_senior", "status": "ok", "info": "26s gpt-image-2", "t": 1794688042.2887287}
+{"id": "char:mo_senior_f1", "status": "ok", "info": "36s gpt-image-2", "t": 1794688042.8963742}
+{"id": "char:mo_senior_f2", "status": "ok", "info": "39s gpt-image-2", "t": 1794688052.7647836}
+{"id": "char:ren_cultivator", "status": "ok", "info": "58s gpt-image-2", "t": 1794688073.4278605}
+{"id": "char:ren_cultivator_f1", "status": "ok", "info": "46s gpt-image-2", "t": 1794688073.4282298}
+{"id": "char:ren_cultivator_f2", "status": "ok", "info": "34s gpt-image-2", "t": 1794688073.428266}
+{"id": "char:ren_merchant", "status": "ok", "info": "48s gpt-image-2", "t": 1794688081.553006}
+{"id": "char:ren_merchant_f1", "status": "ok", "info": "26s gpt-image-2", "t": 1794688081.5531633}
+{"id": "char:ren_merchant_f2", "status": "ok", "info": "30s gpt-image-2", "t": 1794688081.5531802}
+{"id": "char:ren_kid", "status": "ok", "info": "53s gpt-image-2", "t": 1794688095.7424293}
+{"id": "char:ren_kid_f1", "status": "ok", "info": "31s gpt-image-2", "t": 1794688095.7426302}
+{"id": "char:ren_kid_f2", "status": "ok", "info": "21s gpt-image-2", "t": 1794688095.7426398}
+{"id": "char:xian_defector", "status": "ok", "info": "29s gpt-image-2", "t": 1794688095.7426465}
+{"id": "char:xian_defector_f1", "status": "ok", "info": "38s gpt-image-2", "t": 1794688101.707352}
+{"id": "char:xian_defector_f2", "status": "ok", "info": "31s gpt-image-2", "t": 1794688103.990013}
+{"id": "char:xian_spy", "status": "ok", "info": "50s gpt-image-2", "t": 1794688123.197965}
+{"id": "char:xian_spy_f1", "status": "ok", "info": "30s gpt-image-2", "t": 1794688123.198115}
+{"id": "char:xian_spy_f2", "status": "ok", "info": "35s gpt-image-2", "t": 1794688123.1981592}
+{"id": "char:yao_fox", "status": "ok", "info": "35s gpt-image-2", "t": 1794688155.7608109}
+{"id": "char:yao_fox_f1", "status": "ok", "info": "40s gpt-image-2", "t": 1794688155.7609034}
+{"id": "char:yao_fox_f2", "status": "ok", "info": "28s gpt-image-2", "t": 1794688155.7609324}
+{"id": "char:yao_tiger", "status": "ok", "info": "40s gpt-image-2", "t": 1794688155.760952}
+{"id": "char:yao_tiger_f1", "status": "ok", "info": "30s gpt-image-2", "t": 1794688155.76098}
+{"id": "char:yao_tiger_f2", "status": "ok", "info": "33s gpt-image-2", "t": 1794688155.7609963}
+{"id": "char:yao_snake", "status": "ok", "info": "42s gpt-image-2", "t": 1794688159.2260413}
+{"id": "char:yao_snake_f1", "status": "ok", "info": "41s gpt-image-2", "t": 1794688163.9030468}
+{"id": "char:yao_snake_f2", "status": "ok", "info": "30s gpt-image-2", "t": 1794688163.9031906}
+{"id": "char:noble", "status": "ok", "info": "40s gpt-image-2", "t": 1794688171.0486956}
+{"id": "char:noble_f1", "status": "ok", "info": "48s gpt-image-2", "t": 1794688181.8517878}
+{"id": "char:noble_f2", "status": "ok", "info": "47s gpt-image-2", "t": 1794688188.8055437}
+{"id": "scene:night_street", "status": "ok", "info": "47s gpt-image-2", "t": 1794688191.8568685}
+{"id": "scene:title_bg", "status": "ok", "info": "26s gpt-image-2", "t": 1794688191.8569126}
+{"id": "scene:ghost_market", "status": "ok", "info": "60s gpt-image-2", "t": 1794688216.1598737}
+{"id": "scene:loc_ruins", "status": "ok", "info": "43s gpt-image-2", "t": 1794688216.1600335}
+{"id": "scene:loc_battlefield", "status": "ok", "info": "42s gpt-image-2", "t": 1794688216.1600454}
+{"id": "scene:loc_scrapyard", "status": "ok", "info": "48s gpt-image-2", "t": 1794688218.7213638}
+{"id": "scene:loc_graveyard", "status": "ok", "info": "38s gpt-image-2", "t": 1794688218.7219841}
+{"id": "scene:loc_beastcave", "status": "ok", "info": "52s gpt-image-2", "t": 1794688234.2979574}
+{"id": "machine:m_furnace", "status": "ok", "info": "59s gpt-image-2", "t": 1794688247.544432}
+{"id": "machine:m_forge", "status": "ok", "info": "35s gpt-image-2", "t": 1794688247.5444613}
+{"id": "machine:m_pool", "status": "ok", "info": "33s gpt-image-2", "t": 1794688275.9118936}
+{"id": "machine:m_spring", "status": "ok", "info": "41s gpt-image-2", "t": 1794688275.9119432}
+{"id": "machine:m_herbbed", "status": "ok", "info": "23s gpt-image-2", "t": 1794688275.9119508}
+{"id": "machine:m_gupot", "status": "ok", "info": "51s gpt-image-2", "t": 1794688275.9119575}
+{"id": "machine:m_winejar", "status": "ok", "info": "45s gpt-image-2", "t": 1794688275.9119632}
+{"id": "machine:m_soulfurnace", "status": "ok", "info": "42s gpt-image-2", "t": 1794688275.9119687}
+{"id": "machine:m_coffin", "status": "ok", "info": "38s gpt-image-2", "t": 1794688275.9119744}
+{"id": "machine:m_puppetbench", "status": "ok", "info": "51s gpt-image-2", "t": 1794688290.5336666}
+{"id": "machine:m_yaopot", "status": "ok", "info": "53s gpt-image-2", "t": 1794688299.5236619}
+{"id": "machine:m_dihuo", "status": "ok", "info": "44s gpt-image-2", "t": 1794688299.5237758}
+{"id": "machine:m_pen", "status": "ok", "info": "34s gpt-image-2", "t": 1794688299.5238066}
+{"id": "machine:m_fudesk", "status": "ok", "info": "30s gpt-image-2", "t": 1794688299.5238287}
+{"id": "machine:m_forgery", "status": "ok", "info": "48s gpt-image-2", "t": 1794688317.2913094}
+{"id": "machine:m_puppet", "status": "ok", "info": "31s gpt-image-2", "t": 1794688343.677071}
+{"id": "machine:m_array", "status": "ok", "info": "44s gpt-image-2", "t": 1794688343.6771061}
+{"id": "icon:ic_appraise", "status": "ok", "info": "28s gpt-image-2", "t": 1794688343.6771147}
+{"id": "icon:ic_contraband", "status": "ok", "info": "29s gpt-image-2", "t": 1794688343.6771207}
+{"id": "icon:ic_day", "status": "ok", "info": "27s gpt-image-2", "t": 1794688343.677126}
+{"id": "icon:ic_deed", "status": "ok", "info": "44s gpt-image-2", "t": 1794688343.677131}
+{"id": "icon:ic_gift", "status": "ok", "info": "47s gpt-image-2", "t": 1794688346.670368}
+{"id": "icon:ic_heat", "status": "ok", "info": "27s gpt-image-2", "t": 1794688346.670486}
+{"id": "icon:ic_lace", "status": "ok", "info": "30s gpt-image-2", "t": 1794688347.5979264}
+{"id": "icon:ic_ledger", "status": "ok", "info": "49s gpt-image-2", "t": 1794688368.1409872}
+{"id": "icon:ic_mark", "status": "ok", "info": "29s gpt-image-2", "t": 1794688391.3290567}
+{"id": "icon:ic_merit", "status": "ok", "info": "46s gpt-image-2", "t": 1794688391.3290899}
+{"id": "icon:ic_night", "status": "ok", "info": "33s gpt-image-2", "t": 1794688391.3291044}
+{"id": "icon:ic_power", "status": "ok", "info": "30s gpt-image-2", "t": 1794688391.329111}
+{"id": "icon:ic_rep_mo", "status": "ok", "info": "32s gpt-image-2", "t": 1794688391.3291166}
+{"id": "icon:ic_rep_ren", "status": "ok", "info": "51s gpt-image-2", "t": 1794688397.8813312}
+{"id": "icon:ic_rep_xian", "status": "ok", "info": "35s gpt-image-2", "t": 1794688429.192892}
+{"id": "icon:ic_rep_yao", "status": "ok", "info": "32s gpt-image-2", "t": 1794688429.1929579}
+{"id": "icon:ic_scavenge", "status": "ok", "info": "36s gpt-image-2", "t": 1794688429.192977}
+{"id": "icon:ic_seal", "status": "ok", "info": "24s gpt-image-2", "t": 1794688429.1929908}
+{"id": "icon:ic_secret", "status": "ok", "info": "48s gpt-image-2", "t": 1794688429.1930034}
+{"id": "icon:ic_spirit", "status": "ok", "info": "50s gpt-image-2", "t": 1794688429.193016}
+{"id": "icon:ic_stamina", "status": "ok", "info": "37s gpt-image-2", "t": 1794688429.1930282}
+{"id": "icon:ic_stolen", "status": "ok", "info": "53s gpt-image-2", "t": 1794688451.0528831}
+{"id": "icon:ic_war", "status": "ok", "info": "39s gpt-image-2", "t": 1794688451.0529191}
+{"id": "icon:ic_dao", "status": "ok", "info": "67s gpt-image-2", "t": 1794688466.7946799}
+{"id": "icon:ic_clique", "status": "ok", "info": "46s gpt-image-2", "t": 1794688466.794726}
+{"id": "item:scrap_sword_low", "status": "ok", "info": "41s gpt-image-2", "t": 1794688507.9664314}
+{"id": "item:scrap_sword_high", "status": "ok", "info": "43s gpt-image-2", "t": 1794688509.348623}
+{"id": "item:scrap_sword_top", "status": "ok", "info": "34s gpt-image-2", "t": 1794688509.3486893}
+{"id": "item:iron_ore_low", "status": "ok", "info": "35s gpt-image-2", "t": 1794688539.8684459}
+{"id": "item:iron_ore_high", "status": "ok", "info": "58s gpt-image-2", "t": 1794688539.868486}
+{"id": "item:iron_ore_top", "status": "ok", "info": "45s gpt-image-2", "t": 1794688539.868495}
+{"id": "item:iron_ingot_low", "status": "ok", "info": "57s gpt-image-2", "t": 1794688570.4735212}
+{"id": "item:iron_ingot_high", "status": "ok", "info": "46s gpt-image-2", "t": 1794688570.4735634}
+{"id": "item:iron_ingot_top", "status": "ok", "info": "43s gpt-image-2", "t": 1794688570.4735749}
+{"id": "item:filter_sand_low", "status": "ok", "info": "49s gpt-image-2", "t": 1794688570.4735835}
+{"id": "item:filter_sand_high", "status": "ok", "info": "41s gpt-image-2", "t": 1794688570.4735909}
+{"id": "item:filter_sand_top", "status": "ok", "info": "58s gpt-image-2", "t": 1794688570.4735975}
+{"id": "item:herb_seed_low", "status": "ok", "info": "54s gpt-image-2", "t": 1794688570.4736044}
+{"id": "item:herb_seed_high", "status": "ok", "info": "55s gpt-image-2", "t": 1794688579.539631}
+{"id": "item:herb_seed_top", "status": "ok", "info": "68s gpt-image-2", "t": 1794688608.1369512}
+{"id": "item:herb_dew_low", "status": "ok", "info": "45s gpt-image-2", "t": 1794688608.137}
+{"id": "item:herb_dew_high", "status": "ok", "info": "59s gpt-image-2", "t": 1794688609.3797755}
+{"id": "item:herb_dew_top", "status": "ok", "info": "52s gpt-image-2", "t": 1794688609.3798494}
+{"id": "item:herb_blood_low", "status": "ok", "info": "60s gpt-image-2", "t": 1794688626.1816776}
+{"id": "item:herb_blood_high", "status": "ok", "info": "33s gpt-image-2", "t": 1794688626.181718}
+{"id": "item:herb_blood_top", "status": "ok", "info": "70s gpt-image-2", "t": 1794688640.1441157}
+{"id": "item:yao_core_low", "status": "ok", "info": "67s gpt-image-2", "t": 1794688646.79519}
+{"id": "item:yao_core_high", "status": "ok", "info": "58s gpt-image-2", "t": 1794688647.7319405}
+{"id": "item:yao_core_top", "status": "ok", "info": "47s gpt-image-2", "t": 1794688649.5104141}
+{"id": "item:beast_hide_low", "status": "ok", "info": "57s gpt-image-2", "t": 1794688664.7868536}
+{"id": "item:beast_hide_high", "status": "ok", "info": "46s gpt-image-2", "t": 1794688696.3460886}
+{"id": "item:beast_hide_top", "status": "ok", "info": "63s gpt-image-2", "t": 1794688696.3461998}
+{"id": "item:bones_low", "status": "ok", "info": "58s gpt-image-2", "t": 1794688696.346215}
+{"id": "item:bones_high", "status": "ok", "info": "49s gpt-image-2", "t": 1794688696.3462353}
+{"id": "item:bones_top", "status": "ok", "info": "44s gpt-image-2", "t": 1794688696.3462443}
+{"id": "item:spirit_fruit_low", "status": "ok", "info": "54s gpt-image-2", "t": 1794688702.0593255}
+{"id": "item:spirit_fruit_high", "status": "ok", "info": "72s gpt-image-2", "t": 1794688721.752667}
+{"id": "item:spirit_fruit_top", "status": "ok", "info": "64s gpt-image-2", "t": 1794688728.5690405}
+{"id": "item:yeast_low", "status": "ok", "info": "53s gpt-image-2", "t": 1794688728.5692093}
+{"id": "item:yeast_high", "status": "ok", "info": "43s gpt-image-2", "t": 1794688728.5692325}
+{"id": "item:yeast_top", "status": "ok", "info": "67s gpt-image-2", "t": 1794688755.657922}
+{"id": "item:spirit_wine_low", "status": "ok", "info": "48s gpt-image-2", "t": 1794688755.6579716}
+{"id": "item:spirit_wine_high", "status": "ok", "info": "65s gpt-image-2", "t": 1794688761.201753}
+{"id": "item:spirit_wine_top", "status": "ok", "info": "47s gpt-image-2", "t": 1794688761.2017944}
+{"id": "item:broken_bowl_low", "status": "ok", "info": "44s gpt-image-2", "t": 1794688766.0582323}
+{"id": "item:broken_bowl_high", "status": "ok", "info": "48s gpt-image-2", "t": 1794688773.202103}
+{"id": "item:broken_bowl_top", "status": "ok", "info": "51s gpt-image-2", "t": 1794688821.9887493}
+{"id": "item:pill_blood_low", "status": "ok", "info": "57s gpt-image-2", "t": 1794688821.9888015}
+{"id": "item:pill_blood_high", "status": "ok", "info": "51s gpt-image-2", "t": 1794688821.9888215}
+{"id": "item:pill_blood_top", "status": "ok", "info": "37s gpt-image-2", "t": 1794688821.9888513}
+{"id": "item:pill_found_low", "status": "ok", "info": "53s gpt-image-2", "t": 1794688821.988875}
+{"id": "item:pill_found_high", "status": "ok", "info": "65s gpt-image-2", "t": 1794688826.5045526}
+{"id": "item:pill_found_top", "status": "ok", "info": "32s gpt-image-2", "t": 1794688826.504604}
+{"id": "item:pill_recipe_low", "status": "ok", "info": "56s gpt-image-2", "t": 1794688829.0222356}
+{"id": "item:pill_recipe_high", "status": "ok", "info": "54s gpt-image-1.5", "t": 1794689004.1855536}
+{"id": "item:pill_recipe_top", "status": "ok", "info": "42s gpt-image-2", "t": 1794689004.1856213}
+{"id": "item:jade_slip_low", "status": "ok", "info": "57s gpt-image-2", "t": 1794689004.1856523}
+{"id": "item:jade_slip_high", "status": "ok", "info": "50s gpt-image-2", "t": 1794689004.18567}
+{"id": "item:jade_slip_top", "status": "ok", "info": "50s gpt-image-2", "t": 1794689004.1856859}
+{"id": "item:soul_banner_low", "status": "ok", "info": "48s gpt-image-2", "t": 1794689004.1857007}
+{"id": "item:soul_banner_high", "status": "ok", "info": "44s gpt-image-2", "t": 1794689004.1857336}
+{"id": "item:soul_banner_top", "status": "ok", "info": "50s gpt-image-2", "t": 1794689004.1857498}
+{"id": "item:xian_sword_low", "status": "ok", "info": "45s gpt-image-2", "t": 1794689004.1857643}
+{"id": "item:xian_sword_high", "status": "ok", "info": "37s gpt-image-2", "t": 1794689004.1857786}
+{"id": "item:xian_sword_top", "status": "ok", "info": "54s gpt-image-2", "t": 1794689004.1857924}
+{"id": "item:xian_talisman_low", "status": "ok", "info": "46s gpt-image-2", "t": 1794689004.185807}
+{"id": "item:xian_talisman_high", "status": "ok", "info": "32s gpt-image-2", "t": 1794689004.1858218}
+{"id": "item:xian_talisman_top", "status": "ok", "info": "40s gpt-image-2", "t": 1794689004.1858363}
+{"id": "item:xian_robe_low", "status": "ok", "info": "51s gpt-image-2", "t": 1794689004.1858513}
+{"id": "item:xian_robe_high", "status": "ok", "info": "63s gpt-image-2", "t": 1794689004.1858654}
+{"id": "item:xian_robe_top", "status": "ok", "info": "54s gpt-image-2", "t": 1794689004.1858797}
+{"id": "item:demon_charm_low", "status": "ok", "info": "46s gpt-image-2", "t": 1794689004.1858935}
+{"id": "item:demon_charm_high", "status": "ok", "info": "47s gpt-image-2", "t": 1794689004.185908}
+{"id": "item:demon_charm_top", "status": "ok", "info": "64s gpt-image-2", "t": 1794689004.1859229}
+{"id": "item:bronze_mirror_low", "status": "ok", "info": "47s gpt-image-2", "t": 1794689004.185938}
+{"id": "item:bronze_mirror_high", "status": "ok", "info": "46s gpt-image-2", "t": 1794689004.1859589}
+{"id": "item:bronze_mirror_top", "status": "ok", "info": "44s gpt-image-2", "t": 1794689004.185973}
+{"id": "item:scroll_manual_low", "status": "ok", "info": "47s gpt-image-2", "t": 1794689004.1859868}
+{"id": "item:scroll_manual_high", "status": "ok", "info": "48s gpt-image-2", "t": 1794689004.186}
+{"id": "item:scroll_manual_top", "status": "ok", "info": "42s gpt-image-2", "t": 1794689004.1860127}
+{"id": "item:fire_disk_low", "status": "ok", "info": "58s gpt-image-2", "t": 1794689015.9126956}
+{"id": "item:fire_disk_high", "status": "ok", "info": "59s gpt-image-2", "t": 1794689026.9633393}
+{"id": "item:fire_disk_top", "status": "ok", "info": "49s gpt-image-2", "t": 1794689026.9633956}
+{"id": "item:dan_fire_low", "status": "ok", "info": "65s gpt-image-2", "t": 1794689045.6462166}
+{"id": "item:dan_fire_high", "status": "ok", "info": "43s gpt-image-2", "t": 1794689045.6464393}
+{"id": "item:dan_fire_top", "status": "ok", "info": "50s gpt-image-2", "t": 1794689045.6464918}
+{"id": "item:soul_bell_low", "status": "ok", "info": "60s gpt-image-2", "t": 1794689056.167924}
+{"id": "item:soul_bell_high", "status": "ok", "info": "55s gpt-image-2", "t": 1794689059.0247617}
+{"id": "item:soul_bell_top", "status": "ok", "info": "61s gpt-image-1.5", "t": 1794689254.214073}
+{"id": "item:soul_wisp_low", "status": "ok", "info": "52s gpt-image-2", "t": 1794689254.2141306}
+{"id": "item:soul_wisp_high", "status": "ok", "info": "50s gpt-image-2", "t": 1794689254.2141511}
+{"id": "item:soul_wisp_top", "status": "ok", "info": "42s gpt-image-2", "t": 1794689254.2141678}
+{"id": "item:soul_grudge_low", "status": "ok", "info": "58s gpt-image-2", "t": 1794689254.2141821}
+{"id": "item:soul_grudge_high", "status": "ok", "info": "52s gpt-image-2", "t": 1794689254.2141967}
+{"id": "item:soul_grudge_top", "status": "ok", "info": "50s gpt-image-2", "t": 1794689254.2142122}
+{"id": "item:soul_pearl_low", "status": "ok", "info": "53s gpt-image-2", "t": 1794689254.2142267}
+{"id": "item:soul_pearl_high", "status": "ok", "info": "35s gpt-image-2", "t": 1794689254.2142406}
+{"id": "item:soul_pearl_top", "status": "ok", "info": "64s gpt-image-2", "t": 1794689254.2142541}
+{"id": "item:corpse", "status": "fail", "info": "HTTP 500 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream gateway error\",\"type\":\"upstream_error\"}}'", "t": 1794689449.0785222}
+{"id": "item:iron_corpse_low", "status": "ok", "info": "46s gpt-image-2", "t": 1794689449.0787795}
+{"id": "item:iron_corpse_high", "status": "ok", "info": "44s gpt-image-2", "t": 1794689449.078893}
+{"id": "item:iron_corpse_top", "status": "ok", "info": "41s gpt-image-2", "t": 1794689449.079068}
+{"id": "item:corpse_poison_low", "status": "ok", "info": "66s gpt-image-2", "t": 1794689449.079153}
+{"id": "item:corpse_poison_high", "status": "ok", "info": "51s gpt-image-2", "t": 1794689449.0792372}
+{"id": "item:corpse_poison_top", "status": "ok", "info": "37s gpt-image-2", "t": 1794689449.079339}
+{"id": "item:puppet_doll_low", "status": "ok", "info": "48s gpt-image-2", "t": 1794689449.0794213}
+{"id": "item:puppet_doll_high", "status": "ok", "info": "54s gpt-image-2", "t": 1794689449.0794964}
+{"id": "item:puppet_doll_top", "status": "ok", "info": "61s gpt-image-2", "t": 1794689449.079648}
+{"id": "item:puppet_scroll_low", "status": "ok", "info": "52s gpt-image-2", "t": 1794689449.0797167}
+{"id": "item:puppet_scroll_high", "status": "ok", "info": "44s gpt-image-2", "t": 1794689449.0797517}
+{"id": "item:puppet_scroll_top", "status": "ok", "info": "54s gpt-image-2", "t": 1794689449.0797808}
+{"id": "item:mihun_seed_low", "status": "ok", "info": "35s gpt-image-2", "t": 1794689449.0798087}
+{"id": "item:mihun_seed_high", "status": "ok", "info": "42s gpt-image-2", "t": 1794689449.07984}
+{"id": "item:mihun_seed_top", "status": "ok", "info": "39s gpt-image-2", "t": 1794689449.0798686}
+{"id": "item:mihun_flower_low", "status": "ok", "info": "56s gpt-image-2", "t": 1794689449.079897}
+{"id": "item:mihun_flower_high", "status": "ok", "info": "55s gpt-image-2", "t": 1794689449.079925}
+{"id": "item:mihun_flower_top", "status": "ok", "info": "58s gpt-image-2", "t": 1794689449.0799756}
+{"id": "item:wangyou_low", "status": "ok", "info": "49s gpt-image-2", "t": 1794689449.0800002}
+{"id": "item:wangyou_high", "status": "ok", "info": "56s gpt-image-2", "t": 1794689449.0800238}
+{"id": "item:wangyou_top", "status": "ok", "info": "56s gpt-image-2", "t": 1794689449.080048}
+{"id": "item:vine_seed_low", "status": "ok", "info": "70s gpt-image-2", "t": 1794689449.0800745}
+{"id": "item:vine_seed_high", "status": "ok", "info": "42s gpt-image-2", "t": 1794689449.0800996}
+{"id": "item:vine_seed_top", "status": "ok", "info": "39s gpt-image-2", "t": 1794689449.080126}
+{"id": "item:vine_fruit_low", "status": "ok", "info": "64s gpt-image-2", "t": 1794689449.0801497}
+{"id": "item:vine_fruit_high", "status": "ok", "info": "51s gpt-image-2", "t": 1794689449.0801766}
+{"id": "item:vine_fruit_top", "status": "ok", "info": "35s gpt-image-2", "t": 1794689449.0802004}
+{"id": "item:broken_relic_low", "status": "ok", "info": "41s gpt-image-2", "t": 1794689449.080229}
+{"id": "item:broken_relic_high", "status": "ok", "info": "50s gpt-image-2", "t": 1794689449.0802538}
+{"id": "item:broken_relic_top", "status": "ok", "info": "54s gpt-image-2", "t": 1794689449.0802796}
+{"id": "item:waste_pill_low", "status": "ok", "info": "42s gpt-image-2", "t": 1794689449.0803168}
+{"id": "item:waste_pill_high", "status": "ok", "info": "49s gpt-image-2", "t": 1794689449.080341}
+{"id": "item:waste_pill_top", "status": "ok", "info": "32s gpt-image-2", "t": 1794689449.080366}
+{"id": "item:spirit_sand_low", "status": "ok", "info": "62s gpt-image-2", "t": 1794689449.0803912}
+{"id": "item:spirit_sand_high", "status": "ok", "info": "58s gpt-image-2", "t": 1794689449.0804186}
+{"id": "item:spirit_sand_top", "status": "ok", "info": "45s gpt-image-2", "t": 1794689449.0804443}
+{"id": "item:dan_guide_low", "status": "ok", "info": "59s gpt-image-2", "t": 1794689466.6492546}
+{"id": "item:dan_guide_high", "status": "ok", "info": "38s gpt-image-2", "t": 1794689466.6494246}
+{"id": "item:dan_guide_top", "status": "ok", "info": "47s gpt-image-2", "t": 1794689466.649488}
+{"id": "item:beast_feed_low", "status": "ok", "info": "61s gpt-image-2", "t": 1794689466.6495185}
+{"id": "item:beast_feed_high", "status": "ok", "info": "30s gpt-image-2", "t": 1794689466.6495447}
+{"id": "item:beast_feed_top", "status": "ok", "info": "31s gpt-image-2", "t": 1794689466.6496146}
+{"id": "item:treasure_rat_low", "status": "ok", "info": "55s gpt-image-2", "t": 1794689466.6496487}
+{"id": "item:treasure_rat_high", "status": "ok", "info": "48s gpt-image-2", "t": 1794689466.6496742}
+{"id": "item:treasure_rat_top", "status": "ok", "info": "50s gpt-image-2", "t": 1794689466.6496992}
+{"id": "item:gold_bug_low", "status": "ok", "info": "47s gpt-image-2", "t": 1794689479.8088033}
+{"id": "item:gold_bug_high", "status": "ok", "info": "59s gpt-image-2", "t": 1794689494.9585493}
+{"id": "item:gold_bug_top", "status": "ok", "info": "46s gpt-image-2", "t": 1794689494.9585922}
+{"id": "item:fu_paper_low", "status": "ok", "info": "45s gpt-image-2", "t": 1794689537.673861}
+{"id": "item:fu_paper_high", "status": "ok", "info": "44s gpt-image-2", "t": 1794689537.6739001}
+{"id": "item:fu_paper_top", "status": "ok", "info": "71s gpt-image-2", "t": 1794689573.627836}
+{"id": "item:cinnabar_low", "status": "ok", "info": "55s gpt-image-2", "t": 1794689573.6279242}
+{"id": "item:cinnabar_high", "status": "ok", "info": "50s gpt-image-2", "t": 1794689573.6279342}
+{"id": "item:cinnabar_top", "status": "ok", "info": "52s gpt-image-2", "t": 1794689573.627942}
+{"id": "item:fu_jingang_low", "status": "ok", "info": "52s gpt-image-2", "t": 1794689573.6279485}
+{"id": "item:fu_jingang_high", "status": "ok", "info": "65s gpt-image-2", "t": 1794689573.627955}
+{"id": "item:fu_jingang_top", "status": "ok", "info": "45s gpt-image-2", "t": 1794689573.6279612}
+{"id": "item:fu_shehun_low", "status": "ok", "info": "50s gpt-image-2", "t": 1794689573.6279664}
+{"id": "item:fu_shehun_high", "status": "ok", "info": "52s gpt-image-2", "t": 1794689573.6279726}
+{"id": "item:fu_shehun_top", "status": "ok", "info": "46s gpt-image-2", "t": 1794689578.2761352}
+{"id": "item:zhen_fu_low", "status": "ok", "info": "74s gpt-image-2", "t": 1794689611.9430969}
+{"id": "item:zhen_fu_high", "status": "ok", "info": "62s gpt-image-2", "t": 1794689611.943155}
+{"id": "item:zhen_fu_top", "status": "ok", "info": "63s gpt-image-2", "t": 1794689611.943175}
+{"id": "item:seal_xian_low", "status": "ok", "info": "39s gpt-image-2", "t": 1794689641.5831242}
+{"id": "item:seal_xian_high", "status": "ok", "info": "39s gpt-image-2", "t": 1794689641.5832615}
+{"id": "item:seal_xian_top", "status": "ok", "info": "72s gpt-image-2", "t": 1794689643.7486024}
+{"id": "item:jade_bottle_low", "status": "ok", "info": "64s gpt-image-2", "t": 1794689643.7486553}
+{"id": "item:jade_bottle_high", "status": "ok", "info": "57s gpt-image-2", "t": 1794689643.748676}
+{"id": "item:jade_bottle_top", "status": "ok", "info": "36s gpt-image-2", "t": 1794689643.748693}
+{"id": "item:xuan_essence_low", "status": "ok", "info": "49s gpt-image-2", "t": 1794689697.1264052}
+{"id": "item:xuan_essence_high", "status": "ok", "info": "66s gpt-image-2", "t": 1794689697.126462}
+{"id": "item:xuan_essence_top", "status": "ok", "info": "62s gpt-image-2", "t": 1794689697.1264822}
+{"id": "item:god_blank_low", "status": "ok", "info": "32s gpt-image-2", "t": 1794689697.1264982}
+{"id": "item:god_blank_high", "status": "ok", "info": "38s gpt-image-2", "t": 1794689697.126514}
+{"id": "item:god_blank_top", "status": "ok", "info": "58s gpt-image-2", "t": 1794689697.126529}
+{"id": "item:incense_low", "status": "ok", "info": "53s gpt-image-2", "t": 1794689697.1265447}
+{"id": "item:incense_high", "status": "ok", "info": "43s gpt-image-2", "t": 1794689697.1265595}
+{"id": "item:incense_top", "status": "ok", "info": "35s gpt-image-2", "t": 1794689702.2768903}
+{"id": "item:bone_flute_low", "status": "ok", "info": "47s gpt-image-2", "t": 1794689717.4951854}
+{"id": "item:bone_flute_high", "status": "ok", "info": "52s gpt-image-2", "t": 1794689726.0343769}
+{"id": "item:bone_flute_top", "status": "ok", "info": "50s gpt-image-2", "t": 1794689726.034511}
+{"id": "item:cult_corpse_low", "status": "ok", "info": "52s gpt-image-2", "t": 1794689739.369125}
+{"id": "item:cult_corpse_high", "status": "ok", "info": "46s gpt-image-2", "t": 1794689740.4899855}
+{"id": "item:cult_corpse_top", "status": "ok", "info": "57s gpt-image-2", "t": 1794689752.8273726}
+{"id": "item:live_soul_low", "status": "ok", "info": "70s gpt-image-2", "t": 1794689767.6192281}
+{"id": "item:live_soul_high", "status": "ok", "info": "70s gpt-image-2", "t": 1794689772.2381244}
+{"id": "item:live_soul_top", "status": "ok", "info": "48s gpt-image-2", "t": 1794689811.9963953}
+{"id": "item:blood_essence_low", "status": "ok", "info": "51s gpt-image-2", "t": 1794689811.9964619}
+{"id": "item:blood_essence_high", "status": "ok", "info": "46s gpt-image-2", "t": 1794689811.9964828}
+{"id": "item:blood_essence_top", "status": "ok", "info": "45s gpt-image-2", "t": 1794689811.9965}
+{"id": "item:soul_crystal_low", "status": "ok", "info": "72s gpt-image-2", "t": 1794689812.2065353}
+{"id": "item:soul_crystal_high", "status": "ok", "info": "55s gpt-image-2", "t": 1794689812.2065847}
+{"id": "item:soul_crystal_top", "status": "ok", "info": "35s gpt-image-2", "t": 1794689812.2066038}
+{"id": "item:corpse_king_low", "status": "ok", "info": "50s gpt-image-2", "t": 1794689822.0947626}
+{"id": "item:corpse_king_high", "status": "fail", "info": "gpt-image-1.5 URLError(OSError(101, 'Network is unreachable'))", "t": 1794690102.3104143}
+{"id": "item:corpse_king_top", "status": "ok", "info": "58s gpt-image-2", "t": 1794690102.3109407}
+{"id": "item:blood_infant_low", "status": "ok", "info": "65s gpt-image-2", "t": 1794690102.311102}
+{"id": "item:blood_infant_high", "status": "ok", "info": "50s gpt-image-2", "t": 1794690102.3111997}
+{"id": "item:blood_infant_top", "status": "ok", "info": "44s gpt-image-2", "t": 1794690102.3113015}
+{"id": "item:demon_blade_low", "status": "ok", "info": "56s gpt-image-2", "t": 1794690102.3113973}
+{"id": "item:demon_blade_high", "status": "ok", "info": "44s gpt-image-2", "t": 1794690102.3115156}
+{"id": "item:demon_blade_top", "status": "ok", "info": "65s gpt-image-2", "t": 1794690102.3115952}
+{"id": "item:bronze_mirror_revealed", "status": "ok", "info": "43s gpt-image-2", "t": 1794690102.311755}
+{"id": "item:pill_found_revealed", "status": "ok", "info": "44s gpt-image-2", "t": 1794690102.3118734}
+{"id": "item:spirit_crystal_charged", "status": "ok", "info": "40s gpt-image-2", "t": 1794690102.3119495}
+{"id": "item:spirit_crystal_dim", "status": "ok", "info": "63s gpt-image-2", "t": 1794690102.31202}
+{"id": "item:intel_expired", "status": "ok", "info": "51s gpt-image-2", "t": 1794690102.3120894}
+{"id": "item:herb_seed_sprout", "status": "ok", "info": "29s gpt-image-2", "t": 1794690102.3126128}
+{"id": "item:mihun_seed_sprout", "status": "ok", "info": "47s gpt-image-2", "t": 1794690102.3127015}
+{"id": "item:vine_seed_sprout", "status": "ok", "info": "38s gpt-image-2", "t": 1794690102.3127704}
+{"id": "item:treasure_rat_young", "status": "ok", "info": "42s gpt-image-2", "t": 1794690102.3128407}
+{"id": "item:gold_bug_young", "status": "ok", "info": "47s gpt-image-2", "t": 1794690102.3129108}
+{"id": "char:beggar_pleased", "status": "ok", "info": "54s gpt-image-2", "t": 1794690102.3129802}
+{"id": "char:beggar_angry", "status": "ok", "info": "40s gpt-image-2", "t": 1794690102.3130496}
+{"id": "char:beggar_afraid", "status": "ok", "info": "41s gpt-image-2", "t": 1794690102.3131194}
+{"id": "char:beggar_sly", "status": "ok", "info": "38s gpt-image-2", "t": 1794690102.313189}
+{"id": "char:beggar_wasted", "status": "ok", "info": "54s gpt-image-2", "t": 1794690102.31326}
+{"id": "char:beggar_thrall", "status": "ok", "info": "35s gpt-image-2", "t": 1794690102.313355}
+{"id": "char:beggar_master_pleased", "status": "ok", "info": "39s gpt-image-2", "t": 1794690102.313426}
+{"id": "char:beggar_master_angry", "status": "ok", "info": "40s gpt-image-2", "t": 1794690102.3134964}
+{"id": "char:beggar_master_afraid", "status": "ok", "info": "41s gpt-image-2", "t": 1794690102.3135653}
+{"id": "char:beggar_master_sly", "status": "ok", "info": "53s gpt-image-2", "t": 1794690102.3136342}
+{"id": "char:beggar_master_wasted", "status": "ok", "info": "38s gpt-image-2", "t": 1794690102.313702}
+{"id": "char:beggar_master_thrall", "status": "ok", "info": "43s gpt-image-2", "t": 1794690102.3137712}
+{"id": "char:amu_disciple_pleased", "status": "ok", "info": "32s gpt-image-2", "t": 1794690320.12739}
+{"id": "char:amu_disciple_angry", "status": "ok", "info": "35s gpt-image-2", "t": 1794690320.1274445}
+{"id": "char:amu_disciple_afraid", "status": "ok", "info": "35s gpt-image-2", "t": 1794690320.1274645}
+{"id": "char:amu_disciple_sly", "status": "ok", "info": "30s gpt-image-2", "t": 1794690330.3279011}
+{"id": "char:amu_disciple_wasted", "status": "ok", "info": "49s gpt-image-2", "t": 1794690358.2523952}
+{"id": "char:amu_disciple_thrall", "status": "ok", "info": "32s gpt-image-2", "t": 1794690358.2524488}
+{"id": "char:broker_pleased", "status": "ok", "info": "35s gpt-image-2", "t": 1794690358.2524674}
+{"id": "char:broker_angry", "status": "ok", "info": "66s gpt-image-2", "t": 1794690388.9196067}
+{"id": "char:broker_afraid", "status": "ok", "info": "55s gpt-image-2", "t": 1794690388.9197016}
+{"id": "char:broker_sly", "status": "ok", "info": "37s gpt-image-2", "t": 1794690388.919743}
+{"id": "char:broker_wasted", "status": "ok", "info": "41s gpt-image-2", "t": 1794690388.9197767}
+{"id": "char:broker_thrall", "status": "ok", "info": "34s gpt-image-2", "t": 1794690388.919822}
+{"id": "char:landlord_pleased", "status": "ok", "info": "35s gpt-image-2", "t": 1794690388.919854}
+{"id": "char:landlord_angry", "status": "ok", "info": "33s gpt-image-2", "t": 1794690388.9198833}
+{"id": "char:landlord_afraid", "status": "ok", "info": "36s gpt-image-2", "t": 1794690388.9199116}
+{"id": "char:landlord_sly", "status": "ok", "info": "36s gpt-image-2", "t": 1794690388.9199383}
+{"id": "char:landlord_wasted", "status": "ok", "info": "52s gpt-image-2", "t": 1794690388.919965}
+{"id": "char:landlord_thrall", "status": "ok", "info": "53s gpt-image-2", "t": 1794690388.9199996}
+{"id": "char:steward_sun_pleased", "status": "ok", "info": "36s gpt-image-2", "t": 1794690388.9200246}
+{"id": "char:steward_sun_angry", "status": "ok", "info": "59s gpt-image-2", "t": 1794690413.0046613}
+{"id": "char:steward_sun_afraid", "status": "ok", "info": "46s gpt-image-2", "t": 1794690413.004711}
+{"id": "char:steward_sun_sly", "status": "ok", "info": "53s gpt-image-2", "t": 1794690413.0047288}
+{"id": "char:steward_sun_wasted", "status": "ok", "info": "44s gpt-image-2", "t": 1794690415.7582066}
+{"id": "char:steward_sun_thrall", "status": "ok", "info": "36s gpt-image-2", "t": 1794690419.5550177}
+{"id": "char:swindler_pleased", "status": "ok", "info": "56s gpt-image-2", "t": 1794690441.1800768}
+{"id": "char:swindler_angry", "status": "ok", "info": "40s gpt-image-2", "t": 1794690441.1802146}
+{"id": "char:swindler_afraid", "status": "ok", "info": "45s gpt-image-2", "t": 1794690441.1802723}
+{"id": "char:swindler_sly", "status": "ok", "info": "44s gpt-image-2", "t": 1794690445.145121}
+{"id": "char:swindler_wasted", "status": "ok", "info": "54s gpt-image-2", "t": 1794690504.5983298}
+{"id": "char:swindler_thrall", "status": "ok", "info": "34s gpt-image-2", "t": 1794690504.5984244}
+{"id": "char:thug_pleased", "status": "ok", "info": "39s gpt-image-2", "t": 1794690504.5984592}
+{"id": "char:thug_angry", "status": "ok", "info": "42s gpt-image-2", "t": 1794690504.5984805}
+{"id": "char:thug_afraid", "status": "ok", "info": "49s gpt-image-2", "t": 1794690504.5985}
+{"id": "char:thug_sly", "status": "ok", "info": "42s gpt-image-2", "t": 1794690504.5985203}
+{"id": "char:thug_wasted", "status": "ok", "info": "41s gpt-image-2", "t": 1794690504.5985384}
+{"id": "char:thug_thrall", "status": "ok", "info": "62s gpt-image-2", "t": 1794690507.5375798}
+{"id": "char:mo_enforcer_pleased", "status": "ok", "info": "33s gpt-image-2", "t": 1794690507.5376177}
+{"id": "char:mo_enforcer_angry", "status": "ok", "info": "33s gpt-image-2", "t": 1794690507.5376275}
+{"id": "char:mo_enforcer_afraid", "status": "ok", "info": "52s gpt-image-2", "t": 1794690513.966005}
+{"id": "char:mo_enforcer_sly", "status": "ok", "info": "36s gpt-image-2", "t": 1794690513.9660788}
+{"id": "char:mo_enforcer_wasted", "status": "ok", "info": "65s gpt-image-2", "t": 1794690540.796684}
+{"id": "char:mo_enforcer_thrall", "status": "ok", "info": "42s gpt-image-2", "t": 1794690540.7967286}
+{"id": "char:mo_senior_pleased", "status": "ok", "info": "48s gpt-image-2", "t": 1794690540.796742}
+{"id": "char:mo_senior_angry", "status": "ok", "info": "54s gpt-image-2", "t": 1794690541.339088}
+{"id": "char:mo_senior_afraid", "status": "ok", "info": "50s gpt-image-1.5", "t": 1794690713.2146652}
+{"id": "char:mo_senior_sly", "status": "ok", "info": "32s gpt-image-2", "t": 1794690713.2147074}
+{"id": "char:mo_senior_wasted", "status": "ok", "info": "44s gpt-image-2", "t": 1794690713.2147171}
+{"id": "char:mo_senior_thrall", "status": "ok", "info": "47s gpt-image-2", "t": 1794690713.214724}
+{"id": "char:mo_senior_f1_pleased", "status": "ok", "info": "48s gpt-image-2", "t": 1794690713.21473}
+{"id": "char:mo_senior_f1_angry", "status": "ok", "info": "35s gpt-image-2", "t": 1794690713.2147365}
+{"id": "char:mo_senior_f1_afraid", "status": "ok", "info": "38s gpt-image-2", "t": 1794690713.2147431}
+{"id": "char:mo_senior_f1_sly", "status": "ok", "info": "47s gpt-image-2", "t": 1794690713.2147756}
+{"id": "char:mo_senior_f1_wasted", "status": "ok", "info": "47s gpt-image-2", "t": 1794690713.2148037}
+{"id": "char:mo_senior_f1_thrall", "status": "ok", "info": "41s gpt-image-2", "t": 1794690713.2148125}
+{"id": "char:mo_senior_f2_pleased", "status": "ok", "info": "35s gpt-image-2", "t": 1794690713.2148185}
+{"id": "char:mo_senior_f2_angry", "status": "ok", "info": "51s gpt-image-2", "t": 1794690713.2148244}
+{"id": "char:mo_senior_f2_afraid", "status": "ok", "info": "38s gpt-image-2", "t": 1794690713.2148304}
+{"id": "char:mo_senior_f2_sly", "status": "ok", "info": "51s gpt-image-2", "t": 1794690713.2148356}
+{"id": "char:mo_senior_f2_wasted", "status": "ok", "info": "41s gpt-image-2", "t": 1794690713.214897}
+{"id": "char:mo_senior_f2_thrall", "status": "ok", "info": "36s gpt-image-2", "t": 1794690713.2149045}
+{"id": "char:ren_cultivator_pleased", "status": "ok", "info": "43s gpt-image-2", "t": 1794690713.2149243}
+{"id": "char:ren_cultivator_angry", "status": "ok", "info": "63s gpt-image-2", "t": 1794690713.21493}
+{"id": "char:ren_cultivator_afraid", "status": "ok", "info": "45s gpt-image-2", "t": 1794690713.2149353}
+{"id": "char:ren_cultivator_sly", "status": "ok", "info": "41s gpt-image-2", "t": 1794690713.214941}
+{"id": "char:ren_cultivator_wasted", "status": "ok", "info": "35s gpt-image-2", "t": 1794690713.2149463}
+{"id": "char:ren_cultivator_thrall", "status": "ok", "info": "56s gpt-image-2", "t": 1794690713.2149518}
+{"id": "char:ren_cultivator_f1_pleased", "status": "ok", "info": "39s gpt-image-2", "t": 1794690713.214957}
+{"id": "char:ren_cultivator_f1_angry", "status": "ok", "info": "49s gpt-image-2", "t": 1794690713.2149622}
+{"id": "char:ren_cultivator_f1_afraid", "status": "ok", "info": "30s gpt-image-2", "t": 1794690713.2149675}
+{"id": "char:ren_cultivator_f1_sly", "status": "ok", "info": "46s gpt-image-2", "t": 1794690713.214973}
+{"id": "char:ren_cultivator_f1_wasted", "status": "ok", "info": "60s gpt-image-2", "t": 1794690718.95843}
+{"id": "char:ren_cultivator_f1_thrall", "status": "ok", "info": "38s gpt-image-2", "t": 1794690718.958466}
+{"id": "char:ren_cultivator_f2_pleased", "status": "ok", "info": "44s gpt-image-2", "t": 1794690718.958475}
+{"id": "char:ren_cultivator_f2_angry", "status": "ok", "info": "50s gpt-image-2", "t": 1794690733.12169}
+{"id": "char:ren_cultivator_f2_afraid", "status": "ok", "info": "48s gpt-image-2", "t": 1794690733.121785}
+{"id": "char:ren_cultivator_f2_sly", "status": "ok", "info": "33s gpt-image-2", "t": 1794690740.7606366}
+{"id": "char:ren_cultivator_f2_wasted", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream access forbidden, please contact administrator\",\"type\":\"upstream_error\"}}'", "t": 1794690927.8432589}
+{"id": "char:ren_cultivator_f2_thrall", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream access forbidden, please contact administrator\",\"type\":\"upstream_error\"}}'", "t": 1794690934.123188}
+{"id": "char:ren_merchant_pleased", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream access forbidden, please contact administrator\",\"type\":\"upstream_error\"}}'", "t": 1794690942.261148}
+{"id": "char:ren_merchant_angry", "status": "ok", "info": "37s gpt-image-2", "t": 1794690942.2613478}
+{"id": "char:ren_merchant_afraid", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream access forbidden, please contact administrator\",\"type\":\"upstream_error\"}}'", "t": 1794690944.1213946}
+{"id": "char:ren_merchant_sly", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream access forbidden, please contact administrator\",\"type\":\"upstream_error\"}}'", "t": 1794690963.8289726}
+{"id": "char:ren_merchant_wasted", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream access forbidden, please contact administrator\",\"type\":\"upstream_error\"}}'", "t": 1794690963.8296242}
+{"id": "char:ren_merchant_thrall", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream access forbidden, please contact administrator\",\"type\":\"upstream_error\"}}'", "t": 1794690971.6648335}
+{"id": "char:ren_merchant_f1_pleased", "status": "ok", "info": "35s gpt-image-2", "t": 1794690971.6651566}
+{"id": "char:ren_merchant_f1_angry", "status": "ok", "info": "34s gpt-image-2", "t": 1794690971.6654944}
+{"id": "char:ren_merchant_f1_afraid", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream access forbidden, please contact administrator\",\"type\":\"upstream_error\"}}'", "t": 1794691060.1977026}
+{"id": "char:ren_merchant_f1_sly", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream access forbidden, please contact administrator\",\"type\":\"upstream_error\"}}'", "t": 1794691153.9587774}
+{"id": "char:ren_merchant_f1_wasted", "status": "fail", "info": "HTTP 402 gpt-image-1.5 b'{\"error\":{\"code\":\"insufficient_balance\",\"message\":\"Upstream image account has insufficient balance\",\"type\":\"upstream_error\"}}'", "t": 1794691160.0081196}
+{"id": "char:ren_merchant_f1_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691169.507618}
+{"id": "char:ren_merchant_f2_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691171.474787}
+{"id": "char:ren_merchant_f2_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691183.8613741}
+{"id": "char:ren_merchant_f2_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691188.3178108}
+{"id": "char:ren_merchant_f2_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691195.778436}
+{"id": "char:ren_merchant_f2_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691278.9374757}
+{"id": "char:ren_merchant_f2_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691365.003842}
+{"id": "char:ren_kid_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691370.8180156}
+{"id": "char:ren_kid_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691378.6369832}
+{"id": "char:ren_kid_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691384.5038233}
+{"id": "char:ren_kid_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691395.820668}
+{"id": "char:ren_kid_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691395.8208392}
+{"id": "char:ren_kid_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691402.6594713}
+{"id": "char:ren_kid_f1_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691489.0683382}
+{"id": "char:ren_kid_f1_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691574.3690476}
+{"id": "char:ren_kid_f1_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691583.3383234}
+{"id": "char:ren_kid_f1_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691588.5988376}
+{"id": "char:ren_kid_f1_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691593.3530977}
+{"id": "char:ren_kid_f1_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691611.1808677}
+{"id": "char:ren_kid_f2_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691611.1809914}
+{"id": "char:ren_kid_f2_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691616.4506607}
+{"id": "char:ren_kid_f2_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691701.0223176}
+{"id": "char:ren_kid_f2_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691784.7127306}
+{"id": "char:ren_kid_f2_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691796.99282}
+{"id": "char:ren_kid_f2_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691801.0628173}
+{"id": "char:xian_defector_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691804.6633182}
+{"id": "char:xian_defector_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691816.0740645}
+{"id": "char:xian_defector_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691823.3496606}
+{"id": "char:xian_defector_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691827.0617163}
+{"id": "char:xian_defector_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691909.3846025}
+{"id": "char:xian_defector_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794691994.6487875}
+{"id": "char:xian_defector_f1_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692009.7185876}
+{"id": "char:xian_defector_f1_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692014.3223548}
+{"id": "char:xian_defector_f1_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692014.3226786}
+{"id": "char:xian_defector_f1_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692025.373471}
+{"id": "char:xian_defector_f1_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692033.242877}
+{"id": "char:xian_defector_f1_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692035.738073}
+{"id": "char:xian_defector_f2_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692120.9678328}
+{"id": "char:xian_defector_f2_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692204.5901916}
+{"id": "char:xian_defector_f2_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692223.3818777}
+{"id": "char:xian_defector_f2_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692226.8800912}
+{"id": "char:xian_defector_f2_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692226.880373}
+{"id": "char:xian_defector_f2_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692239.3021066}
+{"id": "char:xian_spy_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692243.4484866}
+{"id": "char:xian_spy_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794692249.5232215}
+{"id": "item:corpse", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794698950.7152853}
+{"id": "item:corpse_king_high", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794698974.6048527}
+{"id": "char:ren_cultivator_f2_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794698974.6049504}
+{"id": "char:ren_cultivator_f2_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794698974.6049764}
+{"id": "char:ren_merchant_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794698974.6049907}
+{"id": "char:ren_merchant_afraid", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794698974.6049974}
+{"id": "char:ren_merchant_sly", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794699160.780941}
+{"id": "char:ren_merchant_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699169.075829}
+{"id": "char:ren_merchant_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699170.807063}
+{"id": "char:ren_merchant_f1_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699171.1359427}
+{"id": "char:ren_merchant_f1_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699181.0071156}
+{"id": "char:ren_merchant_f1_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699187.8676753}
+{"id": "char:ren_merchant_f1_thrall", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794699373.8267758}
+{"id": "char:ren_merchant_f2_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699378.9640677}
+{"id": "char:ren_merchant_f2_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699384.986752}
+{"id": "char:ren_merchant_f2_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699384.9869192}
+{"id": "char:ren_merchant_f2_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699391.0731635}
+{"id": "char:ren_merchant_f2_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699400.609505}
+{"id": "char:ren_merchant_f2_thrall", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794699582.532485}
+{"id": "char:ren_kid_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699591.1176836}
+{"id": "char:ren_kid_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699591.11773}
+{"id": "char:ren_kid_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699595.6974354}
+{"id": "char:ren_kid_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699602.5255842}
+{"id": "char:ren_kid_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699610.8872612}
+{"id": "char:ren_kid_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699793.9955888}
+{"id": "char:ren_kid_f1", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794699793.995848}
+{"id": "char:ren_kid_f2_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699801.7576196}
+{"id": "char:ren_kid_f2_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699807.267952}
+{"id": "char:ren_kid_f2_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699816.5917141}
+{"id": "char:ren_kid_f2_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794699822.381075}
+{"id": "char:ren_kid_f2_wasted", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794700001.912041}
+{"id": "char:ren_kid_f2_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700004.3940756}
+{"id": "char:xian_defector_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700012.0461519}
+{"id": "char:xian_defector_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700019.9904766}
+{"id": "char:xian_defector_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700027.8392127}
+{"id": "char:xian_defector_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700035.4318345}
+{"id": "char:xian_defector_wasted", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794700215.5659986}
+{"id": "char:xian_defector_thrall", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700215.714564}
+{"id": "char:xian_defector_f1_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700224.0395555}
+{"id": "char:xian_defector_f1_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700231.2357404}
+{"id": "char:xian_defector_f1_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700241.091528}
+{"id": "char:xian_defector_f1_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700247.8461857}
+{"id": "char:xian_defector_f1_wasted", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700426.0577917}
+{"id": "char:xian_defector_f1_thrall", "status": "fail", "info": "HTTP 502 gpt-image-1.5 b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794700426.0580056}
+{"id": "char:xian_defector_f2_pleased", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700435.3265493}
+{"id": "char:xian_defector_f2_angry", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700440.689315}
+{"id": "char:xian_defector_f2_afraid", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700450.631136}
+{"id": "char:xian_defector_f2_sly", "status": "fail", "info": "HTTP 503 gpt-image-1.5 b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700461.7217734}
+{"id": "item:corpse", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794700834.354196}
+{"id": "item:corpse_king_high", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700853.318806}
+{"id": "char:ren_cultivator_f2_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700853.3191931}
+{"id": "char:ren_cultivator_f2_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700853.319254}
+{"id": "char:ren_merchant_pleased", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700853.3194017}
+{"id": "char:ren_merchant_afraid", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794700854.8577013}
+{"id": "char:ren_merchant_sly", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701144.5224895}
+{"id": "char:ren_merchant_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794701144.5229428}
+{"id": "char:ren_merchant_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701163.8031294}
+{"id": "char:ren_merchant_f1_afraid", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701163.803341}
+{"id": "char:ren_merchant_f1_sly", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701168.1348183}
+{"id": "char:ren_merchant_f1_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701168.1350346}
+{"id": "char:ren_merchant_f1_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794701457.6355922}
+{"id": "char:ren_merchant_f2_pleased", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701457.8592386}
+{"id": "char:ren_merchant_f2_angry", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701478.4500427}
+{"id": "char:ren_merchant_f2_afraid", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794701526.9648602}
+{"id": "char:ren_merchant_f2_sly", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701526.9651976}
+{"id": "char:ren_merchant_f2_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701526.9652567}
+{"id": "char:ren_merchant_f2_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701784.7426736}
+{"id": "char:ren_kid_pleased", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794701784.7436357}
+{"id": "char:ren_kid_angry", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794701796.1499164}
+{"id": "item:corpse", "status": "ok", "info": "42s gpt-image-2.5-sunburst-adobe", "t": 1794701912.4052777}
+{"id": "item:corpse_king_high", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794701924.4730272}
+{"id": "char:ren_cultivator_f2_wasted", "status": "ok", "info": "44s gpt-image-2.5-sunburst-adobe", "t": 1794701924.4731858}
+{"id": "char:ren_cultivator_f2_thrall", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794701924.4732344}
+{"id": "char:ren_merchant_pleased", "status": "ok", "info": "56s gpt-image-2.5-sunburst-adobe", "t": 1794701926.3423138}
+{"id": "char:ren_merchant_afraid", "status": "ok", "info": "47s gpt-image-2.5-sunburst-adobe", "t": 1794701926.3424585}
+{"id": "char:ren_merchant_sly", "status": "ok", "info": "60s gpt-image-2.5-sunburst-adobe", "t": 1794701972.736455}
+{"id": "char:ren_merchant_wasted", "status": "ok", "info": "56s gpt-image-2.5-sunburst-adobe", "t": 1794701972.7365255}
+{"id": "char:ren_merchant_thrall", "status": "ok", "info": "67s gpt-image-2.5-sunburst-adobe", "t": 1794701984.556094}
+{"id": "char:ren_merchant_f1_afraid", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794701984.5562053}
+{"id": "char:ren_merchant_f1_sly", "status": "ok", "info": "58s gpt-image-2.5-sunburst-adobe", "t": 1794701984.5562205}
+{"id": "char:ren_merchant_f1_wasted", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794701984.5562391}
+{"id": "char:ren_merchant_f1_thrall", "status": "ok", "info": "44s gpt-image-2.5-sunburst-adobe", "t": 1794702014.1716647}
+{"id": "char:ren_merchant_f2_pleased", "status": "ok", "info": "45s gpt-image-2.5-sunburst-adobe", "t": 1794702017.4229252}
+{"id": "char:ren_merchant_f2_angry", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794702029.0167768}
+{"id": "char:ren_merchant_f2_afraid", "status": "ok", "info": "58s gpt-image-2.5-sunburst-adobe", "t": 1794702037.6234176}
+{"id": "char:ren_merchant_f2_sly", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702037.6236248}
+{"id": "char:ren_merchant_f2_wasted", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702037.623689}
+{"id": "char:ren_merchant_f2_thrall", "status": "ok", "info": "46s gpt-image-2.5-sunburst-adobe", "t": 1794702060.2130113}
+{"id": "char:ren_kid_pleased", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702069.7209694}
+{"id": "char:ren_kid_angry", "status": "ok", "info": "45s gpt-image-2.5-sunburst-adobe", "t": 1794702073.642619}
+{"id": "char:ren_kid_afraid", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794702081.899401}
+{"id": "char:ren_kid_sly", "status": "ok", "info": "55s gpt-image-2.5-sunburst-adobe", "t": 1794702089.694633}
+{"id": "char:ren_kid_wasted", "status": "ok", "info": "46s gpt-image-2.5-sunburst-adobe", "t": 1794702089.695083}
+{"id": "char:ren_kid_thrall", "status": "ok", "info": "42s gpt-image-2.5-sunburst-adobe", "t": 1794702102.0507956}
+{"id": "char:ren_kid_f1", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702120.4273307}
+{"id": "char:ren_kid_f2_pleased", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794702123.4960763}
+{"id": "char:ren_kid_f2_angry", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702130.8020923}
+{"id": "char:ren_kid_f2_afraid", "status": "ok", "info": "57s gpt-image-2.5-sunburst-adobe", "t": 1794702140.9713252}
+{"id": "char:ren_kid_f2_sly", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702140.971368}
+{"id": "char:ren_kid_f2_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794702413.6093726}
+{"id": "char:ren_kid_f2_thrall", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702413.609459}
+{"id": "char:xian_defector_pleased", "status": "ok", "info": "47s gpt-image-2.5-sunburst-adobe", "t": 1794702413.60947}
+{"id": "char:xian_defector_angry", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6094968}
+{"id": "char:xian_defector_afraid", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6095037}
+{"id": "char:xian_defector_sly", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794702413.60951}
+{"id": "char:xian_defector_wasted", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6095157}
+{"id": "char:xian_defector_thrall", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6095223}
+{"id": "char:xian_defector_f1_pleased", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794702413.609528}
+{"id": "char:xian_defector_f1_angry", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702413.609534}
+{"id": "char:xian_defector_f1_afraid", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6095397}
+{"id": "char:xian_defector_f1_sly", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702413.609546}
+{"id": "char:xian_defector_f1_wasted", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794702413.609558}
+{"id": "char:xian_defector_f1_thrall", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6095634}
+{"id": "char:xian_defector_f2_pleased", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6095688}
+{"id": "char:xian_defector_f2_angry", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6095738}
+{"id": "char:xian_defector_f2_afraid", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6095793}
+{"id": "char:xian_defector_f2_sly", "status": "ok", "info": "57s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6095843}
+{"id": "char:xian_defector_f2_wasted", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6095893}
+{"id": "char:xian_defector_f2_thrall", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702413.609595}
+{"id": "char:xian_spy_pleased", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6096005}
+{"id": "char:xian_spy_angry", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702413.609606}
+{"id": "char:xian_spy_afraid", "status": "ok", "info": "42s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6096115}
+{"id": "char:xian_spy_sly", "status": "ok", "info": "43s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6096172}
+{"id": "char:xian_spy_wasted", "status": "ok", "info": "45s gpt-image-2.5-sunburst-adobe", "t": 1794702413.609623}
+{"id": "char:xian_spy_thrall", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702413.6096287}
+{"id": "char:xian_spy_f1_pleased", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702420.3725123}
+{"id": "char:xian_spy_f1_angry", "status": "ok", "info": "59s gpt-image-2.5-sunburst-adobe", "t": 1794702430.7663057}
+{"id": "char:xian_spy_f1_afraid", "status": "ok", "info": "58s gpt-image-2.5-sunburst-adobe", "t": 1794702432.5688865}
+{"id": "char:xian_spy_f1_sly", "status": "ok", "info": "56s gpt-image-2.5-sunburst-adobe", "t": 1794702440.955525}
+{"id": "char:xian_spy_f1_wasted", "status": "ok", "info": "57s gpt-image-2.5-sunburst-adobe", "t": 1794702459.8108456}
+{"id": "char:xian_spy_f1_thrall", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794702467.6231573}
+{"id": "char:xian_spy_f2_pleased", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794702470.1808562}
+{"id": "char:xian_spy_f2_angry", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702482.5727873}
+{"id": "char:xian_spy_f2_afraid", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702482.5730364}
+{"id": "char:xian_spy_f2_sly", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702490.0216637}
+{"id": "char:xian_spy_f2_wasted", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702511.5328963}
+{"id": "char:xian_spy_f2_thrall", "status": "ok", "info": "56s gpt-image-2.5-sunburst-adobe", "t": 1794702523.1483266}
+{"id": "char:yao_fox_pleased", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794702523.1488962}
+{"id": "char:yao_fox_angry", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794702530.128086}
+{"id": "char:yao_fox_afraid", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702531.2944183}
+{"id": "char:yao_fox_sly", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702541.4875245}
+{"id": "char:yao_fox_wasted", "status": "ok", "info": "131s gpt-image-2.5-sunburst-adobe", "t": 1794702642.625146}
+{"id": "char:yao_fox_thrall", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702642.6254165}
+{"id": "char:yao_fox_f1_pleased", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794702642.6255343}
+{"id": "char:yao_fox_f1_angry", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702642.6256256}
+{"id": "char:yao_fox_f1_afraid", "status": "ok", "info": "46s gpt-image-2.5-sunburst-adobe", "t": 1794702660.3167713}
+{"id": "char:yao_fox_f1_sly", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702660.3170269}
+{"id": "char:yao_fox_f1_wasted", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702660.317127}
+{"id": "char:yao_fox_f1_thrall", "status": "ok", "info": "58s gpt-image-2.5-sunburst-adobe", "t": 1794702660.3172073}
+{"id": "char:yao_fox_f2_pleased", "status": "ok", "info": "62s gpt-image-2.5-sunburst-adobe", "t": 1794702660.3172815}
+{"id": "char:yao_fox_f2_angry", "status": "ok", "info": "41s gpt-image-2.5-sunburst-adobe", "t": 1794702660.3173778}
+{"id": "char:yao_fox_f2_afraid", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794702673.2128568}
+{"id": "char:yao_fox_f2_sly", "status": "ok", "info": "57s gpt-image-2.5-sunburst-adobe", "t": 1794702688.690345}
+{"id": "char:yao_fox_f2_wasted", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702688.6904836}
+{"id": "char:yao_fox_f2_thrall", "status": "ok", "info": "55s gpt-image-2.5-sunburst-adobe", "t": 1794702697.6406648}
+{"id": "char:yao_tiger_pleased", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794702698.8766844}
+{"id": "char:yao_tiger_angry", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702711.468227}
+{"id": "char:yao_tiger_afraid", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702721.840834}
+{"id": "char:yao_tiger_sly", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702730.084264}
+{"id": "char:yao_tiger_wasted", "status": "ok", "info": "46s gpt-image-2.5-sunburst-adobe", "t": 1794702734.307894}
+{"id": "char:yao_tiger_thrall", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702747.0907362}
+{"id": "char:yao_tiger_f1_pleased", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794702749.3673983}
+{"id": "char:yao_tiger_f1_angry", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702763.9242904}
+{"id": "char:yao_tiger_f1_afraid", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702770.414002}
+{"id": "char:yao_tiger_f1_sly", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794702778.4147413}
+{"id": "char:yao_tiger_f1_wasted", "status": "ok", "info": "46s gpt-image-2.5-sunburst-adobe", "t": 1794702780.3906376}
+{"id": "char:yao_tiger_f1_thrall", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702799.14759}
+{"id": "char:yao_tiger_f2_pleased", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702799.1481514}
+{"id": "char:yao_tiger_f2_angry", "status": "ok", "info": "46s gpt-image-2.5-sunburst-adobe", "t": 1794702810.0197465}
+{"id": "char:yao_tiger_f2_afraid", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702821.5572352}
+{"id": "char:yao_tiger_f2_sly", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702829.459578}
+{"id": "char:yao_tiger_f2_wasted", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702831.602924}
+{"id": "char:yao_tiger_f2_thrall", "status": "ok", "info": "55s gpt-image-2.5-sunburst-adobe", "t": 1794702853.7127583}
+{"id": "char:yao_snake_pleased", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794702853.7128668}
+{"id": "char:yao_snake_angry", "status": "ok", "info": "46s gpt-image-2.5-sunburst-adobe", "t": 1794702855.7524312}
+{"id": "char:yao_snake_afraid", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702872.648834}
+{"id": "char:yao_snake_sly", "status": "ok", "info": "60s gpt-image-2.5-sunburst-adobe", "t": 1794702889.686429}
+{"id": "char:yao_snake_wasted", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702889.6866431}
+{"id": "char:yao_snake_thrall", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702900.6309013}
+{"id": "char:yao_snake_f1_pleased", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702902.5406494}
+{"id": "char:yao_snake_f1_angry", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794702904.384876}
+{"id": "char:yao_snake_f1_afraid", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702923.5657632}
+{"id": "char:yao_snake_f1_sly", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702931.8783238}
+{"id": "char:yao_snake_f1_wasted", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794702940.6449459}
+{"id": "char:yao_snake_f1_thrall", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794703033.96472}
+{"id": "char:yao_snake_f2_pleased", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794703033.9648736}
+{"id": "char:yao_snake_f2_angry", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794703033.9649174}
+{"id": "char:yao_snake_f2_afraid", "status": "ok", "info": "55s gpt-image-2.5-sunburst-adobe", "t": 1794703033.9649506}
+{"id": "char:yao_snake_f2_sly", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794703033.9649832}
+{"id": "char:yao_snake_f2_wasted", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794703033.965012}
+{"id": "char:yao_snake_f2_thrall", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794703033.9650426}
+{"id": "char:noble_pleased", "status": "ok", "info": "56s gpt-image-2.5-sunburst-adobe", "t": 1794703033.965069}
+{"id": "char:noble_angry", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794703033.9650962}
+{"id": "char:noble_afraid", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794703033.9651225}
+{"id": "char:noble_sly", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794703042.3762574}
+{"id": "char:noble_wasted", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794703054.4646769}
+{"id": "char:noble_thrall", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794703063.4775074}
+{"id": "char:noble_f1_pleased", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794703078.2208755}
+{"id": "char:noble_f1_angry", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794703080.5084407}
+{"id": "char:noble_f1_afraid", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794703082.764444}
+{"id": "char:noble_f1_sly", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794703095.0872796}
+{"id": "char:noble_f1_wasted", "status": "ok", "info": "56s gpt-image-2.5-sunburst-adobe", "t": 1794703110.9339182}
+{"id": "char:noble_f1_thrall", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794703113.5621648}
+{"id": "char:noble_f2", "status": "ok", "info": "45s gpt-image-2.5-sunburst-adobe", "t": 1794703123.4081764}
+{"id": "machine:m_furnace_running", "status": "ok", "info": "78s gpt-image-2.5-sunburst-adobe", "t": 1794703158.3511496}
+{"id": "machine:m_forge_running", "status": "ok", "info": "65s gpt-image-2.5-sunburst-adobe", "t": 1794703158.351252}
+{"id": "machine:m_pool_running", "status": "ok", "info": "60s gpt-image-2.5-sunburst-adobe", "t": 1794703158.3512719}
+{"id": "machine:m_spring_running", "status": "ok", "info": "62s gpt-image-2.5-sunburst-adobe", "t": 1794703173.357606}
+{"id": "machine:m_herbbed_running", "status": "ok", "info": "59s gpt-image-2.5-sunburst-adobe", "t": 1794703173.357943}
+{"id": "machine:m_gupot_running", "status": "ok", "info": "59s gpt-image-2.5-sunburst-adobe", "t": 1794703182.2885828}
+{"id": "machine:m_winejar_running", "status": "ok", "info": "65s gpt-image-2.5-sunburst-adobe", "t": 1794703212.8741198}
+{"id": "machine:m_soulfurnace_running", "status": "ok", "info": "60s gpt-image-2.5-sunburst-adobe", "t": 1794703214.8123136}
+{"id": "machine:m_coffin_running", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794703214.8123689}
+{"id": "machine:m_puppetbench_running", "status": "ok", "info": "58s gpt-image-2.5-sunburst-adobe", "t": 1794703230.4471426}
+{"id": "machine:m_yaopot_running", "status": "ok", "info": "55s gpt-image-2.5-sunburst-adobe", "t": 1794703230.4473374}
+{"id": "machine:m_dihuo_running", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794703233.8182693}
+{"id": "machine:m_pen_running", "status": "ok", "info": "59s gpt-image-2.5-sunburst-adobe", "t": 1794703271.3010535}
+{"id": "machine:m_fudesk_running", "status": "ok", "info": "58s gpt-image-2.5-sunburst-adobe", "t": 1794703271.3014727}
+{"id": "machine:m_forgery_running", "status": "ok", "info": "64s gpt-image-2.5-sunburst-adobe", "t": 1794703279.2856336}
+{"id": "machine:m_puppet_running", "status": "ok", "info": "55s gpt-image-2.5-sunburst-adobe", "t": 1794703283.5099273}
+{"id": "machine:m_array_running", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794703283.5099795}
+{"id": "icon:ic_heat", "status": "ok", "info": "47s gpt-image-2.5-sunburst-adobe", "t": 1794703283.5099974}
+{"id": "icon:ic_merit", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794703322.179238}
+{"id": "icon:ic_seal", "status": "ok", "info": "42s gpt-image-2.5-sunburst-adobe", "t": 1794703322.1794872}
+{"id": "item:corpse_low", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794703372.453439}
+{"id": "item:corpse_high", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794703375.0201547}
+{"id": "item:corpse_top", "status": "ok", "info": "55s gpt-image-2.5-sunburst-adobe", "t": 1794703377.096066}
+{"id": "item:corpse_rotting", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794703580.4180434}
+{"id": "char:ren_kid_f1_pleased", "status": "ok", "info": "40s gpt-image-2.5-sunburst-adobe", "t": 1794703580.4181392}
+{"id": "char:ren_kid_f1_angry", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794703580.4181647}
+{"id": "char:ren_kid_f1_afraid", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794703580.4181826}
+{"id": "char:ren_kid_f1_sly", "status": "ok", "info": "42s gpt-image-2.5-sunburst-adobe", "t": 1794703580.4181983}
+{"id": "char:ren_kid_f1_wasted", "status": "ok", "info": "58s gpt-image-2.5-sunburst-adobe", "t": 1794703580.418213}
+{"id": "char:ren_kid_f1_thrall", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794703580.4182277}
+{"id": "char:ren_kid_f2_wasted", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794703580.4182432}
+{"id": "char:noble_f2_pleased", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794703580.418258}
+{"id": "char:noble_f2_angry", "status": "ok", "info": "41s gpt-image-2.5-sunburst-adobe", "t": 1794703580.4182742}
+{"id": "char:noble_f2_afraid", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794703580.4182975}
+{"id": "char:noble_f2_sly", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794703580.418315}
+{"id": "char:noble_f2_wasted", "status": "ok", "info": "57s gpt-image-2.5-sunburst-adobe", "t": 1794703580.4183307}
+{"id": "char:noble_f2_thrall", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794703580.4183455}
+{"id": "item:corpse_rotting", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794703851.759932}
+{"id": "item:corpse_rotting", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794704404.2438867}
+{"id": "char:ren_kid_f1", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794704404.2440538}
+{"id": "char:xian_spy_f1", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794704404.2441058}
+{"id": "char:xian_spy_f2", "status": "ok", "info": "43s gpt-image-2.5-sunburst-adobe", "t": 1794704404.2441392}
+{"id": "char:noble_f2", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794704404.2441669}
+{"id": "item:corpse_rotting", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794704666.2997963}
+{"id": "char:ren_kid_f1_pleased", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794704666.2999809}
+{"id": "char:ren_kid_f1_angry", "status": "ok", "info": "69s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3000283}
+{"id": "char:ren_kid_f1_afraid", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3000622}
+{"id": "char:ren_kid_f1_sly", "status": "ok", "info": "47s gpt-image-2.5-sunburst-adobe", "t": 1794704666.30009}
+{"id": "char:ren_kid_f1_wasted", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3001184}
+{"id": "char:ren_kid_f1_thrall", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794704666.300149}
+{"id": "char:xian_spy_f1_pleased", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3001797}
+{"id": "char:xian_spy_f1_angry", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3002086}
+{"id": "char:xian_spy_f1_afraid", "status": "ok", "info": "69s gpt-image-2.5-sunburst-adobe", "t": 1794704666.300236}
+{"id": "char:xian_spy_f1_sly", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3002644}
+{"id": "char:xian_spy_f1_wasted", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3003132}
+{"id": "char:xian_spy_f1_thrall", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3003395}
+{"id": "char:xian_spy_f2_pleased", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3003693}
+{"id": "char:xian_spy_f2_angry", "status": "ok", "info": "70s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3003938}
+{"id": "char:xian_spy_f2_afraid", "status": "ok", "info": "45s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3004215}
+{"id": "char:xian_spy_f2_sly", "status": "ok", "info": "43s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3004465}
+{"id": "char:xian_spy_f2_wasted", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3004706}
+{"id": "char:xian_spy_f2_thrall", "status": "ok", "info": "57s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3005013}
+{"id": "char:noble_f2_pleased", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3005245}
+{"id": "char:noble_f2_angry", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3005552}
+{"id": "char:noble_f2_afraid", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3005793}
+{"id": "char:noble_f2_sly", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3006084}
+{"id": "char:noble_f2_wasted", "status": "ok", "info": "38s gpt-image-2.5-sunburst-adobe", "t": 1794704666.3006318}
+{"id": "char:noble_f2_thrall", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794704673.4012825}
+{"id": "item:corpse_rotting", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794704931.5265138}
+{"id": "item:corpse_rotting", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794705191.83362}
+{"id": "item:corpse_rotting", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794705494.7451696}
+{"id": "machine:m_dihuo_running", "status": "ok", "info": "76s gpt-image-2.5-sunburst-adobe", "t": 1794705933.8287325}
+{"id": "char:lu_banxian", "status": "ok", "info": "67s gpt-image-2.5-sunburst-adobe", "t": 1794710427.0578992}
+{"id": "char:lu_banxian_pleased", "status": "ok", "info": "47s gpt-image-2.5-sunburst-adobe", "t": 1794710474.14629}
+{"id": "char:lu_banxian_angry", "status": "ok", "info": "53s gpt-image-2.5-sunburst-adobe", "t": 1794710479.804429}
+{"id": "char:lu_banxian_afraid", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794710481.4490156}
+{"id": "char:lu_banxian_sly", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794710481.4491448}
+{"id": "char:lu_banxian_wasted", "status": "ok", "info": "63s gpt-image-2.5-sunburst-adobe", "t": 1794710537.5144508}
+{"id": "char:lu_banxian_thrall", "status": "ok", "info": "62s gpt-image-2.5-sunburst-adobe", "t": 1794710539.51349}
+{"id": "char:lu_banxian_wasted", "status": "ok", "info": "109s gpt-image-2.5-sunburst-adobe", "t": 1794710947.1039627}
+{"id": "item:zhuyan_dan", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794712772.1775932}
+{"id": "item:zhuyan_dan_low", "status": "ok", "info": "56s gpt-image-2.5-sunburst-adobe", "t": 1794712827.9721975}
+{"id": "item:zhuyan_dan_high", "status": "ok", "info": "56s gpt-image-2.5-sunburst-adobe", "t": 1794712827.972359}
+{"id": "item:zhuyan_dan_top", "status": "ok", "info": "48s gpt-image-2.5-sunburst-adobe", "t": 1794712827.9724064}
+{"id": "machine:silkrack", "status": "ok", "info": "73s gpt-image-2.5-sunburst-adobe", "t": 1794713045.2529488}
+{"id": "machine:silkrack_running", "status": "ok", "info": "60s gpt-image-2.5-sunburst-adobe", "t": 1794713105.2291145}
+{"id": "item:silk_seed", "status": "ok", "info": "49s gpt-image-2.5-sunburst-adobe", "t": 1794713313.8921356}
+{"id": "item:silk_seed_low", "status": "ok", "info": "63s gpt-image-2.5-sunburst-adobe", "t": 1794713376.812585}
+{"id": "item:silk_seed_high", "status": "ok", "info": "64s gpt-image-2.5-sunburst-adobe", "t": 1794713378.1819973}
+{"id": "item:silk_seed_top", "status": "ok", "info": "65s gpt-image-2.5-sunburst-adobe", "t": 1794713378.4699214}
+{"id": "item:silk", "status": "ok", "info": "55s gpt-image-2.5-sunburst-adobe", "t": 1794713436.2333004}
+{"id": "item:silk_low", "status": "ok", "info": "87s gpt-image-2.5-sunburst-adobe", "t": 1794713523.5070584}
+{"id": "item:silk_high", "status": "ok", "info": "70s gpt-image-2.5-sunburst-adobe", "t": 1794713523.507194}
+{"id": "item:silk_top", "status": "ok", "info": "69s gpt-image-2.5-sunburst-adobe", "t": 1794713523.5072353}
+{"id": "item:cloud_robe", "status": "ok", "info": "60s gpt-image-2.5-sunburst-adobe", "t": 1794713585.5825787}
+{"id": "item:cloud_robe_low", "status": "ok", "info": "60s gpt-image-2.5-sunburst-adobe", "t": 1794713645.91967}
+{"id": "item:cloud_robe_high", "status": "ok", "info": "58s gpt-image-2.5-sunburst-adobe", "t": 1794713645.9197366}
+{"id": "item:cloud_robe_top", "status": "ok", "info": "59s gpt-image-2.5-sunburst-adobe", "t": 1794713645.9197588}
+{"id": "item:zhuyan_dan_top", "status": "ok", "info": "67s gpt-image-2.5-sunburst-adobe", "t": 1794714104.4975262}
+{"id": "item:dan_fire", "status": "ok", "info": "64s gpt-image-2.5-sunburst-adobe", "t": 1794732456.9189353}
+{"id": "item:dan_fire_low", "status": "ok", "info": "134s gpt-image-2.5-sunburst-adobe", "t": 1794732591.0705502}
+{"id": "item:dan_fire_high", "status": "ok", "info": "65s gpt-image-2.5-sunburst-adobe", "t": 1794732591.070588}
+{"id": "item:dan_fire_top", "status": "ok", "info": "72s gpt-image-2.5-sunburst-adobe", "t": 1794732591.0705974}
+{"id": "item:dan_guide", "status": "ok", "info": "59s gpt-image-2.5-sunburst-adobe", "t": 1794732703.850881}
+{"id": "item:dan_guide_low", "status": "ok", "info": "60s gpt-image-2.5-sunburst-adobe", "t": 1794732763.5508757}
+{"id": "item:dan_guide_high", "status": "ok", "info": "56s gpt-image-2.5-sunburst-adobe", "t": 1794732763.550923}
+{"id": "item:dan_guide_top", "status": "ok", "info": "57s gpt-image-2.5-sunburst-adobe", "t": 1794732763.550933}
+{"id": "item:vine_seed", "status": "ok", "info": "54s gpt-image-2.5-sunburst-adobe", "t": 1794732819.6019485}
+{"id": "item:vine_seed_low", "status": "ok", "info": "55s gpt-image-2.5-sunburst-adobe", "t": 1794732874.4170036}
+{"id": "item:vine_seed_high", "status": "ok", "info": "59s gpt-image-2.5-sunburst-adobe", "t": 1794732878.1178133}
+{"id": "item:vine_seed_top", "status": "ok", "info": "51s gpt-image-2.5-sunburst-adobe", "t": 1794732878.1179698}
+{"id": "item:gu_egg", "status": "ok", "info": "62s gpt-image-2.5-sunburst-adobe", "t": 1794732942.4222624}
+{"id": "item:waste_pill_high", "status": "ok", "info": "73s gpt-image-2.5-sunburst-adobe", "t": 1794733015.819007}
+{"id": "item:spirit_wine_top", "status": "ok", "info": "55s gpt-image-2.5-sunburst-adobe", "t": 1794733071.6295273}
+{"id": "item:xian_sword_top", "status": "ok", "info": "80s gpt-image-2.5-sunburst-adobe", "t": 1794733153.1516745}
+{"id": "item:corpse_king_high", "status": "ok", "info": "76s gpt-image-2.5-sunburst-adobe", "t": 1794733230.151392}
+{"id": "item:demon_blade_top", "status": "ok", "info": "61s gpt-image-2.5-sunburst-adobe", "t": 1794733291.9467933}
+{"id": "item:cult_corpse_top", "status": "ok", "info": "73s gpt-image-2.5-sunburst-adobe", "t": 1794733365.6356373}
+{"id": "item:corpse_rotting", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794733630.7377925}
+{"id": "item:corpse_rotting", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794733899.5036585}
+{"id": "item:xian_sword_top", "status": "ok", "info": "52s gpt-image-2.5-sunburst-adobe", "t": 1794734180.3365018}
+{"id": "item:demon_blade_top", "status": "ok", "info": "71s gpt-image-2.5-sunburst-adobe", "t": 1794734199.2924914}
+{"id": "item:corpse_rotting", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794734250.7953334}
+{"id": "item:corpse_rotting", "status": "ok", "info": "47s gpt-image-2.5-sunburst-adobe", "t": 1794734356.038877}
+{"id": "ap_pill", "status": "ok", "info": "69s gpt-image-2.5-sunburst-adobe", "t": 1794749316.0101607}
+{"id": "ap_jade", "status": "ok", "info": "70s gpt-image-2.5-sunburst-adobe", "t": 1794749317.1873443}
+{"id": "ap_mirror", "status": "ok", "info": "89s gpt-image-2.5-sunburst-adobe", "t": 1794749335.7300475}
+{"id": "ap_loupe", "status": "ok", "info": "50s gpt-image-2.5-sunburst-adobe", "t": 1794749335.730134}
+{"id": "scene:end_death", "status": "ok", "info": "118s gpt-image-2.5-sunburst-adobe", "t": 1794755410.4941754}
+{"id": "scene:end_death_poison", "status": "ok", "info": "62s gpt-image-2.5-sunburst-adobe", "t": 1794755472.5669427}
+{"id": "scene:end_deed", "status": "ok", "info": "88s gpt-image-2.5-sunburst-adobe", "t": 1794755578.482108}

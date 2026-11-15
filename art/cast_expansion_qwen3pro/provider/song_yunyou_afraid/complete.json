@@ -1,0 +1,9 @@
+{
+  "character": "song_yunyou",
+  "state": "afraid",
+  "asset_id": "song_yunyou_afraid",
+  "image_file": "provider/song_yunyou_afraid/song_yunyou_afraid.png",
+  "sha256": "f27a829a4a2f0d2b6690333e77f64c523f844b6ab403ea27194228fb8d7572f6",
+  "seed": 151493,
+  "model": "qwen-image-3.0-pro"
+}

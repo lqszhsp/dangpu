@@ -1,0 +1,9 @@
+{
+  "character": "qian_shiqi",
+  "state": "wasted",
+  "asset_id": "qian_shiqi_wasted",
+  "image_file": "provider/qian_shiqi_wasted/qian_shiqi_wasted.png",
+  "sha256": "5cea0cd353574b0d18613aaa802f7531fc69f69e019db7694fc24b7f4ac00bda",
+  "seed": 151355,
+  "model": "qwen-image-3.0-pro"
+}

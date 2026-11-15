@@ -1,0 +1,9 @@
+{
+  "character": "ao_xunlan",
+  "state": "afraid",
+  "asset_id": "ao_xunlan_afraid",
+  "image_file": "provider/ao_xunlan_afraid/ao_xunlan_afraid.png",
+  "sha256": "cdaa27c60f5f462ba225068dec15187cde80a800873ab5ff891984e02476cb16",
+  "seed": 151093,
+  "model": "qwen-image-3.0-pro"
+}

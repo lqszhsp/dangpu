@@ -1,0 +1,9 @@
+{
+  "character": "dan_lingyu",
+  "state": "angry",
+  "asset_id": "dan_lingyu_angry",
+  "image_file": "provider/dan_lingyu_angry/dan_lingyu_angry.png",
+  "sha256": "dfba53caac2f059b79f8cb6670f10f720772b640a0e9b41b377bdfd81db6737d",
+  "seed": 151102,
+  "model": "qwen-image-3.0-pro"
+}

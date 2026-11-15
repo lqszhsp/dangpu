@@ -1,0 +1,9 @@
+{
+  "character": "shi_kanmai",
+  "state": "neutral",
+  "asset_id": "shi_kanmai",
+  "image_file": "provider/shi_kanmai/shi_kanmai.png",
+  "sha256": "bd7912fb879ebc3c35d92e15a32fb62fa533e5cb78f4927feab8fc1ae7ee07e1",
+  "seed": 151420,
+  "model": "qwen-image-3.0-pro"
+}

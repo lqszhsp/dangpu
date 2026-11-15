@@ -1,0 +1,9 @@
+{
+  "character": "xu_wenpo",
+  "state": "angry",
+  "asset_id": "xu_wenpo_angry",
+  "image_file": "provider/xu_wenpo_angry/xu_wenpo_angry.png",
+  "sha256": "338a76ca6d358967d7998eb9942a0605cb7d030cd1eb800e3fdec3f89d1f2578",
+  "seed": 151082,
+  "model": "qwen-image-3.0-pro"
+}

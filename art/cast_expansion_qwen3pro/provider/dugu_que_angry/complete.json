@@ -1,0 +1,9 @@
+{
+  "character": "dugu_que",
+  "state": "angry",
+  "asset_id": "dugu_que_angry",
+  "image_file": "provider/dugu_que_angry/dugu_que_angry.png",
+  "sha256": "621f5162fbc3c924e72b01ab976853e1e3a1fbce8721a9a94388646c1098016e",
+  "seed": 151292,
+  "model": "qwen-image-3.0-pro"
+}

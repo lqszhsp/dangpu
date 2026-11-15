@@ -1,0 +1,9 @@
+{
+  "character": "shi_jianzhen",
+  "state": "pleased",
+  "asset_id": "shi_jianzhen_pleased",
+  "image_file": "provider/shi_jianzhen_pleased/shi_jianzhen_pleased.png",
+  "sha256": "fe0b36dff27e385ba7ee69bdcfc768fb5130009dca5e4120d2cdb1e0da462c6a",
+  "seed": 151531,
+  "model": "qwen-image-3.0-pro"
+}

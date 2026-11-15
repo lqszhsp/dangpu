@@ -1,0 +1,9 @@
+{
+  "character": "ye_danping",
+  "state": "thrall",
+  "asset_id": "ye_danping_thrall",
+  "image_file": "provider/ye_danping_thrall/ye_danping_thrall.png",
+  "sha256": "fc8bc2fe41be945b125486a151dc7a85b6d3334f4337672d47f37d5e1c087e32",
+  "seed": 151396,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "jiang_shoudu",
+  "state": "wasted",
+  "asset_id": "jiang_shoudu_wasted",
+  "image_file": "provider/jiang_shoudu_wasted/jiang_shoudu_wasted.png",
+  "sha256": "520b77877b2b8905ab24ea7f22e0f34cd5dfd39fa63b50189a1f0e993da8b85b",
+  "seed": 151075,
+  "model": "qwen-image-3.0-pro"
+}

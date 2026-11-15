@@ -1,0 +1,9 @@
+{
+  "character": "ye_danping",
+  "state": "angry",
+  "asset_id": "ye_danping_angry",
+  "image_file": "provider/ye_danping_angry/ye_danping_angry.png",
+  "sha256": "8792e8ed090bc127ddbfd88b921e74908a77461e40aece3f6a0297196605944e",
+  "seed": 151392,
+  "model": "qwen-image-3.0-pro"
+}

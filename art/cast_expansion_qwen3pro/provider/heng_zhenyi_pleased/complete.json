@@ -1,0 +1,9 @@
+{
+  "character": "heng_zhenyi",
+  "state": "pleased",
+  "asset_id": "heng_zhenyi_pleased",
+  "image_file": "provider/heng_zhenyi_pleased/heng_zhenyi_pleased.png",
+  "sha256": "15f14d1d74df53f36a23e9d78d4ad0dad4a9be8827d4cd2f6f04e2adac3b8ecb",
+  "seed": 151411,
+  "model": "qwen-image-3.0-pro"
+}

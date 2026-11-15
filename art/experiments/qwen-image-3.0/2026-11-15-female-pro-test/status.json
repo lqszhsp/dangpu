@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-15",
+  "model": "qwen-image-3.0-pro",
+  "status": "completed_isolated_test",
+  "isolated_test": true,
+  "production_integrated": false,
+  "planned_characters": 2,
+  "planned_images": 14,
+  "successfully_generated_images": 14,
+  "transparent_webp_images": 14,
+  "generation_modes": {"text_to_image": 1, "image_edit": 13},
+  "tested_states": ["neutral", "pleased", "angry", "afraid", "sly", "wasted", "thrall"],
+  "additional_designed_variants": {"source": "game/tools/art/specs.py:MOODS", "states": ["sly", "wasted", "thrall"], "images": 6, "review": "design-review.md"},
+  "failed_attempts_preserved": 3,
+  "network_resolution": "Removed proxy variables for successful generation subprocesses only; no global configuration changes.",
+  "credential_or_global_config_changes": false,
+  "visual_review": "All seven states for two identities inspected. Sly, wasting, and thrall appearances are distinguishable. Sweat is weak; trembling cannot be confirmed from a static image. Raw thrall PNGs contain dark mist that is attenuated by green-screen keying; vein patterns resemble cracks, and head proportions drift. Initial age/scar/lantern limitations remain. No in-game acceptance test."
+}

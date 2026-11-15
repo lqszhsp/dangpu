@@ -1,0 +1,9 @@
+{
+  "character": "lin_xiaozhi",
+  "state": "wasted",
+  "asset_id": "lin_xiaozhi_wasted",
+  "image_file": "provider/lin_xiaozhi_wasted/lin_xiaozhi_wasted.png",
+  "sha256": "8b989f467fc362248a8ed2bb391066640f8c2715cefce123d9ddbead6f2e6fc1",
+  "seed": 151055,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "he_xiaoman",
+  "state": "afraid",
+  "asset_id": "he_xiaoman_afraid",
+  "image_file": "provider/he_xiaoman_afraid/he_xiaoman_afraid.png",
+  "sha256": "f3d23977ef82935cf2df894a59879f54b46cf22178e6d0e3a79097d2c31cd40c",
+  "seed": 151043,
+  "model": "qwen-image-3.0-pro"
+}

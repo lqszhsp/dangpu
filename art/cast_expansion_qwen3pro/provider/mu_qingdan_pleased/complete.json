@@ -1,0 +1,9 @@
+{
+  "character": "mu_qingdan",
+  "state": "pleased",
+  "asset_id": "mu_qingdan_pleased",
+  "image_file": "provider/mu_qingdan_pleased/mu_qingdan_pleased.png",
+  "sha256": "58a2939ce956721498e476d3df7535519fee6f0aed516b5b63749e7c33cdec15",
+  "seed": 151281,
+  "model": "qwen-image-3.0-pro"
+}

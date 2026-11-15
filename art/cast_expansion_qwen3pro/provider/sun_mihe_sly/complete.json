@@ -1,0 +1,9 @@
+{
+  "character": "sun_mihe",
+  "state": "sly",
+  "asset_id": "sun_mihe_sly",
+  "image_file": "provider/sun_mihe_sly/sun_mihe_sly.png",
+  "sha256": "cc612ba16450c998e912d6810b53053cede8fd383dda32568677168b39eeaa8a",
+  "seed": 151064,
+  "model": "qwen-image-3.0-pro"
+}

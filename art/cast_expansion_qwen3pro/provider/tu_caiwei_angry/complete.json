@@ -1,0 +1,9 @@
+{
+  "character": "tu_caiwei",
+  "state": "angry",
+  "asset_id": "tu_caiwei_angry",
+  "image_file": "provider/tu_caiwei_angry/tu_caiwei_angry.png",
+  "sha256": "451aec15b02d29c9150f736c7711b3769f6ade43c659f06e03b35b50d949556c",
+  "seed": 151172,
+  "model": "qwen-image-3.0-pro"
+}

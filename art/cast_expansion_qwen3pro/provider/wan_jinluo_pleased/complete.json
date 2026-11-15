@@ -1,0 +1,9 @@
+{
+  "character": "wan_jinluo",
+  "state": "pleased",
+  "asset_id": "wan_jinluo_pleased",
+  "image_file": "provider/wan_jinluo_pleased/wan_jinluo_pleased.png",
+  "sha256": "34f9017f7e9a812b6ffdea6c29c640ceda6fa2517bfc2c10ad21eac38c133b13",
+  "seed": 151251,
+  "model": "qwen-image-3.0-pro"
+}

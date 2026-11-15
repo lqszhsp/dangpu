@@ -1,0 +1,9 @@
+{
+  "character": "yue_qingshi",
+  "state": "angry",
+  "asset_id": "yue_qingshi_angry",
+  "image_file": "provider/yue_qingshi_angry/yue_qingshi_angry.png",
+  "sha256": "43d8e9d4b114ed41f1fa1241412d7fdb1bf888bdfe4318e13d73255765595c95",
+  "seed": 151432,
+  "model": "qwen-image-3.0-pro"
+}

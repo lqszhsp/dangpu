@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="yao_core-orb" cx="0.4" cy="0.36" r="0.7">
+      <stop offset="0" stop-color="#fff1c8"/>
+      <stop offset="0.25" stop-color="#ffc56b"/>
+      <stop offset="0.65" stop-color="#e8902f"/>
+      <stop offset="1" stop-color="#9a4d12"/>
+    </radialGradient>
+    <radialGradient id="yao_core-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0.4" stop-color="#e8902f" stop-opacity="0.55"/>
+      <stop offset="0.75" stop-color="#c43a3a" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#c43a3a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="yao_core-iris" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c43a3a" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#e8902f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="yao_core-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#yao_core-halo)"/>
+  <!-- demonic wisps -->
+  <g fill="none" stroke-linecap="round" filter="url(#yao_core-blur)">
+    <path d="M10 44 C4 36 6 24 12 18 C10 26 12 30 16 34" stroke="#e8902f" stroke-width="2.6"/>
+    <path d="M54 20 C60 28 58 40 52 46 C54 38 52 34 48 30" stroke="#c43a3a" stroke-width="2.6"/>
+    <path d="M26 7 C30 3 36 3 40 6" stroke="#ffc56b" stroke-width="2"/>
+  </g>
+  <path d="M10.5 43 C5.5 36 7 25 12 19" fill="none" stroke="#ffc56b" stroke-width="0.9" stroke-linecap="round" opacity="0.8"/>
+  <path d="M53.5 21 C58.5 28 57 39 52 45" fill="none" stroke="#e0524a" stroke-width="0.9" stroke-linecap="round" opacity="0.8"/>
+  <ellipse cx="32" cy="55.5" rx="15" ry="2.6" fill="#14101a" opacity="0.4"/>
+  <!-- orb -->
+  <circle cx="32" cy="32" r="21" fill="url(#yao_core-orb)" stroke="#14101a" stroke-width="2"/>
+  <!-- inner swirl -->
+  <path d="M17 36 C20 44 30 48 38 45 C46 42 48 34 45 28" fill="none" stroke="#9a4d12" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M46 26 C43 19 35 16 28 18" fill="none" stroke="#fff1c8" stroke-width="0.9" stroke-linecap="round" opacity="0.5"/>
+  <!-- slit pupil -->
+  <ellipse cx="32" cy="32" rx="10" ry="14" fill="url(#yao_core-iris)"/>
+  <path d="M32 18 C35.6 24 35.6 40 32 46 C28.4 40 28.4 24 32 18 Z" fill="#c43a3a" opacity="0.7" filter="url(#yao_core-blur)"/>
+  <path d="M32 19 C34.6 25 34.6 39 32 45 C29.4 39 29.4 25 32 19 Z" fill="#14101a" stroke="#5e0f1c" stroke-width="0.8"/>
+  <path d="M32 23 C32.9 28 32.9 36 32 41" fill="none" stroke="#8e1b2b" stroke-width="0.8" stroke-linecap="round"/>
+  <!-- highlights -->
+  <ellipse cx="24" cy="22.5" rx="5.6" ry="3.2" fill="#fff8e6" opacity="0.85" transform="rotate(-35 24 22.5)"/>
+  <circle cx="20" cy="28.6" r="1.2" fill="#fff8e6" opacity="0.7"/>
+  <path d="M40.5 48.5 C45 46 49 41 50 36" fill="none" stroke="#ffc56b" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+  <g fill="#ffc56b">
+    <circle cx="8" cy="12" r="0.9" opacity="0.8"/>
+    <circle cx="57" cy="52" r="0.9" opacity="0.7"/>
+    <circle cx="52" cy="9" r="0.7" opacity="0.7"/>
+  </g>
+</svg>

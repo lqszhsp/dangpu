@@ -1,0 +1,13 @@
+{
+  "face": "xian_spy_f1",
+  "model": "qwen-image-3.0-pro",
+  "states": 7,
+  "png": 7,
+  "webp": 7,
+  "height": 1300,
+  "transparent_backgrounds": true,
+  "opaque_white_veil": true,
+  "preserved_other_character_files": 1358,
+  "archived_original_files": 14,
+  "registration_valid": true
+}

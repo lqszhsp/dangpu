@@ -1,0 +1,2517 @@
+{
+  "production": {
+    "ren": {
+      "roles": 6,
+      "faces": 12,
+      "female_mapping": 2,
+      "complete_faces": 12,
+      "png_ok": 84,
+      "webp_ok": 84,
+      "listed": 84
+    },
+    "xian": {
+      "roles": 2,
+      "faces": 6,
+      "female_mapping": 4,
+      "complete_faces": 4,
+      "png_ok": 40,
+      "webp_ok": 42,
+      "listed": 42
+    },
+    "yao": {
+      "roles": 3,
+      "faces": 9,
+      "female_mapping": 5,
+      "complete_faces": 8,
+      "png_ok": 62,
+      "webp_ok": 63,
+      "listed": 63
+    },
+    "mo": {
+      "roles": 9,
+      "faces": 15,
+      "female_mapping": 4,
+      "complete_faces": 15,
+      "png_ok": 105,
+      "webp_ok": 105,
+      "listed": 105
+    }
+  },
+  "states": [
+    "neutral",
+    "pleased",
+    "angry",
+    "afraid",
+    "sly",
+    "wasted",
+    "thrall"
+  ],
+  "manifest_jobs": 294,
+  "latest_character_log": {
+    "ok": 294
+  },
+  "manifest_outside_design": [],
+  "raw_outside_design": [],
+  "webp_outside_design": [],
+  "faces": [
+    {
+      "faction": "ren",
+      "role_id": "beggar",
+      "role": "老乞丐",
+      "face_id": "beggar",
+      "sex_logic": "m-default",
+      "base_design": "an old one-eyed beggar in filthy patched rags holding a chipped bronze alms bowl, long grey matted hair, secretly shrewd look, Chinese man in his seventies",
+      "casting_note": "",
+      "runtime_base": "assets/chars/beggar.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "swindler",
+      "role": "落第书生／骗子",
+      "face_id": "swindler",
+      "sex_logic": "m-default",
+      "base_design": "a thin charming failed scholar swindler in a worn blue scholar robe, folding fan, cunning eyes",
+      "casting_note": "",
+      "runtime_base": "assets/chars/swindler.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "thug",
+      "role": "街头混混",
+      "face_id": "thug",
+      "sex_logic": "m-default",
+      "base_design": "a bald scarred street thug with tattoos on his arms, open vest, iron club on shoulder, missing tooth grin",
+      "casting_note": "",
+      "runtime_base": "assets/chars/thug.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "ren_cultivator",
+      "role": "落魄散修",
+      "face_id": "ren_cultivator",
+      "sex_logic": "m-default",
+      "base_design": "a down-and-out rogue cultivator, middle-aged man in faded grey robes, old injury scar, tired eyes, worn sword",
+      "casting_note": "",
+      "runtime_base": "assets/chars/ren_cultivator.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "ren_cultivator",
+      "role": "落魄散修",
+      "face_id": "ren_cultivator_f1",
+      "sex_logic": "m-default",
+      "base_design": "a down-and-out rogue cultivator, middle-aged man in faded grey robes, old injury scar, tired eyes, worn sword",
+      "casting_note": "cast a clearly different actor for the same role: noticeably older (around 35-45), rugged weathered face, stubble or short beard, a visible scar, different hairstyle and a different pose (hands at the sides or holding something)",
+      "runtime_base": "assets/chars/ren_cultivator_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "ren_cultivator",
+      "role": "落魄散修",
+      "face_id": "ren_cultivator_f2",
+      "sex_logic": "f",
+      "base_design": "a down-and-out rogue cultivator, middle-aged man in faded grey robes, old injury scar, tired eyes, worn sword",
+      "casting_note": "cast a clearly different actor for the same role: if the role allows, the opposite sex; distinctly different face shape, age and hairstyle, different build, and a different pose",
+      "runtime_base": "assets/chars/ren_cultivator_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "ren_merchant",
+      "role": "凡人行商",
+      "face_id": "ren_merchant",
+      "sex_logic": "m-default",
+      "base_design": "a mortal traveling merchant in simple brown clothes and straw hat, carrying pack, shrewd friendly face",
+      "casting_note": "",
+      "runtime_base": "assets/chars/ren_merchant.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "ren_merchant",
+      "role": "凡人行商",
+      "face_id": "ren_merchant_f1",
+      "sex_logic": "m-default",
+      "base_design": "a mortal traveling merchant in simple brown clothes and straw hat, carrying pack, shrewd friendly face",
+      "casting_note": "cast a clearly different actor for the same role: noticeably older (around 35-45), rugged weathered face, stubble or short beard, a visible scar, different hairstyle and a different pose (hands at the sides or holding something)",
+      "runtime_base": "assets/chars/ren_merchant_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "ren_merchant",
+      "role": "凡人行商",
+      "face_id": "ren_merchant_f2",
+      "sex_logic": "f",
+      "base_design": "a mortal traveling merchant in simple brown clothes and straw hat, carrying pack, shrewd friendly face",
+      "casting_note": "cast a clearly different actor for the same role: if the role allows, the opposite sex; distinctly different face shape, age and hairstyle, different build, and a different pose",
+      "runtime_base": "assets/chars/ren_merchant_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "ren_kid",
+      "role": "杂役少年",
+      "face_id": "ren_kid",
+      "sex_logic": "m-default",
+      "base_design": "a thin fourteen-year-old servant boy in patched coarse clothes, carrying a carrying pole, hopeful eyes",
+      "casting_note": "",
+      "runtime_base": "assets/chars/ren_kid.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "ren_kid",
+      "role": "杂役少年",
+      "face_id": "ren_kid_f1",
+      "sex_logic": "m-default",
+      "base_design": "a thin fourteen-year-old servant boy in patched coarse clothes, carrying a carrying pole, hopeful eyes",
+      "casting_note": "cast a different teenage boy actor (about 15) for the same servant role: thinner, shaved head with a cloth headband, freckles, different pose",
+      "runtime_base": "assets/chars/ren_kid_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "ren",
+      "role_id": "ren_kid",
+      "role": "杂役少年",
+      "face_id": "ren_kid_f2",
+      "sex_logic": "m-default",
+      "base_design": "a thin fourteen-year-old servant boy in patched coarse clothes, carrying a carrying pole, hopeful eyes",
+      "casting_note": "cast a different teenage boy actor (about 13) for the same servant role: chubby round face, messy topknot, different pose",
+      "runtime_base": "assets/chars/ren_kid_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "xian",
+      "role_id": "xian_defector",
+      "role": "游方剑客",
+      "face_id": "xian_defector",
+      "sex_logic": "m-default",
+      "base_design": "a righteous sect swordsman in disguise, plain traveling cloak over white robes, bamboo hat, upright bearing, wrapped sword",
+      "casting_note": "",
+      "runtime_base": "assets/chars/xian_defector.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "xian",
+      "role_id": "xian_defector",
+      "role": "游方剑客",
+      "face_id": "xian_defector_f1",
+      "sex_logic": "m-default",
+      "base_design": "a righteous sect swordsman in disguise, plain traveling cloak over white robes, bamboo hat, upright bearing, wrapped sword",
+      "casting_note": "cast a clearly different actor for the same role: noticeably older (around 35-45), rugged weathered face, stubble or short beard, a visible scar, different hairstyle and a different pose (hands at the sides or holding something)",
+      "runtime_base": "assets/chars/xian_defector_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "xian",
+      "role_id": "xian_defector",
+      "role": "游方剑客",
+      "face_id": "xian_defector_f2",
+      "sex_logic": "f",
+      "base_design": "a righteous sect swordsman in disguise, plain traveling cloak over white robes, bamboo hat, upright bearing, wrapped sword",
+      "casting_note": "cast a clearly different actor for the same role: if the role allows, the opposite sex; distinctly different face shape, age and hairstyle, different build, and a different pose",
+      "runtime_base": "assets/chars/xian_defector_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 6,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "format_mismatch:WEBP",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "xian",
+      "role_id": "xian_spy",
+      "role": "蒙面女修",
+      "face_id": "xian_spy",
+      "sex_logic": "f",
+      "base_design": "a masked female immortal sect agent, white veil over lower face, pale blue and white robes under a dark cloak, sharp eyes",
+      "casting_note": "",
+      "runtime_base": "assets/chars/xian_spy.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "xian",
+      "role_id": "xian_spy",
+      "role": "蒙面女修",
+      "face_id": "xian_spy_f1",
+      "sex_logic": "f",
+      "base_design": "a masked female immortal sect agent, white veil over lower face, pale blue and white robes under a dark cloak, sharp eyes",
+      "casting_note": "cast a different actress for the same masked female agent: older (around 35), stern and cold, also wearing a white silk veil over the lower face, different hairstyle",
+      "runtime_base": "assets/chars/xian_spy_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 6,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "format_mismatch:WEBP",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "xian",
+      "role_id": "xian_spy",
+      "role": "蒙面女修",
+      "face_id": "xian_spy_f2",
+      "sex_logic": "f",
+      "base_design": "a masked female immortal sect agent, white veil over lower face, pale blue and white robes under a dark cloak, sharp eyes",
+      "casting_note": "cast a different young actress for the same masked female agent: sharp-eyed, wearing a black gauze veil over the lower face, different hairstyle and slimmer build",
+      "runtime_base": "assets/chars/xian_spy_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "yao",
+      "role_id": "yao_fox",
+      "role": "狐妖",
+      "face_id": "yao_fox",
+      "sex_logic": "f",
+      "base_design": "a fox demon woman in human form: real actress with realistic fox ears and amber slit-pupil eyes, white fox tail, red and white robes",
+      "casting_note": "",
+      "runtime_base": "assets/chars/yao_fox.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "yao",
+      "role_id": "yao_fox",
+      "role": "狐妖",
+      "face_id": "yao_fox_f1",
+      "sex_logic": "f",
+      "base_design": "a fox demon woman in human form: real actress with realistic fox ears and amber slit-pupil eyes, white fox tail, red and white robes",
+      "casting_note": "cast a clearly different actor for the same role: noticeably older (around 35-45), rugged weathered face, stubble or short beard, a visible scar, different hairstyle and a different pose (hands at the sides or holding something)",
+      "runtime_base": "assets/chars/yao_fox_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "yao",
+      "role_id": "yao_fox",
+      "role": "狐妖",
+      "face_id": "yao_fox_f2",
+      "sex_logic": "f",
+      "base_design": "a fox demon woman in human form: real actress with realistic fox ears and amber slit-pupil eyes, white fox tail, red and white robes",
+      "casting_note": "cast a clearly different actor for the same role: if the role allows, the opposite sex; distinctly different face shape, age and hairstyle, different build, and a different pose",
+      "runtime_base": "assets/chars/yao_fox_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "yao",
+      "role_id": "yao_tiger",
+      "role": "虎妖",
+      "face_id": "yao_tiger",
+      "sex_logic": "m-default",
+      "base_design": "a tiger demon man in human form: huge muscular actor with tiger-stripe prosthetic markings, amber eyes, fur mantle, wild hair",
+      "casting_note": "",
+      "runtime_base": "assets/chars/yao_tiger.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "yao",
+      "role_id": "yao_tiger",
+      "role": "虎妖",
+      "face_id": "yao_tiger_f1",
+      "sex_logic": "m-default",
+      "base_design": "a tiger demon man in human form: huge muscular actor with tiger-stripe prosthetic markings, amber eyes, fur mantle, wild hair",
+      "casting_note": "cast a clearly different actor for the same role: noticeably older (around 35-45), rugged weathered face, stubble or short beard, a visible scar, different hairstyle and a different pose (hands at the sides or holding something)",
+      "runtime_base": "assets/chars/yao_tiger_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "yao",
+      "role_id": "yao_tiger",
+      "role": "虎妖",
+      "face_id": "yao_tiger_f2",
+      "sex_logic": "f",
+      "base_design": "a tiger demon man in human form: huge muscular actor with tiger-stripe prosthetic markings, amber eyes, fur mantle, wild hair",
+      "casting_note": "cast a clearly different actor for the same role: if the role allows, the opposite sex; distinctly different face shape, age and hairstyle, different build, and a different pose",
+      "runtime_base": "assets/chars/yao_tiger_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "yao",
+      "role_id": "yao_snake",
+      "role": "蛇妖",
+      "face_id": "yao_snake",
+      "sex_logic": "f",
+      "base_design": "a snake demon woman in human form: real actress with subtle green scales on cheeks and neck, vertical pupils, dark green robes",
+      "casting_note": "",
+      "runtime_base": "assets/chars/yao_snake.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "yao",
+      "role_id": "yao_snake",
+      "role": "蛇妖",
+      "face_id": "yao_snake_f1",
+      "sex_logic": "m-default",
+      "base_design": "a snake demon woman in human form: real actress with subtle green scales on cheeks and neck, vertical pupils, dark green robes",
+      "casting_note": "cast a clearly different actor for the same role: noticeably older (around 35-45), rugged weathered face, stubble or short beard, a visible scar, different hairstyle and a different pose (hands at the sides or holding something)",
+      "runtime_base": "assets/chars/yao_snake_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "yao",
+      "role_id": "yao_snake",
+      "role": "蛇妖",
+      "face_id": "yao_snake_f2",
+      "sex_logic": "m-default",
+      "base_design": "a snake demon woman in human form: real actress with subtle green scales on cheeks and neck, vertical pupils, dark green robes",
+      "casting_note": "cast a clearly different actor for the same role: if the role allows, the opposite sex; distinctly different face shape, age and hairstyle, different build, and a different pose",
+      "runtime_base": "assets/chars/yao_snake_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 6,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "format_mismatch:WEBP",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "beggar_master",
+      "role": "前魔宗长老（老乞丐揭身）",
+      "face_id": "beggar_master",
+      "sex_logic": "m-default",
+      "base_design": "the same kind of old one-eyed man revealed as a former demonic sect elder: tall, terrifying presence, blood-red robes over rags, crimson qi aura, long white hair",
+      "casting_note": "",
+      "runtime_base": "assets/chars/beggar_master.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "amu_disciple",
+      "role": "阿木入魔宗",
+      "face_id": "amu_disciple",
+      "sex_logic": "m-default",
+      "base_design": "a sixteen-year-old boy now an outer disciple of a demonic sect, black and dark red uniform, proud but nervous, sword at waist",
+      "casting_note": "",
+      "runtime_base": "assets/chars/amu_disciple.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "broker",
+      "role": "鬼市牙人",
+      "face_id": "broker",
+      "sex_logic": "m-default",
+      "base_design": "a ghost market broker wearing a lacquered white demon mask, hooded black robe, long fingernails, abacus on belt",
+      "casting_note": "",
+      "runtime_base": "assets/chars/broker.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "landlord",
+      "role": "钱执事",
+      "face_id": "landlord",
+      "sex_logic": "m-default",
+      "base_design": "a fat greedy middle-aged demonic sect steward with thin mustache, rich purple silk robes, gold rings, ledger in hand, sly smile",
+      "casting_note": "",
+      "runtime_base": "assets/chars/landlord.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "steward_sun",
+      "role": "孙副管事",
+      "face_id": "steward_sun",
+      "sex_logic": "f",
+      "base_design": "a stern middle-aged female deputy steward with neatly pinned hair, plain dark official robes, ledger and brush, incorruptible look",
+      "casting_note": "",
+      "runtime_base": "assets/chars/steward_sun.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "mo_enforcer",
+      "role": "执法堂巡查",
+      "face_id": "mo_enforcer",
+      "sex_logic": "m-default",
+      "base_design": "a demonic sect enforcement hall inspector in black armored robe with red trim, iron mask half covering the face, cold eyes, chain whip",
+      "casting_note": "",
+      "runtime_base": "assets/chars/mo_enforcer.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "mo_disciple",
+      "role": "外门弟子",
+      "face_id": "mo_disciple",
+      "sex_logic": "m-default",
+      "base_design": "a young male outer disciple of a blood-demon sect, black robe with blood-red trim, arrogant, sword on back",
+      "casting_note": "",
+      "runtime_base": "assets/chars/mo_disciple.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "mo_disciple",
+      "role": "外门弟子",
+      "face_id": "mo_disciple_f1",
+      "sex_logic": "m-default",
+      "base_design": "a young male outer disciple of a blood-demon sect, black robe with blood-red trim, arrogant, sword on back",
+      "casting_note": "cast a clearly different actor for the same role: noticeably older (around 35-45), rugged weathered face, stubble or short beard, a visible scar, different hairstyle and a different pose (hands at the sides or holding something)",
+      "runtime_base": "assets/chars/mo_disciple_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "mo_disciple",
+      "role": "外门弟子",
+      "face_id": "mo_disciple_f2",
+      "sex_logic": "f",
+      "base_design": "a young male outer disciple of a blood-demon sect, black robe with blood-red trim, arrogant, sword on back",
+      "casting_note": "cast a clearly different actor for the same role: if the role allows, the opposite sex; distinctly different face shape, age and hairstyle, different build, and a different pose",
+      "runtime_base": "assets/chars/mo_disciple_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "mo_senior",
+      "role": "内门弟子／征调使",
+      "face_id": "mo_senior",
+      "sex_logic": "f",
+      "base_design": "a beautiful cold female inner disciple of a demonic sect, elaborate black and crimson robes, jade hairpins, haughty",
+      "casting_note": "",
+      "runtime_base": "assets/chars/mo_senior.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "mo_senior",
+      "role": "内门弟子／征调使",
+      "face_id": "mo_senior_f1",
+      "sex_logic": "m-default",
+      "base_design": "a beautiful cold female inner disciple of a demonic sect, elaborate black and crimson robes, jade hairpins, haughty",
+      "casting_note": "cast a clearly different actor for the same role: noticeably older (around 35-45), rugged weathered face, stubble or short beard, a visible scar, different hairstyle and a different pose (hands at the sides or holding something)",
+      "runtime_base": "assets/chars/mo_senior_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "mo_senior",
+      "role": "内门弟子／征调使",
+      "face_id": "mo_senior_f2",
+      "sex_logic": "m-default",
+      "base_design": "a beautiful cold female inner disciple of a demonic sect, elaborate black and crimson robes, jade hairpins, haughty",
+      "casting_note": "cast a clearly different actor for the same role: if the role allows, the opposite sex; distinctly different face shape, age and hairstyle, different build, and a different pose",
+      "runtime_base": "assets/chars/mo_senior_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "noble",
+      "role": "权贵",
+      "face_id": "noble",
+      "sex_logic": "m-default",
+      "base_design": "an arrogant young aristocrat of a demonic sect, chin raised, contemptuous half-lidded eyes, ornate dark purple and gold robes, jade crown, folding fan",
+      "casting_note": "",
+      "runtime_base": "assets/chars/noble.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "noble",
+      "role": "权贵",
+      "face_id": "noble_f1",
+      "sex_logic": "m-default",
+      "base_design": "an arrogant young aristocrat of a demonic sect, chin raised, contemptuous half-lidded eyes, ornate dark purple and gold robes, jade crown, folding fan",
+      "casting_note": "cast a clearly different actor for the same role: noticeably older (around 35-45), rugged weathered face, stubble or short beard, a visible scar, different hairstyle and a different pose (hands at the sides or holding something)",
+      "runtime_base": "assets/chars/noble_f1.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    },
+    {
+      "faction": "mo",
+      "role_id": "noble",
+      "role": "权贵",
+      "face_id": "noble_f2",
+      "sex_logic": "f",
+      "base_design": "an arrogant young aristocrat of a demonic sect, chin raised, contemptuous half-lidded eyes, ornate dark purple and gold robes, jade crown, folding fan",
+      "casting_note": "cast an actress instead: an arrogant young noblewoman of the demonic sect, contemptuous half-lidded eyes, chin raised, ornate dark purple and gold robes, jade-and-gold hair ornaments, holding a round silk fan",
+      "runtime_base": "assets/chars/noble_f2.webp",
+      "runtime_base_ok": true,
+      "png_ok": 7,
+      "webp_ok": 7,
+      "listed": 7,
+      "states": {
+        "neutral": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "pleased": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "angry": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "afraid": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "sly": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "wasted": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        },
+        "thrall": {
+          "manifested": true,
+          "png": "ok",
+          "webp": "ok",
+          "listed": true
+        }
+      }
+    }
+  ],
+  "experiments": [
+    {
+      "directory": "art/experiments/qwen-image-3.0/2026-11-15-female-pro-test",
+      "faces": [
+        "qiuzhuan",
+        "zhaowei"
+      ],
+      "completed": 14,
+      "png_ok": 14,
+      "webp_ok": 14,
+      "unresolved_requests": [],
+      "integrated": false
+    },
+    {
+      "directory": "art/experiments/qwen-image-3.0/2026-11-15-female-test",
+      "faces": [],
+      "completed": 0,
+      "png_ok": 0,
+      "webp_ok": 0,
+      "unresolved_requests": [],
+      "integrated": false
+    }
+  ]
+}

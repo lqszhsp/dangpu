@@ -1,0 +1,22 @@
+[
+  {
+    "id": "yao_snake_sly:identity-repair",
+    "out": "generated/yao_snake_sly.png",
+    "refs": ["generated/yao_snake.png"],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit the supplied image with a very small facial-expression change ONLY. This exact same Chinese snake-demon woman now looks sly and calculating: one eyebrow very slightly raised, knowingly narrowed eyes, a subtle closed-mouth half-smile. Preserve her exact recognizable face, age, black updo, snake hair crown, jade earrings, golden vertical-slit eyes, all prominent emerald scales on her cheeks, neck and hands, her green layered ancient Chinese robes, clasped hands, full body pose, red and purple lighting, camera and framing. Every element outside her facial expression remains identical to the reference. Same person, same outfit, same scales. Full body isolated on a true transparent alpha background, no new objects or scenery."
+  },
+  {
+    "id": "yao_snake_f1_thrall:edge-repair",
+    "out": "generated/yao_snake_f1_thrall.png",
+    "refs": ["generated/yao_snake_f1.png"],
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Edit this exact supplied image. Keep the same middle-aged Chinese man and every part of his full-body image unchanged, except for the following tiny changes to the face: make both eyes completely cloudy milky-white, without any visible irises or pupils, give him a vacant blank stare, and add a few delicate dark veins on his temples. Preserve his original exact hairstyle, head silhouette and dark hair edges with no white halo. Preserve his face, mustache and goatee, prominent green snake scales on cheeks, temples, neck and hands, green robes, belt, scroll, pose, lighting and full-body framing. The state is magical mind control, not a new person or costume. True transparent alpha background with a clean natural cutout edge, no white stroke, no glow, no checkerboard, no scenery or additional objects."
+  }
+]

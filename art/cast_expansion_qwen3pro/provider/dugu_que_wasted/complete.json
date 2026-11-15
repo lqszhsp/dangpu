@@ -1,0 +1,9 @@
+{
+  "character": "dugu_que",
+  "state": "wasted",
+  "asset_id": "dugu_que_wasted",
+  "image_file": "provider/dugu_que_wasted/dugu_que_wasted.png",
+  "sha256": "fbd585e3718bab329bf3727c9a3dbf51597f0e1909419a246c730707d9f27efd",
+  "seed": 151295,
+  "model": "qwen-image-3.0-pro"
+}

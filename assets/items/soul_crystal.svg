@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="soul_crystal-lit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8f6bb0"/>
+      <stop offset="0.45" stop-color="#5b3474"/>
+      <stop offset="1" stop-color="#2a1838"/>
+    </linearGradient>
+    <linearGradient id="soul_crystal-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3d2350"/>
+      <stop offset="0.6" stop-color="#2a1838"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="soul_crystal-rock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <radialGradient id="soul_crystal-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4a8fb8" stop-opacity="0.6"/>
+      <stop offset="0.6" stop-color="#3d2350" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#2a1838" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soul_crystal-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#soul_crystal-halo)"/>
+  <!-- shadow -->
+  <ellipse cx="32" cy="57" rx="24" ry="4" fill="#14101a" opacity="0.55"/>
+  <!-- back-left small crystal -->
+  <path d="M9 50 L8 33 L13 25 L19 32 L20 50 Z" fill="url(#soul_crystal-dark)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M8 33 L13 25 L14 33 L13 50 L9 50 Z" fill="url(#soul_crystal-lit)"/>
+  <path d="M8 33 L13 25 L19 32 L20 50 L9 50 Z" fill="none" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- right crystal -->
+  <path d="M40 52 L42 26 L50 15 L56 27 L54 52 Z" fill="url(#soul_crystal-dark)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M42 26 L50 15 L49 28 L47.5 52 L40 52 Z" fill="url(#soul_crystal-lit)"/>
+  <path d="M42 26 L50 15 L56 27 L54 52 L40 52 Z" fill="none" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M49 28 L47.5 52" stroke="#14101a" stroke-width="0.9" opacity="0.6"/>
+  <!-- central tall crystal -->
+  <path d="M21 53 L20 20 L31 4 L42 19 L42 53 Z" fill="url(#soul_crystal-dark)"/>
+  <path d="M20 20 L31 4 L30 21 L29 53 L21 53 Z" fill="url(#soul_crystal-lit)"/>
+  <!-- inner cold glow -->
+  <g filter="url(#soul_crystal-blur)">
+    <ellipse cx="31" cy="34" rx="7" ry="12" fill="#8fd3ff" opacity="0.55"/>
+    <ellipse cx="48" cy="37" rx="4" ry="7" fill="#8fd3ff" opacity="0.45"/>
+    <ellipse cx="14" cy="40" rx="3" ry="5" fill="#8fd3ff" opacity="0.4"/>
+  </g>
+  <!-- trapped ghost faces -->
+  <g fill="#cfefff" opacity="0.85">
+    <path d="M26 27 Q26 22 31 22 Q36 22 36 27 Q36 34 31 36.5 Q26 34 26 27 Z"/>
+    <path d="M44.5 34 Q44.5 31 47.5 31 Q50.5 31 50.5 34 Q50.5 38.5 47.5 40 Q44.5 38.5 44.5 34 Z"/>
+    <path d="M11.5 39 Q11.5 36.5 14 36.5 Q16.5 36.5 16.5 39 Q16.5 42.5 14 43.5 Q11.5 42.5 11.5 39 Z" opacity="0.8"/>
+  </g>
+  <path d="M27 36 Q29 42 27 48 M35 36 Q33 42 35.5 47" fill="none" stroke="#cfefff" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+  <g fill="#2a1838">
+    <path d="M27.8 27 Q29 25.4 30.2 27.6 Q29 29 27.8 27 Z"/>
+    <path d="M34.2 27 Q33 25.4 31.8 27.6 Q33 29 34.2 27 Z"/>
+    <ellipse cx="31" cy="32" rx="1.4" ry="2.3"/>
+    <circle cx="46.4" cy="34" r="0.8"/><circle cx="48.6" cy="34" r="0.8"/>
+    <ellipse cx="47.5" cy="37.3" rx="0.7" ry="1.2"/>
+    <circle cx="13.2" cy="39" r="0.6"/><circle cx="14.9" cy="39" r="0.6"/>
+    <ellipse cx="14" cy="41.4" rx="0.5" ry="0.9"/>
+  </g>
+  <!-- central crystal outline and facet lines over faces -->
+  <path d="M21 53 L20 20 L31 4 L42 19 L42 53 Z" fill="none" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M31 4 L30 21 L29 53 M20 20 L30 21 L42 19" fill="none" stroke="#14101a" stroke-width="0.9" opacity="0.55"/>
+  <!-- facet highlights -->
+  <path d="M22.5 21 L30 9.5" stroke="#cfefff" stroke-width="1.5" stroke-linecap="round" opacity="0.85"/>
+  <path d="M22.5 25 L22.8 48" stroke="#8f6bb0" stroke-width="1.3" stroke-linecap="round" opacity="0.8"/>
+  <path d="M43.5 26 L49 18.5" stroke="#cfefff" stroke-width="1.2" stroke-linecap="round" opacity="0.75"/>
+  <path d="M9.5 33 L12.5 28" stroke="#cfefff" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+  <!-- rocky base -->
+  <path d="M5 52 Q8 47 14 49 Q20 46 27 50 Q33 47 39 50 Q46 47 51 50 Q58 48 59 53 Q57 58 46 58.5 L18 58.5 Q6 58 5 52 Z" fill="url(#soul_crystal-rock)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M9 51 Q13 49.5 17 51 M30 51 Q35 49.5 39 51.5 M49 51.5 Q53 50 56 52" fill="none" stroke="#5c6370" stroke-width="1" stroke-linecap="round"/>
+  <!-- small shards -->
+  <path d="M17 53 L18.5 46 L21.5 52 Z M53 54 L56 47.5 L57.5 54.5 Z" fill="url(#soul_crystal-lit)" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+  <!-- cold sparks -->
+  <g fill="#8fd3ff">
+    <circle cx="38" cy="8" r="1"/><circle cx="56" cy="12" r="0.9"/><circle cx="7" cy="20" r="0.8"/>
+  </g>
+  <g fill="#f4fbff">
+    <circle cx="38" cy="8" r="0.45"/><circle cx="31" cy="4.5" r="0.7"/>
+  </g>
+</svg>

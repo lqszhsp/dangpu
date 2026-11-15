@@ -1,0 +1,9 @@
+{
+  "character": "qin_zhengxian",
+  "state": "neutral",
+  "asset_id": "qin_zhengxian",
+  "image_file": "provider/qin_zhengxian/qin_zhengxian.png",
+  "sha256": "d0483fdca0dab53f560ea133e9c60b7c62b895768f67f79308363f223b2d792c",
+  "seed": 151310,
+  "model": "qwen-image-3.0-pro"
+}

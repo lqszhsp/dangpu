@@ -1,0 +1,9 @@
+{
+  "character": "zhou_yunshu",
+  "state": "angry",
+  "asset_id": "zhou_yunshu_angry",
+  "image_file": "provider/zhou_yunshu_angry/zhou_yunshu_angry.png",
+  "sha256": "edad53e764d4c6eabd8b8f42acd88f1df636e562d0cdbbe75e503771011505c4",
+  "seed": 151032,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "hui_qiaosuo",
+  "state": "neutral",
+  "asset_id": "hui_qiaosuo",
+  "image_file": "provider/hui_qiaosuo/hui_qiaosuo.png",
+  "sha256": "fd4a062483393f783619b8440f307e60276aac2f8121124b8b91dde173fc5b6c",
+  "seed": 151120,
+  "model": "qwen-image-3.0-pro"
+}

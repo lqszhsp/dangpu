@@ -1,0 +1,9 @@
+{
+  "character": "song_yunyou",
+  "state": "wasted",
+  "asset_id": "song_yunyou_wasted",
+  "image_file": "provider/song_yunyou_wasted/song_yunyou_wasted.png",
+  "sha256": "6ffdb0be0e074d48a6ae4e816dca42c272730b6c64bd17aa0dce33a2b7d6284b",
+  "seed": 151495,
+  "model": "qwen-image-3.0-pro"
+}

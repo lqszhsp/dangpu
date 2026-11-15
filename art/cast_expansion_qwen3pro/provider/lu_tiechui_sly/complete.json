@@ -1,0 +1,9 @@
+{
+  "character": "lu_tiechui",
+  "state": "sly",
+  "asset_id": "lu_tiechui_sly",
+  "image_file": "provider/lu_tiechui_sly/lu_tiechui_sly.png",
+  "sha256": "e2335653e603df7ad9f6824f9a14471813e41a556d469d1b1793604245c07f46",
+  "seed": 151014,
+  "model": "qwen-image-3.0-pro"
+}

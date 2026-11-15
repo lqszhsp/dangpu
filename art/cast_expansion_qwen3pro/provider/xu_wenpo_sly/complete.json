@@ -1,0 +1,9 @@
+{
+  "character": "xu_wenpo",
+  "state": "sly",
+  "asset_id": "xu_wenpo_sly",
+  "image_file": "provider/xu_wenpo_sly/xu_wenpo_sly.png",
+  "sha256": "ff2180bff0d15a8bba71ce017568200a26709f74e526badddf363bcbcfc01e90",
+  "seed": 151084,
+  "model": "qwen-image-3.0-pro"
+}

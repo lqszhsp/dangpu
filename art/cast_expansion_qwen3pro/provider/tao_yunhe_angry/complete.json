@@ -1,0 +1,9 @@
+{
+  "character": "tao_yunhe",
+  "state": "angry",
+  "asset_id": "tao_yunhe_angry",
+  "image_file": "provider/tao_yunhe_angry/tao_yunhe_angry.png",
+  "sha256": "57e4271f71c00cd6458efa298bd9a5ac1a5a4b9b0ff65d2a8ac432fd117dac3f",
+  "seed": 151472,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "wan_jinluo",
+  "state": "wasted",
+  "asset_id": "wan_jinluo_wasted",
+  "image_file": "provider/wan_jinluo_wasted/wan_jinluo_wasted.png",
+  "sha256": "e59246ff3248426f729c084b36077862db2190bd052adbcbdc41c43b09bcba2d",
+  "seed": 151255,
+  "model": "qwen-image-3.0-pro"
+}

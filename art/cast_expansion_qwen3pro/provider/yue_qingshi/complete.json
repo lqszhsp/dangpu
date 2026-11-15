@@ -1,0 +1,9 @@
+{
+  "character": "yue_qingshi",
+  "state": "neutral",
+  "asset_id": "yue_qingshi",
+  "image_file": "provider/yue_qingshi/yue_qingshi.png",
+  "sha256": "cf439125d80678a85b0f40108f6e957b399c333c0d319e8db7ddd3aff7ae8318",
+  "seed": 151430,
+  "model": "qwen-image-3.0-pro"
+}

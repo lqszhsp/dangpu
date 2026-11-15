@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ic_stolen-ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0524a"/>
+      <stop offset="0.6" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#8e1b2b"/>
+    </linearGradient>
+  </defs>
+  <!-- seal block, slightly rotated -->
+  <g transform="rotate(-6 32 32)">
+    <path d="M7 9 Q7 7 9 7 L55 7 Q57 7 57 9 L57 55 Q57 57 55 57 L9 57 Q7 57 7 55 Z" fill="url(#ic_stolen-ink)" stroke="#5e0f1c" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M12 12 L52 12 L52 52 L12 52 Z" fill="none" stroke="#efe2c4" stroke-width="2.4" stroke-linejoin="round"/>
+    <!-- abstract hand glyph (reaching / grabbing) -->
+    <g fill="none" stroke="#efe2c4" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 46 L22 30 Q22 26 25 26 Q28 26 28 30 L28 38"/>
+      <path d="M28 34 L28 20 Q28 17 31 17 Q34 17 34 20 L34 36"/>
+      <path d="M34 22 Q34 19 37 19 Q40 19 40 22 L40 38"/>
+      <path d="M40 28 Q40 25 43 25 Q46 25 46 28 L46 40 Q46 48 38 48 L26 48"/>
+    </g>
+    <!-- wear spots -->
+    <g fill="#8e1b2b">
+      <circle cx="16" cy="22" r="1.2"/><circle cx="48" cy="16" r="1"/><circle cx="18" cy="50" r="1.4"/>
+    </g>
+    <path d="M52 34 L52 40" stroke="#c43a3a" stroke-width="3"/>
+  </g>
+</svg>

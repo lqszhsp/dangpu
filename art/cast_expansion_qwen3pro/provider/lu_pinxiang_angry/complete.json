@@ -1,0 +1,9 @@
+{
+  "character": "lu_pinxiang",
+  "state": "angry",
+  "asset_id": "lu_pinxiang_angry",
+  "image_file": "provider/lu_pinxiang_angry/lu_pinxiang_angry.png",
+  "sha256": "79cac63f337085240b348c55026fba9400977f156220005ffe1f8ff8ad4569df",
+  "seed": 151402,
+  "model": "qwen-image-3.0-pro"
+}

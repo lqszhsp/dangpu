@@ -1,0 +1,43 @@
+﻿faction,role_id,role,face_id,sex_logic,png_ok,webp_ok,listed,neutral,pleased,angry,afraid,sly,wasted,thrall
+ren,beggar,老乞丐,beggar,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,swindler,落第书生／骗子,swindler,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,thug,街头混混,thug,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,ren_cultivator,落魄散修,ren_cultivator,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,ren_cultivator,落魄散修,ren_cultivator_f1,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,ren_cultivator,落魄散修,ren_cultivator_f2,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,ren_merchant,凡人行商,ren_merchant,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,ren_merchant,凡人行商,ren_merchant_f1,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,ren_merchant,凡人行商,ren_merchant_f2,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,ren_kid,杂役少年,ren_kid,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,ren_kid,杂役少年,ren_kid_f1,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+ren,ren_kid,杂役少年,ren_kid_f2,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+xian,xian_defector,游方剑客,xian_defector,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+xian,xian_defector,游方剑客,xian_defector_f1,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+xian,xian_defector,游方剑客,xian_defector_f2,f,6,7,7,ok,ok,ok,ok,ok,"{""manifested"": true, ""png"": ""format_mismatch:WEBP"", ""webp"": ""ok"", ""listed"": true}",ok
+xian,xian_spy,蒙面女修,xian_spy,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+xian,xian_spy,蒙面女修,xian_spy_f1,f,6,7,7,"{""manifested"": true, ""png"": ""format_mismatch:WEBP"", ""webp"": ""ok"", ""listed"": true}",ok,ok,ok,ok,ok,ok
+xian,xian_spy,蒙面女修,xian_spy_f2,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+yao,yao_fox,狐妖,yao_fox,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+yao,yao_fox,狐妖,yao_fox_f1,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+yao,yao_fox,狐妖,yao_fox_f2,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+yao,yao_tiger,虎妖,yao_tiger,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+yao,yao_tiger,虎妖,yao_tiger_f1,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+yao,yao_tiger,虎妖,yao_tiger_f2,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+yao,yao_snake,蛇妖,yao_snake,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+yao,yao_snake,蛇妖,yao_snake_f1,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+yao,yao_snake,蛇妖,yao_snake_f2,m-default,6,7,7,ok,ok,ok,ok,ok,"{""manifested"": true, ""png"": ""format_mismatch:WEBP"", ""webp"": ""ok"", ""listed"": true}",ok
+mo,beggar_master,前魔宗长老（老乞丐揭身）,beggar_master,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,amu_disciple,阿木入魔宗,amu_disciple,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,broker,鬼市牙人,broker,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,landlord,钱执事,landlord,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,steward_sun,孙副管事,steward_sun,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,mo_enforcer,执法堂巡查,mo_enforcer,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,mo_disciple,外门弟子,mo_disciple,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,mo_disciple,外门弟子,mo_disciple_f1,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,mo_disciple,外门弟子,mo_disciple_f2,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,mo_senior,内门弟子／征调使,mo_senior,f,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,mo_senior,内门弟子／征调使,mo_senior_f1,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,mo_senior,内门弟子／征调使,mo_senior_f2,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,noble,权贵,noble,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,noble,权贵,noble_f1,m-default,7,7,7,ok,ok,ok,ok,ok,ok,ok
+mo,noble,权贵,noble_f2,f,7,7,7,ok,ok,ok,ok,ok,ok,ok

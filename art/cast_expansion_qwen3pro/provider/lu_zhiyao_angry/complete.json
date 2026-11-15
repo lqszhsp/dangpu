@@ -1,0 +1,9 @@
+{
+  "character": "lu_zhiyao",
+  "state": "angry",
+  "asset_id": "lu_zhiyao_angry",
+  "image_file": "provider/lu_zhiyao_angry/lu_zhiyao_angry.png",
+  "sha256": "ecb4cd9b68db0fe5747f391d4e2e88eca2b32fe0f6e5e27e50fea42188142537",
+  "seed": 151182,
+  "model": "qwen-image-3.0-pro"
+}

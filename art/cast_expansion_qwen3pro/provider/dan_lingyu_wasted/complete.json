@@ -1,0 +1,9 @@
+{
+  "character": "dan_lingyu",
+  "state": "wasted",
+  "asset_id": "dan_lingyu_wasted",
+  "image_file": "provider/dan_lingyu_wasted/dan_lingyu_wasted.png",
+  "sha256": "a5ec913052bbce2385f9f86d7b6fc1485cb5788fdd3a1dacddc740f87372a6d8",
+  "seed": 151105,
+  "model": "qwen-image-3.0-pro"
+}

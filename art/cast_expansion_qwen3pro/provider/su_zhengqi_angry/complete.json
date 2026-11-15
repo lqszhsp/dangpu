@@ -1,0 +1,9 @@
+{
+  "character": "su_zhengqi",
+  "state": "angry",
+  "asset_id": "su_zhengqi_angry",
+  "image_file": "provider/su_zhengqi_angry/su_zhengqi_angry.png",
+  "sha256": "f90ca6e56d4406ab0b757117ffc618b6fc9fa93394c65aa68d6444df69b701e1",
+  "seed": 151462,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_qiuzhuan_angry",
+  "image_file": "provider/exp_qiuzhuan_angry/exp_qiuzhuan_angry.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115012,
+  "sha256": "902057576dd9d1fe9b531a93455bffafc6a6f21064e1f932c17e099245a5630b"
+}

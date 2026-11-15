@@ -1,0 +1,16 @@
+{
+  "model": "qwen-image-3.0-pro",
+  "prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: mind-controlled thrall: eyes completely clouded milky white without pupils, blank slack face, black veins spreading over the face and neck, a faint dark mist around the head. Keep the same uniform bright green background. 这张图是同一位成年女性的游戏状态变体，按上述要求改变面部和颈部状态，保留可辨识的五官骨架、年龄、发型、发饰、衣服、道具、手部动作和完整全身站姿。真人写实东方玄幻游戏的全身人物立绘，像高预算古装玄幻电视剧的真实演员定妆照。仅一位成年女性，身体正面对镜头，头顶至双脚完整入画，头顶与脚底都留少量边距，角色站在画面中央，人物占画面高度约90%，相机高度、透视及人物比例与参考一致。自然皮肤纹理，真实布料磨损和金属细节，左侧柔和暖红灯笼主光，右侧冷紫色轮廓光，低饱和、暗冷的电影调色，暗部仍能看清面部与衣料。85mm人像摄影质感。背景必须是完全均匀的纯亮绿色RGB(0,255,0)抠像底色，不含地面、不含投影、不含布纹或渐变；人物不能有绿色衣物或绿光反射。没有文字、标签、边框或UI。",
+  "negative_prompt": "动漫，二次元，绘画，插画，像素画，3D塑料皮肤，磨皮，拼图，多人，半身，裁脚，裁头，重复肢体，额外手指，背景场景，地面，阴影，文字，水印，透明棋盘格",
+  "reference": "provider/exp_qiuzhuan_neutral/exp_qiuzhuan_neutral.png",
+  "reference_transport": "local-file",
+  "endpoint_override": "https://token-plan.cn-beijing.maas.aliyuncs.com",
+  "generation_mode": "edit",
+  "designed_variant_source": "game/tools/art/specs.py:MOODS",
+  "reference_sha256": "4750e9ea08fb8b7f0887b4b561fea0da6b26ce1d76ca1888c6efc4ced1e659e0",
+  "size": "1024*1536",
+  "seed": 115016,
+  "n": 1,
+  "prompt_extend": false,
+  "watermark": false
+}

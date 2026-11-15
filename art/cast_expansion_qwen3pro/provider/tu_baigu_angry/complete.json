@@ -1,0 +1,9 @@
+{
+  "character": "tu_baigu",
+  "state": "angry",
+  "asset_id": "tu_baigu_angry",
+  "image_file": "provider/tu_baigu_angry/tu_baigu_angry.png",
+  "sha256": "2843259586619f53beba9ba0b0474c0c8f768dd64e331528be61282b046ddb36",
+  "seed": 151222,
+  "model": "qwen-image-3.0-pro"
+}

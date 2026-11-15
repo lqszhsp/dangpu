@@ -1,0 +1,9 @@
+{
+  "character": "tu_caiwei",
+  "state": "wasted",
+  "asset_id": "tu_caiwei_wasted",
+  "image_file": "provider/tu_caiwei_wasted/tu_caiwei_wasted.png",
+  "sha256": "155fedf5a718f2f6e316e2b0a9e93242b50ed03350f95b88eed2195e918dd93a",
+  "seed": 151175,
+  "model": "qwen-image-3.0-pro"
+}

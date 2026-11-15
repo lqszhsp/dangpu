@@ -1,0 +1,9 @@
+{
+  "character": "zhao_fengchen",
+  "state": "thrall",
+  "asset_id": "zhao_fengchen_thrall",
+  "image_file": "provider/zhao_fengchen_thrall/zhao_fengchen_thrall.png",
+  "sha256": "94df119dd80724db53bc2986df187d2922c90620b6d836f516b79ca71e33a574",
+  "seed": 151026,
+  "model": "qwen-image-3.0-pro"
+}

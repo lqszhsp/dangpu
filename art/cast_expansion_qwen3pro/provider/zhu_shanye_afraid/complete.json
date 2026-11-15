@@ -1,0 +1,9 @@
+{
+  "character": "zhu_shanye",
+  "state": "afraid",
+  "asset_id": "zhu_shanye_afraid",
+  "image_file": "provider/zhu_shanye_afraid/zhu_shanye_afraid.png",
+  "sha256": "a747a280c8b65b3f30ffab46d898de19a635527681a535de04c394fa981c1b39",
+  "seed": 151153,
+  "model": "qwen-image-3.0-pro"
+}

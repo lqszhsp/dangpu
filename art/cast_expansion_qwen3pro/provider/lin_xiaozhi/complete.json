@@ -1,0 +1,9 @@
+{
+  "character": "lin_xiaozhi",
+  "state": "neutral",
+  "asset_id": "lin_xiaozhi",
+  "image_file": "provider/lin_xiaozhi/lin_xiaozhi.png",
+  "sha256": "b4f6abd3fe898763a4f1fc1842c149eaacc9aa463d6c8c36314adbe54f295d67",
+  "seed": 151050,
+  "model": "qwen-image-3.0-pro"
+}

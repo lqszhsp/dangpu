@@ -1,0 +1,9 @@
+{
+  "character": "su_wanyin",
+  "state": "afraid",
+  "asset_id": "su_wanyin_afraid",
+  "image_file": "provider/su_wanyin_afraid/su_wanyin_afraid.png",
+  "sha256": "346384392057a4a66cf6136921a901252fee75a2e2073909b3620e33d8031002",
+  "seed": 151323,
+  "model": "qwen-image-3.0-pro"
+}

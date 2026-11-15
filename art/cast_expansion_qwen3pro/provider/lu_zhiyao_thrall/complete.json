@@ -1,0 +1,9 @@
+{
+  "character": "lu_zhiyao",
+  "state": "thrall",
+  "asset_id": "lu_zhiyao_thrall",
+  "image_file": "provider/lu_zhiyao_thrall/lu_zhiyao_thrall.png",
+  "sha256": "608282af5586ec7d46e70fe54ef73a7d901677f5687769b5bdb4b178f07123bb",
+  "seed": 151186,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <linearGradient id="m_spring-rock" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5c6370"/>
+      <stop offset="0.5" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <linearGradient id="m_spring-rock2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9aa88a"/>
+      <stop offset="0.5" stop-color="#6b7d5a"/>
+      <stop offset="1" stop-color="#3a3f4a"/>
+    </linearGradient>
+    <linearGradient id="m_spring-bamboo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9aa88a"/>
+      <stop offset="0.45" stop-color="#6b7d5a"/>
+      <stop offset="1" stop-color="#1f5c4c"/>
+    </linearGradient>
+    <radialGradient id="m_spring-water" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#f4fbff"/>
+      <stop offset="0.4" stop-color="#7fd6b5"/>
+      <stop offset="1" stop-color="#1f5c4c"/>
+    </radialGradient>
+    <radialGradient id="m_spring-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7fd6b5" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#3fae8f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="m_spring-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <g transform="translate(80 80) scale(0.93) translate(-84 -82)">
+  <!-- ground shadow -->
+  <ellipse cx="80" cy="140" rx="64" ry="10" fill="#14101a" opacity="0.5"/>
+  <!-- glow -->
+  <ellipse cx="70" cy="80" rx="56" ry="44" fill="url(#m_spring-halo)"/>
+  <!-- back rock -->
+  <path d="M30 108 Q24 80 38 62 Q46 44 62 40 Q70 30 84 36 Q100 34 106 50 Q118 60 114 82 Q118 100 110 112 Z" fill="url(#m_spring-rock)" stroke="#14101a" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M40 66 Q50 50 62 46 M66 42 Q76 36 84 40" fill="none" stroke="#9aa88a" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M96 52 Q104 64 100 78 M46 84 Q42 94 46 104" fill="none" stroke="#14101a" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+  <!-- moss -->
+  <g fill="#3fae8f" opacity="0.8">
+    <path d="M58 41 Q64 38 70 40 Q66 43 58 41 Z"/>
+    <path d="M100 50 Q106 52 108 58 Q102 56 100 50 Z"/>
+  </g>
+  <!-- spring opening -->
+  <ellipse cx="70" cy="76" rx="16" ry="10" fill="#14101a"/>
+  <ellipse cx="70" cy="77" rx="12.5" ry="7" fill="url(#m_spring-water)"/>
+  <!-- welling water bubble -->
+  <path d="M60 78 Q62 66 70 64 Q78 66 80 78 Q70 82 60 78 Z" fill="#cfefff" opacity="0.8"/>
+  <path d="M64 74 Q66 69 70 68" fill="none" stroke="#f4fbff" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- water spilling down rock to bamboo -->
+  <path d="M76 82 Q86 84 92 82 L98 84 Q90 88 78 86 Z" fill="#7fd6b5" stroke="#1f5c4c" stroke-width="1"/>
+  <!-- bamboo pipe -->
+  <g stroke="#14101a" stroke-linejoin="round">
+    <path d="M86 80 L136 92 L134 101 L84 89 Z" fill="url(#m_spring-bamboo)" stroke-width="2.2"/>
+    <ellipse cx="135" cy="96.5" rx="3" ry="4.8" fill="#1f5c4c" stroke-width="1.8" transform="rotate(13 135 96.5)"/>
+    <ellipse cx="135" cy="96.5" rx="1.6" ry="3" fill="#7fd6b5" stroke="none" transform="rotate(13 135 96.5)"/>
+    <path d="M110 86 L108 94.6" stroke-width="2" fill="none"/>
+  </g>
+  <path d="M90 82 L132 92" stroke="#e9dfcc" stroke-width="1" opacity="0.6"/>
+  <!-- bamboo stand -->
+  <path d="M120 92 L114 128 M126 94 L132 128" stroke="#14101a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M120 92 L114 128 M126 94 L132 128" stroke="#8a5a1c" stroke-width="2" stroke-linecap="round"/>
+  <path d="M113 104 L131 104" stroke="#14101a" stroke-width="1.6"/>
+  <!-- water stream from pipe -->
+  <path d="M137 99 Q140 110 139 128" fill="none" stroke="#cfefff" stroke-width="5" opacity="0.5" filter="url(#m_spring-blur)"/>
+  <path d="M137 99 Q140 110 139 128" fill="none" stroke="#7fd6b5" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M137.4 101 Q139.4 112 138.6 126" fill="none" stroke="#f4fbff" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- catch basin (stone bowl) -->
+  <path d="M124 128 Q124 140 139 140 Q154 140 154 128 Z" fill="url(#m_spring-rock2)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <ellipse cx="139" cy="128" rx="15" ry="4" fill="#3a3f4a" stroke="#14101a" stroke-width="2"/>
+  <ellipse cx="139" cy="128.4" rx="12" ry="2.6" fill="#7fd6b5"/>
+  <ellipse cx="139" cy="128.4" rx="5" ry="1.2" fill="none" stroke="#f4fbff" stroke-width="0.8"/>
+  <!-- front rocks -->
+  <path d="M14 134 Q10 116 24 106 Q36 100 46 108 Q56 104 62 114 Q68 124 62 136 Q38 142 14 134 Z" fill="url(#m_spring-rock2)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M22 112 Q30 106 40 108" fill="none" stroke="#e9dfcc" stroke-width="1.3" opacity="0.6" stroke-linecap="round"/>
+  <path d="M60 136 Q60 122 74 118 Q90 116 98 124 Q108 128 104 138 Q80 144 60 136 Z" fill="url(#m_spring-rock)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M70 123 Q78 120 86 121" fill="none" stroke="#9aa88a" stroke-width="1.2" opacity="0.7" stroke-linecap="round"/>
+  <!-- small pool at foot -->
+  <path d="M44 122 Q52 116 64 120 Q60 126 50 126 Z" fill="#7fd6b5" opacity="0.6"/>
+  <!-- mist & sparkles -->
+  <g fill="#cfefff" filter="url(#m_spring-blur)" opacity="0.55">
+    <ellipse cx="66" cy="58" rx="22" ry="7"/>
+    <ellipse cx="82" cy="40" rx="16" ry="5"/>
+    <ellipse cx="40" cy="120" rx="20" ry="5"/>
+  </g>
+  <g fill="none" stroke-linecap="round" stroke="#cfefff" stroke-width="1.3" opacity="0.8">
+    <path d="M60 60 Q56 50 64 44 Q70 38 66 30"/>
+    <path d="M78 60 Q84 50 78 42"/>
+  </g>
+  <g fill="#f4fbff">
+    <circle cx="50" cy="40" r="1.4"/><circle cx="88" cy="24" r="1.2"/><circle cx="104" cy="38" r="1"/><circle cx="36" cy="58" r="1"/><circle cx="72" cy="20" r="0.9"/>
+  </g>
+  </g>
+</svg>

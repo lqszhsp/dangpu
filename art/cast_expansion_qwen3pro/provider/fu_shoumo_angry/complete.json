@@ -1,0 +1,9 @@
+{
+  "character": "fu_shoumo",
+  "state": "angry",
+  "asset_id": "fu_shoumo_angry",
+  "image_file": "provider/fu_shoumo_angry/fu_shoumo_angry.png",
+  "sha256": "e1b7eb601516f9ddfc8b97c6f1409f6e5783c954dea51f5807feb40022f7fb51",
+  "seed": 151362,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "jiang_shoudu",
+  "state": "afraid",
+  "asset_id": "jiang_shoudu_afraid",
+  "image_file": "provider/jiang_shoudu_afraid/jiang_shoudu_afraid.png",
+  "sha256": "34b3a965acd988d491de7d90ef45b384c392a1eacfeff3949661bb225c86824d",
+  "seed": 151073,
+  "model": "qwen-image-3.0-pro"
+}

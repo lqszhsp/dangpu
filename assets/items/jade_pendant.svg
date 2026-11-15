@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="jade_pendant-jade" cx="0.38" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="#f4fbff"/>
+      <stop offset="0.35" stop-color="#cfe9dc"/>
+      <stop offset="0.75" stop-color="#7fd6b5"/>
+      <stop offset="1" stop-color="#3fae8f"/>
+    </radialGradient>
+    <radialGradient id="jade_pendant-stain" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#9a4d12" stop-opacity="0.9"/>
+      <stop offset="0.6" stop-color="#8e1b2b" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#8e1b2b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- cord -->
+  <path d="M32 13 Q26 6 29 2 M32 13 Q38 6 35 2" fill="none" stroke="#14101a" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="M32 13 Q26 6 29 2 M32 13 Q38 6 35 2" fill="none" stroke="#c43a3a" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- shadow -->
+  <path d="M33.5 14.5 A23 23 0 1 1 33.49 14.5 Z M33.5 21 A16.5 16.5 0 1 0 33.51 21 Z" fill="#14101a" fill-rule="evenodd" opacity="0.35"/>
+  <!-- outer ring band (openwork) -->
+  <path d="M32 13 A23 23 0 1 1 31.99 13 Z M32 19.5 A16.5 16.5 0 1 0 32.01 19.5 Z" fill="url(#jade_pendant-jade)" fill-rule="evenodd" stroke="#1f5c4c" stroke-width="1.8"/>
+  <circle cx="32" cy="36" r="19.8" fill="none" stroke="#1f5c4c" stroke-width="0.8" opacity="0.6" stroke-dasharray="2 2.2"/>
+  <!-- stain -->
+  <ellipse cx="46.5" cy="49.5" rx="9" ry="5.5" fill="url(#jade_pendant-stain)" transform="rotate(-45 46.5 49.5)"/>
+  <ellipse cx="46" cy="50" rx="4" ry="2.4" fill="#9a4d12" opacity="0.55" transform="rotate(-45 46 50)"/>
+  <!-- dragon bridges to ring -->
+  <path d="M43 30 L47.5 27 M28 47 L25 51.5" stroke="#1f5c4c" stroke-width="4.6" stroke-linecap="round"/>
+  <path d="M43 30 L47.5 27 M28 47 L25 51.5" stroke="#cfe9dc" stroke-width="2.6" stroke-linecap="round"/>
+  <!-- coiled dragon body -->
+  <path d="M23.5 27 Q36 21 43 30 Q48.5 39 42 46 Q35 51.5 28 47 Q22 42 25.5 36 Q29 31.5 34.5 34 Q38.5 37 36 41 Q33.5 43.5 31.5 41" fill="none" stroke="#1f5c4c" stroke-width="6.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23.5 27 Q36 21 43 30 Q48.5 39 42 46 Q35 51.5 28 47 Q22 42 25.5 36 Q29 31.5 34.5 34 Q38.5 37 36 41 Q33.5 43.5 31.5 41" fill="none" stroke="url(#jade_pendant-jade)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23.5 27 Q36 21 43 30 Q48.5 39 42 46 Q35 51.5 28 47 Q22 42 25.5 36 Q29 31.5 34.5 34 Q38.5 37 36 41 Q33.5 43.5 31.5 41" fill="none" stroke="#3fae8f" stroke-width="0.8" stroke-dasharray="1.3 1.6" stroke-linecap="round"/>
+  <!-- fins -->
+  <path d="M36 23.8 l1.5 -2.8 1.2 3 M45.5 37 l3 -0.6 -2.2 2.4 M37 49.5 l1 2.8 -2.6 -1.2" fill="#cfe9dc" stroke="#1f5c4c" stroke-width="1" stroke-linejoin="round"/>
+  <!-- dragon head -->
+  <path d="M25.5 25 Q21 22.5 17.5 24 L15.5 26.8 L19 27.5 L17.5 30 Q21.5 31.5 25.5 29.5 Z" fill="#e2f4ea" stroke="#1f5c4c" stroke-width="1.3" stroke-linejoin="round"/>
+  <path d="M22.5 23.5 Q22 20 25 19 M24.5 24 Q25.5 21 28.5 21" fill="none" stroke="#1f5c4c" stroke-width="1.2" stroke-linecap="round"/>
+  <circle cx="21.2" cy="25.8" r="1" fill="#1f5c4c"/>
+  <path d="M17.2 28.8 Q15 31 16.5 33" fill="none" stroke="#1f5c4c" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- highlight -->
+  <path d="M14 30 Q18 19.5 29 15" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+  <path d="M30 23.5 Q36 22 40 25" fill="none" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round" opacity="0.8"/>
+  <!-- knot bead -->
+  <circle cx="32" cy="12.5" r="2.2" fill="#d9a441" stroke="#14101a" stroke-width="1"/>
+</svg>

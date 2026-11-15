@@ -1,0 +1,9 @@
+{
+  "character": "xiong_yanzhi",
+  "state": "angry",
+  "asset_id": "xiong_yanzhi_angry",
+  "image_file": "provider/xiong_yanzhi_angry/xiong_yanzhi_angry.png",
+  "sha256": "012c87ad8e1a7a592fabc45e5eddd74892f85aa8e94e3e1e6d2e3907a5799eef",
+  "seed": 151112,
+  "model": "qwen-image-3.0-pro"
+}

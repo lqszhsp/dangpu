@@ -1,0 +1,9 @@
+{
+  "character": "tu_baigu",
+  "state": "thrall",
+  "asset_id": "tu_baigu_thrall",
+  "image_file": "provider/tu_baigu_thrall/tu_baigu_thrall.png",
+  "sha256": "92718061882151ff3c8700c84d04970fcfc4fb37762a3e8f3b3f85dbcf8ef221",
+  "seed": 151226,
+  "model": "qwen-image-3.0-pro"
+}

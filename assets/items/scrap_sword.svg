@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128">
+  <defs>
+    <linearGradient id="scrap_sword-blade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3a3f4a"/>
+      <stop offset="0.4" stop-color="#5c6370"/>
+      <stop offset="0.5" stop-color="#9aa88a"/>
+      <stop offset="0.54" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <linearGradient id="scrap_sword-bronze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9aa88a"/>
+      <stop offset="0.4" stop-color="#8a5a1c"/>
+      <stop offset="1" stop-color="#3a3f4a"/>
+    </linearGradient>
+    <linearGradient id="scrap_sword-grip" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3d2350"/>
+      <stop offset="0.35" stop-color="#5b3474"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <radialGradient id="scrap_sword-rust">
+      <stop offset="0" stop-color="#9a4d12"/>
+      <stop offset="0.55" stop-color="#8a5a1c" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#5e0f1c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- shadow -->
+  <g fill="#14101a" opacity="0.35" transform="translate(2 2)">
+    <path d="M24.5 82 L24.5 25 L28 15 L32 8 L36 14 L39.5 20 L39.5 82 Z"/>
+    <path d="M9 82 L46 79 L45 88 L34 93 L34 120 L28 120 L28 93 L18 88 Z"/>
+  </g>
+  <!-- blade -->
+  <path d="M24.5 82 L24.5 70 L26.8 67.4 L25 64.8 L25 50 L27.2 47 L25.3 44 L25.5 24 L28.2 17.5 L29.8 21 L32 8.5 L34.2 16.5 L36.2 13.5 L37.6 20.5 L38.6 18.5 L38.6 36 L36.6 39 L38.8 41.5 L39 58 L36.8 61 L39.2 63.6 L39.5 82 Z" fill="url(#scrap_sword-blade)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- ridge -->
+  <path d="M32 80 L32 16" stroke="#cfefff" stroke-width="0.7" opacity="0.35"/>
+  <path d="M33 80 L33 18" stroke="#14101a" stroke-width="0.6" opacity="0.4"/>
+  <!-- rust -->
+  <ellipse cx="28" cy="72" rx="4" ry="6" fill="url(#scrap_sword-rust)"/>
+  <ellipse cx="36" cy="55" rx="3.6" ry="7" fill="url(#scrap_sword-rust)"/>
+  <ellipse cx="29" cy="40" rx="4" ry="5" fill="url(#scrap_sword-rust)"/>
+  <ellipse cx="34" cy="24" rx="4.5" ry="6" fill="url(#scrap_sword-rust)"/>
+  <ellipse cx="35" cy="76" rx="2.5" ry="3" fill="url(#scrap_sword-rust)"/>
+  <g fill="#5e0f1c">
+    <circle cx="27.5" cy="71" r="0.8"/>
+    <circle cx="29.2" cy="74.5" r="0.6"/>
+    <circle cx="36.4" cy="53" r="0.9"/>
+    <circle cx="35.2" cy="57.6" r="0.6"/>
+    <circle cx="29.5" cy="38.6" r="0.7"/>
+    <circle cx="33.5" cy="23" r="0.8"/>
+    <circle cx="35.6" cy="27" r="0.5"/>
+  </g>
+  <!-- edge nicks & crack -->
+  <path d="M26.8 67.4 L29 66.6 M27.2 47 L29.4 46.5 M36.6 39 L34.6 38.4 M36.8 61 L34.8 60.4" stroke="#14101a" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M32 9 L31 15 L32.6 19 L31.2 26" fill="none" stroke="#14101a" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M26 30 L26 62 M26 52 L26 60" stroke="#cfefff" stroke-width="0.6" opacity="0.35" stroke-linecap="round"/>
+  <!-- guard -->
+  <path d="M9.5 82.5 C9.3 79.5 12.4 78.2 15.6 79.6 L26 81.2 L38 81.2 L46.6 79.6 L45 82.6 L47.6 84.6 L45.4 87.2 L38 88.4 L34 92.6 L30 92.6 L26 88.4 L16 86.8 C12.6 87.4 9.7 85.6 9.5 82.5 Z" fill="url(#scrap_sword-bronze)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M13 81.6 C15 80.6 19 81.6 26 82.8 L38 82.8 L44 81.8" fill="none" stroke="#e9dfcc" stroke-width="0.7" opacity="0.5" stroke-linecap="round"/>
+  <path d="M32 82.6 L35.4 86 L32 89.4 L28.6 86 Z" fill="#5e0f1c" stroke="#14101a" stroke-width="0.9" stroke-linejoin="round"/>
+  <path d="M31.2 84.4 L32.4 83.6" stroke="#e0524a" stroke-width="0.6" opacity="0.7"/>
+  <ellipse cx="42" cy="84" rx="3" ry="2.2" fill="url(#scrap_sword-rust)"/>
+  <!-- grip -->
+  <rect x="27.6" y="92" width="8.8" height="20.5" rx="1.8" fill="url(#scrap_sword-grip)" stroke="#14101a" stroke-width="1.6"/>
+  <path d="M27.8 94.6 L36.2 96.8 M27.8 98.4 L36.2 100.6 M27.8 102.2 L36.2 104.4 M27.8 106 L36.2 108.2 M27.8 109.8 L36 111.6" stroke="#14101a" stroke-width="0.9"/>
+  <path d="M29 95.6 L30.8 96.1 M29 99.4 L30.8 99.9 M29 103.2 L30.8 103.7 M29 107 L30.8 107.5" stroke="#9aa88a" stroke-width="0.7" opacity="0.6" stroke-linecap="round"/>
+  <path d="M36.2 104.4 C39 105 40.5 107.5 40 110.5" fill="none" stroke="#3d2350" stroke-width="1.1" stroke-linecap="round"/>
+  <!-- pommel -->
+  <path d="M27 112 L37 112 C40.6 113.8 41.4 118 37.6 120.6 L26.4 120.6 C22.6 118 23.4 113.8 27 112 Z" fill="url(#scrap_sword-bronze)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <circle cx="32" cy="116.3" r="1.7" fill="#14101a"/>
+  <path d="M26.2 114.4 C27.6 113.4 30 113.2 31 113.3" fill="none" stroke="#e9dfcc" stroke-width="0.6" opacity="0.5" stroke-linecap="round"/>
+</svg>

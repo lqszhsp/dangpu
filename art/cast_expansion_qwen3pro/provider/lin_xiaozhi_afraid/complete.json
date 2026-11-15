@@ -1,0 +1,9 @@
+{
+  "character": "lin_xiaozhi",
+  "state": "afraid",
+  "asset_id": "lin_xiaozhi_afraid",
+  "image_file": "provider/lin_xiaozhi_afraid/lin_xiaozhi_afraid.png",
+  "sha256": "5ae7f88c704d2a0e8c107b003f0d403e40bfb85d990750204bdbe66bf605ac9f",
+  "seed": 151053,
+  "model": "qwen-image-3.0-pro"
+}

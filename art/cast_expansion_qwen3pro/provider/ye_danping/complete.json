@@ -1,0 +1,9 @@
+{
+  "character": "ye_danping",
+  "state": "neutral",
+  "asset_id": "ye_danping",
+  "image_file": "provider/ye_danping/ye_danping.png",
+  "sha256": "833aaaeaaf8973883b9e68a1bb784ecf01c8c7ddbab2ba627bc484b0f334ac4f",
+  "seed": 151390,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "leng_zhiyuan",
+  "state": "wasted",
+  "asset_id": "leng_zhiyuan_wasted",
+  "image_file": "provider/leng_zhiyuan_wasted/leng_zhiyuan_wasted.png",
+  "sha256": "789c384ceb34968580fdd2a5d24aff039248d2f507c30ea8fe88fcdaade52d11",
+  "seed": 151275,
+  "model": "qwen-image-3.0-pro"
+}

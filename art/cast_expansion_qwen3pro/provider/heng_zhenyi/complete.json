@@ -1,0 +1,9 @@
+{
+  "character": "heng_zhenyi",
+  "state": "neutral",
+  "asset_id": "heng_zhenyi",
+  "image_file": "provider/heng_zhenyi/heng_zhenyi.png",
+  "sha256": "ccff1d750711ff63c3ec7b1bb2596ba086cd8d83d5b2cf2231e279abaf04dc2f",
+  "seed": 151410,
+  "model": "qwen-image-3.0-pro"
+}

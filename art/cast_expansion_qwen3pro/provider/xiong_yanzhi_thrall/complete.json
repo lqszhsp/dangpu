@@ -1,0 +1,9 @@
+{
+  "character": "xiong_yanzhi",
+  "state": "thrall",
+  "asset_id": "xiong_yanzhi_thrall",
+  "image_file": "provider/xiong_yanzhi_thrall/xiong_yanzhi_thrall.png",
+  "sha256": "c2d875fc357c1eef164563068877dab7ec4bbd74b14cf9124481b6337e33c44c",
+  "seed": 151116,
+  "model": "qwen-image-3.0-pro"
+}

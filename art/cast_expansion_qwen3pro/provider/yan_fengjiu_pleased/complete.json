@@ -1,0 +1,9 @@
+{
+  "character": "yan_fengjiu",
+  "state": "pleased",
+  "asset_id": "yan_fengjiu_pleased",
+  "image_file": "provider/yan_fengjiu_pleased/yan_fengjiu_pleased.png",
+  "sha256": "177cbc4ce54393fea00afd078a4531d5fcdb9f7e05df71324be07d657b8c8e2d",
+  "seed": 151231,
+  "model": "qwen-image-3.0-pro"
+}

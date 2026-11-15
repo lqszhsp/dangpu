@@ -1,0 +1,9 @@
+{
+  "character": "shen_suxin",
+  "state": "pleased",
+  "asset_id": "shen_suxin_pleased",
+  "image_file": "provider/shen_suxin_pleased/shen_suxin_pleased.png",
+  "sha256": "e64aacb39ad88e30c9abf63afdb316ff32a4fc499b05807c788e5631996d1228",
+  "seed": 151001,
+  "model": "qwen-image-3.0-pro"
+}

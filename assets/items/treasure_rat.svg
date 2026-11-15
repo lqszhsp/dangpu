@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="treasure_rat-fur" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffc56b"/>
+      <stop offset="0.45" stop-color="#e8902f"/>
+      <stop offset="1" stop-color="#9a4d12"/>
+    </linearGradient>
+    <radialGradient id="treasure_rat-gem" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#f4fbff"/>
+      <stop offset="0.45" stop-color="#7fd6b5"/>
+      <stop offset="1" stop-color="#1f5c4c"/>
+    </radialGradient>
+    <filter id="treasure_rat-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <ellipse cx="34" cy="58.6" rx="22" ry="3" fill="#14101a" opacity="0.45"/>
+  <!-- tail -->
+  <path d="M44 55 Q58 57 59 45 Q59.6 36 52 35.6 Q48 36 49 40" fill="none" stroke="#14101a" stroke-width="4.2" stroke-linecap="round"/>
+  <path d="M44 55 Q58 57 59 45 Q59.6 36 52 35.6 Q48 36 49 40" fill="none" stroke="#e0524a" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+  <path d="M46 54.6 Q56 55 57.4 46" fill="none" stroke="#ffc56b" stroke-width="0.7" stroke-linecap="round" opacity="0.7"/>
+  <!-- hind feet -->
+  <g fill="#e0524a" stroke="#14101a" stroke-width="1.3">
+    <ellipse cx="40.6" cy="56.2" rx="5" ry="2.2"/>
+    <ellipse cx="22.6" cy="56.2" rx="4.4" ry="2"/>
+  </g>
+  <!-- body -->
+  <path d="M22 55.6 Q14.6 46 19.6 34 Q25 26.6 36.6 27 Q48.6 30 48.6 44 Q48.6 56.4 36 57 Q27 57.4 22 55.6 Z" fill="url(#treasure_rat-fur)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M22.6 52 Q19 45 23 38 Q28 34 33 38 Q36.6 46 33 53 Q28 56 22.6 52 Z" fill="#efe2c4" opacity="0.85"/>
+  <path d="M44 34 Q47.4 39 46.6 46" fill="none" stroke="#9a4d12" stroke-width="1" stroke-linecap="round"/>
+  <path d="M41 49 Q44 50.6 45 48" fill="none" stroke="#9a4d12" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- back ear -->
+  <circle cx="41" cy="11" r="7" fill="url(#treasure_rat-fur)" stroke="#14101a" stroke-width="1.6"/>
+  <circle cx="41.4" cy="11.4" r="4.4" fill="#e0524a" opacity="0.7"/>
+  <!-- head -->
+  <path d="M10.4 25.4 Q12 19 19 14.6 Q28 9 37.6 12.6 Q45.6 17 43.4 26 Q41 33.4 32 34 Q22 34.4 16.6 30 Q10 28.6 10.4 25.4 Z" fill="url(#treasure_rat-fur)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M14 28.6 Q20 32.6 28 32.4" fill="none" stroke="#efe2c4" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
+  <path d="M19 15.6 Q26 11.6 33 12.4" fill="none" stroke="#fff3c8" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+  <!-- front ear -->
+  <path d="M23 13 Q19 4 26.6 2.6 Q35 2.6 33.6 12 Q29 10.6 23 13 Z" fill="url(#treasure_rat-fur)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M25 11.4 Q23 6 27 5 Q31.6 5 31.4 10.6 Q28.4 10 25 11.4 Z" fill="#e0524a" opacity="0.75"/>
+  <!-- eye -->
+  <ellipse cx="26.6" cy="20.6" rx="3.6" ry="4" fill="#14101a"/>
+  <circle cx="25.4" cy="19" r="1.5" fill="#ffffff"/>
+  <circle cx="28" cy="22.6" r="0.7" fill="#ffffff" opacity="0.9"/>
+  <path d="M22.6 16 Q25 14.8 28 15.6" fill="none" stroke="#9a4d12" stroke-width="0.8" stroke-linecap="round"/>
+  <!-- cheek & nose -->
+  <ellipse cx="21" cy="26" rx="2" ry="1.2" fill="#e0524a" opacity="0.55"/>
+  <circle cx="11" cy="25.2" r="1.7" fill="#c43a3a" stroke="#14101a" stroke-width="0.8"/>
+  <circle cx="10.6" cy="24.7" r="0.5" fill="#ffffff"/>
+  <path d="M12.4 27.6 Q14.6 28.8 16.4 27.8" fill="none" stroke="#14101a" stroke-width="0.8" stroke-linecap="round"/>
+  <!-- whiskers -->
+  <g fill="none" stroke="#efe2c4" stroke-width="0.6" stroke-linecap="round" opacity="0.9">
+    <path d="M14 24.6 Q8 22 3.6 22.6 M14 26 Q8 26 4 27.6 M14.6 27 Q10 29 6.6 31.6"/>
+  </g>
+  <!-- red cord & bell -->
+  <path d="M18.6 31 Q28 36.6 40.6 31" fill="none" stroke="#14101a" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="M18.6 31 Q28 36.6 40.6 31" fill="none" stroke="#c43a3a" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="33.6" cy="36.6" r="2.8" fill="#f2d27a" stroke="#14101a" stroke-width="1"/>
+  <path d="M31.4 37.2 L35.8 37.2" stroke="#8a5a1c" stroke-width="0.8"/>
+  <circle cx="33.6" cy="38.4" r="0.6" fill="#14101a"/>
+  <circle cx="32.6" cy="35.6" r="0.7" fill="#fff8e6"/>
+  <!-- gem glow -->
+  <circle cx="25" cy="44" r="7.6" fill="#7fd6b5" opacity="0.8" filter="url(#treasure_rat-glow)"/>
+  <!-- gem -->
+  <path d="M25 37.6 L30.4 42 L25 50.6 L19.6 42 Z" fill="url(#treasure_rat-gem)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/>
+  <path d="M19.6 42 L30.4 42 M25 37.6 L23 42 L25 50.6 L27 42 Z" fill="none" stroke="#1f5c4c" stroke-width="0.6"/>
+  <path d="M22.4 41 L24.4 38.8" stroke="#ffffff" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- paws -->
+  <g fill="#ffc56b" stroke="#14101a" stroke-width="1.2">
+    <ellipse cx="19.6" cy="44.4" rx="2.6" ry="2" transform="rotate(-30 19.6 44.4)"/>
+    <ellipse cx="30.6" cy="44.4" rx="2.6" ry="2" transform="rotate(30 30.6 44.4)"/>
+  </g>
+  <!-- sparkles -->
+  <g fill="#f4fbff">
+    <path d="M12 38 L12.8 41 L15.8 41.8 L12.8 42.6 L12 45.6 L11.2 42.6 L8.2 41.8 L11.2 41 Z"/>
+    <path d="M52 22 L52.6 24 L54.6 24.6 L52.6 25.2 L52 27.2 L51.4 25.2 L49.4 24.6 L51.4 24 Z" opacity="0.9"/>
+  </g>
+  <circle cx="16" cy="51" r="0.9" fill="#7fd6b5"/>
+  <circle cx="7" cy="34" r="0.7" fill="#7fd6b5"/>
+</svg>

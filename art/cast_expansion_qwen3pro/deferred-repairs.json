@@ -1,0 +1,34 @@
+{
+  "requested_by_user": true,
+  "sequence": "After completion of the ongoing 55-character generation batch",
+  "repairs": [
+    {
+      "asset_id": "ren_cultivator_f2_wasted",
+      "reference": "art/raw/chars/ren_cultivator_f2.png",
+      "raw_target": "art/raw/chars/ren_cultivator_f2_wasted.png",
+      "runtime_target": "assets/chars/ren_cultivator_f2_wasted.webp",
+      "model": "qwen-image-3.0-pro",
+      "state": "wasted",
+      "status": "completed_and_installed_after_current_batch",
+      "installed_record": "art/repairs/ren_cultivator_f2_wasted/installed.json",
+      "visual_review": "Same female neutral identity, braided hair, robe, gourd, sword and folded arms retained; exhausted facial state, two arms only. Both originals archived before replacement.",
+      "instructions": "Inspect current variant; edit the same female neutral identity, preserve actor/costume/pose/lighting, use existing MOODS.wasted. Archive old bytes before replacement; do not add another NPC or overwrite any other face."
+    },
+    {
+      "asset_id": "xian_spy",
+      "scope": "neutral and six existing facial states; excludes xian_spy_f1 and xian_spy_f2",
+      "reference": "art/raw/chars/xian_spy.png",
+      "model": "qwen-image-3.0-pro",
+      "status": "superseded_by_later_spy_snake_gpt_image_repair",
+      "superseded_by": "art/repairs/spy_snake_gpt_image_20261115/installed.json",
+      "note": "Later explicit instruction regenerated all spy/snake faces and states; preserve the installed repairs and do not restore the old 70%-opacity veil plan.",
+      "workflow": [
+        "Generate the same adult female identity without a face veil",
+        "Generate six expressions referencing the unveiled neutral face",
+        "Composite a cloth veil as the final top layer over the lower nose, mouth and chin",
+        "Use veil opacity 0.70 (about 179/255); facial features should remain faintly visible through the veil, never drawn in front of it",
+        "Inspect all seven face crops and archive original raw/runtime files before replacing only this identity"
+      ]
+    }
+  ]
+}

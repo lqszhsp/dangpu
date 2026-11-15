@@ -1,0 +1,9 @@
+{
+  "character": "su_cailing",
+  "state": "pleased",
+  "asset_id": "su_cailing_pleased",
+  "image_file": "provider/su_cailing_pleased/su_cailing_pleased.png",
+  "sha256": "a53d9932518101a2ff00f365393bbf7f5d2842ab4406939a20fde293b5e77a51",
+  "seed": 151511,
+  "model": "qwen-image-3.0-pro"
+}

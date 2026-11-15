@@ -1,0 +1,9 @@
+{
+  "character": "he_xiaoman",
+  "state": "angry",
+  "asset_id": "he_xiaoman_angry",
+  "image_file": "provider/he_xiaoman_angry/he_xiaoman_angry.png",
+  "sha256": "551c026cb8462c4f53d1df2da2d8c48e02efc73b75ceed1dbae3358c90731ddb",
+  "seed": 151042,
+  "model": "qwen-image-3.0-pro"
+}

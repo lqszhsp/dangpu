@@ -1,0 +1,9 @@
+{
+  "character": "shi_kanmai",
+  "state": "afraid",
+  "asset_id": "shi_kanmai_afraid",
+  "image_file": "provider/shi_kanmai_afraid/shi_kanmai_afraid.png",
+  "sha256": "62d72c0cdb9ad79a339c06e1d7ad7ee5ca448bd974b75c3515761a52d11defde",
+  "seed": 151423,
+  "model": "qwen-image-3.0-pro"
+}

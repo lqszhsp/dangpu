@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <linearGradient id="m_dihuo-stone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#14101a"/>
+      <stop offset="0.15" stop-color="#3a3f4a"/>
+      <stop offset="0.45" stop-color="#5c6370"/>
+      <stop offset="0.6" stop-color="#5c6370"/>
+      <stop offset="0.85" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="m_dihuo-rock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a3f4a"/>
+      <stop offset="0.6" stop-color="#1f1626"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="m_dihuo-iron" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5c6370"/>
+      <stop offset="0.4" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <radialGradient id="m_dihuo-fire" cx="0.5" cy="0.7" r="0.65">
+      <stop offset="0" stop-color="#f4fbff"/>
+      <stop offset="0.18" stop-color="#f2d27a"/>
+      <stop offset="0.45" stop-color="#ffc56b"/>
+      <stop offset="0.7" stop-color="#e8902f"/>
+      <stop offset="0.9" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </radialGradient>
+    <radialGradient id="m_dihuo-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e8902f" stop-opacity="0.6"/>
+      <stop offset="0.5" stop-color="#c43a3a" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#8e1b2b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="m_dihuo-billet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4fbff"/>
+      <stop offset="0.35" stop-color="#f2d27a"/>
+      <stop offset="0.75" stop-color="#e8902f"/>
+      <stop offset="1" stop-color="#c43a3a"/>
+    </linearGradient>
+    <linearGradient id="m_dihuo-flame" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.4" stop-color="#e8902f"/>
+      <stop offset="1" stop-color="#c43a3a"/>
+    </linearGradient>
+    <filter id="m_dihuo-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.6"/>
+    </filter>
+  </defs>
+  <!-- ground shadow & lava glow -->
+  <ellipse cx="80" cy="146" rx="70" ry="9" fill="#14101a" opacity="0.55"/>
+  <ellipse cx="80" cy="140" rx="62" ry="10" fill="#e8902f" opacity="0.35" filter="url(#m_dihuo-blur)"/>
+  <ellipse cx="80" cy="34" rx="44" ry="30" fill="url(#m_dihuo-halo)"/>
+  <!-- cracked rock base -->
+  <path d="M10 140 Q12 130 22 128 L40 126 Q80 122 120 126 L138 128 Q148 130 150 140 Q146 148 128 150 L32 150 Q14 148 10 140 Z" fill="url(#m_dihuo-rock)" stroke="#14101a" stroke-width="2.4" stroke-linejoin="round"/>
+  <!-- lava fissures (glow + core) -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 140 L26 137 L34 142 L46 139 M114 139 L126 142 L134 137 L146 140 M60 146 L70 143 L80 147 L92 143 L102 146" stroke="#e8902f" stroke-width="5" filter="url(#m_dihuo-blur)"/>
+    <path d="M14 140 L26 137 L34 142 L46 139 M114 139 L126 142 L134 137 L146 140 M60 146 L70 143 L80 147 L92 143 L102 146" stroke="#e8902f" stroke-width="2.4"/>
+    <path d="M14 140 L26 137 L34 142 L46 139 M114 139 L126 142 L134 137 L146 140 M60 146 L70 143 L80 147 L92 143 L102 146" stroke="#f2d27a" stroke-width="1"/>
+  </g>
+  <!-- side buttress pillars -->
+  <g stroke="#14101a" stroke-width="2.2" stroke-linejoin="round">
+    <path d="M16 134 L20 70 L36 66 L38 132 Z" fill="url(#m_dihuo-stone)"/>
+    <path d="M144 134 L140 70 L124 66 L122 132 Z" fill="url(#m_dihuo-stone)"/>
+    <path d="M17 72 L20 62 L37 58 L38 68 Z" fill="#5c6370"/>
+    <path d="M143 72 L140 62 L123 58 L122 68 Z" fill="#5c6370"/>
+  </g>
+  <g fill="none" stroke="#14101a" stroke-width="1.3" opacity="0.8">
+    <path d="M19 86 L37 84 M18.5 102 L37.5 100 M18 118 L38 116 M27 72 L27 84 M27 100 L27 116"/>
+    <path d="M141 86 L123 84 M141.5 102 L122.5 100 M142 118 L122 116 M133 72 L133 84 M133 100 L133 116"/>
+  </g>
+  <path d="M20 64 L36 60" stroke="#9aa88a" stroke-width="1.2" fill="none" opacity="0.7"/>
+  <!-- furnace body -->
+  <path d="M32 136 L37 60 Q80 50 123 60 L128 136 Q80 142 32 136 Z" fill="url(#m_dihuo-stone)" stroke="#14101a" stroke-width="2.8" stroke-linejoin="round"/>
+  <!-- brick courses -->
+  <g fill="none" stroke="#14101a" stroke-width="1.3" opacity="0.75">
+    <path d="M36 84 Q80 78 124 84 M35 100 Q80 94 125 100"/>
+    <path d="M50 84 L50 100 M66 81 L66 97 M94 81 L94 97 M110 84 L110 100 M58 64 L58 80 M102 64 L102 80"/>
+  </g>
+  <path d="M40 66 Q38 100 36 132" fill="none" stroke="#9aa88a" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+  <!-- iron hoops -->
+  <path d="M36 68 Q80 60 124 68 L124.6 78 Q80 70 35.4 78 Z" fill="url(#m_dihuo-iron)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M33.6 112 Q80 104 126.4 112 L127 122 Q80 114 33 122 Z" fill="url(#m_dihuo-iron)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M37 68.6 Q80 61 123 68.6 M34.6 112.6 Q80 105 125.4 112.6" fill="none" stroke="#9aa88a" stroke-width="1" opacity="0.8"/>
+  <g fill="#5c6370" stroke="#14101a" stroke-width="1">
+    <circle cx="44" cy="72" r="2"/><circle cx="62" cy="68.4" r="2"/><circle cx="98" cy="68.4" r="2"/><circle cx="116" cy="72" r="2"/>
+    <circle cx="42" cy="116" r="2"/><circle cx="118" cy="116" r="2"/>
+  </g>
+  <!-- rune circles on body -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="48" cy="96" r="7.5" stroke="#e8902f" stroke-width="3" opacity="0.55" filter="url(#m_dihuo-blur)"/>
+    <circle cx="112" cy="96" r="7.5" stroke="#e8902f" stroke-width="3" opacity="0.55" filter="url(#m_dihuo-blur)"/>
+    <circle cx="48" cy="96" r="7.5" stroke="#ffc56b" stroke-width="1.4"/>
+    <circle cx="112" cy="96" r="7.5" stroke="#ffc56b" stroke-width="1.4"/>
+    <path d="M44 93 L52 93 L46 99 L52 99 M48 89.5 L48 92 M48 100 L48 102.5" stroke="#f2d27a" stroke-width="1.3"/>
+    <path d="M108 99 L116 93 M108 93 L112 96 L116 99 M112 89.5 L112 92 M112 100 L112 102.5" stroke="#f2d27a" stroke-width="1.3"/>
+  </g>
+  <!-- firebox arch -->
+  <ellipse cx="80" cy="118" rx="30" ry="22" fill="url(#m_dihuo-halo)"/>
+  <path d="M60 137 L60 108 Q60 88 80 86 Q100 88 100 108 L100 137 Z" fill="#14101a" stroke="#14101a" stroke-width="2"/>
+  <path d="M55 137 L55 107 Q56 83 80 81 Q104 83 105 107 L105 137" fill="none" stroke="#5c6370" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M55 137 L55 107 Q56 83 80 81 Q104 83 105 107 L105 137" fill="none" stroke="#14101a" stroke-width="1.4"/>
+  <path d="M68 84 L70 89 M80 81 L80 86.5 M92 84 L90 89 M57.5 96 L62 98 M102.5 96 L98 98" stroke="#14101a" stroke-width="1.3" fill="none"/>
+  <path d="M63 136 L63 108 Q64 91 80 89 Q96 91 97 108 L97 136 Z" fill="url(#m_dihuo-fire)"/>
+  <path d="M66 136 Q64 124 70 116 Q70 124 75 124 Q72 110 80 100 Q80 114 86 118 Q88 112 91 110 Q96 122 94 136 Z" fill="#f2d27a" opacity="0.9"/>
+  <path d="M72 136 Q72 128 77 124 Q79 130 82 128 Q86 132 88 136 Z" fill="#f4fbff"/>
+  <!-- grate bars -->
+  <g stroke="#14101a" stroke-width="2.2" stroke-linecap="round">
+    <path d="M70 120 L70 137 M80 116 L80 137 M90 120 L90 137"/>
+  </g>
+  <!-- rim -->
+  <ellipse cx="80" cy="58" rx="45" ry="10" fill="#5c6370" stroke="#14101a" stroke-width="2.6"/>
+  <path d="M37 57 Q80 47 123 57" fill="none" stroke="#9aa88a" stroke-width="1.4" opacity="0.8"/>
+  <ellipse cx="80" cy="58" rx="35" ry="6.4" fill="#14101a"/>
+  <ellipse cx="80" cy="59" rx="31" ry="4.8" fill="url(#m_dihuo-fire)"/>
+  <!-- mouth flames -->
+  <path d="M54 59 Q48 46 58 38 Q58 47 66 50 Q64 36 74 28 Q74 40 82 44 Q84 34 92 30 Q92 42 100 46 Q104 40 106 38 Q112 48 106 59 Z" fill="#c43a3a" opacity="0.7" filter="url(#m_dihuo-blur)"/>
+  <path d="M57 60 Q53 50 60 43 Q61 50 67 53 Q66 42 74 35 Q75 45 82 48 Q84 40 90 37 Q91 47 98 50 Q101 46 103 44 Q107 52 103 60 Z" fill="url(#m_dihuo-flame)" stroke="#8e1b2b" stroke-width="1.2" stroke-linejoin="round"/>
+  <path d="M66 60 Q65 54 70 51 Q72 55 76 55 Q76 48 81 44 Q82 51 88 53 Q92 51 93 50 Q96 55 94 60 Z" fill="#f2d27a"/>
+  <!-- forming array ring around billet -->
+  <ellipse cx="80" cy="30" rx="30" ry="7" fill="none" stroke="#ffc56b" stroke-width="1.4" stroke-dasharray="5 3" opacity="0.9"/>
+  <ellipse cx="80" cy="30" rx="22" ry="5" fill="none" stroke="#e8902f" stroke-width="1" opacity="0.8"/>
+  <!-- glowing billet -->
+  <path d="M60 26 L98 22 Q102 22 101 26 L100 32 Q100 35 96 35 L62 37 Q58 37 58 33 L58 29 Q58 26 60 26 Z" fill="#f2d27a" filter="url(#m_dihuo-blur)" opacity="0.9"/>
+  <path d="M60 26 L98 22 Q102 22 101 26 L100 32 Q100 35 96 35 L62 37 Q58 37 58 33 L58 29 Q58 26 60 26 Z" fill="url(#m_dihuo-billet)" stroke="#8e1b2b" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M62 28 L96 24.6" stroke="#f4fbff" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+  <!-- floating hammer -->
+  <g transform="translate(-2 3) rotate(-28 108 14)">
+    <path d="M106 14 L132 14 L132 17.4 L106 17.4 Z" fill="#8a5a1c" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M97 6 L109 6 Q111 6 111 8 L111 23 Q111 25 109 25 L97 25 Q95 25 95 23 L95 8 Q95 6 97 6 Z" fill="url(#m_dihuo-iron)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M98 8.5 L98 22" stroke="#9aa88a" stroke-width="1.2" fill="none"/>
+  </g>
+  <!-- spark burst -->
+  <g stroke="#f2d27a" stroke-width="1.3" stroke-linecap="round" fill="none">
+    <path d="M90 20 L86 12 M94 19 L96 10 M86 22 L78 16 M98 21 L104 26 M84 18 L80 9"/>
+  </g>
+  <g fill="#ffc56b">
+    <circle cx="74" cy="12" r="1.2"/><circle cx="102" cy="8" r="1"/><circle cx="50" cy="24" r="1.1"/><circle cx="112" cy="40" r="1"/><circle cx="46" cy="44" r="0.9"/>
+  </g>
+  <!-- lava seeping at furnace foot -->
+  <path d="M30 136 Q34 131 40 133 Q44 128 50 133 L52 138 Q40 141 30 138 Z M108 133 Q114 128 120 133 Q126 131 130 136 L130 138 Q118 141 108 138 Z" fill="#e8902f" stroke="#8e1b2b" stroke-width="1.2" stroke-linejoin="round"/>
+  <path d="M36 135.5 Q41 133 46 135 M114 135 Q119 133 124 135.5" fill="none" stroke="#f2d27a" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- lava tongues licking up from fissures -->
+  <g stroke="#8e1b2b" stroke-width="1.1" stroke-linejoin="round">
+    <path d="M18 139 Q14 130 19 124 Q19 130 23 131 Q22 124 27 118 Q28 128 31 132 Q32 136 30 139 Z" fill="url(#m_dihuo-flame)"/>
+    <path d="M142 139 Q146 130 141 124 Q141 130 137 131 Q138 124 133 118 Q132 128 129 132 Q128 136 130 139 Z" fill="url(#m_dihuo-flame)"/>
+  </g>
+  <path d="M22 138 Q21 134 24 131 Q26 135 27 138 Z M138 138 Q139 134 136 131 Q134 135 133 138 Z" fill="#f2d27a"/>
+</svg>

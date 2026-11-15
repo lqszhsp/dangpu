@@ -1,0 +1,9 @@
+{
+  "character": "shen_suxin",
+  "state": "sly",
+  "asset_id": "shen_suxin_sly",
+  "image_file": "provider/shen_suxin_sly/shen_suxin_sly.png",
+  "sha256": "4adc3a26b7aebdf7ca8cf0fb18bba72452856977e7536eed4e2b58ac16f9793f",
+  "seed": 151004,
+  "model": "qwen-image-3.0-pro"
+}

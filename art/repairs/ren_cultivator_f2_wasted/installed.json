@@ -1,0 +1,10 @@
+{
+  "model": "qwen-image-3.0-pro",
+  "asset_id": "ren_cultivator_f2_wasted",
+  "replaced_existing_only": true,
+  "previous_raw_sha256": "4a4040b6ed1d5e522e0eccb7be8efcde92494bca31812b3b55d9c3947d055fac",
+  "previous_webp_sha256": "ad85fbf8e8abddd2c3629ba468565d803cee941bd39b315596c5168765850ea9",
+  "new_raw_sha256": "ef07d70454ca73d1fb2b0d7c2e58c65ec191c3a33092e712a485b38b6ce37770",
+  "new_webp_sha256": "ea615c695b08f0c6bab071d649b7db6e5138ab196b1c8598bf12d4df081b5dfa",
+  "installed_at": "2026-11-15T05:46:49.724373+00:00"
+}

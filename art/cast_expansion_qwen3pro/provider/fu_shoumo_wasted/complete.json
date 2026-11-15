@@ -1,0 +1,9 @@
+{
+  "character": "fu_shoumo",
+  "state": "wasted",
+  "asset_id": "fu_shoumo_wasted",
+  "image_file": "provider/fu_shoumo_wasted/fu_shoumo_wasted.png",
+  "sha256": "14bacab7391fb2ffd46fcda0aed41bdec87d2f9eda26cf74ee85afae115047c0",
+  "seed": 151365,
+  "model": "qwen-image-3.0-pro"
+}

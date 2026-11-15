@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="fu_shehun-paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b3474"/>
+      <stop offset="0.5" stop-color="#3d2350"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <radialGradient id="fu_shehun-vortex" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#14101a"/>
+      <stop offset="0.5" stop-color="#5e0f1c"/>
+      <stop offset="1" stop-color="#8e1b2b" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="fu_shehun-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+  </defs>
+  <!-- dark aura -->
+  <path d="M17 4.5 L47 4.5 L48 59.5 L16 59.5 Z" fill="#5b3474" opacity="0.9" filter="url(#fu_shehun-glow)"/>
+  <!-- paper -->
+  <path d="M18 4.5 L46 4 Q47 32 46.5 59.5 L17.5 59.5 Q16.5 32 18 4.5 Z" fill="url(#fu_shehun-paper)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M19.5 6.5 L44.5 6.2" stroke="#8a6aa0" stroke-width="1" opacity="0.7"/>
+  <path d="M20 8.6 h24 M20 55.6 h24" stroke="#8e1b2b" stroke-width="1" opacity="0.9"/>
+  <!-- header glyph -->
+  <path d="M26 12.4 h12 M28.6 10.4 l-1 4 M35.4 10.4 l1 4 M27 16.6 Q32 14.6 37 16.6" fill="none" stroke="#c43a3a" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- vortex -->
+  <circle cx="32" cy="34" r="11.6" fill="url(#fu_shehun-vortex)"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M32 34 Q35 32 34.4 36 Q32.6 40 28 37.6 Q24.4 34 28 29.4 Q32.6 25 38.6 28.6 Q43 33 40 39.6 Q36 45 29 43.6 Q22 41.6 21.6 34" stroke="#8e1b2b" stroke-width="2.2"/>
+    <path d="M32 34 Q35 32 34.4 36 Q32.6 40 28 37.6 Q24.4 34 28 29.4 Q32.6 25 38.6 28.6 Q43 33 40 39.6 Q36 45 29 43.6 Q22 41.6 21.6 34" stroke="#e0524a" stroke-width="0.8"/>
+  </g>
+  <circle cx="32.4" cy="34.6" r="1.6" fill="#14101a"/>
+  <!-- outer glyph strokes -->
+  <g fill="none" stroke="#c43a3a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 22 l4 3 M42 22 l-4 3 M22 47 l4 -3 M42 47 l-4 -3"/>
+    <path d="M27 50 Q32 53 37 50 M32 48 v5"/>
+  </g>
+  <!-- soul wisp being pulled in -->
+  <path d="M60 10 Q52 6 47 12 Q42 18 46 24 Q49 30 40 32.6 Q36 34 33.4 34.4" fill="none" stroke="#cfefff" stroke-width="3.6" stroke-linecap="round" opacity="0.7" filter="url(#fu_shehun-glow)"/>
+  <path d="M60 10 Q52 6 47 12 Q42 18 46 24 Q49 30 40 32.6 Q36 34 33.4 34.4" fill="none" stroke="#cfefff" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M60 10 Q52 6 47 12 Q42 18 46 24 Q49 30 40 32.6" fill="none" stroke="#f4fbff" stroke-width="0.7" stroke-linecap="round"/>
+  <path d="M58 14 Q53 13 51 17" fill="none" stroke="#8fd3ff" stroke-width="1" stroke-linecap="round" opacity="0.8"/>
+  <!-- wisp head -->
+  <path d="M57 5 Q63 6.6 61.4 11.6 Q59 15 56 12 Q54 8 57 5 Z" fill="#f4fbff" stroke="#4a8fb8" stroke-width="0.8"/>
+  <circle cx="58" cy="9.4" r="0.7" fill="#4a8fb8"/>
+  <circle cx="60.2" cy="9.6" r="0.7" fill="#4a8fb8"/>
+  <!-- wisp particles -->
+  <g fill="#cfefff">
+    <circle cx="44" cy="8" r="0.9" opacity="0.8"/><circle cx="51" cy="26" r="0.8" opacity="0.7"/><circle cx="41" cy="21" r="0.6" opacity="0.8"/>
+  </g>
+  <g fill="#c43a3a"><circle cx="10" cy="20" r="0.9"/><circle cx="12" cy="48" r="1"/><circle cx="53" cy="50" r="0.9"/></g>
+</svg>

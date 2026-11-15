@@ -1,0 +1,9 @@
+{
+  "character": "chu_zhiyan",
+  "state": "afraid",
+  "asset_id": "chu_zhiyan_afraid",
+  "image_file": "provider/chu_zhiyan_afraid/chu_zhiyan_afraid.png",
+  "sha256": "c938a7e72532bda4ca0eb8680aaa73ba4f0c8b9cc8373fdb5da23fa912e356f6",
+  "seed": 151373,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,16 @@
+{
+  "model": "qwen-image-3.0-pro",
+  "character": "yu_wangchuan",
+  "state": "wasted",
+  "prompt": "Edit this reference. Same actor, same recognizable face and age, same costume, hair, accessories, props, hand positions, full-body framing, camera and lighting. Only change the facial expression and visible state to: gaunt and drug-addicted: hollow cheeks, dark eye circles, sweating, trembling, sickly pale skin. Keep the same human or humanoid identity. Keep the uniform bright green background. Cinematic photorealistic high-budget Chinese dark xianxia costume drama actor photograph. Exactly one human or humanoid person standing naturally, facing camera, full body from head to both feet visible with small margin, centered, occupying about 90 percent height, consistent 85mm portrait perspective. Real skin pores and worn fabric and metal. Warm red lantern key light from left, cool purple rim light from right, muted dark cinematic colors, face and clothes still readable. Background flat uniform bright green RGB(0,255,0), no floor, no cast shadow, no gradient, no green clothing or green reflections. No text, label, border, UI or watermark. ",
+  "negative_prompt": "anime, cartoon, illustration, painting, plastic CGI skin, beauty smoothing, collage, multiple people, cropped head, cropped feet, half body, extra limbs, extra fingers, background scenery, text, watermark, nudity, lingerie, sexual pose, green clothes, green skin, checkerboard",
+  "size": "1024*1536",
+  "seed": 151505,
+  "reference": "references/yu_wangchuan.png",
+  "reference_sha256": "9a5b54fe95e62bb468b92b673e8a5e58cdc2fc9aa72ee649e1d7051b95dafaf1",
+  "endpoint_override": "https://token-plan.cn-beijing.maas.aliyuncs.com",
+  "proxy_environment": "removed for this subprocess only",
+  "n": 1,
+  "watermark": false,
+  "prompt_extend": false
+}

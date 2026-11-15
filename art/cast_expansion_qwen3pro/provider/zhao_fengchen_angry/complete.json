@@ -1,0 +1,9 @@
+{
+  "character": "zhao_fengchen",
+  "state": "angry",
+  "asset_id": "zhao_fengchen_angry",
+  "image_file": "provider/zhao_fengchen_angry/zhao_fengchen_angry.png",
+  "sha256": "bf05a3cb7cba644d00ac21dd8b3d555149dfb3d16cdf48330b14049b97740c85",
+  "seed": 151022,
+  "model": "qwen-image-3.0-pro"
+}

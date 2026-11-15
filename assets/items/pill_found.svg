@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="pill_found-body" cx="0.38" cy="0.32" r="0.72">
+      <stop offset="0" stop-color="#fff6d6"/>
+      <stop offset="0.28" stop-color="#f2d27a"/>
+      <stop offset="0.7" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#8a5a1c"/>
+    </radialGradient>
+    <linearGradient id="pill_found-cush" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8e1b2b"/>
+      <stop offset="0.6" stop-color="#5e0f1c"/>
+      <stop offset="1" stop-color="#2a1838"/>
+    </linearGradient>
+    <radialGradient id="pill_found-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#b98ae0" stop-opacity="0.7"/>
+      <stop offset="0.6" stop-color="#5b3474" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#5b3474" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="pill_found-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="29" r="27" fill="url(#pill_found-halo)"/>
+  <!-- brocade cushion -->
+  <ellipse cx="32" cy="53" rx="25" ry="6" fill="#14101a" opacity="0.4"/>
+  <path d="M6 45 Q8 39 18 38.5 L46 38.5 Q56 39 58 45 Q57 53.5 32 54.5 Q7 53.5 6 45 Z" fill="url(#pill_found-cush)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M8 45 Q32 51.5 56 45" fill="none" stroke="#d9a441" stroke-width="1.2"/>
+  <path d="M10 42 Q32 47 54 42" fill="none" stroke="#e0524a" stroke-width="0.9" opacity="0.7"/>
+  <g fill="#d9a441" opacity="0.85">
+    <path d="M15 48.5 l1.6 -1.6 1.6 1.6 -1.6 1.6 Z"/>
+    <path d="M24 50.5 l1.6 -1.6 1.6 1.6 -1.6 1.6 Z"/>
+    <path d="M38 50.5 l1.6 -1.6 1.6 1.6 -1.6 1.6 Z"/>
+    <path d="M47 48.5 l1.6 -1.6 1.6 1.6 -1.6 1.6 Z"/>
+  </g>
+  <path d="M6.5 44 L4 49 M57.5 44 L60 49" stroke="#d9a441" stroke-width="1.6" stroke-linecap="round"/>
+  <ellipse cx="32" cy="41" rx="12" ry="3" fill="#2a1838" opacity="0.7"/>
+  <!-- pill -->
+  <circle cx="32" cy="27" r="14.5" fill="url(#pill_found-body)" stroke="#14101a" stroke-width="2"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M18.6 20.5 Q32 25.5 45.4 20.5" stroke="#8a5a1c" stroke-width="1.6"/>
+    <path d="M17.5 27 Q32 33 46.5 27" stroke="#8a5a1c" stroke-width="1.8"/>
+    <path d="M19 33.5 Q32 39.5 45 33.5" stroke="#8a5a1c" stroke-width="1.6"/>
+    <path d="M18.6 21.3 Q32 26.3 45.4 21.3" stroke="#fff6d6" stroke-width="0.7" opacity="0.8"/>
+    <path d="M17.5 27.9 Q32 33.9 46.5 27.9" stroke="#fff6d6" stroke-width="0.7" opacity="0.8"/>
+    <path d="M19 34.4 Q32 40.4 45 34.4" stroke="#fff6d6" stroke-width="0.7" opacity="0.6"/>
+  </g>
+  <ellipse cx="26.5" cy="21" rx="3.8" ry="2.4" fill="#ffffff" opacity="0.85" transform="rotate(-30 26.5 21)"/>
+  <!-- sparkles -->
+  <g fill="#e6d0ff" filter="url(#pill_found-blur)">
+    <circle cx="12" cy="18" r="1.8"/>
+    <circle cx="52" cy="14" r="1.8"/>
+    <circle cx="50" cy="33" r="1.4"/>
+  </g>
+  <path d="M52 9.5 L52.8 13.2 L56.5 14 L52.8 14.8 L52 18.5 L51.2 14.8 L47.5 14 L51.2 13.2 Z" fill="#f4fbff"/>
+  <path d="M12 15 L12.5 17.5 L15 18 L12.5 18.5 L12 21 L11.5 18.5 L9 18 L11.5 17.5 Z" fill="#f2d27a"/>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "character": "si_hongxiu",
+  "state": "angry",
+  "asset_id": "si_hongxiu_angry",
+  "image_file": "provider/si_hongxiu_angry/si_hongxiu_angry.png",
+  "sha256": "310bf205c9e35b6f6cd41c017460410e0304bfd798027e8371e7a3f8f7f22f45",
+  "seed": 151242,
+  "model": "qwen-image-3.0-pro"
+}

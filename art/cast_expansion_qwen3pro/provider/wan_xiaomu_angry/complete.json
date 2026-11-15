@@ -1,0 +1,9 @@
+{
+  "character": "wan_xiaomu",
+  "state": "angry",
+  "asset_id": "wan_xiaomu_angry",
+  "image_file": "provider/wan_xiaomu_angry/wan_xiaomu_angry.png",
+  "sha256": "f5fe9ab34c6addc8c66b0c10c045e895210192b411f58ee620a86a41e3ba61bf",
+  "seed": 151262,
+  "model": "qwen-image-3.0-pro"
+}

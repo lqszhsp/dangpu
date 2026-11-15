@@ -1,0 +1,9 @@
+{
+  "character": "zhou_yunshu",
+  "state": "wasted",
+  "asset_id": "zhou_yunshu_wasted",
+  "image_file": "provider/zhou_yunshu_wasted/zhou_yunshu_wasted.png",
+  "sha256": "e760b278b031e4f05f537b846aadfc11ec079ff3c59aeec27f72b6944755d960",
+  "seed": 151035,
+  "model": "qwen-image-3.0-pro"
+}

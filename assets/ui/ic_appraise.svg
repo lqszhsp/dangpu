@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="ic_appraise-glass" cx="0.38" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#f4fbff"/>
+      <stop offset="0.4" stop-color="#8fd3ff"/>
+      <stop offset="1" stop-color="#4a8fb8"/>
+    </radialGradient>
+    <linearGradient id="ic_appraise-rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.5" stop-color="#6b7d5a"/>
+      <stop offset="1" stop-color="#3a3f4a"/>
+    </linearGradient>
+  </defs>
+  <!-- handle -->
+  <path d="M40 40 L56 56" stroke="#14101a" stroke-width="10" stroke-linecap="round"/>
+  <path d="M40 40 L56 56" stroke="#8e1b2b" stroke-width="6" stroke-linecap="round"/>
+  <path d="M44 46 L50 52" stroke="#e0524a" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M42 42 L46 46" stroke="#d9a441" stroke-width="6.4"/>
+  <!-- mirror rim -->
+  <circle cx="27" cy="27" r="21" fill="url(#ic_appraise-rim)" stroke="#14101a" stroke-width="3"/>
+  <circle cx="27" cy="27" r="15" fill="url(#ic_appraise-glass)" stroke="#14101a" stroke-width="2.4"/>
+  <!-- rim knobs (cloud studs) -->
+  <g fill="#f2d27a" stroke="#14101a" stroke-width="1.2">
+    <circle cx="27" cy="9" r="2"/><circle cx="9" cy="27" r="2"/><circle cx="27" cy="45" r="2"/><circle cx="45" cy="27" r="2"/>
+  </g>
+  <!-- glint & revealing glow -->
+  <path d="M18 22 Q20 16 26 15" fill="none" stroke="#f4fbff" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M27 21 L28.6 25.4 L33 27 L28.6 28.6 L27 33 L25.4 28.6 L21 27 L25.4 25.4 Z" fill="#f4fbff" opacity="0.9"/>
+</svg>

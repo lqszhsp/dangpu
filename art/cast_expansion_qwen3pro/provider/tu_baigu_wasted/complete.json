@@ -1,0 +1,9 @@
+{
+  "character": "tu_baigu",
+  "state": "wasted",
+  "asset_id": "tu_baigu_wasted",
+  "image_file": "provider/tu_baigu_wasted/tu_baigu_wasted.png",
+  "sha256": "09fdd2f8625074d5ac3a82353032faabf4eab9be1baeb9e7197eb5917df44432",
+  "seed": 151225,
+  "model": "qwen-image-3.0-pro"
+}

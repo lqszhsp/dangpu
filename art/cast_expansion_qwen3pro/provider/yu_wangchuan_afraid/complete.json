@@ -1,0 +1,9 @@
+{
+  "character": "yu_wangchuan",
+  "state": "afraid",
+  "asset_id": "yu_wangchuan_afraid",
+  "image_file": "provider/yu_wangchuan_afraid/yu_wangchuan_afraid.png",
+  "sha256": "0ca97d2f3dc6c48e5b5a1e730ccc9f5e660518843277adc439fa3eb9bd564887",
+  "seed": 151503,
+  "model": "qwen-image-3.0-pro"
+}

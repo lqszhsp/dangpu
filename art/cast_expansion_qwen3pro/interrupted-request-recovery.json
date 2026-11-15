@@ -1,0 +1,18 @@
+{
+  "asset_ids": ["bai_chuandeng_angry", "bai_chuandeng_afraid"],
+  "prior_request_started_at": ["2026-11-15T04:33:13.255426+00:00", "2026-11-15T04:33:20.268341+00:00"],
+  "evidence": {
+    "live_generation_process": false,
+    "local_provider_response_or_image": false,
+    "remote_task_id": null,
+    "matching_completion_telemetry": false,
+    "remote_lookup": "bl log inference list for the original model/time window was attempted read-only; Console credentials are absent (exit 3). Synchronous image edit has no task-list/recovery command."
+  },
+  "prior_remote_outcome": "unknown; may have incurred charges",
+  "authorization": "Continuation requested after reporting the missing images and interrupted requests; user approved upgrading bl and continuing Qwen asset completion.",
+  "action": "Preserve the complete interrupted request directories under attempts; separately generate the two still-missing deliverable images for the authorized batch, not for debugging or log collection.",
+  "archives": [
+    "attempts/bai_chuandeng_angry-interrupted-20261115",
+    "attempts/bai_chuandeng_afraid-interrupted-20261115"
+  ]
+}

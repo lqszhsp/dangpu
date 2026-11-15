@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="jade_bottle-jade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9aa88a"/>
+      <stop offset="0.3" stop-color="#f4fbff"/>
+      <stop offset="0.55" stop-color="#e9efe6"/>
+      <stop offset="1" stop-color="#7f9a8c"/>
+    </linearGradient>
+    <radialGradient id="jade_bottle-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#cfefff" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#cfefff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="jade_bottle-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="36" r="27" fill="url(#jade_bottle-halo)"/>
+  <ellipse cx="32" cy="59.4" rx="15" ry="2.8" fill="#14101a" opacity="0.45"/>
+  <!-- foot -->
+  <path d="M24 54.4 L40 54.4 L41.6 59 L22.4 59 Z" fill="url(#jade_bottle-jade)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <!-- body -->
+  <path d="M29.4 24 Q29.4 30 25 33.6 Q16.6 39.6 18 47.6 Q20 55.4 32 55.4 Q44 55.4 46 47.6 Q47.4 39.6 39 33.6 Q34.6 30 34.6 24 L34.6 12.4 Q34.6 10 36.6 8.4 L38.4 6.6 Q38.4 4.6 32 4.6 Q25.6 4.6 25.6 6.6 L27.4 8.4 Q29.4 10 29.4 12.4 Z" fill="url(#jade_bottle-jade)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- inner translucency -->
+  <ellipse cx="34" cy="45" rx="8" ry="6" fill="#cfefff" opacity="0.45" filter="url(#jade_bottle-blur)"/>
+  <!-- lip -->
+  <ellipse cx="32" cy="6.4" rx="6.2" ry="1.7" fill="#e9efe6" stroke="#14101a" stroke-width="1.2"/>
+  <ellipse cx="32" cy="6.4" rx="3.6" ry="0.9" fill="#3a3f4a"/>
+  <!-- decor bands -->
+  <path d="M19.4 44 Q32 47 44.6 44" fill="none" stroke="#7fd6b5" stroke-width="0.9" opacity="0.8"/>
+  <path d="M18.6 49 Q32 52 45.4 49" fill="none" stroke="#7fd6b5" stroke-width="0.6" opacity="0.6"/>
+  <path d="M26 46.6 q3 -2.6 6 0 q3 -2.6 6 0" fill="none" stroke="#3fae8f" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>
+  <!-- highlights -->
+  <path d="M30.6 11.6 L30.6 25" stroke="#ffffff" stroke-width="1.1" stroke-linecap="round" opacity="0.9"/>
+  <path d="M22 41 Q22.6 37 27 34.6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+  <path d="M21 46 L21.2 48" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+  <path d="M43.4 46 Q42.6 51.6 36 53.4" fill="none" stroke="#5c6370" stroke-width="0.9" stroke-linecap="round" opacity="0.4"/>
+  <!-- silk ribbon -->
+  <path d="M29 15.6 Q32 17.4 35 15.6" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M29 15.6 Q32 17.4 35 15.6" fill="none" stroke="#3fae8f" stroke-width="1.8" stroke-linecap="round"/>
+  <g stroke="#1f5c4c" stroke-width="1" stroke-linejoin="round">
+    <path d="M34.4 16.4 Q40 13 43 17 Q40.6 19.6 34.4 16.4 Z" fill="#7fd6b5"/>
+    <path d="M34.6 17 Q40 22 42 30 Q44.6 31 45.4 28.6 Q42 21 35.4 16.2 Z" fill="#3fae8f"/>
+    <path d="M34.2 17 Q37 24 36.6 33 Q38.4 34.6 40 33 Q39 24 35 16.4 Z" fill="#7fd6b5"/>
+  </g>
+  <path d="M36 19 Q38.4 25 38.4 31" fill="none" stroke="#cfefff" stroke-width="0.6" opacity="0.8"/>
+  <circle cx="34.6" cy="16.4" r="1.4" fill="#7fd6b5" stroke="#1f5c4c" stroke-width="0.8"/>
+  <!-- sparkles -->
+  <g fill="#f4fbff">
+    <path d="M50 12 L50.8 15.2 L54 16 L50.8 16.8 L50 20 L49.2 16.8 L46 16 L49.2 15.2 Z"/>
+    <path d="M13 28 L13.5 30 L15.5 30.5 L13.5 31 L13 33 L12.5 31 L10.5 30.5 L12.5 30 Z" opacity="0.9"/>
+    <circle cx="16" cy="18" r="0.8" opacity="0.7"/><circle cx="52" cy="38" r="0.8" opacity="0.7"/>
+  </g>
+</svg>

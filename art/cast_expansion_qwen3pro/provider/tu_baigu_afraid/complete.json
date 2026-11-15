@@ -1,0 +1,9 @@
+{
+  "character": "tu_baigu",
+  "state": "afraid",
+  "asset_id": "tu_baigu_afraid",
+  "image_file": "provider/tu_baigu_afraid/tu_baigu_afraid.png",
+  "sha256": "1fb8ddad51b7f3b3d1cdafbbaa3fc07c91c487fc2703666f544360e9bc2f00c3",
+  "seed": 151223,
+  "model": "qwen-image-3.0-pro"
+}

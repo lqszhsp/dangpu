@@ -1,0 +1,9 @@
+{
+  "character": "shi_jianzhen",
+  "state": "angry",
+  "asset_id": "shi_jianzhen_angry",
+  "image_file": "provider/shi_jianzhen_angry/shi_jianzhen_angry.png",
+  "sha256": "dab59e92652667bed758299a7ee27f0c505f52be36cebd5e3c579fd7140ed376",
+  "seed": 151532,
+  "model": "qwen-image-3.0-pro"
+}

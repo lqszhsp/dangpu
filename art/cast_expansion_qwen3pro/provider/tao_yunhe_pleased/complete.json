@@ -1,0 +1,9 @@
+{
+  "character": "tao_yunhe",
+  "state": "pleased",
+  "asset_id": "tao_yunhe_pleased",
+  "image_file": "provider/tao_yunhe_pleased/tao_yunhe_pleased.png",
+  "sha256": "eea0319004ea1d15f8f3db7b26a13cd41b647f2ce8da4bd0826a60e80aad71ec",
+  "seed": 151471,
+  "model": "qwen-image-3.0-pro"
+}

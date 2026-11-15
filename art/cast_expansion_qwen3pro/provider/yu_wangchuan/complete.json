@@ -1,0 +1,9 @@
+{
+  "character": "yu_wangchuan",
+  "state": "neutral",
+  "asset_id": "yu_wangchuan",
+  "image_file": "provider/yu_wangchuan/yu_wangchuan.png",
+  "sha256": "b0a163311123dc24028f7f3b55cdd4879b2e68b64a938feefe286b5a11516de1",
+  "seed": 151500,
+  "model": "qwen-image-3.0-pro"
+}

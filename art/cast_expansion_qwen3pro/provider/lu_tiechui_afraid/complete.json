@@ -1,0 +1,9 @@
+{
+  "character": "lu_tiechui",
+  "state": "afraid",
+  "asset_id": "lu_tiechui_afraid",
+  "image_file": "provider/lu_tiechui_afraid/lu_tiechui_afraid.png",
+  "sha256": "31f66e95fba7225549f9b72f86204ef3fadc3d015b886ab2e12c211f2b74ae94",
+  "seed": 151013,
+  "model": "qwen-image-3.0-pro"
+}

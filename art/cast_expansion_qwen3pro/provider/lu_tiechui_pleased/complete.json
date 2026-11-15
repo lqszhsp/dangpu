@@ -1,0 +1,9 @@
+{
+  "character": "lu_tiechui",
+  "state": "pleased",
+  "asset_id": "lu_tiechui_pleased",
+  "image_file": "provider/lu_tiechui_pleased/lu_tiechui_pleased.png",
+  "sha256": "a6ee78358b5452d09f0e7cb38ab9df708ef8cf7a95b04a0b14a13e482f33785e",
+  "seed": 151011,
+  "model": "qwen-image-3.0-pro"
+}

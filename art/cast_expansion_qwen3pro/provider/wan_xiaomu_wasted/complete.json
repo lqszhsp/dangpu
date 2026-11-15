@@ -1,0 +1,9 @@
+{
+  "character": "wan_xiaomu",
+  "state": "wasted",
+  "asset_id": "wan_xiaomu_wasted",
+  "image_file": "provider/wan_xiaomu_wasted/wan_xiaomu_wasted.png",
+  "sha256": "69a30536bf38c609b2ea7dd5d5875d5e365ec0fef24abc70dfd2b67b898b0723",
+  "seed": 151265,
+  "model": "qwen-image-3.0-pro"
+}

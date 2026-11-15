@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ic_merit-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.45" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#8a5a1c"/>
+    </linearGradient>
+    <linearGradient id="ic_merit-ribbon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5e0f1c"/>
+      <stop offset="0.5" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#8e1b2b"/>
+    </linearGradient>
+    <radialGradient id="ic_merit-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f2d27a" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#d9a441" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="24" r="28" fill="url(#ic_merit-glow)"/>
+  <!-- ribbons -->
+  <g stroke="#14101a" stroke-width="2.2" stroke-linejoin="round">
+    <path d="M20 34 L12 59 L18.5 55.5 L22 61 L29 38 Z" fill="url(#ic_merit-ribbon)"/>
+    <path d="M44 34 L52 59 L45.5 55.5 L42 61 L35 38 Z" fill="url(#ic_merit-ribbon)"/>
+  </g>
+  <path d="M19 42 L16 52 M45 42 L48 52" fill="none" stroke="#e0524a" stroke-width="1.4" stroke-linecap="round" opacity="0.8"/>
+  <!-- medal -->
+  <circle cx="32" cy="25" r="21" fill="url(#ic_merit-gold)" stroke="#14101a" stroke-width="2.8"/>
+  <circle cx="32" cy="25" r="16" fill="#8a5a1c" stroke="#14101a" stroke-width="1.6"/>
+  <circle cx="32" cy="25" r="14.5" fill="url(#ic_merit-gold)"/>
+  <!-- notched rim -->
+  <g fill="#14101a" opacity="0.55">
+    <circle cx="32" cy="6.5" r="1.1"/><circle cx="32" cy="43.5" r="1.1"/><circle cx="13.5" cy="25" r="1.1"/><circle cx="50.5" cy="25" r="1.1"/>
+    <circle cx="19" cy="12" r="1.1"/><circle cx="45" cy="12" r="1.1"/><circle cx="19" cy="38" r="1.1"/><circle cx="45" cy="38" r="1.1"/>
+  </g>
+  <!-- star / merit emblem -->
+  <path d="M32 13 L35.2 21.4 L44 21.6 L37 27 L39.6 35.6 L32 30.6 L24.4 35.6 L27 27 L20 21.6 L28.8 21.4 Z" fill="#c43a3a" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M32 17 L33.6 22.6 L32 28 Z" fill="#e0524a"/>
+  <circle cx="32" cy="25" r="2.4" fill="#f2d27a" stroke="#14101a" stroke-width="1"/>
+  <!-- highlight -->
+  <path d="M15.5 18 Q19 9 28 6.5" fill="none" stroke="#efe2c4" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "character": "bai_chuandeng",
+  "state": "sly",
+  "asset_id": "bai_chuandeng_sly",
+  "image_file": "provider/bai_chuandeng_sly/bai_chuandeng_sly.png",
+  "sha256": "9b130e8abf3bf2274d4b5e2460183644c0da3bc1c632c507c49f60221ca72fa1",
+  "seed": 151484,
+  "model": "qwen-image-3.0-pro"
+}

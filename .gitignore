@@ -1,0 +1,10 @@
+# art/ 是出图的工作目录（原图、修图、实验），只在本地：图片可由 tools/art 重新生成，不进仓库
+# 清单、名册、脚本、说明照收——tools/ 要读 art/manifest.json 与 art/cast_expansion_qwen3pro/roster.json
+art/**/*.png
+art/**/*.jpg
+art/**/*.webp
+art/**/*.log
+
+__pycache__/
+*.pyc
+.DS_Store

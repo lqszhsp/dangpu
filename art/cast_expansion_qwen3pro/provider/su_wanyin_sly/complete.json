@@ -1,0 +1,9 @@
+{
+  "character": "su_wanyin",
+  "state": "sly",
+  "asset_id": "su_wanyin_sly",
+  "image_file": "provider/su_wanyin_sly/su_wanyin_sly.png",
+  "sha256": "07497ba950dad65104b5313deb410c4a97c13afb9e6b241ef355061afd1dc0dd",
+  "seed": 151324,
+  "model": "qwen-image-3.0-pro"
+}

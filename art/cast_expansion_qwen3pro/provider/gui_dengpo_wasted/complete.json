@@ -1,0 +1,9 @@
+{
+  "character": "gui_dengpo",
+  "state": "wasted",
+  "asset_id": "gui_dengpo_wasted",
+  "image_file": "provider/gui_dengpo_wasted/gui_dengpo_wasted.png",
+  "sha256": "144174ddfe915b66b9da0fef7478b0733bb70352d9096277db5e27880c3f6fab",
+  "seed": 151305,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,7 @@
+{
+  "asset_id": "exp_zhaowei_sly",
+  "image_file": "provider/exp_zhaowei_sly/exp_zhaowei_sly.png",
+  "model": "qwen-image-3.0-pro",
+  "seed": 115024,
+  "sha256": "4adc9183d72828412137f2be15c5bd7882568eca3a174863b3f34a6937145405"
+}

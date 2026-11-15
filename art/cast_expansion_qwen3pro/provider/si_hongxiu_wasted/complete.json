@@ -1,0 +1,9 @@
+{
+  "character": "si_hongxiu",
+  "state": "wasted",
+  "asset_id": "si_hongxiu_wasted",
+  "image_file": "provider/si_hongxiu_wasted/si_hongxiu_wasted.png",
+  "sha256": "7c54ab74ae71a6049eb0092966585cc0c2e20c0f74f0e53334aff51bf4f0e5d4",
+  "seed": 151245,
+  "model": "qwen-image-3.0-pro"
+}

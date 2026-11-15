@@ -1,0 +1,9 @@
+{
+  "character": "yuanxing",
+  "state": "wasted",
+  "asset_id": "yuanxing_wasted",
+  "image_file": "provider/yuanxing_wasted/yuanxing_wasted.png",
+  "sha256": "64bddb6b39bc88bb6e965856f9935ddea03afb60216036675ff3a40e8a11131c",
+  "seed": 151545,
+  "model": "qwen-image-3.0-pro"
+}

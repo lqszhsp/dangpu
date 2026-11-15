@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-15",
+  "model": "qwen-image-3.0",
+  "status": "blocked_model_unavailable_for_current_credentials",
+  "isolated_test": true,
+  "production_integrated": false,
+  "planned_characters": 2,
+  "planned_images": 8,
+  "successfully_generated_images": 0,
+  "blocker": "Current Token Plan endpoint returns HTTP 404 Model not exist for qwen-image-3.0 in both image.edit and image.generate.",
+  "required_to_continue": "An ordinary Bailian API Key authorized for qwen-image-3.0, configured outside the project.",
+  "credential_or_global_config_changes": false
+}

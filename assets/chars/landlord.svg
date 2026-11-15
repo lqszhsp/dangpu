@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<defs>
+<linearGradient id="landlord-robe" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#1f1626"/><stop offset="0.3" stop-color="#3d2350"/><stop offset="0.55" stop-color="#5b3474"/><stop offset="0.75" stop-color="#3d2350"/><stop offset="1" stop-color="#1f1626"/>
+</linearGradient>
+<linearGradient id="landlord-shade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#14101a" stop-opacity="0"/><stop offset="0.5" stop-color="#14101a" stop-opacity="0.12"/><stop offset="1" stop-color="#14101a" stop-opacity="0.6"/>
+</linearGradient>
+<radialGradient id="landlord-skin" cx="0.45" cy="0.42" r="0.7">
+<stop offset="0" stop-color="#f6e2c6"/><stop offset="0.6" stop-color="#e6c296"/><stop offset="1" stop-color="#b4845a"/>
+</radialGradient>
+<linearGradient id="landlord-gold" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#f2d27a"/><stop offset="0.5" stop-color="#d9a441"/><stop offset="1" stop-color="#8a5a1c"/>
+</linearGradient>
+<linearGradient id="landlord-hair" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#3a3044"/><stop offset="0.6" stop-color="#1f1626"/><stop offset="1" stop-color="#14101a"/>
+</linearGradient>
+<radialGradient id="landlord-token" cx="0.4" cy="0.35" r="0.7">
+<stop offset="0" stop-color="#e0524a"/><stop offset="0.5" stop-color="#8e1b2b"/><stop offset="1" stop-color="#5e0f1c"/>
+</radialGradient>
+<filter id="landlord-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+</defs>
+
+<ellipse cx="200" cy="270" rx="175" ry="160" fill="#5b3474" opacity="0.25" filter="url(#landlord-glow)"/>
+
+<!-- 身体 锦袍 -->
+<path d="M164,240 C128,248 86,256 64,282 C42,308 32,360 28,480 L372,480 C368,360 358,308 336,282 C314,256 272,248 236,240 Z" fill="url(#landlord-robe)" stroke="#14101a" stroke-width="2.6" stroke-linejoin="round"/>
+<path d="M164,240 C128,248 86,256 64,282 C42,308 32,360 28,480 L372,480 C368,360 358,308 336,282 C314,256 272,248 236,240 Z" fill="url(#landlord-shade)"/>
+<path d="M76,280 C100,262 132,252 160,246 C136,262 106,274 88,298 Z M324,280 C300,262 268,252 240,246 C264,262 294,274 312,298 Z" fill="#8a5aa8" opacity="0.35"/>
+<!-- 锦纹（团纹） -->
+<g fill="none" stroke="#d9a441" stroke-width="1.2" opacity="0.55">
+<circle cx="110" cy="300" r="9"/><path d="M104,300 Q110,292 116,300 Q110,308 104,300 Z"/>
+<circle cx="290" cy="300" r="9"/><path d="M284,300 Q290,292 296,300 Q290,308 284,300 Z"/>
+<circle cx="250" cy="340" r="8"/><path d="M245,340 Q250,333 255,340 Q250,347 245,340 Z"/>
+<circle cx="150" cy="344" r="8"/><path d="M145,344 Q150,337 155,344 Q150,351 145,344 Z"/>
+</g>
+<!-- 交领金边 -->
+<path d="M174,240 L226,240 L202,296 Z" fill="#14101a" stroke="#14101a" stroke-width="1.4"/>
+<path d="M180,240 L220,240 L202,284 Z" fill="#2a1838"/>
+<path d="M164,240 L180,240 L208,298 L198,308 Z" fill="url(#landlord-gold)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M220,240 L238,240 C222,284 192,330 164,366 L150,356 C178,320 204,280 220,240 Z" fill="url(#landlord-gold)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M226,246 C210,286 184,324 158,358" fill="none" stroke="#8a5a1c" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+<!-- 腰带与令牌 -->
+<path d="M84,318 Q200,336 316,318 L318,340 Q200,360 82,340 Z" fill="#14101a" stroke="#000000" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M86,326 Q200,344 314,326" fill="none" stroke="#d9a441" stroke-width="1.5"/>
+<rect x="190" y="324" width="20" height="22" rx="3" fill="url(#landlord-gold)" stroke="#14101a" stroke-width="1.5"/>
+<path d="M200,346 L200,352" stroke="#c43a3a" stroke-width="2"/>
+<ellipse cx="200" cy="364" rx="30" ry="22" fill="#c43a3a" opacity="0.55" filter="url(#landlord-glow)"/>
+<g stroke="#14101a" stroke-width="2" stroke-linejoin="round">
+<path d="M186,352 L214,352 L220,362 L214,384 L186,384 L180,362 Z" fill="url(#landlord-token)"/>
+<path d="M190,356 L210,356 L214,363 L210,380 L190,380 L186,363 Z" fill="none" stroke="#d9a441" stroke-width="1.2"/>
+</g>
+<path d="M194,362 L206,362 M200,360 L200,377 M194,370 Q200,366 206,370 M193,377 L207,377" stroke="#f2d27a" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+<path d="M188,354 L194,354" stroke="#ffffff" stroke-width="1.4" opacity="0.6" stroke-linecap="round"/>
+
+<!-- 左袖（持账册） -->
+<path d="M64,282 C42,316 36,370 48,404 C58,426 86,424 102,406 L150,330 L132,300 C116,318 102,336 92,350 C90,326 92,304 98,290 Z" fill="url(#landlord-robe)" stroke="#14101a" stroke-width="2.3" stroke-linejoin="round"/>
+<path d="M60,330 C58,362 62,390 74,406" fill="none" stroke="#14101a" stroke-width="1.4" opacity="0.5"/>
+<path d="M128,298 L154,334 L144,342 L120,308 Z" fill="url(#landlord-gold)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<!-- 账册 -->
+<g stroke="#14101a" stroke-linejoin="round">
+<path d="M96,262 L160,248 L174,322 L110,336 Z" fill="#1f2a3a" stroke-width="2.2"/>
+<path d="M100,264 L104,286 M104,284 L108,306 M108,304 L112,326" stroke="#efe2c4" stroke-width="1.2" opacity="0.8"/>
+<path d="M130,262 L148,258 L158,306 L140,310 Z" fill="#efe2c4" stroke-width="1.4"/>
+<path d="M139,268 L145,267 M137,274 L148,272 M143,272 L146,288 M138,284 L150,281 M141,292 L152,290 M146,290 L148,302" stroke="#14101a" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M160,248 L163,250 L177,324 L174,322" fill="#efe2c4" stroke-width="1.2"/>
+</g>
+<!-- 左手 -->
+<path d="M150,300 C142,296 134,302 134,312 C134,324 142,332 152,330 C160,328 164,320 162,310 C160,304 156,300 150,300 Z" fill="url(#landlord-skin)" stroke="#14101a" stroke-width="1.8"/>
+<path d="M140,310 Q148,308 156,312 M140,318 Q148,316 158,320" fill="none" stroke="#a87a54" stroke-width="1.1"/>
+<path d="M150,312 L158,314 L157,319 L149,317 Z" fill="url(#landlord-gold)" stroke="#14101a" stroke-width="1"/>
+
+<!-- 右袖（持金算盘） -->
+<path d="M336,282 C358,316 364,370 352,404 C342,426 314,424 298,406 L254,330 L272,300 C288,318 300,336 308,350 C310,326 308,304 302,290 Z" fill="url(#landlord-robe)" stroke="#14101a" stroke-width="2.3" stroke-linejoin="round"/>
+<path d="M340,330 C342,362 338,390 326,406" fill="none" stroke="#14101a" stroke-width="1.4" opacity="0.5"/>
+<path d="M272,298 L248,334 L258,342 L280,308 Z" fill="url(#landlord-gold)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<!-- 金算盘 -->
+<g stroke-linejoin="round">
+<path d="M222,268 L330,252 L336,292 L228,308 Z" fill="url(#landlord-gold)" stroke="#14101a" stroke-width="2.2"/>
+<path d="M229,273 L325,259 L329,287 L233,301 Z" fill="#2a1838" stroke="#14101a" stroke-width="1"/>
+<path d="M230,280 L326,266" stroke="#d9a441" stroke-width="2.5"/>
+<path d="M240,271 L244,299 M252,269 L256,297 M264,267 L268,296 M276,266 L280,294 M288,264 L292,292 M300,262 L304,290 M312,260 L316,288" stroke="#8a5a1c" stroke-width="1"/>
+<g fill="url(#landlord-gold)" stroke="#14101a" stroke-width="0.7">
+<ellipse cx="240.5" cy="274" rx="4.5" ry="2.4"/><ellipse cx="252.5" cy="276" rx="4.5" ry="2.4"/><ellipse cx="264.5" cy="270" rx="4.5" ry="2.4"/><ellipse cx="276.5" cy="273" rx="4.5" ry="2.4"/><ellipse cx="288.5" cy="267" rx="4.5" ry="2.4"/><ellipse cx="300.5" cy="269" rx="4.5" ry="2.4"/><ellipse cx="312.5" cy="263" rx="4.5" ry="2.4"/>
+<ellipse cx="242" cy="285" rx="4.5" ry="2.4"/><ellipse cx="242.5" cy="290" rx="4.5" ry="2.4"/><ellipse cx="243.5" cy="296" rx="4.5" ry="2.4"/>
+<ellipse cx="254" cy="288" rx="4.5" ry="2.4"/><ellipse cx="254.5" cy="293" rx="4.5" ry="2.4"/>
+<ellipse cx="266" cy="281" rx="4.5" ry="2.4"/><ellipse cx="267" cy="288" rx="4.5" ry="2.4"/><ellipse cx="267.5" cy="293" rx="4.5" ry="2.4"/>
+<ellipse cx="278" cy="284" rx="4.5" ry="2.4"/><ellipse cx="279" cy="290" rx="4.5" ry="2.4"/>
+<ellipse cx="290" cy="277" rx="4.5" ry="2.4"/><ellipse cx="291" cy="283" rx="4.5" ry="2.4"/><ellipse cx="291.5" cy="288" rx="4.5" ry="2.4"/>
+<ellipse cx="302" cy="280" rx="4.5" ry="2.4"/><ellipse cx="303" cy="286" rx="4.5" ry="2.4"/>
+<ellipse cx="314" cy="273" rx="4.5" ry="2.4"/><ellipse cx="315" cy="279" rx="4.5" ry="2.4"/><ellipse cx="315.5" cy="284" rx="4.5" ry="2.4"/>
+</g>
+<path d="M226,270 L328,255" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+</g>
+<!-- 右手 -->
+<path d="M252,296 C244,294 236,300 236,310 C236,322 244,330 254,328 C262,326 266,318 264,308 C262,300 258,296 252,296 Z" fill="url(#landlord-skin)" stroke="#14101a" stroke-width="1.8"/>
+<path d="M242,306 Q250,304 258,308 M242,314 Q250,312 260,316" fill="none" stroke="#a87a54" stroke-width="1.1"/>
+<path d="M246,293 C242,286 246,280 252,282 C256,284 256,290 254,296" fill="url(#landlord-skin)" stroke="#14101a" stroke-width="1.6"/>
+<path d="M244,318 L252,320 L251,325 L243,323 Z" fill="#c43a3a" stroke="#14101a" stroke-width="1"/>
+
+<!-- 颈与双下巴 -->
+<path d="M174,206 L172,248 Q200,262 228,248 L226,206 Z" fill="#d8b08a" stroke="#14101a" stroke-width="1.6"/>
+<path d="M172,226 Q200,248 228,226 L228,240 Q200,256 172,240 Z" fill="#8a5a1c" opacity="0.35"/>
+
+<!-- 耳 -->
+<path d="M150,148 C136,142 134,170 142,182 C146,188 152,186 153,180 Z" fill="url(#landlord-skin)" stroke="#14101a" stroke-width="1.8"/>
+<path d="M250,148 C264,142 266,170 258,182 C254,188 248,186 247,180 Z" fill="url(#landlord-skin)" stroke="#14101a" stroke-width="1.8"/>
+<path d="M146,154 C142,162 143,172 147,178 M254,154 C258,162 257,172 253,178" fill="none" stroke="#a87a54" stroke-width="1.2"/>
+
+<!-- 脸 圆胖 -->
+<path d="M150,128 C150,96 172,82 200,82 C228,82 250,96 250,128 L254,164 C256,198 236,224 200,230 C164,224 144,198 146,164 Z" fill="url(#landlord-skin)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M236,128 C252,152 252,192 232,214 C242,192 244,158 236,128 Z" fill="#b4845a" opacity="0.35"/>
+<path d="M176,222 Q200,232 224,222" fill="none" stroke="#a87a54" stroke-width="1.5" opacity="0.7"/>
+<ellipse cx="168" cy="182" rx="13" ry="8" fill="#e0524a" opacity="0.22"/>
+<ellipse cx="232" cy="182" rx="13" ry="8" fill="#e0524a" opacity="0.22"/>
+<path d="M162,172 Q168,166 176,168 M238,172 Q232,166 224,168" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+
+<!-- 头发（油亮后梳） -->
+<path d="M146,146 C138,106 160,72 200,70 C240,72 262,106 254,146 C250,124 244,108 232,100 C214,94 186,94 168,100 C156,108 150,124 146,146 Z" fill="url(#landlord-hair)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M168,98 C176,86 188,80 200,78 M232,98 C224,86 212,80 200,78 M184,96 C188,86 194,82 200,80 M216,96 C212,86 206,82 200,80" fill="none" stroke="#5c5470" stroke-width="1.3"/>
+<path d="M164,88 C176,78 190,74 204,74" fill="none" stroke="#9a8ab0" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+<path d="M148,132 C146,140 147,150 150,156 M252,132 C254,140 253,150 250,156" fill="none" stroke="#9aa0aa" stroke-width="2.2" stroke-linecap="round"/>
+<!-- 金冠 -->
+<path d="M180,74 L184,50 L192,58 L200,44 L208,58 L216,50 L220,74 Z" fill="url(#landlord-gold)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M182,68 L218,68" stroke="#8a5a1c" stroke-width="1.5"/>
+<circle cx="200" cy="62" r="4" fill="#c43a3a" stroke="#14101a" stroke-width="1.2"/>
+<circle cx="199" cy="61" r="1.2" fill="#f4fbff"/>
+<path d="M166,72 L234,64" stroke="#14101a" stroke-width="5" stroke-linecap="round"/>
+<path d="M166,72 L234,64" stroke="#d9a441" stroke-width="2.6" stroke-linecap="round"/>
+
+<!-- 眉 -->
+<path d="M158,136 Q172,126 190,132 L189,136 Q172,132 160,140 Z" fill="#1f1626" stroke="#14101a" stroke-width="1" stroke-linejoin="round"/>
+<path d="M242,136 Q228,126 210,132 L211,136 Q228,132 240,140 Z" fill="#1f1626" stroke="#14101a" stroke-width="1" stroke-linejoin="round"/>
+
+<!-- 眼 眯眼笑 藏锋 -->
+<path d="M162,155 Q176,144 192,153 Q177,151 162,155 Z" fill="#14101a"/>
+<path d="M170,152.5 Q177,150 184,151.5" fill="none" stroke="#c43a3a" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="181" cy="151" r="1" fill="#f2d27a"/>
+<path d="M160,156 Q176,142 194,153" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M166,160 Q177,163 188,159" fill="none" stroke="#a87a54" stroke-width="1.2"/>
+<path d="M238,155 Q224,144 208,153 Q223,151 238,155 Z" fill="#14101a"/>
+<path d="M230,152.5 Q223,150 216,151.5" fill="none" stroke="#c43a3a" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="219" cy="151" r="1" fill="#f2d27a"/>
+<path d="M240,156 Q224,142 206,153" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M234,160 Q223,163 212,159" fill="none" stroke="#a87a54" stroke-width="1.2"/>
+<path d="M194,150 L199,152 M156,154 L151,152" stroke="#a87a54" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+<!-- 鼻 -->
+<path d="M200,158 C200,168 198,176 194,182 C192,188 198,192 202,190 C206,192 212,188 208,182" fill="none" stroke="#a87a54" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M194,186 Q200,190 206,186" fill="none" stroke="#14101a" stroke-width="1.4" stroke-linecap="round"/>
+<ellipse cx="201" cy="182" rx="4" ry="3" fill="#ffffff" opacity="0.35"/>
+
+<!-- 嘴 -->
+<path d="M180,206 Q200,218 222,204" fill="none" stroke="#5e0f1c" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M222,204 L226,200" stroke="#5e0f1c" stroke-width="2" stroke-linecap="round"/>
+<path d="M190,212 Q200,216 210,212" fill="none" stroke="#c43a3a" stroke-width="1.5" opacity="0.6"/>
+
+<!-- 八字胡 -->
+<path d="M199,194 C188,192 174,196 164,214 C162,220 166,222 168,216 C176,204 188,200 199,199 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M201,194 C212,192 226,196 236,214 C238,220 234,222 232,216 C224,204 212,200 201,199 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M190,196 C182,198 176,202 172,208 M210,196 C218,198 224,202 228,208" fill="none" stroke="#5c5470" stroke-width="1"/>
+<path d="M196,220 L200,228 L204,220 Z" fill="#1f1626" stroke="#14101a" stroke-width="1"/>
+</svg>

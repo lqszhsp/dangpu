@@ -1,0 +1,9 @@
+{
+  "character": "zhu_shanye",
+  "state": "thrall",
+  "asset_id": "zhu_shanye_thrall",
+  "image_file": "provider/zhu_shanye_thrall/zhu_shanye_thrall.png",
+  "sha256": "71acf0d18dc5398fd986335efea4b61bc3c3d15c0694603d544e5c613462914b",
+  "seed": 151156,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "lin_shoujuan",
+  "state": "wasted",
+  "asset_id": "lin_shoujuan_wasted",
+  "image_file": "provider/lin_shoujuan_wasted/lin_shoujuan_wasted.png",
+  "sha256": "7523b43e4d464be9d80745ab93d76750701a931c21fc705f230acce29e5473ba",
+  "seed": 151455,
+  "model": "qwen-image-3.0-pro"
+}

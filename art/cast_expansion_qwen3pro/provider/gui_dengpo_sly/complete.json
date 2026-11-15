@@ -1,0 +1,9 @@
+{
+  "character": "gui_dengpo",
+  "state": "sly",
+  "asset_id": "gui_dengpo_sly",
+  "image_file": "provider/gui_dengpo_sly/gui_dengpo_sly.png",
+  "sha256": "113d6715455649e21585c6b5e6ad3bac118382b46b40f0168d332cdd326db72c",
+  "seed": 151304,
+  "model": "qwen-image-3.0-pro"
+}

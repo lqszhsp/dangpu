@@ -1,0 +1,9 @@
+{
+  "character": "lang_xiaoshan",
+  "state": "sly",
+  "asset_id": "lang_xiaoshan_sly",
+  "image_file": "provider/lang_xiaoshan_sly/lang_xiaoshan_sly.png",
+  "sha256": "d7958fd6ab52317348acb1408b5290d52bdb5fb734b06fcaac724df843d8868c",
+  "seed": 151164,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "zhu_shanye",
+  "state": "wasted",
+  "asset_id": "zhu_shanye_wasted",
+  "image_file": "provider/zhu_shanye_wasted/zhu_shanye_wasted.png",
+  "sha256": "4481e9550be2d72258ed5ddffb884c8289a82233cdfd0acd463102e3bfd5cc95",
+  "seed": 151155,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "lang_xiaoshan",
+  "state": "wasted",
+  "asset_id": "lang_xiaoshan_wasted",
+  "image_file": "provider/lang_xiaoshan_wasted/lang_xiaoshan_wasted.png",
+  "sha256": "16e703223adadfe270978f55de042f2e1b91626dbb4bfd232474c236523b73d4",
+  "seed": 151165,
+  "model": "qwen-image-3.0-pro"
+}

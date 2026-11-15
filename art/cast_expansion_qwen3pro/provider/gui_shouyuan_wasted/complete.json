@@ -1,0 +1,9 @@
+{
+  "character": "gui_shouyuan",
+  "state": "wasted",
+  "asset_id": "gui_shouyuan_wasted",
+  "image_file": "provider/gui_shouyuan_wasted/gui_shouyuan_wasted.png",
+  "sha256": "34c0a4db26b377cd4b3b090ca18e5870ec899526ef4a271e210aa6db6e40b6e4",
+  "seed": 151195,
+  "model": "qwen-image-3.0-pro"
+}

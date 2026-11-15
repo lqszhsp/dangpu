@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128">
+  <defs>
+    <linearGradient id="corpse-mat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6e4a1e"/>
+      <stop offset="0.3" stop-color="#d8c49a"/>
+      <stop offset="0.6" stop-color="#b8975c"/>
+      <stop offset="1" stop-color="#5a3c18"/>
+    </linearGradient>
+    <linearGradient id="corpse-skin" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3a3f4a"/>
+      <stop offset="0.45" stop-color="#9aa88a"/>
+      <stop offset="1" stop-color="#5c6370"/>
+    </linearGradient>
+    <linearGradient id="corpse-paper" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d9a441"/>
+      <stop offset="0.5" stop-color="#f2d27a"/>
+      <stop offset="1" stop-color="#d9a441"/>
+    </linearGradient>
+    <linearGradient id="corpse-rope" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8c49a"/>
+      <stop offset="1" stop-color="#8a5a1c"/>
+    </linearGradient>
+    <clipPath id="corpse-clip"><path d="M20 14 Q32 4 44 14 Q47.5 20 46.5 27 Q50.5 33 50.5 41 L49 84 Q48.5 86 48 88 Q49.5 97 47 102 Q44 106 32 106 Q20 106 17 102 Q14.5 97 16 88 Q15.5 86 15 84 L13.5 41 Q13.5 33 17.5 27 Q16.5 20 20 14 Z"/></clipPath>
+  </defs>
+  <!-- shadow -->
+  <ellipse cx="34" cy="120" rx="22" ry="4.5" fill="#14101a" opacity="0.45"/>
+  <rect x="17" y="14" width="36" height="96" rx="14" fill="#14101a" opacity="0.3"/>
+  <!-- feet sticking out bottom -->
+  <g stroke="#14101a" stroke-width="1.6" stroke-linejoin="round" fill="url(#corpse-skin)">
+    <path d="M21 102 L21.5 112 Q19.5 118 21 121 Q24 123.5 27.5 121.5 Q30 119 29.5 113 L30 102 Z"/>
+    <path d="M34 102 L34.5 113 Q34 119 36.5 121.5 Q40 123.5 43 121 Q44.5 118 42.5 112 L43 102 Z"/>
+  </g>
+  <g fill="none" stroke="#3a3f4a" stroke-width="0.8" stroke-linecap="round">
+    <path d="M22.5 120 v1.4 M24.6 121 v1.4 M26.7 120.6 v1.2 M37.3 120.6 v1.2 M39.4 121 v1.4 M41.5 120 v1.4"/>
+  </g>
+  <path d="M23.5 106 Q23 112 22.6 116 M36.3 106 Q36 112 36.2 116" fill="none" stroke="#cfefff" stroke-width="0.9" stroke-linecap="round" opacity="0.5"/>
+  <!-- straw mat roll -->
+  <path d="M20 14 Q32 4 44 14 Q47.5 20 46.5 27 Q50.5 33 50.5 41 L49 84 Q48.5 86 48 88 Q49.5 97 47 102 Q44 106 32 106 Q20 106 17 102 Q14.5 97 16 88 Q15.5 86 15 84 L13.5 41 Q13.5 33 17.5 27 Q16.5 20 20 14 Z" fill="url(#corpse-mat)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- top opening -->
+  <path d="M22 15 Q32 19.5 42 15 Q39 10.5 32 10.5 Q25 10.5 22 15 Z" fill="#1f1626"/>
+  <path d="M24.5 14 Q28 12.5 32 15 Q36 12.5 39.5 14.5" fill="none" stroke="#3d2350" stroke-width="1" stroke-linecap="round"/>
+  <!-- weave texture -->
+  <g clip-path="url(#corpse-clip)">
+  <g fill="none" stroke="#8a5a1c" stroke-width="0.8" opacity="0.75">
+    <path d="M16 28 Q32 31 48 28 M16 36 Q32 39 48 36 M16 44 Q32 47 48 44 M16 52 Q32 55 48 52 M16 60 Q32 63 48.5 60 M16 68 Q32 71 48.5 68 M15.5 76 Q32 79 49 76 M15.5 84 Q32 87 49 84 M15 92 Q32 95 49.5 92 M17 100 Q32 103 47.5 100"/>
+  </g>
+  <g fill="none" stroke="#5a3c18" stroke-width="0.7" opacity="0.5">
+    <path d="M21 16 L20 104 M26 14 L25.5 105 M38 14 L38.5 105 M43 16 L44 104"/>
+  </g>
+  </g>
+  <!-- mat seam overlap -->
+  <path d="M44 16 Q46 50 44.5 103" fill="none" stroke="#14101a" stroke-width="1.4" opacity="0.6"/>
+  <path d="M19 24 Q17.5 55 19 98" fill="none" stroke="#f4e6c4" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+  <!-- ropes -->
+  <g stroke="#14101a" stroke-width="1.4" stroke-linejoin="round" fill="url(#corpse-rope)">
+    <path d="M16.5 25 Q32 29.5 47.5 25 L47.5 29.5 Q32 34 16.5 29.5 Z"/>
+    <path d="M14.5 84 Q32 89 49.5 84 L49.5 88.5 Q32 93.5 14.5 88.5 Z"/>
+  </g>
+  <g fill="none" stroke="#5a3c18" stroke-width="0.8">
+    <path d="M20 28 l2 -2.4 M25 29.3 l2 -2.4 M30 30 l2 -2.4 M35 30 l2 -2.4 M40 29.3 l2 -2.4"/>
+    <path d="M19 87 l2 -2.4 M24 88.3 l2 -2.4 M29 89 l2 -2.4 M34 89 l2 -2.4 M39 88.3 l2 -2.4 M44 87.3 l2 -2.4"/>
+  </g>
+  <!-- rope knot & tails -->
+  <path d="M47 89.5 Q53 94 51 101 M48 90 Q55 92 56 98" fill="none" stroke="#8a5a1c" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="47.5" cy="88" r="2.4" fill="#b8975c" stroke="#14101a" stroke-width="1.1"/>
+  <!-- hair spilling out of the mat -->
+  <path d="M24 13 Q31 10 40 13 Q41 17 37 18 Q34 21 33 25 Q30 22 27 24 Q25 20 21 22 Q20 17 24 13 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 16 Q16 18 13 25 Q11 30 7.5 32 M23 18 Q18 24 16 31 Q14.5 36 10.5 39 M26 12 Q20 8 14 11.5 M31 10.5 Q30 5 25 3 M36 11 Q40 6 44.5 6.5 M33 24 Q32.5 30 30 34" stroke="#14101a" stroke-width="2.4"/>
+    <path d="M22 16 Q16 18 13 25 Q11 30 7.5 32 M23 18 Q18 24 16 31 Q14.5 36 10.5 39 M31 10.5 Q30 5 25 3 M36 11 Q40 6 44.5 6.5" stroke="#5c6370" stroke-width="0.8"/>
+    <path d="M27 14 Q30 15.5 33 14.5 M28 18 Q29 20 28 22" stroke="#5c6370" stroke-width="0.8"/>
+  </g>
+  <!-- town-corpse talisman -->
+  <path d="M24.5 38 L40.5 37 L41.5 78 L36 75.5 L33 79 L29.5 76 L25 78.5 Z" fill="#14101a" opacity="0.3" transform="translate(1.2 1.2)"/>
+  <path d="M24.5 38 L40.5 37 L41.5 78 L36 75.5 L33 79 L29.5 76 L25 78.5 Z" fill="url(#corpse-paper)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M26 40 L39.2 39.2 L40 75 L26.4 75.8 Z" fill="none" stroke="#c43a3a" stroke-width="0.8"/>
+  <g fill="none" stroke="#c43a3a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M29 43.5 L36.5 43 M32.8 41.5 L33 47.5"/>
+    <path d="M29.5 49.5 Q33 47.5 36.5 50 Q33 53 29.5 51.5"/>
+    <path d="M33 53 L33.2 70 M29.5 57 L36.8 56.5 M30 62 Q33 60 36.5 62.5 M29.8 66.5 L36.8 66"/>
+    <path d="M31 70 Q33 73.5 35.5 70"/>
+  </g>
+  <circle cx="33" cy="58.8" r="0.9" fill="#8e1b2b"/>
+</svg>

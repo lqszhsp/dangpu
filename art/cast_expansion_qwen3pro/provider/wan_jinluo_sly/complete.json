@@ -1,0 +1,9 @@
+{
+  "character": "wan_jinluo",
+  "state": "sly",
+  "asset_id": "wan_jinluo_sly",
+  "image_file": "provider/wan_jinluo_sly/wan_jinluo_sly.png",
+  "sha256": "e452a727b0da92dd4121796b1d272166b3a2a5feed5b14a45ea9553b3aca6240",
+  "seed": 151254,
+  "model": "qwen-image-3.0-pro"
+}

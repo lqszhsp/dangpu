@@ -1,0 +1,9 @@
+{
+  "character": "li_duangang",
+  "state": "thrall",
+  "asset_id": "li_duangang_thrall",
+  "image_file": "provider/li_duangang_thrall/li_duangang_thrall.png",
+  "sha256": "f56075eac80c1f0b6fbde6aeea835c0167af6dc8c56b62011fb089d3b5592823",
+  "seed": 151216,
+  "model": "qwen-image-3.0-pro"
+}

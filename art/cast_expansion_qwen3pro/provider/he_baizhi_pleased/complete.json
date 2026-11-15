@@ -1,0 +1,9 @@
+{
+  "character": "he_baizhi",
+  "state": "pleased",
+  "asset_id": "he_baizhi_pleased",
+  "image_file": "provider/he_baizhi_pleased/he_baizhi_pleased.png",
+  "sha256": "44d0ffb8a2ce66efcc8f8ed6d0d69d66643e2db8c281e6efc0eb1e0dc868ec42",
+  "seed": 151201,
+  "model": "qwen-image-3.0-pro"
+}

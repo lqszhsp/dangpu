@@ -1,0 +1,9 @@
+{
+  "character": "zhao_fengchen",
+  "state": "afraid",
+  "asset_id": "zhao_fengchen_afraid",
+  "image_file": "provider/zhao_fengchen_afraid/zhao_fengchen_afraid.png",
+  "sha256": "8944325daaecef2b3c1d8a251ddd1708e301a873a920c167650fc5ccbe539f94",
+  "seed": 151023,
+  "model": "qwen-image-3.0-pro"
+}

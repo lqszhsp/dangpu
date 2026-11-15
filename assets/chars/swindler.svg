@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<defs>
+<linearGradient id="swindler-robe" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#8fa4b0"/><stop offset="0.3" stop-color="#e6f0f2"/><stop offset="0.6" stop-color="#f4fbff"/><stop offset="1" stop-color="#7f94a0"/>
+</linearGradient>
+<linearGradient id="swindler-vest" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#3f8a76"/><stop offset="0.35" stop-color="#9fd6c2"/><stop offset="0.65" stop-color="#7fc0aa"/><stop offset="1" stop-color="#2f6a5c"/>
+</linearGradient>
+<linearGradient id="swindler-shade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#14101a" stop-opacity="0"/><stop offset="0.5" stop-color="#14101a" stop-opacity="0.08"/><stop offset="1" stop-color="#14101a" stop-opacity="0.5"/>
+</linearGradient>
+<radialGradient id="swindler-skin" cx="0.45" cy="0.4" r="0.7">
+<stop offset="0" stop-color="#fdf6ea"/><stop offset="0.6" stop-color="#f2dcc0"/><stop offset="1" stop-color="#c9a27e"/>
+</radialGradient>
+<linearGradient id="swindler-cap" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#3a2c3e"/><stop offset="0.5" stop-color="#1f1626"/><stop offset="1" stop-color="#14101a"/>
+</linearGradient>
+<radialGradient id="swindler-iris" cx="0.45" cy="0.3" r="0.75">
+<stop offset="0" stop-color="#d9a441"/><stop offset="0.45" stop-color="#5a3a1a"/><stop offset="1" stop-color="#14101a"/>
+</radialGradient>
+<radialGradient id="swindler-jade" cx="0.35" cy="0.3" r="0.8">
+<stop offset="0" stop-color="#cfefff"/><stop offset="0.35" stop-color="#7fd6b5"/><stop offset="1" stop-color="#1f5c4c"/>
+</radialGradient>
+<clipPath id="swindler-eyeL"><path d="M164,155 Q176,146 191,151.5 Q180,157.5 164,155 Z"/></clipPath>
+<clipPath id="swindler-eyeR"><path d="M236,155 Q224,146 209,151.5 Q220,157.5 236,155 Z"/></clipPath>
+<clipPath id="swindler-fanclip"><path d="M149.8,297 L132.4,227.1 A106,106 0 0 0 52.6,341.1 L124.2,333.6 A34,34 0 0 1 149.8,297 Z"/></clipPath>
+<filter id="swindler-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+
+<ellipse cx="200" cy="250" rx="150" ry="170" fill="#cfefff" opacity="0.08" filter="url(#swindler-blur)"/>
+
+<!-- 方巾后垂 -->
+<path d="M154,104 L146,176 L160,174 L164,110 Z M246,104 L254,176 L240,174 L236,110 Z" fill="url(#swindler-cap)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+
+<!-- 身体 月白长衫 -->
+<path d="M174,236 C146,246 110,252 90,272 C68,296 58,350 54,480 L346,480 C342,350 332,296 310,272 C290,252 254,246 226,236 Z" fill="url(#swindler-robe)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M174,236 C146,246 110,252 90,272 C68,296 58,350 54,480 L346,480 C342,350 332,296 310,272 C290,252 254,246 226,236 Z" fill="url(#swindler-shade)"/>
+<!-- 交领 -->
+<path d="M178,236 L222,236 L201,292 Z" fill="#f4fbff" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M172,236 L184,236 L208,290 L200,298 Z" fill="#3f6f8a" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M216,236 L230,236 C214,276 192,312 172,340 L160,332 C182,304 202,272 216,236 Z" fill="#3f6f8a" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M222,240 C206,276 186,308 166,334" fill="none" stroke="#cfefff" stroke-width="1" opacity="0.6"/>
+<!-- 腰带 -->
+<path d="M140,300 Q200,312 260,300 L260,318 Q200,330 140,318 Z" fill="#22394a" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M142,306 Q200,318 258,306" fill="none" stroke="#8fd3ff" stroke-width="1" opacity="0.5"/>
+<!-- 玉坠 -->
+<path d="M232,322 L232,334" stroke="#c43a3a" stroke-width="2"/>
+<path d="M228,330 L236,330 L234,336 L230,336 Z" fill="#c43a3a" stroke="#14101a" stroke-width="1"/>
+<circle cx="232" cy="347" r="11" fill="url(#swindler-jade)" stroke="#14101a" stroke-width="1.8"/>
+<circle cx="232" cy="347" r="3.6" fill="#1f5c4c" stroke="#14101a" stroke-width="1"/>
+<path d="M225,342 Q228,338 233,338" fill="none" stroke="#ffffff" stroke-width="1.6" opacity="0.8" stroke-linecap="round"/>
+<path d="M229,358 L227,384 M232,358 L232,386 M235,358 L237,384" stroke="#c43a3a" stroke-width="1.8" stroke-linecap="round"/>
+<rect x="228" y="357" width="8" height="4" fill="#d9a441" stroke="#14101a" stroke-width="0.8"/>
+
+<!-- 半臂（浅青） -->
+<g stroke="#14101a" stroke-width="2.2" stroke-linejoin="round">
+<path d="M172,236 C144,244 110,252 90,272 C76,286 70,302 68,318 L114,320 C116,360 118,420 120,480 L156,480 C152,400 150,330 152,290 C156,266 162,250 172,236 Z" fill="url(#swindler-vest)"/>
+<path d="M228,236 C256,244 290,252 310,272 C324,286 330,302 332,318 L286,320 C284,360 282,420 280,480 L244,480 C248,400 250,330 248,290 C244,266 238,250 228,236 Z" fill="url(#swindler-vest)"/>
+</g>
+<path d="M170,240 C160,254 154,270 153,292 C151,330 153,400 157,480 M230,240 C240,254 246,270 247,292 C249,330 247,400 243,480" fill="none" stroke="#1f5c4c" stroke-width="4"/>
+<path d="M70,312 L114,314 M330,312 L286,314" stroke="#1f5c4c" stroke-width="4"/>
+<path d="M98,276 C120,258 146,250 168,242 C148,258 124,268 106,290 Z" fill="#ffffff" opacity="0.35"/>
+<g fill="none" stroke="#1f5c4c" stroke-width="1.2" opacity="0.6">
+<path d="M126,350 q6,-8 12,0 q-5,5 -1,8 M266,350 q6,-8 12,0 q-5,5 -1,8 M128,420 q6,-8 12,0 q-5,5 -1,8 M262,420 q6,-8 12,0 q-5,5 -1,8"/>
+</g>
+
+<!-- 右袖（画面右，手抚玉坠） -->
+<path d="M332,316 C338,350 336,390 324,410 C310,428 280,428 264,410 C256,398 252,378 252,356 L264,338 C272,346 278,352 288,356 C288,342 287,330 286,318 Z" fill="url(#swindler-robe)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M312,340 C318,370 314,392 304,404 M296,360 C300,380 296,396 288,406" fill="none" stroke="#14101a" stroke-width="1.3" opacity="0.35"/>
+<ellipse cx="258" cy="348" rx="7" ry="13" transform="rotate(30,258,348)" fill="#8fa4b0" stroke="#14101a" stroke-width="1.8"/>
+<path d="M260,338 C250,334 242,338 239,344 C237,350 241,356 247,356 C255,356 262,352 265,346 Z" fill="url(#swindler-skin)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M248,341 C244,340 240,341 238,344 M247,347 L241,349 M249,352 L244,355" fill="none" stroke="#a8745a" stroke-width="1.1" stroke-linecap="round"/>
+
+<!-- 左袖（画面左，执扇） -->
+<path d="M68,316 C62,350 64,390 76,410 C90,428 120,428 140,410 C150,396 156,370 160,346 L148,322 C138,332 128,342 118,350 C116,336 115,326 114,318 Z" fill="url(#swindler-robe)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M84,350 C80,376 84,396 94,408 M104,360 C102,380 106,396 114,406" fill="none" stroke="#14101a" stroke-width="1.3" opacity="0.35"/>
+<ellipse cx="154" cy="338" rx="8" ry="15" transform="rotate(-35,154,338)" fill="#8fa4b0" stroke="#14101a" stroke-width="1.8"/>
+
+<!-- 折扇 -->
+<g>
+<path d="M149.8,297 L132.4,227.1 A106,106 0 0 0 120.3,230.9 L145.9,298.2 A34,34 0 0 1 149.8,297 Z" fill="#efe2c4"/><path d="M145.9,298.2 L120.3,230.9 A106,106 0 0 0 108.8,236.1 L142.2,299.9 A34,34 0 0 1 145.9,298.2 Z" fill="#d8c49a"/><path d="M142.2,299.9 L108.8,236.1 A106,106 0 0 0 98,242.6 L138.7,302 A34,34 0 0 1 142.2,299.9 Z" fill="#efe2c4"/><path d="M138.7,302 L98,242.6 A106,106 0 0 0 88,250.4 L135.5,304.5 A34,34 0 0 1 138.7,302 Z" fill="#d8c49a"/><path d="M135.5,304.5 L88,250.4 A106,106 0 0 0 79,259.3 L132.7,307.3 A34,34 0 0 1 135.5,304.5 Z" fill="#efe2c4"/><path d="M132.7,307.3 L79,259.3 A106,106 0 0 0 71.2,269.2 L130.1,310.5 A34,34 0 0 1 132.7,307.3 Z" fill="#d8c49a"/><path d="M130.1,310.5 L71.2,269.2 A106,106 0 0 0 64.6,280 L128,314 A34,34 0 0 1 130.1,310.5 Z" fill="#efe2c4"/><path d="M128,314 L64.6,280 A106,106 0 0 0 59.3,291.4 L126.3,317.6 A34,34 0 0 1 128,314 Z" fill="#d8c49a"/><path d="M126.3,317.6 L59.3,291.4 A106,106 0 0 0 55.4,303.5 L125.1,321.5 A34,34 0 0 1 126.3,317.6 Z" fill="#efe2c4"/><path d="M125.1,321.5 L55.4,303.5 A106,106 0 0 0 52.9,315.9 L124.3,325.5 A34,34 0 0 1 125.1,321.5 Z" fill="#d8c49a"/><path d="M124.3,325.5 L52.9,315.9 A106,106 0 0 0 52,328.5 L124,329.5 A34,34 0 0 1 124.3,325.5 Z" fill="#efe2c4"/><path d="M124,329.5 L52,328.5 A106,106 0 0 0 52.6,341.1 L124.2,333.6 A34,34 0 0 1 124,329.5 Z" fill="#d8c49a"/>
+<g clip-path="url(#swindler-fanclip)">
+<circle cx="96" cy="270" r="9" fill="#e0524a" opacity="0.55"/>
+<path d="M66,318 C78,300 86,296 94,306 C100,290 110,280 120,294 C126,286 134,284 142,296 L150,318 Z" fill="#5c6370" opacity="0.75"/>
+<path d="M80,326 C90,312 100,310 108,318 C116,306 128,304 138,316 L146,326 Z" fill="#3a3f4a" opacity="0.8"/>
+<path d="M132,240 C124,254 116,264 104,272 M122,256 C128,262 132,270 134,278 M112,266 L104,256" fill="none" stroke="#14101a" stroke-width="1.6" stroke-linecap="round"/>
+<g fill="#c43a3a"><circle cx="104" cy="272" r="2.8"/><circle cx="134" cy="278" r="2.6"/><circle cx="104" cy="256" r="2.4"/><circle cx="126" cy="250" r="2.2"/><circle cx="116" cy="264" r="2"/></g>
+<path d="M74,300 l4,-6 l4,6 M84,296 l3,-4 l3,4" fill="none" stroke="#14101a" stroke-width="1" opacity="0.6"/>
+</g>
+<path d="M149.8,297 L132.4,227.1 A106,106 0 0 0 52.6,341.1 L124.2,333.6 A34,34 0 0 1 149.8,297 Z" fill="none" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M156.5,324.2 L149.3,295.1 M155.9,324.4 L145.2,296.4 M155.2,324.7 L141.3,298.1 M154.6,325.1 L137.6,300.3 M154,325.5 L134.2,303 M153.5,326 L131.2,306 M153.1,326.6 L128.5,309.4 M152.7,327.2 L126.3,313 M152.4,327.8 L124.5,316.9 M152.2,328.5 L123.1,321 M152.1,329.2 L122.3,325.2 M152,329.9 L122,329.5 M152,330.6 L122.2,333.8" stroke="#8a5a1c" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M157.5,328.1 L131.6,224.2 M156,330.2 L49.6,341.4" stroke="#14101a" stroke-width="5" stroke-linecap="round"/>
+<path d="M157.5,328.1 L131.6,224.2 M156,330.2 L49.6,341.4" stroke="#5e0f1c" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M127.1,234.9 A100,100 0 0 0 88.5,258.1" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+</g>
+
+<!-- 执扇之手 -->
+<path d="M150,322 C146,312 152,304 162,304 C172,305 178,314 176,324 C174,334 164,340 156,336 C152,333 151,328 150,322 Z" fill="url(#swindler-skin)" stroke="#14101a" stroke-width="1.7" stroke-linejoin="round"/>
+<path d="M156,306 C160,300 168,298 172,302 C172,306 168,308 162,310" fill="url(#swindler-skin)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M164,314 Q170,315 174,318 M162,322 Q168,324 172,327 M160,330 Q164,332 168,334" fill="none" stroke="#a8745a" stroke-width="1.1" stroke-linecap="round"/>
+<path d="M170,326 L176,350 L172,352 L166,330 Z" fill="#5e0f1c" stroke="#14101a" stroke-width="1.2"/>
+<circle cx="175" cy="356" r="3" fill="#7fd6b5" stroke="#14101a" stroke-width="0.8"/>
+<path d="M175,359 L173,372 M176,359 L178,371" stroke="#c43a3a" stroke-width="1.2"/>
+
+<!-- 颈 -->
+<path d="M184,200 L183,244 Q200,252 217,244 L216,200 Z" fill="#f0d8bc" stroke="#14101a" stroke-width="1.5"/>
+<path d="M184,210 Q200,230 216,210 L216,224 Q200,238 184,224 Z" fill="#a8745a" opacity="0.3"/>
+
+<!-- 耳 -->
+<path d="M157,146 C146,142 145,164 151,173 C154,177 158,175 159,170 Z" fill="url(#swindler-skin)" stroke="#14101a" stroke-width="1.6"/>
+<path d="M243,146 C254,142 255,164 249,173 C246,177 242,175 241,170 Z" fill="url(#swindler-skin)" stroke="#14101a" stroke-width="1.6"/>
+<path d="M153,151 C150,156 151,164 154,168 M247,151 C250,156 249,164 246,168" fill="none" stroke="#a8745a" stroke-width="1.1"/>
+
+<!-- 脸 -->
+<path d="M156,128 C156,98 175,84 200,84 C225,84 244,98 244,128 L244,154 C244,184 229,208 200,219 C171,208 156,184 156,154 Z" fill="url(#swindler-skin)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M232,124 C244,148 242,180 226,202 C234,182 236,152 232,124 Z" fill="#c9a27e" opacity="0.35"/>
+<ellipse cx="170" cy="176" rx="10" ry="5" fill="#e0524a" opacity="0.14"/>
+<ellipse cx="230" cy="176" rx="10" ry="5" fill="#e0524a" opacity="0.14"/>
+
+<!-- 发（巾下鬓发） -->
+<path d="M156,130 C156,114 172,106 200,106 C228,106 244,114 244,130 C236,120 222,115 200,115 C178,115 164,120 156,130 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M156,126 C151,140 152,158 157,170 C159,156 160,142 164,130 Z M244,126 C249,140 248,158 243,170 C241,156 240,142 236,130 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/>
+<path d="M170,116 C180,112 190,111 198,111" fill="none" stroke="#5b4a66" stroke-width="1.2"/>
+
+<!-- 方巾 -->
+<path d="M150,116 C147,96 150,74 156,54 C178,47 222,47 244,54 C250,74 253,96 250,116 C234,108 216,105 200,105 C184,105 166,108 150,116 Z" fill="url(#swindler-cap)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M156,54 C176,60 224,60 244,54 C230,50 170,50 156,54 Z" fill="#2a1838" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M200,58 L200,105 M178,58 C175,74 174,92 176,106 M222,58 C225,74 226,92 224,106" fill="none" stroke="#3a2c3e" stroke-width="1.6"/>
+<path d="M151,108 C168,99 232,99 249,108" fill="none" stroke="#3a2c3e" stroke-width="3"/>
+<path d="M162,64 C164,80 164,94 162,104" fill="none" stroke="#8fd3ff" stroke-width="2.2" opacity="0.3" stroke-linecap="round"/>
+<path d="M195,82 L205,82 L205,92 L195,92 Z" fill="#cfefff" stroke="#14101a" stroke-width="1.2" opacity="0.9"/>
+
+<!-- 眉（左眉微挑） -->
+<path d="M162,137 Q175,126 191,133" fill="none" stroke="#1f1626" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M209,135 Q224,130 239,137" fill="none" stroke="#1f1626" stroke-width="2.4" stroke-linecap="round"/>
+
+<!-- 眼（笑眯眼，眼珠斜睨） -->
+<path d="M164,155 Q176,146 191,151.5 Q180,157.5 164,155 Z" fill="#f4fbff"/>
+<g clip-path="url(#swindler-eyeL)">
+<circle cx="172.5" cy="152" r="5.6" fill="url(#swindler-iris)"/>
+<circle cx="172" cy="152.4" r="2.5" fill="#14101a"/>
+<path d="M160,145 L196,145 L196,151 Q178,146 160,153 Z" fill="#5b3474" opacity="0.4"/>
+</g>
+<circle cx="174.5" cy="149.6" r="1.6" fill="#ffffff"/>
+<path d="M160,156 Q174,143 194,151" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M162,152 L157,151" stroke="#14101a" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M167,158 Q179,160.5 190,155.5" fill="none" stroke="#7a4a3a" stroke-width="1.1"/>
+<path d="M236,155 Q224,146 209,151.5 Q220,157.5 236,155 Z" fill="#f4fbff"/>
+<g clip-path="url(#swindler-eyeR)">
+<circle cx="214.5" cy="152" r="5.6" fill="url(#swindler-iris)"/>
+<circle cx="214" cy="152.4" r="2.5" fill="#14101a"/>
+<path d="M240,145 L204,145 L204,151 Q222,146 240,153 Z" fill="#5b3474" opacity="0.4"/>
+</g>
+<circle cx="216.5" cy="149.6" r="1.6" fill="#ffffff"/>
+<path d="M240,156 Q226,143 206,151" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M238,152 L243,151" stroke="#14101a" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M233,158 Q221,160.5 210,155.5" fill="none" stroke="#7a4a3a" stroke-width="1.1"/>
+
+<!-- 鼻 -->
+<path d="M201,164 C202,172 203,178 200,182 C202,184 205,184 207,182" fill="none" stroke="#a8745a" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M197,168 C196,174 196,178 197,180" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+
+<!-- 嘴：上扬的假笑（右嘴角更高） -->
+<path d="M184,196 Q199,205 217,192 Q212,204 200,205 Q190,204 184,196 Z" fill="#c43a3a" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M186,197 Q199,203 215,193.5 L213,197 Q200,204 188,199.5 Z" fill="#f4fbff"/>
+<path d="M181,193 Q183,197 185,196 M220,189 Q219,194 216,193" fill="none" stroke="#14101a" stroke-width="1.2" stroke-linecap="round"/>
+<path d="M224,186 Q226,192 222,196" fill="none" stroke="#a8745a" stroke-width="1" opacity="0.7"/>
+</svg>

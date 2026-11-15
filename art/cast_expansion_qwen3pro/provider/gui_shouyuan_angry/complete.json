@@ -1,0 +1,9 @@
+{
+  "character": "gui_shouyuan",
+  "state": "angry",
+  "asset_id": "gui_shouyuan_angry",
+  "image_file": "provider/gui_shouyuan_angry/gui_shouyuan_angry.png",
+  "sha256": "8f2e6c5c846d7ac497d1865b770c41ab7ff877ac818376850fb6221bf8d808d1",
+  "seed": 151192,
+  "model": "qwen-image-3.0-pro"
+}

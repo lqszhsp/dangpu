@@ -1,0 +1,9 @@
+{
+  "character": "su_cailing",
+  "state": "afraid",
+  "asset_id": "su_cailing_afraid",
+  "image_file": "provider/su_cailing_afraid/su_cailing_afraid.png",
+  "sha256": "068d96b83dd71a657d84caee81095b436a7435506a222383502d8c7439b40499",
+  "seed": 151513,
+  "model": "qwen-image-3.0-pro"
+}

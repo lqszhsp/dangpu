@@ -1,0 +1,9 @@
+{
+  "character": "mo_yanqing",
+  "state": "thrall",
+  "asset_id": "mo_yanqing_thrall",
+  "image_file": "provider/mo_yanqing_thrall/mo_yanqing_thrall.png",
+  "sha256": "2eabfea66db2545e4ae3fd34f63bca6c56ec35576f09785714e6849d5acea101",
+  "seed": 151386,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "su_wanyin",
+  "state": "pleased",
+  "asset_id": "su_wanyin_pleased",
+  "image_file": "provider/su_wanyin_pleased/su_wanyin_pleased.png",
+  "sha256": "a2f9c3eaa0df8aae1a0298b8d048ffda11d27effabcff5a4fec6bf1ad04f0bf2",
+  "seed": 151321,
+  "model": "qwen-image-3.0-pro"
+}

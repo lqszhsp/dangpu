@@ -1,0 +1,9 @@
+{
+  "character": "shen_suxin",
+  "state": "wasted",
+  "asset_id": "shen_suxin_wasted",
+  "image_file": "provider/shen_suxin_wasted/shen_suxin_wasted.png",
+  "sha256": "49e8b3bfed72f9f9ea2fb9bfb4e237573d851afe6a5d5a6350b0b66eb4b23aa2",
+  "seed": 151005,
+  "model": "qwen-image-3.0-pro"
+}

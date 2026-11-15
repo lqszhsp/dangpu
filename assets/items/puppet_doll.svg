@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 192">
+  <defs>
+    <linearGradient id="puppet_doll-wood" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5a2f10"/>
+      <stop offset="0.35" stop-color="#d9a441"/>
+      <stop offset="0.65" stop-color="#9a4d12"/>
+      <stop offset="1" stop-color="#4a250c"/>
+    </linearGradient>
+    <linearGradient id="puppet_doll-mask" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#efe2c4"/>
+      <stop offset="0.5" stop-color="#d8c49a"/>
+      <stop offset="1" stop-color="#8a5a1c"/>
+    </linearGradient>
+    <radialGradient id="puppet_doll-bronze" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.45" stop-color="#d9a441"/>
+      <stop offset="0.8" stop-color="#6b7d5a"/>
+      <stop offset="1" stop-color="#3a3f4a"/>
+    </radialGradient>
+    <radialGradient id="puppet_doll-pearl" cx="0.38" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#f4fbff"/>
+      <stop offset="0.3" stop-color="#cfa8ff"/>
+      <stop offset="0.7" stop-color="#5b3474"/>
+      <stop offset="1" stop-color="#2a1838"/>
+    </radialGradient>
+    <filter id="puppet_doll-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <!-- shadow -->
+  <ellipse cx="32" cy="185" rx="22" ry="4" fill="#14101a" opacity="0.5"/>
+  <!-- legs -->
+  <g fill="url(#puppet_doll-wood)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M20 117 L28 117 L27.5 146 L21 146 Z"/>
+    <path d="M36 117 L44 117 L43 146 L36.5 146 Z"/>
+    <path d="M20.5 151 L27.5 151 L27 176 L21.5 176 Z"/>
+    <path d="M36.5 151 L43.5 151 L42.5 176 L37 176 Z"/>
+  </g>
+  <path d="M22.3 120 V143 M38.2 120 V143 M22.8 154 V173 M38.6 154 V173" stroke="#f2d27a" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+  <!-- feet -->
+  <path d="M19 175.5 L28.5 175.5 L29.5 182 L15.5 182 Q15.5 177.5 19 175.5 Z" fill="url(#puppet_doll-wood)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M35.5 175.5 L45 175.5 Q48.5 177.5 48.5 182 L34.5 182 Z" fill="url(#puppet_doll-wood)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- knee joints -->
+  <g fill="url(#puppet_doll-bronze)" stroke="#14101a" stroke-width="1.4">
+    <circle cx="24.3" cy="148.5" r="4.3"/>
+    <circle cx="39.8" cy="148.5" r="4.3"/>
+    <circle cx="24.2" cy="176" r="2.2"/>
+    <circle cx="39.8" cy="176" r="2.2"/>
+  </g>
+  <!-- hip block -->
+  <path d="M19 104 L45 104 L46 118 L18 118 Z" fill="url(#puppet_doll-wood)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M19 110.5 H45.5" stroke="#14101a" stroke-width="0.9"/>
+  <g fill="url(#puppet_doll-bronze)" stroke="#14101a" stroke-width="1.4">
+    <circle cx="24" cy="117.5" r="3.6"/>
+    <circle cx="40" cy="117.5" r="3.6"/>
+  </g>
+  <!-- waist gear -->
+  <circle cx="32" cy="100" r="8" fill="none" stroke="#14101a" stroke-width="4.6" stroke-dasharray="2.6 2.4"/>
+  <circle cx="32" cy="100" r="8" fill="none" stroke="#d9a441" stroke-width="3" stroke-dasharray="2.2 2.8" stroke-dashoffset="-0.2"/>
+  <circle cx="32" cy="100" r="6.6" fill="url(#puppet_doll-bronze)" stroke="#14101a" stroke-width="1.4"/>
+  <circle cx="32" cy="100" r="2" fill="#3a3f4a" stroke="#14101a" stroke-width="0.8"/>
+  <circle cx="45" cy="104" r="3.6" fill="url(#puppet_doll-bronze)" stroke="#14101a" stroke-width="1.2"/>
+  <!-- arms -->
+  <g fill="url(#puppet_doll-wood)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M10 56 L17.5 57 L15.5 84 L9 83.5 Z"/>
+    <path d="M46.5 57 L54 56 L55 83.5 L48.5 84 Z"/>
+    <path d="M8.5 89 L14.8 89.5 L14.5 113 L9.5 112.5 Z"/>
+    <path d="M49.2 89.5 L55.5 89 L54.5 112.5 L49.5 113 Z"/>
+  </g>
+  <path d="M11.6 59 L10.8 81 M10.4 91.5 L10.8 110 M52 59 L52.6 81 M53.6 91.5 L53.3 110" stroke="#f2d27a" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+  <!-- hands -->
+  <g fill="url(#puppet_doll-wood)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round">
+    <path d="M8.5 114 L15 114.5 L15.5 121 L14 125 L13 121.5 L11.8 126 L10.6 121.5 L9.2 124.5 L8.2 120 Z"/>
+    <path d="M49 114.5 L55.5 114 L55.8 120 L54.8 124.5 L53.4 121.5 L52.2 126 L51 121.5 L50 125 L48.5 121 Z"/>
+  </g>
+  <g fill="url(#puppet_doll-bronze)" stroke="#14101a" stroke-width="1.3">
+    <circle cx="12.1" cy="86.3" r="3.8"/>
+    <circle cx="51.9" cy="86.3" r="3.8"/>
+    <circle cx="12" cy="113.5" r="2.4"/>
+    <circle cx="52" cy="113.5" r="2.4"/>
+  </g>
+  <!-- torso -->
+  <path d="M15 50 Q32 45 49 50 L45 92 Q32 96 19 92 Z" fill="url(#puppet_doll-wood)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <!-- bronze frame straps -->
+  <g fill="none" stroke="#14101a" stroke-width="3.2" stroke-linecap="round">
+    <path d="M17 58 Q32 54 47 58 M19 84 Q32 88 45 84 M32 49 V56 M32 76 V90"/>
+  </g>
+  <g fill="none" stroke="#d9a441" stroke-width="1.6" stroke-linecap="round">
+    <path d="M17 58 Q32 54 47 58 M19 84 Q32 88 45 84 M32 49 V56 M32 76 V90"/>
+  </g>
+  <path d="M19.5 61 L21 88 M44.5 61 L43 88" stroke="#14101a" stroke-width="0.9" opacity="0.7"/>
+  <!-- wood grain -->
+  <path d="M22 70 Q23 76 22 81 M42 66 Q41 72 42.5 78" fill="none" stroke="#5a2f10" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M18.5 52 Q19 70 21.5 90" fill="none" stroke="#f2d27a" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+  <!-- soul pearl socket -->
+  <circle cx="32" cy="66.5" r="12.5" fill="#cfa8ff" opacity="0.75" filter="url(#puppet_doll-glow)"/>
+  <circle cx="32" cy="66.5" r="8" fill="url(#puppet_doll-bronze)" stroke="#14101a" stroke-width="1.5"/>
+  <circle cx="32" cy="66.5" r="6" fill="url(#puppet_doll-pearl)" stroke="#14101a" stroke-width="1.2"/>
+  <path d="M29 64 Q31 62 33.5 63.5" fill="none" stroke="#f4fbff" stroke-width="0.9" stroke-linecap="round"/>
+  <g fill="#14101a">
+    <circle cx="32" cy="59.4" r="0.8"/>
+    <circle cx="32" cy="73.6" r="0.8"/>
+    <circle cx="24.9" cy="66.5" r="0.8"/>
+    <circle cx="39.1" cy="66.5" r="0.8"/>
+  </g>
+  <!-- shoulder joints -->
+  <path d="M13 51.5 H51" stroke="#14101a" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M13 51.5 H51" stroke="#9aa88a" stroke-width="1.8" stroke-linecap="round"/>
+  <g fill="url(#puppet_doll-bronze)" stroke="#14101a" stroke-width="1.5">
+    <circle cx="13.5" cy="53" r="5"/>
+    <circle cx="50.5" cy="53" r="5"/>
+  </g>
+  <circle cx="12" cy="51.4" r="1.4" fill="#f2d27a"/>
+  <circle cx="49" cy="51.4" r="1.4" fill="#f2d27a"/>
+  <!-- neck -->
+  <rect x="29.5" y="38" width="5" height="10" fill="#6b7d5a" stroke="#14101a" stroke-width="1.3"/>
+  <circle cx="32" cy="44" r="3.6" fill="url(#puppet_doll-bronze)" stroke="#14101a" stroke-width="1.3"/>
+  <!-- head (back of skull, dark wood) -->
+  <ellipse cx="32" cy="24" rx="12" ry="15" fill="#4a250c" stroke="#14101a" stroke-width="2"/>
+  <!-- bronze head band & crest -->
+  <path d="M26 9.5 L32 3.5 L38 9.5 Z" fill="url(#puppet_doll-bronze)" stroke="#14101a" stroke-width="1.3" stroke-linejoin="round"/>
+  <!-- expressionless wooden mask -->
+  <path d="M22.5 18 Q22.5 10.5 32 10.5 Q41.5 10.5 41.5 18 L41 28 Q40 37.5 32 38.5 Q24 37.5 23 28 Z" fill="url(#puppet_doll-mask)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M21 16 Q32 12 43 16" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M21 16 Q32 12 43 16" fill="none" stroke="#d9a441" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- glowing blue eyes -->
+  <g fill="#8fd3ff" filter="url(#puppet_doll-glow)">
+    <ellipse cx="27.3" cy="22.5" rx="3.4" ry="1.8"/>
+    <ellipse cx="36.7" cy="22.5" rx="3.4" ry="1.8"/>
+  </g>
+  <path d="M24.5 22.5 Q27.3 20.6 30.1 22.5 Q27.3 24 24.5 22.5 Z M33.9 22.5 Q36.7 20.6 39.5 22.5 Q36.7 24 33.9 22.5 Z" fill="#cfefff" stroke="#14101a" stroke-width="0.9" stroke-linejoin="round"/>
+  <!-- flat nose & mouth -->
+  <path d="M32 24.5 V29.5 M29 33.5 H35" fill="none" stroke="#8a5a1c" stroke-width="1" stroke-linecap="round"/>
+  <path d="M25 19.5 Q24.5 28 27 33" fill="none" stroke="#efe2c4" stroke-width="1.1" stroke-linecap="round" opacity="0.8"/>
+  <!-- mask pegs -->
+  <circle cx="23.2" cy="27" r="1.1" fill="#d9a441" stroke="#14101a" stroke-width="0.6"/>
+  <circle cx="40.8" cy="27" r="1.1" fill="#d9a441" stroke="#14101a" stroke-width="0.6"/>
+</svg>

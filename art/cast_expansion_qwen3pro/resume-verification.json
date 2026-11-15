@@ -1,0 +1,30 @@
+{
+  "installed_characters": 55,
+  "installed_images": 385,
+  "png_and_webp_valid": true,
+  "transparent_backgrounds": true,
+  "height": 1300,
+  "registered_in_art_list": true,
+  "provider_and_runtime_hashes_valid": true,
+  "preexisting_character_files_preserved": 709,
+  "authorized_repaired_files_with_archived_originals": [
+    "art/raw/chars/ren_cultivator_f2_wasted.png",
+    "assets/chars/ren_cultivator_f2_wasted.webp",
+    "art/raw/chars/xian_spy_f1.png",
+    "assets/chars/xian_spy_f1.webp",
+    "art/raw/chars/xian_spy_f1_pleased.png",
+    "assets/chars/xian_spy_f1_pleased.webp",
+    "art/raw/chars/xian_spy_f1_angry.png",
+    "assets/chars/xian_spy_f1_angry.webp",
+    "art/raw/chars/xian_spy_f1_afraid.png",
+    "assets/chars/xian_spy_f1_afraid.webp",
+    "art/raw/chars/xian_spy_f1_sly.png",
+    "assets/chars/xian_spy_f1_sly.webp",
+    "art/raw/chars/xian_spy_f1_wasted.png",
+    "assets/chars/xian_spy_f1_wasted.webp",
+    "art/raw/chars/xian_spy_f1_thrall.png",
+    "assets/chars/xian_spy_f1_thrall.webp"
+  ],
+  "pending_images": 0,
+  "pending_status": {}
+}

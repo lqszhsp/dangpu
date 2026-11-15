@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<defs>
+<radialGradient id="amu_disciple-aura" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" stop-color="#5e0f1c" stop-opacity="0.45"/><stop offset="1" stop-color="#2a1838" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="amu_disciple-cloth" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#14101a"/><stop offset="0.3" stop-color="#2a1d2e"/><stop offset="0.55" stop-color="#3a2a40"/><stop offset="1" stop-color="#14101a"/>
+</linearGradient>
+<linearGradient id="amu_disciple-shade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#14101a" stop-opacity="0"/><stop offset="0.5" stop-color="#14101a" stop-opacity="0.15"/><stop offset="1" stop-color="#14101a" stop-opacity="0.6"/>
+</linearGradient>
+<linearGradient id="amu_disciple-red" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#c43a3a"/><stop offset="0.5" stop-color="#8e1b2b"/><stop offset="1" stop-color="#5e0f1c"/>
+</linearGradient>
+<radialGradient id="amu_disciple-skin" cx="0.45" cy="0.4" r="0.7">
+<stop offset="0" stop-color="#f6e4c8"/><stop offset="0.6" stop-color="#e6c49c"/><stop offset="1" stop-color="#b48a60"/>
+</radialGradient>
+<linearGradient id="amu_disciple-hair" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#4a3428"/><stop offset="0.5" stop-color="#2a1d1c"/><stop offset="1" stop-color="#14101a"/>
+</linearGradient>
+<linearGradient id="amu_disciple-band" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#3a2a40"/><stop offset="0.55" stop-color="#1f1626"/><stop offset="1" stop-color="#14101a"/>
+</linearGradient>
+<radialGradient id="amu_disciple-iris" cx="0.45" cy="0.3" r="0.75">
+<stop offset="0" stop-color="#9aa88a"/><stop offset="0.45" stop-color="#4a3a2a"/><stop offset="1" stop-color="#14101a"/>
+</radialGradient>
+<linearGradient id="amu_disciple-metal" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#3a3f4a"/><stop offset="0.45" stop-color="#9aa88a"/><stop offset="1" stop-color="#3a3f4a"/>
+</linearGradient>
+<linearGradient id="amu_disciple-leather" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#5c3a2a"/><stop offset="1" stop-color="#2a1d1c"/>
+</linearGradient>
+<clipPath id="amu_disciple-eyeL"><path d="M165,155.5 Q171,149 180,148.5 Q188,149 191,153.5 Q184,158.5 177,158.5 Q170,158.5 165,155.5 Z"/></clipPath>
+<clipPath id="amu_disciple-eyeR"><path d="M235,155.5 Q229,149 220,148.5 Q212,149 209,153.5 Q216,158.5 223,158.5 Q230,158.5 235,155.5 Z"/></clipPath>
+</defs>
+
+<!-- 背后暗红气 -->
+<ellipse cx="200" cy="250" rx="180" ry="200" fill="url(#amu_disciple-aura)"/>
+
+<!-- 背后飞剑（剑柄露出左肩后） -->
+<g transform="rotate(-28 128 250)">
+<path d="M120,300 L136,300 L136,214 L120,214 Z" fill="#1f1626" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M120,224 L136,224 L136,216 L120,216 Z" fill="#8a5a1c" stroke="#14101a" stroke-width="1.4"/>
+<path d="M108,210 Q128,200 148,210 L146,216 Q128,208 110,216 Z" fill="url(#amu_disciple-metal)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<circle cx="128" cy="207" r="3.2" fill="#c43a3a" stroke="#14101a" stroke-width="1.2"/>
+<path d="M122,206 L134,206 L133,168 L123,168 Z" fill="#2a1d1c" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M122,198 L134,192 M122,190 L134,184 M122,182 L134,176 M122,174 L133,169" stroke="#8e1b2b" stroke-width="2"/>
+<path d="M119,168 L137,168 L134,158 Q128,152 122,158 Z" fill="url(#amu_disciple-metal)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M126,156 L126,165" stroke="#f4fbff" stroke-width="1.2" opacity="0.6" stroke-linecap="round"/>
+<path d="M128,153 C120,146 116,138 120,128 M128,153 C132,144 132,136 126,128" fill="none" stroke="#c43a3a" stroke-width="2.2" stroke-linecap="round"/>
+</g>
+
+<!-- 身体 劲装 -->
+<path d="M178,240 C150,248 114,254 94,274 C72,298 64,360 60,480 L340,480 C336,360 328,298 306,274 C286,254 250,248 222,240 Z" fill="url(#amu_disciple-cloth)" stroke="#14101a" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M178,240 C150,248 114,254 94,274 C72,298 64,360 60,480 L340,480 C336,360 328,298 306,274 C286,254 250,248 222,240 Z" fill="url(#amu_disciple-shade)"/>
+<path d="M104,270 C124,258 150,250 172,246 C150,260 128,270 112,288 Z" fill="#5b3474" opacity="0.35"/>
+<!-- 肩线红镶边 -->
+<path d="M70,330 C74,300 90,280 116,266 M330,330 C326,300 310,280 284,266" fill="none" stroke="#8e1b2b" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+<!-- 手臂分界 -->
+<path d="M112,300 C104,350 104,420 108,480 M288,300 C296,350 296,420 292,480" fill="none" stroke="#14101a" stroke-width="2" stroke-linecap="round"/>
+<path d="M84,320 C80,360 82,410 84,470 M316,320 C320,360 318,410 316,470" fill="none" stroke="#5b3474" stroke-width="1.4" opacity="0.6"/>
+
+<!-- 交领 -->
+<path d="M180,240 L220,240 L201,288 Z" fill="#5e0f1c" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M176,240 L189,240 L207,286 L199,294 Z" fill="url(#amu_disciple-red)" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M211,240 L226,240 C212,276 188,314 164,346 L152,338 C176,306 198,272 211,240 Z" fill="url(#amu_disciple-red)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M216,246 C204,276 184,308 160,340" fill="none" stroke="#e0524a" stroke-width="1" opacity="0.6"/>
+<path d="M226,240 C250,280 262,310 268,340 L176,340 Z" fill="#14101a" opacity="0.25"/>
+<!-- 衣褶 -->
+<path d="M244,284 C254,308 258,334 256,362 M138,288 C130,312 128,338 130,364" fill="none" stroke="#5b3474" stroke-width="1.4" opacity="0.5"/>
+
+<!-- 剑带 -->
+<path d="M118,262 L134,252 L298,366 L286,378 Z" fill="url(#amu_disciple-leather)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M126,260 L290,372" stroke="#8a5a1c" stroke-width="0.9" stroke-dasharray="3 3" opacity="0.7"/>
+<!-- 宗门铜扣 -->
+<circle cx="168" cy="290" r="11" fill="#8a5a1c" stroke="#14101a" stroke-width="1.8"/>
+<circle cx="168" cy="290" r="7.5" fill="#5e0f1c" stroke="#d9a441" stroke-width="1.2"/>
+<path d="M168,284 C165,288 164,291 166,294 C167,295.5 169,295.5 170,294 C172,291 171,288 168,284 Z" fill="#e0524a"/>
+<path d="M161,284 Q164,281 168,281" fill="none" stroke="#f2d27a" stroke-width="1.2" opacity="0.7"/>
+
+<!-- 腰带 -->
+<path d="M100,352 Q200,368 300,352 L302,374 Q200,392 98,374 Z" fill="url(#amu_disciple-red)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M104,358 Q200,374 296,358" fill="none" stroke="#e0524a" stroke-width="1.2" opacity="0.6"/>
+
+<!-- 左手握剑带 -->
+<path d="M306,274 C324,304 330,360 322,396 C314,414 296,414 284,402 L234,344 L246,318 C262,334 274,348 284,358 C286,330 284,304 278,288 Z" fill="url(#amu_disciple-cloth)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M314,330 C316,360 314,382 306,396" fill="none" stroke="#5b3474" stroke-width="1.3" opacity="0.6"/>
+<path d="M248,316 L230,346 L238,354 L256,324 Z" fill="url(#amu_disciple-red)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M240,312 C230,310 220,316 220,326 C220,336 226,344 236,344 C246,344 252,336 250,326 C250,318 246,313 240,312 Z" fill="url(#amu_disciple-skin)" stroke="#14101a" stroke-width="1.7"/>
+<path d="M222,320 Q230,318 236,322 M221,328 Q230,326 238,330 M223,336 Q230,335 236,338" fill="none" stroke="#a87a54" stroke-width="1.2"/>
+<path d="M244,316 Q240,326 244,334" fill="none" stroke="#a87a54" stroke-width="1.1"/>
+
+<!-- 颈 -->
+<path d="M185,198 L183,246 Q200,256 217,246 L215,198 Z" fill="#d8b48c" stroke="#14101a" stroke-width="1.5"/>
+<path d="M185,208 Q200,230 215,208 L215,222 Q200,238 185,222 Z" fill="#8a5a1c" opacity="0.35"/>
+
+<!-- 耳 -->
+<path d="M159,146 C146,140 144,166 151,176 C155,181 160,178 161,172 Z" fill="url(#amu_disciple-skin)" stroke="#14101a" stroke-width="1.6"/>
+<path d="M241,146 C254,140 256,166 249,176 C245,181 240,178 239,172 Z" fill="url(#amu_disciple-skin)" stroke="#14101a" stroke-width="1.6"/>
+<path d="M155,152 C151,158 152,166 155,170 M245,152 C249,158 248,166 245,170" fill="none" stroke="#a87a54" stroke-width="1.1"/>
+
+<!-- 脸 -->
+<path d="M158,128 C158,100 176,86 200,86 C224,86 242,100 242,128 L242,156 C242,186 226,208 200,217 C174,208 158,186 158,156 Z" fill="url(#amu_disciple-skin)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M230,126 C242,148 240,182 224,202 C232,182 234,152 230,126 Z" fill="#a87a54" opacity="0.38"/>
+<path d="M164,168 Q170,186 184,198" fill="none" stroke="#a87a54" stroke-width="1.5" opacity="0.4"/>
+<ellipse cx="172" cy="180" rx="9" ry="5" fill="#e0524a" opacity="0.1"/>
+<ellipse cx="228" cy="180" rx="9" ry="5" fill="#e0524a" opacity="0.1"/>
+<!-- 颊上小擦伤 -->
+<path d="M222,184 L230,180 M224,188 L231,184" stroke="#8e1b2b" stroke-width="1.2" stroke-linecap="round" opacity="0.55"/>
+
+<!-- 头发 -->
+<path d="M150,140 C145,114 150,96 160,84 L152,72 L170,76 L172,60 L188,70 L198,54 L208,68 L224,58 L226,74 L244,70 L240,86 C250,98 255,118 250,140 C246,126 240,116 232,110 L168,110 C160,116 154,126 150,140 Z" fill="url(#amu_disciple-hair)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+<path d="M172,96 C180,84 190,76 198,72 M212,94 C210,82 214,74 222,68 M186,98 C190,88 196,80 204,76" fill="none" stroke="#7a5a40" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+<path d="M166,90 C176,78 190,72 202,70" fill="none" stroke="#9a7a5a" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+<!-- 额前碎发 -->
+<path d="M176,120 C178,130 176,138 172,144 C180,138 184,130 184,120 Z M196,120 C198,130 196,136 194,142 C202,136 204,128 204,120 Z M214,120 C216,128 220,134 226,138 C222,130 222,124 222,120 Z" fill="#2a1d1c" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M150,136 C150,150 152,160 156,166 C158,154 158,144 160,134 Z M250,136 C250,150 248,160 244,166 C242,154 242,144 240,134 Z" fill="#2a1d1c" stroke="#14101a" stroke-width="1.2"/>
+
+<!-- 黑红发带 -->
+<path d="M150,110 Q200,96 250,110 L250,124 Q200,111 150,124 Z" fill="url(#amu_disciple-band)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M151,112.5 Q200,99 249,112.5 M151,121.5 Q200,108.5 249,121.5" fill="none" stroke="#c43a3a" stroke-width="1.4"/>
+<path d="M196,104 L200,99.5 L204,104 L200,114 Z" fill="#c43a3a" stroke="#14101a" stroke-width="0.9"/>
+<path d="M248,108 C256,104 262,108 260,116 C258,124 250,124 248,120 Z" fill="url(#amu_disciple-band)" stroke="#14101a" stroke-width="1.6"/>
+<path d="M258,114 C270,126 276,146 270,170 C282,150 284,128 264,112 Z" fill="url(#amu_disciple-red)" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M256,120 C260,136 258,152 250,164 C262,152 266,136 262,120 Z" fill="url(#amu_disciple-band)" stroke="#14101a" stroke-width="1.4" stroke-linejoin="round"/>
+
+<!-- 眉 坚定 -->
+<path d="M163,135 Q177,134 192,140" fill="none" stroke="#2a1d1c" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M237,135 Q223,134 208,140" fill="none" stroke="#2a1d1c" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M196,141 L197,145 M204,141 L203,145" stroke="#a87a54" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+<!-- 眼 直视 -->
+<path d="M165,155.5 Q171,149 180,148.5 Q188,149 191,153.5 Q184,158.5 177,158.5 Q170,158.5 165,155.5 Z" fill="#f4fbff"/>
+<g clip-path="url(#amu_disciple-eyeL)">
+<ellipse cx="178.5" cy="154.5" rx="6" ry="7" fill="url(#amu_disciple-iris)"/>
+<circle cx="178.5" cy="155" r="2.8" fill="#14101a"/>
+<path d="M160,146 L196,146 L196,151.5 Q180,148.5 160,153 Z" fill="#3a3f4a" opacity="0.3"/>
+</g>
+<circle cx="180.5" cy="152.3" r="1.9" fill="#ffffff"/><circle cx="176.5" cy="157" r="0.9" fill="#ffffff" opacity="0.8"/>
+<path d="M161,156.5 Q166,148.5 180,147 Q189,147.5 193,152" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M168,159.5 Q178,161.5 188,157.5" fill="none" stroke="#7a4a3a" stroke-width="1"/>
+<path d="M235,155.5 Q229,149 220,148.5 Q212,149 209,153.5 Q216,158.5 223,158.5 Q230,158.5 235,155.5 Z" fill="#f4fbff"/>
+<g clip-path="url(#amu_disciple-eyeR)">
+<ellipse cx="221.5" cy="154.5" rx="6" ry="7" fill="url(#amu_disciple-iris)"/>
+<circle cx="221.5" cy="155" r="2.8" fill="#14101a"/>
+<path d="M240,146 L204,146 L204,151.5 Q220,148.5 240,153 Z" fill="#3a3f4a" opacity="0.3"/>
+</g>
+<circle cx="223.5" cy="152.3" r="1.9" fill="#ffffff"/><circle cx="219.5" cy="157" r="0.9" fill="#ffffff" opacity="0.8"/>
+<path d="M239,156.5 Q234,148.5 220,147 Q211,147.5 207,152" fill="none" stroke="#14101a" stroke-width="3" stroke-linecap="round"/>
+<path d="M232,159.5 Q222,161.5 212,157.5" fill="none" stroke="#7a4a3a" stroke-width="1"/>
+
+<!-- 鼻 -->
+<path d="M201,166 C202,173 203,178 200,182 C202,184 205,184 207,182" fill="none" stroke="#a87a54" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M197,168 C196,174 196,178 197,180" fill="none" stroke="#ffffff" stroke-width="1.4" opacity="0.5" stroke-linecap="round"/>
+
+<!-- 嘴 紧抿 -->
+<path d="M191,198 Q200,199 209,197.5" fill="none" stroke="#5e0f1c" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M209,197.5 L211.5,196.5" stroke="#5e0f1c" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+<path d="M195,202.5 Q200,204 205,202.5" fill="none" stroke="#a87a54" stroke-width="1" opacity="0.6"/>
+</svg>

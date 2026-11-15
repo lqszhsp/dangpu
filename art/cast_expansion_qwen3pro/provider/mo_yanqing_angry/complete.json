@@ -1,0 +1,9 @@
+{
+  "character": "mo_yanqing",
+  "state": "angry",
+  "asset_id": "mo_yanqing_angry",
+  "image_file": "provider/mo_yanqing_angry/mo_yanqing_angry.png",
+  "sha256": "02b8fb3ff835bd033e73c583f97e870965bd07be46e8dca97266c26c6c79f5e6",
+  "seed": 151382,
+  "model": "qwen-image-3.0-pro"
+}

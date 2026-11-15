@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="spirit_crystal-l" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a1838"/>
+      <stop offset="1" stop-color="#5b3474"/>
+    </linearGradient>
+    <linearGradient id="spirit_crystal-r" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6d0ff"/>
+      <stop offset="0.35" stop-color="#b28acc"/>
+      <stop offset="1" stop-color="#5b3474"/>
+    </linearGradient>
+    <radialGradient id="spirit_crystal-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#b28acc" stop-opacity="0.6"/>
+      <stop offset="0.6" stop-color="#5b3474" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#5b3474" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="spirit_crystal-rock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5c6370"/>
+      <stop offset="0.5" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <filter id="spirit_crystal-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.8"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#spirit_crystal-halo)"/>
+  <ellipse cx="32" cy="57" rx="24" ry="3.6" fill="#14101a" opacity="0.45"/>
+  <path d="M18.3 52.1 L6.9 32.4 L7.4 23.8 L10.3 28.4 L22.6 49.7 Z" fill="url(#spirit_crystal-l)"/>
+  <path d="M22.6 49.7 L10.3 28.4 L7.4 23.8 L14.3 28.2 L25.7 47.9 Z" fill="url(#spirit_crystal-r)"/>
+  <path d="M6.9 32.4 L7.4 23.8 L10.3 28.4 Z" fill="#7a4f96" opacity="0.8"/>
+  <path d="M10.3 28.4 L7.4 23.8 L14.3 28.2 Z" fill="#f4fbff" opacity="0.45"/>
+  <path d="M19.9 45 L13.3 33.6" stroke="#f4fbff" stroke-width="2.7" stroke-linecap="round" opacity="0.7" filter="url(#spirit_crystal-blur)"/>
+  <path d="M21.6 45 L13 30.1" stroke="#f4fbff" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M22.6 49.7 L10.3 28.4 L7.4 23.8 M6.9 32.4 L10.3 28.4 L14.3 28.2" fill="none" stroke="#14101a" stroke-width="0.7" stroke-linejoin="round" opacity="0.6"/>
+  <path d="M18.3 52.1 L6.9 32.4 L7.4 23.8 L14.3 28.2 L25.7 47.9 Z" fill="none" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M40.6 47.9 L51.8 29.9 L59.2 26.5 L56.6 30.9 L44.5 50.3 Z" fill="url(#spirit_crystal-l)"/>
+  <path d="M44.5 50.3 L56.6 30.9 L59.2 26.5 L58.6 34.1 L47.4 52.1 Z" fill="url(#spirit_crystal-r)"/>
+  <path d="M51.8 29.9 L59.2 26.5 L56.6 30.9 Z" fill="#7a4f96" opacity="0.8"/>
+  <path d="M56.6 30.9 L59.2 26.5 L58.6 34.1 Z" fill="#f4fbff" opacity="0.45"/>
+  <path d="M47.2 46 L53.7 35.6" stroke="#f4fbff" stroke-width="2.6" stroke-linecap="round" opacity="0.7" filter="url(#spirit_crystal-blur)"/>
+  <path d="M47.9 47.5 L56.4 33.9" stroke="#f4fbff" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M44.5 50.3 L56.6 30.9 L59.2 26.5 M51.8 29.9 L56.6 30.9 L58.6 34.1" fill="none" stroke="#14101a" stroke-width="0.7" stroke-linejoin="round" opacity="0.6"/>
+  <path d="M40.6 47.9 L51.8 29.9 L59.2 26.5 L58.6 34.1 L47.4 52.1 Z" fill="none" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M12.3 56.5 L3.4 50.2 L1.1 44.6 L4.3 46.6 L14.3 53.6 Z" fill="url(#spirit_crystal-l)"/>
+  <path d="M14.3 53.6 L4.3 46.6 L1.1 44.6 L6.8 45.3 L15.7 51.5 Z" fill="url(#spirit_crystal-r)"/>
+  <path d="M3.4 50.2 L1.1 44.6 L4.3 46.6 Z" fill="#7a4f96" opacity="0.8"/>
+  <path d="M4.3 46.6 L1.1 44.6 L6.8 45.3 Z" fill="#f4fbff" opacity="0.45"/>
+  <path d="M11.9 52 L6.1 47.9" stroke="#f4fbff" stroke-width="1.9" stroke-linecap="round" opacity="0.7" filter="url(#spirit_crystal-blur)"/>
+  <path d="M12.9 51.4 L6.8 47.1" stroke="#f4fbff" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M14.3 53.6 L4.3 46.6 L1.1 44.6 M3.4 50.2 L4.3 46.6 L6.8 45.3" fill="none" stroke="#14101a" stroke-width="0.7" stroke-linejoin="round" opacity="0.6"/>
+  <path d="M12.3 56.5 L3.4 50.2 L1.1 44.6 L6.8 45.3 L15.7 51.5 Z" fill="none" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M49.5 51.7 L58.3 46.2 L63.9 46.3 L61 48.3 L51.2 54.3 Z" fill="url(#spirit_crystal-l)"/>
+  <path d="M51.2 54.3 L61 48.3 L63.9 46.3 L61.2 50.9 L52.5 56.3 Z" fill="url(#spirit_crystal-r)"/>
+  <path d="M58.3 46.2 L63.9 46.3 L61 48.3 Z" fill="#7a4f96" opacity="0.8"/>
+  <path d="M61 48.3 L63.9 46.3 L61.2 50.9 Z" fill="#f4fbff" opacity="0.45"/>
+  <path d="M53.5 52.9 L59.1 49.4" stroke="#f4fbff" stroke-width="1.8" stroke-linecap="round" opacity="0.7" filter="url(#spirit_crystal-blur)"/>
+  <path d="M53.6 54 L59.6 50.2" stroke="#f4fbff" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M51.2 54.3 L61 48.3 L63.9 46.3 M58.3 46.2 L61 48.3 L61.2 50.9" fill="none" stroke="#14101a" stroke-width="0.7" stroke-linejoin="round" opacity="0.6"/>
+  <path d="M49.5 51.7 L58.3 46.2 L63.9 46.3 L61.2 50.9 L52.5 56.3 Z" fill="none" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M23.1 53 L16.6 22.2 L20.2 12.8 L21.7 19 L28.7 51.8 Z" fill="url(#spirit_crystal-l)"/>
+  <path d="M28.7 51.8 L21.7 19 L20.2 12.8 L26.3 20.1 L32.9 51 Z" fill="url(#spirit_crystal-r)"/>
+  <path d="M16.6 22.2 L20.2 12.8 L21.7 19 Z" fill="#7a4f96" opacity="0.8"/>
+  <path d="M21.7 19 L20.2 12.8 L26.3 20.1 Z" fill="#f4fbff" opacity="0.45"/>
+  <path d="M27.2 44.8 L23.6 27.6" stroke="#f4fbff" stroke-width="3.2" stroke-linecap="round" opacity="0.7" filter="url(#spirit_crystal-blur)"/>
+  <path d="M29.2 45.6 L24.1 21.6" stroke="#f4fbff" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M28.7 51.8 L21.7 19 L20.2 12.8 M16.6 22.2 L21.7 19 L26.3 20.1" fill="none" stroke="#14101a" stroke-width="0.7" stroke-linejoin="round" opacity="0.6"/>
+  <path d="M23.1 53 L16.6 22.2 L20.2 12.8 L26.3 20.1 L32.9 51 Z" fill="none" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M33.4 50.9 L39.7 25.7 L46.7 19.1 L45.5 25.1 L38.7 52.2 Z" fill="url(#spirit_crystal-l)"/>
+  <path d="M38.7 52.2 L45.5 25.1 L46.7 19.1 L48.9 28 L42.6 53.1 Z" fill="url(#spirit_crystal-r)"/>
+  <path d="M39.7 25.7 L46.7 19.1 L45.5 25.1 Z" fill="#7a4f96" opacity="0.8"/>
+  <path d="M45.5 25.1 L46.7 19.1 L48.9 28 Z" fill="#f4fbff" opacity="0.45"/>
+  <path d="M40.2 46.2 L43.8 31.7" stroke="#f4fbff" stroke-width="3" stroke-linecap="round" opacity="0.7" filter="url(#spirit_crystal-blur)"/>
+  <path d="M41.5 47.6 L46.3 28.4" stroke="#f4fbff" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M38.7 52.2 L45.5 25.1 L46.7 19.1 M39.7 25.7 L45.5 25.1 L48.9 28" fill="none" stroke="#14101a" stroke-width="0.7" stroke-linejoin="round" opacity="0.6"/>
+  <path d="M33.4 50.9 L39.7 25.7 L46.7 19.1 L48.9 28 L42.6 53.1 Z" fill="none" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M27.2 53 L27.2 15.8 L33.6 6 L33.9 13.3 L33.9 53 Z" fill="url(#spirit_crystal-l)"/>
+  <path d="M33.9 53 L33.9 13.3 L33.6 6 L38.8 15.8 L38.8 53 Z" fill="url(#spirit_crystal-r)"/>
+  <path d="M27.2 15.8 L33.6 6 L33.9 13.3 Z" fill="#7a4f96" opacity="0.8"/>
+  <path d="M33.9 13.3 L33.6 6 L38.8 15.8 Z" fill="#f4fbff" opacity="0.45"/>
+  <path d="M33.9 44.5 L33.9 23.9" stroke="#f4fbff" stroke-width="3.7" stroke-linecap="round" opacity="0.7" filter="url(#spirit_crystal-blur)"/>
+  <path d="M35.9 46 L35.9 16.8" stroke="#f4fbff" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M33.9 53 L33.9 13.3 L33.6 6 M27.2 15.8 L33.9 13.3 L38.8 15.8" fill="none" stroke="#14101a" stroke-width="0.7" stroke-linejoin="round" opacity="0.6"/>
+  <path d="M27.2 53 L27.2 15.8 L33.6 6 L38.8 15.8 L38.8 53 Z" fill="none" stroke="#14101a" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- rock base -->
+  <path d="M8 55 C10 50 16 48.6 22 50 C26 47.6 34 47.4 40 49.6 C46 48 53 49.4 56.6 54.4 C52 58.6 14 58.8 8 55 Z" fill="url(#spirit_crystal-rock)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M12 53 C16 51 20 51 23 52 M30 50.4 C34 49.8 38 50.2 41 51.4" fill="none" stroke="#9aa88a" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+  <path d="M22 50 L24 55 M40 49.6 L38.6 55" fill="none" stroke="#14101a" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <g fill="#e6d0ff">
+    <path d="M53 12 L53.8 14.6 L56.4 15.4 L53.8 16.2 L53 18.8 L52.2 16.2 L49.6 15.4 L52.2 14.6 Z"/>
+    <path d="M10 20 L10.6 21.8 L12.4 22.4 L10.6 23 L10 24.8 L9.4 23 L7.6 22.4 L9.4 21.8 Z" opacity="0.8"/>
+    <circle cx="20" cy="10" r="0.8" opacity="0.8"/>
+    <circle cx="58" cy="34" r="0.7" opacity="0.7"/>
+    <circle cx="6" cy="40" r="0.6" opacity="0.6"/>
+  </g>
+</svg>

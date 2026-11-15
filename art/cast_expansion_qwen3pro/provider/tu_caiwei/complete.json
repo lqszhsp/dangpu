@@ -1,0 +1,9 @@
+{
+  "character": "tu_caiwei",
+  "state": "neutral",
+  "asset_id": "tu_caiwei",
+  "image_file": "provider/tu_caiwei/tu_caiwei.png",
+  "sha256": "0d870856c78051327f443888f9f854964465dc3bdf773983de0fad707fcf7a27",
+  "seed": 151170,
+  "model": "qwen-image-3.0-pro"
+}

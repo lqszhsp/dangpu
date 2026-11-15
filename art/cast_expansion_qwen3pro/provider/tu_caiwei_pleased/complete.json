@@ -1,0 +1,9 @@
+{
+  "character": "tu_caiwei",
+  "state": "pleased",
+  "asset_id": "tu_caiwei_pleased",
+  "image_file": "provider/tu_caiwei_pleased/tu_caiwei_pleased.png",
+  "sha256": "715b8d74a0b0bb2154ed646c6cadf738b650ad853941fcd56a3dd12f396a8431",
+  "seed": 151171,
+  "model": "qwen-image-3.0-pro"
+}

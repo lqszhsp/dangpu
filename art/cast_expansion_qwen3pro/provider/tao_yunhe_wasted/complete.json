@@ -1,0 +1,9 @@
+{
+  "character": "tao_yunhe",
+  "state": "wasted",
+  "asset_id": "tao_yunhe_wasted",
+  "image_file": "provider/tao_yunhe_wasted/tao_yunhe_wasted.png",
+  "sha256": "04ee763cf1f518e0200b027199f4bcc813114a98731251416b573849f9ffb182",
+  "seed": 151475,
+  "model": "qwen-image-3.0-pro"
+}

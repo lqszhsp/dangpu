@@ -1,0 +1,9 @@
+{
+  "character": "dugu_que",
+  "state": "neutral",
+  "asset_id": "dugu_que",
+  "image_file": "provider/dugu_que/dugu_que.png",
+  "sha256": "adaffd51b0b338dfbb6db57ac914b62e0f75d178c1c30e4bc9841edcb034b8c5",
+  "seed": 151290,
+  "model": "qwen-image-3.0-pro"
+}

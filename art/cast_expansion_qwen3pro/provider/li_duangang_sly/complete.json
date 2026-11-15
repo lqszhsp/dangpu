@@ -1,0 +1,9 @@
+{
+  "character": "li_duangang",
+  "state": "sly",
+  "asset_id": "li_duangang_sly",
+  "image_file": "provider/li_duangang_sly/li_duangang_sly.png",
+  "sha256": "36e5d7f16dd1df849dbbd4fbd4f96e25cfe3c0c6fe6f0cec1b258b5d4c0c0cb6",
+  "seed": 151214,
+  "model": "qwen-image-3.0-pro"
+}

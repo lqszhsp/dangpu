@@ -1,0 +1,9 @@
+{
+  "character": "duan_yinghuo",
+  "state": "thrall",
+  "asset_id": "duan_yinghuo_thrall",
+  "image_file": "provider/duan_yinghuo_thrall/duan_yinghuo_thrall.png",
+  "sha256": "2ddaab1086ba6683924bf446b4913c11c084a1ff62d65f40aa7cc6d31d526f48",
+  "seed": 151346,
+  "model": "qwen-image-3.0-pro"
+}

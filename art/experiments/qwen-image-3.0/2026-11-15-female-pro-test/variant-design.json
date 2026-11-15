@@ -1,0 +1,54 @@
+{
+  "production_sources": {
+    "tools/art/specs.py": {
+      "sha256": "68767085709c921428efed5c856894978d7b95b2d824b15cdabda89364fc4cf6"
+    },
+    "tools/art/build_manifest.py": {
+      "sha256": "98a0a2fb3af5cba006d67c0f8c00be4045ca89f82aeef9f434ed79f02021d4f5"
+    },
+    "js/look.js": {
+      "sha256": "853d29dca7f660c9d60f12124c3008a17d50195595f07b0f989ee9a4c500a6de"
+    },
+    "assets/STYLE.md": {
+      "sha256": "8c76c1042206ded85bdf3294f6fc7a033b2baa47a2380d2aa32faa0ff5292770"
+    }
+  },
+  "production_moods": {
+    "pleased": "a satisfied pleased smile, relaxed eyes",
+    "angry": "furious: brows knitted, glaring, jaw clenched",
+    "afraid": "terrified: wide eyes, pale face, leaning back",
+    "sly": "scheming sly half-smile, narrowed calculating eyes",
+    "wasted": "gaunt and drug-addicted: hollow cheeks, dark eye circles, sweating, trembling, sickly pale skin",
+    "thrall": "mind-controlled thrall: eyes completely clouded milky white without pupils, blank slack face, black veins spreading over the face and neck, a faint dark mist around the head"
+  },
+  "new_test_states": [
+    "sly",
+    "wasted",
+    "thrall"
+  ],
+  "appearance_requirements": {
+    "sly": [
+      "scheming half-smile",
+      "narrowed calculating eyes"
+    ],
+    "wasted": [
+      "hollow cheeks",
+      "dark eye circles",
+      "sweat",
+      "trembling impression",
+      "sickly pale skin"
+    ],
+    "thrall": [
+      "milky white pupil-less eyes",
+      "blank slack face",
+      "black face and neck veins",
+      "faint dark head mist"
+    ]
+  },
+  "game_triggers": {
+    "sly": "c.noble, or explicitly selected mood",
+    "wasted": "p.addict >= 2 or p.health < 40",
+    "thrall": "p.controlled or p.soulBound; highest priority"
+  },
+  "method": "Edit each existing experimental neutral identity directly, using production MOODS text and the production same-actor/same-costume constraint. Green screen replaces transparent-background instruction for local keying."
+}

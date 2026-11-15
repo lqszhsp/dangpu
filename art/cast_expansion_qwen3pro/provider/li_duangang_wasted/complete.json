@@ -1,0 +1,9 @@
+{
+  "character": "li_duangang",
+  "state": "wasted",
+  "asset_id": "li_duangang_wasted",
+  "image_file": "provider/li_duangang_wasted/li_duangang_wasted.png",
+  "sha256": "75caa260d8f3d3af30258e30add151d67070868d84ed36f855c2f63ffa7ef7de",
+  "seed": 151215,
+  "model": "qwen-image-3.0-pro"
+}

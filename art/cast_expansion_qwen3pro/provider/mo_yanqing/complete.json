@@ -1,0 +1,9 @@
+{
+  "character": "mo_yanqing",
+  "state": "neutral",
+  "asset_id": "mo_yanqing",
+  "image_file": "provider/mo_yanqing/mo_yanqing.png",
+  "sha256": "0e28433c612ee62027ee8bb5ef90d2a1b2c2c83b5f9d642594960bf3b69a2f99",
+  "seed": 151380,
+  "model": "qwen-image-3.0-pro"
+}

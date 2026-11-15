@@ -1,0 +1,9 @@
+{
+  "character": "gui_dengpo",
+  "state": "angry",
+  "asset_id": "gui_dengpo_angry",
+  "image_file": "provider/gui_dengpo_angry/gui_dengpo_angry.png",
+  "sha256": "e7d29fd74f58762e83622940a68ed23903b74d97dc4fa05592a46b739822b6ef",
+  "seed": 151302,
+  "model": "qwen-image-3.0-pro"
+}

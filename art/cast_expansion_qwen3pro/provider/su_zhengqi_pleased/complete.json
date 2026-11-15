@@ -1,0 +1,9 @@
+{
+  "character": "su_zhengqi",
+  "state": "pleased",
+  "asset_id": "su_zhengqi_pleased",
+  "image_file": "provider/su_zhengqi_pleased/su_zhengqi_pleased.png",
+  "sha256": "2f0285a7b9b385ec9062e84393120d8e0802b81da55e12531f6bf0ff449391c6",
+  "seed": 151461,
+  "model": "qwen-image-3.0-pro"
+}

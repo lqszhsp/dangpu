@@ -1,0 +1,9 @@
+{
+  "character": "yan_fengjiu",
+  "state": "sly",
+  "asset_id": "yan_fengjiu_sly",
+  "image_file": "provider/yan_fengjiu_sly/yan_fengjiu_sly.png",
+  "sha256": "bbc6f3bbd6bfaa508f6b70cfde9dd0df733ebc1ee91f828713eb7256f2eb4687",
+  "seed": 151234,
+  "model": "qwen-image-3.0-pro"
+}

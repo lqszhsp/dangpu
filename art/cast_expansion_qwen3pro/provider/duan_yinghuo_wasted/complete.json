@@ -1,0 +1,9 @@
+{
+  "character": "duan_yinghuo",
+  "state": "wasted",
+  "asset_id": "duan_yinghuo_wasted",
+  "image_file": "provider/duan_yinghuo_wasted/duan_yinghuo_wasted.png",
+  "sha256": "a04f27c23518637498762ed43f20b18f8c4333ab5558821a50d334a407a25ede",
+  "seed": 151345,
+  "model": "qwen-image-3.0-pro"
+}

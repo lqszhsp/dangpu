@@ -1,0 +1,9 @@
+{
+  "character": "li_yueqiao",
+  "state": "wasted",
+  "asset_id": "li_yueqiao_wasted",
+  "image_file": "provider/li_yueqiao_wasted/li_yueqiao_wasted.png",
+  "sha256": "7cf4ba7b7b0f4bfae40a016ccbaef9f1cee89f65bdfe1fec948874639b4a01ea",
+  "seed": 151135,
+  "model": "qwen-image-3.0-pro"
+}

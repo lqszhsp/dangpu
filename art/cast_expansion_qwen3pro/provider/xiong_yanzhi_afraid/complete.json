@@ -1,0 +1,9 @@
+{
+  "character": "xiong_yanzhi",
+  "state": "afraid",
+  "asset_id": "xiong_yanzhi_afraid",
+  "image_file": "provider/xiong_yanzhi_afraid/xiong_yanzhi_afraid.png",
+  "sha256": "d4f85f00ca030af0ad075df7480fcee6bf5748d7aafb6177796a7b3631673000",
+  "seed": 151113,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 192">
+  <defs>
+    <linearGradient id="soul_banner-cloth" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#14101a"/>
+      <stop offset="0.35" stop-color="#2a1838"/>
+      <stop offset="0.7" stop-color="#1f1626"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <linearGradient id="soul_banner-bone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8a7a5c"/>
+      <stop offset="0.4" stop-color="#e9dfcc"/>
+      <stop offset="1" stop-color="#a8946a"/>
+    </linearGradient>
+    <radialGradient id="soul_banner-ghost" cx="0.5" cy="0.45" r="0.5">
+      <stop offset="0" stop-color="#cfa8ff" stop-opacity="0.55"/>
+      <stop offset="0.6" stop-color="#5b3474" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#3d2350" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soul_banner-blur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <!-- miasma -->
+  <g filter="url(#soul_banner-blur)" opacity="0.85">
+    <ellipse cx="70" cy="96" rx="44" ry="70" fill="#3d2350" opacity="0.6"/>
+    <path d="M30 170 Q50 150 70 172 Q90 150 112 168" fill="none" stroke="#5b3474" stroke-width="8"/>
+    <path d="M104 40 Q120 60 108 84" fill="none" stroke="#5b3474" stroke-width="6"/>
+  </g>
+  <!-- pole -->
+  <rect x="17" y="12" width="9" height="172" rx="4" fill="url(#soul_banner-bone)" stroke="#14101a" stroke-width="2"/>
+  <g fill="none" stroke="#8a7a5c" stroke-width="1.2">
+    <path d="M17.5 50 Q21.5 52 25.5 50 M17.5 90 Q21.5 92 25.5 90 M17.5 130 Q21.5 132 25.5 130 M17.5 165 Q21.5 167 25.5 165"/>
+  </g>
+  <path d="M19.5 20 L19.5 178" stroke="#f6f0e2" stroke-width="1" opacity="0.7"/>
+  <!-- crossbar -->
+  <rect x="14" y="19" width="102" height="7" rx="3.5" fill="url(#soul_banner-bone)" stroke="#14101a" stroke-width="2"/>
+  <circle cx="114" cy="22.5" r="4.5" fill="#e9dfcc" stroke="#14101a" stroke-width="1.6"/>
+  <!-- skull finial -->
+  <path d="M10 12 Q10 1.5 21.5 1.5 Q33 1.5 33 12 Q33 17 29 18.5 L28 22 L15 22 L14 18.5 Q10 17 10 12 Z" fill="url(#soul_banner-bone)" stroke="#14101a" stroke-width="1.8" stroke-linejoin="round"/>
+  <ellipse cx="17" cy="11.5" rx="3" ry="3.3" fill="#14101a"/>
+  <ellipse cx="26" cy="11.5" rx="3" ry="3.3" fill="#14101a"/>
+  <circle cx="17" cy="11.5" r="1.2" fill="#e0524a"/>
+  <circle cx="26" cy="11.5" r="1.2" fill="#e0524a"/>
+  <path d="M21.5 14.5 l-1.3 2.5 h2.6 Z" fill="#14101a"/>
+  <path d="M17 19.5 v2.5 M20 19.5 v2.5 M23 19.5 v2.5 M26 19.5 v2.5" stroke="#14101a" stroke-width="0.9"/>
+  <!-- banner cloth -->
+  <path d="M30 26 L110 26 Q113 70 108 110 Q105 135 110 160 L100 152 L96 176 L86 158 L76 184 L68 160 L58 178 L52 156 L42 172 L38 150 L30 162 Q34 120 31 80 Z" fill="url(#soul_banner-cloth)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- border trim -->
+  <path d="M35 32 L105 32 Q107 72 103 110 Q101 128 103 146" fill="none" stroke="#8e1b2b" stroke-width="1.6"/>
+  <path d="M35 32 Q37 80 35 140" fill="none" stroke="#8e1b2b" stroke-width="1.6"/>
+  <path d="M30 28 L110 28" stroke="#d9a441" stroke-width="1.6"/>
+  <!-- folds -->
+  <g fill="none" stroke="#5b3474" stroke-width="1.4" opacity="0.6" stroke-linecap="round">
+    <path d="M52 40 Q55 100 50 150"/>
+    <path d="M88 40 Q85 100 90 150"/>
+  </g>
+  <!-- ghost skull -->
+  <ellipse cx="70" cy="86" rx="30" ry="34" fill="url(#soul_banner-ghost)"/>
+  <g opacity="0.75">
+    <path d="M52 82 Q52 60 70 60 Q88 60 88 82 Q88 92 82 96 L81 104 L59 104 L58 96 Q52 92 52 82 Z" fill="#cfa8ff" fill-opacity="0.18" stroke="#cfa8ff" stroke-width="1.5" stroke-linejoin="round"/>
+    <ellipse cx="62" cy="83" rx="5" ry="6" fill="#14101a"/>
+    <ellipse cx="78" cy="83" rx="5" ry="6" fill="#14101a"/>
+    <path d="M70 89 l-2.5 5 h5 Z" fill="#14101a"/>
+    <path d="M62 99 v5 M66 99 v5 M70 99 v5 M74 99 v5 M78 99 v5" stroke="#cfa8ff" stroke-width="1"/>
+    <path d="M59 104 Q55 118 60 130 M81 104 Q86 118 80 130" fill="none" stroke="#cfa8ff" stroke-width="1.2" opacity="0.6" stroke-linecap="round"/>
+  </g>
+  <circle cx="62" cy="83" r="1.8" fill="#e0524a"/>
+  <circle cx="78" cy="83" r="1.8" fill="#e0524a"/>
+  <!-- blood runes -->
+  <g fill="none" stroke="#c43a3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M44 40 h8 M48 40 v10 M44 46 l8 0 M44 53 l4 3 4 -3"/>
+    <path d="M88 40 h8 M92 40 v6 l-4 4 M90 52 h6"/>
+    <path d="M62 38 Q70 34 78 38 M70 36 v10 M64 46 h12"/>
+    <path d="M44 120 h6 l0 8 M42 132 l8 -2 M47 134 v8"/>
+    <path d="M90 120 l6 2 M93 121 v10 l-4 3 M89 138 h7"/>
+    <path d="M60 132 Q70 140 80 132 M70 128 v14"/>
+  </g>
+  <g fill="none" stroke="#e0524a" stroke-width="0.8" stroke-linecap="round" opacity="0.9">
+    <path d="M44 40 h8 M48 40 v10 M62 38 Q70 34 78 38 M70 36 v10 M60 132 Q70 140 80 132"/>
+  </g>
+  <!-- drips -->
+  <path d="M48 56 q0.8 3 0 5 q-0.8 -2 0 -5 Z M70 46 q1 4 0 6 q-1 -2 0 -6 Z" fill="#8e1b2b"/>
+  <!-- ties -->
+  <g fill="#8e1b2b" stroke="#14101a" stroke-width="1">
+    <rect x="38" y="22" width="4" height="8" rx="1"/>
+    <rect x="68" y="22" width="4" height="8" rx="1"/>
+    <rect x="98" y="22" width="4" height="8" rx="1"/>
+  </g>
+  <!-- torn shreds floating -->
+  <path d="M106 168 l8 4 -4 6 Z" fill="#1f1626" stroke="#14101a" stroke-width="1.2" stroke-linejoin="round"/>
+  <path d="M82 180 l6 2 -2 6 Z" fill="#2a1838" stroke="#14101a" stroke-width="1" stroke-linejoin="round"/>
+  <!-- soul wisps -->
+  <g fill="none" stroke="#b98ae0" stroke-width="1.3" stroke-linecap="round" opacity="0.8">
+    <path d="M112 100 Q120 92 116 82 Q113 76 118 70"/>
+    <path d="M40 176 Q34 182 38 188"/>
+  </g>
+</svg>

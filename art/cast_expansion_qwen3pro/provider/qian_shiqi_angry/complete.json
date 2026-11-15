@@ -1,0 +1,9 @@
+{
+  "character": "qian_shiqi",
+  "state": "angry",
+  "asset_id": "qian_shiqi_angry",
+  "image_file": "provider/qian_shiqi_angry/qian_shiqi_angry.png",
+  "sha256": "b4f9b85b19a98ff69673f47ae432fbc91b93aeda610ad7f81112a47c00859429",
+  "seed": 151352,
+  "model": "qwen-image-3.0-pro"
+}

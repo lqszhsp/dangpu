@@ -1,0 +1,9 @@
+{
+  "character": "zhu_shanye",
+  "state": "sly",
+  "asset_id": "zhu_shanye_sly",
+  "image_file": "provider/zhu_shanye_sly/zhu_shanye_sly.png",
+  "sha256": "8a6a0bf3dbc4f013466b20ff55b48ba0dc1cd3bd448820c8ff974f4cb6e3c3f3",
+  "seed": 151154,
+  "model": "qwen-image-3.0-pro"
+}

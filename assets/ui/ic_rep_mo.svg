@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="ic_rep_mo-disc" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#5e0f1c"/>
+      <stop offset="0.6" stop-color="#2a1838"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </radialGradient>
+    <radialGradient id="ic_rep_mo-skull" cx="0.4" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#e0524a"/>
+      <stop offset="0.55" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </radialGradient>
+    <linearGradient id="ic_rep_mo-horn" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#3a3f4a"/>
+      <stop offset="1" stop-color="#e9dfcc"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="29" fill="url(#ic_rep_mo-disc)" stroke="#14101a" stroke-width="3"/>
+  <circle cx="32" cy="32" r="24.5" fill="none" stroke="#c43a3a" stroke-width="1.6"/>
+  <!-- horns -->
+  <path d="M20 26 Q10 22 10 8 Q16 16 24 18 Z" fill="url(#ic_rep_mo-horn)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M44 26 Q54 22 54 8 Q48 16 40 18 Z" fill="url(#ic_rep_mo-horn)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- skull -->
+  <path d="M18 30 Q18 14 32 14 Q46 14 46 30 Q46 38 41 40 L41 46 L23 46 L23 40 Q18 38 18 30 Z" fill="url(#ic_rep_mo-skull)" stroke="#14101a" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M22 26 Q23 19 30 17" fill="none" stroke="#efe2c4" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+  <!-- eye sockets -->
+  <path d="M22 30 Q24 25 30 28 Q30 34 25 34 Q22 33 22 30 Z" fill="#14101a"/>
+  <path d="M42 30 Q40 25 34 28 Q34 34 39 34 Q42 33 42 30 Z" fill="#14101a"/>
+  <circle cx="26.4" cy="30.4" r="1.4" fill="#f2d27a"/>
+  <circle cx="37.6" cy="30.4" r="1.4" fill="#f2d27a"/>
+  <!-- nose -->
+  <path d="M32 34 L30 38 L34 38 Z" fill="#14101a"/>
+  <!-- teeth -->
+  <path d="M23 42 L41 42" stroke="#14101a" stroke-width="1.6"/>
+  <path d="M27.5 40 L27.5 46 M32 40 L32 46 M36.5 40 L36.5 46" stroke="#14101a" stroke-width="1.6"/>
+  <!-- blood drip -->
+  <path d="M32 46 L32 52 Q32 54.6 30 54 Q29 53 30 51 Z" fill="#c43a3a" stroke="#14101a" stroke-width="1"/>
+</svg>

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "xian_spy:opaque-silk-regeneration",
+    "out": "generated/xian_spy.png",
+    "size": "1024x1536",
+    "background": "transparent",
+    "quality": "high",
+    "model": "gpt-image-2.5-sunburst-adobe",
+    "prompt": "Cinematic photorealistic full-body standing portrait of one adult Chinese female immortal-sect secret agent, age 28, beautiful alert almond eyes, long black hair in an elaborate high updo with a silver crown and hairpins. Dark charcoal embroidered travelling cloak fastened at both shoulders by silver brooches over pale ice-blue and ivory layered ancient Chinese robes, silver ornamental belt, pale boots. Both hands relaxed at her sides, head-to-toe front view looking directly at camera. Her entire NOSE, MOUTH AND CHIN ARE COMPLETELY HIDDEN UNDER A THICK OPAQUE WHITE SILK FACE SCARF. The white silk scarf is folded in several substantial diagonal pleats across the nose and mouth and hangs to the upper chest. It is dense cloth, like folded heavy satin: solid white, completely opaque, not mesh or gauze. The upper edge sits directly below her eyes across the nose bridge. The entire scarf surface shows only white folded satin fabric. No embroidery on this face scarf. NO facial anatomy, no lip shape, no nostrils, no mouth, no nose outline or skin is visible on or through the fabric. Her eyes and brows above the scarf remain fully visible, calm and vigilant. Real actor, realistic cloth and costume textures, high-budget Chinese xianxia drama film still, detailed photography, warm red lantern key light from image left, cold purple rim light, moody low-key lighting. Exactly one person, full body including feet, generous transparent margins around the silhouette. GENUINELY TRANSPARENT ALPHA BACKGROUND, isolated character cutout, no background, no room, no ground, no cast shadow, no text, no checkerboard. Background is transparent but the white face scarf is fully opaque."
+  }
+]

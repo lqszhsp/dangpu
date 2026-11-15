@@ -1,0 +1,11 @@
+{
+  "model": "qwen-image-3.0-pro",
+  "asset_id": "ren_cultivator_f2_wasted",
+  "image_file": "provider/ren_cultivator_f2_wasted.png",
+  "sha256": "25c8d98c42fc4a4a7ac549f842d1869b0dccbe4c5867ff35ba60eafdfaf457ac",
+  "cleaned_png": "ren_cultivator_f2_wasted.png",
+  "cleaned_png_sha256": "ef07d70454ca73d1fb2b0d7c2e58c65ec191c3a33092e712a485b38b6ce37770",
+  "cutout": "ren_cultivator_f2_wasted.webp",
+  "cutout_sha256": "ea615c695b08f0c6bab071d649b7db6e5138ab196b1c8598bf12d4df081b5dfa",
+  "status": "generated_pending_visual_review"
+}

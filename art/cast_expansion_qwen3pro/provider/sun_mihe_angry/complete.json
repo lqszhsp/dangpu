@@ -1,0 +1,9 @@
+{
+  "character": "sun_mihe",
+  "state": "angry",
+  "asset_id": "sun_mihe_angry",
+  "image_file": "provider/sun_mihe_angry/sun_mihe_angry.png",
+  "sha256": "c8b5cbbb56550f78f3952cea7b6251366dc402f6f1fd9994ffdbc2e9b5b088c6",
+  "seed": 151062,
+  "model": "qwen-image-3.0-pro"
+}

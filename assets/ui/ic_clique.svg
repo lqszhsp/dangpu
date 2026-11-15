@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ic_clique-token" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1f1626"/>
+      <stop offset="0.4" stop-color="#5b3474"/>
+      <stop offset="1" stop-color="#2a1838"/>
+    </linearGradient>
+    <linearGradient id="ic_clique-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.5" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#8a5a1c"/>
+    </linearGradient>
+    <radialGradient id="ic_clique-seal" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#e0524a"/>
+      <stop offset="0.55" stop-color="#c43a3a"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </radialGradient>
+    <radialGradient id="ic_clique-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c43a3a" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#5e0f1c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="url(#ic_clique-glow)"/>
+  <!-- token A (leaning right) -->
+  <g transform="rotate(32 32 34)">
+    <path d="M24 10 Q32 4 40 10 L40 54 Q32 58 24 54 Z" fill="url(#ic_clique-token)" stroke="#14101a" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M26.5 12 Q32 8 37.5 12 L37.5 52 Q32 55 26.5 52 Z" fill="none" stroke="url(#ic_clique-gold)" stroke-width="1.5"/>
+    <path d="M28 14 L28 48" stroke="#8f6bb0" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+    <g fill="none" stroke="#f2d27a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M29 16 L32 13.5 L35 16 M30 18.5 H34 M32 18.5 V23 M30 21 L32 23 L34 21"/>
+      <path d="M29.5 41 H34.5 M32 39 V47 M30 44 L32 47 L34 44"/>
+    </g>
+    <path d="M32 56.5 Q33 58.5 31.5 61" fill="none" stroke="#c43a3a" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+  <!-- token B (leaning left) -->
+  <g transform="rotate(-32 32 34)">
+    <path d="M24 10 Q32 4 40 10 L40 54 Q32 58 24 54 Z" fill="url(#ic_clique-token)" stroke="#14101a" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M26.5 12 Q32 8 37.5 12 L37.5 52 Q32 55 26.5 52 Z" fill="none" stroke="url(#ic_clique-gold)" stroke-width="1.5"/>
+    <path d="M28 14 L28 48" stroke="#8f6bb0" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+    <g fill="none" stroke="#f2d27a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M29 16 L32 13.5 L35 16 M30 18.5 H34 M32 18.5 V23 M30 21 L32 23 L34 21"/>
+      <path d="M29.5 41 H34.5 M32 39 V47 M30 44 L32 47 L34 44"/>
+    </g>
+    <path d="M32 56.5 Q31 58.5 32.5 61" fill="none" stroke="#c43a3a" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+  <!-- blood seal at crossing -->
+  <path d="M32 25 Q37 24.5 39.5 28 Q43 30 42 34.5 Q43 39 39 41 Q36.5 44 32 43.2 Q27.5 44 25 41 Q21 39 22 34.5 Q21 30 24.5 28 Q27 24.5 32 25 Z" fill="url(#ic_clique-seal)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <rect x="26.5" y="28.6" width="11" height="11" rx="1.2" fill="none" stroke="#5e0f1c" stroke-width="1.3"/>
+  <!-- seal glyph -->
+  <g fill="none" stroke="#f2d27a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M29 31 H35 M32 31 V37.5 M29.2 34 L34.8 34 M29.5 37.5 Q32 36 34.5 37.5"/>
+  </g>
+  <path d="M25 30 Q26.5 26.8 30 26.2" fill="none" stroke="#ffd6cc" stroke-width="1.2" stroke-linecap="round" opacity="0.75"/>
+  <!-- blood drip -->
+  <path d="M33.5 43 Q34 47 33 49 Q31.6 48 32 44 Z" fill="#8e1b2b" stroke="#14101a" stroke-width="0.9" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <linearGradient id="m_forgery-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5e0f1c"/>
+      <stop offset="0.5" stop-color="#8a5a1c"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </linearGradient>
+    <linearGradient id="m_forgery-front" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#14101a"/>
+      <stop offset="0.45" stop-color="#3a2e1c"/>
+      <stop offset="0.8" stop-color="#8a5a1c"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <radialGradient id="m_forgery-lampglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffc56b" stop-opacity="0.75"/>
+      <stop offset="0.25" stop-color="#d9a441" stop-opacity="0.4"/>
+      <stop offset="0.65" stop-color="#3d2350" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2a1838" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="m_forgery-skin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#efe2c4"/>
+      <stop offset="0.6" stop-color="#e9dfcc"/>
+      <stop offset="1" stop-color="#d8c49a"/>
+    </linearGradient>
+    <linearGradient id="m_forgery-clay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3a2e1c"/>
+      <stop offset="0.4" stop-color="#9a4d12"/>
+      <stop offset="1" stop-color="#1f1626"/>
+    </linearGradient>
+    <radialGradient id="m_forgery-ember" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffc56b"/>
+      <stop offset="0.5" stop-color="#e0524a"/>
+      <stop offset="1" stop-color="#5e0f1c"/>
+    </radialGradient>
+    <linearGradient id="m_forgery-bronze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2d27a"/>
+      <stop offset="0.45" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#8a5a1c"/>
+    </linearGradient>
+    <linearGradient id="m_forgery-jade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7fd6b5"/>
+      <stop offset="0.5" stop-color="#3fae8f"/>
+      <stop offset="1" stop-color="#1f5c4c"/>
+    </linearGradient>
+    <filter id="m_forgery-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.4"/>
+    </filter>
+  </defs>
+  <!-- dark room haze + lamp glow -->
+  <ellipse cx="80" cy="80" rx="74" ry="60" fill="#14101a" opacity="0.35" filter="url(#m_forgery-blur)"/>
+  <ellipse cx="116" cy="60" rx="58" ry="50" fill="url(#m_forgery-lampglow)"/>
+  <!-- ground shadow -->
+  <ellipse cx="80" cy="136" rx="68" ry="7" fill="#14101a" opacity="0.6"/>
+  <!-- mask rack (back) -->
+  <g stroke-linecap="round">
+    <path d="M23 96 L23 26 M15 30 L62 30" stroke="#14101a" stroke-width="5"/>
+    <path d="M23 96 L23 26 M15 30 L62 30" stroke="#8a5a1c" stroke-width="2.4"/>
+    <path d="M23 44 L36 30" stroke="#14101a" stroke-width="3.4"/>
+    <path d="M23 44 L36 30" stroke="#8a5a1c" stroke-width="1.6"/>
+    <path d="M24 30 L60 30" stroke="#d9a441" stroke-width="0.7" opacity="0.5"/>
+  </g>
+  <!-- strings -->
+  <path d="M41 30 L41 37 M56 30 L55 40" stroke="#d8c49a" stroke-width="0.7"/>
+  <!-- hanging paper masks -->
+  <g stroke="#1f1626" stroke-width="1.2" stroke-linejoin="round">
+    <g transform="translate(41 49) rotate(-6)">
+      <path d="M0 -12 Q9.4 -12 9.4 -1 Q9 9 0 13 Q-9 9 -9.4 -1 Q-9.4 -12 0 -12 Z" fill="url(#m_forgery-skin)" opacity="0.92"/>
+      <path d="M-6.4 9 Q-3.4 6.4 -1 10.6 Q-3 12.4 -6.4 9 Z" fill="#d8c49a"/>
+      <ellipse cx="-3.8" cy="-1.6" rx="2.4" ry="1.2" fill="#14101a" stroke="none"/>
+      <ellipse cx="3.8" cy="-1.6" rx="2.4" ry="1.2" fill="#14101a" stroke="none"/>
+      <path d="M0 0 L-1 4.4 L0.8 4.6" fill="none" stroke="#8a5a1c" stroke-width="0.8"/>
+      <path d="M-3 7.6 Q0 7.9 3 7.6" fill="none" stroke="#5e0f1c" stroke-width="0.9" stroke-linecap="round"/>
+      <path d="M-4.6 -6.4 Q-3.6 -7.4 -1.8 -6.8 M4.6 -6.4 Q3.6 -7.4 1.8 -6.8" fill="none" stroke="#3a2e1c" stroke-width="0.7"/>
+      <ellipse cx="-5.4" cy="3" rx="1.6" ry="0.9" fill="#e0524a" opacity="0.3" stroke="none"/>
+    </g>
+    <g transform="translate(56 51) rotate(8)">
+      <path d="M0 -11 Q8.4 -11 8.4 -1 Q8 8 0 11.6 Q-8 8 -8.4 -1 Q-8.4 -11 0 -11 Z" fill="url(#m_forgery-skin)" opacity="0.85"/>
+      <path d="M8.4 -1 Q8 8 0 11.6 Q4.4 5 3.6 -1 Z" fill="#d8c49a" opacity="0.8"/>
+      <ellipse cx="-3.4" cy="-1.4" rx="2.2" ry="1" fill="#14101a" stroke="none"/>
+      <ellipse cx="3.4" cy="-1.4" rx="2.2" ry="1" fill="#14101a" stroke="none"/>
+      <path d="M-2.6 6.6 Q0 6.8 2.6 6.6" fill="none" stroke="#5e0f1c" stroke-width="0.8" stroke-linecap="round"/>
+    </g>
+    <!-- mask draped over pole -->
+    <g transform="translate(23 62) rotate(-4)">
+      <path d="M-6 -6 Q0 -8.4 6 -6 L6.6 6 Q4 12 0 12.6 Q-4 12 -6.6 6 Z" fill="url(#m_forgery-skin)" opacity="0.9"/>
+      <ellipse cx="-2.8" cy="1.4" rx="1.8" ry="0.9" fill="#14101a" stroke="none"/>
+      <ellipse cx="2.8" cy="1.4" rx="1.8" ry="0.9" fill="#14101a" stroke="none"/>
+      <path d="M-2 8.6 L2 8.6" fill="none" stroke="#5e0f1c" stroke-width="0.8"/>
+    </g>
+  </g>
+  <!-- lamp stand (behind table top line) -->
+  <g stroke="#14101a" stroke-linejoin="round">
+    <path d="M126.6 56 L129.4 56 L130 91 L126 91 Z" fill="#3a2e1c" stroke-width="1.6"/>
+    <path d="M127.6 58 L127.6 89" stroke="#d9a441" stroke-width="0.7" opacity="0.6"/>
+  </g>
+  <!-- back legs -->
+  <g fill="#1f1626" stroke="#14101a" stroke-width="1.6">
+    <path d="M34 100 L39 100 L39 122 L34 122 Z"/><path d="M121 100 L126 100 L126 122 L121 122 Z"/>
+  </g>
+  <!-- front legs (low, curled feet) -->
+  <g stroke="#14101a" stroke-width="2" stroke-linejoin="round">
+    <path d="M18 106 L28 106 L27 124 Q27 130 31 131 L31 134 L20 134 Q17 128 18 120 Z" fill="url(#m_forgery-front)"/>
+    <path d="M132 106 L142 106 Q143 128 140 134 L129 134 L129 131 Q133 130 133 124 Z" fill="url(#m_forgery-front)"/>
+  </g>
+  <!-- table top + apron -->
+  <path d="M28 86 L132 86 L146 100 L14 100 Z" fill="url(#m_forgery-top)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M14 100 L146 100 L146 108 L14 108 Z" fill="url(#m_forgery-front)" stroke="#14101a" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M20 104 L140 104" stroke="#14101a" stroke-width="0.8" opacity="0.6"/>
+  <path d="M32 88.4 L128 88.4" stroke="#ffc56b" stroke-width="0.8" opacity="0.35"/>
+  <path d="M42 93 Q70 91 100 94 M60 90 Q84 89.4 118 91" fill="none" stroke="#3a2e1c" stroke-width="0.8" opacity="0.7"/>
+  <!-- lamp light pool on table -->
+  <ellipse cx="112" cy="93" rx="30" ry="5" fill="#d9a441" opacity="0.35" filter="url(#m_forgery-blur)"/>
+  <!-- small stove -->
+  <g stroke="#14101a" stroke-linejoin="round">
+    <path d="M35 74 L57 74 L55 95 L37 95 Z" fill="url(#m_forgery-clay)" stroke-width="2"/>
+    <path d="M41 95 L41 87 Q46 81 51 87 L51 95 Z" fill="url(#m_forgery-ember)" stroke-width="1.4"/>
+    <ellipse cx="46" cy="74" rx="12" ry="3.6" fill="#3a2e1c" stroke-width="1.8"/>
+    <ellipse cx="46" cy="74" rx="8.6" ry="2.2" fill="url(#m_forgery-ember)" stroke-width="1"/>
+    <path d="M36 80 L56 80" stroke="#14101a" stroke-width="1" opacity="0.7"/>
+  </g>
+  <circle cx="43" cy="73.6" r="1" fill="#ffc56b"/><circle cx="48.6" cy="74.4" r="0.9" fill="#ffc56b"/>
+  <path d="M38.6 77 L38.6 92" stroke="#e8902f" stroke-width="0.8" opacity="0.5"/>
+  <!-- tiny crucible on stove -->
+  <g stroke="#14101a" stroke-linejoin="round">
+    <path d="M41 66 L51 66 L49.6 72.6 L42.4 72.6 Z" fill="#3a3f4a" stroke-width="1.4"/>
+    <ellipse cx="46" cy="66" rx="5" ry="1.4" fill="#6b7d5a" stroke-width="1"/>
+  </g>
+  <path d="M45 64 Q42 59 46 55 Q49 51 46 46" fill="none" stroke="#9aa88a" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+  <!-- half-finished mirror on little stand -->
+  <g stroke="#14101a" stroke-linejoin="round">
+    <path d="M96 90 L102 70 M114 90 L108 70" stroke="#14101a" stroke-width="3.6" stroke-linecap="round"/>
+    <path d="M96 90 L102 70 M114 90 L108 70" stroke="#8a5a1c" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="105" cy="70" r="15" fill="url(#m_forgery-bronze)" stroke-width="2"/>
+    <!-- right half: raw, unfinished, patina -->
+    <path d="M105 55 A15 15 0 0 1 105 85 Q101 78 104 70 Q101 62 105 55 Z" fill="#6b7d5a" stroke-width="1.2"/>
+    <circle cx="105" cy="70" r="11.6" fill="none" stroke="#8a5a1c" stroke-width="0.9"/>
+    <circle cx="105" cy="70" r="3" fill="url(#m_forgery-bronze)" stroke-width="1"/>
+  </g>
+  <!-- carved pearl band only on left half -->
+  <path d="M105 58.4 A11.6 11.6 0 0 0 105 81.6" fill="none" stroke="#fff3c8" stroke-width="2" stroke-dasharray="0.01 3.2" stroke-linecap="round"/>
+  <g fill="#3fae8f" opacity="0.8"><circle cx="111" cy="63" r="1.6"/><circle cx="114" cy="72" r="1.2"/><circle cx="109" cy="79" r="1.8"/><circle cx="116" cy="66" r="0.9"/></g>
+  <g fill="#1f5c4c" opacity="0.8"><circle cx="112.6" cy="76" r="1"/><circle cx="108.6" cy="60" r="0.8"/></g>
+  <path d="M94 66 Q95.6 60 100 57.6" fill="none" stroke="#fff8e6" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
+  <!-- jade pendant being aged, in a clamp -->
+  <g stroke="#14101a" stroke-linejoin="round">
+    <path d="M70 92 L86 92 L84 95 L72 95 Z" fill="#3a2e1c" stroke-width="1.4"/>
+    <path d="M74 92 L75 84 M82 92 L81 84" stroke="#5c6370" stroke-width="2"/>
+    <circle cx="78" cy="78" r="9" fill="url(#m_forgery-jade)" stroke-width="1.8"/>
+    <circle cx="78" cy="78" r="3" fill="#3a2e1c" stroke-width="1.2"/>
+  </g>
+  <!-- brown aging stain on right half of jade -->
+  <path d="M80 69.4 Q87.6 71 86.6 80 Q85 85.6 80 86.8 Q82.4 82 81.4 78 Q83.6 73 80 69.4 Z" fill="#8a5a1c" opacity="0.75"/>
+  <path d="M84.6 83 L85 88" stroke="#8a5a1c" stroke-width="1" stroke-linecap="round" opacity="0.8"/>
+  <path d="M71.4 75 Q72.6 71 76 70" fill="none" stroke="#f4fbff" stroke-width="1.2" stroke-linecap="round" opacity="0.85"/>
+  <path d="M76.4 69.4 Q78 66 79.6 69.4" fill="none" stroke="#c43a3a" stroke-width="1.4"/>
+  <!-- brush resting on jade -->
+  <g stroke="#14101a" stroke-linejoin="round">
+    <path d="M57 93.6 L66.6 90 L67.2 91.6 L57.6 95.2 Z" fill="#8a5a1c" stroke-width="1"/>
+    <path d="M66.6 90 L67.2 91.6 L71.6 90.8 Q70 88.4 66.6 90 Z" fill="#8a5a1c" stroke-width="0.9"/>
+  </g>
+  <!-- oil lamp dish + dim flame -->
+  <ellipse cx="128" cy="91.4" rx="7" ry="2.2" fill="#3a2e1c" stroke="#14101a" stroke-width="1.6"/>
+  <path d="M120 55 Q128 61 136 55 Q133 52.4 128 52.4 Q123 52.4 120 55 Z" fill="#9a4d12" stroke="#14101a" stroke-width="1.6" stroke-linejoin="round"/>
+  <ellipse cx="128" cy="47" rx="9" ry="11" fill="#e8902f" opacity="0.6" filter="url(#m_forgery-blur)"/>
+  <path d="M128 53.6 Q123.6 50 126.4 44 Q127.6 41 128 38.6 Q129.6 42 131 45 Q132.6 50.4 128 53.6 Z" fill="#ffc56b" stroke="#9a4d12" stroke-width="0.9"/>
+  <path d="M128 52.4 Q126.4 50.4 127.6 47.4 Q128.6 49.6 129.4 48 Q130 51 128 52.4 Z" fill="#fff3c8"/>
+  <!-- dye dishes -->
+  <g stroke="#14101a" stroke-width="1.2">
+    <ellipse cx="56" cy="97" rx="6" ry="2.2" fill="#d8c49a"/>
+    <ellipse cx="68.6" cy="97.6" rx="6" ry="2.2" fill="#d8c49a"/>
+    <ellipse cx="96" cy="97.6" rx="6" ry="2.2" fill="#d8c49a"/>
+  </g>
+  <g>
+    <ellipse cx="56" cy="96.8" rx="3.8" ry="1.2" fill="#8a5a1c"/>
+    <ellipse cx="68.6" cy="97.4" rx="3.8" ry="1.2" fill="#3fae8f"/>
+    <ellipse cx="96" cy="97.4" rx="3.8" ry="1.2" fill="#c43a3a"/>
+  </g>
+  <path d="M83 96 L84.4 98.6 L80.6 98.6 Z" fill="#14101a" stroke="#14101a" stroke-width="1" stroke-linejoin="round"/>
+  <ellipse cx="82.6" cy="97.6" rx="2.6" ry="1.4" fill="#1f1626" stroke="#5c6370" stroke-width="0.8"/>
+  <!-- carving knife -->
+  <g stroke="#14101a" stroke-width="1.1" stroke-linejoin="round">
+    <path d="M27 98.6 L37 95.6 L37.6 97.6 L27.6 100.4 Z" fill="#5e0f1c"/>
+    <path d="M37 95.6 L44.6 93.6 L42.6 96.6 L37.6 97.6 Z" fill="#cfefff"/>
+  </g>
+  <path d="M108 99 L118 96.6" stroke="#14101a" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M108 99 L113 97.8" stroke="#8a5a1c" stroke-width="1" stroke-linecap="round"/>
+  <path d="M113 97.8 L118 96.6" stroke="#9aa88a" stroke-width="1" stroke-linecap="round"/>
+  <!-- mask draped over table front edge -->
+  <g stroke="#1f1626" stroke-width="1.2" stroke-linejoin="round">
+    <path d="M118 98 Q127 96 136 98.6 L135 106 Q134 116 127 120 Q120 116 119 106 Z" fill="url(#m_forgery-skin)" opacity="0.92"/>
+    <ellipse cx="123.6" cy="106" rx="2.2" ry="1.1" fill="#14101a" stroke="none"/>
+    <ellipse cx="130.6" cy="106" rx="2.2" ry="1.1" fill="#14101a" stroke="none"/>
+    <path d="M124.4 114.2 Q127 114.6 129.6 114.2" fill="none" stroke="#5e0f1c" stroke-width="0.8"/>
+    <path d="M118 98 Q127 96 136 98.6 Q127 100.6 118 98 Z" fill="#d8c49a"/>
+  </g>
+  <!-- dim motes -->
+  <g fill="#ffc56b" opacity="0.7"><circle cx="112" cy="40" r="0.9"/><circle cx="140" cy="36" r="0.8"/><circle cx="98" cy="48" r="0.7"/></g>
+</svg>

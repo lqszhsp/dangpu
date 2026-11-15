@@ -1,0 +1,9 @@
+{
+  "character": "ao_xunlan",
+  "state": "thrall",
+  "asset_id": "ao_xunlan_thrall",
+  "image_file": "provider/ao_xunlan_thrall/ao_xunlan_thrall.png",
+  "sha256": "2299a792c8b1f7f15211af8437e87c87d82acac3643d1391e35e6ba1017e3a75",
+  "seed": 151096,
+  "model": "qwen-image-3.0-pro"
+}

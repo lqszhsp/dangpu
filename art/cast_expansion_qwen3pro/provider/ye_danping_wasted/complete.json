@@ -1,0 +1,9 @@
+{
+  "character": "ye_danping",
+  "state": "wasted",
+  "asset_id": "ye_danping_wasted",
+  "image_file": "provider/ye_danping_wasted/ye_danping_wasted.png",
+  "sha256": "cba6abced2dbbbd468b5111ff5f6e98f93c251c60d7c2f07aafeeb7bcfeae012",
+  "seed": 151395,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "leng_zhiyuan",
+  "state": "angry",
+  "asset_id": "leng_zhiyuan_angry",
+  "image_file": "provider/leng_zhiyuan_angry/leng_zhiyuan_angry.png",
+  "sha256": "643ddc9d3e4ea6389d69b354a2a8f8cb46e45940893ed46fcf2ff52951f54824",
+  "seed": 151272,
+  "model": "qwen-image-3.0-pro"
+}

@@ -1,0 +1,9 @@
+{
+  "character": "si_hongxiu",
+  "state": "afraid",
+  "asset_id": "si_hongxiu_afraid",
+  "image_file": "provider/si_hongxiu_afraid/si_hongxiu_afraid.png",
+  "sha256": "923d806235cacc521642574228864dd87a886b669032e906d66f5df1a0687924",
+  "seed": 151243,
+  "model": "qwen-image-3.0-pro"
+}

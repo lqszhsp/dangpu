@@ -1,0 +1,9 @@
+{
+  "character": "xu_xingzhen",
+  "state": "angry",
+  "asset_id": "xu_xingzhen_angry",
+  "image_file": "provider/xu_xingzhen_angry/xu_xingzhen_angry.png",
+  "sha256": "661a742bb1ee8708e8e49942cff61a405397e43c34659af0f33a60e0b5690d34",
+  "seed": 151522,
+  "model": "qwen-image-3.0-pro"
+}

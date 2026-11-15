@@ -1,0 +1,9 @@
+{
+  "character": "wen_lingqi",
+  "state": "afraid",
+  "asset_id": "wen_lingqi_afraid",
+  "image_file": "provider/wen_lingqi_afraid/wen_lingqi_afraid.png",
+  "sha256": "5c56ba3e78800e2b9bebf178c1c078c8e7bf5adf2237222fdb0a253d6da1f47c",
+  "seed": 151443,
+  "model": "qwen-image-3.0-pro"
+}

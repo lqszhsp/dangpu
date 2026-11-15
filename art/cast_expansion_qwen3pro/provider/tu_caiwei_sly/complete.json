@@ -1,0 +1,9 @@
+{
+  "character": "tu_caiwei",
+  "state": "sly",
+  "asset_id": "tu_caiwei_sly",
+  "image_file": "provider/tu_caiwei_sly/tu_caiwei_sly.png",
+  "sha256": "4a5ee05f87025af399d1ac474e2abef43bacaee07863105250b9940573c9af95",
+  "seed": 151174,
+  "model": "qwen-image-3.0-pro"
+}

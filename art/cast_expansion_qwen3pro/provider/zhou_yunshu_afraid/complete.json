@@ -1,0 +1,9 @@
+{
+  "character": "zhou_yunshu",
+  "state": "afraid",
+  "asset_id": "zhou_yunshu_afraid",
+  "image_file": "provider/zhou_yunshu_afraid/zhou_yunshu_afraid.png",
+  "sha256": "1b72d0b4b88185a105bddd7cab6bb9257aa0fa07aa927b5a78ddb63b1aa03569",
+  "seed": 151033,
+  "model": "qwen-image-3.0-pro"
+}

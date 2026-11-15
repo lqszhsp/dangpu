@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="demon_charm-wood" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#14101a"/>
+      <stop offset="0.35" stop-color="#3d2350"/>
+      <stop offset="0.55" stop-color="#2a1838"/>
+      <stop offset="1" stop-color="#14101a"/>
+    </linearGradient>
+    <filter id="demon_charm-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+  <!-- cord -->
+  <path d="M32 13 Q24 6 32 3 Q40 6 32 13" fill="none" stroke="#14101a" stroke-width="3"/>
+  <path d="M32 13 Q24 6 32 3 Q40 6 32 13" fill="none" stroke="#c43a3a" stroke-width="1.8"/>
+  <!-- shadow -->
+  <path d="M19 14 L47 14 L49 48 L32 59 L15 48 Z" fill="#14101a" opacity="0.4" transform="translate(1.5 1.5)"/>
+  <!-- plaque -->
+  <path d="M19 12 L45 12 Q48 12 48 15 L48 47 L32 58.5 L16 47 L16 15 Q16 12 19 12 Z" fill="url(#demon_charm-wood)" stroke="#14101a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M20 15.5 L44 15.5 L44.5 45 L32 54 L19.5 45 Z" fill="none" stroke="#8e1b2b" stroke-width="1.2"/>
+  <path d="M18 14.5 L46 14.5" stroke="#5b3474" stroke-width="1" opacity="0.9"/>
+  <path d="M17.8 16 L17.8 46" stroke="#5b3474" stroke-width="1" opacity="0.7"/>
+  <!-- hole + knot -->
+  <circle cx="32" cy="14.5" r="2" fill="#14101a" stroke="#8a5a1c" stroke-width="0.9"/>
+  <!-- blood runes glow -->
+  <g fill="none" stroke="#c43a3a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#demon_charm-glow)" opacity="0.8">
+    <path d="M25 22 h14 M32 20 v10 M26 30 Q32 26 38 30"/>
+    <path d="M26 36 Q32 32 38 36 Q34 40 32 44 Q30 40 26 36 Z"/>
+    <path d="M32 44 v6"/>
+  </g>
+  <g fill="none" stroke="#e0524a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M25 22 h14 M32 20 v10 M26 30 Q32 26 38 30"/>
+    <path d="M26 36 Q32 32 38 36 Q34 40 32 44 Q30 40 26 36 Z"/>
+    <path d="M32 44 v6"/>
+    <path d="M22 40 l2 2 M42 40 l-2 2"/>
+  </g>
+  <circle cx="32" cy="37" r="1.4" fill="#ffb0a0"/>
+  <!-- tassel -->
+  <path d="M32 58.5 L32 60.5" stroke="#c43a3a" stroke-width="1.6"/>
+  <g stroke="#8e1b2b" stroke-width="1.2" stroke-linecap="round">
+    <path d="M31 60 l-2 3 M32 60.5 v3 M33 60 l2 3"/>
+  </g>
+  <!-- side cords -->
+  <path d="M16 47 Q10 52 12 60 M48 47 Q54 52 52 60" fill="none" stroke="#c43a3a" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="12" cy="60.5" r="1.6" fill="#d9a441" stroke="#14101a" stroke-width="0.8"/>
+  <circle cx="52" cy="60.5" r="1.6" fill="#d9a441" stroke="#14101a" stroke-width="0.8"/>
+</svg>

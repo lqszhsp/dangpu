@@ -1,0 +1,9 @@
+{
+  "character": "mu_qingdan",
+  "state": "afraid",
+  "asset_id": "mu_qingdan_afraid",
+  "image_file": "provider/mu_qingdan_afraid/mu_qingdan_afraid.png",
+  "sha256": "c541d5a484d6775c8f27f3d8770d5674ab8e570fb8acc73605f5f9656b11d491",
+  "seed": 151283,
+  "model": "qwen-image-3.0-pro"
+}

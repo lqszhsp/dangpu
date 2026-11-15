@@ -1,0 +1,15 @@
+{
+  "faces": 6,
+  "states_per_face": 7,
+  "png": 42,
+  "webp": 42,
+  "valid_formats": true,
+  "transparent_backgrounds": true,
+  "webp_height": 1300,
+  "opaque_spy_face_coverings": true,
+  "unchanged_other_character_files": 641,
+  "filled_missing_originals": [
+    "art/raw/chars/xian_spy_f1_angry.png",
+    "art/raw/chars/xian_spy_f2_sly.png"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "character": "xiao_gengye",
+  "state": "angry",
+  "asset_id": "xiao_gengye_angry",
+  "image_file": "provider/xiao_gengye_angry/xiao_gengye_angry.png",
+  "sha256": "740b1788df281144e83df482891f5ba42ea294dc5c7141dd2be72618410ec9fd",
+  "seed": 151142,
+  "model": "qwen-image-3.0-pro"
+}
