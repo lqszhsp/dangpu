@@ -38,22 +38,46 @@ function prepare(s, i) {
   return { s, base, game, run, prompt };
 }
 
+// 玩：先开一个会话；玩家提前停手（局没完、没到上限、时间还有剩）就接着原会话叫他继续——便宜模型爱半途收工
+const gameStatus = job => { try { return JSON.parse(execFileSync('node', [path.join(job.game, 'tools/play/play.mjs'), job.run, 'status'], { encoding: 'utf8' })); } catch { return null; } };
 function play(job) {
   return new Promise(resolve => {
-    const t0 = Date.now();
-    const out = fs.openSync(path.join(job.base, 'codex.jsonl'), 'w');
-    const cx = spawn('codex', ['exec', ...(MODEL ? ['-m', MODEL] : []), '-C', job.run, '-s', 'danger-full-access', '-c', 'approval_policy="never"', '-c', `model_reasoning_effort="${EFFORT}"`, '--skip-git-repo-check', '--json',
-      '--output-schema', path.join(HERE, 'report.schema.json'), '-o', path.join(job.base, 'report.json'), job.prompt],
-      { cwd: job.run, stdio: ['ignore', out, out], detached: true });
-    const timer = setTimeout(() => { try { process.kill(-cx.pid, 'SIGTERM'); } catch {} job.timedOut = true; }, MINUTES * 60000);
-    cx.on('exit', code => { clearTimeout(timer); fs.closeSync(out); job.code = code; job.minutes = +((Date.now() - t0) / 60000).toFixed(1); resolve(job); });
+    const t0 = Date.now(), deadline = t0 + MINUTES * 60000;
+    const logf = path.join(job.base, 'codex.jsonl');
+    fs.writeFileSync(logf, '');
+    job.resumes = 0;
+    let cx = null;
+    const timer = setTimeout(() => { job.timedOut = true; if (cx) try { process.kill(-cx.pid, 'SIGTERM'); } catch {} }, MINUTES * 60000);
+    const common = [...(MODEL ? ['-m', MODEL] : []), '-c', `model_reasoning_effort="${EFFORT}"`, '--skip-git-repo-check', '--json',
+      '--output-schema', path.join(HERE, 'report.schema.json'), '-o', path.join(job.base, 'report.json')];
+    const launch = args => new Promise(done => {
+      const out = fs.openSync(logf, 'a');
+      cx = spawn('codex', args, { cwd: job.run, stdio: ['ignore', out, out], detached: true });
+      cx.on('exit', code => { fs.closeSync(out); cx = null; done(code); });
+    });
+    (async () => {
+      job.code = await launch(['exec', '-C', job.run, '-s', 'danger-full-access', '-c', 'approval_policy="never"', ...common, job.prompt]);
+      const thread = (fs.readFileSync(logf, 'utf8').match(/"thread_id":"([0-9a-f-]{36})"/) || [])[1];
+      while (!job.timedOut && thread && job.resumes < 40 && deadline - Date.now() > 90000) {
+        const st = gameStatus(job);
+        if (!st || st.over || (st.cap && st.day > st.cap)) break;
+        job.resumes++;
+        const left = Math.round((deadline - Date.now()) / 60000);
+        job.code = await launch(['exec', 'resume', thread, '--dangerously-bypass-approvals-and-sandbox', ...common,
+          `测试还没完：status 显示现在是第 ${st.day} 日，局还没结束，也还没到第 ${CAP} 日的测试上限，你却停下了。不许停——接着玩，`
+          + `还剩约 ${left} 分钟。用 look、click、next 一步步推进（能写脚本的日常写进脚本），一直玩到结局或撑过第 ${CAP} 日，再按 JSON 格式汇报。中途的汇报不算数。`]);
+      }
+      clearTimeout(timer);
+      job.minutes = +((Date.now() - t0) / 60000).toFixed(1);
+      resolve(job);
+    })();
   });
 }
 
 // 收尾：用接口自己算的状态，查游戏副本、日志
 function settle(job) {
   const play = c => execFileSync('node', [path.join(job.game, 'tools/play/play.mjs'), job.run, c], { encoding: 'utf8' });
-  const r = { start: job.s.id, startName: job.s.name, persona, model: MODEL || 'default', minutes: job.minutes, timedOut: !!job.timedOut, exit: job.code };
+  const r = { start: job.s.id, startName: job.s.name, persona, model: MODEL || 'default', resumes: job.resumes || 0, minutes: job.minutes, timedOut: !!job.timedOut, exit: job.code };
   try { r.status = JSON.parse(play('status')); } catch (e) { r.replayError = String(e.stderr || e.message).trim(); }
   try { execFileSync('sha1sum', ['-c', '--quiet', path.join(job.base, 'game.sha1')], { cwd: job.game, stdio: 'pipe' }); r.tampered = false; }
   catch (e) { r.tampered = true; r.tamperedFiles = String(e.stdout).trim().split('\n').slice(0, 5); }
@@ -78,7 +102,7 @@ await Promise.all(Array.from({ length: Math.min(JOBS, queue.length) }, async () 
     await play(job);
     const r = settle(job);
     results.push(r);
-    log(`结束 ${job.s.name}：${r.outcome}，第 ${r.day} 日，${r.minutes} 分钟，${r.commands} 条命令${r.tampered ? '，⚠ 游戏副本被改动' : ''}`);
+    log(`结束 ${job.s.name}：${r.outcome}，第 ${r.day} 日，${r.minutes} 分钟，${r.commands} 条命令${r.resumes ? `，催了 ${r.resumes} 回` : ''}${r.tampered ? '，⚠ 游戏副本被改动' : ''}`);
   }
 }));
 // 整轮的手段丰富度、多物品行为对账
