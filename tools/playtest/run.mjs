@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // 生存测试调度：每个开局一局，由 Codex 扮演某种性格的玩家玩；并发 N 局排队跑。
-//   node tools/playtest/run.mjs --persona kind|ruthless --out <目录> [--jobs 6] [--cap 90] [--minutes 45] [--effort medium] [--starts a,b,...] [--seed 1000]
+//   node tools/playtest/run.mjs --persona kind|ruthless|balanced --out <目录> [--jobs 6] [--cap 90] [--minutes 45] [--model gpt-6.1-terra] [--effort medium] [--starts a,b,...] [--seed 1000]
 // 每局：独立的游戏副本（tools/playtest/sandbox.sh）＋局目录；Codex 在局目录里通过 tools/play/play.mjs 玩，可查副本里的攻略。
 // 结果以接口自己的 status 为准（不信玩家的自述），另记玩家汇报、游戏副本有没有被改、日志能否重放；
 // 每局另存手段统计（tactics.json）与多物品行为对账（behaviors.json），整轮跑完汇总成 tactics.md、behaviors.md
@@ -13,7 +13,7 @@ import { loadGame } from '../lib/headless.mjs';
 const HERE = path.dirname(fileURLToPath(import.meta.url)), GAME = path.resolve(HERE, '../..');
 const arg = (k, d) => { const i = process.argv.indexOf(`--${k}`); return i >= 0 ? process.argv[i + 1] : d; };
 const persona = arg('persona'), OUT = path.resolve(arg('out', `playtest-${persona}`));
-const JOBS = +arg('jobs', 6), CAP = +arg('cap', 90), MINUTES = +arg('minutes', 45), SEED0 = +arg('seed', 1000), EFFORT = arg('effort', 'medium');
+const JOBS = +arg('jobs', 6), CAP = +arg('cap', 90), MINUTES = +arg('minutes', 45), SEED0 = +arg('seed', 1000), EFFORT = arg('effort', 'medium'), MODEL = arg('model', null);
 const P = JSON.parse(fs.readFileSync(path.join(HERE, 'personas.json'), 'utf8'))[persona];
 if (!P) { console.error(`--persona 要写 ${Object.keys(JSON.parse(fs.readFileSync(path.join(HERE, 'personas.json'), 'utf8'))).join(' / ')}`); process.exit(1); }
 
@@ -42,7 +42,7 @@ function play(job) {
   return new Promise(resolve => {
     const t0 = Date.now();
     const out = fs.openSync(path.join(job.base, 'codex.jsonl'), 'w');
-    const cx = spawn('codex', ['exec', '-C', job.run, '-s', 'danger-full-access', '-c', 'approval_policy="never"', '-c', `model_reasoning_effort="${EFFORT}"`, '--skip-git-repo-check', '--json',
+    const cx = spawn('codex', ['exec', ...(MODEL ? ['-m', MODEL] : []), '-C', job.run, '-s', 'danger-full-access', '-c', 'approval_policy="never"', '-c', `model_reasoning_effort="${EFFORT}"`, '--skip-git-repo-check', '--json',
       '--output-schema', path.join(HERE, 'report.schema.json'), '-o', path.join(job.base, 'report.json'), job.prompt],
       { cwd: job.run, stdio: ['ignore', out, out], detached: true });
     const timer = setTimeout(() => { try { process.kill(-cx.pid, 'SIGTERM'); } catch {} job.timedOut = true; }, MINUTES * 60000);
@@ -53,7 +53,7 @@ function play(job) {
 // 收尾：用接口自己算的状态，查游戏副本、日志
 function settle(job) {
   const play = c => execFileSync('node', [path.join(job.game, 'tools/play/play.mjs'), job.run, c], { encoding: 'utf8' });
-  const r = { start: job.s.id, startName: job.s.name, persona, minutes: job.minutes, timedOut: !!job.timedOut, exit: job.code };
+  const r = { start: job.s.id, startName: job.s.name, persona, model: MODEL || 'default', minutes: job.minutes, timedOut: !!job.timedOut, exit: job.code };
   try { r.status = JSON.parse(play('status')); } catch (e) { r.replayError = String(e.stderr || e.message).trim(); }
   try { execFileSync('sha1sum', ['-c', '--quiet', path.join(job.base, 'game.sha1')], { cwd: job.game, stdio: 'pipe' }); r.tampered = false; }
   catch (e) { r.tampered = true; r.tamperedFiles = String(e.stdout).trim().split('\n').slice(0, 5); }
@@ -69,7 +69,7 @@ function settle(job) {
 }
 
 const queue = STARTS.map(s => prepare(s, ctx.__G.STARTS.indexOf(s))).filter(Boolean);
-log(`${P.name}玩家：${queue.length} 局待跑（共 ${STARTS.length} 个开局），并发 ${JOBS}，每局上限第 ${CAP} 日、${MINUTES} 分钟，推理强度 ${EFFORT}`);
+log(`${P.name}玩家：${queue.length} 局待跑（共 ${STARTS.length} 个开局），并发 ${JOBS}，每局上限第 ${CAP} 日、${MINUTES} 分钟，模型 ${MODEL || '默认'}，推理强度 ${EFFORT}`);
 const results = [];
 await Promise.all(Array.from({ length: Math.min(JOBS, queue.length) }, async () => {
   while (queue.length) {
