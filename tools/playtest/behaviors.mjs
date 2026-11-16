@@ -112,6 +112,26 @@ const rows = ids.map(id => {
     : !oppG ? '⚠ 材料出现过，条件从没同时凑齐' : !doneG ? '有机会，没人用' : '正常';
   return { id, name, f, seen, oppG, oppN, doneG, doneN, top, diag };
 });
+// 卡住的材料：各局手上从没出现过的、配方要用的东西，写出代码里它的来路，分清“弄不到”和“没去弄”
+const seenAny = new Set(ok.flatMap(g => g.b.seen || []));
+function sources() {
+  const ctx = loadGame([], { quiet: true });
+  vm.runInContext(fs.readFileSync(path.join(PLAYDIR, 'behaviors.js'), 'utf8'), ctx);
+  return vm.runInContext(`(() => {
+    const src = {}, add = (id, t) => (src[id] = src[id] || []).push(t);
+    for (const [id, p, rep] of SUPPLY) add(id, rep > -100 ? '货郎（魔宗声望 ' + rep + '）' : '货郎');
+    for (const d of Object.values(DEALERS)) for (const [id] of d.sells) add(id, d.name);
+    for (const l of LOCATIONS) for (const [id] of [...l.loot, ...(l.warLoot || [])]) add(id, '拾荒·' + l.name);
+    for (const [f, pool] of Object.entries(SELL_POOLS)) for (const [id] of pool) add(id, FACTIONS[f].name + '客人来卖');
+    for (const b of BEHAVIORS) for (const x of b.made || []) if (ITEMS[x]) add(x, '自己做·' + b.name);
+    // 不在数据表里、写在函数里的来路：杀人越货（lootPerson）、战堂的战俘买卖（politics.js captive）
+    ['cult_corpse', 'live_soul', 'blood_essence'].forEach(id => { add(id, '杀人越货·有修为的人'); add(id, '战堂·买战俘'); });
+    add('yao_core', '杀人越货·妖族'); add('corpse', '杀人越货·凡人'); add('soul_grudge', '杀人越货');
+    const need = new Set(BEHAVIORS.flatMap(b => (b.alt || []).flatMap(a => [...(a.use || []), ...(a.has || [])].map(x => x[0]).concat(a.mod ? [a.mod] : []))));
+    return [...need].map(id => ({ id, name: ITEMS[id].name, src: [...new Set(src[id] || [])] }));
+  })()`, ctx);
+}
+const stuck = sources().filter(x => !seenAny.has(x.id));
 const unlisted = {};
 for (const g of ok) for (const [k, n] of Object.entries(g.b.unlisted || {})) unlisted[k] = (unlisted[k] || 0) + n;
 const order = { '✗': 0, '⚠': 1, '有': 2, '正': 3 };
@@ -129,7 +149,7 @@ ${ok.length} 局（${[...new Set(ok.map(g => g.root))].join('、')}），共 ${n
 | 行为 | 程序可行 | 材料凑全过 | 有机会（局 / 夜） | 做过（局 / 次） | 诊断 | 最常缺 |
 | --- | --- | --- | --- | --- | --- | --- |
 ${rows.sort((a, b) => order[a.diag[0]] - order[b.diag[0]] || a.doneN - b.doneN).map(r => `| ${r.name} | ${r.f === true ? '✓' : '✗'} | ${r.seen} | ${r.oppG} / ${r.oppN} | ${r.doneG} / ${r.doneN} | ${r.diag} | ${r.top || '—'} |`).join('\n')}
-${Object.keys(unlisted).length ? `\n**目录没登记的产出**（behaviors.js 该补一条）：${Object.entries(unlisted).map(([k, n]) => `${k} ×${n}`).join('、')}\n` : ''}
+${stuck.length ? `\n### 从没出现过的材料\n\n配方要用、但所有局里玩家手上一次都没有过的东西，和代码里它能从哪儿来：\n\n| 材料 | 来路 |\n| --- | --- |\n${stuck.map(x => `| ${x.name} | ${x.src.join('、') || '**没找到来路**（只能靠故事、报恩之类偶得）'} |`).join('\n')}\n` : ''}${Object.keys(unlisted).length ? `\n**目录没登记的产出**（behaviors.js 该补一条）：${Object.entries(unlisted).map(([k, n]) => `${k} ×${n}`).join('、')}\n` : ''}
 ### 按性格
 
 | 性格 | 局数 | 做过的行为（种） | 做过的次数 | 其中加料 |

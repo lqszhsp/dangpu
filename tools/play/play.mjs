@@ -396,7 +396,7 @@ function behaviorsOf(ctx) {
     else seen = b.alt.some(a => seenAll(vm.runInContext('bhvIds', ctx)(b, a)) && (!a.tech || true));
     out[b.id] = { name: b.name, seen, opp: B.opp[b.id] || 0, done: B.done[b.id] || 0, units: B.units[b.id] || 0, miss: B.miss[b.id] || {} };
   }
-  return { nights: B.nights, behaviors: out, unlisted: B.unlisted };
+  return { nights: B.nights, behaviors: out, unlisted: B.unlisted, seen: [...B.seen] };
 }
 
 // ───────────── 命令 ─────────────
