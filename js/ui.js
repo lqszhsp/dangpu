@@ -1214,8 +1214,8 @@ function openFate() {
       行善能冲淡旧孽，隔一阵子不作恶，孽也会慢慢淡去。</p>
     <p>你一共作过 <b>${F.total}</b> 桩恶事：<span class="good">${F.buried} 桩没人追究</span>，<span class="bad">${F.erupted} 桩遭了报应${F.busts ? `（${F.busts} 回赔不起）` : ''}</span>。</p>
     <p>眼下再作一桩小恶，若败露约赔 <b>${fateStake(1)}</b> 灵石；出卖、销赃约 <b>${fateStake(2)}</b>；害人性命约 <b>${fateStake(3)}</b>。</p>
-    ${F.infamy ? `<p class="bad">恶名 ${F.infamy}：${[fateCustomerLoss() ? `每日少来 ${fateCustomerLoss()} 位客人` : '', `客人压价 ${Math.round(Math.min(0.2, F.infamy * 0.025) * 100)}%`,
-      fateTrusted() ? '' : '没人再来托付、求助', '好报难来'].filter(Boolean).join('；')}。</p>` : ''}
+    ${F.infamy ? `<p class="bad">恶名 ${F.infamy}：${[fateCustomerLoss() ? `每日少来 ${fateCustomerLoss()} 位客人` : '', `客人压价 ${Math.round(infamyDiscount() * 100)}%`,
+      fateTrusted() ? '' : '没人再来托付、求助', fateClean() ? '' : '好报难来'].filter(Boolean).join('；')}。</p>` : ''}
     <h4>未了的孽债</h4>
     <ul class="timeline">${F.debts.length ? F.debts.map(d => `<li><span class="muted">第${d.day}日</span>${esc(d.what || SINS[d.kind].name)}<span class="bad">若败露赔 ${d.stake}</span>
       <span class="muted">${d.due <= S.day + 1 ? '就在这一两日' : `约 ${d.due - S.day} 日内`}</span></li>`).join('') : '<li class="muted">没有未了的孽债</li>'}</ul>

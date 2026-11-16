@@ -143,7 +143,7 @@ function repay(p) {
   const fill_ = t => fill(t, { n: p.name });
   const rich = p.budgetMul >= 1.4 || npcLevel(p) >= 2;
   p.owed = 0;
-  if (rich && strongEnough() && fateInfamy() < 2 && Math.random() < 0.15) {
+  if (rich && strongEnough() && fateClean() && Math.random() < 0.15) {
     const b = pick(BOONS);
     b.run();
     remember(p, '报答了你当年的恩情。', 10);
@@ -234,7 +234,7 @@ function karmaTick() {
     }
   }
   // 天道偶尔也开眼：善名在外、没有恶名，越到后来越可能撞上大机缘
-  if (S.virtue >= 50 && fateInfamy() === 0 && (strongEnough() || S.day >= 45) && Math.random() < 0.004 + Math.max(0, S.day - 30) * 0.0002) {
+  if (S.virtue >= 50 && fateClean() && (strongEnough() || S.day >= 45) && Math.random() < 0.004 + Math.max(0, S.day - 30) * 0.0002) {
     const b = pick(BOONS);
     b.run();
     out.push({ icon: 'ic_gift', title: '奇遇', text: fill(b.text, { n: '一位你早已忘了名字的故人' }), cls: 'ok' });

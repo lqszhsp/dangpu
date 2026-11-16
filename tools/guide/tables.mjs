@@ -270,7 +270,7 @@ export function tables(h) {
     },
     // 口碑：善名、恶名对客人出价与来客的影响
     trust() {
-      const rows = [[10, 0], [20, 0], [45, 0], [70, 0], [100, 0], [10, 4], [10, 8]].map(([v, inf]) => {
+      const t = G.FATE_TOLERANCE, rows = [[10, 0], [20, 0], [45, 0], [70, 0], [100, 0], [10, 4 * t], [10, 8 * t]].map(([v, inf]) => {
         h.fresh(); G.S.virtue = v; G.S.fate.infamy = inf;
         return [inf ? `恶名 ${inf}` : `善名 ${v}`, `${Math.round((G.trustMul() - 1) * 1000) / 10}%`, (G.S.virtue >= 45 ? 1 : 0) - G.fateCustomerLoss()];
       });

@@ -31,7 +31,7 @@
 - **口碑**：老实人的铺子，客人肯多出价；善名到了{{ VIRTUE_NAME(45) }}，每日多来一位客人；你真心帮过（接济、放人、护证……）{{ (() => { fresh(); for (let i = 0; i < 20; i++) { fateMerit(newPerson('ren'), 2); if (patronBonus()) return i + 1; } })() }} 个人以后，他们荐来的熟客再多一位。善名到 {{ (() => { for (let v = 0; v <= 100; v++) { fresh(); S.virtue = v; const a = trustMul(); S.virtue = v + 1; if (trustMul() === a && v > 20) return v; } })() }} 口碑就到顶，再往上只是花钱买名声。
 - 善名在外，求上门的人多，卖货的人也敢多要价；善名太盛又没修为撑腰，人人当你软柿子捏。
 - **好报**：你帮过的人记着你。多半只是捎件东西、一份消息、几百灵石；偶尔混出了头的人回来报恩——铺契降价、一道护身符（免一次锁拿、驱逐或横死）、破境之物、一件重宝。前提是你自己也够强：到了{{ REALMS[2].name }}，或者势力够大。{{! (() => { fresh(); S.cult.lv = 2; return strongEnough(); })() }}
-- **奇遇**：善名在外、又没有恶名的，日子越往后越可能撞上大机缘——同样是铺契降价、护身符、破境之物或重宝。{{! (() => { fresh(); S.virtue = 60; S.day = 80; const r = Math.random; Math.random = () => 0; const a = JSON.stringify([S.flags.deedMul, S.flags.savior || 0, S.cult.xp, Object.keys(S.items).length]); karmaTick(); Math.random = r; return a !== JSON.stringify([S.flags.deedMul, S.flags.savior || 0, S.cult.xp, Object.keys(S.items).length]); })() }}{{! (() => { fresh(); S.virtue = 60; S.day = 80; S.fate.infamy = 1; const r = Math.random; Math.random = () => 0; const a = JSON.stringify([S.flags.deedMul, S.flags.savior || 0, S.cult.xp, Object.keys(S.items).length]); karmaTick(); Math.random = r; return a === JSON.stringify([S.flags.deedMul, S.flags.savior || 0, S.cult.xp, Object.keys(S.items).length]); })() }}
+- **奇遇**：善名在外、又没有恶名的，日子越往后越可能撞上大机缘——同样是铺契降价、护身符、破境之物或重宝。{{! (() => { fresh(); S.virtue = 60; S.day = 80; const r = Math.random; Math.random = () => 0; const a = JSON.stringify([S.flags.deedMul, S.flags.savior || 0, S.cult.xp, Object.keys(S.items).length]); karmaTick(); Math.random = r; return a !== JSON.stringify([S.flags.deedMul, S.flags.savior || 0, S.cult.xp, Object.keys(S.items).length]); })() }}{{! (() => { fresh(); S.virtue = 60; S.day = 80; S.fate.infamy = FATE_TOLERANCE; const r = Math.random; Math.random = () => 0; const a = JSON.stringify([S.flags.deedMul, S.flags.savior || 0, S.cult.xp, Object.keys(S.items).length]); karmaTick(); Math.random = r; return a === JSON.stringify([S.flags.deedMul, S.flags.savior || 0, S.cult.xp, Object.keys(S.items).length]); })() }}
 
 {{ T.trust() }}
 
@@ -41,13 +41,15 @@
 
 {{ T.sins() }}
 
+这是魔门：坑蒙拐骗、卖人求赏是家常便饭，没有天道替谁伸冤，来讨账的只有苦主、他们的亲友和执法堂。小恶没人当回事——同样分量的恶事作到第 {{ (() => { fresh(); S.day = 30; const a = fateStake(1); for (let k = 1; k < 200; k++) { commitSin('fraud', { w: 1 }); if (fateStake(1) >= 2 * a) return k + 1; } })() }} 桩，赌注才翻一倍。
+
 报应要赔的本金随你**累计**作的恶越滚越大，日子越往后也越大。以出卖（分量二）为例，若败露要赔：
 
-{{ T.fateStakes(2) }}
+{{ T.fateStakes(2, [10, 30, 60], 16).split('\n').filter((l, i) => i < 2 || [1, 2, 4, 6, 8, 12, 16].includes(i - 1)).join('\n') }}
 
 - 先掏灵石，不够就抄走最值钱的货；还赔不上就是**爆仓**：被人打成{{ CONDS.injured.grade[1] }}，执法堂关注暴涨——身上本就带伤、关注本就高的，这一下可能要命。{{! (() => { fresh(); S.stones = 0; S.day = 60; S.fate.n = 12; commitSin('harm', { w: 3 }); const r = Math.random; Math.random = () => 0; S.day = 80; fateTick(); Math.random = r; return S.fate.busts === 1 && condSev('me', 'injured') >= 2; })() }}
-- **恶名**：每败露一桩，恶名就传开一些。恶名在外，客人压价、来客变少；恶名再高，托付证据、跪求接济的人不再上门，好报和奇遇也断了。
-- **洗手**：隔 {{ FATE_FADE }} 日不作恶，旧孽淡去一分；有分量的善事每积 {{ FATE_MERIT }} 点善名，也抵去一分。下一桩恶事的本金跟着回落。
+- **恶名**：每败露一桩，恶名就涨（小恶一点，出卖销赃两点，害命三点），客人跟着压价，最多压 {{ pct((fresh(), S.fate.infamy = 999, infamyDiscount())) }}。恶名到 {{ FATE_TOLERANCE }} 好报和奇遇不再上门；到 {{ 4 * FATE_TOLERANCE }} 每日少来一位客人，托付证据、跪求接济的人也不再上门；到 {{ 8 * FATE_TOLERANCE }} 少来两位。
+- **洗手**：隔 {{ FATE_FADE }} 日不作恶，旧孽淡去相当于 {{ FATE_TOLERANCE }} 桩小恶的分量；有分量的善事每积 {{ FATE_MERIT }} 点善名，也抵去这么多。下一桩恶事的本金跟着回落。
 - **怎么拿捏**：开局手头紧时，作一两桩恶事赌注小、赚头大；一路作下去，赌注翻着涨，五五开的赌局次数多了，总有一把赔不起。只做好人也活得下去，就是慢；最赚的是在两头之间拿捏——缺钱时冒一次险，赌赢了就收手行善，等旧孽淡了再说。
 
 ## 四大派系
