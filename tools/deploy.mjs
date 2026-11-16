@@ -163,8 +163,9 @@ function deploy() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'dangpu-ship-'));
   try {
     run('bash', ['-c', `git archive ${main} ${SHIP.join(' ')} | tar -x -C '${dir}'`]);
-    // 没变的文件与当前版本硬链接，不占地方；权限统一设好（临时目录是 700，原样带上去 Caddy 就读不了）
-    run('rsync', ['-a', '-c', '--delete', '--chmod=D755,F644', `--link-dest=${BASE}/releases/${st.current}/`, '-e', 'ssh -o LogLevel=ERROR', `${dir}/`, `${HOST}:${BASE}/releases/${name}/`]);
+    // 没变的文件与当前版本硬链接，不占地方：按内容比（-c），不带时间与属主——git archive 打出来的时间是提交时间，带上就次次对不上；
+    // 权限统一设好（临时目录是 700，原样带上去 Caddy 就读不了）
+    run('rsync', ['-rlc', '--delete', '--chmod=D755,F644', `--link-dest=${BASE}/releases/${st.current}/`, '-e', 'ssh -o LogLevel=ERROR', `${dir}/`, `${HOST}:${BASE}/releases/${name}/`]);
     // 换上之前：首页引用的文件都在、谁都读得了；不满足就不换，线上一刻也不受影响
     const refs = shipRefs(fs.readFileSync(path.join(dir, 'index.html'), 'utf8'));
     const pre = ssh(`cd releases/${name}; for f in index.html ${refs.join(' ')}; do [ -f "$f" ] || echo "缺 $f"; done; find . ! -perm -o+r -print | head -5 | sed 's/^/读不了 /'`).trim();
