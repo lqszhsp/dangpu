@@ -14,8 +14,8 @@ const ids = [...new Set([...Object.keys(a), ...Object.keys(b)])];
 const order = ['apprentice', 'water', 'fence', 'alchemist', 'gu', 'corpse', 'digger', 'tamer', 'talisman', 'smith', 'nothing'];
 ids.sort((x, y) => (order.indexOf(x) + 1 || 99) - (order.indexOf(y) + 1 || 99));
 
-// 存活日数：死了记结局那天；到上限仍在世记上限（右删失，标 ≥）；超时没玩完的不算死，记当时的日数（也标 ≥）
-const alive = r => r && (r.outcome === '到上限仍在世' || r.outcome === '超时未玩完' || r.outcome === '中途停手');
+// 存活日数：死了记结局那天；到上限仍在世记上限（右删失，标 ≥）；超时没玩完的、买下铺契赢了的都不算死，记当时的日数（也标 ≥）
+const alive = r => r && (r.outcome === '到上限仍在世' || r.outcome === '超时未玩完' || r.outcome === '中途停手' || !!(r.status && r.status.over && r.status.over.win));
 const daysOf = r => !r || r.day == null ? null : r.outcome === '到上限仍在世' ? CAP : r.day;
 const cell = r => !r ? '—' : `${alive(r) ? '≥' : ''}${daysOf(r)} 日 · ${r.outcome}${r.tampered ? ' ⚠改动' : ''}`;
 const extra = r => !r || !r.status ? '' : `灵石 ${r.status.stones}，关注 ${r.status.heat}，善名 ${r.status.virtue}${r.status.kills ? `，杀 ${r.status.kills}` : ''}`;
@@ -52,7 +52,7 @@ ${rows.join('\n')}
 | 汇总 | 善良 | 不择手段 |
 | --- | --- | --- |
 | 局数 | ${sa.n} | ${sb.n} |
-| 平均存活（日） | ${sa.mean} | ${sb.mean} |
+| 平均存活（日，含“≥”局，是下限） | ${sa.mean} | ${sb.mean} |
 | 中位数（日） | ${sa.median} | ${sb.median} |
 | 撑到上限 | ${sa.toCap} | ${sb.toCap} |
 | 买下铺契 | ${sa.won} | ${sb.won} |
