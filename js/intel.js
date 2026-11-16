@@ -73,6 +73,7 @@ function reportSecret(c) {
 function blackmail(c) {
   const p = personOf(c), s = p.secret;
   const ask = Math.round(s.bounty * 0.6 * Math.max(0.5, p.budgetMul) / 10) * 10;
+  tally('cruel');
   if (Math.random() < overpowerOdds(p) + 0.1) {
     earn(ask, `${p.name}拿 ${ask} 灵石换你闭嘴。`);
     remember(p, `你拿他${s.type}的身份要挟他，敲了 ${ask} 灵石。`, -30, 'blackmailed');
@@ -152,7 +153,7 @@ function makeIntel(kind, opt = {}) {
       text: `${C.head}${pick(DIRT)}的凭据。递给${CLIQUES[C.rival].name}，足以动摇${C.name}的根基；卖给魔宗的人，也能换些灵石。` });
   }
   const it = makeItem('intel', { info, q: 60 });
-  if (!autoPlace(it) && !autoPlace(it, ['floor'])) { destroyItem(it); return null; }
+  stow(it);
   return it;
 }
 

@@ -70,11 +70,10 @@ function buyLot(key, i) {
     const it = makeItem(o.id, extra);
     if (extra.stolen) stampMark(it);
     if (dressable(it) && Math.random() < (key === 'sect' ? 0.05 : 0.3)) dressUp(it, rollGrade());
-    if (!autoPlace(it)) { destroyItem(it); break; }
+    stow(it);
     it.cost = unit; it.boughtDay = S.day;
     got.push(it);
   }
-  if (!got.length) return '库房和地面都放不下了';
   o.lots--;
   spend(unit * got.length, `从${DEALERS[key].name}整批购入${ITEMS[o.id].name}×${got.length}。`);
   if (DEALERS[key].faction === 'mo' && key === 'ghost' && !isGhostNight()) addHeat(1);

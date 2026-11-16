@@ -47,6 +47,8 @@ function exert(key, mult = 1) {
   const why = vitShort(st, sp);
   if (why) return `${why}，${ACTION_NAME[key]}不动了（需体力 ${st}、精神 ${sp}）`;
   drain(st, sp);
+  const acts = S.stats.acts = S.stats.acts || {};
+  acts[key] = (acts[key] || 0) + 1;
   return null;
 }
 

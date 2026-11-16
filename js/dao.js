@@ -129,7 +129,7 @@ function lootPerson(p, where) {
     ['ask', 'knew', 'told', 'disputed'].forEach(k => delete it[k]);
     it.stolen = 5;
     if (hasQuality(it) && !it.mark) stampMark(it, p.faction);
-    if (!autoPlace(it)) placeItem(it, 'floor', 0, 0);
+    stow(it);
     got.push(itemName(it));
   });
   if (p.faction === 'yao') {

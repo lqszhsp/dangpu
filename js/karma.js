@@ -13,6 +13,7 @@ function karmaShift(n) { S.virtue = clamp(Math.round(S.virtue + n), 0, 100); }
 // 一件善事：记在善名上，也记在对方心里
 function goodDeed(p, n) {
   karmaShift(n);
+  tally('good', n);
   if (p && !p.official) p.owed = (p.owed || 0) + n;
   fateMerit(p, n);
 }
@@ -77,6 +78,7 @@ const laborPool = () => Object.values(S.people).filter(p => p.status === 'alive'
 // 收作苦力：管口饭，替你搬货烧炉，干到死为止
 function indenture(p, why = '为了一口饭，把自己押给了你做苦力。') {
   p.indentured = { day: S.day };
+  tally('cruel');
   p.informant = false;
   remember(p, why, -12);
   karmaShift(-5); adjustRep('ren', -1);

@@ -202,6 +202,7 @@ function machineOfGrid(gid) {
 // 返回 null 表示可放，否则返回原因
 function rejectReason(gid, it) {
   if (gid === 'counter') return '柜台上是顾客的东西';
+  if (gid === 'hand') return '手上只拿铺里放不下的货';
   if (gid === 'tray' && !tradeOpen()) return '有客人上门谈买卖时，才把货摆上货盘';
   if (gid === 'power') return it.id === 'spirit_crystal' ? null : '阵眼只能嵌入灵晶';
   if (gid === 'tool') return ITEMS[it.id].tool ? null : '鉴宝台只放鉴定的器物';
@@ -245,6 +246,44 @@ function autoPlace(it, gids = ['store', 'floor']) {
 }
 
 function canAutoPlace(it, gids = ['store', 'floor']) { return gids.some(g => findSpot(g, it)); }
+
+// 整理：库房与地面上的货（连同 extra）大件先摆、尽量收进库房；摆不下、或白白多堆到地上（夜里遭贼），就原样不动
+function tidy(extra = []) {
+  const list = itemsIn('store').concat(itemsIn('floor'), extra);
+  const saved = list.map(it => it.pos), area = it => ITEMS[it.id].w * ITEMS[it.id].h;
+  const onFloor = () => itemsIn('floor').reduce((s, it) => s + area(it), 0), floor0 = onFloor();
+  list.forEach(it => { it.pos = null; });
+  const ok = list.slice().sort((a, b) => area(b) - area(a) || ITEMS[b.id].h - ITEMS[a.id].h).every(it => autoPlace(it))
+    && (extra.length > 0 || onFloor() <= floor0);
+  if (!ok) list.forEach((it, i) => { it.pos = saved[i]; });
+  return ok;
+}
+
+// 收进铺里：放不下先整理，还放不下就拿在手上，等你腾地方
+function stow(it) {
+  if (autoPlace(it) || tidy([it])) return it.pos.g;
+  it.pos = { g: 'hand', x: 0, y: 0 };
+  layoutHand();
+  log(`铺里堆满了，${itemName(it)}只好先拿在手上。`, 'loss');
+  return 'hand';
+}
+
+// 手上的货排紧：一件挨一件，排满库房那么宽就换一行；手上空了就收起这一格
+function layoutHand() {
+  const list = itemsIn('hand');
+  if (!list.length) { delete S.grids.hand; return; }
+  const cap = Math.max(S.grids.store.w, ...list.map(it => ITEMS[it.id].w));
+  let x = 0, y = 0, row = 0, w = 0;
+  list.forEach(it => {
+    const d = ITEMS[it.id];
+    if (x + d.w > cap) { y += row; x = row = 0; }
+    placeItem(it, 'hand', x, y);
+    x += d.w; row = Math.max(row, d.h); w = Math.max(w, x);
+  });
+  S.grids.hand = { w, h: y + row };
+}
+
+const handItems = () => itemsIn('hand');
 
 function resizeGrid(gid, w, h) { S.grids[gid].w = w; S.grids[gid].h = h; }
 
@@ -397,7 +436,7 @@ function machineRun(m) {
     if (bonus && hasQuality(it)) it.q = clamp(it.q + bonus, 5, 100);
     const where = output(m, it);
     if (where === 'floor') floorCount++;
-    if (where) made.push(itemName(it));
+    if (where) { made.push(itemName(it)); tally('made'); }
   };
   if (customRun(m, inputs, emit)) return `产出：${made.join('、')}${floorCount ? `（${floorCount} 件溢到地上）` : ''}`;
   switch (m.type) {
@@ -855,9 +894,12 @@ function dismissCustomer(angry) {
 }
 
 function adjustRep(f, d) { S.rep[f] = clamp(Math.round(S.rep[f] + d), -100, 100); }
-function addHeat(d) { S.heat = clamp(Math.round(S.heat + d), 0, 100); }
+function addHeat(d) { S.heat = clamp(Math.round(S.heat + d), 0, 100); peak('heat', S.heat); }
 
-function earn(n, why) { S.stones += n; S.today.income += n; S.stats.income += n; if (why) log(why, 'gain'); }
+function earn(n, why) { S.stones += n; S.today.income += n; S.stats.income += n; peak('stones', S.stones); if (why) log(why, 'gain'); }
+// 结局画像用的计数：tally 累加，peak 记最高
+function tally(k, n = 1) { S.stats[k] = (S.stats[k] || 0) + n; }
+function peak(k, v) { if (v > (S.stats[`${k}Max`] || 0)) S.stats[`${k}Max`] = v; }
 function spend(n, why) { S.stones -= n; S.today.expense += n; S.stats.spent += n; if (why) log(why, 'loss'); }
 
 // ───────────── 议价 ─────────────
@@ -910,6 +952,7 @@ function completeSale(c, it, price, v = buyerValuation(c, it)) {
   castEvent(p, 'sold', it, price);
   earn(price, `${c.name}以 ${price} 灵石买下${name}。`);
   S.stats.sales++;
+  if (it.stolen > 0 || ITEMS[it.id].contra) tally('hot');
   if (!S.stats.bestSale || price > S.stats.bestSale.price) S.stats.bestSale = { name, price, day: S.day };
   if (it.cost != null) {
     const profit = price - it.cost;
@@ -947,8 +990,9 @@ function completePurchase(c, it, offer) {
   spend(offer, `以 ${offer} 灵石收下${c.name}的${itemName(it)}。`);
   it.cost = offer;
   it.boughtDay = S.day;
+  if (it.stolen > 0 || ITEMS[it.id].contra) tally('hot');
   ['ask', 'knew', 'told', 'disputed'].forEach(k => delete it[k]);
-  autoPlace(it);
+  stow(it);
 }
 
 function reportWanted(c) {
@@ -986,6 +1030,7 @@ function tellCustomer(c, claimFake) {
   if (knowing) commitSin('fraud', { p: personOf(c), w: 1, what: `对${c.name}谎称${itemName(it)}是${claimFake ? '赝品' : '真品'}`, virtue: 2 });
   c.told = it.told = claimFake ? 'fake' : 'real';
   noteClaim(c, honest, caught, claimFake);
+  if (honest) tally('honest'); else if (knowing) tally('lies');
   if (caught) adjustRep(c.faction, -6);
   else if (!honest && Math.random() < 0.35) {
     S.grudges.push({ faction: c.faction, name: c.name, pid: c.pid, item: itemName(it), day: S.day + rint(1, 3) });
@@ -1074,7 +1119,7 @@ function runInspection(offer = 0) {
 function checkHeat() {
   if (S.heat >= 100 && !S.over && savedByBenefactor('heat')) return;
   if (S.heat >= 100 && !S.over) {
-    S.over = { win: false, title: '锁拿入狱', text: '执法堂认定你私通仙门，铁链加身，押入血狱。当铺被查封，所有货物充公。' };
+    S.over = { win: false, cause: 'heat', title: '锁拿入狱', text: '执法堂认定你私通仙门，铁链加身，押入血狱。当铺被查封，所有货物充公。' };
   }
 }
 
@@ -1212,7 +1257,7 @@ function rentCheck() {
     if (S.stones >= S.rentOwed) return payRent();
     if (S.grace === 0 && savedByBenefactor('rent')) return { icon: 'ic_deed', title: '租金', text: '宽限期满——你帮过的人替你把租子交了', cls: 'ok' };
     if (S.grace === 0) {
-      S.over = { win: false, title: '扫地出门', text: `宽限期已过，你仍欠着 ${S.rentOwed} 灵石的租子。${landlordName()}带着人收回了铺子。` };
+      S.over = { win: false, cause: 'rent', title: '扫地出门', text: `宽限期已过，你仍欠着 ${S.rentOwed} 灵石的租子。${landlordName()}带着人收回了铺子。` };
       return { icon: 'ic_deed', title: '租金', text: '宽限期满，你被逐出了铺子', cls: 'bad' };
     }
     return { icon: 'ic_deed', title: '租金', text: `仍欠 ${S.rentOwed} 灵石，宽限还剩 ${S.grace} 日`, cls: 'bad' };
@@ -1222,6 +1267,7 @@ function rentCheck() {
   if (S.stones >= S.rentOwed) return payRent();
   S.rentOwed = Math.round(S.rentOwed * 1.2);
   S.grace = 2;
+  tally('late');
   S.landlordVisit = true;
   return { icon: 'ic_deed', title: '租金', text: `交不起租！${landlordName()}宽限两日，连罚金共需 ${S.rentOwed} 灵石`, cls: 'bad' };
 }
@@ -1252,10 +1298,11 @@ function buyDeed() {
   spend(deedPrice(), '你买下了这间铺子的铺契。');
   // 铺契到手才知道过户另有规矩：剩下的灵石和铺里的货，一样一样都抵了进去
   const left = S.stones, goods = Object.values(S.items).filter(it => it.pos && it.pos.g !== 'counter');
+  peak('lens', appraiseLevel());
   const n = goods.length;
   if (left > 0) spend(left, '缴清过户的契税、印钱与各路打点。');
   goods.forEach(destroyItem);
-  S.over = { win: true, title: '铺契到手', scene: 'end_deed', text: `${landlordName()}在铺契上按了手印，又从袖里抽出一张单子：契税、宗门印钱、执法堂的平安钱、过户的茶水……`
+  S.over = { win: true, cause: 'deed', title: '铺契到手', scene: 'end_deed', text: `${landlordName()}在铺契上按了手印，又从袖里抽出一张单子：契税、宗门印钱、执法堂的平安钱、过户的茶水……`
     + (left > 0 || n ? `你剩下的 ${left} 灵石${n ? `和铺里 ${n} 件货` : ''}，一样一样抵了进去。` : '你兜里早已一个子儿不剩，他把单子折好，说下回再收。')
     + '从今往后，这间铺子姓你的了。你站在空荡荡的柜台后面，和刚来杂役区那天一样一贫如洗——好在这回，不用交租了。' };
   return true;
@@ -1267,7 +1314,7 @@ function buySupply(entry) {
   if (entry.stock <= 0 || S.stones < entry.price) return '灵石不够';
   const it = makeItem(entry.id, { q: rint(40, 70) });
   if (dressable(it) && Math.random() < 0.18) dressUp(it, rint(1, 2));
-  if (!autoPlace(it)) { destroyItem(it); return '库房和地面都放不下了'; }
+  stow(it);
   it.cost = entry.price; it.boughtDay = S.day;
   entry.stock--;
   spend(entry.price);
@@ -1316,11 +1363,11 @@ function moveMachine(m, dir) {
   [S.machines[i], S.machines[j]] = [S.machines[j], S.machines[i]];
 }
 
-// 拆除设备：格子里的东西退回库房或地面
+// 拆除设备：格子里的东西退回库房或地面，放不下的拿在手上
 function removeMachine(m) {
   ['in', 'out', 'mod'].forEach(slot => {
     const gid = gridOf(m, slot);
-    itemsIn(gid).forEach(it => { if (!autoPlace(it)) destroyItem(it); });
+    itemsIn(gid).forEach(stow);
     delete S.grids[gid];
   });
   S.machines.splice(S.machines.indexOf(m), 1);
@@ -1377,14 +1424,12 @@ function scavSearch() {
   return { item: it };
 }
 
-// 回铺：背篓里的东西搬进库房，放不下的留在地上，再放不下就丢弃
+// 回铺：背篓里的东西搬进库房，放不下的留在地上，再放不下就拿在手上
 function endScavenge() {
-  const lost = [];
-  itemsIn('basket').forEach(it => { if (!autoPlace(it)) { lost.push(itemName(it)); destroyItem(it); } });
+  itemsIn('basket').forEach(stow);
   if (S.scav.pending && S.items[S.scav.pending] && !S.items[S.scav.pending].pos) destroyItem(S.items[S.scav.pending]);
   delete S.grids.basket;
   S.scav = null;
-  if (lost.length) log(`铺里堆不下，只好丢掉：${lost.join('、')}`, 'loss');
   checkHeat();
 }
 

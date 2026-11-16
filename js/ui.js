@@ -730,6 +730,7 @@ function selActions(s, inCard = false) {
   if (tradeOpen()) mv('tray', '上货盘');
   mv('display', '摆上陈列');
   if (!['store', 'floor'].includes(g)) mv('store', '收回库房');
+  if (g === 'hand') mv('floor', '放在地上');
   mv('hidden', '藏进暗格');
   S.machines.filter(m => MACHINES[m.type].in).slice(0, 12).forEach(m => { if (out.length < 7) mv(gridOf(m, 'in'), `放进${MACHINES[m.type].name}`); });
   S.machines.filter(m => MACHINES[m.type].mod && modAccepts(s, m.type)).forEach(m => mv(gridOf(m, 'mod'), `装进${MACHINES[m.type].name}`));
@@ -757,8 +758,10 @@ function renderStorage() {
     <div class="st-head"><b>库房</b>
       ${canSell ? `<span class="st-sel">选中 <b>${esc(itemName(s))}</b>${selActions(s)}</span>`
         : `<span class="muted small">${LAYOUT === 'tall' ? '点货看详情与操作，按住拖动挪位置' : '拖动整理；点选查看与出售'}</span>`}
+      <button class="btn tiny" data-act="tidy" title="大件先摆，尽量把地上的货收进库房">整理</button>
       <span class="st-tool" title="鉴宝台：放照妖镜，决定你的鉴定术">${gridHTML('tool', '', 'mod')}<small>${LENS_NAMES[appraiseLevel()]}</small></span>
       <span class="trash" data-drop="trash" title="拖到这里丢弃">弃</span></div>
+    ${handItems().length ? `<div class="st-hand">${gridHTML('hand', '手上：铺里放不下了。拖进空处，或点开服用、摆出、放进设备、卖掉、丢弃腾地方；收拾好才能接着做事')}</div>` : ''}
     <div class="st-body">${gridHTML('store', '')}
       <div class="st-side">${gridHTML('floor', '地上（夜里可能遭贼）')}${S.grids.hidden ? gridHTML('hidden', '夹层暗格', 'stash') : ''}</div></div>`;
 }
@@ -818,8 +821,14 @@ document.addEventListener('pointerdown', e => {
   if (w) raise(w.dataset.win);
 }, true);
 
+let handSeen = 0;       // 上回重绘时手上有几件货
+
 function renderAll() {
   if (!S) return;
+  layoutHand();
+  const held = handItems().length;
+  if (held > handSeen) { toast('铺里放不下了，多出的货先拿在手上', 'bad'); tab = 'store'; front = 'main'; }
+  handSeen = held;
   renderTopbar(); renderScene(); renderCounter(); renderSide(); renderStorage(); renderCard();
   if (modal) modal();
 }
@@ -877,7 +886,6 @@ function openDeal() {
   };
   const ready = net => {
     if (net < 0 && S.stones < -net) { toast('灵石不够', 'bad'); return false; }
-    if (d.take.length && !roomForAll(d.take.map(t => t.it))) { toast('库房和地面都放不下了，先腾地方', 'bad'); return false; }
     return true;
   };
   const finish = net => {
@@ -1389,8 +1397,121 @@ function showEnding() {
       <div><span>最大一笔</span><b>${st.bestSale ? `${st.bestSale.name} ${st.bestSale.price}（第${st.bestSale.day}日）` : '—'}</b></div>
       <div><span>最妙一转手</span><b>${st.bestFlip ? `${st.bestFlip.name}：${st.bestFlip.cost}→${st.bestFlip.price}` : '—'}</b></div>
     </div>
+    ${profileHTML()}
     <div class="h-btns"><button class="btn primary" data-act="to-title">回到山门</button></div></div>`, 'm-ending'));
 }
+
+// ───────────── 结局画像 ─────────────
+
+let PF = null;   // 收场时算好的画像，图上点选时取用
+
+function profileHTML() {
+  const sc = traitScores(), arc = archetype(sc), pts = wealthSeries();
+  PF = { sc, pts };
+  const top = sc.indexOf(arc.top);
+  return `<div class="pf-sec">
+    <h4>掌柜画像</h4>
+    <div class="pf">
+      <div class="pf-chart">${radarSVG(sc, top)}<div class="pf-read" id="pf-read">${traitRead(sc[top])}</div></div>
+      <div class="pf-text">
+        <b class="pf-name">${arc.name}</b>${arc.also ? `<span class="muted small">　兼有几分${arc.also.name}</span>` : ''}
+        <p>${arc.text}</p>
+        <ul class="pf-list">${sc.map((t, i) => `<li data-pf="${i}" class="${i === top ? 'on' : ''}"><span>${t.name}</span><b>${t.v}</b><small>${esc(t.basis)}</small></li>`).join('')}</ul>
+      </div></div>
+    <div class="pf">
+      ${pts.length > 1 ? `<div class="pf-wealth"><h4>家底走势</h4>${wealthSVG(pts)}<div class="pf-read" id="wl-read">${wealthRead(pts)}</div>
+        <details class="wl-table"><summary>逐日明细</summary><table><tr><th>日</th><th>进</th><th>出</th><th>余</th></tr>
+          ${S.stats.days.map(d => `<tr><td>第 ${d.day} 日</td><td>+${d.income}</td><td>-${d.expense}</td><td>${d.stones}</td></tr>`).join('')}</table></details></div>` : ''}
+      <div class="pf-text"><h4>下一局</h4>
+        <ul class="pf-tips">${nextTips(sc).map(t => `<li><b>${t.head}</b>${esc(t.text)}</li>`).join('')}</ul></div></div></div>`;
+}
+
+const traitRead = t => `<b>${t.name} ${t.v}</b> · ${esc(t.basis)}`;
+
+// 蛛网图：七样脾性一圈，四道等分环；点顶点或名字看依据
+function radarSVG(sc, on) {
+  const R = 84, n = sc.length;
+  const at = (i, r) => { const a = -Math.PI / 2 + i * 2 * Math.PI / n; return [+(Math.cos(a) * r).toFixed(1), +(Math.sin(a) * r).toFixed(1)]; };
+  const ring = f => sc.map((_, i) => at(i, R * f).join(',')).join(' ');
+  const pts = sc.map((t, i) => at(i, R * t.v / 100));
+  return `<svg class="radar" viewBox="-132 -112 264 226" role="img" aria-label="${sc.map(t => `${t.name}${t.v}`).join('，')}">
+    ${[0.25, 0.5, 0.75, 1].map(f => `<polygon class="rd-grid" points="${ring(f)}"/>`).join('')}
+    ${sc.map((_, i) => { const [x, y] = at(i, R); return `<line class="rd-grid" x1="0" y1="0" x2="${x}" y2="${y}"/>`; }).join('')}
+    <polygon class="rd-area" points="${pts.map(p => p.join(',')).join(' ')}"/>
+    ${sc.map((t, i) => {
+      const [x, y] = at(i, R + 17), anchor = x > 4 ? 'start' : x < -4 ? 'end' : 'middle';
+      return `<text class="rd-label" data-pf="${i}" x="${x}" y="${y}" text-anchor="${anchor}" dominant-baseline="middle">${t.name}</text>`;
+    }).join('')}
+    ${pts.map(([x, y], i) => `<circle class="rd-dot" cx="${x}" cy="${y}" r="4"/><circle class="rd-hit ${i === on ? 'on' : ''}" data-pf="${i}" cx="${x}" cy="${y}" r="13"/>`).join('')}
+  </svg>`;
+}
+
+// 家底走势：每夜的灵石，标出最高与收场；按住或悬停看某一日
+const WL = { w: 320, h: 132, l: 40, r: 66, t: 16, b: 20 };
+
+function wealthScale(pts) {
+  const hi = Math.max(1, ...pts.map(p => p.v)), lo = Math.min(0, ...pts.map(p => p.v));
+  const mag = 10 ** Math.floor(Math.log10(hi / 2)), step = [1, 2, 5, 10].map(m => m * mag).find(s => s * 2 >= hi);
+  const top = step * 2, d0 = pts[0].day, d1 = pts[pts.length - 1].day;
+  return {
+    ticks: [0, step, top],
+    x: day => WL.l + (day - d0) / Math.max(1, d1 - d0) * (WL.w - WL.l - WL.r),
+    y: v => WL.t + (1 - (v - lo) / (top - lo)) * (WL.h - WL.t - WL.b),
+  };
+}
+
+function wealthSVG(pts) {
+  const s = wealthScale(pts), last = pts[pts.length - 1];
+  const hi = pts.reduce((m, p) => p.v > m.v ? p : m, pts[0]);
+  const line = pts.map((p, i) => `${i ? 'L' : 'M'}${s.x(p.day).toFixed(1)},${s.y(p.v).toFixed(1)}`).join('');
+  const base = s.y(0).toFixed(1);
+  return `<svg class="wealth" viewBox="0 0 ${WL.w} ${WL.h}" role="img" aria-label="家底走势：最高 ${hi.v} 灵石（第 ${hi.day} 日），收场 ${last.v} 灵石">
+    ${s.ticks.map(v => `<line class="rd-grid" x1="${WL.l}" x2="${WL.w - WL.r}" y1="${s.y(v)}" y2="${s.y(v)}"/><text class="wl-tick" x="${WL.l - 6}" y="${s.y(v)}" text-anchor="end" dominant-baseline="middle">${v}</text>`).join('')}
+    <text class="wl-tick" x="${WL.l}" y="${WL.h - 4}">第 ${pts[0].day} 日</text>
+    <text class="wl-tick" x="${WL.w - WL.r}" y="${WL.h - 4}" text-anchor="end">第 ${last.day} 日</text>
+    <path class="wl-area" d="${line}L${s.x(last.day).toFixed(1)},${base}L${s.x(pts[0].day).toFixed(1)},${base}Z"/>
+    <path class="wl-line" d="${line}"/>
+    ${hi !== last ? `<text class="wl-note" x="${s.x(hi.day)}" y="${s.y(hi.v) - 7}" text-anchor="middle">最高 ${hi.v}</text>` : ''}
+    <circle class="rd-dot" cx="${s.x(last.day)}" cy="${s.y(last.v)}" r="4"/>
+    <text class="wl-note" x="${s.x(last.day) + 8}" y="${s.y(last.v)}" dominant-baseline="middle">收场 ${last.v}</text>
+    <line class="wl-cross" id="wl-cross" y1="${WL.t}" y2="${WL.h - WL.b}"/><circle class="rd-dot wl-cross" id="wl-dot" r="4"/>
+    <rect class="wl-hit" x="${WL.l}" y="0" width="${WL.w - WL.l - WL.r}" height="${WL.h}"/>
+  </svg>`;
+}
+
+function wealthRead(pts, p) {
+  if (p) return `<b>第 ${p.day} 日</b> · 灵石 ${p.v}`;
+  const hi = pts.reduce((m, q) => q.v > m.v ? q : m, pts[0]);
+  return `最高 <b>${hi.v}</b>（第 ${hi.day} 日）· 收场 <b>${pts[pts.length - 1].v}</b>`;
+}
+
+// 点选蛛网图的顶点、名字或下面那一行：亮起这一样，读出依据
+function pfPick(e) {
+  const el = PF && e.target.closest && e.target.closest('.pf [data-pf]');
+  if (!el) return;
+  const i = +el.dataset.pf;
+  document.querySelectorAll('.pf [data-pf].on').forEach(x => x.classList.remove('on'));
+  document.querySelectorAll(`.pf li[data-pf="${i}"], .pf .rd-hit[data-pf="${i}"]`).forEach(x => x.classList.add('on'));
+  $('#pf-read').innerHTML = traitRead(PF.sc[i]);
+}
+
+// 家底走势上按住或悬停：十字线落到最近的那一日；移开就收起
+function wlTrack(e) {
+  const cross = $('#wl-cross');
+  if (!PF || !cross) return;
+  const hit = e.target.closest && e.target.closest('.wealth'), dot = $('#wl-dot');
+  if (!hit) { cross.classList.remove('on'); dot.classList.remove('on'); $('#wl-read').innerHTML = wealthRead(PF.pts); return; }
+  const r = hit.getBoundingClientRect(), s = wealthScale(PF.pts), x = (e.clientX - r.left) / r.width * WL.w;
+  const p = PF.pts.reduce((m, q) => Math.abs(s.x(q.day) - x) < Math.abs(s.x(m.day) - x) ? q : m, PF.pts[0]);
+  cross.setAttribute('x1', s.x(p.day)); cross.setAttribute('x2', s.x(p.day));
+  dot.setAttribute('cx', s.x(p.day)); dot.setAttribute('cy', s.y(p.v));
+  cross.classList.add('on'); dot.classList.add('on');
+  $('#wl-read').innerHTML = wealthRead(PF.pts, p);
+}
+
+document.addEventListener('pointerover', pfPick);
+document.addEventListener('pointerdown', e => { pfPick(e); wlTrack(e); });
+document.addEventListener('pointermove', wlTrack);
 
 // 结束检查：任何操作后若游戏结束则弹出结局
 function checkOver() {
@@ -1447,6 +1568,14 @@ function enterGame() {
 
 // ───────────── 动作分发 ─────────────
 
+// 手上还拿着放不下的货：先腾地方再往下走，把库房翻出来给你收拾
+function handBusy() {
+  if (!handItems().length) return false;
+  toast('手上还拿着放不下的货，先腾出地方', 'bad');
+  tab = 'store'; front = 'main'; renderAll();
+  return true;
+}
+
 const machineById = el => S.machines.find(m => m.mid === +el.dataset.mid);
 
 const HANDLERS = {
@@ -1461,8 +1590,9 @@ const HANDLERS = {
   menu: () => openModal(() => modalHTML(`<h3>卷宗</h3><p>进度会在每天清晨自动存档。</p>
     <div class="h-btns"><button class="btn" data-act="lore-book">见闻录（${Object.keys(S.lore || {}).length}）</button><button class="btn" data-act="save-quit">存档并回山门</button><button class="btn ghost" data-act="modal-close">继续经营</button></div>`)),
   'save-quit': () => { save(); showTitle(); },
-  open: () => { openShop(); closeModal(); HANDLERS.next(); },
+  open: () => { if (handBusy()) return; openShop(); closeModal(); HANDLERS.next(); },
   next: () => {
+    if (handBusy()) return;
     const c = nextCustomer();
     if (!c) toast('今日已无客人');
     if (c && c.kind === 'story') { renderAll(); HANDLERS['story-talk'](); return; }
@@ -1473,6 +1603,7 @@ const HANDLERS = {
     renderAll();
   },
   close: () => {
+    if (handBusy()) return;
     if (S.customer) { toast('柜台前还有客人，先把人送走'); return; }
     if (S.queue.length && !confirm(`门外还有 ${S.queue.length} 位客人，这就打烊？`)) return;
     closeShop(); tab = 'workshop'; front = 'counter'; renderAll();
@@ -1519,7 +1650,7 @@ const HANDLERS = {
   erase: () => { const err = eraseMark(S.items[sel]); toast(err || '烙印抹净了，来路从此干干净净。', err ? 'bad' : 'good'); renderAll(); },
   seal: () => { const it = S.items[sel], err = sealItem(it); toast(err || `${itemName(it)}贴上了正派封印——眼力不到的人，只当是名门正品。`, err ? 'bad' : 'good'); renderAll(); },
   retreat: () => { const err = toggleRetreat(); if (err) toast(err, 'bad'); renderAll(); },
-  market: () => { const err = visitMarket(); if (err) { toast(err, 'bad'); return; } openMarket('ghost'); renderTopbar(); },
+  market: () => { if (handBusy()) return; const err = visitMarket(); if (err) { toast(err, 'bad'); return; } openMarket('ghost'); renderTopbar(); },
   'mk-tab': el => openMarket(el.dataset.k),
   'mk-buy': el => { const err = buyLot(el.dataset.k, +el.dataset.i); if (err) toast(err, 'bad'); openMarket(el.dataset.k); renderAll(); },
   'mk-sell': el => { const r = sellToDealer(el.dataset.k, S.items[el.dataset.uid]); if (r.err) toast(r.err, 'bad'); else toast(`出手，得 ${r.price} 灵石`, 'good'); openMarket(el.dataset.k); renderAll(); },
@@ -1544,7 +1675,7 @@ const HANDLERS = {
   inspect: () => { const r = runInspection(0); showInspectResult(r); },
   bribe: el => { const r = runInspection(+el.dataset.n); showInspectResult(r); },
   'inspect-done': () => { dismissCustomer(false); closeModal(); renderAll(); checkOver(); },
-  scavenge: () => openScavengeSelect(),
+  scavenge: () => { if (!handBusy()) openScavengeSelect(); },
   'scav-go': el => { startScavenge(el.dataset.id); openModal(renderScavenge); },
   'scav-search': () => {
     const r = scavSearch();
@@ -1555,6 +1686,7 @@ const HANDLERS = {
   },
   'scav-home': () => { endScavenge(); closeModal(); renderAll(); checkOver(); },
   sleep: () => {
+    if (handBusy()) return;
     const night = dueStories('night')[0];
     if (night) { openStory(night, () => HANDLERS.sleep()); return; }
     const rep = nightResolve();
@@ -1594,7 +1726,7 @@ const HANDLERS = {
     showIntel({ text: r.text, cls: r.ok ? 'good' : 'bad' }); renderAll(); checkOver();
   },
   soulmark: () => { const r = soulMark(personOf(S.customer)); if (r.err) toast(r.err, 'bad'); else showIntel({ text: r.text, cls: r.ok ? 'good' : 'bad' }); renderAll(); checkOver(); },
-  'file-secret': el => { const it = makeIntel('secret', { p: S.people[el.dataset.pid] }); toast(it ? `录成了一份${itemName(it)}，放进库房` : '库房放不下', it ? 'good' : 'bad'); openPerson(el.dataset.pid); renderAll(); },
+  'file-secret': el => { const it = makeIntel('secret', { p: S.people[el.dataset.pid] }); toast(`录成了一份${itemName(it)}，放进库房`, 'good'); openPerson(el.dataset.pid); renderAll(); },
   release: el => { release(S.people[el.dataset.pid]); openPerson(el.dataset.pid); renderAll(); },
   debt: el => { const p = S.people[el.dataset.pid]; toast(collectDebt(p, el.dataset.how)); openPerson(p.pid); renderAll(); },
   'plea-help': () => { const p = personOf(S.customer), err = helpWeak(S.customer); if (err) toast(err, 'bad'); else toast(`${ta(p)}磕了个头，千恩万谢地走了`, 'good'); renderAll(); },
@@ -1612,6 +1744,7 @@ const HANDLERS = {
     if (!sp) { toast('放不下了', 'bad'); return; }
     placeMoved(it, gid, sp.x, sp.y); sel = peek = null; renderAll();
   },
+  tidy: () => { if (!tidy()) toast('已经摆得够紧了，再要地方只能出手或丢弃', 'bad'); renderAll(); },
   'trash-sel': () => { const it = S.items[sel]; if (knownValue(it) > 30 && !confirm(`丢弃${itemName(it)}？`)) return; destroyItem(it); sel = null; renderAll(); },
   'buy-intel': el => { const err = buyIntel(+el.dataset.i); toast(err || '密报已放进库房，悬停可看写的什么', err ? 'bad' : 'good'); renderAll(); },
   'gift-open': el => openGift(el.dataset.pid),
@@ -1816,6 +1949,7 @@ function placeMoved(it, gid, x, y) {
     toast(`${itemName(it)}是违禁品。管事${landlordPerson().name}看见了多半会${TOLERANCE_NAME[t]}。`, t === 'ignore' ? '' : 'bad');
   }
   if (from === 'tool' || gid === 'tool') {
+    peak('lens', appraiseLevel());
     const found = recheckStock();
     toast(found.length ? `换上${LENS_NAMES[appraiseLevel()]}，重新审视库房：${found.join('、')}有问题！` : `鉴宝台换上了${LENS_NAMES[appraiseLevel()]}`, found.length ? 'bad' : '');
   }
