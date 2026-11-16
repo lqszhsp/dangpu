@@ -12,6 +12,7 @@
 //   node tools/play/play.mjs <局目录> next                 自动点掉只有一个按钮的弹窗（夜间报告、成交结果、“继续”……），停在要拿主意的画面
 //   node tools/play/play.mjs <局目录> status               一行 JSON：第几日、灵石、关注、伤毒、是否结局（给测试汇总用）
 //   node tools/play/play.mjs <局目录> history [n]           最近 n 条命令
+//   node tools/play/play.mjs <局目录> tactics              重放整局，统计用过的手段（议价、作伪、下药、出卖……）与丰富度，一行 JSON
 // 一次可以连着做几件事：用 ; 隔开，例如  click 3 ; look
 // 规则：只能这样玩。别改游戏文件、别改局目录里的 log.jsonl——那等于作弊，测试作废。
 import fs from 'node:fs';
@@ -231,6 +232,92 @@ function gridsText(ctx, S) {
   return `【格子与货】（货写作 #uid；sel <uid> 选中、move <uid> <格子id> 拖动、tip <uid> 看详情）\n${lines.join('\n')}`;
 }
 
+
+// ───────────── 手段统计（tactics）─────────────
+// 重放时包住游戏里的关键函数，数这一局真实用过的手段；只读参数与返回值，不改行为、不多取随机数
+const TACTIC_HOOKS = `
+  const T = globalThis.__T = { calls: {}, sins: {}, sales: [], buys: [], appraise: { honest: 0, lie: 0, knowing: 0, fakeOnReal: 0 } };
+  const inc = (k, n = 1) => { T.calls[k] = (T.calls[k] || 0) + n; };
+  const wrap = (name, fn) => { const f = globalThis[name]; if (typeof f !== 'function') return; globalThis[name] = function (...a) { return fn(f, a, this); }; };
+  let inForge = false;
+  wrap('noteSale', (f, a) => { T.sales.push(a[3]); return f(...a); });
+  wrap('notePurchase', (f, a) => { const it = a[1]; if (it && it.ask) T.buys.push(a[2] / it.ask); return f(...a); });
+  wrap('tellCustomer', (f, a) => { const r = f(...a); r.honest ? T.appraise.honest++ : T.appraise.lie++; if (!r.honest && a[1] === true) T.appraise.fakeOnReal++; return r; });
+  // 明知有假还当真货卖：用游戏自己的“你知不知道这件货有毛病”来判（旧版没有因果记账也数得出）
+  wrap('recordSold', (f, a) => { if (!a[3] && knownFlaw(a[1])) inc('明知有假当真货卖'); return f(...a); });
+  wrap('disputeAsFake', (f, a) => { inc('指为赝品压价'); return f(...a); });
+  wrap('disputeFlaw', (f, a) => { const r = f(...a); inc(r && r.bluff ? '挑毛病（硬挑）' : '挑毛病（有据）'); return r; });
+  wrap('laceWith', (f, a) => { inc('加料：' + (ITEMS[a[1].id].additive === 'addict' ? '忘忧散' : ITEMS[a[1].id].additive === 'poison' ? '尸毒' : ITEMS[a[1].id].additive === 'control' ? '噬心蛊' : '血灵芝')); return f(...a); });
+  wrap('forgeryRun', (f, a) => { inForge = true; try { return f(...a); } finally { inForge = false; } });
+  wrap('dressUp', (f, a) => { if (inForge) inc('作伪：以次充好'); return f(...a); });
+  wrap('sealItem', (f, a) => { inc('作伪：假封印'); return f(...a); });
+  wrap('eraseMark', (f, a) => { inc('抹印销赃'); return f(...a); });
+  wrap('killPerson', (f, a) => { const r = f(...a); if (r && !r.err) inc(r.ok === false ? '杀人（失手）' : '杀人'); return r; });
+  wrap('soulMark', (f, a) => { const r = f(...a); if (r && !r.err) inc('种魂印'); return r; });
+  wrap('runCommand', (f, a) => { const r = f(...a); if (r && !r.err) inc('差遣受控者'); return r; });
+  wrap('reportSecret', (f, a) => { const r = f(...a); if (r && !r.err) inc('举报身份'); return r; });
+  wrap('blackmail', (f, a) => { inc('要挟'); return f(...a); });
+  wrap('reportWanted', (f, a) => { inc('举报通缉犯'); return f(...a); });
+  wrap('keepSecret', (f, a) => { inc('替人保密'); return f(...a); });
+  wrap('helpWeak', (f, a) => { const r = f(...a); if (!r) inc('接济'); return r; });
+  wrap('lendTo', (f, a) => { const r = f(...a); if (!r) inc('放贷'); return r; });
+  wrap('indenture', (f, a) => { inc('收苦力'); return f(...a); });
+  wrap('collectDebt', (f, a) => { inc('讨债：' + ({ mine: '卖去矿上', labor: '收作苦力', extend: '利滚利', forgive: '一笔勾销' })[a[1]]); return f(...a); });
+  wrap('giveGift', (f, a) => { inc('送礼'); return f(...a); });
+  wrap('tryBribe', (f, a) => { inc('打点'); return f(...a); });
+  // 故事里的恶行：选项执行期间记下的孽债就是它（不能重新生成选项来看——选项提示里的成算要现掷随机数）
+  let inChoice = false;
+  wrap('commitSin', (f, a) => { const k = a[0], what = (a[1] && a[1].what) || ''; T.sins[k] = (T.sins[k] || 0) + 1;
+    if (/谎称/.test(what)) T.appraise.knowing++;
+    if (inChoice) inc('故事里作恶：' + ({ fraud: '欺诈', betray: '出卖', fence: '销赃包庇', harm: '害人' })[k]); return f(...a); });
+  wrap('resolveChoice', (f, a) => { inChoice = true; try { return f(...a); } finally { inChoice = false; } });
+`;
+
+// 一局用过的手段：按“善 / 中性 / 恶”归类，算丰富度
+function tacticsOf(ctx, log) {
+  const T = vm.runInContext('__T', ctx), c = { ...T.calls };
+  // 议价：从命令日志里数（每一回报价、选了哪一档、拖滑杆）
+  const preset = {};
+  for (const l of log) {
+    const m = l.cmd.match(/^click (.*)$/); if (!m) { if (/^price /.test(l.cmd)) c['拖滑杆定价'] = (c['拖滑杆定价'] || 0) + 1; continue; }
+    const b = JSON.parse(m[1]);
+    if (b.act === 'h-offer') c['报价'] = (c['报价'] || 0) + 1;
+    if (b.act === 'h-again') c['还价再议'] = (c['还价再议'] || 0) + 1;
+    if (b.act === 'h-preset') { const k = b.label.replace(/\s*-?\d+$/, ''); preset[k] = (preset[k] || 0) + 1; }
+    if (b.act === 'd-claim' && b.data && b.data.v === 'honest') c['如实告知瑕疵'] = (c['如实告知瑕疵'] || 0) + 1;
+    if (b.act === 'probe') c['神识探查'] = (c['神识探查'] || 0) + 1;
+    if (b.act === 'flatter') c['吹捧'] = (c['吹捧'] || 0) + 1;
+    if (b.act === 'seek-heal') c['求诊'] = (c['求诊'] || 0) + 1;
+    if (b.act === 'scav-search') c['拾荒翻找'] = (c['拾荒翻找'] || 0) + 1;
+    if (b.act === 'retreat') c['闭关'] = (c['闭关'] || 0) + 1;
+    if (b.act === 'cultivate') c['服炼'] = (c['服炼'] || 0) + 1;
+    if (b.act === 'mk-buy' || b.act === 'mk-sell') c['鬼市进出货'] = (c['鬼市进出货'] || 0) + 1;
+    if (b.act === 'mk-talk') c['鬼市话术'] = (c['鬼市话术'] || 0) + 1;
+    if (/^cq-/.test(b.act) || /^opp-/.test(b.act)) c['派系往来'] = (c['派系往来'] || 0) + 1;
+  }
+  for (const [k, n] of Object.entries(preset)) c[`议价·${k}`] = n;
+  const sales = T.sales, buys = T.buys;
+  c['卖货'] = sales.length; c['收货'] = buys.length;
+  c['高价宰客（卖价>1.3倍心理价）'] = sales.filter(x => x > 1.3).length;
+  c['让利出售（卖价<0.9倍）'] = sales.filter(x => x < 0.9).length;
+  c['狠压收价（出价<6成）'] = buys.filter(x => x < 0.6).length;
+  c['如实鉴定'] = T.appraise.honest; const knowing = Math.max(T.appraise.knowing, T.appraise.fakeOnReal);   // 把真品说成赝品一定是存心的
+  c['鉴定撒谎（明知）'] = knowing; c['鉴定看走眼'] = T.appraise.lie - knowing;
+  for (const k of Object.keys(c)) if (!c[k]) delete c[k];
+  const EVIL = /作伪|加料|抹印|杀人|魂印|差遣|举报|要挟|放贷|收苦力|卖去矿上|利滚利|明知|撒谎|故事里作恶|狠压|宰客|指为赝品|硬挑/;
+  const GOOD = /接济|保密|勾销|如实|让利|求诊/;
+  const SKIP = /^(卖货|收货|报价)$|看走眼/;    // 量大、人人都做，或不算手段
+  const used = Object.keys(c).filter(k => !SKIP.test(k));
+  const cls = k => EVIL.test(k) ? '恶' : GOOD.test(k) ? '善' : '中性';
+  // 丰富度：用过多少种手段；分布越匀越高（香农熵换算成“等效种数”）
+  const tot = used.reduce((s, k) => s + c[k], 0) || 1;
+  const eff = Math.exp(-used.reduce((s, k) => s + (c[k] / tot) * Math.log(c[k] / tot), 0));
+  return { kinds: used.length, effective: +eff.toFixed(1), evilKinds: used.filter(k => cls(k) === '恶').length,
+    goodKinds: used.filter(k => cls(k) === '善').length, sins: T.sins, counts: Object.fromEntries(used.map(k => [`${cls(k)}·${k}`, c[k]])),
+    haggle: { offers: c['报价'] || 0, presets: preset, sliders: c['拖滑杆定价'] || 0, sellRatio: sales.length ? +(sales.reduce((s, x) => s + x, 0) / sales.length).toFixed(2) : null,
+      buyRatio: buys.length ? +(buys.reduce((s, x) => s + x, 0) / buys.length).toFixed(2) : null } };
+}
+
 // ───────────── 命令 ─────────────
 
 const dir = process.argv[2];
@@ -287,10 +374,11 @@ function act(ctx, cmd, live) {
   }
 }
 
-function replay() {
+function replay(instrument = false) {
   if (!fs.existsSync(META)) throw new Error(`${dir} 还没开局：先 new <开局id>`);
   const meta = JSON.parse(fs.readFileSync(META, 'utf8'));
   const ctx = boot(meta.seed);
+  if (instrument) vm.runInContext(TACTIC_HOOKS, ctx);
   ctx.__meta = meta;
   vm.runInContext(`newGame(__meta.diff, __meta.start); enterGame(); showIntro();`, ctx);
   const log = fs.existsSync(LOG) ? fs.readFileSync(LOG, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l)) : [];
@@ -319,6 +407,7 @@ try {
     fs.writeFileSync(META, JSON.stringify(meta, null, 1)); fs.writeFileSync(LOG, '');
     rest.splice(0, 1, 'look');
   }
+  if (rest[0] === 'tactics') { const r = replay(true); console.log(JSON.stringify(tacticsOf(r.ctx, r.log))); process.exit(0); }
   const { ctx, log, meta } = replay();
   const capped = () => meta.cap && vm.runInContext('S.day', ctx) > meta.cap;
   let last = null;
