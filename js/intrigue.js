@@ -110,10 +110,25 @@ const LACE = {
 const LACEABLE = ['pill_qi', 'pill_blood', 'pill_found', 'spirit_wine', 'water', 'spirit_fruit', 'vine_fruit'];
 
 const canLace = it => LACEABLE.includes(it.id) && !it.laced && !it.fake;
+
+// 市面上偶尔混着别人掺过料的货：成瘾的多，下毒、种蛊的少；chance 是这件货被掺过的机会
+function marketLace(id, extra, chance) {
+  if (!LACEABLE.includes(id) || Math.random() >= chance) return extra;
+  extra.laced = weighted([['addict', 6], ['poison', 1.5], ['control', 1]]);
+  extra.laceGrade = rint(1, 3);
+  if (extra.laced === 'control') extra.laceTox = rint(10, 45);
+  return extra;
+}
 const additives = () => Object.values(S.items).filter(it => HELD(it) && ITEMS[it.id].additive);
+
+// 掺了料的货：自己掺的、或验出来了的才算知道；市面上也有别人掺好了的，外表看不出来
+const lacedKnown = it => !!it.laced && (it.lacedBy === 'me' || !!it.lacedSeen);
+// 掺料的手法：钻研识破的掺料货、或打听到偏门门道才学得会；学会了手脚更干净
+const laceSkill = kind => !!(S.laceKnown && S.laceKnown[kind]);
 
 function laceWith(target, add) {
   target.laced = ITEMS[add.id].additive;
+  target.lacedBy = 'me';
   if (add.id === 'gu') target.laceTox = add.growth >= 100 ? add.tox + 40 : add.tox;
   destroyItem(add);
   tally('cruel');
@@ -124,7 +139,9 @@ function laceDetectChance(p, it) {
   const L = LACE[it.laced];
   if (!L || !L.detect) return 0;
   const tox = it.laced === 'control' ? 1 - Math.min(0.7, (it.laceTox || 0) / 200) : 1;
-  return clamp(L.detect * (0.4 + (p ? p.savvy : 0.4)) * tox * (1 - clamp(p ? p.aff : 0, 0, 80) / 160), 0.02, 0.9);
+  // 你亲手掺的：学过手法的干净，生手的粗糙
+  const hand = it.lacedBy === 'me' ? (laceSkill(it.laced) ? 0.6 : 1.4) : 1;
+  return clamp(L.detect * (0.4 + (p ? p.savvy : 0.4)) * tox * hand * (1 - clamp(p ? p.aff : 0, 0, 80) / 160), 0.02, 0.9);
 }
 
 // 货到了对方手里（买去或收礼）之后的效果；返回 { caught }
@@ -133,6 +150,8 @@ function applyLace(p, it, via) {
   const name = itemName(it);
   if (it.id === 'wangyou') return hook(p, name);
   if (!it.laced) return {};
+  // 明知掺了料还卖、还送，才算你作的恶；不知情的，只是替别人背了锅
+  const knew = lacedKnown(it);
   if (Math.random() < laceDetectChance(p, it)) {
     remember(p, `发现你${via === 'gift' ? '送' : '卖'}的${name}里${LACE[it.laced].verb}。`, -45, 'poisoned');
     adjustRep(p.faction, -6); addHeat(8);
@@ -140,10 +159,11 @@ function applyLace(p, it, via) {
     return { caught: true };
   }
   switch (it.laced) {
-    case 'addict': return hook(p, name);
+    case 'addict': return hook(p, name, knew);
     case 'control':
       p.controlled = { day: S.day };
       remember(p, `你借${name}在他身上种下了噬心蛊。`, 0);
+      if (knew) commitSin('harm', { p, w: 2, what: `给${p.name}种噬心蛊`, virtue: 6 });
       return {};
     case 'tonic':
       p.health = Math.min(130, (p.health || 100) + 25);
@@ -154,15 +174,18 @@ function applyLace(p, it, via) {
       p.health = (p.health || 100) - 85;
       p.poisonedDay = S.day;
       remember(p, `你在${name}里下了尸毒。`, 0);
+      if (knew) commitSin('harm', { p, w: 3, what: `给${p.name}下尸毒`, virtue: 9 });
       return {};
   }
   return {};
 }
 
-function hook(p, name) {
-  p.addict = Math.min(5, (p.addict || 0) + 1);
+function hook(p, name, knew = true) {
+  // 学过手法的，下得更重
+  p.addict = Math.min(5, (p.addict || 0) + (knew && laceSkill('addict') ? 2 : 1));
   p.health = (p.health || 100) - 6;
   p.lastFix = S.day;
+  if (knew) commitSin('harm', { p, w: 1, what: `让${p.name}吃上忘忧散`, virtue: 3 });
   remember(p, `吃了你的${name}，飘飘欲仙。`, 6, 'hooked');
   return {};
 }

@@ -43,7 +43,9 @@ const dressable = it => hasQuality(it) && !it.fake && !ITEMS[it.id].tool && !ITE
 function quickInspect(it) {
   const lv = appraiseLevel();
   it.seen = Math.max(it.seen || 0, lv);
-  return { lv, found: isDressed(it) && lv >= it.grade };
+  // 掺了料的：眼力够得着手法，或者你自己学过这门手法，就闻得出来
+  if (it.laced && !lacedKnown(it) && (lv >= (it.laceGrade || 1) || laceSkill(it.laced))) it.lacedSeen = true;
+  return { lv, found: isDressed(it) && lv >= it.grade, laced: it.laced && it.lacedSeen && it.lacedBy !== 'me' ? it.laced : null };
 }
 
 // 换上更好的鉴定器物后，重新审视库房：从前看着没毛病的，可能露了馅
@@ -64,7 +66,16 @@ function recheckStock() {
 // 拆解研究识破的假货：赝品学到仿造之法，以次充好学到作伪手法（不超过自己的鉴定术）
 function studyFake(it) {
   const lv = appraiseLevel();
-  if (it.forged) return '这是你自己做的，没什么好研究的。';
+  if (it.forged || it.lacedBy === 'me') return '这是你自己做的，没什么好研究的。';
+  // 验出来的掺料货：拆开来尝，学到别人的手法
+  if (it.laced && it.lacedSeen) {
+    if (laceSkill(it.laced)) return '这手法你已经会了。';
+    S.laceKnown = S.laceKnown || {};
+    S.laceKnown[it.laced] = 1;
+    destroyItem(it);
+    log(`你把这件${ITEMS[it.id].name}拆开细细辨味，摸清了别人${LACE[it.laced].verb}的手法——往后你掺这一味，手脚更干净。`, 'gold');
+    return null;
+  }
   if (!knownFlaw(it)) return '你还没看出它有什么问题。';
   if (lv < it.grade) return `做工${GRADE_NAMES[it.grade]}，以你如今的眼力（${LENS_NAMES[lv]}）还拆解不透。`;
   if (it.fake) {
@@ -184,7 +195,7 @@ function overpowerOdds(p) { return clamp(1 / (1 + Math.exp(-(playerPower() - npc
 // ───────────── 卖出的假货 ─────────────
 
 function recordSold(c, it, price, told) {
-  if (!told) karmaShift(-1);
+  if (!told && knownFlaw(it)) commitSin('fraud', { p: personOf(c), w: 1, what: `把${itemName(it)}当真货卖给${c.name}`, virtue: 2 });
   if (told) tally('honest'); else if (knownFlaw(it)) tally('lies');
   S.sold.push({ pid: c.pid, name: itemName(it), id: it.id, fake: !!it.fake, grade: it.grade || 1, told, knew: knownFlaw(it),
     price, loss: Math.max(0, price - trueValue(it)), day: S.day });

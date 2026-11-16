@@ -191,6 +191,7 @@ function takeOpp(o) {
       spend(o.price, `从${C.name}手里买下一名战俘。`);
       const got = [giveItem('cult_corpse', { q: rint(50, 75) }), giveItem('live_soul', { q: rint(50, 80) }), giveItem('blood_essence'), giveItem('blood_essence')].filter(Boolean);
       karmaShift(-3);
+      commitSin('harm', { w: 1, what: '买下战俘处置' });
       if (--o.left <= 0) o.done = true;
       return { text: `战俘是个仙门的筑基弟子，押来时已经只剩半口气。处置完了，你得到${got.map(itemName).join('、')}。` };
     }

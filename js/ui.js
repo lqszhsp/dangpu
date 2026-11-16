@@ -60,7 +60,7 @@ function itemTags(it) {
   const tags = [];
   if (ITEMS[it.id].contra) tags.push(['contra', '仙门禁物']);
   if (ITEMS[it.id].illicit) tags.push(['stolen', '魔宗禁药']);
-  if (it.laced) tags.push(['laced', `暗中${LACE[it.laced].verb}`]);
+  if (lacedKnown(it)) tags.push(['laced', it.lacedBy === 'me' ? `暗中${LACE[it.laced].verb}` : `被人${LACE[it.laced].verb}（验出来了）`]);
   if (it.mark) tags.push(['stolen', markVisible(it) ? `原主烙印 · ${cn(it.mark.str)}重` : '似有残存神识，看不真切']);
   if (it.sealed) tags.push(['laced', `贴了正派封印 · 做工${GRADE_NAMES[it.grade]}`]);
   if (it.bottled) tags.push(['real', '玉净瓶装']);
@@ -122,7 +122,7 @@ function itemHTML(it, extraCls = '', attrs = '') {
   if (it.id === 'gu' && it.growth < 100) badges.push(`<span class="bar"><i style="width:${it.growth}%"></i></span>`);
   if (['herb_seed', 'mihun_seed', 'vine_seed'].includes(it.id) && it.growth) badges.push(`<span class="bar"><i style="width:${it.growth}%"></i></span>`);
   if (it.id === 'corpse') badges.push(`<span class="bar rot"><i style="width:${clamp(it.fresh / 6 * 100, 0, 100)}%"></i></span>`);
-  if (it.laced) badges.push(`<span class="laced-dot" title="${LACE[it.laced].verb}"></span>`);
+  if (lacedKnown(it)) badges.push(`<span class="laced-dot" title="${LACE[it.laced].verb}"></span>`);
   if (it.id === 'spirit_crystal') badges.push(`<span class="bar power"><i style="width:${(it.charge || 0) / CRYSTAL_CAP * 100}%"></i></span>`);
   if (hasQuality(it) && it.q >= 85) extraCls += ' q-top';
   const style = it.pos && !extraCls.includes('preview') ? `left:${it.pos.x * CELL}px;top:${it.pos.y * CELL}px;` : 'position:relative;';
@@ -161,6 +161,7 @@ function renderTopbar() {
       <span class="tb-cal">${calendar().text}${annualOf() ? ` · <em>${annualOf().name}</em>` : ''}<br>${PHASE_NAME[S.phase]}</span></div>
     ${S.plan && S.plan.inspect && S.plan.tipped && S.plan.day === S.day ? `<div class="tb-cell tipchip" title="${esc(S.plan.tipped)}捎来的风声">${icon('ic_heat')}今日巡查</div>` : ''}
     <div class="tb-cell dao" data-act="dao" title="修为：服炼丹药魂魄，破境要钥匙。点开查看">${icon('ic_dao')}<span>${realmName()}<br><small>${realm().need ? `${S.cult.xp}/${realm().need}` : '圆满'}</small></span></div>
+    ${S.fate && (S.fate.n || S.fate.debts.length || S.fate.infamy) ? `<div class="tb-cell fate" data-act="fate-open" title="因果：点开查看孽债">孽<b>${S.fate.debts.length}</b>${S.fate.infamy ? `<small>恶名${S.fate.infamy}</small>` : ''}</div>` : ''}
     <div class="tb-cell" title="善名 ${S.virtue}：做好人要掏钱，善名太盛还会被人当软柿子捏；但你帮过的人，偶尔会回来报答">善<b>${VIRTUE_NAME(S.virtue)}</b></div>
     ${condList('me').map(c => CONDS[c.kind] ? `<div class="tb-cell cond" data-act="heal-open" title="${esc(CONDS[c.kind].desc)}点开求医">${c.label}</div>`
       : `<div class="tb-cell cond" title="体力或精神见底：比斗、动手吃亏，说谎易露馅">${c.label}</div>`).join('')}
@@ -358,8 +359,8 @@ function renderCounter() {
   const intel = !pp || pp.story || pp.official || ['story', 'inspect'].includes(c.kind) ? ''
     : secretKnown ? `<div class="intel">${icon('ic_secret')}<b>${esc(pp.secret.type)}</b>${c.confided ? `（${ta(pp)}自己向你吐露的）` : ''}——
         向${CHANNEL_NAME[pp.secret.to]}举报可得赏金约 ${pp.secret.bounty}、${FACTIONS[pp.secret.to].name}功勋 ${pp.secret.merit}${channelOpen(pp.secret.to) ? '' : `（尚未搭上线：${channelHint(pp.secret.to)}）`}
-        <span class="intel-acts"><button class="btn tiny danger" data-act="secret-report" ${channelOpen(pp.secret.to) ? '' : 'disabled'}>举报</button>
-        <button class="btn tiny" data-act="secret-blackmail">要挟 ${Math.round(Math.min(0.95, overpowerOdds(pp) + 0.1) * 100)}%</button>
+        <span class="intel-acts"><button class="btn tiny danger" data-act="secret-report" title="${esc(sinHint(['betray', 2]))}" ${channelOpen(pp.secret.to) ? '' : 'disabled'}>举报</button>
+        <button class="btn tiny" data-act="secret-blackmail" title="${esc(sinHint(['betray', 2]))}">要挟 ${Math.round(Math.min(0.95, overpowerOdds(pp) + 0.1) * 100)}%</button>
         ${pp.owes ? `<span class="muted small">${ta(pp)}欠你人情</span>` : '<button class="btn tiny" data-act="secret-keep">守口如瓶</button>'}</span></div>`
       : !c.probed && !pp.cleared ? `<div class="intel muted small">${icon('ic_secret')}<button class="btn tiny" data-act="probe" title="${costText('probe')}，看透约 ${Math.round(probeOdds(pp) * 100)}%">神识探查 ${Math.round(probeOdds(pp) * 100)}%</button></div>` : '';
   const dark = pp && !pp.story && ['sell', 'buy', 'plea'].includes(c.kind) && !c.refuse && killable(pp) ? `<div class="intel small">
@@ -497,13 +498,13 @@ function tradePanel(c) {
   if (d.give.length || d.take.length || d.reject.length) info += `<p class="small muted">货盘上${ta(personOf(c))}要 ${d.give.length} 件（心理价约 ${Math.round(d.V)}）${d.reject.length ? `，<span class="bad">不要${d.reject.map(itemName).join('、')}</span>` : ''}；你要收 ${d.take.length} 件（开价 ${d.A}）。</p>`;
   const mid = `<div class="trade">${goods.length ? gridHTML('counter', `${ta(personOf(c))}的货 · 点选`) : ''}${gridHTML('tray', '你的货盘 · 拖货上来')}</div>${info}`;
   const acts = `${it && ITEMS[it.id].appraise && !it.told ? `<button class="btn small" data-act="appraise-counter">${icon('ic_appraise')}照妖镜</button>` : ''}
-    ${it && dressable(it) && it.seen == null ? `<button class="btn small" data-act="inspect-item">${icon('ic_appraise')}验货</button>` : ''}
+    ${it && (dressable(it) || LACEABLE.includes(it.id)) && it.seen == null ? `<button class="btn small" data-act="inspect-item">${icon('ic_appraise')}验货</button>` : ''}
     ${it && dressable(it) && !it.disputed ? `<button class="btn small" data-act="dispute-flaw" title="${flawSeen ? '揭穿以次充好，压价' : '挑毛病压价'}">${flawSeen ? '揭穿' : '压价'}</button>` : ''}
     ${it ? `<button class="btn small" data-act="take-toggle">${taking ? '不收' : '收下'}</button>` : ''}
     ${canTray ? `<button class="btn small wide-only" data-act="to-tray">选中的放上货盘</button>` : ''}
     ${c.noble ? `<button class="btn small" data-act="flatter" title="${costText('flatter')}">吹捧</button>` : ''}
     <button class="btn primary" data-act="deal" ${d.give.length || d.take.length ? '' : 'disabled'}>谈价成交</button>
-    ${c.wanted ? `<button class="btn small danger" data-act="report">举报 赏${c.wanted}</button>` : ''}
+    ${c.wanted ? `<button class="btn small danger" data-act="report" title="${esc(sinHint(['betray', 1]))}">举报 赏${c.wanted}</button>` : ''}
     <button class="btn ghost small" data-act="dismiss">送客</button>`;
   return { mid, acts };
 }
@@ -741,9 +742,11 @@ function selActions(s, inCard = false) {
   if (canBottle(s)) out.push('<button class="btn tiny" data-act="bottle">装瓶</button>');
   if (s.mark && markVisible(s)) out.push(`<button class="btn tiny" data-act="erase" ${canErase(s) ? '' : `disabled title="须抹印术${cn(s.mark.str)}重"`}>抹印（${costText('erase', s.mark.str)}）</button>`);
   if (canSeal(s)) out.push('<button class="btn tiny" data-act="seal">贴封印</button>');
-  if (dressable(s) && !s.forged) out.push('<button class="btn tiny" data-act="inspect-own">验货</button>');
+  if ((dressable(s) || LACEABLE.includes(s.id)) && !s.forged && s.lacedBy !== 'me' && !s.lacedSeen) out.push('<button class="btn tiny" data-act="inspect-own">验货</button>');
   if (knownFlaw(s) && !s.forged && (s.fake ? COUNTERFEITS[s.id] : isDressed(s))) out.push('<button class="btn tiny" data-act="study">拆解研究</button>');
-  out.push(`<button class="btn tiny" data-act="sell-broker">卖给货郎 ${Math.max(1, Math.round(trueValue(s) * 0.4))}</button>`);
+  // 验出了别人掺的料：吃下这个亏、贱卖给货郎、当好货转手骗人（谈价时照常卖）、或者拆开学他的手法
+  if (s.laced && s.lacedSeen && s.lacedBy !== 'me' && !laceSkill(s.laced)) out.push(`<button class="btn tiny" data-act="study">尝出手法（学会${LACE[s.laced].name}的掺法）</button>`);
+  out.push(`<button class="btn tiny" data-act="sell-broker">卖给货郎 ${Math.max(1, Math.round(trueValue(s) * (s.laced && s.lacedBy !== 'me' && s.lacedSeen ? 0.1 : 0.4)))}</button>`);
   if (inCard) out.push('<button class="btn tiny ghost" data-act="trash-sel">丢弃</button>');
   return out.join('');
 }
@@ -1072,7 +1075,7 @@ function openStory(key, onDone) {
       <div class="st-choices">${chs.map((ch, i) => {
         const why = choiceState(ch, st, p);
         return `<button class="btn st-choice" data-act="story-choose" data-i="${i}" ${why ? `disabled title="${esc(why)}"` : ''}>
-          <span>${esc(G(ch.label))}</span>${ch.hint || why ? `<small>${esc(G(why || ch.hint))}</small>` : ''}</button>`;
+          <span>${esc(G(ch.label))}</span>${ch.hint || why || ch.sin ? `<small>${esc(G(why || [ch.hint, ch.sin && sinHint(ch.sin)].filter(Boolean).join('；')))}</small>` : ''}</button>`;
       }).join('')}</div></div></div>`, 'm-story'));
   HANDLERS['story-choose'] = el => {
     const pv = personOf(c) || p;
@@ -1153,9 +1156,33 @@ function openPerson(pid) {
       <p class="p-traits">${personTraits(p)}</p>
       ${st && st.summary ? `<p class="st-sum">${esc(st.summary)}</p>` : ''}
       ${p.status === 'alive' ? personActions(p) : ''}
+      ${p.status === 'alive' && p.visits > 0 ? loreHTML(p) : ''}
       <ul class="timeline">${rows.length ? pg.items.map(r => `<li class="${r.type}"><span class="muted">第${r.d}日</span>${esc(r.t)}
         ${r.a ? `<span class="${r.a > 0 ? 'good' : 'bad'}">${r.a > 0 ? '+' : ''}${r.a}</span>` : ''}</li>`).join('') : '<li class="muted">尚无往来</li>'}</ul>${pg.nav}
       <div class="h-btns"><button class="btn primary" data-act="modal-close">合上</button></div></div></div>`, 'm-story'); });
+}
+
+// 打听门道：他像是懂哪些行当的门道、肯不肯说、要价多少
+function loreHTML(p) {
+  const tips = loreKnown(p).filter(t => !loreLearned(t.id));
+  if (!tips.length) return loreKnown(p).length ? '<p class="small muted">他懂的门道你都知道了。</p>' : '';
+  const asked = p.loreDay === S.day;
+  return `<div class="p-lore"><b>打听门道</b>${asked ? '<span class="muted small">（今天已打听过）</span>' : `<span class="muted small">（${costText('talk')}；一天一回）</span>`}
+    ${tips.map(t => { const o = loreOffer(p, t);
+      const tag = `${t.topic}<em class="muted">·${LORE_TIER[t.tier]}${t.evil ? '·偏门' : ''}</em>`;
+      if (o.kind === 'refuse') return `<div class="lore-row"><span>${tag}</span><span class="muted small">${esc(o.why)}</span></div>`;
+      return `<div class="lore-row"><span>${tag}</span><button class="btn tiny${o.kind === 'sell' ? ' danger' : ''}" data-act="ask-lore" data-pid="${p.pid}" data-id="${t.id}" ${asked ? 'disabled' : ''}>${o.kind === 'sell' ? `出 ${o.price} 灵石请教` : '请教'}</button></div>`;
+    }).join('')}</div>`
+    .replace(/他/g, ta(p));
+}
+
+// 见闻录：打听来的门道
+function openLoreBook() {
+  const got = Object.entries(S.lore || {}).sort((a, b) => a[1].day - b[1].day);
+  modalHTML(`<h3>${icon('ic_ledger')}见闻录</h3>
+    <p class="muted small">从杂役区各色人等嘴里打听来的门道。懂哪行的人、交情多深、肯不肯说，都在「人物」页里看。</p>
+    <ul class="timeline">${got.length ? got.map(([id, x]) => { const t = loreTip(id); return t ? `<li><span class="muted">第${x.day}日 · ${esc(x.from)}</span><b>${t.topic}</b>${esc(t.text)}</li>` : ''; }).join('') : '<li class="muted">还没打听到什么。</li>'}</ul>
+    <div class="h-btns"><button class="btn primary" data-act="modal-close">合上</button></div>`, 'm-gift');
 }
 
 function personTraits(p) {
@@ -1213,6 +1240,22 @@ function healButton(p) {
   return `<button class="btn small" data-act="seek-heal" data-pid="${p.pid}" ${why ? `disabled title="${esc(why)}"` : ''}>${icon('ic_stamina')}求诊${fee == null ? '（不肯治）' : `（${fee} 灵石）`}</button>`;
 }
 
+// 因果：未了的孽债、下一桩恶事的赌注、恶名带来的损失
+function openFate() {
+  const F = S.fate;
+  modalHTML(`<h3>${icon('ic_heat')}因果</h3>
+    <p>每做一桩恶事就欠下一笔孽债，几日后见分晓：五成风平浪静，五成报应上门。报应要赔的本金随你作的恶越滚越大，赔不起就被人打上门、抄走货、招来执法堂。
+      行善能冲淡旧孽，隔一阵子不作恶，孽也会慢慢淡去。</p>
+    <p>你一共作过 <b>${F.total}</b> 桩恶事：<span class="good">${F.buried} 桩没人追究</span>，<span class="bad">${F.erupted} 桩遭了报应${F.busts ? `（${F.busts} 回赔不起）` : ''}</span>。</p>
+    <p>眼下再作一桩小恶，若败露约赔 <b>${fateStake(1)}</b> 灵石；出卖、销赃约 <b>${fateStake(2)}</b>；害人性命约 <b>${fateStake(3)}</b>。</p>
+    ${F.infamy ? `<p class="bad">恶名 ${F.infamy}：${[fateCustomerLoss() ? `每日少来 ${fateCustomerLoss()} 位客人` : '', `客人压价 ${Math.round(infamyDiscount() * 100)}%`,
+      fateTrusted() ? '' : '没人再来托付、求助', fateClean() ? '' : '好报难来'].filter(Boolean).join('；')}。</p>` : ''}
+    <h4>未了的孽债</h4>
+    <ul class="timeline">${F.debts.length ? F.debts.map(d => `<li><span class="muted">第${d.day}日</span>${esc(d.what || SINS[d.kind].name)}<span class="bad">若败露赔 ${d.stake}</span>
+      <span class="muted">${d.due <= S.day + 1 ? '就在这一两日' : `约 ${d.due - S.day} 日内`}</span></li>`).join('') : '<li class="muted">没有未了的孽债</li>'}</ul>
+    <div class="h-btns"><button class="btn primary" data-act="modal-close">合上</button></div>`, 'm-gift');
+}
+
 // 求医：点顶栏的伤毒打开。手上的药、结识的医者；一个医者也不认得，就只能靠药
 function openHeal() {
   if (!Object.keys(S.conds).length) { closeModal(); return; }
@@ -1240,9 +1283,9 @@ function openGift(pid) {
   openModal(() => { const pg = pager(items.filter(it => S.items[it.uid]), 6, `gift-${pid}`); modalHTML(`<h3>${icon('ic_gift')}送礼 · ${esc(p.name)}</h3>
     <p class="muted small">${ta(p)}看重的是对${ta(p)}的用处：${p.wish ? `最想要<b>${ITEMS[p.wish].name}</b>；` : ''}${p.addict ? '离不开忘忧散；' : ''}也看他手头是否宽裕、贪念轻重。掺了料的东西，送出去就由不得你了。</p>
     <div class="gift-list">${items.length ? pg.items.map(it => `<div class="gift-row" data-act="gift-give" data-pid="${pid}" data-uid="${it.uid}">
-      ${itemHTML(Object.assign({}, it, { pos: null }), 'preview mini')}<span>${esc(itemName(it))}${it.laced ? `<em class="laced-txt">（${LACE[it.laced].verb}）</em>` : ''}</span>
+      ${itemHTML(Object.assign({}, it, { pos: null }), 'preview mini')}<span>${esc(itemName(it))}${lacedKnown(it) ? `<em class="laced-txt">（${LACE[it.laced].verb}）</em>` : ''}</span>
       <span class="good">好感约 +${giftAff(p, giftValue(p, it)) + (p.wish === it.id ? 10 : 0)}</span>
-      ${it.laced && LACE[it.laced].detect ? `<span class="bad small">识破 ${Math.round(laceDetectChance(p, it) * 100)}%</span>` : ''}</div>`).join('') : '<p class="muted">手头没有可送的东西。</p>'}</div>${pg.nav}
+      ${lacedKnown(it) && LACE[it.laced].detect ? `<span class="bad small">识破 ${Math.round(laceDetectChance(p, it) * 100)}%</span>` : ''}</div>`).join('') : '<p class="muted">手头没有可送的东西。</p>'}</div>${pg.nav}
     <div class="h-btns"><button class="btn ghost" data-act="person" data-pid="${pid}">返回</button></div>`, 'm-gift'); });
 }
 
@@ -1547,7 +1590,7 @@ const HANDLERS = {
   'to-title': () => showTitle(),
   'modal-close': () => { closeModal(); renderAll(); },
   menu: () => openModal(() => modalHTML(`<h3>卷宗</h3><p>进度会在每天清晨自动存档。</p>
-    <div class="h-btns"><button class="btn" data-act="save-quit">存档并回山门</button><button class="btn ghost" data-act="modal-close">继续经营</button></div>`)),
+    <div class="h-btns"><button class="btn" data-act="lore-book">见闻录（${Object.keys(S.lore || {}).length}）</button><button class="btn" data-act="save-quit">存档并回山门</button><button class="btn ghost" data-act="modal-close">继续经营</button></div>`)),
   'save-quit': () => { save(); showTitle(); },
   open: () => { if (handBusy()) return; openShop(); closeModal(); HANDLERS.next(); },
   next: () => {
@@ -1585,13 +1628,14 @@ const HANDLERS = {
   'inspect-own': () => tiredOr('inspect', () => HANDLERS['inspect-own-go']()),
   'inspect-own-go': () => {
     const it = S.items[sel], r = quickInspect(it);
-    toast(r.found ? `验出来了：${itemName(it)}以次充好，表面${it.sq}，实际只有${it.q}！` : `以你的眼力（${LENS_NAMES[r.lv]}），看不出${itemName(it)}有毛病。`, r.found ? 'bad' : '');
+    toast(r.laced ? `验出来了：${itemName(it)}被人${LACE[r.laced].verb}！吃下这个亏、贱卖、当好货转手，还是拆开学他的手法，由你。`
+      : r.found ? `验出来了：${itemName(it)}以次充好，表面${it.sq}，实际只有${it.q}！` : `以你的眼力（${LENS_NAMES[r.lv]}），看不出${itemName(it)}有毛病。`, r.found || r.laced ? 'bad' : '');
     renderAll();
   },
   'inspect-item': () => tiredOr('inspect', () => HANDLERS['inspect-item-go']()),
   'inspect-item-go': () => {
     const it = customerItem(), r = quickInspect(it);
-    toast(r.found ? `以次充好！表面${it.sq}，实际只有${it.q}。` : `以你的眼力（${LENS_NAMES[r.lv]}），看不出毛病。`, r.found ? 'bad' : '');
+    toast(r.laced ? `这货被人${LACE[r.laced].verb}！` : r.found ? `以次充好！表面${it.sq}，实际只有${it.q}。` : `以你的眼力（${LENS_NAMES[r.lv]}），看不出毛病。`, r.found || r.laced ? 'bad' : '');
     renderAll();
   },
   'dispute-flaw': () => tiredOr('dispute', () => HANDLERS['dispute-go']()),
@@ -1708,6 +1752,15 @@ const HANDLERS = {
   'buy-intel': el => { const err = buyIntel(+el.dataset.i); toast(err || '密报已放进库房，悬停可看写的什么', err ? 'bad' : 'good'); renderAll(); },
   'gift-open': el => openGift(el.dataset.pid),
   'heal-open': () => openModal(openHeal),
+  'lore-book': () => openModal(openLoreBook),
+  'ask-lore': el => {
+    const p = S.people[el.dataset.pid], o = loreOffer(p, loreTip(el.dataset.id));
+    if (o.kind === 'sell' && o.price > 150 && !confirm(`出 ${o.price} 灵石向${p.name}请教？`)) return;
+    const r = askLore(p, el.dataset.id, o.kind === 'sell');
+    if (r.err) toast(r.err, 'bad'); else if (r.text) { showIntel({ text: r.text, cls: 'good' }); }
+    renderAll();
+  },
+  'fate-open': () => openModal(openFate),
   'heal-use': el => {
     const it = S.items[el.dataset.uid], err = consume(it);
     if (err) toast(err, 'bad'); else if (sel === it.uid) sel = null;

@@ -363,7 +363,7 @@ const LOCATIONS = [
     hazard: { text: '你触动了残存的护山禁制，被一道剑气削去半截衣袖，养伤花了些灵石。', cost: 25, cond: ['injured', 1], end: true } },
   { id: 'battlefield', name: '古战场', bg: 'loc_battlefield', tries: 8, find: 0.72, danger: 0.12,
     desc: '上古仙魔大战的遗址，残器与废丹埋在焦土下。如今战火重燃，新尸、怨魂一天比一天多——巡逻的仙门剑修也是。',
-    loot: [['broken_relic', 7], ['waste_pill', 5], ['scrap_sword', 4], ['soul_wisp', 3], ['demon_charm', 2], ['pill_qi', 0.8], ['soul_grudge', 0.6]],
+    loot: [['broken_relic', 7], ['waste_pill', 5], ['scrap_sword', 4], ['soul_wisp', 3], ['demon_charm', 2], ['pill_qi', 0.8], ['soul_grudge', 0.6], ['blood_essence', 0.8], ['xian_talisman', 0.4]],
     warLoot: [['corpse', 6], ['soul_wisp', 3], ['soul_grudge', 2], ['sword_std', 1.2], ['xian_talisman', 1], ['xian_sword', 0.25]],
     hazard: { text: '一道剑光从天而降，你连滚带爬逃回杂役区，背上留了一道血口。', cost: 35, heat: 4, cond: ['injured', 2], end: true } },
   { id: 'scrapyard', name: '炼器坊废料场', bg: 'loc_scrapyard', tries: 6, find: 0.7, danger: 0.06,

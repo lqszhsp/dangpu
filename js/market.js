@@ -5,7 +5,8 @@
 const DEALERS = {
   ghost: { name: '魔修鬼市', who: '鬼面牙人', portrait: 'broker', faction: 'mo', price: 0.85, lag: 0.6, sellK: 0.82, eye: 2,
     desc: '什么都卖，什么都收，赃物也收，不问来路。',
-    sells: [['soul_wisp', 3], ['soul_grudge', 1], ['corpse', 2], ['wangyou', 2], ['corpse_poison', 1], ['soul_pearl', 1], ['broken_relic', 2], ['sword_std', 1], ['soul_bell', 1], ['bone_flute', 1], ['seal_xian', 2]],
+    sells: [['soul_wisp', 3], ['soul_grudge', 1], ['corpse', 2], ['wangyou', 2], ['corpse_poison', 1], ['soul_pearl', 1], ['broken_relic', 2], ['sword_std', 1], ['soul_bell', 1], ['bone_flute', 1], ['seal_xian', 2],
+      ['pill_qi', 3], ['spirit_wine', 2], ['jade_pendant', 1], ['bronze_mirror', 1]],
     buys: ['soul_pearl', 'iron_corpse', 'puppet_doll', 'fu_shehun', 'soul_banner', 'wangyou', 'xian_sword', 'xian_talisman', 'god_blank', 'beast_feed'],
     stolenOk: true },
   league: { name: '散修联盟', who: '联盟执事', portrait: 'ren_cultivator', faction: 'ren', price: 0.8, lag: 0.7, sellK: 0.85, eye: 1,
@@ -67,6 +68,9 @@ function buyLot(key, i) {
   for (let n = 0; n < o.lot; n++) {
     const extra = { q: rint(40, 75) };
     if (key === 'ghost' && ITEMS[o.id].cat === 'qi' && Math.random() < 0.7) Object.assign(extra, { stolen: rint(3, 6) });
+    // 鬼市的古玩一半是赝品，丹药灵酒常有人掺过料；散修联盟少些，宗门批发处几乎没有
+    if (ITEMS[o.id].appraise) extra.fake = Math.random() < ({ ghost: 0.5, league: 0.25, sect: 0.05 })[key];
+    marketLace(o.id, extra, ({ ghost: 0.2, league: 0.05, sect: 0 })[key]);
     const it = makeItem(o.id, extra);
     if (extra.stolen) stampMark(it);
     if (dressable(it) && Math.random() < (key === 'sect' ? 0.05 : 0.3)) dressUp(it, rollGrade());
@@ -126,7 +130,7 @@ function visitMarket() {
 
 // 各方的特产，用极少功勋就能换到
 const MERIT_SHOP = {
-  mo:   [['corpse', 1], ['soul_wisp', 1], ['soul_pearl', 2], ['pill_blood', 3], ['sword_std', 4], ['iron_corpse', 25]],
+  mo:   [['corpse', 1], ['soul_wisp', 1], ['soul_pearl', 2], ['pill_blood', 3], ['sword_std', 4], ['live_soul', 6], ['cult_corpse', 8], ['iron_corpse', 25]],
   xian: [['pill_qi', 1], ['xian_talisman', 2], ['seal_xian', 3], ['pill_found', 12], ['xian_sword', 20]],
   yao:  [['spirit_fruit', 1], ['vine_fruit', 1], ['herb_blood', 2], ['beast_hide', 2], ['mihun_seed', 1]],
   ren:  [['iron_ore', 1], ['fu_paper', 1], ['cinnabar', 1], ['incense', 1], ['herb_dew', 1], ['jade_bottle', 1]],

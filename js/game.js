@@ -67,7 +67,7 @@ function newGame(diffId, startId) {
   initTrade();
   initDao();
   initPolitics();
-  initKarma();
+  initKarma(); initFate();
   initConditions();
   Object.assign(S.tech, start.tech || {});
   rollMarket();
@@ -89,9 +89,11 @@ function load() {
   initTrade();
   initDao();
   initPolitics();
-  initKarma();
+  initKarma(); initFate();
   initConditions();
   pruneUnknownItems();
+  // 旧存档里掺了料的货都是你自己掺的（那时市面上还没有别人掺好的）
+  Object.values(S.items).forEach(it => { if (it.laced && !it.lacedBy && !it.lacedSeen) it.lacedBy = 'me'; });
   if (!Object.keys(S.story).length) initStories();
   return S;
 }
@@ -734,7 +736,7 @@ function forecast() {
 }
 
 function customerCount() {
-  return 5 + (S.upgrades.sign ? 1 : 0) + Math.min(2, Math.floor(displayAttraction() / 600)) - (S.world.stage >= 3 ? 1 : 0) - (S.world.stage >= 4 ? 1 : 0);
+  return 5 + (S.upgrades.sign ? 1 : 0) + patronBonus() - fateCustomerLoss() + Math.min(2, Math.floor(displayAttraction() / 600)) - (S.world.stage >= 3 ? 1 : 0) - (S.world.stage >= 4 ? 1 : 0);
 }
 
 const WAR_CATS = ['dan', 'qi', 'fu', 'hun', 'shi', 'zhi'];
@@ -838,6 +840,8 @@ function sellSpec(faction) {
   const id = weighted(SELL_POOLS[faction]);
   const extra = {};
   if (ITEMS[id].appraise) extra.fake = Math.random() < 0.4;
+  // 客人来卖的丹药、灵酒、灵果，偶尔是别人掺过料的——他自己多半也不知道
+  marketLace(id, extra, faction === 'mo' ? 0.15 : faction === 'yao' ? 0.1 : 0.06);
   if ((faction === 'mo' && Math.random() < 0.4) || (faction === 'ren' && Math.random() < 0.12)) extra.stolen = rint(3, 6);
   return { id, extra };
 }
@@ -911,7 +915,7 @@ function buyerValuation(c, it) {
   const pref = c.attracted ? 1.15 : 1;
   const base = c.forGift && isFlawed(it) ? giftFakeValue(it)
     : claimOf(c, it) === 'honest' && isFlawed(it) ? honestValue(it) * (c.wantFake ? 1.8 : 1) : claimedValue(it);
-  return base * priceMul(it.id) * (1 + S.rep[c.faction] / 250) * diff().sell * pref * (1 + affOf(c) / 500) * personValueMul(c, it);
+  return base * priceMul(it.id) * (1 + S.rep[c.faction] / 250) * diff().sell * pref * (1 + affOf(c) / 500) * personValueMul(c, it) * trustMul();
 }
 
 function roll(odds) {
@@ -1001,6 +1005,7 @@ function reportWanted(c) {
   S.merit.mo += 2;
   const p = personOf(c);
   if (p) { remember(p, '你向执法堂举报了他。', -80, 'betrayed'); p.status = 'jailed'; lifeNote(p, '被你举报，押入血狱。'); }
+  commitSin('betray', { p: p || { pid: null, name: c.name, faction: c.faction }, w: 1, what: `举报通缉犯${c.name}`, virtue: 2 });
   dismissCustomer(false);
 }
 
@@ -1024,9 +1029,12 @@ function tellCustomer(c, claimFake) {
   const it = customerItem();
   const honest = claimFake === !!it.fake;
   const caught = !honest && Math.random() < lieDetectChance(c);
+  // 把真品说成赝品是存心坑人；把赝品说成真品，照妖镜里明明照出了破绽才算
+  const knowing = !honest && (claimFake || (ITEMS[it.id].appraise && visibleFeats(it, appraiseLevel()).length > 0));
+  if (knowing) commitSin('fraud', { p: personOf(c), w: 1, what: `对${c.name}谎称${itemName(it)}是${claimFake ? '赝品' : '真品'}`, virtue: 2 });
   c.told = it.told = claimFake ? 'fake' : 'real';
   noteClaim(c, honest, caught, claimFake);
-  tally(honest ? 'honest' : 'lies');
+  if (honest) tally('honest'); else if (knowing) tally('lies');
   if (caught) adjustRep(c.faction, -6);
   else if (!honest && Math.random() < 0.35) {
     S.grudges.push({ faction: c.faction, name: c.name, pid: c.pid, item: itemName(it), day: S.day + rint(1, 3) });
@@ -1220,6 +1228,7 @@ function nightResolve() {
   worldTick().forEach(r => rep.push(r));
   cliqueTick().forEach(r => rep.push(r));
   karmaTick().forEach(r => rep.push(r));
+  fateTick().forEach(r => rep.push(r));
   condTick().forEach(r => rep.push(r));
   castNight().forEach(r => rep.push(r));
   periodicTick();
@@ -1307,7 +1316,7 @@ function buyDeed() {
 
 function buySupply(entry) {
   if (entry.stock <= 0 || S.stones < entry.price) return '灵石不够';
-  const it = makeItem(entry.id, { q: rint(40, 70) });
+  const it = makeItem(entry.id, marketLace(entry.id, { q: rint(40, 70) }, 0.04));
   if (dressable(it) && Math.random() < 0.18) dressUp(it, rint(1, 2));
   stow(it);
   it.cost = entry.price; it.boughtDay = S.day;
@@ -1339,7 +1348,8 @@ function buyUpgrade(id) {
 }
 
 function sellToBroker(it) {
-  const price = Math.max(1, Math.round(trueValue(it) * 0.4));
+  // 掺过料的货牙人一闻就知道，只肯出一成
+  const price = Math.max(1, Math.round(trueValue(it) * (it.laced && it.lacedBy !== 'me' && it.lacedSeen ? 0.1 : 0.4)));
   if (ITEMS[it.id].contra) addHeat(2);
   earn(price, `把${itemName(it)}折价 ${price} 灵石卖给了鬼市牙人。`);
   destroyItem(it);
