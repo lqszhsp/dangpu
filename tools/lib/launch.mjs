@@ -77,8 +77,4 @@ export function remoteCompare(files, httpPaths = []) {
   return { missing, differ, http: codes };
 }
 
-// 部署：与技能文档里的 rsync 一致
-export function rsyncDeploy() {
-  const excl = ['tools', 'art', 'README.md', '_shot.html', '{css,js,tools}'].flatMap(e => ['--exclude', e]);
-  return spawnSync('rsync', ['-az', '--delete', '-e', 'ssh -o LogLevel=ERROR', ...excl, './', `${REMOTE}/`], { cwd: GAME, stdio: 'inherit' }).status;
-}
+// 部署见 tools/deploy.mjs：只上线 main，传到版本目录再换软链，可回滚
