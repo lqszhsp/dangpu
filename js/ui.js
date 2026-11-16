@@ -1356,8 +1356,121 @@ function showEnding() {
       <div><span>最大一笔</span><b>${st.bestSale ? `${st.bestSale.name} ${st.bestSale.price}（第${st.bestSale.day}日）` : '—'}</b></div>
       <div><span>最妙一转手</span><b>${st.bestFlip ? `${st.bestFlip.name}：${st.bestFlip.cost}→${st.bestFlip.price}` : '—'}</b></div>
     </div>
+    ${profileHTML()}
     <div class="h-btns"><button class="btn primary" data-act="to-title">回到山门</button></div></div>`, 'm-ending'));
 }
+
+// ───────────── 结局画像 ─────────────
+
+let PF = null;   // 收场时算好的画像，图上点选时取用
+
+function profileHTML() {
+  const sc = traitScores(), arc = archetype(sc), pts = wealthSeries();
+  PF = { sc, pts };
+  const top = sc.indexOf(arc.top);
+  return `<div class="pf-sec">
+    <h4>掌柜画像</h4>
+    <div class="pf">
+      <div class="pf-chart">${radarSVG(sc, top)}<div class="pf-read" id="pf-read">${traitRead(sc[top])}</div></div>
+      <div class="pf-text">
+        <b class="pf-name">${arc.name}</b>${arc.also ? `<span class="muted small">　兼有几分${arc.also.name}</span>` : ''}
+        <p>${arc.text}</p>
+        <ul class="pf-list">${sc.map((t, i) => `<li data-pf="${i}" class="${i === top ? 'on' : ''}"><span>${t.name}</span><b>${t.v}</b><small>${esc(t.basis)}</small></li>`).join('')}</ul>
+      </div></div>
+    <div class="pf">
+      ${pts.length > 1 ? `<div class="pf-wealth"><h4>家底走势</h4>${wealthSVG(pts)}<div class="pf-read" id="wl-read">${wealthRead(pts)}</div>
+        <details class="wl-table"><summary>逐日明细</summary><table><tr><th>日</th><th>进</th><th>出</th><th>余</th></tr>
+          ${S.stats.days.map(d => `<tr><td>第 ${d.day} 日</td><td>+${d.income}</td><td>-${d.expense}</td><td>${d.stones}</td></tr>`).join('')}</table></details></div>` : ''}
+      <div class="pf-text"><h4>下一局</h4>
+        <ul class="pf-tips">${nextTips(sc).map(t => `<li><b>${t.head}</b>${esc(t.text)}</li>`).join('')}</ul></div></div></div>`;
+}
+
+const traitRead = t => `<b>${t.name} ${t.v}</b> · ${esc(t.basis)}`;
+
+// 蛛网图：七样脾性一圈，四道等分环；点顶点或名字看依据
+function radarSVG(sc, on) {
+  const R = 84, n = sc.length;
+  const at = (i, r) => { const a = -Math.PI / 2 + i * 2 * Math.PI / n; return [+(Math.cos(a) * r).toFixed(1), +(Math.sin(a) * r).toFixed(1)]; };
+  const ring = f => sc.map((_, i) => at(i, R * f).join(',')).join(' ');
+  const pts = sc.map((t, i) => at(i, R * t.v / 100));
+  return `<svg class="radar" viewBox="-132 -112 264 226" role="img" aria-label="${sc.map(t => `${t.name}${t.v}`).join('，')}">
+    ${[0.25, 0.5, 0.75, 1].map(f => `<polygon class="rd-grid" points="${ring(f)}"/>`).join('')}
+    ${sc.map((_, i) => { const [x, y] = at(i, R); return `<line class="rd-grid" x1="0" y1="0" x2="${x}" y2="${y}"/>`; }).join('')}
+    <polygon class="rd-area" points="${pts.map(p => p.join(',')).join(' ')}"/>
+    ${sc.map((t, i) => {
+      const [x, y] = at(i, R + 17), anchor = x > 4 ? 'start' : x < -4 ? 'end' : 'middle';
+      return `<text class="rd-label" data-pf="${i}" x="${x}" y="${y}" text-anchor="${anchor}" dominant-baseline="middle">${t.name}</text>`;
+    }).join('')}
+    ${pts.map(([x, y], i) => `<circle class="rd-dot" cx="${x}" cy="${y}" r="4"/><circle class="rd-hit ${i === on ? 'on' : ''}" data-pf="${i}" cx="${x}" cy="${y}" r="13"/>`).join('')}
+  </svg>`;
+}
+
+// 家底走势：每夜的灵石，标出最高与收场；按住或悬停看某一日
+const WL = { w: 320, h: 132, l: 40, r: 66, t: 16, b: 20 };
+
+function wealthScale(pts) {
+  const hi = Math.max(1, ...pts.map(p => p.v)), lo = Math.min(0, ...pts.map(p => p.v));
+  const mag = 10 ** Math.floor(Math.log10(hi / 2)), step = [1, 2, 5, 10].map(m => m * mag).find(s => s * 2 >= hi);
+  const top = step * 2, d0 = pts[0].day, d1 = pts[pts.length - 1].day;
+  return {
+    ticks: [0, step, top],
+    x: day => WL.l + (day - d0) / Math.max(1, d1 - d0) * (WL.w - WL.l - WL.r),
+    y: v => WL.t + (1 - (v - lo) / (top - lo)) * (WL.h - WL.t - WL.b),
+  };
+}
+
+function wealthSVG(pts) {
+  const s = wealthScale(pts), last = pts[pts.length - 1];
+  const hi = pts.reduce((m, p) => p.v > m.v ? p : m, pts[0]);
+  const line = pts.map((p, i) => `${i ? 'L' : 'M'}${s.x(p.day).toFixed(1)},${s.y(p.v).toFixed(1)}`).join('');
+  const base = s.y(0).toFixed(1);
+  return `<svg class="wealth" viewBox="0 0 ${WL.w} ${WL.h}" role="img" aria-label="家底走势：最高 ${hi.v} 灵石（第 ${hi.day} 日），收场 ${last.v} 灵石">
+    ${s.ticks.map(v => `<line class="rd-grid" x1="${WL.l}" x2="${WL.w - WL.r}" y1="${s.y(v)}" y2="${s.y(v)}"/><text class="wl-tick" x="${WL.l - 6}" y="${s.y(v)}" text-anchor="end" dominant-baseline="middle">${v}</text>`).join('')}
+    <text class="wl-tick" x="${WL.l}" y="${WL.h - 4}">第 ${pts[0].day} 日</text>
+    <text class="wl-tick" x="${WL.w - WL.r}" y="${WL.h - 4}" text-anchor="end">第 ${last.day} 日</text>
+    <path class="wl-area" d="${line}L${s.x(last.day).toFixed(1)},${base}L${s.x(pts[0].day).toFixed(1)},${base}Z"/>
+    <path class="wl-line" d="${line}"/>
+    ${hi !== last ? `<text class="wl-note" x="${s.x(hi.day)}" y="${s.y(hi.v) - 7}" text-anchor="middle">最高 ${hi.v}</text>` : ''}
+    <circle class="rd-dot" cx="${s.x(last.day)}" cy="${s.y(last.v)}" r="4"/>
+    <text class="wl-note" x="${s.x(last.day) + 8}" y="${s.y(last.v)}" dominant-baseline="middle">收场 ${last.v}</text>
+    <line class="wl-cross" id="wl-cross" y1="${WL.t}" y2="${WL.h - WL.b}"/><circle class="rd-dot wl-cross" id="wl-dot" r="4"/>
+    <rect class="wl-hit" x="${WL.l}" y="0" width="${WL.w - WL.l - WL.r}" height="${WL.h}"/>
+  </svg>`;
+}
+
+function wealthRead(pts, p) {
+  if (p) return `<b>第 ${p.day} 日</b> · 灵石 ${p.v}`;
+  const hi = pts.reduce((m, q) => q.v > m.v ? q : m, pts[0]);
+  return `最高 <b>${hi.v}</b>（第 ${hi.day} 日）· 收场 <b>${pts[pts.length - 1].v}</b>`;
+}
+
+// 点选蛛网图的顶点、名字或下面那一行：亮起这一样，读出依据
+function pfPick(e) {
+  const el = PF && e.target.closest && e.target.closest('.pf [data-pf]');
+  if (!el) return;
+  const i = +el.dataset.pf;
+  document.querySelectorAll('.pf [data-pf].on').forEach(x => x.classList.remove('on'));
+  document.querySelectorAll(`.pf li[data-pf="${i}"], .pf .rd-hit[data-pf="${i}"]`).forEach(x => x.classList.add('on'));
+  $('#pf-read').innerHTML = traitRead(PF.sc[i]);
+}
+
+// 家底走势上按住或悬停：十字线落到最近的那一日；移开就收起
+function wlTrack(e) {
+  const cross = $('#wl-cross');
+  if (!PF || !cross) return;
+  const hit = e.target.closest && e.target.closest('.wealth'), dot = $('#wl-dot');
+  if (!hit) { cross.classList.remove('on'); dot.classList.remove('on'); $('#wl-read').innerHTML = wealthRead(PF.pts); return; }
+  const r = hit.getBoundingClientRect(), s = wealthScale(PF.pts), x = (e.clientX - r.left) / r.width * WL.w;
+  const p = PF.pts.reduce((m, q) => Math.abs(s.x(q.day) - x) < Math.abs(s.x(m.day) - x) ? q : m, PF.pts[0]);
+  cross.setAttribute('x1', s.x(p.day)); cross.setAttribute('x2', s.x(p.day));
+  dot.setAttribute('cx', s.x(p.day)); dot.setAttribute('cy', s.y(p.v));
+  cross.classList.add('on'); dot.classList.add('on');
+  $('#wl-read').innerHTML = wealthRead(PF.pts, p);
+}
+
+document.addEventListener('pointerover', pfPick);
+document.addEventListener('pointerdown', e => { pfPick(e); wlTrack(e); });
+document.addEventListener('pointermove', wlTrack);
 
 // 结束检查：任何操作后若游戏结束则弹出结局
 function checkOver() {
@@ -1786,6 +1899,7 @@ function placeMoved(it, gid, x, y) {
     toast(`${itemName(it)}是违禁品。管事${landlordPerson().name}看见了多半会${TOLERANCE_NAME[t]}。`, t === 'ignore' ? '' : 'bad');
   }
   if (from === 'tool' || gid === 'tool') {
+    peak('lens', appraiseLevel());
     const found = recheckStock();
     toast(found.length ? `换上${LENS_NAMES[appraiseLevel()]}，重新审视库房：${found.join('、')}有问题！` : `鉴宝台换上了${LENS_NAMES[appraiseLevel()]}`, found.length ? 'bad' : '');
   }

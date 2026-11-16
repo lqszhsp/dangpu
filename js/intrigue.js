@@ -116,6 +116,7 @@ function laceWith(target, add) {
   target.laced = ITEMS[add.id].additive;
   if (add.id === 'gu') target.laceTox = add.growth >= 100 ? add.tox + 40 : add.tox;
   destroyItem(add);
+  tally('cruel');
   log(`你在${itemName(target)}里${LACE[target.laced].verb}。`, 'warn');
 }
 

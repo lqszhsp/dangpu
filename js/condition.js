@@ -54,7 +54,7 @@ function deathWarn(kind) {
 function dieMe(kind, why = '') {
   if (S.over) return;
   if (savedByBenefactor('death')) { const c = S.conds[kind]; c.sev = 2; c.day = S.day; return; }
-  S.over = { win: false, scene: kind === 'poisoned' ? 'end_death_poison' : 'end_death', ...DEATHS[kind](why) };
+  S.over = { win: false, cause: 'death', scene: kind === 'poisoned' ? 'end_death_poison' : 'end_death', ...DEATHS[kind](why) };
 }
 
 function cureCond(who, kind) { const box = condBox(who); if (!box[kind]) return false; delete box[kind]; return true; }

@@ -436,7 +436,7 @@ function machineRun(m) {
     if (bonus && hasQuality(it)) it.q = clamp(it.q + bonus, 5, 100);
     const where = output(m, it);
     if (where === 'floor') floorCount++;
-    if (where) made.push(itemName(it));
+    if (where) { made.push(itemName(it)); tally('made'); }
   };
   if (customRun(m, inputs, emit)) return `产出：${made.join('、')}${floorCount ? `（${floorCount} 件溢到地上）` : ''}`;
   switch (m.type) {
@@ -894,9 +894,12 @@ function dismissCustomer(angry) {
 }
 
 function adjustRep(f, d) { S.rep[f] = clamp(Math.round(S.rep[f] + d), -100, 100); }
-function addHeat(d) { S.heat = clamp(Math.round(S.heat + d), 0, 100); }
+function addHeat(d) { S.heat = clamp(Math.round(S.heat + d), 0, 100); peak('heat', S.heat); }
 
-function earn(n, why) { S.stones += n; S.today.income += n; S.stats.income += n; if (why) log(why, 'gain'); }
+function earn(n, why) { S.stones += n; S.today.income += n; S.stats.income += n; peak('stones', S.stones); if (why) log(why, 'gain'); }
+// 结局画像用的计数：tally 累加，peak 记最高
+function tally(k, n = 1) { S.stats[k] = (S.stats[k] || 0) + n; }
+function peak(k, v) { if (v > (S.stats[`${k}Max`] || 0)) S.stats[`${k}Max`] = v; }
 function spend(n, why) { S.stones -= n; S.today.expense += n; S.stats.spent += n; if (why) log(why, 'loss'); }
 
 // ───────────── 议价 ─────────────
@@ -949,6 +952,7 @@ function completeSale(c, it, price, v = buyerValuation(c, it)) {
   castEvent(p, 'sold', it, price);
   earn(price, `${c.name}以 ${price} 灵石买下${name}。`);
   S.stats.sales++;
+  if (it.stolen > 0 || ITEMS[it.id].contra) tally('hot');
   if (!S.stats.bestSale || price > S.stats.bestSale.price) S.stats.bestSale = { name, price, day: S.day };
   if (it.cost != null) {
     const profit = price - it.cost;
@@ -986,6 +990,7 @@ function completePurchase(c, it, offer) {
   spend(offer, `以 ${offer} 灵石收下${c.name}的${itemName(it)}。`);
   it.cost = offer;
   it.boughtDay = S.day;
+  if (it.stolen > 0 || ITEMS[it.id].contra) tally('hot');
   ['ask', 'knew', 'told', 'disputed'].forEach(k => delete it[k]);
   stow(it);
 }
@@ -1021,6 +1026,7 @@ function tellCustomer(c, claimFake) {
   const caught = !honest && Math.random() < lieDetectChance(c);
   c.told = it.told = claimFake ? 'fake' : 'real';
   noteClaim(c, honest, caught, claimFake);
+  tally(honest ? 'honest' : 'lies');
   if (caught) adjustRep(c.faction, -6);
   else if (!honest && Math.random() < 0.35) {
     S.grudges.push({ faction: c.faction, name: c.name, pid: c.pid, item: itemName(it), day: S.day + rint(1, 3) });
@@ -1109,7 +1115,7 @@ function runInspection(offer = 0) {
 function checkHeat() {
   if (S.heat >= 100 && !S.over && savedByBenefactor('heat')) return;
   if (S.heat >= 100 && !S.over) {
-    S.over = { win: false, title: '锁拿入狱', text: '执法堂认定你私通仙门，铁链加身，押入血狱。当铺被查封，所有货物充公。' };
+    S.over = { win: false, cause: 'heat', title: '锁拿入狱', text: '执法堂认定你私通仙门，铁链加身，押入血狱。当铺被查封，所有货物充公。' };
   }
 }
 
@@ -1246,7 +1252,7 @@ function rentCheck() {
     if (S.stones >= S.rentOwed) return payRent();
     if (S.grace === 0 && savedByBenefactor('rent')) return { icon: 'ic_deed', title: '租金', text: '宽限期满——你帮过的人替你把租子交了', cls: 'ok' };
     if (S.grace === 0) {
-      S.over = { win: false, title: '扫地出门', text: `宽限期已过，你仍欠着 ${S.rentOwed} 灵石的租子。${landlordName()}带着人收回了铺子。` };
+      S.over = { win: false, cause: 'rent', title: '扫地出门', text: `宽限期已过，你仍欠着 ${S.rentOwed} 灵石的租子。${landlordName()}带着人收回了铺子。` };
       return { icon: 'ic_deed', title: '租金', text: '宽限期满，你被逐出了铺子', cls: 'bad' };
     }
     return { icon: 'ic_deed', title: '租金', text: `仍欠 ${S.rentOwed} 灵石，宽限还剩 ${S.grace} 日`, cls: 'bad' };
@@ -1256,6 +1262,7 @@ function rentCheck() {
   if (S.stones >= S.rentOwed) return payRent();
   S.rentOwed = Math.round(S.rentOwed * 1.2);
   S.grace = 2;
+  tally('late');
   S.landlordVisit = true;
   return { icon: 'ic_deed', title: '租金', text: `交不起租！${landlordName()}宽限两日，连罚金共需 ${S.rentOwed} 灵石`, cls: 'bad' };
 }
@@ -1286,10 +1293,11 @@ function buyDeed() {
   spend(deedPrice(), '你买下了这间铺子的铺契。');
   // 铺契到手才知道过户另有规矩：剩下的灵石和铺里的货，一样一样都抵了进去
   const left = S.stones, goods = Object.values(S.items).filter(it => it.pos && it.pos.g !== 'counter');
+  peak('lens', appraiseLevel());
   const n = goods.length;
   if (left > 0) spend(left, '缴清过户的契税、印钱与各路打点。');
   goods.forEach(destroyItem);
-  S.over = { win: true, title: '铺契到手', scene: 'end_deed', text: `${landlordName()}在铺契上按了手印，又从袖里抽出一张单子：契税、宗门印钱、执法堂的平安钱、过户的茶水……`
+  S.over = { win: true, cause: 'deed', title: '铺契到手', scene: 'end_deed', text: `${landlordName()}在铺契上按了手印，又从袖里抽出一张单子：契税、宗门印钱、执法堂的平安钱、过户的茶水……`
     + (left > 0 || n ? `你剩下的 ${left} 灵石${n ? `和铺里 ${n} 件货` : ''}，一样一样抵了进去。` : '你兜里早已一个子儿不剩，他把单子折好，说下回再收。')
     + '从今往后，这间铺子姓你的了。你站在空荡荡的柜台后面，和刚来杂役区那天一样一贫如洗——好在这回，不用交租了。' };
   return true;

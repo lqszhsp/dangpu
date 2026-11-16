@@ -398,6 +398,43 @@ img { user-select: none; -webkit-user-drag: none; }
 .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; margin: 14px 0; text-align: left; font-size: 13px; }
 .stats div { display: flex; justify-content: space-between; border-bottom: 1px dotted rgba(138, 90, 28, .5); }
 .stats div:nth-last-child(-n+2) { grid-column: span 2; }
+/* 结局画像：图上的标记用 --red，文字一律纸面墨色；网格是比纸面深一档的实线细线 */
+.pf-sec { text-align: left; }
+.pf-sec h4 { margin: 12px 0 4px; font-family: var(--kai); font-size: 18px; }
+.pf { display: flex; gap: 14px; align-items: flex-start; }
+.pf-chart { flex: none; width: 250px; }
+.radar, .wealth { display: block; width: 100%; height: auto; overflow: visible; touch-action: none; }
+.pf-wealth { flex: none; width: 300px; }
+.rd-grid { fill: none; stroke: rgba(138, 90, 28, .3); stroke-width: 1; }
+.rd-area { fill: rgba(196, 58, 58, .12); stroke: var(--red); stroke-width: 2; stroke-linejoin: round; }
+.rd-dot { fill: var(--red); stroke: var(--paper); stroke-width: 2; }
+.rd-hit { fill: transparent; cursor: pointer; }
+.rd-hit.on { fill: rgba(196, 58, 58, .16); }
+.rd-label { font-size: 14px; fill: #2a1a14; cursor: pointer; }
+.pf-read { min-height: 20px; font-size: 12px; color: #7a6450; text-align: center; }
+.pf-read b { color: #2a1a14; }
+.pf-text { flex: 1; min-width: 0; }
+.pf-name { font-family: var(--kai); font-size: 28px; letter-spacing: 4px; color: var(--blood); }
+.pf-text > p { margin: 2px 0 6px; }
+.pf-list { list-style: none; margin: 0; padding: 0; font-size: 13px; }
+.pf-list li { display: grid; grid-template-columns: 2.6em 2em 1fr; gap: 6px; align-items: baseline; padding: 1px 4px; border-radius: 3px; cursor: pointer; }
+.pf-list li b { text-align: right; font-variant-numeric: tabular-nums; }
+.pf-list li small { color: #7a6450; overflow-wrap: anywhere; }
+.pf-list li.on { background: rgba(196, 58, 58, .1); }
+.wl-line { fill: none; stroke: var(--red); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.wl-area { fill: rgba(196, 58, 58, .1); }
+.wl-tick { font-size: 11px; fill: #7a6450; font-variant-numeric: tabular-nums; }
+.wl-note { font-size: 12px; fill: #2a1a14; }
+.wl-cross { display: none; stroke: #7a6450; stroke-width: 1; }
+.wl-cross.on { display: inline; }
+.wl-hit { fill: transparent; cursor: crosshair; }
+.wl-table { font-size: 12px; color: #7a6450; }
+.wl-table summary { cursor: pointer; }
+.wl-table table { border-collapse: collapse; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.wl-table td, .wl-table th { padding: 1px 10px 1px 0; text-align: right; }
+.pf-tips { margin: 0; padding-left: 1.2em; font-size: 13px; }
+.pf-tips li { margin: 3px 0; }
+.pf-tips b { margin-right: 6px; color: var(--blood); }
 
 /* ───── 人物与故事 ───── */
 .tag.gold { background: var(--gold-d); color: #fff4d6; }
@@ -678,6 +715,9 @@ body.tall .m-ending { width: calc(100% - 16px); }
 body.tall .ending .end-scene { width: calc(100% + 28px); margin: -14px -14px 0; aspect-ratio: 3 / 2; }
 body.tall .ending.has-scene .h-btns { bottom: -14px; margin: 0 -14px -14px; padding: 8px 14px 10px; }
 body.tall .ending h2 { font-size: 32px; }
+body.tall .pf { flex-direction: column; align-items: stretch; gap: 4px; }
+body.tall .pf-chart { width: 240px; align-self: center; }
+body.tall .pf-wealth { width: auto; }
 body.tall .m-haggle, body.tall .m-deal, body.tall .m-market, body.tall .m-story, body.tall .m-gift, body.tall .m-appraise, body.tall .m-locs, body.tall .m-scav { width: calc(100% - 16px) !important; }
 /* 竖屏拾荒选地：一处一行，图裁成横条；标题与按钮不动，放不下的上下滑 */
 body.tall .m-locs { display: flex; flex-direction: column; }

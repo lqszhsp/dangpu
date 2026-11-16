@@ -185,6 +185,7 @@ function overpowerOdds(p) { return clamp(1 / (1 + Math.exp(-(playerPower() - npc
 
 function recordSold(c, it, price, told) {
   if (!told) karmaShift(-1);
+  if (told) tally('honest'); else if (knownFlaw(it)) tally('lies');
   S.sold.push({ pid: c.pid, name: itemName(it), id: it.id, fake: !!it.fake, grade: it.grade || 1, told, knew: knownFlaw(it),
     price, loss: Math.max(0, price - trueValue(it)), day: S.day });
 }
