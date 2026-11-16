@@ -277,6 +277,23 @@ export function tables(h) {
       return table(['', '客人出价', '每日来客（不算熟客荐来的）'], rows);
     },
 
+    // 打听门道：各难度下要多少交情才肯白说，平平时要价多少（以一位贪念中等、不怎么守规矩的行商为例）
+    lore() {
+      const rows = [];
+      for (const d of G.DIFFICULTIES) {
+        h.fresh(d.id);
+        const p = G.newPerson('ren', { title: '凡人行商' }); p.greed = 0.5; p.integrity = 0.3;
+        const cell = (tier, evil) => {
+          const t = { id: '_t', tier, evil, who: [] };
+          const need = G.loreNeed(p, t);
+          p.aff = 0; const o = G.loreOffer(p, t);
+          return `好感 ${need} 起白说${o.kind === 'sell' ? `；平平时卖 ${o.price}` : ''}`;
+        };
+        rows.push([`**${d.name}**`, cell('low', false), cell('mid', false), cell('high', false), cell('high', true)]);
+      }
+      return table(['难度', `${G.LORE_TIER.low}的`, `${G.LORE_TIER.mid}的`, `${G.LORE_TIER.high}的`, `${G.LORE_TIER.high}的偏门`], rows);
+    },
+
     factions() {
       return table(['族', '说明'], Object.entries(G.FACTIONS).map(([k, f]) => [`**${f.name}**`, f.desc]));
     },

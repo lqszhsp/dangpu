@@ -1146,9 +1146,33 @@ function openPerson(pid) {
       <p class="p-traits">${personTraits(p)}</p>
       ${st && st.summary ? `<p class="st-sum">${esc(st.summary)}</p>` : ''}
       ${p.status === 'alive' ? personActions(p) : ''}
+      ${p.status === 'alive' && p.visits > 0 ? loreHTML(p) : ''}
       <ul class="timeline">${rows.length ? pg.items.map(r => `<li class="${r.type}"><span class="muted">第${r.d}日</span>${esc(r.t)}
         ${r.a ? `<span class="${r.a > 0 ? 'good' : 'bad'}">${r.a > 0 ? '+' : ''}${r.a}</span>` : ''}</li>`).join('') : '<li class="muted">尚无往来</li>'}</ul>${pg.nav}
       <div class="h-btns"><button class="btn primary" data-act="modal-close">合上</button></div></div></div>`, 'm-story'); });
+}
+
+// 打听门道：他像是懂哪些行当的门道、肯不肯说、要价多少
+function loreHTML(p) {
+  const tips = loreKnown(p).filter(t => !loreLearned(t.id));
+  if (!tips.length) return loreKnown(p).length ? '<p class="small muted">他懂的门道你都知道了。</p>' : '';
+  const asked = p.loreDay === S.day;
+  return `<div class="p-lore"><b>打听门道</b>${asked ? '<span class="muted small">（今天已打听过）</span>' : `<span class="muted small">（${costText('talk')}；一天一回）</span>`}
+    ${tips.map(t => { const o = loreOffer(p, t);
+      const tag = `${t.topic}<em class="muted">·${LORE_TIER[t.tier]}${t.evil ? '·偏门' : ''}</em>`;
+      if (o.kind === 'refuse') return `<div class="lore-row"><span>${tag}</span><span class="muted small">${esc(o.why)}</span></div>`;
+      return `<div class="lore-row"><span>${tag}</span><button class="btn tiny${o.kind === 'sell' ? ' danger' : ''}" data-act="ask-lore" data-pid="${p.pid}" data-id="${t.id}" ${asked ? 'disabled' : ''}>${o.kind === 'sell' ? `出 ${o.price} 灵石请教` : '请教'}</button></div>`;
+    }).join('')}</div>`
+    .replace(/他/g, ta(p));
+}
+
+// 见闻录：打听来的门道
+function openLoreBook() {
+  const got = Object.entries(S.lore || {}).sort((a, b) => a[1].day - b[1].day);
+  modalHTML(`<h3>${icon('ic_ledger')}见闻录</h3>
+    <p class="muted small">从杂役区各色人等嘴里打听来的门道。懂哪行的人、交情多深、肯不肯说，都在「人物」页里看。</p>
+    <ul class="timeline">${got.length ? got.map(([id, x]) => { const t = loreTip(id); return t ? `<li><span class="muted">第${x.day}日 · ${esc(x.from)}</span><b>${t.topic}</b>${esc(t.text)}</li>` : ''; }).join('') : '<li class="muted">还没打听到什么。</li>'}</ul>
+    <div class="h-btns"><button class="btn primary" data-act="modal-close">合上</button></div>`, 'm-gift');
 }
 
 function personTraits(p) {
@@ -1435,7 +1459,7 @@ const HANDLERS = {
   'to-title': () => showTitle(),
   'modal-close': () => { closeModal(); renderAll(); },
   menu: () => openModal(() => modalHTML(`<h3>卷宗</h3><p>进度会在每天清晨自动存档。</p>
-    <div class="h-btns"><button class="btn" data-act="save-quit">存档并回山门</button><button class="btn ghost" data-act="modal-close">继续经营</button></div>`)),
+    <div class="h-btns"><button class="btn" data-act="lore-book">见闻录（${Object.keys(S.lore || {}).length}）</button><button class="btn" data-act="save-quit">存档并回山门</button><button class="btn ghost" data-act="modal-close">继续经营</button></div>`)),
   'save-quit': () => { save(); showTitle(); },
   open: () => { openShop(); closeModal(); HANDLERS.next(); },
   next: () => {
@@ -1592,6 +1616,14 @@ const HANDLERS = {
   'buy-intel': el => { const err = buyIntel(+el.dataset.i); toast(err || '密报已放进库房，悬停可看写的什么', err ? 'bad' : 'good'); renderAll(); },
   'gift-open': el => openGift(el.dataset.pid),
   'heal-open': () => openModal(openHeal),
+  'lore-book': () => openModal(openLoreBook),
+  'ask-lore': el => {
+    const p = S.people[el.dataset.pid], o = loreOffer(p, loreTip(el.dataset.id));
+    if (o.kind === 'sell' && o.price > 150 && !confirm(`出 ${o.price} 灵石向${p.name}请教？`)) return;
+    const r = askLore(p, el.dataset.id, o.kind === 'sell');
+    if (r.err) toast(r.err, 'bad'); else if (r.text) { showIntel({ text: r.text, cls: 'good' }); }
+    renderAll();
+  },
   'fate-open': () => openModal(openFate),
   'heal-use': el => {
     const it = S.items[el.dataset.uid], err = consume(it);

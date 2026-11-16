@@ -584,6 +584,10 @@ img { user-select: none; -webkit-user-drag: none; }
 .tb-cell.dao { cursor: pointer; line-height: 1.1; }
 .tb-cell.dao small { opacity: .7; font-size: 10px; }
 .p-lever { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0; padding: 4px 6px; background: rgba(91, 52, 116, .12); border-radius: 4px; }
+/* 打听门道：一行一门，右边是请教按钮或不肯说的原因 */
+.p-lore { margin: 6px 0; padding: 4px 6px; background: rgba(138, 90, 28, .1); border-radius: 4px; }
+.lore-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 0; border-bottom: 1px dotted rgba(138, 90, 28, .3); }
+.lore-row em { font-style: normal; font-size: 11px; }
 .clique-tab { padding: 4px 2px; }
 .clique { display: flex; gap: 10px; padding: 6px; margin-bottom: 6px; border: 1px solid rgba(217, 164, 65, .25); border-radius: 4px; }
 .clique.joined { border-color: var(--gold2); background: rgba(217, 164, 65, .08); }
