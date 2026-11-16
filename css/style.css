@@ -679,6 +679,14 @@ body.tall .ending .end-scene { width: calc(100% + 28px); margin: -14px -14px 0; 
 body.tall .ending.has-scene .h-btns { bottom: -14px; margin: 0 -14px -14px; padding: 8px 14px 10px; }
 body.tall .ending h2 { font-size: 32px; }
 body.tall .m-haggle, body.tall .m-deal, body.tall .m-market, body.tall .m-story, body.tall .m-gift, body.tall .m-appraise, body.tall .m-locs, body.tall .m-scav { width: calc(100% - 16px) !important; }
+/* 竖屏拾荒选地：一处一行，图裁成横条；标题与按钮不动，放不下的上下滑 */
+body.tall .m-locs { display: flex; flex-direction: column; }
+body.tall .locs { flex-direction: column; gap: 8px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+body.tall .loc { flex: none; padding: 6px; }
+body.tall .loc:hover { transform: none; }
+body.tall .loc img { aspect-ratio: 4 / 1; object-fit: cover; object-position: 50% 55%; }
+body.tall .loc b { margin-top: 4px; }
+body.tall .m-locs .h-btns { flex: none; margin-top: 8px; }
 body.tall .story, body.tall .appraise, body.tall .haggle, body.tall .scav, body.tall .mk-cols, body.tall .npc-talk { flex-direction: column; }
 body.tall .ap-stage { order: 2; margin: 4px auto 0; }
 body.tall .appraise { gap: 10px; align-items: stretch; }
