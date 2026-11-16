@@ -67,14 +67,6 @@ function dealCounter(c, d, net) {
   return Math.min(n, net);
 }
 
-// 收下的货放得下么：先试着摆，再挪回去
-function roomForAll(items) {
-  const saved = items.map(it => it.pos);
-  const ok = items.every(it => autoPlace(it));
-  items.forEach((it, i) => { it.pos = saved[i]; });
-  return ok;
-}
-
 // 摆上货盘：记下原来的位置，没卖出去的放回原处
 function toTray(it, x, y) {
   if (it.pos.g !== 'tray') it.from = it.pos;
@@ -86,7 +78,7 @@ function returnTray() {
     const f = it.from;
     delete it.claim; delete it.from;
     if (f && S.grids[f.g] && !rejectReason(f.g, it) && fits(f.g, it, f.x, f.y)) placeItem(it, f.g, f.x, f.y);
-    else if (!autoPlace(it)) placeItem(it, 'floor', 0, 0);
+    else stow(it);
   });
 }
 

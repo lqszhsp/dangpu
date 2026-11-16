@@ -153,7 +153,7 @@ function arrivePerson(c) {
     if (Math.random() < 0.5) {
       const id = pick(GIFTS[p.faction]);
       const it = makeItem(id, { q: rint(55, 85) });
-      if (autoPlace(it)) { c.gift = itemName(it); log(`${p.name}送了你一件${itemName(it)}。`, 'gain'); } else destroyItem(it);
+      stow(it); c.gift = itemName(it); log(`${p.name}送了你一件${itemName(it)}。`, 'gain');
     } else if (customerTip(c)) {
       c.tip = true;
       log(`${p.name}悄悄提醒你：执法堂的人今天就要来。`, 'gain');

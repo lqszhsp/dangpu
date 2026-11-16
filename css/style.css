@@ -185,6 +185,8 @@ img { user-select: none; -webkit-user-drag: none; }
 .st-side { display: flex; flex-direction: column; gap: 4px; }
 .trash { margin-left: auto; width: 34px; height: 26px; line-height: 24px; text-align: center; border: 1px dashed var(--red); color: var(--red); border-radius: 3px; font-family: var(--kai); }
 .trash.hot { background: var(--blood); color: #fff; }
+.st-hand { width: fit-content; max-width: 100%; margin: 2px 0 6px; padding: 4px 6px; border: 1px dashed var(--red); border-radius: 3px; background: rgba(142, 27, 43, .18); }
+.st-hand .grid-label { color: #ffb0a0; white-space: normal; }
 
 /* ───── 格子与物品 ───── */
 .grid-wrap { display: inline-block; }

@@ -74,7 +74,7 @@ function ownWeapon() { return ownItem(it => ITEMS[it.id].cat === 'qi' && !ITEMS[
 
 function giveItem(id, extra = {}) {
   const it = makeItem(id, Object.assign({ q: rint(60, 90) }, extra));
-  if (!autoPlace(it) && !autoPlace(it, ['floor'])) { destroyItem(it); log(`放不下${itemName(it)}，只得作罢。`, 'loss'); return null; }
+  stow(it);
   return it;
 }
 
@@ -86,7 +86,7 @@ function keepCounterItem(extra = {}) {
   if (!it) return null;
   Object.assign(it, extra);
   S.customer.item = null;
-  if (!autoPlace(it)) { placeItem(it, 'floor', 0, 0); if (!fits('floor', it, 0, 0)) autoPlace(it, ['floor']); }
+  stow(it);
   return it;
 }
 

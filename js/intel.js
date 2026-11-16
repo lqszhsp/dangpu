@@ -150,7 +150,7 @@ function makeIntel(kind, opt = {}) {
       text: `${C.head}${pick(DIRT)}的凭据。递给${CLIQUES[C.rival].name}，足以动摇${C.name}的根基；卖给魔宗的人，也能换些灵石。` });
   }
   const it = makeItem('intel', { info, q: 60 });
-  if (!autoPlace(it) && !autoPlace(it, ['floor'])) { destroyItem(it); return null; }
+  stow(it);
   return it;
 }
 

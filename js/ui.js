@@ -729,6 +729,7 @@ function selActions(s, inCard = false) {
   if (tradeOpen()) mv('tray', '上货盘');
   mv('display', '摆上陈列');
   if (!['store', 'floor'].includes(g)) mv('store', '收回库房');
+  if (g === 'hand') mv('floor', '放在地上');
   mv('hidden', '藏进暗格');
   S.machines.filter(m => MACHINES[m.type].in).slice(0, 12).forEach(m => { if (out.length < 7) mv(gridOf(m, 'in'), `放进${MACHINES[m.type].name}`); });
   S.machines.filter(m => MACHINES[m.type].mod && modAccepts(s, m.type)).forEach(m => mv(gridOf(m, 'mod'), `装进${MACHINES[m.type].name}`));
@@ -756,8 +757,10 @@ function renderStorage() {
     <div class="st-head"><b>库房</b>
       ${canSell ? `<span class="st-sel">选中 <b>${esc(itemName(s))}</b>${selActions(s)}</span>`
         : `<span class="muted small">${LAYOUT === 'tall' ? '点货看详情与操作，按住拖动挪位置' : '拖动整理；点选查看与出售'}</span>`}
+      <button class="btn tiny" data-act="tidy" title="大件先摆，尽量把地上的货收进库房">整理</button>
       <span class="st-tool" title="鉴宝台：放照妖镜，决定你的鉴定术">${gridHTML('tool', '', 'mod')}<small>${LENS_NAMES[appraiseLevel()]}</small></span>
       <span class="trash" data-drop="trash" title="拖到这里丢弃">弃</span></div>
+    ${handItems().length ? `<div class="st-hand">${gridHTML('hand', '手上：铺里放不下了。拖进空处，或点开服用、摆出、放进设备、卖掉、丢弃腾地方；收拾好才能接着做事')}</div>` : ''}
     <div class="st-body">${gridHTML('store', '')}
       <div class="st-side">${gridHTML('floor', '地上（夜里可能遭贼）')}${S.grids.hidden ? gridHTML('hidden', '夹层暗格', 'stash') : ''}</div></div>`;
 }
@@ -817,8 +820,14 @@ document.addEventListener('pointerdown', e => {
   if (w) raise(w.dataset.win);
 }, true);
 
+let handSeen = 0;       // 上回重绘时手上有几件货
+
 function renderAll() {
   if (!S) return;
+  layoutHand();
+  const held = handItems().length;
+  if (held > handSeen) { toast('铺里放不下了，多出的货先拿在手上', 'bad'); tab = 'store'; front = 'main'; }
+  handSeen = held;
   renderTopbar(); renderScene(); renderCounter(); renderSide(); renderStorage(); renderCard();
   if (modal) modal();
 }
@@ -876,7 +885,6 @@ function openDeal() {
   };
   const ready = net => {
     if (net < 0 && S.stones < -net) { toast('灵石不够', 'bad'); return false; }
-    if (d.take.length && !roomForAll(d.take.map(t => t.it))) { toast('库房和地面都放不下了，先腾地方', 'bad'); return false; }
     return true;
   };
   const finish = net => {
@@ -1406,6 +1414,14 @@ function enterGame() {
 
 // ───────────── 动作分发 ─────────────
 
+// 手上还拿着放不下的货：先腾地方再往下走，把库房翻出来给你收拾
+function handBusy() {
+  if (!handItems().length) return false;
+  toast('手上还拿着放不下的货，先腾出地方', 'bad');
+  tab = 'store'; front = 'main'; renderAll();
+  return true;
+}
+
 const machineById = el => S.machines.find(m => m.mid === +el.dataset.mid);
 
 const HANDLERS = {
@@ -1420,8 +1436,9 @@ const HANDLERS = {
   menu: () => openModal(() => modalHTML(`<h3>卷宗</h3><p>进度会在每天清晨自动存档。</p>
     <div class="h-btns"><button class="btn" data-act="save-quit">存档并回山门</button><button class="btn ghost" data-act="modal-close">继续经营</button></div>`)),
   'save-quit': () => { save(); showTitle(); },
-  open: () => { openShop(); closeModal(); HANDLERS.next(); },
+  open: () => { if (handBusy()) return; openShop(); closeModal(); HANDLERS.next(); },
   next: () => {
+    if (handBusy()) return;
     const c = nextCustomer();
     if (!c) toast('今日已无客人');
     if (c && c.kind === 'story') { renderAll(); HANDLERS['story-talk'](); return; }
@@ -1432,6 +1449,7 @@ const HANDLERS = {
     renderAll();
   },
   close: () => {
+    if (handBusy()) return;
     if (S.customer) { toast('柜台前还有客人，先把人送走'); return; }
     if (S.queue.length && !confirm(`门外还有 ${S.queue.length} 位客人，这就打烊？`)) return;
     closeShop(); tab = 'workshop'; front = 'counter'; renderAll();
@@ -1478,7 +1496,7 @@ const HANDLERS = {
   erase: () => { const err = eraseMark(S.items[sel]); toast(err || '烙印抹净了，来路从此干干净净。', err ? 'bad' : 'good'); renderAll(); },
   seal: () => { const it = S.items[sel], err = sealItem(it); toast(err || `${itemName(it)}贴上了正派封印——眼力不到的人，只当是名门正品。`, err ? 'bad' : 'good'); renderAll(); },
   retreat: () => { const err = toggleRetreat(); if (err) toast(err, 'bad'); renderAll(); },
-  market: () => { const err = visitMarket(); if (err) { toast(err, 'bad'); return; } openMarket('ghost'); renderTopbar(); },
+  market: () => { if (handBusy()) return; const err = visitMarket(); if (err) { toast(err, 'bad'); return; } openMarket('ghost'); renderTopbar(); },
   'mk-tab': el => openMarket(el.dataset.k),
   'mk-buy': el => { const err = buyLot(el.dataset.k, +el.dataset.i); if (err) toast(err, 'bad'); openMarket(el.dataset.k); renderAll(); },
   'mk-sell': el => { const r = sellToDealer(el.dataset.k, S.items[el.dataset.uid]); if (r.err) toast(r.err, 'bad'); else toast(`出手，得 ${r.price} 灵石`, 'good'); openMarket(el.dataset.k); renderAll(); },
@@ -1503,7 +1521,7 @@ const HANDLERS = {
   inspect: () => { const r = runInspection(0); showInspectResult(r); },
   bribe: el => { const r = runInspection(+el.dataset.n); showInspectResult(r); },
   'inspect-done': () => { dismissCustomer(false); closeModal(); renderAll(); checkOver(); },
-  scavenge: () => openScavengeSelect(),
+  scavenge: () => { if (!handBusy()) openScavengeSelect(); },
   'scav-go': el => { startScavenge(el.dataset.id); openModal(renderScavenge); },
   'scav-search': () => {
     const r = scavSearch();
@@ -1514,6 +1532,7 @@ const HANDLERS = {
   },
   'scav-home': () => { endScavenge(); closeModal(); renderAll(); checkOver(); },
   sleep: () => {
+    if (handBusy()) return;
     const night = dueStories('night')[0];
     if (night) { openStory(night, () => HANDLERS.sleep()); return; }
     const rep = nightResolve();
@@ -1553,7 +1572,7 @@ const HANDLERS = {
     showIntel({ text: r.text, cls: r.ok ? 'good' : 'bad' }); renderAll(); checkOver();
   },
   soulmark: () => { const r = soulMark(personOf(S.customer)); if (r.err) toast(r.err, 'bad'); else showIntel({ text: r.text, cls: r.ok ? 'good' : 'bad' }); renderAll(); checkOver(); },
-  'file-secret': el => { const it = makeIntel('secret', { p: S.people[el.dataset.pid] }); toast(it ? `录成了一份${itemName(it)}，放进库房` : '库房放不下', it ? 'good' : 'bad'); openPerson(el.dataset.pid); renderAll(); },
+  'file-secret': el => { const it = makeIntel('secret', { p: S.people[el.dataset.pid] }); toast(`录成了一份${itemName(it)}，放进库房`, 'good'); openPerson(el.dataset.pid); renderAll(); },
   release: el => { release(S.people[el.dataset.pid]); openPerson(el.dataset.pid); renderAll(); },
   debt: el => { const p = S.people[el.dataset.pid]; toast(collectDebt(p, el.dataset.how)); openPerson(p.pid); renderAll(); },
   'plea-help': () => { const p = personOf(S.customer), err = helpWeak(S.customer); if (err) toast(err, 'bad'); else toast(`${ta(p)}磕了个头，千恩万谢地走了`, 'good'); renderAll(); },
@@ -1571,6 +1590,7 @@ const HANDLERS = {
     if (!sp) { toast('放不下了', 'bad'); return; }
     placeMoved(it, gid, sp.x, sp.y); sel = peek = null; renderAll();
   },
+  tidy: () => { if (!tidy()) toast('已经摆得够紧了，再要地方只能出手或丢弃', 'bad'); renderAll(); },
   'trash-sel': () => { const it = S.items[sel]; if (knownValue(it) > 30 && !confirm(`丢弃${itemName(it)}？`)) return; destroyItem(it); sel = null; renderAll(); },
   'buy-intel': el => { const err = buyIntel(+el.dataset.i); toast(err || '密报已放进库房，悬停可看写的什么', err ? 'bad' : 'good'); renderAll(); },
   'gift-open': el => openGift(el.dataset.pid),

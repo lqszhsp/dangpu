@@ -202,6 +202,7 @@ function machineOfGrid(gid) {
 // 返回 null 表示可放，否则返回原因
 function rejectReason(gid, it) {
   if (gid === 'counter') return '柜台上是顾客的东西';
+  if (gid === 'hand') return '手上只拿铺里放不下的货';
   if (gid === 'tray' && !tradeOpen()) return '有客人上门谈买卖时，才把货摆上货盘';
   if (gid === 'power') return it.id === 'spirit_crystal' ? null : '阵眼只能嵌入灵晶';
   if (gid === 'tool') return ITEMS[it.id].tool ? null : '鉴宝台只放鉴定的器物';
@@ -245,6 +246,44 @@ function autoPlace(it, gids = ['store', 'floor']) {
 }
 
 function canAutoPlace(it, gids = ['store', 'floor']) { return gids.some(g => findSpot(g, it)); }
+
+// 整理：库房与地面上的货（连同 extra）大件先摆、尽量收进库房；摆不下、或白白多堆到地上（夜里遭贼），就原样不动
+function tidy(extra = []) {
+  const list = itemsIn('store').concat(itemsIn('floor'), extra);
+  const saved = list.map(it => it.pos), area = it => ITEMS[it.id].w * ITEMS[it.id].h;
+  const onFloor = () => itemsIn('floor').reduce((s, it) => s + area(it), 0), floor0 = onFloor();
+  list.forEach(it => { it.pos = null; });
+  const ok = list.slice().sort((a, b) => area(b) - area(a) || ITEMS[b.id].h - ITEMS[a.id].h).every(it => autoPlace(it))
+    && (extra.length > 0 || onFloor() <= floor0);
+  if (!ok) list.forEach((it, i) => { it.pos = saved[i]; });
+  return ok;
+}
+
+// 收进铺里：放不下先整理，还放不下就拿在手上，等你腾地方
+function stow(it) {
+  if (autoPlace(it) || tidy([it])) return it.pos.g;
+  it.pos = { g: 'hand', x: 0, y: 0 };
+  layoutHand();
+  log(`铺里堆满了，${itemName(it)}只好先拿在手上。`, 'loss');
+  return 'hand';
+}
+
+// 手上的货排紧：一件挨一件，排满库房那么宽就换一行；手上空了就收起这一格
+function layoutHand() {
+  const list = itemsIn('hand');
+  if (!list.length) { delete S.grids.hand; return; }
+  const cap = Math.max(S.grids.store.w, ...list.map(it => ITEMS[it.id].w));
+  let x = 0, y = 0, row = 0, w = 0;
+  list.forEach(it => {
+    const d = ITEMS[it.id];
+    if (x + d.w > cap) { y += row; x = row = 0; }
+    placeItem(it, 'hand', x, y);
+    x += d.w; row = Math.max(row, d.h); w = Math.max(w, x);
+  });
+  S.grids.hand = { w, h: y + row };
+}
+
+const handItems = () => itemsIn('hand');
 
 function resizeGrid(gid, w, h) { S.grids[gid].w = w; S.grids[gid].h = h; }
 
@@ -948,7 +987,7 @@ function completePurchase(c, it, offer) {
   it.cost = offer;
   it.boughtDay = S.day;
   ['ask', 'knew', 'told', 'disputed'].forEach(k => delete it[k]);
-  autoPlace(it);
+  stow(it);
 }
 
 function reportWanted(c) {
@@ -1262,7 +1301,7 @@ function buySupply(entry) {
   if (entry.stock <= 0 || S.stones < entry.price) return '灵石不够';
   const it = makeItem(entry.id, { q: rint(40, 70) });
   if (dressable(it) && Math.random() < 0.18) dressUp(it, rint(1, 2));
-  if (!autoPlace(it)) { destroyItem(it); return '库房和地面都放不下了'; }
+  stow(it);
   it.cost = entry.price; it.boughtDay = S.day;
   entry.stock--;
   spend(entry.price);
@@ -1311,11 +1350,11 @@ function moveMachine(m, dir) {
   [S.machines[i], S.machines[j]] = [S.machines[j], S.machines[i]];
 }
 
-// 拆除设备：格子里的东西退回库房或地面
+// 拆除设备：格子里的东西退回库房或地面，放不下的拿在手上
 function removeMachine(m) {
   ['in', 'out', 'mod'].forEach(slot => {
     const gid = gridOf(m, slot);
-    itemsIn(gid).forEach(it => { if (!autoPlace(it)) destroyItem(it); });
+    itemsIn(gid).forEach(stow);
     delete S.grids[gid];
   });
   S.machines.splice(S.machines.indexOf(m), 1);
@@ -1372,14 +1411,12 @@ function scavSearch() {
   return { item: it };
 }
 
-// 回铺：背篓里的东西搬进库房，放不下的留在地上，再放不下就丢弃
+// 回铺：背篓里的东西搬进库房，放不下的留在地上，再放不下就拿在手上
 function endScavenge() {
-  const lost = [];
-  itemsIn('basket').forEach(it => { if (!autoPlace(it)) { lost.push(itemName(it)); destroyItem(it); } });
+  itemsIn('basket').forEach(stow);
   if (S.scav.pending && S.items[S.scav.pending] && !S.items[S.scav.pending].pos) destroyItem(S.items[S.scav.pending]);
   delete S.grids.basket;
   S.scav = null;
-  if (lost.length) log(`铺里堆不下，只好丢掉：${lost.join('、')}`, 'loss');
   checkHeat();
 }
 
