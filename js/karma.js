@@ -1,5 +1,5 @@
-// 善恶有报——但这世道不讲理：做好人要掏真金白银，善名太盛人人当你好欺负；
-// 偶尔，你帮过的人记着你，极少时候，那份回报大得能救你的命。弱者可以帮，也可以榨
+// 善恶有报：做好人要掏真金白银，回报来得慢却稳——口碑让客人肯多出价、熟客荐来生意，你帮过的人记着你；
+// 极少时候，那份回报大得能改命。善名太盛也有代价：人人当你好欺负。作恶的账另记在因果里（js/fate.js）。弱者可以帮，也可以榨
 'use strict';
 
 function initKarma() {
@@ -14,12 +14,13 @@ function karmaShift(n) { S.virtue = clamp(Math.round(S.virtue + n), 0, 100); }
 function goodDeed(p, n) {
   karmaShift(n);
   if (p && !p.official) p.owed = (p.owed || 0) + n;
+  fateMerit(p, n);
 }
 
 // 善名太盛又没本事：人人当你好欺负。修到金丹，就没人敢了
-function softPenalty() { return S.cult.lv >= 3 ? 0 : Math.min(12, Math.floor(S.virtue / 8)); }
+function softPenalty() { return S.cult.lv >= 3 ? 0 : Math.min(6, Math.floor(S.virtue / 12)); }
 // 卖货的人看你老实，开价也敢高些
-function softTouch() { return 1 + S.virtue / 400; }
+function softTouch() { return 1 + S.virtue / 800; }
 
 const VIRTUE_NAME = v => v >= 70 ? '活菩萨' : v >= 45 ? '厚道人' : v >= 20 ? '本分' : v >= 8 ? '精明' : '黑心';
 
@@ -39,7 +40,7 @@ function pleaLine(c) { return `（${c.name}扑通一声跪在柜台前）${ADDRE
 
 // 善名在外，求上门的人也多
 function queuePleas() {
-  if (Math.random() > S.virtue / 160) return;
+  if (!fateTrusted() || Math.random() > Math.min(0.3, S.virtue / 200)) return;
   const old = Object.values(S.people).filter(p => p.status === 'alive' && !p.story && isWeak(p) && p.desperate && !p.indentured && !S.queue.some(c => c.pid === p.pid));
   const p = old.length ? pick(old) : newPerson('ren');
   if (!old.length) Object.assign(p, { desperate: true, budgetMul: 0.4 });
@@ -79,6 +80,7 @@ function indenture(p, why = '为了一口饭，把自己押给了你做苦力。
   p.informant = false;
   remember(p, why, -12);
   karmaShift(-5); adjustRep('ren', -1);
+  commitSin('harm', { p, w: 1, what: `把${p.name}收作苦力` });
   if (S.customer && S.customer.pid === p.pid) dismissCustomer(false);
   return null;
 }
@@ -108,6 +110,7 @@ function collectDebt(p, how) {
       earn(n, `把还不上债的${p.name}卖去矿上，得 ${n} 灵石。`);
       p.status = 'gone'; lifeNote(p, '还不上印子钱，被卖去魔宗矿上做苦役。');
       karmaShift(-8); adjustRep(p.faction, -3);
+      commitSin('harm', { p, w: 2, what: `把${p.name}卖去矿上` });
       return `${p.name}被矿上的监工拿铁链锁走了，回头看了你一眼。`;
     }
     case 'labor': indenture(p, '还不上债，被你收作苦力抵债。'); return `${p.name}低着头搬进了你的后院。`;
@@ -140,7 +143,7 @@ function repay(p) {
   const fill_ = t => fill(t, { n: p.name });
   const rich = p.budgetMul >= 1.4 || npcLevel(p) >= 2;
   p.owed = 0;
-  if (rich && strongEnough() && Math.random() < 0.15) {
+  if (rich && strongEnough() && fateInfamy() < 2 && Math.random() < 0.15) {
     const b = pick(BOONS);
     b.run();
     remember(p, '报答了你当年的恩情。', 10);
@@ -225,13 +228,13 @@ function karmaTick() {
       const ev = LIFE[p.faction].find(e => e.id === 'rise');
       out.push({ icon: 'ic_ledger', title: '坊间传闻', text: `你帮过的${applyLife(p, ev)}`, cls: 'ok' });
     }
-    if ((p.owed || 0) >= 2 && !p.official && Math.random() < Math.min(0.035, p.owed * 0.004)) {
+    if ((p.owed || 0) >= 2 && !p.official && Math.random() < Math.min(0.06, p.owed * 0.008)) {
       const r = repay(p);
       if (r) out.push(r);
     }
   }
-  // 天道偶尔也开眼
-  if (S.virtue >= 50 && strongEnough() && Math.random() < 0.006) {
+  // 天道偶尔也开眼：善名在外、没有恶名，越到后来越可能撞上大机缘
+  if (S.virtue >= 50 && fateInfamy() === 0 && (strongEnough() || S.day >= 45) && Math.random() < 0.004 + Math.max(0, S.day - 30) * 0.0002) {
     const b = pick(BOONS);
     b.run();
     out.push({ icon: 'ic_gift', title: '奇遇', text: fill(b.text, { n: '一位你早已忘了名字的故人' }), cls: 'ok' });

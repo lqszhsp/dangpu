@@ -25,7 +25,7 @@ function ecologyCharacter(d) {
   const healItemFor = p => condSev(p, 'injured') ? ownItem(it => ['vine_fruit', 'pill_blood'].includes(it.id) && !it.fake && !it.laced)
     : ownItem(it => ['herb_blood', 'pill_qi'].includes(it.id) && !it.fake && !it.laced);
   const expose = (st, p) => {
-    earn(160, `出卖${d.name}的证据。`); karmaShift(-5); shiftSt(d.clique, 8);
+    earn(160, `出卖${d.name}的证据。`); shiftSt(d.clique, 8);
     remember(p, '你把独立样证卖给了施压的一方。', -60, 'betrayed'); st.flags.sold = true;
     return { text: '买证的人没有留名，只留下正好的灵石。再有人来时，你只能拿出空匣。', go: ['aftermath', [3, 5]], summary: `你卖掉了${d.name}的证据。` };
   };
@@ -34,9 +34,9 @@ function ecologyCharacter(d) {
     bio: `${d.age}岁，${d.title}。${d.problem}`, intro: `${d.name}带来的不是一笔普通典当：${d.problem}`,
     savvy: d.age < 18 ? 0.3 : 0.55, power: d.age < 18 ? 10 : d.faction === 'mo' ? 36 : 26, eye: 2,
     traits: { greed: 0.35, integrity: 0.65, caution: 0.7, wish: d.item, budgetMul: d.age < 18 ? 0.65 : 1 },
-    // 登场日按原定先后压缩到第 6–38 日，让一局六十日内大多见得到；至多五个扩展故事并行；底图未安装者不提前登场
+    // 登场日按原定先后压缩到第 6–38 日，让一局六十日内大多见得到；至多五个扩展故事并行；底图未安装者不提前登场；恶名在外的铺子没人来托付
     start: { day: Math.max(6, Math.round(d.start_day * 0.6)), node: 'meet', chance: 0.5,
-      cond: () => ART_SET.has(`chars/${d.id}`) && Object.values(S.story)
+      cond: () => ART_SET.has(`chars/${d.id}`) && fateTrusted() && Object.values(S.story)
         .filter(st => !st.done && CAST[st.tpl] && CAST[st.tpl].ecologyBatch === 'qwen3pro55').length < 5 },
     regular: true,
     lines: {
@@ -117,7 +117,7 @@ function ecologyCharacter(d) {
             remember(p, '你想护住样证，没打过，样证被抢走了。', -10);
             return { text: `你刚出门就挨了一记闷棍。${condText('me')}\n等你爬起来，样证已经被搜走了。`, go: ['aftermath', [3, 5]] };
           } },
-          { label: '把原证卖给施压者', hint: '+160灵石；善名-5；好感-60；派系好感+8；留下后账', run: () => expose(st, p) },
+          { label: '把原证卖给施压者', sin: ['betray', 2], hint: '+160灵石；好感-60；派系好感+8；留下后账', run: () => expose(st, p) },
           { label: '归还样证，从此不再介入', hint: '不再花钱；好感-8；失去继续作证的机会', run: () => {
             remember(p, '风声紧时，你把样证还了回去。', -8);
             return close(st, p, 'withdrawn', `${d.name}把样证塞回衣内。${d.failure}`, `你在追问到来前退出，${d.failure}`);
@@ -142,7 +142,7 @@ function ecologyCharacter(d) {
             spend(100, `为${d.name}出和解保钱。`); shiftSt(d.clique, 3); st.flags.compromise = true;
             return { text: '书吏收钱，在新契上划去这一轮追索；旧契没有作废，只暂时收进柜底。', go: ['aftermath', [2, 4]] };
           } },
-          { label: '交出存根，收一笔协查赏', hint: '+160灵石；善名-5；好感-60；施压派系好感+8', run: () => expose(st, p) },
+          { label: '交出存根，收一笔协查赏', sin: ['betray', 2], hint: '+160灵石；好感-60；施压派系好感+8', run: () => expose(st, p) },
         ],
       },
       aftermath: {

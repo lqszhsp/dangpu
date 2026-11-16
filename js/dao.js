@@ -170,6 +170,7 @@ function killPerson(p, where) {
   die(p, where === 'night' ? `${p.name}夜里走在巷子里，从此再没人见过。` : `${p.name}进了一间当铺，从此再没人见过。`);
   p.killed = true;
   karmaShift(-12);
+  commitSin('harm', { p, w: 3, what: `杀了${p.name}` });
   S.stats.kills = (S.stats.kills || 0) + 1;
   const seen = clamp((where === 'counter' ? 0.2 + 0.07 * S.queue.length : 0.1) - playerPower() / 500, 0.03, 0.8);
   let tail;
@@ -207,6 +208,7 @@ function soulMark(p) {
   if (err) return { err };
   takeItem(owns('soul_pearl'));
   karmaShift(-4);
+  commitSin('harm', { p, w: 2, what: `给${p.name}种魂印` });
   if (Math.random() < soulMarkOdds(p)) {
     p.soulBound = { day: S.day };
     remember(p, '恍惚了一下，识海里多了些什么。', 0);

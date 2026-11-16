@@ -33,7 +33,7 @@
 
 {{ T.healers() }}
 
-诊金按你身上他能治的伤毒总重数算，交情越好越便宜，贪的人要得多，仇视你的不肯治。以{{ CONDS.injured.grade[2] }}为例：
+诊金按你身上他能治的伤毒总重数算，交情越好越便宜，贪的人要得多。只有得罪了医者本人（交情跌到仇视）才求不动，名声好坏不连坐。{{! (() => { fresh(); const id = 'shen_suxin'; startStory(id, id, 'meet', 99); const p = S.people[id]; p.visits = 1; p.aff = 0; addCond('me', 'injured', 2); S.fate.infamy = 10; const ok = !healBlock(p); p.aff = -60; return ok && !!healBlock(p); })() }}以{{ CONDS.injured.grade[2] }}为例：
 
 {{ T.healFees(Object.keys(CAST).filter(k => CAST[k].healer)) }}
 

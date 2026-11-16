@@ -77,8 +77,8 @@ defineCharacter({
       who: () => ({ name: '丹房执事', portrait: 'ren_cultivator', title: '丹房执事', faction: 'mo' }),
       text: (st, p) => `一个穿丹房袍子的中年人把一锭银子似的灵石压在柜上：“后巷那条青蛇，药是从你这儿出的吧？”\n“丹房的丹药卖不动，长老很不高兴。她在哪儿落脚，你说出来，这锭灵石归你，丹房也记你一份交情。”${(st.flags.helped || 0) >= 2 ? '\n他顿了顿，“当然，你也可以接着做善人——丹房的门，往后就别进了。”' : ''}`,
       choices: (st, p) => [
-        { label: '说出她的落脚处', hint: '+200 灵石；丹房好感 +20；善名大跌', run: () => {
-          earn(200, '向丹房出卖柳青萝的落脚处。'); shiftSt('dan', 20); karmaShift(-10);
+        { label: '说出她的落脚处', sin: ['betray', 3], hint: '+200 灵石；丹房好感 +20；善名大跌', run: () => {
+          earn(200, '向丹房出卖柳青萝的落脚处。'); shiftSt('dan', 20);
           st.flags.sold = true;
           return { text: '执事满意地走了。傍晚，后巷传来一阵骚动。', go: ['raid', 0], summary: '你把她的落脚处卖给了丹房。' };
         } },
@@ -155,8 +155,8 @@ defineCharacter({
           remember(p, '尸疫那年，你给了她一百灵石配药。', 25, 'helped');
           return { text: '她攥着灵石冲进雨里。三天后，后巷没有再抬出死人。', go: ['repay', [4, 6]], summary: '尸疫那年，你资助她配了解药。' };
         } });
-        list.push({ label: '趁疫情高价收她的蛇蜕药材', hint: '+120 灵石；她会恨你', run: () => {
-          earn(120, '趁疫情压价收了柳青萝的蛇蜕。'); karmaShift(-4);
+        list.push({ label: '趁疫情高价收她的蛇蜕药材', sin: ['fraud', 1], hint: '+120 灵石；她会恨你', run: () => {
+          earn(120, '趁疫情压价收了柳青萝的蛇蜕。');
           remember(p, '尸疫那年，你趁火打劫。', -50, 'gouged');
           lifeNote(p, '尸疫过后，离开了杂役区。');
           p.status = 'gone';

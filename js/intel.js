@@ -59,6 +59,7 @@ function reportSecret(c) {
   p.status = s.to === 'mo' ? 'jailed' : 'dead';
   lifeNote(p, s.to === 'mo' ? `被你告发是${s.type}，押入血狱。` : `被你告发是${s.type}，死在${FACTIONS[s.to].name}手里。`);
   p.secret = null;
+  commitSin('betray', { p, w: 2, what: `告发${p.name}是${s.type}`, virtue: 6 });
   let leak = '';
   if (Math.random() < 0.2) {
     adjustRep(p.faction, -8);
@@ -75,6 +76,7 @@ function blackmail(c) {
   if (Math.random() < overpowerOdds(p) + 0.1) {
     earn(ask, `${p.name}拿 ${ask} 灵石换你闭嘴。`);
     remember(p, `你拿他${s.type}的身份要挟他，敲了 ${ask} 灵石。`, -30, 'blackmailed');
+    commitSin('betray', { p, w: 2, what: `要挟${p.name}`, virtue: 6 });
     p.blackmailed = (p.blackmailed || 0) + 1;
     dismissCustomer(false);
     return { text: `${p.name}脸色铁青，数了 ${ask} 灵石放在柜上：“够了吧？”`, cls: 'good' };
@@ -180,6 +182,7 @@ function deliverIntel(p, it) {
     t.status = t.secret.to === 'mo' ? 'jailed' : 'dead';
     lifeNote(t, `${t.secret.type}的身份被人卖给了${FACTIONS[t.secret.to].name}。`);
     remember(t, '有人把他的底细卖了出去。', -30);
+    commitSin('betray', { p: t, w: 2, what: `把${t.name}的把柄卖给${FACTIONS[t.secret.to].name}`, virtue: 6 });
     adjustRep(t.secret.to, 2);
     worldNews(`${t.name}（${t.title}）被揭发是${t.secret.type}，再没出现过。`);
     t.secret = null;

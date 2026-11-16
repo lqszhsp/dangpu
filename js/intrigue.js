@@ -143,6 +143,7 @@ function applyLace(p, it, via) {
     case 'control':
       p.controlled = { day: S.day };
       remember(p, `你借${name}在他身上种下了噬心蛊。`, 0);
+      commitSin('harm', { p, w: 2, what: `给${p.name}种噬心蛊`, virtue: 6 });
       return {};
     case 'tonic':
       p.health = Math.min(130, (p.health || 100) + 25);
@@ -153,6 +154,7 @@ function applyLace(p, it, via) {
       p.health = (p.health || 100) - 85;
       p.poisonedDay = S.day;
       remember(p, `你在${name}里下了尸毒。`, 0);
+      commitSin('harm', { p, w: 3, what: `给${p.name}下尸毒`, virtue: 9 });
       return {};
   }
   return {};
@@ -162,6 +164,7 @@ function hook(p, name) {
   p.addict = Math.min(5, (p.addict || 0) + 1);
   p.health = (p.health || 100) - 6;
   p.lastFix = S.day;
+  commitSin('harm', { p, w: 1, what: `让${p.name}吃上忘忧散`, virtue: 3 });
   remember(p, `吃了你的${name}，飘飘欲仙。`, 6, 'hooked');
   return {};
 }

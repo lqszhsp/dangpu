@@ -67,7 +67,7 @@ function newGame(diffId, startId) {
   initTrade();
   initDao();
   initPolitics();
-  initKarma();
+  initKarma(); initFate();
   initConditions();
   Object.assign(S.tech, start.tech || {});
   rollMarket();
@@ -89,7 +89,7 @@ function load() {
   initTrade();
   initDao();
   initPolitics();
-  initKarma();
+  initKarma(); initFate();
   initConditions();
   pruneUnknownItems();
   if (!Object.keys(S.story).length) initStories();
@@ -695,7 +695,7 @@ function forecast() {
 }
 
 function customerCount() {
-  return 5 + (S.upgrades.sign ? 1 : 0) + Math.min(2, Math.floor(displayAttraction() / 600)) - (S.world.stage >= 3 ? 1 : 0) - (S.world.stage >= 4 ? 1 : 0);
+  return 5 + (S.upgrades.sign ? 1 : 0) + patronBonus() - fateCustomerLoss() + Math.min(2, Math.floor(displayAttraction() / 600)) - (S.world.stage >= 3 ? 1 : 0) - (S.world.stage >= 4 ? 1 : 0);
 }
 
 const WAR_CATS = ['dan', 'qi', 'fu', 'hun', 'shi', 'zhi'];
@@ -869,7 +869,7 @@ function buyerValuation(c, it) {
   const pref = c.attracted ? 1.15 : 1;
   const base = c.forGift && isFlawed(it) ? giftFakeValue(it)
     : claimOf(c, it) === 'honest' && isFlawed(it) ? honestValue(it) * (c.wantFake ? 1.8 : 1) : claimedValue(it);
-  return base * priceMul(it.id) * (1 + S.rep[c.faction] / 250) * diff().sell * pref * (1 + affOf(c) / 500) * personValueMul(c, it);
+  return base * priceMul(it.id) * (1 + S.rep[c.faction] / 250) * diff().sell * pref * (1 + affOf(c) / 500) * personValueMul(c, it) * trustMul();
 }
 
 function roll(odds) {
@@ -957,6 +957,7 @@ function reportWanted(c) {
   S.merit.mo += 2;
   const p = personOf(c);
   if (p) { remember(p, '你向执法堂举报了他。', -80, 'betrayed'); p.status = 'jailed'; lifeNote(p, '被你举报，押入血狱。'); }
+  commitSin('betray', { p: p || { pid: null, name: c.name, faction: c.faction }, w: 1, what: `举报通缉犯${c.name}`, virtue: 2 });
   dismissCustomer(false);
 }
 
@@ -980,6 +981,9 @@ function tellCustomer(c, claimFake) {
   const it = customerItem();
   const honest = claimFake === !!it.fake;
   const caught = !honest && Math.random() < lieDetectChance(c);
+  // 把真品说成赝品是存心坑人；把赝品说成真品，照妖镜里明明照出了破绽才算
+  const knowing = !honest && (claimFake || (ITEMS[it.id].appraise && visibleFeats(it, appraiseLevel()).length > 0));
+  if (knowing) commitSin('fraud', { p: personOf(c), w: 1, what: `对${c.name}谎称${itemName(it)}是${claimFake ? '赝品' : '真品'}`, virtue: 2 });
   c.told = it.told = claimFake ? 'fake' : 'real';
   noteClaim(c, honest, caught, claimFake);
   if (caught) adjustRep(c.faction, -6);
@@ -1175,6 +1179,7 @@ function nightResolve() {
   worldTick().forEach(r => rep.push(r));
   cliqueTick().forEach(r => rep.push(r));
   karmaTick().forEach(r => rep.push(r));
+  fateTick().forEach(r => rep.push(r));
   condTick().forEach(r => rep.push(r));
   castNight().forEach(r => rep.push(r));
   periodicTick();

@@ -126,6 +126,7 @@ Object.assign(STORIES, {
             req: () => !!dose || '没有能下的药', run: () => {
               const f = field[0];
               takeItem(dose); karmaShift(-4);
+              commitSin('harm', { p: f, w: 1, what: `擂台前给${f.name}下药` });
               if (lieCaught(f.savvy * 0.6)) {
                 addHeat(12); adjustRep('mo', -5); remember(f, '你在擂台前给他下药，被他察觉。', -60, 'poisoned');
                 return { text: `${f.name}端起碗闻了闻，脸色一变，把药泼在你脚下。第二天，执法堂的人来问话了。`, go: ['bout', st.flags.day - S.day] };

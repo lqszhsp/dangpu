@@ -46,6 +46,7 @@ function resolveChoice(key, idx) {
   const st = S.story[key], node = storyNode(st), p = storyPerson(st);
   const ch = node.choices(st, p)[idx];
   const res = ch.run(st, p) || {};
+  if (ch.sin) commitSin(ch.sin[0], { p, w: ch.sin[1], what: ch.label.replace(/[（(].*$/, ''), virtue: 3 * ch.sin[1] });
   if (res.summary) st.summary = res.summary;
   if (res.end) st.done = true;
   else if (res.go) {
@@ -171,7 +172,7 @@ const STORIES = {
             remember(p, '那一夜，你把他藏在柜台底下。', 40, 'helped');
             return { text: '巡查踹开门搜了一圈，骂骂咧咧地走了。天亮前，老乞丐对你深深一揖，消失在晨雾里。', go: ['return', [5, 7]], summary: '那一夜，你藏下了被执法堂追捕的老乞丐。' };
           } },
-          { label: '把他交给执法堂', hint: '得赏银，魔宗声望 +6；人族声望 -8', run: (st, p) => {
+          { label: '把他交给执法堂', sin: ['betray', 3], hint: '得赏银，魔宗声望 +6；人族声望 -8', run: (st, p) => {
             earn(200, '交出老乞丐，领得赏银 200 灵石。');
             adjustRep('mo', 6); adjustRep('ren', -8); addHeat(-10);
             remember(p, '你把他交给了执法堂。', -100, 'betrayed');
@@ -251,7 +252,7 @@ const STORIES = {
             remember(p, '你一眼看穿了他的假镜子。', -25);
             return { text: '“镜钮是素的，连珠也数不够。”你话音刚落，胡不归脸色一变，干笑两声，抱起镜子溜了。', go: ['venture', [5, 7]], summary: '你识破了他的假古镜。' };
           } },
-          { label: '将计就计，压到六十收下', hint: costHint(60) + '；成为“同道中人”', req: needStones(60), run: (st, p) => {
+          { label: '将计就计，压到六十收下', sin: ['fraud', 1], hint: costHint(60) + '；成为“同道中人”', req: needStones(60), run: (st, p) => {
             spend(60);
             keepCounterItem({ cost: 60, boughtDay: S.day });
             st.flags.partner = true;
@@ -300,7 +301,7 @@ const STORIES = {
             return { text: '三百灵石，就当买了个教训。可你记住了这张脸。', go: ['caught', [5, 8]], summary: '他卷走了你的三百灵石。' };
           } },
         ] : st.flags.partner ? [
-          { label: '收下', run: (st, p) => {
+          { label: '收下', sin: ['fraud', 2], run: (st, p) => {
             earn(450, '胡不归分来四百五十灵石。');
             remember(p, '这票买卖，你们赚了。', 10);
             return { text: '你收下了这笔来路不正的钱。城南有好几户人家，这几天哭得很惨。', go: ['caught', [4, 6]], summary: '你们一起骗了城南的人。' };
@@ -552,7 +553,7 @@ const STORIES = {
         when: 'day',
         text: () => '钱执事眯着眼，把一个沉甸甸的包袱推到你面前：“宗门库房里‘损耗’了些东西，你帮着出手。卖得的钱，七成归我，三成归你。”\n他笑得像尊弥勒佛，“往后租子嘛……好商量。”',
         choices: () => [
-          { label: '接下（同流合污）', hint: '得一批赃物；下期租子要加上他的七成；此后租金八五折', run: (st, p) => {
+          { label: '接下（同流合污）', sin: ['fence', 2], hint: '得一批赃物；下期租子要加上他的七成；此后租金八五折', run: (st, p) => {
             st.flags.complicit = true;
             const got = [['sword_std', 85], ['pill_blood', 80], ['soul_bell', 75]].map(([id, q]) => giveItem(id, { q, stolen: 8 })).filter(Boolean);
             const owed = Math.round(got.reduce((s, it) => s + claimedValue(it), 0) * 0.7);
@@ -562,10 +563,10 @@ const STORIES = {
             remember(p, '你替他销赃。', 30);
             return { text: `他满意地拍拍你的肩：“懂事。”包袱里有${got.map(itemName).join('、')}。下下期交租时，他要连本带利收回 ${owed} 灵石。`, go: ['audit', [7, 9]], summary: '你替钱执事销赃，成了他的人。' };
           } },
-          { label: '婉拒', hint: '他会记仇：此后租金涨一成五', run: (st, p) => {
-            S.flags.rentMul *= 1.15;
+          { label: '婉拒', hint: '他会记仇：此后租金涨半成', run: (st, p) => {
+            S.flags.rentMul *= 1.05;
             remember(p, '你拒绝替他销赃。', -25);
-            return { text: '钱执事的笑僵了一瞬，又堆了回去：“年轻人，有骨气。”下期起，你的租子涨了一成五。', go: ['audit', [7, 9]], summary: '你拒绝替钱执事销赃，他给你涨了租。' };
+            return { text: '钱执事的笑僵了一瞬，又堆了回去：“年轻人，有骨气。”下期起，你的租子涨了半成。', go: ['audit', [7, 9]], summary: '你拒绝替钱执事销赃，他给你涨了租。' };
           } },
         ],
       },
@@ -586,7 +587,7 @@ const STORIES = {
             S.flags.landlord = 'sun'; S.flags.rentMul = 0.8; S.flags.deedMul = 0.85; S.flags.inspectMul *= 1.2; S.flags.rentExtra = 0;
             return { text: `钱执事当天就被锁走了。${extra}\n孙管事接管了杂役区：“租子按规矩来，不多收一文。但规矩就是规矩——违禁的东西，别让我查到。”`, go: ['revenge', [2, 3]], summary: '你作证扳倒了钱执事。孙管事接管了杂役区。' };
           } },
-          { label: '包庇钱执事（撒谎）', hint: '孙管事精明，未必瞒得过', run: st => {
+          { label: '包庇钱执事（撒谎）', sin: ['fence', 2], hint: '孙管事精明，未必瞒得过', run: st => {
             const sun = S.people.sun, qian = S.people.qian;
             if (lieCaught(sun.savvy)) {
               addHeat(25); S.flags.inspectMul *= 1.4;
@@ -652,7 +653,7 @@ const STORIES = {
               remember(p, '你照他开的价，一百五十灵石收了玉佩。', 10);
               return amuGo('阿木千恩万谢地走了。他不知道那块玉值多少。');
             } },
-            { label: '压到八十', hint: costHint(80), req: needStones(80), run: (st, p) => {
+            { label: '压到八十', sin: ['fraud', 1], hint: costHint(80), req: needStones(80), run: (st, p) => {
               spend(80, '以 80 灵石压价收下阿木的玉佩。');
               keepCounterItem({ cost: 80, boughtDay: S.day, amu: true });
               st.flags.low = true; st.flags.paid = 80;
@@ -717,7 +718,7 @@ const STORIES = {
               remember(p, '你把娘的玉佩白送还给了他。', 40, 'helped');
               return { text: '“掌柜的……”阿木攥着玉佩，半天只说出一句，“俺阿木这辈子，欠您的。”', go: ['fate', [8, 10]] };
             } },
-            { label: '要赎回，得按市价', hint: '多赚一笔', run: (st, p) => {
+            { label: '要赎回，得按市价', sin: ['fraud', 1], hint: '多赚一笔', run: (st, p) => {
               pre(st, p);
               const price = Math.round(claimedValue(held) * 1.1);
               if (p.aff > 0 && Math.random() < 0.6) {
@@ -796,7 +797,7 @@ const STORIES = {
             remember(p, '你不肯把族人的妖丹给她。', -20);
             return { text: '“……吾记住了。”她转身跑了出去。', go: ['seek', [5, 7]] };
           } },
-          { label: '稳住她，暗中报执法堂', hint: '赏银 150，魔宗声望 +5；妖族声望 -20', run: (st, p) => {
+          { label: '稳住她，暗中报执法堂', sin: ['betray', 3], hint: '赏银 150，魔宗声望 +5；妖族声望 -20', run: (st, p) => {
             earn(150, '设计诱捕狐妖，得赏银。'); adjustRep('mo', 5); adjustRep('yao', -20);
             remember(p, '你设局把她交给了执法堂。', -100, 'betrayed');
             p.status = 'dead'; lifeNote(p, '被执法堂擒获，剖丹炼药。');
@@ -896,7 +897,7 @@ const STORIES = {
             remember(p, '你没收他的剑。', -5);
             return { text: '他沉默地包好剑，走了。', go: ['hunter', [3, 5]] };
           } },
-          { label: '稳住他，报执法堂', hint: '赏银 250；仙门声望 -15', run: (st, p) => {
+          { label: '稳住他，报执法堂', sin: ['betray', 3], hint: '赏银 250；仙门声望 -15', run: (st, p) => {
             earn(250, '举报仙门奸细，得赏银。'); adjustRep('mo', 5); adjustRep('xian', -15);
             remember(p, '你把他交给了魔宗执法堂。', -100, 'betrayed');
             p.status = 'dead'; lifeNote(p, '被魔宗执法堂擒获，死在血狱。');
@@ -913,7 +914,7 @@ const STORIES = {
         },
         text: () => '蒙面女修在柜前站定，声音清冷：“店家可曾见过一个背剑的青年？他是仙门叛徒，带着一柄青霄剑。”\n她把一袋灵石放在柜上，“说出他的去向，仙门必有重谢。”',
         choices: st => [
-          { label: '说出他的去向', hint: '+300 灵石，仙门声望 +10', run: st => {
+          { label: '说出他的去向', sin: ['betray', 3], hint: '+300 灵石，仙门声望 +10', run: st => {
             earn(300, '向仙门追缉使出卖顾青崖。'); adjustRep('xian', 10);
             const p = S.people.defector, spy = S.people.spy;
             remember(spy, '你告诉了她叛徒的去向。', 20);

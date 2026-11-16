@@ -161,6 +161,7 @@ function renderTopbar() {
       <span class="tb-cal">${calendar().text}${annualOf() ? ` · <em>${annualOf().name}</em>` : ''}<br>${PHASE_NAME[S.phase]}</span></div>
     ${S.plan && S.plan.inspect && S.plan.tipped && S.plan.day === S.day ? `<div class="tb-cell tipchip" title="${esc(S.plan.tipped)}捎来的风声">${icon('ic_heat')}今日巡查</div>` : ''}
     <div class="tb-cell dao" data-act="dao" title="修为：服炼丹药魂魄，破境要钥匙。点开查看">${icon('ic_dao')}<span>${realmName()}<br><small>${realm().need ? `${S.cult.xp}/${realm().need}` : '圆满'}</small></span></div>
+    ${S.fate && (S.fate.n || S.fate.debts.length || S.fate.infamy) ? `<div class="tb-cell fate" data-act="fate-open" title="因果：点开查看孽债">孽<b>${S.fate.debts.length}</b>${S.fate.infamy ? `<small>恶名${S.fate.infamy}</small>` : ''}</div>` : ''}
     <div class="tb-cell" title="善名 ${S.virtue}：做好人要掏钱，善名太盛还会被人当软柿子捏；但你帮过的人，偶尔会回来报答">善<b>${VIRTUE_NAME(S.virtue)}</b></div>
     ${condList('me').map(c => CONDS[c.kind] ? `<div class="tb-cell cond" data-act="heal-open" title="${esc(CONDS[c.kind].desc)}点开求医">${c.label}</div>`
       : `<div class="tb-cell cond" title="体力或精神见底：比斗、动手吃亏，说谎易露馅">${c.label}</div>`).join('')}
@@ -358,8 +359,8 @@ function renderCounter() {
   const intel = !pp || pp.story || pp.official || ['story', 'inspect'].includes(c.kind) ? ''
     : secretKnown ? `<div class="intel">${icon('ic_secret')}<b>${esc(pp.secret.type)}</b>${c.confided ? `（${ta(pp)}自己向你吐露的）` : ''}——
         向${CHANNEL_NAME[pp.secret.to]}举报可得赏金约 ${pp.secret.bounty}、${FACTIONS[pp.secret.to].name}功勋 ${pp.secret.merit}${channelOpen(pp.secret.to) ? '' : `（尚未搭上线：${channelHint(pp.secret.to)}）`}
-        <span class="intel-acts"><button class="btn tiny danger" data-act="secret-report" ${channelOpen(pp.secret.to) ? '' : 'disabled'}>举报</button>
-        <button class="btn tiny" data-act="secret-blackmail">要挟 ${Math.round(Math.min(0.95, overpowerOdds(pp) + 0.1) * 100)}%</button>
+        <span class="intel-acts"><button class="btn tiny danger" data-act="secret-report" title="${esc(sinHint(['betray', 2]))}" ${channelOpen(pp.secret.to) ? '' : 'disabled'}>举报</button>
+        <button class="btn tiny" data-act="secret-blackmail" title="${esc(sinHint(['betray', 2]))}">要挟 ${Math.round(Math.min(0.95, overpowerOdds(pp) + 0.1) * 100)}%</button>
         ${pp.owes ? `<span class="muted small">${ta(pp)}欠你人情</span>` : '<button class="btn tiny" data-act="secret-keep">守口如瓶</button>'}</span></div>`
       : !c.probed && !pp.cleared ? `<div class="intel muted small">${icon('ic_secret')}<button class="btn tiny" data-act="probe" title="${costText('probe')}，看透约 ${Math.round(probeOdds(pp) * 100)}%">神识探查 ${Math.round(probeOdds(pp) * 100)}%</button></div>` : '';
   const dark = pp && !pp.story && ['sell', 'buy', 'plea'].includes(c.kind) && !c.refuse && killable(pp) ? `<div class="intel small">
@@ -503,7 +504,7 @@ function tradePanel(c) {
     ${canTray ? `<button class="btn small wide-only" data-act="to-tray">选中的放上货盘</button>` : ''}
     ${c.noble ? `<button class="btn small" data-act="flatter" title="${costText('flatter')}">吹捧</button>` : ''}
     <button class="btn primary" data-act="deal" ${d.give.length || d.take.length ? '' : 'disabled'}>谈价成交</button>
-    ${c.wanted ? `<button class="btn small danger" data-act="report">举报 赏${c.wanted}</button>` : ''}
+    ${c.wanted ? `<button class="btn small danger" data-act="report" title="${esc(sinHint(['betray', 1]))}">举报 赏${c.wanted}</button>` : ''}
     <button class="btn ghost small" data-act="dismiss">送客</button>`;
   return { mid, acts };
 }
@@ -1064,7 +1065,7 @@ function openStory(key, onDone) {
       <div class="st-choices">${chs.map((ch, i) => {
         const why = choiceState(ch, st, p);
         return `<button class="btn st-choice" data-act="story-choose" data-i="${i}" ${why ? `disabled title="${esc(why)}"` : ''}>
-          <span>${esc(G(ch.label))}</span>${ch.hint || why ? `<small>${esc(G(why || ch.hint))}</small>` : ''}</button>`;
+          <span>${esc(G(ch.label))}</span>${ch.hint || why || ch.sin ? `<small>${esc(G(why || [ch.hint, ch.sin && sinHint(ch.sin)].filter(Boolean).join('；')))}</small>` : ''}</button>`;
       }).join('')}</div></div></div>`, 'm-story'));
   HANDLERS['story-choose'] = el => {
     const pv = personOf(c) || p;
@@ -1203,6 +1204,22 @@ function personActions(p) {
 function healButton(p) {
   const why = healBlock(p), fee = healFee(p);
   return `<button class="btn small" data-act="seek-heal" data-pid="${p.pid}" ${why ? `disabled title="${esc(why)}"` : ''}>${icon('ic_stamina')}求诊${fee == null ? '（不肯治）' : `（${fee} 灵石）`}</button>`;
+}
+
+// 因果：未了的孽债、下一桩恶事的赌注、恶名带来的损失
+function openFate() {
+  const F = S.fate;
+  modalHTML(`<h3>${icon('ic_heat')}因果</h3>
+    <p>每做一桩恶事就欠下一笔孽债，几日后见分晓：五成风平浪静，五成报应上门。报应要赔的本金随你作的恶越滚越大，赔不起就被人打上门、抄走货、招来执法堂。
+      行善能冲淡旧孽，隔一阵子不作恶，孽也会慢慢淡去。</p>
+    <p>你一共作过 <b>${F.total}</b> 桩恶事：<span class="good">${F.buried} 桩没人追究</span>，<span class="bad">${F.erupted} 桩遭了报应${F.busts ? `（${F.busts} 回赔不起）` : ''}</span>。</p>
+    <p>眼下再作一桩小恶，若败露约赔 <b>${fateStake(1)}</b> 灵石；出卖、销赃约 <b>${fateStake(2)}</b>；害人性命约 <b>${fateStake(3)}</b>。</p>
+    ${F.infamy ? `<p class="bad">恶名 ${F.infamy}：${[fateCustomerLoss() ? `每日少来 ${fateCustomerLoss()} 位客人` : '', `客人压价 ${Math.round(Math.min(0.2, F.infamy * 0.025) * 100)}%`,
+      fateTrusted() ? '' : '没人再来托付、求助', '好报难来'].filter(Boolean).join('；')}。</p>` : ''}
+    <h4>未了的孽债</h4>
+    <ul class="timeline">${F.debts.length ? F.debts.map(d => `<li><span class="muted">第${d.day}日</span>${esc(d.what || SINS[d.kind].name)}<span class="bad">若败露赔 ${d.stake}</span>
+      <span class="muted">${d.due <= S.day + 1 ? '就在这一两日' : `约 ${d.due - S.day} 日内`}</span></li>`).join('') : '<li class="muted">没有未了的孽债</li>'}</ul>
+    <div class="h-btns"><button class="btn primary" data-act="modal-close">合上</button></div>`, 'm-gift');
 }
 
 // 求医：点顶栏的伤毒打开。手上的药、结识的医者；一个医者也不认得，就只能靠药
@@ -1575,6 +1592,7 @@ const HANDLERS = {
   'buy-intel': el => { const err = buyIntel(+el.dataset.i); toast(err || '密报已放进库房，悬停可看写的什么', err ? 'bad' : 'good'); renderAll(); },
   'gift-open': el => openGift(el.dataset.pid),
   'heal-open': () => openModal(openHeal),
+  'fate-open': () => openModal(openFate),
   'heal-use': el => {
     const it = S.items[el.dataset.uid], err = consume(it);
     if (err) toast(err, 'bad'); else if (sel === it.uid) sel = null;

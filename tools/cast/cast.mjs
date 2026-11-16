@@ -272,12 +272,12 @@ function checkOne(g, def, report, { live: doLive = true } = {}) {
 
   // 模拟实战：从新开一局开始，看角色会不会登场、走完
   // 至少要跑到登场日之后五十天，否则晚登场的人物会被误判为“没登场”
-  // 模拟玩家乱选抉择，钱、关注、性命都替他兜着（每天补满护身符），免得局早早结束
+  // 模拟玩家乱选抉择，钱、关注、性命、恶名都替他兜着（每天补满护身符、清掉恶名），免得局早早结束、扩展人物不再登场
   const days = Math.max(+opt('days', 150), (def.start.day || 1) + 50), runs = doLive ? +opt('runs', 6) : 0, live = [];
   for (let r = 0; r < runs; r++) {
     run(`newGame('normal', 'apprentice'); S.stones = 5000; var __log = { start: null, visits: 0, beats: 0, end: null, regular: 0 };
       for (let d = 0; d < ${days} && !S.over; d++) {
-        S.flags.savior = 9; openShop(); if (S.story[__def.id] && __log.start == null) __log.start = S.day;
+        S.flags.savior = 9; if (S.fate) S.fate.infamy = 0; openShop(); if (S.story[__def.id] && __log.start == null) __log.start = S.day;
         let c, g = 0;
         while ((c = nextCustomer()) && g++ < 40) {
           if (c.kind === 'story') { const st = S.story[c.key], n = storyNode(st), p = storyPerson(st); const ch = n.choices(st, p); const ok = ch.map((x, i) => i).filter(i => !choiceState(ch[i], st, p));
@@ -356,7 +356,7 @@ function popSim(ids, runs, days) {
       newGame('normal', 'apprentice'); S.stones = 5000;
       const seen = {};
       for (let d = 0; d < ${days} && !S.over; d++) {
-        S.flags.savior = 9; openShop(); let c, k = 0;
+        S.flags.savior = 9; if (S.fate) S.fate.infamy = 0; openShop(); let c, k = 0;
         while ((c = nextCustomer()) && k++ < 40) {
           if (c.kind === 'story') { if (tally[c.key]) { tally[c.key].beats++; if (!seen[c.key]) { seen[c.key] = S.day; } }
             const st = S.story[c.key], n = storyNode(st), p = storyPerson(st); let ch = []; try { ch = n.choices(st, p); } catch (e) { if (tally[c.key]) tally[c.key].errors.push(st.node + '：' + e.message); st.done = true; }

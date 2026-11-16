@@ -27,6 +27,7 @@ export const REFS = {
   realm: (G, i) => G.REALMS[+i] ? G.REALMS[+i].name : null,
   war: (G, i) => G.WAR_STAGES[+i] ? G.WAR_STAGES[+i].name : null,
   action: (G, id) => G.ACTION_NAME[id] || null,
+  sin: (G, id) => G.SINS[id] ? G.SINS[id].name : null,
 };
 
 // 代码里有、攻略就必须写到的
@@ -47,6 +48,7 @@ export const COVER = {
   item: G => Object.keys(G.ITEMS),
   realm: G => G.REALMS.map((_, i) => String(i)).slice(1),
   war: G => G.WAR_STAGES.map((_, i) => String(i)),
+  sin: G => Object.keys(G.SINS),
 };
 
 const table = (head, rows) => rows.length
@@ -253,6 +255,26 @@ export function tables(h) {
       const out = [];
       for (let x = lo; x <= hi; x++) { const v = f(x); if (!out.length || out[out.length - 1].v !== v) out.push({ v, from: x, to: x }); else out[out.length - 1].to = x; }
       return table(['档', '范围'], out.map(b => [`**${b.v}**`, b.from === lo ? `${b.to} 及以下` : b.to === hi ? `${b.from} 及以上` : `${b.from} ～ ${b.to}`]));
+    },
+
+    // 因果：作到第几桩、在第几日，若败露要赔多少（在新开的一局里照游戏的算法逐桩记账）
+    fateStakes(w = 2, days = [10, 30, 60], upto = 8) {
+      return table(['这是第几桩（分量相同）', ...days.map(d => `第 ${d} 日作恶`)], Array.from({ length: upto }, (_, k) => [`第 ${k + 1} 桩`, ...days.map(d => {
+        h.fresh(); G.S.day = d;
+        for (let i = 0; i < k; i++) G.commitSin('betray', { w });
+        return G.fateStake(w);
+      })]));
+    },
+    sins() {
+      return table(['恶行', '报应找谁', '举例'], Object.entries(G.SINS).map(([k, s]) => { mark('sin', k); return [`**${s.name}**`, s.who, s.how.join('；')]; }));
+    },
+    // 口碑：善名、恶名对客人出价与来客的影响
+    trust() {
+      const rows = [[10, 0], [20, 0], [45, 0], [70, 0], [100, 0], [10, 4], [10, 8]].map(([v, inf]) => {
+        h.fresh(); G.S.virtue = v; G.S.fate.infamy = inf;
+        return [inf ? `恶名 ${inf}` : `善名 ${v}`, `${Math.round((G.trustMul() - 1) * 1000) / 10}%`, (G.S.virtue >= 45 ? 1 : 0) - G.fateCustomerLoss()];
+      });
+      return table(['', '客人出价', '每日来客（不算熟客荐来的）'], rows);
     },
 
     factions() {

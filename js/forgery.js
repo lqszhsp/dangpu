@@ -184,7 +184,7 @@ function overpowerOdds(p) { return clamp(1 / (1 + Math.exp(-(playerPower() - npc
 // ───────────── 卖出的假货 ─────────────
 
 function recordSold(c, it, price, told) {
-  if (!told) karmaShift(-1);
+  if (!told && knownFlaw(it)) commitSin('fraud', { p: personOf(c), w: 1, what: `把${itemName(it)}当真货卖给${c.name}`, virtue: 2 });
   S.sold.push({ pid: c.pid, name: itemName(it), id: it.id, fake: !!it.fake, grade: it.grade || 1, told, knew: knownFlaw(it),
     price, loss: Math.max(0, price - trueValue(it)), day: S.day });
 }

@@ -73,8 +73,8 @@ defineCharacter({
       text: () => '一个戴铁面的人走进来，没看货架，径直盯着你：“前几夜，有个瞎子来过你这儿，寄了一只漆盒。”\n“冷长老要那只盒子。交出来，执法堂记你一功；藏着——”他用指节敲了敲柜台，“窝藏要犯，一并论处。”'
         + (condSev('me', 'injured') ? '\n他的目光在你吊着的胳膊上停了停，嘴角动了一下。' : condSev('me', 'poisoned') ? '\n他看了看你发紫的嘴唇：“气色不好啊，掌柜的。”' : ''),
       choices: (st, p) => [
-        { label: '交出漆盒', hint: '+150 灵石；执法堂好感 +15、关注 -10；鲁半仙必死', run: () => {
-          earn(150, '把鲁半仙的漆盒交给执法堂。'); shiftSt('law', 15); addHeat(-10); karmaShift(-6);
+        { label: '交出漆盒', sin: ['betray', 3], hint: '+150 灵石；执法堂好感 +15、关注 -10；鲁半仙必死', run: () => {
+          earn(150, '把鲁半仙的漆盒交给执法堂。'); shiftSt('law', 15); addHeat(-10);
           p.status = 'dead'; lifeNote(p, '被执法堂从街口拖走，再没回来。');
           remember(p, '你把他的漆盒交给了执法堂。', -100, 'betrayed');
           return { text: '暗探揣起盒子走了。第二天，街口的卦摊空了，只剩一根断掉的竹竿。', end: true, summary: '你把他的漆盒交给了执法堂。他死了。' };
@@ -116,7 +116,7 @@ defineCharacter({
           st.flags.delivered = true;
           return { text: '天没亮，账册就到了血公子手里。他让人捎来两百灵石，还有一句话：“抄家单上那一行，划掉了。”', go: ['back', [2, 3]] };
         } },
-        { label: '拿账册要挟冷长老', hint: `成算看你的势力（${playerPower()}）`, run: () => {
+        { label: '拿账册要挟冷长老', sin: ['betray', 2], hint: `成算看你的势力（${playerPower()}）`, run: () => {
           if (Math.random() < clamp(playerPower() / 100, 0.1, 0.8)) {
             earn(600, '冷长老买回自己的黑账。'); addHeat(-25); shiftSt('law', 10); st.flags.sold = true;
             return { text: '冷长老亲自来了，一句话没说，放下六百灵石，拿走账册。抄家单当着你的面烧了。', go: ['back', [2, 3]] };
