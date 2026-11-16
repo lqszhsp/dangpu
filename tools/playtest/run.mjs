@@ -2,7 +2,8 @@
 // 生存测试调度：每个开局一局，由 Codex 扮演某种性格的玩家玩；并发 N 局排队跑。
 //   node tools/playtest/run.mjs --persona kind|ruthless --out <目录> [--jobs 6] [--cap 90] [--minutes 45] [--effort medium] [--starts a,b,...] [--seed 1000]
 // 每局：独立的游戏副本（tools/playtest/sandbox.sh）＋局目录；Codex 在局目录里通过 tools/play/play.mjs 玩，可查副本里的攻略。
-// 结果以接口自己的 status 为准（不信玩家的自述），另记玩家汇报、游戏副本有没有被改、日志能否重放。
+// 结果以接口自己的 status 为准（不信玩家的自述），另记玩家汇报、游戏副本有没有被改、日志能否重放；
+// 每局另存手段统计（tactics.json）与多物品行为对账（behaviors.json），整轮跑完汇总成 tactics.md、behaviors.md
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawn, execFileSync } from 'node:child_process';
@@ -58,6 +59,8 @@ function settle(job) {
   catch (e) { r.tampered = true; r.tamperedFiles = String(e.stdout).trim().split('\n').slice(0, 5); }
   r.commands = fs.readFileSync(path.join(job.run, 'log.jsonl'), 'utf8').split('\n').filter(Boolean).length;
   try { r.report = JSON.parse(fs.readFileSync(path.join(job.base, 'report.json'), 'utf8')); } catch { r.report = null; }
+  // 手段统计、多物品行为对账：各存一份，整轮汇总时用
+  for (const k of ['tactics', 'behaviors']) try { fs.writeFileSync(path.join(job.base, `${k}.json`), play(k)); } catch (e) { r[`${k}Error`] = String(e.stderr || e.message).trim().slice(0, 200); }
   const st = r.status;
   r.day = st ? st.day : null;
   r.outcome = !st ? '无法重放' : st.over ? st.over.title : st.day > CAP ? '到上限仍在世' : job.timedOut ? '超时未玩完' : '中途停手';
@@ -78,4 +81,8 @@ await Promise.all(Array.from({ length: Math.min(JOBS, queue.length) }, async () 
     log(`结束 ${job.s.name}：${r.outcome}，第 ${r.day} 日，${r.minutes} 分钟，${r.commands} 条命令${r.tampered ? '，⚠ 游戏副本被改动' : ''}`);
   }
 }));
-log('全部结束');
+// 整轮的手段丰富度、多物品行为对账
+for (const [k, tool] of [['tactics', 'monitor.mjs'], ['behaviors', 'behaviors.mjs']])
+  try { fs.writeFileSync(path.join(OUT, `${k}.md`), execFileSync('node', [path.join(HERE, tool), OUT], { encoding: 'utf8' })); }
+  catch (e) { log(`${k} 汇总出错：${String(e.stderr || e.message).slice(0, 200)}`); }
+log(`全部结束：${path.join(OUT, 'tactics.md')}、${path.join(OUT, 'behaviors.md')}`);

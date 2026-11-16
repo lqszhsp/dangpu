@@ -13,6 +13,7 @@
 //   node tools/play/play.mjs <局目录> status               一行 JSON：第几日、灵石、关注、伤毒、是否结局（给测试汇总用）
 //   node tools/play/play.mjs <局目录> history [n]           最近 n 条命令
 //   node tools/play/play.mjs <局目录> tactics              重放整局，统计用过的手段（议价、作伪、下药、出卖……）与丰富度，一行 JSON
+//   node tools/play/play.mjs <局目录> behaviors            重放整局，对账多物品行为（合成配方、加料……）：材料出现过没有、有过几夜机会、实际做了几次
 // 一次可以连着做几件事：用 ; 隔开，例如  click 3 ; look
 // 规则：只能这样玩。别改游戏文件、别改局目录里的 log.jsonl——那等于作弊，测试作废。
 import fs from 'node:fs';
@@ -318,6 +319,86 @@ function tacticsOf(ctx, log) {
       buyRatio: buys.length ? +(buys.reduce((s, x) => s + x, 0) / buys.length).toFixed(2) : null } };
 }
 
+
+// ───────────── 多物品行为对账（behaviors）─────────────
+// 目录在 tools/play/behaviors.js；每夜开炉前判机会，开炉前后比格子数实际产出，非设备行为包住各自的函数
+const BEHAVIOR_HOOKS = `
+  const B = globalThis.__B = { opp: {}, done: {}, units: {}, miss: {}, seen: new Set(), seenAct: {}, unlisted: {}, nights: 0 };
+  const inc = (o, k, n = 1) => { o[k] = (o[k] || 0) + n; };
+  const wrap = (name, fn) => { const f = globalThis[name]; if (typeof f !== 'function') return; globalThis[name] = function (...a) { return fn(f, a, this); }; };
+  const carry = {};
+  const snap = m => {
+    const grids = ['in', 'out', 'mod'].map(k => gridOf(m, k)).concat(['floor']), o = {};
+    for (const it of Object.values(S.items)) if (it.pos && grids.includes(it.pos.g))
+      o[it.uid] = { id: it.id, g: it.pos.g, purity: it.purity, growth: it.growth, forged: !!it.forged, fake: !!it.fake };
+    return o;
+  };
+  wrap('nightResolve', (f, a) => {
+    B.nights++;
+    const held = BHV_held();
+    held.forEach(it => { B.seen.add(it.id); if (ITEMS[it.id].additive) B.seenAct['add_' + ITEMS[it.id].additive] = true; if (canLace(it)) B.seenAct.laceable = true; if (it.mark) B.seenAct.marked = true; });
+    if (techLv('soul')) B.seenAct.soulTech = true;
+    for (const b of BEHAVIORS) {
+      // 离做成最近的那种做法还缺什么；缺的为空就是今夜有机会
+      const miss = b.act ? bhvActMissing(b, held) : b.alt.map(x => bhvMissing(b, x, held)).sort((x, y) => x.length - y.length)[0];
+      if (!miss.length) inc(B.opp, b.id);
+      else { const m = (B.miss[b.id] = B.miss[b.id] || {}); miss.forEach(k => inc(m, k)); }
+    }
+    return f(...a);
+  });
+  wrap('machineRun', (f, a) => {
+    const m = a[0], before = snap(m), r = f(...a), after = snap(m);
+    const inG = gridOf(m, 'in'), outs = [gridOf(m, 'out'), 'floor'];
+    const used = Object.keys(before).filter(u => before[u].g === inG && !(after[u] && after[u].g === inG)).map(u => before[u].id);
+    const made = [];
+    for (const [u, x] of Object.entries(after)) {
+      const was = before[u];
+      // 新出的货才算产物；原地挪进产出格的（洗好的水、做旧的货）另算
+      if (!was && outs.includes(x.g)) made.push(x.fake && x.forged ? '~fake' : x.id);
+      if (was && x.forged && !was.forged && !x.fake) made.push('~dress');
+      if (was && x.id === 'water' && x.purity > was.purity) made.push('~purify');
+      if (was && x.id === 'gu' && x.growth >= 100 && (was.growth || 0) < 100) made.push('~gold_gu');
+    }
+    (carry[m.mid] = carry[m.mid] || []).push(...used);
+    if (!made.length) return r;
+    const pool = carry[m.mid], left = made.slice(), cnt = (l, id) => l.filter(x => x === id).length;
+    const named = new Set(BEHAVIORS.filter(b => b.machine === m.type).flatMap(b => b.made).filter(x => x !== '*'));
+    for (const b of BEHAVIORS.filter(b => b.machine === m.type)) {
+      const hit = left.filter(x => b.made.includes(x) || (b.made.includes('*') && !named.has(x)));
+      if (!hit.length || !b.alt.some(x => (x.use || []).every(([id, n]) => cnt(pool, id) >= n))) continue;
+      inc(B.done, b.id); inc(B.units, b.id, hit.length);
+      hit.forEach(x => left.splice(left.indexOf(x), 1));
+    }
+    for (const x of left) if (!x.startsWith('~')) inc(B.unlisted, MACHINES[m.type].name + '→' + ITEMS[x].name);
+    carry[m.mid] = [];
+    return r;
+  });
+  wrap('laceWith', (f, a) => { inc(B.done, 'lace_' + ITEMS[a[1].id].additive); return f(...a); });
+  wrap('bottle', (f, a) => { const r = f(...a); if (!r) inc(B.done, 'bottle'); return r; });
+  wrap('sealItem', (f, a) => { const r = f(...a); if (!r) inc(B.done, 'seal'); return r; });
+  wrap('eraseMark', (f, a) => { const r = f(...a); if (!r) inc(B.done, 'erase'); return r; });
+  wrap('soulMark', (f, a) => { const r = f(...a); if (r && !r.err) inc(B.done, 'soulmark'); return r; });
+  wrap('breakthrough', (f, a) => { const r = f(...a); if (r && !r.err) inc(B.done, 'break'); return r; });
+`;
+
+function behaviorsOf(ctx) {
+  const B = vm.runInContext('__B', ctx), list = vm.runInContext('BEHAVIORS', ctx);
+  const seenAll = (ids) => ids.every(id => B.seen.has(id));
+  const out = {};
+  for (const b of list) {
+    let seen;
+    if (b.act === 'lace') seen = !!(B.seenAct['add_' + b.kind] && B.seenAct.laceable);
+    else if (b.act === 'bottle') seen = B.seen.has('jade_bottle') && B.seen.has('water');
+    else if (b.act === 'seal') seen = B.seen.has('seal_xian');
+    else if (b.act === 'erase') seen = !!B.seenAct.marked;
+    else if (b.act === 'soulmark') seen = B.seen.has('soul_pearl') && !!B.seenAct.soulTech;
+    else if (b.act === 'break') seen = vm.runInContext('REALMS', ctx).some(r => r.key && B.seen.has(r.key));
+    else seen = b.alt.some(a => seenAll(vm.runInContext('bhvIds', ctx)(b, a)) && (!a.tech || true));
+    out[b.id] = { name: b.name, seen, opp: B.opp[b.id] || 0, done: B.done[b.id] || 0, units: B.units[b.id] || 0, miss: B.miss[b.id] || {} };
+  }
+  return { nights: B.nights, behaviors: out, unlisted: B.unlisted };
+}
+
 // ───────────── 命令 ─────────────
 
 const dir = process.argv[2];
@@ -378,7 +459,8 @@ function replay(instrument = false) {
   if (!fs.existsSync(META)) throw new Error(`${dir} 还没开局：先 new <开局id>`);
   const meta = JSON.parse(fs.readFileSync(META, 'utf8'));
   const ctx = boot(meta.seed);
-  if (instrument) vm.runInContext(TACTIC_HOOKS, ctx);
+  if (instrument === 'tactics') vm.runInContext(TACTIC_HOOKS, ctx);
+  if (instrument === 'behaviors') { vm.runInContext(fs.readFileSync(new URL('./behaviors.js', import.meta.url), 'utf8'), ctx, { filename: 'behaviors.js' }); vm.runInContext(BEHAVIOR_HOOKS, ctx); }
   ctx.__meta = meta;
   vm.runInContext(`newGame(__meta.diff, __meta.start); enterGame(); showIntro();`, ctx);
   const log = fs.existsSync(LOG) ? fs.readFileSync(LOG, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l)) : [];
@@ -407,7 +489,8 @@ try {
     fs.writeFileSync(META, JSON.stringify(meta, null, 1)); fs.writeFileSync(LOG, '');
     rest.splice(0, 1, 'look');
   }
-  if (rest[0] === 'tactics') { const r = replay(true); console.log(JSON.stringify(tacticsOf(r.ctx, r.log))); process.exit(0); }
+  if (rest[0] === 'tactics') { const r = replay('tactics'); console.log(JSON.stringify(tacticsOf(r.ctx, r.log))); process.exit(0); }
+  if (rest[0] === 'behaviors') { const r = replay('behaviors'); console.log(JSON.stringify(behaviorsOf(r.ctx))); process.exit(0); }
   const { ctx, log, meta } = replay();
   const capped = () => meta.cap && vm.runInContext('S.day', ctx) > meta.cap;
   let last = null;
