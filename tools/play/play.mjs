@@ -304,6 +304,7 @@ function replay() {
 
 const status = ctx => vm.runInContext(`(() => ({ day: S.day, cap: __meta.cap, phase: S.phase, stones: S.stones, heat: S.heat, rentDue: S.rentDue, rent: rentAmount(), deed: deedPrice(),
   conds: condList('me').map(c => c.label), realm: realmName(), virtue: S.virtue, kills: S.stats.kills || 0,
+  fate: S.fate ? { total: S.fate.total, erupted: S.fate.erupted, buried: S.fate.buried, busts: S.fate.busts, infamy: S.fate.infamy, pending: S.fate.debts.length } : null,
   over: S.over ? { win: S.over.win, title: S.over.title, text: S.over.text } : null }))()`, ctx);
 
 try {
