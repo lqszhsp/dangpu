@@ -127,7 +127,7 @@ function visitMarket() {
 
 // 各方的特产，用极少功勋就能换到
 const MERIT_SHOP = {
-  mo:   [['corpse', 1], ['soul_wisp', 1], ['soul_pearl', 2], ['pill_blood', 3], ['sword_std', 4], ['iron_corpse', 25]],
+  mo:   [['corpse', 1], ['soul_wisp', 1], ['soul_pearl', 2], ['pill_blood', 3], ['sword_std', 4], ['live_soul', 6], ['cult_corpse', 8], ['iron_corpse', 25]],
   xian: [['pill_qi', 1], ['xian_talisman', 2], ['seal_xian', 3], ['pill_found', 12], ['xian_sword', 20]],
   yao:  [['spirit_fruit', 1], ['vine_fruit', 1], ['herb_blood', 2], ['beast_hide', 2], ['mihun_seed', 1]],
   ren:  [['iron_ore', 1], ['fu_paper', 1], ['cinnabar', 1], ['incense', 1], ['herb_dew', 1], ['jade_bottle', 1]],

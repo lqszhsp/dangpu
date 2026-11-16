@@ -2,6 +2,7 @@
 // 多物品行为对账：合成配方、加料、装瓶、封印、抹印、种魂印、破境——程序上能不能成，测试里材料出现过没有、有没有机会、做了几次。
 // 找出“代码里有、事实上凑不齐条件”的行为，并写明最常缺的是什么。
 //   node tools/playtest/behaviors.mjs <结果目录> [<结果目录> ...] [--out 报告.md]
+//   node tools/playtest/behaviors.mjs --check     只做“刻意去凑”：每条行为只走正当渠道做成一次，有做不成的就退出码非零
 // 目录在 tools/play/behaviors.js。每局用它自己那份游戏副本重放（换上当前的 tools/play 来数），不碰正在测的副本；
 // “程序可行”一栏用当前代码在新开的一局里把材料放齐了真的做一次
 import fs from 'node:fs';
@@ -15,6 +16,7 @@ import { loadGame } from '../lib/headless.mjs';
 const HERE = path.dirname(fileURLToPath(import.meta.url)), PLAYDIR = path.resolve(HERE, '../play'), LIB = path.resolve(HERE, '../lib');
 const argv = process.argv.slice(2), oi = argv.indexOf('--out'), OUT = oi >= 0 ? argv[oi + 1] : null;
 const roots = argv.filter((a, i) => !a.startsWith('--') && (oi < 0 || i !== oi + 1));
+if (!roots.length && !argv.includes('--check')) { console.log('用法：node tools/playtest/behaviors.mjs <结果目录>... [--out 报告.md] | --check'); process.exit(1); }
 const NAME = { kind: '善良', ruthless: '不择手段', balanced: '权衡' };
 
 // ───────────── 程序可行：放齐材料真的做一次 ─────────────
@@ -72,6 +74,19 @@ function feasibility() {
   })()`, ctx);
 }
 
+// ───────────── 刻意去凑：只走正当渠道（买、自己做）做成一次 ─────────────
+
+let DLB_CTX = null;
+function dlbCtx() {
+  if (DLB_CTX) return DLB_CTX;
+  DLB_CTX = loadGame([], { quiet: true });
+  vm.runInContext(fs.readFileSync(path.join(PLAYDIR, 'behaviors.js'), 'utf8'), DLB_CTX);
+  vm.runInContext(fs.readFileSync(path.join(HERE, 'deliberate.js'), 'utf8'), DLB_CTX, { filename: 'deliberate.js' });
+  return DLB_CTX;
+}
+const deliberate = () => vm.runInContext('deliberateAll()', dlbCtx());
+const entries = () => vm.runInContext('startEntries()', dlbCtx());
+
 // ───────────── 每局的漏斗 ─────────────
 
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'behaviors-'));
@@ -94,7 +109,18 @@ for (const root of roots) for (const id of fs.readdirSync(root)) {
   games.push({ id, root: path.basename(root), persona: Object.keys(NAME).find(k => NAME[k] === persona) || persona, done: !!res, b: behaviorsOf(base) });
 }
 fs.rmSync(TMP, { recursive: true, force: true });
-const ok = games.filter(g => !g.b.error), feas = feasibility();
+const ok = games.filter(g => !g.b.error), feas = feasibility(), dlb = deliberate();
+if (argv.includes('--check')) {
+  const bad = Object.entries(dlb).filter(([, x]) => !x.ok);
+  const ent = entries(), badStart = ent.flatMap(st => st.groups.filter(g => !g.ok).map(g => `${st.name}·${g.name}`));
+  console.log('各开局的起步路线（开局设备至少一条低阶就做得成的行为）：');
+  for (const st of ent) console.log(`  ${st.groups.every(g => g.ok) ? '✓' : '✗'} ${st.name.padEnd(5)} ${st.groups.map(g => `${g.name}：${g.ok ? `${g.best.name}（${g.best.days} 天${g.best.rep ? `，魔宗声望 ${g.best.rep}` : ''}），低阶可做 ${g.lowCount}/${g.total}` : '没有低阶就做得成的'}`).join('；')}`);
+  console.log('');
+  for (const [id, x] of Object.entries(dlb)) console.log(`${x.ok ? '✓' : '✗'} ${(x.tier || '').padEnd(3)} ${id.padEnd(14)} ${x.ok ? `${x.days} 天，${x.spent} 灵石${x.rep ? `，魔宗声望 ${x.rep}` : ''}${x.merit ? `，功勋 ${x.merit}` : ''}` : x.err || '做不成'}  ${Object.entries(x.route).filter(([, v]) => /拾荒|功勋/.test(v)).map(([k, v]) => `${k}←${v}`).join('、')}`);
+  console.log(bad.length ? `\n${bad.length} 种行为刻意去凑也做不成` : `\n✓ ${Object.keys(dlb).length} 种行为只走正当渠道都做得成`);
+  console.log(badStart.length ? `✗ 这些开局设备起步没有低阶路线：${badStart.join('、')}` : `✓ ${ent.length} 个开局起步都能靠购买和低风险拾荒`);
+  process.exit(bad.length || badStart.length ? 1 : 0);
+}
 
 // ───────────── 汇总 ─────────────
 
@@ -107,10 +133,11 @@ const rows = ids.map(id => {
   const miss = {};
   for (const x of per) for (const [k, n] of Object.entries(x.miss || {})) miss[k] = (miss[k] || 0) + n;
   const top = Object.entries(miss).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k, n]) => `${k}（${Math.round(n / Math.max(1, nights - oppN) * 100)}%）`).join('、');
-  const f = feas[id];
-  const diag = f !== true ? `✗ 程序上做不成${typeof f === 'string' ? `：${f}` : ''}` : !seen ? '⚠ 材料从没凑全过：事实上可能无法发生'
+  const f = feas[id], dx = dlb[id];
+  const route = dx && dx.ok ? `✓ ${dx.days} 天${dx.rep ? `·魔宗声望 ${dx.rep}` : ''}` : `✗ ${dx ? dx.err || '做不成' : '—'}`;
+  const diag = f !== true ? `✗ 程序上做不成${typeof f === 'string' ? `：${f}` : ''}` : dx && !dx.ok ? '✗ 刻意去凑也凑不齐' : !seen ? '⚠ 材料从没凑全过：事实上可能无法发生'
     : !oppG ? '⚠ 材料出现过，条件从没同时凑齐' : !doneG ? '有机会，没人用' : '正常';
-  return { id, name, f, seen, oppG, oppN, doneG, doneN, top, diag };
+  return { id, name, f, route, seen, oppG, oppN, doneG, doneN, top, diag };
 });
 // 卡住的材料：各局手上从没出现过的、配方要用的东西，写出代码里它的来路，分清“弄不到”和“没去弄”
 const seenAny = new Set(ok.flatMap(g => g.b.seen || []));
@@ -141,14 +168,15 @@ let md = `## 多物品行为对账
 ${ok.length} 局（${[...new Set(ok.map(g => g.root))].join('、')}），共 ${nights} 夜${games.length > ok.length ? `；${games.length - ok.length} 局重放出错没算` : ''}。
 
 - **程序可行**：用当前代码新开一局，把材料、设备、手艺放齐了真的做一次，看做不做得成。
+- **刻意去凑**：一个只走正当渠道的模拟玩家（货郎、鬼市、批发处、买设备、买秘籍、自己开炉做；不靠拾荒、客人来卖、杀人、故事偶得），从新开一局起把这条行为做成一次要几天、要多少魔宗声望。
 - **材料凑全过**：这条行为要的每样东西都在玩家手上出现过（不必同时）的局数。
 - **有机会**：设备、材料、手艺、模块同一夜全在手上的局数 / 夜数。
 - **做过**：实际做成的局数 / 次数（从真实产出数）。
 - **最常缺**：没机会的那些夜里，离做成最近的那种做法缺什么，括号里是占没机会夜数的比例。
 
-| 行为 | 程序可行 | 材料凑全过 | 有机会（局 / 夜） | 做过（局 / 次） | 诊断 | 最常缺 |
-| --- | --- | --- | --- | --- | --- | --- |
-${rows.sort((a, b) => order[a.diag[0]] - order[b.diag[0]] || a.doneN - b.doneN).map(r => `| ${r.name} | ${r.f === true ? '✓' : '✗'} | ${r.seen} | ${r.oppG} / ${r.oppN} | ${r.doneG} / ${r.doneN} | ${r.diag} | ${r.top || '—'} |`).join('\n')}
+| 行为 | 程序可行 | 刻意去凑 | 材料凑全过 | 有机会（局 / 夜） | 做过（局 / 次） | 诊断 | 最常缺 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+${rows.sort((a, b) => order[a.diag[0]] - order[b.diag[0]] || a.doneN - b.doneN).map(r => `| ${r.name} | ${r.f === true ? '✓' : '✗'} | ${r.route} | ${r.seen} | ${r.oppG} / ${r.oppN} | ${r.doneG} / ${r.doneN} | ${r.diag} | ${r.top || '—'} |`).join('\n')}
 ${stuck.length ? `\n### 从没出现过的材料\n\n配方要用、但所有局里玩家手上一次都没有过的东西，和代码里它能从哪儿来：\n\n| 材料 | 来路 |\n| --- | --- |\n${stuck.map(x => `| ${x.name} | ${x.src.join('、') || '**没找到来路**（只能靠故事、报恩之类偶得）'} |`).join('\n')}\n` : ''}${Object.keys(unlisted).length ? `\n**目录没登记的产出**（behaviors.js 该补一条）：${Object.entries(unlisted).map(([k, n]) => `${k} ×${n}`).join('、')}\n` : ''}
 ### 按性格
 

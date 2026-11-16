@@ -331,15 +331,27 @@ export function tables(h) {
       }));
     },
 
+    // 一件货从哪儿能刻意弄到：货郎、鬼市与批发处、拾荒（注明险不险）、功勋兑换
+    sourcesOf(id) {
+      const out = [];
+      const sup = G.SUPPLY.find(s => s[0] === id);
+      if (sup) out.push(sup[2] > -100 ? `货郎（魔宗声望 ${sup[2]}）` : '货郎');
+      for (const d of Object.values(G.DEALERS)) if (d.sells.some(([x]) => x === id)) out.push(d.name);
+      for (const l of G.LOCATIONS) if (l.loot.some(([x]) => x === id)) out.push(`拾荒·${l.name}${l.danger >= 0.1 ? '（险）' : ''}`);
+      for (const l of G.LOCATIONS) if ((l.warLoot || []).some(([x]) => x === id) && !l.loot.some(([x]) => x === id)) out.push(`开战后拾荒·${l.name}`);
+      for (const [f, list] of Object.entries(G.MERIT_SHOP)) { const m = list.find(([x]) => x === id); if (m) out.push(`${G.FACTIONS[f].name}功勋 ${m[1]}`); }
+      return out.join('、');
+    },
+
     // 货物图鉴：一类一张表
     catalog() {
       return Object.entries(G.CATS).map(([cat, name]) => {
         const list = Object.entries(G.ITEMS).filter(([, it]) => it.cat === cat);
         if (!list.length) return '';
-        return `### ${name}\n\n` + table(['货', '底价', '占格', '标记', '说明'], list.map(([id, it]) => {
+        return `### ${name}\n\n` + table(['货', '底价', '占格', '标记', '刻意去弄', '说明'], list.map(([id, it]) => {
           mark('item', id);
           const flags = [it.contra ? '仙门禁物' : '', it.illicit ? '魔宗禁药' : '', it.additive ? `可${G.LACE[it.additive].verb.replace(/^掺了|^下了|^添了|^种了/, '加')}` : '', it.war ? '战时涨价' : '', it.lux ? '奢侈' : ''].filter(Boolean).join('、');
-          return [`**${it.name}**`, it.base, `${it.w}×${it.h}`, flags || '—', it.desc || ''];
+          return [`**${it.name}**`, it.base, `${it.w}×${it.h}`, flags || '—', this.sourcesOf(id) || '自己做、客人来卖或机缘', it.desc || ''];
         }));
       }).filter(Boolean).join('\n\n');
     },

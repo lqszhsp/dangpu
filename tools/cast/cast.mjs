@@ -578,6 +578,10 @@ async function ready(only) {
     const gc = spawnSync(process.execPath, [path.join(GAME, 'tools/guide/guide.mjs'), 'check'], { encoding: 'utf8' });
     if (gc.status) { console.log(`✗ 攻略与程序对不上（运行 node tools/guide/guide.mjs build 后检查差异）：\n${(gc.stderr || gc.stdout).split('\n').slice(0, 12).join('\n')}`); bad++; }
     else if (!flag('quiet')) console.log('✓ 攻略与程序一致');
+    // 多物品行为：每种配方、加料只要刻意去凑都做得成，各开局起步靠购买和低风险拾荒走得通
+    const bc = spawnSync(process.execPath, [path.join(GAME, 'tools/playtest/behaviors.mjs'), '--check'], { encoding: 'utf8' });
+    if (bc.status) { console.log(`✗ 有多物品行为刻意去凑也做不成：\n${(bc.stdout + bc.stderr).split('\n').filter(l => /✗/.test(l)).slice(0, 12).join('\n')}`); bad++; }
+    else if (!flag('quiet')) console.log('✓ 多物品行为刻意去凑都做得成');
   }
   const quiet = flag('quiet');
   let okN = 0;
