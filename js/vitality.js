@@ -59,6 +59,13 @@ function costText(key, mult = 1) {
 function consume(it) {
   const cure = cureBy(it);
   if (cure) { cureCond('me', cure); log(`服下${itemName(it)}，${CONDS[cure].name}好了。`, 'gain'); }
+  // 吃下别人掺过料的货：自己吃这个亏（药效先到，料后发作）
+  if (it.laced && it.laced !== 'tonic' && it.lacedBy !== 'me') {
+    it.lacedSeen = true;
+    if (it.laced === 'poison') addCond('me', 'poisoned', 2, `${itemName(it)}里掺了尸毒`);
+    else if (it.laced === 'control') addCond('me', 'injured', 1, `${itemName(it)}里藏着噬心蛊，你运功把它逼了出来`);
+    else { drain(0, 30); log(`${itemName(it)}里掺了忘忧散，你飘飘然了半晌，精神 -30。`, 'loss'); }
+  }
   const r = restoreOf(it);
   if (!r) { if (cure) { destroyItem(it); return null; } return '这东西补不了气力。'; }
   const before = { ...S.vit };

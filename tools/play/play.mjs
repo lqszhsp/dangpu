@@ -253,6 +253,8 @@ const TACTIC_HOOKS = `
   wrap('dressUp', (f, a) => { if (inForge) inc('作伪：以次充好'); return f(...a); });
   wrap('sealItem', (f, a) => { inc('作伪：假封印'); return f(...a); });
   wrap('eraseMark', (f, a) => { inc('抹印销赃'); return f(...a); });
+  wrap('studyFake', (f, a) => { const it = a[0], kind = it && it.laced && it.lacedSeen ? '拆解学手法：掺料' : it && it.fake ? '拆解学手法：仿造' : '拆解学手法：作伪'; const r = f(...a); if (!r) inc(kind); return r; });
+  wrap('quickInspect', (f, a) => { const r = f(...a); if (r && r.laced) inc('验出别人掺的料'); return r; });
   wrap('killPerson', (f, a) => { const r = f(...a); if (r && !r.err) inc(r.ok === false ? '杀人（失手）' : '杀人'); return r; });
   wrap('soulMark', (f, a) => { const r = f(...a); if (r && !r.err) inc('种魂印'); return r; });
   wrap('runCommand', (f, a) => { const r = f(...a); if (r && !r.err) inc('差遣受控者'); return r; });

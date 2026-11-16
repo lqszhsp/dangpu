@@ -92,6 +92,8 @@ function load() {
   initKarma(); initFate();
   initConditions();
   pruneUnknownItems();
+  // 旧存档里掺了料的货都是你自己掺的（那时市面上还没有别人掺好的）
+  Object.values(S.items).forEach(it => { if (it.laced && !it.lacedBy && !it.lacedSeen) it.lacedBy = 'me'; });
   if (!Object.keys(S.story).length) initStories();
   return S;
 }
@@ -799,6 +801,8 @@ function sellSpec(faction) {
   const id = weighted(SELL_POOLS[faction]);
   const extra = {};
   if (ITEMS[id].appraise) extra.fake = Math.random() < 0.4;
+  // 客人来卖的丹药、灵酒、灵果，偶尔是别人掺过料的——他自己多半也不知道
+  marketLace(id, extra, faction === 'mo' ? 0.15 : faction === 'yao' ? 0.1 : 0.06);
   if ((faction === 'mo' && Math.random() < 0.4) || (faction === 'ren' && Math.random() < 0.12)) extra.stolen = rint(3, 6);
   return { id, extra };
 }
@@ -1265,7 +1269,7 @@ function buyDeed() {
 
 function buySupply(entry) {
   if (entry.stock <= 0 || S.stones < entry.price) return '灵石不够';
-  const it = makeItem(entry.id, { q: rint(40, 70) });
+  const it = makeItem(entry.id, marketLace(entry.id, { q: rint(40, 70) }, 0.04));
   if (dressable(it) && Math.random() < 0.18) dressUp(it, rint(1, 2));
   if (!autoPlace(it)) { destroyItem(it); return '库房和地面都放不下了'; }
   it.cost = entry.price; it.boughtDay = S.day;
@@ -1297,7 +1301,8 @@ function buyUpgrade(id) {
 }
 
 function sellToBroker(it) {
-  const price = Math.max(1, Math.round(trueValue(it) * 0.4));
+  // 掺过料的货牙人一闻就知道，只肯出一成
+  const price = Math.max(1, Math.round(trueValue(it) * (it.laced && it.lacedBy !== 'me' && it.lacedSeen ? 0.1 : 0.4)));
   if (ITEMS[it.id].contra) addHeat(2);
   earn(price, `把${itemName(it)}折价 ${price} 灵石卖给了鬼市牙人。`);
   destroyItem(it);

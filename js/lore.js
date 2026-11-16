@@ -95,8 +95,8 @@ function buildLore() {
   add('law_heat', '执法堂', 'mid', ['law', 'shady', 'mo'], `执法堂的关注涨满就锁人。禁物别摆陈列柜，${UPGRADES.find(u => u.id === 'hidden').name}和柜台巡查不搜；巡查来了什么也没查到，关注大降。`);
   add('law_bribe', '执法堂', 'high', ['law', 'shady'], '巡查能打点：清官要价高、收惯了的越来越好说话；给少了反倒觉得受辱。替执法堂盯着通缉犯，举报能领赏、关注也降。', true);
   // 作恶的门道
-  add('evil_fake', '偏门生意', 'high', ['shady', 'smith', 'mo'], `作伪台配上作伪秘籍能以次充好，读到${loreList(BOOKS.filter(b => b[1] === 'forgery' && b[6]).map(b => b[6][0]))}的仿法还能照样仿造；做工越精越少人看得穿。`, true);
-  add('evil_lace', '偏门生意', 'high', ['shady', 'medic', 'gu'], `${loreList(Object.keys(ITEMS).filter(id => ITEMS[id].additive && ITEMS[id].additive !== 'tonic'))}都能掺进${loreList(LACEABLE.slice(0, 4))}这类货里，外表看不出；对方越精、越不信你越容易识破。`, true);
+  add('evil_fake', '偏门生意', 'high', ['shady', 'smith', 'mo'], `做旧的手法是这样的……作伪台配上手艺能以次充好，读到${loreList(BOOKS.filter(b => b[1] === 'forgery' && b[6]).map(b => b[6][0]))}的仿法还能照样仿造；做工越精越少人看得穿。`, true);
+  add('evil_lace', '偏门生意', 'high', ['shady', 'medic', 'gu'], `${loreList(Object.keys(ITEMS).filter(id => ITEMS[id].additive && ITEMS[id].additive !== 'tonic'))}都能掺进${loreList(LACEABLE.slice(0, 4))}这类货里，外表看不出；手法是这样的……学会了掺得干净，别人掺过的你一验就知道。对方越精、越不信你越容易识破。`, true);
   add('evil_erase', '偏门生意', 'mid', ['shady', 'mo'], '赃物上有原主的神识烙印，照妖镜够好才看得见，抹印术够重才抹得掉；抹不干净，原主会循迹找上门。', true);
   add('evil_seal', '偏门生意', 'mid', ['shady', 'talisman', 'xian'], `给货贴一道${loreN('seal_xian')}，看着像名门所出，身价翻倍。`, true);
   // 因果
@@ -107,6 +107,12 @@ function buildLore() {
   return L;
 }
 const loreAll = () => LORE || (LORE = buildLore());
+
+// 偏门门道听懂了就是手艺：加料的手法、以次充好的入门
+const LORE_GRANTS = {
+  evil_lace: () => { S.laceKnown = S.laceKnown || {}; Object.keys(LACE).filter(k => k !== 'tonic').forEach(k => { S.laceKnown[k] = 1; }); log('你学会了掺料的手法：往后掺得干净，别人掺过的货你也闻得出来。', 'gold'); },
+  evil_fake: () => { if (!techLv('forgery')) { S.tech.forgery = 1; log('你学会了以次充好的入门手法（作伪一重）。', 'gold'); } },
+};
 const loreTip = id => loreAll().find(t => t.id === id);
 
 // ───────────── 谁懂什么 ─────────────
@@ -159,5 +165,6 @@ function askLore(p, id, pay = false) {
   else remember(p, '跟你说了些门道。', 1);
   S.lore = S.lore || {};
   S.lore[id] = { day: S.day, from: p.name };
+  if (LORE_GRANTS[id]) LORE_GRANTS[id]();
   return { text: `${p.name}${o.kind === 'sell' ? `收了 ${o.price} 灵石，` : ''}压低声音说：“${t.text}”`, tip: t };
 }

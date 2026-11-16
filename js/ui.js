@@ -60,7 +60,7 @@ function itemTags(it) {
   const tags = [];
   if (ITEMS[it.id].contra) tags.push(['contra', '仙门禁物']);
   if (ITEMS[it.id].illicit) tags.push(['stolen', '魔宗禁药']);
-  if (it.laced) tags.push(['laced', `暗中${LACE[it.laced].verb}`]);
+  if (lacedKnown(it)) tags.push(['laced', it.lacedBy === 'me' ? `暗中${LACE[it.laced].verb}` : `被人${LACE[it.laced].verb}（验出来了）`]);
   if (it.mark) tags.push(['stolen', markVisible(it) ? `原主烙印 · ${cn(it.mark.str)}重` : '似有残存神识，看不真切']);
   if (it.sealed) tags.push(['laced', `贴了正派封印 · 做工${GRADE_NAMES[it.grade]}`]);
   if (it.bottled) tags.push(['real', '玉净瓶装']);
@@ -122,7 +122,7 @@ function itemHTML(it, extraCls = '', attrs = '') {
   if (it.id === 'gu' && it.growth < 100) badges.push(`<span class="bar"><i style="width:${it.growth}%"></i></span>`);
   if (['herb_seed', 'mihun_seed', 'vine_seed'].includes(it.id) && it.growth) badges.push(`<span class="bar"><i style="width:${it.growth}%"></i></span>`);
   if (it.id === 'corpse') badges.push(`<span class="bar rot"><i style="width:${clamp(it.fresh / 6 * 100, 0, 100)}%"></i></span>`);
-  if (it.laced) badges.push(`<span class="laced-dot" title="${LACE[it.laced].verb}"></span>`);
+  if (lacedKnown(it)) badges.push(`<span class="laced-dot" title="${LACE[it.laced].verb}"></span>`);
   if (it.id === 'spirit_crystal') badges.push(`<span class="bar power"><i style="width:${(it.charge || 0) / CRYSTAL_CAP * 100}%"></i></span>`);
   if (hasQuality(it) && it.q >= 85) extraCls += ' q-top';
   const style = it.pos && !extraCls.includes('preview') ? `left:${it.pos.x * CELL}px;top:${it.pos.y * CELL}px;` : 'position:relative;';
@@ -498,7 +498,7 @@ function tradePanel(c) {
   if (d.give.length || d.take.length || d.reject.length) info += `<p class="small muted">货盘上${ta(personOf(c))}要 ${d.give.length} 件（心理价约 ${Math.round(d.V)}）${d.reject.length ? `，<span class="bad">不要${d.reject.map(itemName).join('、')}</span>` : ''}；你要收 ${d.take.length} 件（开价 ${d.A}）。</p>`;
   const mid = `<div class="trade">${goods.length ? gridHTML('counter', `${ta(personOf(c))}的货 · 点选`) : ''}${gridHTML('tray', '你的货盘 · 拖货上来')}</div>${info}`;
   const acts = `${it && ITEMS[it.id].appraise && !it.told ? `<button class="btn small" data-act="appraise-counter">${icon('ic_appraise')}照妖镜</button>` : ''}
-    ${it && dressable(it) && it.seen == null ? `<button class="btn small" data-act="inspect-item">${icon('ic_appraise')}验货</button>` : ''}
+    ${it && (dressable(it) || LACEABLE.includes(it.id)) && it.seen == null ? `<button class="btn small" data-act="inspect-item">${icon('ic_appraise')}验货</button>` : ''}
     ${it && dressable(it) && !it.disputed ? `<button class="btn small" data-act="dispute-flaw" title="${flawSeen ? '揭穿以次充好，压价' : '挑毛病压价'}">${flawSeen ? '揭穿' : '压价'}</button>` : ''}
     ${it ? `<button class="btn small" data-act="take-toggle">${taking ? '不收' : '收下'}</button>` : ''}
     ${canTray ? `<button class="btn small wide-only" data-act="to-tray">选中的放上货盘</button>` : ''}
@@ -741,9 +741,11 @@ function selActions(s, inCard = false) {
   if (canBottle(s)) out.push('<button class="btn tiny" data-act="bottle">装瓶</button>');
   if (s.mark && markVisible(s)) out.push(`<button class="btn tiny" data-act="erase" ${canErase(s) ? '' : `disabled title="须抹印术${cn(s.mark.str)}重"`}>抹印（${costText('erase', s.mark.str)}）</button>`);
   if (canSeal(s)) out.push('<button class="btn tiny" data-act="seal">贴封印</button>');
-  if (dressable(s) && !s.forged) out.push('<button class="btn tiny" data-act="inspect-own">验货</button>');
+  if ((dressable(s) || LACEABLE.includes(s.id)) && !s.forged && s.lacedBy !== 'me' && !s.lacedSeen) out.push('<button class="btn tiny" data-act="inspect-own">验货</button>');
   if (knownFlaw(s) && !s.forged && (s.fake ? COUNTERFEITS[s.id] : isDressed(s))) out.push('<button class="btn tiny" data-act="study">拆解研究</button>');
-  out.push(`<button class="btn tiny" data-act="sell-broker">卖给货郎 ${Math.max(1, Math.round(trueValue(s) * 0.4))}</button>`);
+  // 验出了别人掺的料：吃下这个亏、贱卖给货郎、当好货转手骗人（谈价时照常卖）、或者拆开学他的手法
+  if (s.laced && s.lacedSeen && s.lacedBy !== 'me' && !laceSkill(s.laced)) out.push(`<button class="btn tiny" data-act="study">尝出手法（学会${LACE[s.laced].name}的掺法）</button>`);
+  out.push(`<button class="btn tiny" data-act="sell-broker">卖给货郎 ${Math.max(1, Math.round(trueValue(s) * (s.laced && s.lacedBy !== 'me' && s.lacedSeen ? 0.1 : 0.4)))}</button>`);
   if (inCard) out.push('<button class="btn tiny ghost" data-act="trash-sel">丢弃</button>');
   return out.join('');
 }
@@ -1273,9 +1275,9 @@ function openGift(pid) {
   openModal(() => { const pg = pager(items.filter(it => S.items[it.uid]), 6, `gift-${pid}`); modalHTML(`<h3>${icon('ic_gift')}送礼 · ${esc(p.name)}</h3>
     <p class="muted small">${ta(p)}看重的是对${ta(p)}的用处：${p.wish ? `最想要<b>${ITEMS[p.wish].name}</b>；` : ''}${p.addict ? '离不开忘忧散；' : ''}也看他手头是否宽裕、贪念轻重。掺了料的东西，送出去就由不得你了。</p>
     <div class="gift-list">${items.length ? pg.items.map(it => `<div class="gift-row" data-act="gift-give" data-pid="${pid}" data-uid="${it.uid}">
-      ${itemHTML(Object.assign({}, it, { pos: null }), 'preview mini')}<span>${esc(itemName(it))}${it.laced ? `<em class="laced-txt">（${LACE[it.laced].verb}）</em>` : ''}</span>
+      ${itemHTML(Object.assign({}, it, { pos: null }), 'preview mini')}<span>${esc(itemName(it))}${lacedKnown(it) ? `<em class="laced-txt">（${LACE[it.laced].verb}）</em>` : ''}</span>
       <span class="good">好感约 +${giftAff(p, giftValue(p, it)) + (p.wish === it.id ? 10 : 0)}</span>
-      ${it.laced && LACE[it.laced].detect ? `<span class="bad small">识破 ${Math.round(laceDetectChance(p, it) * 100)}%</span>` : ''}</div>`).join('') : '<p class="muted">手头没有可送的东西。</p>'}</div>${pg.nav}
+      ${lacedKnown(it) && LACE[it.laced].detect ? `<span class="bad small">识破 ${Math.round(laceDetectChance(p, it) * 100)}%</span>` : ''}</div>`).join('') : '<p class="muted">手头没有可送的东西。</p>'}</div>${pg.nav}
     <div class="h-btns"><button class="btn ghost" data-act="person" data-pid="${pid}">返回</button></div>`, 'm-gift'); });
 }
 
@@ -1495,13 +1497,14 @@ const HANDLERS = {
   'inspect-own': () => tiredOr('inspect', () => HANDLERS['inspect-own-go']()),
   'inspect-own-go': () => {
     const it = S.items[sel], r = quickInspect(it);
-    toast(r.found ? `验出来了：${itemName(it)}以次充好，表面${it.sq}，实际只有${it.q}！` : `以你的眼力（${LENS_NAMES[r.lv]}），看不出${itemName(it)}有毛病。`, r.found ? 'bad' : '');
+    toast(r.laced ? `验出来了：${itemName(it)}被人${LACE[r.laced].verb}！吃下这个亏、贱卖、当好货转手，还是拆开学他的手法，由你。`
+      : r.found ? `验出来了：${itemName(it)}以次充好，表面${it.sq}，实际只有${it.q}！` : `以你的眼力（${LENS_NAMES[r.lv]}），看不出${itemName(it)}有毛病。`, r.found || r.laced ? 'bad' : '');
     renderAll();
   },
   'inspect-item': () => tiredOr('inspect', () => HANDLERS['inspect-item-go']()),
   'inspect-item-go': () => {
     const it = customerItem(), r = quickInspect(it);
-    toast(r.found ? `以次充好！表面${it.sq}，实际只有${it.q}。` : `以你的眼力（${LENS_NAMES[r.lv]}），看不出毛病。`, r.found ? 'bad' : '');
+    toast(r.laced ? `这货被人${LACE[r.laced].verb}！` : r.found ? `以次充好！表面${it.sq}，实际只有${it.q}。` : `以你的眼力（${LENS_NAMES[r.lv]}），看不出毛病。`, r.found || r.laced ? 'bad' : '');
     renderAll();
   },
   'dispute-flaw': () => tiredOr('dispute', () => HANDLERS['dispute-go']()),

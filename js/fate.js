@@ -2,7 +2,7 @@
 // 报应要赔的本金随你累计的恶行滚着涨：头几桩赔得起，做多了总有赔不起的一天（爆仓：抄货、挨打、执法堂盯上）。
 // 报应由苦主本人或亲友、同族上门讨；败露多了恶名在外，机遇跟着断：来客变少、托付的人不上门、好报不再来。
 // 行善能冲淡旧孽，隔一阵子不作恶，孽也会淡——一味行善赚得慢，一味作恶迟早爆仓，要在两头之间拿捏。
-// 这是魔门：坑蒙拐骗、卖人求赏是家常便饭，没有天道替谁伸冤。小恶没人当回事，要恶到一定份上才有人上门算账
+// 这是魔门：坑蒙拐骗、卖人求赏是家常便饭，没有天道替谁伸冤。开头小恶没人当回事；铺子做大了，盯着你的人就多了
 'use strict';
 
 const FATE_ODDS = 0.5;          // 一笔孽债败露的机会
@@ -10,7 +10,13 @@ const FATE_GROW = 1.18;         // 每作一分恶，往后的本金翻这么多
 const FATE_WAIT = [3, 9];       // 几日后见分晓
 const FATE_FADE = 21;           // 多少日不作恶，旧孽淡去一分
 const FATE_MERIT = 8;           // 积多少善（接济、放人、护人……），抵去一分旧孽
-const FATE_TOLERANCE = 3;       // 世道对恶的容忍：作这么多分恶，才算一分孽；恶名的门槛也高这么多倍
+// 世道对恶的容忍：作这么多分恶，才算一分孽；恶名的门槛也高这么多倍。开头宽、越往后越紧：
+// 第 FATE_TOL_DAYS[0] 日前是 FATE_TOL[0]，到第 FATE_TOL_DAYS[1] 日降到 FATE_TOL[1]
+const FATE_TOL = [3, 2], FATE_TOL_DAYS = [30, 90];
+function fateTolerance(day = S.day) {
+  const f = clamp((day - FATE_TOL_DAYS[0]) / (FATE_TOL_DAYS[1] - FATE_TOL_DAYS[0]), 0, 1);
+  return FATE_TOL[0] + (FATE_TOL[1] - FATE_TOL[0]) * f;
+}
 
 // 恶行的种类：报应从哪儿来、怎么来
 const SINS = {
@@ -25,9 +31,9 @@ function initFate() {
   S.fate = Object.assign({ n: 0, debts: [], infamy: 0, merit: 0, last: 0, total: 0, erupted: 0, buried: 0, busts: 0, patrons: 0 }, S.fate || {});
 }
 
-// 一笔恶事若败露要赔的本金：分量越重、日子越往后、作恶越多越大
-const fateBase = () => 40 + 4 * S.day;
-function fateStake(w = 1) { return Math.round(w * fateBase() * Math.pow(FATE_GROW, S.fate.n / FATE_TOLERANCE) / 10) * 10; }
+// 一笔恶事若败露要赔的本金：分量越重、日子越往后、作恶越多越大；后期涨得越来越快
+const fateBase = () => 40 + 4 * S.day + S.day * S.day / 20;
+function fateStake(w = 1) { return Math.round(w * fateBase() * Math.pow(FATE_GROW, S.fate.n / fateTolerance()) / 10) * 10; }
 
 // 选项提示：这是一桩恶事，赌注多大
 const sinHint = ([kind, w]) => `作恶（${SINS[kind].name}）：五成会败露，败露约赔 ${fateStake(w)} 灵石，往后作恶的本金也跟着涨`;
@@ -50,7 +56,7 @@ function fateMerit(p, n) {
   const F = S.fate;
   if (n < 2) return;
   F.merit += n;
-  while (F.merit >= FATE_MERIT && F.n > 0) { F.merit -= FATE_MERIT; F.n = Math.max(0, F.n - FATE_TOLERANCE); }
+  while (F.merit >= FATE_MERIT && F.n > 0) { F.merit -= FATE_MERIT; F.n = Math.max(0, F.n - fateTolerance()); }
   if (p && !p.official && !p.patron) { p.patron = true; F.patrons++; }
 }
 
@@ -58,13 +64,13 @@ function fateMerit(p, n) {
 
 const fateInfamy = () => (S.fate ? S.fate.infamy : 0);
 // 托付、求助、报恩的人还肯不肯上门
-const fateTrusted = () => fateInfamy() < 4 * FATE_TOLERANCE;
+const fateTrusted = () => fateInfamy() < 4 * fateTolerance();
 // 恶名在外，来客变少
-const fateCustomerLoss = () => fateInfamy() >= 8 * FATE_TOLERANCE ? 2 : fateInfamy() >= 4 * FATE_TOLERANCE ? 1 : 0;
+const fateCustomerLoss = () => fateInfamy() >= 8 * fateTolerance() ? 2 : fateInfamy() >= 4 * fateTolerance() ? 1 : 0;
 // 恶名让客人压价
-const infamyDiscount = () => Math.min(0.2, fateInfamy() * 0.025 / FATE_TOLERANCE);
+const infamyDiscount = () => Math.min(0.2, fateInfamy() * 0.025 / fateTolerance());
 // 名声还算干净：好报、奇遇还会找上门
-const fateClean = () => fateInfamy() < FATE_TOLERANCE;
+const fateClean = () => fateInfamy() < fateTolerance();
 
 // ───────────── 善名：口碑与熟客 ─────────────
 
@@ -79,7 +85,7 @@ function fateTick() {
   initFate();
   const F = S.fate, out = [];
   // 隔一阵子不作恶，旧孽淡一分
-  if (F.n > 0 && S.day - F.last >= FATE_FADE) { F.n = Math.max(0, F.n - FATE_TOLERANCE); F.last = S.day; }
+  if (F.n > 0 && S.day - F.last >= FATE_FADE) { F.n = Math.max(0, F.n - fateTolerance()); F.last = S.day; }
   const due = F.debts.filter(d => d.due <= S.day);
   F.debts = F.debts.filter(d => d.due > S.day);
   for (const d of due) {

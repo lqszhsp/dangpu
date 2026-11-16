@@ -270,11 +270,11 @@ export function tables(h) {
     },
     // 口碑：善名、恶名对客人出价与来客的影响
     trust() {
-      const t = G.FATE_TOLERANCE, rows = [[10, 0], [20, 0], [45, 0], [70, 0], [100, 0], [10, 4 * t], [10, 8 * t]].map(([v, inf]) => {
+      const t = G.FATE_TOL[0], rows = [[10, 0], [20, 0], [45, 0], [70, 0], [100, 0], [10, 4 * t], [10, 8 * t]].map(([v, inf]) => {
         h.fresh(); G.S.virtue = v; G.S.fate.infamy = inf;
         return [inf ? `恶名 ${inf}` : `善名 ${v}`, `${Math.round((G.trustMul() - 1) * 1000) / 10}%`, (G.S.virtue >= 45 ? 1 : 0) - G.fateCustomerLoss()];
       });
-      return table(['', '客人出价', '每日来客（不算熟客荐来的）'], rows);
+      return table(['（开局时）', '客人出价', '每日来客（不算熟客荐来的）'], rows);
     },
 
     // 打听门道：各难度下要多少交情才肯白说，平平时要价多少（以一位贪念中等、不怎么守规矩的行商为例）

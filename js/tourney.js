@@ -121,7 +121,7 @@ Object.assign(STORIES, {
               spend(100, `押注${f.name}夺魁。`); st.flags.bet = { pid: f.pid, n: 100 };
               return { text: `执事收了灵石，在押簿上画了个圈：“${f.name}，一赔三。”`, go: ['bout', st.flags.day - S.day] };
             } });
-          const dose = ownItem(it => it.id === 'corpse_poison' || it.id === 'wangyou' || it.laced === 'poison' || it.laced === 'addict');
+          const dose = ownItem(it => it.id === 'corpse_poison' || it.id === 'wangyou' || (lacedKnown(it) && (it.laced === 'poison' || it.laced === 'addict')));
           list.push({ label: `暗中给${field[0].name}下药`, hint: dose ? `用掉${itemName(dose)}；${ta(field[0])}上擂时中毒；被识破则执法堂关注 +12` : '手里没有尸毒、忘忧散或掺了料的货',
             req: () => !!dose || '没有能下的药', run: () => {
               const f = field[0];
