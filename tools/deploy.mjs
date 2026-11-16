@@ -9,7 +9,8 @@
 //   - 只上线 main，且 main 必须和 origin 对得上（落后就停，领先就先推上去）；
 //   - 用 git archive 打包：没提交的改动、别的分支上的改动都传不上去；
 //   - 线上若有文件的内容在仓库历史里从没出现过（有人绕开本工具直接改了线上），停下来列出——先合进 main 再上线；
-//   - 换软链后逐个请求首页引用的脚本，有一个不是 200 就自动切回原来的版本。
+//   - 换软链前查新版本：首页引用的文件都在、谁都读得了，不满足就不换；
+//   - 换上后经 Caddy 逐个请求首页引用的脚本，有一个不是 200 就切回原来的版本、删掉新版本。
 // --force 跳过“线上有仓库里没有的改动”这一项（那些改动会丢）。
 import fs from 'node:fs';
 import os from 'node:os';
@@ -120,17 +121,19 @@ const swap = name => ssh(`[ -d releases/${name} ] || { echo 没有这个版本: 
 ln -sfn releases/${name} current.new && mv -Tf current.new current`);
 const logLine = (name, rev, note) => ssh(`printf '%s\\t%s\\t%s\\t%s\\n' "$(date '+%F %T')" '${name}' '${rev}' ${JSON.stringify(note.replace(/[\t\n'"$`\\]/g, ' '))} >> deploys.log`);
 
+// 首页引用的脚本与样式
+const shipRefs = html => [...new Set([...html.matchAll(/(?:src|href)="([^":#?]+\.(?:js|css))"/g)].map(m => m[1]))];
+
 // 经 Caddy 请求首页与它引用的每个脚本、样式
-function smoke(html) {
-  const refs = ['', ...new Set([...html.matchAll(/(?:src|href)="([^":#?]+\.(?:js|css))"/g)].map(m => m[1]))];
-  const out = ssh(refs.map(p => `printf '%s %s\\n' "$(curl -s -o /dev/null --max-time 20 --resolve ${DOMAIN}:443:127.0.0.1 -w '%{http_code}' 'https://${DOMAIN}/${p}')" '/${p}'`).join('\n'));
+function smoke(refs) {
+  const out = ssh(['', ...refs].map(p => `printf '%s %s\\n' "$(curl -s -o /dev/null --max-time 20 --resolve ${DOMAIN}:443:127.0.0.1 -w '%{http_code}' 'https://${DOMAIN}/${p}')" '/${p}'`).join('\n'));
   return out.split('\n').filter(l => l && !l.startsWith('200 '));
 }
 
 function rollback() {
   const st = remoteState();
   const to = args.filter(a => !a.startsWith('--'))[1]
-    || [...st.log].reverse().map(e => e.name).find(n => n !== st.current && st.releases.includes(n));
+    || [...st.log].reverse().find(e => e.name !== st.current && st.releases.includes(e.name) && !e.note.startsWith('上线失败'))?.name;
   if (!to) die('找不到可以切回去的版本（node tools/deploy.mjs list 看看）');
   swap(to);
   logLine(to, revOf(st, to) || '-', `回滚：从 ${st.current} 切回`);
@@ -160,14 +163,19 @@ function deploy() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'dangpu-ship-'));
   try {
     run('bash', ['-c', `git archive ${main} ${SHIP.join(' ')} | tar -x -C '${dir}'`]);
-    // 没变的文件与当前版本硬链接，不占地方
-    run('rsync', ['-a', '-c', '--delete', `--link-dest=${BASE}/releases/${st.current}/`, '-e', 'ssh -o LogLevel=ERROR', `${dir}/`, `${HOST}:${BASE}/releases/${name}/`]);
+    // 没变的文件与当前版本硬链接，不占地方；权限统一设好（临时目录是 700，原样带上去 Caddy 就读不了）
+    run('rsync', ['-a', '-c', '--delete', '--chmod=D755,F644', `--link-dest=${BASE}/releases/${st.current}/`, '-e', 'ssh -o LogLevel=ERROR', `${dir}/`, `${HOST}:${BASE}/releases/${name}/`]);
+    // 换上之前：首页引用的文件都在、谁都读得了；不满足就不换，线上一刻也不受影响
+    const refs = shipRefs(fs.readFileSync(path.join(dir, 'index.html'), 'utf8'));
+    const pre = ssh(`cd releases/${name}; for f in index.html ${refs.join(' ')}; do [ -f "$f" ] || echo "缺 $f"; done; find . ! -perm -o+r -print | head -5 | sed 's/^/读不了 /'`).trim();
+    if (pre) { ssh(`rm -rf 'releases/${name}'`); die(`新版本有问题，没有换上（线上不受影响）：\n  ${pre.split('\n').join('\n  ')}`); }
     swap(name);
-    const bad = smoke(fs.readFileSync(path.join(dir, 'index.html'), 'utf8'));
+    const bad = smoke(refs);
     if (bad.length) {
       swap(st.current);
-      logLine(name, main, `上线失败已切回 ${st.current}：${bad.join('，')}`);
-      die(`换上后这些请求不是 200，已切回 ${st.current}：\n  ${bad.join('\n  ')}`);
+      ssh(`rm -rf 'releases/${name}'`);
+      logLine(name, main, `上线失败，已切回 ${st.current} 并删掉此版本：${bad.length} 个请求不是 200，如 ${bad.slice(0, 3).join('，')}`);
+      die(`换上后 ${bad.length} 个请求不是 200，已切回 ${st.current}：\n  ${bad.slice(0, 10).join('\n  ')}`);
     }
     logLine(name, main, subject);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
