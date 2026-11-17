@@ -942,3 +942,11 @@
 {"id": "char:yao_fox_f1_sly", "status": "ok", "info": "77s gpt-image-2.5-sunburst-adobe", "t": 1794932235.9930565}
 {"id": "char:yao_fox_f1_wasted", "status": "ok", "info": "112s gpt-image-2.5-sunburst-adobe", "t": 1794932334.953001}
 {"id": "char:yao_fox_f1_thrall", "status": "ok", "info": "86s gpt-image-2.5-sunburst-adobe", "t": 1794932334.9530492}
+{"id": "char:yao_tiger_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794958106.407569}
+{"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794958106.407627}
+{"id": "char:yao_tiger_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794958310.5783706}
+{"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794958314.0376704}
+{"id": "char:yao_tiger_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794958520.2827766}
+{"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794958520.2830405}
+{"id": "char:yao_tiger_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794958725.7939684}
+{"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794958726.3306448}

@@ -1,0 +1,164 @@
+[
+{
+"id": "char:yao_tiger_f1",
+"prompt": "Cinematic photorealistic film still from a high-budget Chinese xianxia costume drama. Exactly one person in the image, alone. A real human actor, full body standing, facing the camera and looking straight into it, as if standing in front of a pawnshop counter and about to talk to the shopkeeper. a tiger demon man in human form: huge muscular actor with tiger-stripe prosthetic markings, amber eyes, fur mantle, wild hair, cast a different young actor for the same tiger demon: an adult man who looks about 24, handsome with a strong jaw and smooth unlined skin, faint tiger-stripe markings on the cheekbones and forearms, bright amber eyes, thick untamed dark hair with a few tawny streaks tied back loosely, tall broad-shouldered athletic build, a tiger fur mantle over a dark open-collared tunic with leather bracers, thumbs hooked in his belt, confident stance, a different pose, neutral calm expression. Moody low-key lighting: warm red lantern key light from the left, cold purple rim light, skin pores and fabric texture visible, 85mm lens. Isolated subject with the whole body visible from head to feet, transparent background, no text.",
+"out": "raw/chars/yao_tiger_f1.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"variant": "yao_tiger_f1"
+},
+{
+"id": "char:yao_tiger_f1_pleased",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: a satisfied pleased smile, relaxed eyes. Keep the transparent background.",
+"out": "raw/chars/yao_tiger_f1_pleased.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_tiger_f1.png"
+],
+"variant": "yao_tiger_f1_pleased"
+},
+{
+"id": "char:yao_tiger_f1_angry",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: furious: brows knitted, glaring, jaw clenched. Keep the transparent background.",
+"out": "raw/chars/yao_tiger_f1_angry.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_tiger_f1.png"
+],
+"variant": "yao_tiger_f1_angry"
+},
+{
+"id": "char:yao_tiger_f1_afraid",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: terrified: wide eyes, pale face, leaning back. Keep the transparent background.",
+"out": "raw/chars/yao_tiger_f1_afraid.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_tiger_f1.png"
+],
+"variant": "yao_tiger_f1_afraid"
+},
+{
+"id": "char:yao_tiger_f1_sly",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: scheming sly half-smile, narrowed calculating eyes. Keep the transparent background.",
+"out": "raw/chars/yao_tiger_f1_sly.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_tiger_f1.png"
+],
+"variant": "yao_tiger_f1_sly"
+},
+{
+"id": "char:yao_tiger_f1_wasted",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: gaunt and drug-addicted: hollow cheeks, dark eye circles, sweating, trembling, sickly pale skin. Keep the transparent background.",
+"out": "raw/chars/yao_tiger_f1_wasted.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_tiger_f1.png"
+],
+"variant": "yao_tiger_f1_wasted"
+},
+{
+"id": "char:yao_tiger_f1_thrall",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: mind-controlled thrall: eyes completely clouded milky white without pupils, blank slack face, black veins spreading over the face and neck, a faint dark mist around the head. Keep the transparent background.",
+"out": "raw/chars/yao_tiger_f1_thrall.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_tiger_f1.png"
+],
+"variant": "yao_tiger_f1_thrall"
+},
+{
+"id": "char:yao_snake_f1",
+"prompt": "Cinematic photorealistic film still from a high-budget Chinese xianxia costume drama. Exactly one person in the image, alone. A real human actor, full body standing, facing the camera and looking straight into it, as if standing in front of a pawnshop counter and about to talk to the shopkeeper. a snake demon woman in human form: real actress with subtle green scales on cheeks and neck, vertical pupils, dark green robes, cast a different young actor for the same snake demon: an adult man who looks about 23, cold and strikingly beautiful with delicate refined features, flawless pale cool skin with a few faint jade-green scales at the temples and down the side of the neck, pale gold vertical slit-pupil eyes, long straight black hair half tied up with a jade pin, tall slender build, layered dark green silk robes with silver serpent embroidery, hands folded calmly in front, a different pose, neutral calm expression. Moody low-key lighting: warm red lantern key light from the left, cold purple rim light, skin pores and fabric texture visible, 85mm lens. Isolated subject with the whole body visible from head to feet, transparent background, no text.",
+"out": "raw/chars/yao_snake_f1.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"variant": "yao_snake_f1"
+},
+{
+"id": "char:yao_snake_f1_pleased",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: a satisfied pleased smile, relaxed eyes. Keep the transparent background.",
+"out": "raw/chars/yao_snake_f1_pleased.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_snake_f1.png"
+],
+"variant": "yao_snake_f1_pleased"
+},
+{
+"id": "char:yao_snake_f1_angry",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: furious: brows knitted, glaring, jaw clenched. Keep the transparent background.",
+"out": "raw/chars/yao_snake_f1_angry.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_snake_f1.png"
+],
+"variant": "yao_snake_f1_angry"
+},
+{
+"id": "char:yao_snake_f1_afraid",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: terrified: wide eyes, pale face, leaning back. Keep the transparent background.",
+"out": "raw/chars/yao_snake_f1_afraid.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_snake_f1.png"
+],
+"variant": "yao_snake_f1_afraid"
+},
+{
+"id": "char:yao_snake_f1_sly",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: scheming sly half-smile, narrowed calculating eyes. Keep the transparent background.",
+"out": "raw/chars/yao_snake_f1_sly.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_snake_f1.png"
+],
+"variant": "yao_snake_f1_sly"
+},
+{
+"id": "char:yao_snake_f1_wasted",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: gaunt and drug-addicted: hollow cheeks, dark eye circles, sweating, trembling, sickly pale skin. Keep the transparent background.",
+"out": "raw/chars/yao_snake_f1_wasted.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_snake_f1.png"
+],
+"variant": "yao_snake_f1_wasted"
+},
+{
+"id": "char:yao_snake_f1_thrall",
+"prompt": "Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: mind-controlled thrall: eyes completely clouded milky white without pupils, blank slack face, black veins spreading over the face and neck, a faint dark mist around the head. Keep the transparent background.",
+"out": "raw/chars/yao_snake_f1_thrall.png",
+"size": "1024x1536",
+"quality": "high",
+"background": "transparent",
+"refs": [
+"raw/chars/yao_snake_f1.png"
+],
+"variant": "yao_snake_f1_thrall"
+}
+]

@@ -186,6 +186,14 @@ FACE_OVERRIDE = {
                   'long flowing silver-white hair loosely tied with red silk ribbons, white fox ears, a fluffy white fox tail, graceful slender figure, '
                   'layered sheer red and white silk robes worn slightly off the shoulders, elegant and tasteful, not explicit, '
                   'a relaxed charming pose with one hand lightly raised near the collar',
+    'yao_snake_f1': 'cast a different young actor for the same snake demon: an adult man who looks about 23, cold and strikingly beautiful with delicate refined features, '
+                    'flawless pale cool skin with a few faint jade-green scales at the temples and down the side of the neck, pale gold vertical slit-pupil eyes, '
+                    'long straight black hair half tied up with a jade pin, tall slender build, layered dark green silk robes with silver serpent embroidery, '
+                    'hands folded calmly in front, a different pose',
+    'yao_tiger_f1': 'cast a different young actor for the same tiger demon: an adult man who looks about 24, handsome with a strong jaw and smooth unlined skin, '
+                    'faint tiger-stripe markings on the cheekbones and forearms, bright amber eyes, thick untamed dark hair with a few tawny streaks tied back loosely, '
+                    'tall broad-shouldered athletic build, a tiger fur mantle over a dark open-collared tunic with leather bracers, '
+                    'thumbs hooked in his belt, confident stance, a different pose',
 }
 
 MOODS = {
