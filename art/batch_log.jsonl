@@ -935,3 +935,10 @@
 {"id": "item:fox_fire_low", "status": "ok", "info": "86s gpt-image-2.5-sunburst-adobe", "t": 1794925340.1357663}
 {"id": "item:fox_fire_high", "status": "ok", "info": "108s gpt-image-2.5-sunburst-adobe", "t": 1794925361.9692497}
 {"id": "item:fox_fire_top", "status": "ok", "info": "92s gpt-image-2.5-sunburst-adobe", "t": 1794925361.969459}
+{"id": "char:yao_fox_f1", "status": "ok", "info": "105s gpt-image-2.5-sunburst-adobe", "t": 1794932158.6873038}
+{"id": "char:yao_fox_f1_pleased", "status": "ok", "info": "64s gpt-image-2.5-sunburst-adobe", "t": 1794932223.0374732}
+{"id": "char:yao_fox_f1_angry", "status": "ok", "info": "66s gpt-image-2.5-sunburst-adobe", "t": 1794932225.1462421}
+{"id": "char:yao_fox_f1_afraid", "status": "ok", "info": "76s gpt-image-2.5-sunburst-adobe", "t": 1794932235.0144393}
+{"id": "char:yao_fox_f1_sly", "status": "ok", "info": "77s gpt-image-2.5-sunburst-adobe", "t": 1794932235.9930565}
+{"id": "char:yao_fox_f1_wasted", "status": "ok", "info": "112s gpt-image-2.5-sunburst-adobe", "t": 1794932334.953001}
+{"id": "char:yao_fox_f1_thrall", "status": "ok", "info": "86s gpt-image-2.5-sunburst-adobe", "t": 1794932334.9530492}

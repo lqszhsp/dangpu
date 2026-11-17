@@ -180,6 +180,12 @@ FACE_OVERRIDE = {
     'ren_kid_f1': 'cast a different teenage boy actor (about 15) for the same servant role: thinner, shaved head with a cloth headband, freckles, different pose',
     'ren_kid_f2': 'cast a different teenage boy actor (about 13) for the same servant role: chubby round face, messy topknot, different pose',
     'noble_f2': 'cast an actress instead: an arrogant young noblewoman of the demonic sect, contemptuous half-lidded eyes, chin raised, ornate dark purple and gold robes, jade-and-gold hair ornaments, holding a round silk fan',
+    # 妖修驻颜有术，看上去总是年轻；狐妖照小说里的样子画，勾人但不露骨
+    'yao_fox_f1': 'cast a different young actress for the same fox demon: an adult woman who looks about 22, the bewitching alluring beauty of a fox spirit from xianxia novels, '
+                  'flawless luminous porcelain skin, captivating upturned fox eyes with red eyeliner at the outer corners, a small beauty mark under one eye, red lips, '
+                  'long flowing silver-white hair loosely tied with red silk ribbons, white fox ears, a fluffy white fox tail, graceful slender figure, '
+                  'layered sheer red and white silk robes worn slightly off the shoulders, elegant and tasteful, not explicit, '
+                  'a relaxed charming pose with one hand lightly raised near the collar',
 }
 
 MOODS = {
