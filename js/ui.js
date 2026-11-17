@@ -742,6 +742,12 @@ function selActions(s, inCard = false) {
   if (!['store', 'floor'].includes(g)) mv('store', '收回库房');
   if (g === 'hand') mv('floor', '放在地上');
   mv('hidden', '藏进暗格');
+  // 灵晶：嵌进聚灵阵眼；阵眼满了，就和里面最空的一块对调（手机上阵眼在工坊页，拖不过去）
+  if (s.id === 'spirit_crystal' && g !== 'power') {
+    const low = weakestCrystal();
+    if (findSpot('power', s)) mv('power', '嵌入阵眼');
+    else if (low && (low.charge || 0) < (s.charge || 0)) out.push(`<button class="btn tiny" data-act="power-swap">换下阵眼里最空的一块（充能 ${low.charge || 0}）</button>`);
+  }
   S.machines.filter(m => MACHINES[m.type].in).slice(0, 12).forEach(m => { if (out.length < 7) mv(gridOf(m, 'in'), `放进${MACHINES[m.type].name}`); });
   S.machines.filter(m => MACHINES[m.type].mod && modAccepts(s, m.type)).forEach(m => mv(gridOf(m, 'mod'), `装进${MACHINES[m.type].name}`));
   if (ITEMS[s.id].appraise) out.push(`<button class="btn tiny" data-act="appraise-own">${icon('ic_appraise')}鉴定</button>`);
@@ -762,6 +768,7 @@ function selActions(s, inCard = false) {
 }
 
 const selectable = s => s && s.pos && !['counter', 'basket'].includes(s.pos.g);
+const weakestCrystal = () => itemsIn('power').reduce((m, it) => !m || (it.charge || 0) < (m.charge || 0) ? it : m, null);
 
 function renderStorage() {
   const s = sel && S.items[sel];
@@ -1758,6 +1765,12 @@ const HANDLERS = {
   'cq-leak': el => { const err = leakDirt(S.items[sel], el.dataset.k); if (err) toast(err, 'bad'); else { sel = null; toast(`${CLIQUES[el.dataset.k].head}收下了内幕，眼里有光`, 'good'); } renderAll(); },
   'opp-deliver': el => { const r = deliverOpp(findOpp(el.dataset.key), S.items[el.dataset.uid]); if (sel && !S.items[sel]) sel = null; toast(r.text, r.bad ? 'bad' : 'good'); renderAll(); },
   'opp-take': el => { const r = takeOpp(findOpp(el.dataset.key)); toast(r.err || r.text, r.err ? 'bad' : 'good'); renderAll(); },
+  'power-swap': () => {
+    const it = S.items[sel], low = weakestCrystal(), at = it.pos;
+    placeItem(it, 'power', low.pos.x, low.pos.y); placeItem(low, at.g, at.x, at.y);
+    toast(`灵晶嵌进阵眼，换下的那块（充能 ${low.charge || 0}）放回了原处`, 'good');
+    sel = peek = null; renderAll();
+  },
   'move-to': el => {
     const it = S.items[sel], gid = el.dataset.g, sp = findSpot(gid, it);
     if (!sp) { toast('放不下了', 'bad'); return; }
