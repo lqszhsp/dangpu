@@ -1158,7 +1158,8 @@ function tabPeople() {
       <div class="pc-face"><img src="${asset('chars', personFace(p))}" alt=""></div>
       <div class="pc-info"><div><b>${esc(p.name)}</b> <span class="muted small">${esc(p.title || '')}</span>
         ${p.story && !p.official ? '<span class="tag gold">有故事</span>' : ''}${p.official ? '<span class="tag">官差</span>' : ''}${p.status !== 'alive' ? `<span class="tag fake">${STATUS_NAME[p.status]}</span>` : ''}
-        ${p.status === 'alive' && p.addict ? '<span class="tag fake">成瘾</span>' : ''}${p.status === 'alive' && p.controlled ? '<span class="tag laced">受控</span>' : ''}${p.status === 'alive' && p.wish ? `<span class="tag real">求${ITEMS[p.wish].name}</span>` : ''}</div>
+        ${p.status === 'alive' && p.addict ? '<span class="tag fake">成瘾</span>' : ''}${p.status === 'alive' && p.controlled ? '<span class="tag laced">受控</span>' : ''}${p.status === 'alive' && p.wish ? `<span class="tag real">求${ITEMS[p.wish].name}</span>` : ''}
+        ${p.status === 'alive' ? condList(p).filter(c => CONDS[c.kind]).map(c => `<span class="tag fake">${c.label}</span>`).join('') : ''}${isHealer(p) && p.status === 'alive' ? '<span class="tag real">懂医术</span>' : ''}</div>
         <div class="pc-aff"><span style="color:${f.color}">${f.name}</span><span class="aff-bar"><i class="${p.aff >= 0 ? 'pos' : 'neg'}" style="width:${Math.abs(p.aff) / 2}%"></i></span>
           <span class="mood-${m}">${MOOD_NAME[m]}</span></div>
         <div class="muted small pc-last">${st && st.summary ? esc(st.summary) : last ? `第${last.d}日 · ${esc(last.t)}` : esc(p.bio)}</div></div></div>`;
@@ -1208,6 +1209,7 @@ function openLoreBook() {
 
 function personTraits(p) {
   const t = [];
+  for (const c of condList(p)) t.push(`<b class="bad" title="比斗 -${c.combat}">${c.label}</b>`);
   t.push(`<span title="体魄">体魄 ${Math.max(0, Math.round(p.health))}</span>`);
   t.push(`<span>手头${p.budgetMul >= 1.3 ? '宽裕' : p.budgetMul < 0.6 ? '拮据' : '寻常'}</span>`);
   t.push(`<span>贪念${p.greed > 0.65 ? '重' : p.greed < 0.35 ? '淡' : '中'}</span>`);
@@ -1223,7 +1225,6 @@ function personTraits(p) {
   if (isHealer(p)) t.push(`<span class="good">懂医术：治${CAST[p.pid].healer.heals.map(k => CONDS[k].name).join('、')}</span>`);
   if (p.desperate) t.push('<span class="bad">走投无路</span>');
   if (p.addict) t.push(`<span class="bad">成瘾 ${p.addict}</span>`);
-  for (const c of condList(p)) t.push(`<span class="bad" title="比斗 -${c.combat}">${c.label}</span>`);
   if (p.controlled) t.push('<span class="laced-txt">受你控心</span>');
   return t.join('');
 }
@@ -1234,7 +1235,8 @@ function personActions(p) {
     ...[50, 150, 400].map(n => `<button class="btn small" data-act="gift-stones" data-pid="${p.pid}" data-n="${n}" ${S.stones < n ? 'disabled' : ''}>送 ${n} 灵石</button>`));
   else if (p.giftedDay === S.day) out.push('<span class="muted small">今日已送过礼</span>');
   if (p.secret && p.secret.known && !p.secret.filed) out.push(`<button class="btn small" data-act="file-secret" data-pid="${p.pid}">${icon('ic_secret')}录成密报</button>`);
-  if (isHealer(p) && p.visits > 0 && healable(p).length) out.push(healButton(p));
+  if (isHealer(p) && p.status === 'alive') out.push(healButton(p));
+  if (p.status === 'alive') out.push(...treatButtons(p));
   if (p.controlled) out.push(`<button class="btn small ghost" data-act="uncontrol" data-pid="${p.pid}">解蛊</button>`);
   if (p.indentured) out.push(`<span class="small bad">在你后院做苦力</span><button class="btn small" data-act="release" data-pid="${p.pid}">放${ta(p)}走</button>`);
   if (S.phase === 'night' && killable(p) && p.pid !== 'beggar') {
@@ -1256,9 +1258,21 @@ function personActions(p) {
   return (out.length ? `<div class="p-actions">${out.join('')}</div>` : '') + debt + levers;
 }
 
+// 求诊：懂医术的人总有这颗按钮，用不了就把缘由写在旁边（手机上没有悬停提示）
 function healButton(p) {
-  const why = healBlock(p), fee = healFee(p);
-  return `<button class="btn small" data-act="seek-heal" data-pid="${p.pid}" ${why ? `disabled title="${esc(why)}"` : ''}>${icon('ic_stamina')}求诊${fee == null ? '（不肯治）' : `（${fee} 灵石）`}</button>`;
+  const why = healBlock(p), can = healable(p).length, fee = can ? healFee(p) : null;
+  return `<button class="btn small" data-act="seek-heal" data-pid="${p.pid}" ${why ? 'disabled' : ''}>${icon('ic_stamina')}求诊${!can ? '' : fee == null ? '（不肯治）' : `（${fee} 灵石）`}</button>${why ? `<span class="muted small">${esc(why)}</span>` : ''}`;
+}
+
+// 替他治伤毒：就是把对症的药送给他（与送礼同一回事，一天只送一回）；手里没有就说缺什么。
+// 掺进来的尸毒不在此列，药治不了
+function treatButtons(p) {
+  const kinds = Object.keys(CONDS).filter(k => condSev(p, k));
+  if (!kinds.length) return [];
+  const TA = ta(p), med = Object.values(S.items).find(it => HELD(it) && cureBy(it, p) && !knownFlaw(it) && it.lacedBy !== 'me');
+  if (!med) return [`<span class="small muted">${TA}${kinds.map(k => CONDS[k].name).join('、')}在身，送${[...new Set(kinds.flatMap(k => CONDS[k].cure))].map(id => ITEMS[id].name).join('、')}能治</span>`];
+  const why = canGift(p) ? '' : '今日已送过东西';
+  return [`<button class="btn small" data-act="treat" data-pid="${p.pid}" data-uid="${med.uid}" ${why ? 'disabled' : ''}>${icon('ic_stamina')}用${esc(itemName(med))}替${TA}治${CONDS[cureBy(med, p)].name}</button>${why ? `<span class="muted small">${why}</span>` : ''}`];
 }
 
 // 因果：未了的孽债、下一桩恶事的赌注、恶名带来的损失
@@ -1798,6 +1812,13 @@ const HANDLERS = {
   'seek-heal': el => {
     const r = seekHealer(S.people[el.dataset.pid]);
     toast(r.err || r.text, r.err ? 'bad' : 'good'); renderAll();
+  },
+  treat: el => {
+    const p = S.people[el.dataset.pid], it = S.items[el.dataset.uid], k = cureBy(it, p), name = itemName(it);
+    const r = giveGift(p, it);
+    if (sel === it.uid) sel = null;
+    toast(r.caught ? `${p.name}发现药里动了手脚！` : condSev(p, k) ? `${p.name}服下${name}，可不见好` : `${p.name}服下${name}，${CONDS[k].name}好了（好感 +${r.gain}）`, r.caught || condSev(p, k) ? 'bad' : 'good');
+    openPerson(p.pid); renderAll();
   },
   'gift-give': el => {
     const p = S.people[el.dataset.pid], it = S.items[el.dataset.uid];

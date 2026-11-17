@@ -226,6 +226,8 @@ function healFee(p) {
 
 // 能不能找他看：能看返回 null，否则返回原因
 function healBlock(p) {
+  if (!p.visits) return `${ta(p)}还没上过你的门，结识了才好去求诊`;
+  if (!Object.keys(S.conds).length) return '你身上没有伤毒';
   if (!healable(p).length) return `${ta(p)}治不了你身上的毛病`;
   const fee = healFee(p);
   if (fee == null) return `${ta(p)}恨你入骨，不肯给你看`;
