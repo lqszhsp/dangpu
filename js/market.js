@@ -128,12 +128,13 @@ function visitMarket() {
 
 // ───────────── 功勋兑换 ─────────────
 
-// 各方的特产，用极少功勋就能换到
+// 各方的特产：只换中高阶的货（基价六十以上），大多外头有钱也买不着；和货郎、鬼市、联盟、批发处每方至多重一样。
+// 功勋难攒，一点约抵五六十灵石的货；能再炼成更贵东西的（玄铁精四块炼神兵胚料）定得贵些
 const MERIT_SHOP = {
-  mo:   [['corpse', 1], ['soul_wisp', 1], ['soul_pearl', 2], ['pill_blood', 3], ['sword_std', 4], ['live_soul', 6], ['cult_corpse', 8], ['iron_corpse', 25]],
-  xian: [['pill_qi', 1], ['xian_talisman', 2], ['seal_xian', 3], ['pill_found', 12], ['xian_sword', 20]],
-  yao:  [['spirit_fruit', 1], ['vine_fruit', 1], ['herb_blood', 2], ['beast_hide', 2], ['mihun_seed', 1]],
-  ren:  [['iron_ore', 1], ['fu_paper', 1], ['cinnabar', 1], ['incense', 1], ['herb_dew', 1], ['jade_bottle', 1]],
+  mo:   [['pill_blood', 3], ['fu_shehun', 3], ['live_soul', 6], ['cult_corpse', 8], ['soul_banner', 16], ['iron_corpse', 25]],   // 血煞丹批发处也有
+  xian: [['xian_talisman', 2], ['seal_xian', 3], ['xian_robe', 5], ['pill_found', 12], ['xian_sword', 20]],                     // 封印符鬼市也有
+  yao:  [['vine_fruit', 1], ['gold_bug', 2]],                                                                                   // 噬金虫货郎也有
+  ren:  [['zhen_fu', 1], ['dan_guide', 2], ['xuan_essence', 4], ['cloud_robe', 12]],
 };
 const CHANNEL_NAME = { mo: '执法堂', xian: '仙门暗桩', yao: '妖族线人', ren: '散修联盟' };
 
