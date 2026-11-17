@@ -918,3 +918,20 @@
 {"id": "scene:end_death", "status": "ok", "info": "118s gpt-image-2.5-sunburst-adobe", "t": 1794755410.4941754}
 {"id": "scene:end_death_poison", "status": "ok", "info": "62s gpt-image-2.5-sunburst-adobe", "t": 1794755472.5669427}
 {"id": "scene:end_deed", "status": "ok", "info": "88s gpt-image-2.5-sunburst-adobe", "t": 1794755578.482108}
+{"id": "item:snake_slough", "status": "ok", "info": "91s gpt-image-2.5-sunburst-adobe", "t": 1794923500.5833423}
+{"id": "item:snake_slough_low", "status": "ok", "info": "95s gpt-image-2.5-sunburst-adobe", "t": 1794923595.8492286}
+{"id": "item:snake_slough_high", "status": "ok", "info": "84s gpt-image-2.5-sunburst-adobe", "t": 1794923595.8492672}
+{"id": "item:snake_slough_top", "status": "ok", "info": "93s gpt-image-2.5-sunburst-adobe", "t": 1794923595.8492758}
+{"id": "item:fox_fire", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794924406.1502664}
+{"id": "item:vine_armor", "status": "ok", "info": "66s gpt-image-2.5-sunburst-adobe", "t": 1794924564.0279014}
+{"id": "item:vine_armor_low", "status": "ok", "info": "84s gpt-image-2.5-sunburst-adobe", "t": 1794924647.698736}
+{"id": "item:vine_armor_high", "status": "ok", "info": "103s gpt-image-2.5-sunburst-adobe", "t": 1794924667.3867192}
+{"id": "item:vine_armor_top", "status": "ok", "info": "99s gpt-image-2.5-sunburst-adobe", "t": 1794924667.3868742}
+{"id": "item:yao_yuan_dan", "status": "ok", "info": "73s gpt-image-2.5-sunburst-adobe", "t": 1794924743.698855}
+{"id": "item:yao_yuan_dan_low", "status": "ok", "info": "92s gpt-image-2.5-sunburst-adobe", "t": 1794924835.3868165}
+{"id": "item:yao_yuan_dan_high", "status": "ok", "info": "85s gpt-image-2.5-sunburst-adobe", "t": 1794925137.142794}
+{"id": "item:yao_yuan_dan_top", "status": "ok", "info": "85s gpt-image-2.5-sunburst-adobe", "t": 1794925137.1429374}
+{"id": "item:fox_fire", "status": "ok", "info": "71s gpt-image-2.5-sunburst-adobe", "t": 1794925254.3587883}
+{"id": "item:fox_fire_low", "status": "ok", "info": "86s gpt-image-2.5-sunburst-adobe", "t": 1794925340.1357663}
+{"id": "item:fox_fire_high", "status": "ok", "info": "108s gpt-image-2.5-sunburst-adobe", "t": 1794925361.9692497}
+{"id": "item:fox_fire_top", "status": "ok", "info": "92s gpt-image-2.5-sunburst-adobe", "t": 1794925361.969459}
