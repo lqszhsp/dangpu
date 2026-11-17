@@ -126,6 +126,7 @@ const STORIES = {
     nodes: {
       beg: {
         when: 'day',
+        who: st => st.flags.kicked >= 2 ? { at: 'door' } : {},
         text: (st, p) => {
           const f = st.flags;
           if (!f.met) return '（一个瞎了只眼的老乞丐颤巍巍地伸出一只缺口铜钵）“掌柜的……行行好，老汉三天没吃东西了。”';
@@ -676,7 +677,7 @@ const STORIES = {
       },
       back: {
         when: 'day',
-        who: st => st.flags.refused ? {} : { portrait: 'amu_disciple', title: '血煞宗外门弟子', faction: 'mo' },
+        who: st => st.flags.refused ? { at: 'door' } : { portrait: 'amu_disciple', title: '血煞宗外门弟子', faction: 'mo' },
         text: st => {
           const f = st.flags;
           if (f.refused) return '阿木站在门口，没有进来。他没凑够拜师礼，如今跟在刘癞子屁股后面跑腿，脸上多了道疤。\n“掌柜的，俺不怪您。”他说完就走了。';

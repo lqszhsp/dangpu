@@ -51,12 +51,11 @@ function portraitOf(c) {
 
 const personFace = p => `${faceOf(p)}~${moodOf(null, p)}`;
 
-// 站位：在柜台前、在门口、还是门外
+// 站位：在柜台前、在门口、还是门外。求助的、讲故事的都走到柜台前，和做买卖的一样；
+// 只有不肯进门的（拒绝交易、拂袖而去）站在门口，故事里写明站在门口的由 who 返回 at: 'door'
 function stageOf(c) {
   if (!c) return null;
   if (S.phase === 'night') return 'outside';
-  if (c.leaving) return 'door';
-  if (c.kind === 'plea' || c.refuse || c.offended) return 'door';
-  if (c.kind === 'story' && ['beggar'].includes(c.pid)) return 'door';
-  return 'counter';
+  if (c.leaving || c.refuse || c.offended) return 'door';
+  return c.at || 'counter';
 }
