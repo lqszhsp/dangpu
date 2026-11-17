@@ -314,6 +314,8 @@ img { user-select: none; -webkit-user-drag: none; }
 .odds-txt { display: flex; justify-content: space-between; font-size: 12px; margin-top: 2px; }
 .h-result { margin: 16px 0; padding: 12px; font-size: 16px; text-align: center; background: rgba(138, 90, 28, .12); border-radius: 4px; }
 .h-result.good { color: #1f7a5f; } .h-result.bad { color: var(--blood); }
+.h-result:has(.h-face) { display: flex; align-items: center; gap: 12px; text-align: left; }
+.h-face { flex: none; width: 72px; height: 72px; object-fit: cover; object-position: 50% 6%; border-radius: 50%; border: 2px solid var(--gold-d); background: #2a1838; }
 
 .m-appraise { width: 820px; overflow: visible; }
 .appraise { display: flex; gap: 22px; align-items: flex-start; }

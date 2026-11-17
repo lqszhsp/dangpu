@@ -32,15 +32,24 @@ function itemVariant(it) {
 
 // ───────────── 人物 ─────────────
 
-// 神态：受控 > 形销骨立 > 当下的情绪 > 交情
+// 神态：受控 > 形销骨立 > 当下的情绪 > 来意 > 最近在你这儿的遭遇 > 交情 > 老辣的人藏着心思。只管画面，不改数值
+const FEAR_MEM = ['swallowed', 'controlled', 'blackmailed', 'poisoned'];   // 吃了亏不敢声张的
+const RECENT_DAYS = 5;
+
 function moodOf(c, p) {
   if (p && (p.controlled || p.soulBound)) return 'thrall';
   if (p && ((p.addict || 0) >= 2 || (p.health != null && p.health < 40))) return 'wasted';
   if (c && c.mood) return c.mood;
   if (c && (c.refuse || c.offended)) return 'angry';
-  if (c && c.noble) return 'sly';
+  if (c && (c.kind === 'plea' || c.wanted)) return 'afraid';
+  if (c && (c.noble || c.wantFake)) return 'sly';
   if (!p) return 'neutral';
-  return p.aff <= -40 ? 'angry' : p.aff >= 55 ? 'pleased' : 'neutral';
+  // 五日内最近一件分量够的事（照价收货这类寻常好意不算）：好事高兴，坏事恼火，被你压下去的发怵
+  const m = [...(p.mem || [])].reverse().find(x => Math.abs(x.a) >= 6);
+  if (m && S.day - m.d <= RECENT_DAYS) return m.a > 0 ? 'pleased' : FEAR_MEM.includes(m.k) ? 'afraid' : 'angry';
+  if (p.aff >= 45) return 'pleased';
+  if (p.aff <= -25) return 'angry';
+  return c && c.savvy >= 0.65 ? 'sly' : 'neutral';
 }
 
 function portraitOf(c) {

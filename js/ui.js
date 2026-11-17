@@ -233,6 +233,9 @@ function composeLine(c) {
 
 // 掌柜视角：隔着自家柜台望向店门与街面。来客从门口走进来，有的只站在门口、门外
 let shown = null;   // 正在场上的来客：{ key, src, stage }
+// 刚送走、脸上还带着神情的来客：弹窗开着就一直留在柜台前，弹窗关了再停一会儿才转身走——不然神情换上的那一刻正被弹窗挡着
+let parting = null;
+const PART_MS = 1300;
 
 const visitorKey = c => c.pid || c.key || c.name;
 const sceneArt = name => ART_SET.has(`scene/${name}`);
@@ -247,8 +250,15 @@ function renderScene() {
   $('#scene').classList.toggle('realistic', front);
   $('#scene').classList.toggle('night', night);
   const p = $('#portrait');
-  if (c && c.portrait) {
-    const src = asset('chars', portraitOf(c)), key = visitorKey(c), st = stageOf(c);
+  if (night || (c && parting && parting.c !== c)) parting = null;
+  if (parting && !parting.until && !$('#modal-layer').classList.contains('on')) {
+    parting.until = Date.now() + PART_MS;
+    setTimeout(renderScene, PART_MS + 20);
+  }
+  if (parting && parting.until && Date.now() >= parting.until) parting = null;
+  const v = c || (parting && parting.c);
+  if (v && v.portrait) {
+    const src = asset('chars', portraitOf(v)), key = visitorKey(v), st = stageOf(v);
     if (!shown || shown.key !== key) {
       // 新来的：先出现在门口，再走到该站的地方
       p.className = 'st-door arriving';
@@ -866,7 +876,7 @@ function openDeal() {
   const render = () => {
     const [lo, hi] = range();
     let body;
-    if (h.result) body = `<div class="h-result ${h.result.cls}">${h.result.text}</div><div class="h-btns"><button class="btn primary" data-act="haggle-close">好</button></div>`;
+    if (h.result) body = `<div class="h-result ${h.result.cls}">${c.portrait ? `<img class="h-face" src="${asset('chars', portraitOf(c))}" alt="">` : ''}<span>${h.result.text}</span></div><div class="h-btns"><button class="btn primary" data-act="haggle-close">好</button></div>`;
     else if (h.counter != null) body = `<div class="h-result">“${voice(c.faction, h.counter >= 0 ? 'counterSell' : 'counterBuy', { n: Math.abs(h.counter) })}”<br><small>（${netTxt(h.counter)}）</small></div>
         <div class="h-btns"><button class="btn primary" data-act="h-accept">接受</button>
         <button class="btn" data-act="h-again" ${c.patience > 0 ? '' : 'disabled'}>再议</button>
@@ -896,7 +906,9 @@ function openDeal() {
       : out.caught === 'laced' ? { cls: 'bad', text: `“你在这里头动了手脚！”${esc(c.name)}把东西摔回柜上，扬长而去。这事不会就这么算了。` }
         : { cls: 'good', text: `成交！${out.sold.length ? `卖出${out.sold.join('、')}，进账 ${out.income}` : ''}${out.sold.length && out.bought.length ? '；' : ''}${out.bought.length ? `收下${out.bought.join('、')}，付出 ${out.paid}` : ''}。` };
     if (sel && !S.items[sel]) sel = null;
-    feel(c, out.caught ? 'angry' : 'pleased');
+    // 被你狠宰了一刀还是买了：心里不痛快
+    const k = (net - d.N0) / d.scale;
+    feel(c, out.caught || k > 0.2 ? 'angry' : k > 0.12 ? null : 'pleased');
     dismissCustomer(false);
   };
   const respond = () => {
@@ -923,8 +935,8 @@ function openDeal() {
   HANDLERS['h-quit'] = () => { h.counter = null; h.result = { cls: 'bad', text: '谈崩了，对方悻悻离去。' }; feel(c, 'angry'); dismissCustomer(true); render(); renderAll(); };
 }
 
-// 来客此刻的神情：先换上表情，再让他走
-function feel(c, mood) { if (c) { c.mood = mood; renderScene(); } }
+// 来客此刻的神情：换上表情（null 为不变）；随后被送走的，带着这副神情在柜台前留一会儿
+function feel(c, mood) { if (c) { if (mood) c.mood = mood; parting = { c }; renderScene(); } }
 
 // 鉴定：mode 'commission' 委托、'counter' 看顾客的货、'own' 看自己的货。
 // 台上只摆这一件；照妖镜透过表皮，镜中所见与肉眼所见不一处，便是作伪的痕迹
@@ -1014,7 +1026,7 @@ function openAppraise(mode, uid) {
   HANDLERS['ap-mark-fake'] = () => { it.verdict = 'fake'; HANDLERS['story-reopen'](); };
   HANDLERS['ap-dispute'] = () => {
     const { caught } = disputeAsFake(c);
-    c.mood = caught ? 'angry' : 'afraid';
+    feel(c, caught ? 'angry' : 'afraid');
     closeModal();
     if (caught && c.patience <= 0) { dismissCustomer(false); toast(`${c.name}识破了你的伎俩，拂袖而去`, 'bad'); }
     else if (caught) toast(`被识破了！${FACTIONS[c.faction].name}声望 -6，对方反而加价`, 'bad');
@@ -1081,6 +1093,8 @@ function openStory(key, onDone) {
     const pv = personOf(c) || p;
     const before = { stones: S.stones, heat: S.heat, rep: Object.assign({}, S.rep), aff: pv ? pv.aff : null };
     const res = resolveChoice(key, +el.dataset.i);
+    if (res.mood) c.mood = res.mood;
+    if (S.customer === c) feel(c, null);
     modal = null;
     modalHTML(`<div class="story">
       <div class="st-portrait"><img src="${asset('chars', storyResultPortrait(key, c))}" alt=""></div>
@@ -1099,7 +1113,7 @@ const GENERIC_STORY = new Set(['grudge', 'scandal', 'tracker', 'legacy']);
 // 结果里可能换了样貌（如老乞丐恢复修为）
 function storyResultPortrait(key, c) {
   const p = storyPerson(S.story[key]);
-  return p && c.pid === p.pid ? p.portrait : c.portrait;
+  return `${p && c.pid === p.pid ? p.portrait : c.portrait}~${moodOf(c, personOf(c))}`;
 }
 
 // 一次抉择带来的变化
@@ -1619,7 +1633,7 @@ const HANDLERS = {
     if (!spot) { toast('货盘放不下了', 'bad'); return; }
     toTray(it, spot.x, spot.y); renderAll();
   },
-  flatter: () => tiredOr('flatter', () => { const r = flatter(S.customer); S.customer.mood = r.ok ? 'pleased' : 'angry'; toast(r.text, r.ok ? 'good' : 'bad'); renderAll(); }),
+  flatter: () => tiredOr('flatter', () => { const r = flatter(S.customer); feel(S.customer, r.ok ? 'pleased' : 'angry'); toast(r.text, r.ok ? 'good' : 'bad'); renderAll(); }),
   'haggle-close': () => { closeModal(); renderAll(); checkOver(); },
   report: () => { reportWanted(S.customer); renderAll(); toast('赏金到手，执法堂对你另眼相看', 'good'); },
   'appraise-counter': () => tiredOr('appraise', () => openAppraise('counter', S.customer.item)),
@@ -1641,7 +1655,7 @@ const HANDLERS = {
   'dispute-flaw': () => tiredOr('dispute', () => HANDLERS['dispute-go']()),
   'dispute-go': () => {
     const c = S.customer, r = disputeFlaw(c);
-    c.mood = r.angry || r.caught ? 'angry' : 'afraid';
+    feel(c, r.angry || r.caught ? 'angry' : 'afraid');
     if (r.angry || r.caught) {
       toast(r.angry ? `${c.name}恼羞成怒：“你什么意思？”` : `${c.name}把你挑的毛病一条条驳了回去。`, 'bad');
       if (c.patience <= 0) dismissCustomer(false);
@@ -1718,6 +1732,8 @@ const HANDLERS = {
     feel(c, 'afraid');
     const r = killPerson(p, 'counter');
     if (r.err) { toast(r.err, 'bad'); return; }
+    // 得手了就不会再从门口走出去；逃掉的才带着惊惶站一会儿
+    if (r.ok) { parting = null; shown = null; $('#portrait').style.display = 'none'; }
     if (sel && !S.items[sel]) sel = null;
     showIntel({ text: r.text, cls: r.ok ? 'good' : 'bad' }); renderAll(); checkOver();
   },

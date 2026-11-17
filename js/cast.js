@@ -17,7 +17,7 @@ defineCharacter({
   lines: { first, neutral, warm, close, cold, hostile, sell, buy },   // 熟客来时的口头禅（可选）
   command: { label, run },  // 被你控心后肯办的那件“方便”（可选）
   on: { start, gift, sold, bought, night, death },   // 与其他系统的牵连，见 castEvent
-  nodes: { <节点>: { when, who, item, cond, text, choices } },       // 故事线：与 stories.js 的写法相同
+  nodes: { <节点>: { when, who, mood, item, cond, text, choices } }, // 故事线：与 stories.js 的写法相同；mood 为进场神态，抉择也可带 mood
 });
 */
 function defineCharacter(def) {

@@ -39,14 +39,26 @@ function storyVisitor(key) {
   const st = S.story[key], p = storyPerson(st), node = storyNode(st);
   const who = Object.assign({ name: p && p.name, portrait: p && p.portrait, title: p && p.title, faction: p ? p.faction : 'ren' },
     node.who ? node.who(st, p) : {});
-  return Object.assign({ kind: 'story', key, pid: p && !node.who ? p.pid : null }, who);
+  const mood = typeof node.mood === 'function' ? node.mood(st, p) : node.mood;
+  return Object.assign({ kind: 'story', key, pid: p && !node.who ? p.pid : null }, mood ? { mood } : {}, who);
+}
+
+// 抉择之后来客的神情：抉择或结果里写明的为准；否则看交情涨跌——你作了恶，他斗不过你就怕，斗得过就恼。
+// 换了别人出场（官差、苦主）的节点，交情说的不是眼前这个人，不猜
+function storyMood(node, ch, res, p, aff0) {
+  if (res.mood || ch.mood) return res.mood || ch.mood;
+  if (node.who || !p || p.status !== 'alive' || aff0 == null) return null;
+  const d = p.aff - aff0;
+  if (ch.sin && d < 0) return playerPower() >= npcPower(p) + 10 ? 'afraid' : 'angry';
+  return d >= 4 ? 'pleased' : d <= -4 ? 'angry' : null;
 }
 
 function resolveChoice(key, idx) {
   const st = S.story[key], node = storyNode(st), p = storyPerson(st);
-  const ch = node.choices(st, p)[idx];
+  const ch = node.choices(st, p)[idx], aff0 = p ? p.aff : null;
   const res = ch.run(st, p) || {};
   if (ch.sin) commitSin(ch.sin[0], { p, w: ch.sin[1], what: ch.label.replace(/[（(].*$/, ''), virtue: 3 * ch.sin[1] });
+  res.mood = storyMood(node, ch, res, p, aff0);
   if (res.summary) st.summary = res.summary;
   if (res.end) st.done = true;
   else if (res.go) {
@@ -126,7 +138,7 @@ const STORIES = {
     nodes: {
       beg: {
         when: 'day',
-        who: st => st.flags.kicked >= 2 ? { at: 'door' } : {},
+        who: st => st.flags.kicked >= 2 ? { at: 'door', mood: 'afraid' } : {},
         text: (st, p) => {
           const f = st.flags;
           if (!f.met) return '（一个瞎了只眼的老乞丐颤巍巍地伸出一只缺口铜钵）“掌柜的……行行好，老汉三天没吃东西了。”';
@@ -323,6 +335,7 @@ const STORIES = {
       },
       caught: {
         when: 'day',
+        mood: 'afraid',
         text: st => st.flags.partner
           ? '胡不归被两个巡查押着从门口经过，突然扑过来抓住柜台：“掌柜的救我！三百灵石保金就能放人！”\n巡查冷笑一声，看了你一眼：“这骗子招了个同伙，是你吧？”'
           : st.flags.invested
@@ -464,6 +477,7 @@ const STORIES = {
       },
       gang: {
         when: 'day',
+        mood: 'angry',
         text: () => '刘癞子带着七八个弟兄堵在门口，手里拎着铁链：“上回给你面子。这回，要么交两份钱，要么咱们好好‘聊聊’。”',
         choices: st => [
           { label: '认怂，交两份', hint: costHint((st.flags.fee || 50) * 2), req: needStones((st.flags.fee || 50) * 2), run: (st, p) => {
