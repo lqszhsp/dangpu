@@ -161,6 +161,8 @@ function deploy() {
   const stamp = new Date(), pad = n => String(n).padStart(2, '0');
   const name = `${stamp.getFullYear()}${pad(stamp.getMonth() + 1)}${pad(stamp.getDate())}-${pad(stamp.getHours())}${pad(stamp.getMinutes())}-${short}`;
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'dangpu-ship-'));
+  // die() 直接 process.exit，finally 跑不到：退出时也清掉打包目录
+  process.on('exit', () => fs.rmSync(dir, { recursive: true, force: true }));
   try {
     run('bash', ['-c', `git archive ${main} ${SHIP.join(' ')} | tar -x -C '${dir}'`]);
     // 没变的文件与当前版本硬链接，不占地方：按内容比（-c），不带时间与属主——git archive 打出来的时间是提交时间，带上就次次对不上；
