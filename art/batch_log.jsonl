@@ -958,3 +958,30 @@
 {"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794959643.2618556}
 {"id": "char:yao_tiger_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794959848.787578}
 {"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794959850.2478468}
+{"id": "char:hua_lier", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794961963.6498854}
+{"id": "char:hua_lier", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794962168.2808511}
+{"id": "char:hua_lier", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794962371.8690112}
+{"id": "char:hua_lier", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794962580.372818}
+{"id": "char:yue_chan", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794962783.5112092}
+{"id": "char:yue_chan", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794962987.3962066}
+{"id": "char:yue_chan", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794963196.775222}
+{"id": "char:yue_chan", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794963399.785007}
+{"id": "char:hua_lier", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794965974.1431308}
+{"id": "char:hua_lier", "status": "fail", "info": "HTTP 402 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"code\":\"insufficient_balance\",\"message\":\"Upstream image account has insufficient balance\",\"type\":\"upstream_error\"}}'", "t": 1794966184.1126487}
+{"id": "char:hua_lier", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794966386.9475029}
+{"id": "char:hua_lier", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794966590.0502465}
+{"id": "char:yue_chan", "status": "fail", "info": "HTTP 500 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream gateway error\",\"type\":\"upstream_error\"}}'", "t": 1794966802.9564075}
+{"id": "char:yue_chan", "status": "ok", "info": "87s gpt-image-2.5-sunburst-adobe", "t": 1794967041.7170494}
+{"id": "char:yue_chan_pleased", "status": "ok", "info": "97s gpt-image-2.5-sunburst-adobe", "t": 1794967138.8759081}
+{"id": "char:yue_chan_angry", "status": "ok", "info": "110s gpt-image-2.5-sunburst-adobe", "t": 1794967151.5111406}
+{"id": "char:yue_chan_afraid", "status": "ok", "info": "99s gpt-image-2.5-sunburst-adobe", "t": 1794967151.5113065}
+{"id": "char:yue_chan_sly", "status": "ok", "info": "107s gpt-image-2.5-sunburst-adobe", "t": 1794967151.511348}
+{"id": "char:yue_chan_wasted", "status": "ok", "info": "98s gpt-image-2.5-sunburst-adobe", "t": 1794967236.9240866}
+{"id": "char:yue_chan_thrall", "status": "ok", "info": "133s gpt-image-2.5-sunburst-adobe", "t": 1794967274.3915458}
+{"id": "char:hua_lier", "status": "ok", "info": "147s gpt-image-2.5-sunburst-adobe", "t": 1794969310.6331887}
+{"id": "char:hua_lier_pleased", "status": "ok", "info": "78s gpt-image-2.5-sunburst-adobe", "t": 1794969388.5328536}
+{"id": "char:hua_lier_angry", "status": "ok", "info": "93s gpt-image-2.5-sunburst-adobe", "t": 1794969403.9048986}
+{"id": "char:hua_lier_afraid", "status": "ok", "info": "92s gpt-image-2.5-sunburst-adobe", "t": 1794969403.9051511}
+{"id": "char:hua_lier_sly", "status": "ok", "info": "96s gpt-image-2.5-sunburst-adobe", "t": 1794969406.175255}
+{"id": "char:hua_lier_wasted", "status": "ok", "info": "66s gpt-image-2.5-sunburst-adobe", "t": 1794969454.168088}
+{"id": "char:hua_lier_thrall", "status": "ok", "info": "96s gpt-image-2.5-sunburst-adobe", "t": 1794969498.549752}
