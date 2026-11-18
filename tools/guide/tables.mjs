@@ -97,7 +97,7 @@ export function tables(h) {
     rentGrace() { h.fresh(); G.S.stones = 0; G.S.day = G.S.rentDue; G.rentCheck(); return { days: G.S.grace, mul: n2(G.S.rentOwed / G.rentAmount()) }; },
     // 打点巡查的价钱随关注涨多少
     bribe(heat) { h.fresh(); G.S.heat = heat; return G.inspectionCost(); },
-    // 淘宝客拾荒多翻几次
+    // 拾荒客拾荒多翻几次
     diggerExtra() { h.fresh('normal', 'digger'); G.startScavenge(G.LOCATIONS[0].id); return G.S.scav.tries - G.LOCATIONS[0].tries; },
     // 每日来客
     customers() { h.fresh(); G.itemsIn('display').forEach(it => G.destroyItem(it)); return G.customerCount(); },
