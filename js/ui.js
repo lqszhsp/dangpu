@@ -946,7 +946,7 @@ function openDeal() {
 function feel(c, mood) { if (c) { if (mood) c.mood = mood; parting = { c }; renderScene(); } }
 
 // 鉴定：mode 'commission' 委托、'counter' 看顾客的货、'own' 看自己的货。
-// 台上只摆这一件；照妖镜透过表皮，镜中所见与肉眼所见不一处，便是作伪的痕迹
+// 台上只摆这一件；照妖镜像一盏紫外灯，作伪的痕迹在镜里发出荧光
 function openAppraise(mode, uid) {
   const it = S.items[uid], kind = ITEMS[it.id].appraise, spec = APPRAISE[kind];
   const lv = appraiseLevel(), zoom = 1.6 + 0.4 * lv;
@@ -958,7 +958,7 @@ function openAppraise(mode, uid) {
   const TILT = 28 * Math.PI / 180, tiltAt = lx => TILT * (2 * clamp(lx / V, 0, 1) - 1);
   let pos = [V * 0.45, V * 0.4], grip = 2.4 * g, tilt = tiltAt(pos[0]);
   const loupe = `<div class="lens" id="ap-lens" style="--g:${g}px">
-      <div class="lens-in"><div id="lens-content" style="width:${V * zoom}px;height:${V * zoom}px">${appraiseImg(kind, seen, it.flip)}</div></div>
+      <div class="lens-in${lv ? ' uv' : ''}"><div id="lens-content" style="width:${V * zoom}px;height:${V * zoom}px">${appraiseImg(kind, seen, it.flip, lv > 0)}</div></div>
       <div class="lens-arm" id="lens-arm">
         <img src="assets/appraise/loupe.webp" alt="" draggable="false" style="left:${-LOUPE.cx * g}px;top:${-LOUPE.cy * g}px;width:${LOUPE.w * g}px">
         <div class="lens-grip" style="top:${1.25 * g}px;height:${(LOUPE.end - 1.25) * g}px"></div></div></div>`;
@@ -978,8 +978,9 @@ function openAppraise(mode, uid) {
         <div class="ap-stage" id="ap-stage" style="width:${V}px;height:${V}px">
           <div class="ap-view">${appraiseImg(kind, [], it.flip)}</div>${loupe}</div>
         <div class="viewer">
-          <p class="ap-tip">按住镜柄挪动照妖镜。镜中所见若与肉眼所见有一处不同，便是作伪的痕迹；真品镜里镜外一个样。</p>
-          <p class="muted small">你的鉴定术：<b>${LENS_NAMES[lv]}</b>（第${cn(lv) || '零'}重）——做工高过它的作伪，镜里也照不出来。</p>
+          <p class="ap-tip">${lv ? '按住镜柄挪动照妖镜，把整件东西照一遍。镜下一片幽紫，作伪的地方会<b class="uv-txt">泛出荧光</b>；真品通体一色，没有一处发亮。'
+            : '鉴宝台上没有照妖镜，手里只是一面放大镜：看得清纹路，照不出作伪。'}</p>
+          <p class="muted small">你的鉴定术：<b>${LENS_NAMES[lv]}</b>（第${cn(lv) || '零'}重）——做工高过它的作伪不会发光。</p>
           ${mode === 'own' || mode === 'story' ? '' : talkHTML(c)}
           <div class="h-btns">${buttons()}</div></div></div>`, 'm-appraise');
     const stage = $('#ap-stage'), lens = $('#ap-lens'), arm = $('#lens-arm'), content = $('#lens-content');

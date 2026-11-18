@@ -1,6 +1,7 @@
-// 鉴定小游戏：鉴定物是一张写实底图，肉眼看真赝一模一样；照妖镜能透过表皮看见作伪的痕迹，
-// 镜中所见与肉眼所见不一处，便是赝品。每种作伪手法在图上有固定的一处（at：[x, y, 半径]，按图宽计），
-// 补丁图由 tools/art/appraise.py 按 art 描述遮罩改图生成（assets/appraise/<img>_<key>.webp）
+// 鉴定小游戏：鉴定物是一张写实底图，肉眼看真赝一模一样；照妖镜像一盏紫外灯，镜里整件东西泛着幽紫，
+// 作伪的痕迹露出原形、发出荧光，镜中有一处发亮，便是赝品。每种作伪手法在图上有固定的一处（at：[x, y, 半径]，按图宽计），
+// 补丁图由 tools/art/appraise.py 按 art 描述遮罩改图生成（assets/appraise/<img>_<key>.webp），
+// 荧光图由 tools/art/appraise_uv.py 比较补丁与底图生成（<img>_<key>_uv.webp）
 'use strict';
 
 const APPRAISE = {
@@ -82,20 +83,22 @@ function ensureFeats(it) {
   Object.assign(it, rollFeats(kind, !!it.fake, it.grade || 1));
 }
 
-// 以某一重鉴定术在照妖镜里看到的破绽：[{ key, op }]。看不穿的不在其列；刚够得着的看着淡些
+// 以某一重鉴定术在照妖镜里看到的破绽：[{ key }]。看不穿的不在其列；够得着的一律照得清清楚楚
 function visibleFeats(it, lv) {
   ensureFeats(it);
-  return Object.keys(it.feats).filter(k => (it.subtle[k] || 1) <= lv)
-    .map(k => ({ key: k, op: Math.min(1, 0.72 + 0.14 * (lv - (it.subtle[k] || 1))) }));
+  return Object.keys(it.feats).filter(k => (it.subtle[k] || 1) <= lv).map(k => ({ key: k }));
 }
 
-// 鉴定物的画面：底图，加上照妖镜里才显出的破绽（seen 为空即肉眼所见）
-function appraiseImg(kind, seen = [], flip = false) {
+// 鉴定物的画面：底图，加上照妖镜里才显出的破绽（seen 为空即肉眼所见）。
+// uv：照妖镜里的样子——整件压成紫外灯下的幽紫，破绽处叠一层荧光、外面一圈光晕，一明一暗地闪
+function appraiseImg(kind, seen = [], flip = false, uv = false) {
   const spec = APPRAISE[kind], src = n => `assets/appraise/${n}.webp`;
-  const traces = seen.map(({ key, op }) => {
+  const traces = seen.map(({ key }) => {
     const [x, y, r] = spec.traces.find(t => t.key === key).at;
-    return `<img class="ap-trace" src="${src(`${spec.img}_${key}`)}" alt="" draggable="false"
-      style="left:${((x - r) * 100).toFixed(2)}%;top:${((y - r) * 100).toFixed(2)}%;width:${(r * 200).toFixed(2)}%;opacity:${op.toFixed(2)}">`;
+    const box = `left:${((x - r) * 100).toFixed(2)}%;top:${((y - r) * 100).toFixed(2)}%;width:${(r * 200).toFixed(2)}%`;
+    const patch = `<img class="ap-trace" src="${src(`${spec.img}_${key}`)}" alt="" draggable="false" style="${box}">`;
+    if (!uv) return patch;
+    return `${patch}<i class="ap-halo" style="${box}"></i><img class="ap-uv" src="${src(`${spec.img}_${key}_uv`)}" alt="" draggable="false" style="${box}">`;
   }).join('');
-  return `<div class="ap-img${flip ? ' flip' : ''}"><img src="${src(spec.img)}" alt="" draggable="false">${traces}</div>`;
+  return `<div class="ap-img${flip ? ' flip' : ''}${uv ? ' uv' : ''}"><img src="${src(spec.img)}" alt="" draggable="false">${traces}</div>`;
 }
