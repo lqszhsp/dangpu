@@ -73,17 +73,40 @@ def border_levels(rgb, border):
     return [sum(x) / len(x) for x in (lo, hi) if x]
 
 
-def ensure_alpha(im):
+def enclosed_checker(m, rgb, levels, min_px=300):
+    """胳膊与身子之间这类围住的空当，格子和边缘不连通，泛洪抠不到。
+    把 m 里剩下的每块格子色区域量一量：深浅两种灰各占三成以上才是真格子，标成 128 一并抠掉；
+    白衣、白发、灰布多半只有一种灰，留着（标 64，免得重复量）"""
+    mx = ImageChops.lighter(ImageChops.lighter(*rgb.split()[:2]), rgb.split()[2])
+    lo, hi = levels
+    w, h = m.size
+    for y in range(0, h, 6):
+        for x in range(0, w, 6):
+            if m.getpixel((x, y)) != 255: continue
+            ImageDraw.floodfill(m, (x, y), 32, thresh=0)
+            region = m.point(lambda v: 255 if v == 32 else 0)
+            hist = mx.histogram(mask=region)
+            n = sum(hist)
+            dark = sum(hist[max(0, int(lo) - 16):int(lo) + 17])
+            light = sum(hist[max(0, int(hi) - 16):int(hi) + 17])
+            real = n >= min_px and dark >= n * 0.3 and light >= n * 0.3
+            ImageDraw.floodfill(m, (x, y), 128 if real else 64, thresh=0)
+
+
+def ensure_alpha(im, enclosed=False):
     im = im.convert('RGBA')
     if im.getchannel('A').getextrema()[0] < 250: return im
     w, h = im.size
     rgb = im.convert('RGB')
     border = [(x, y) for x in range(0, w, 16) for y in (0, h - 1)] + [(x, y) for y in range(0, h, 16) for x in (0, w - 1)]
-    m = checker_mask(rgb, border_levels(rgb, border))
+    levels = border_levels(rgb, border)
+    m = checker_mask(rgb, levels)
     if sum(m.getpixel(p) for p in border) / 255 > len(border) * 0.6:
         # 模型把透明底画成了灰白格子：只抠与边缘连通的格子，人物身上的白发白衣不受影响
         for p in border:
             if m.getpixel(p) == 255: ImageDraw.floodfill(m, p, 128, thresh=0)
+        # 只给人物立绘抠围住的格子：物品图上的灰白斑纹会被误认
+        if enclosed and levels and len(levels) == 2: enclosed_checker(m, rgb, levels)
         bg = m.point(lambda v: 255 if v == 128 else 0).filter(ImageFilter.MaxFilter(5))
     else:
         # 纯色底：四角泛洪
@@ -134,7 +157,7 @@ def process():
                 w, h = cells(name)
                 save(fit(ensure_alpha(im), w * CELL, h * CELL), dir, name)
             elif dir == 'chars':
-                im = trim(ensure_alpha(im))
+                im = trim(ensure_alpha(im, enclosed=True))
                 s = 1300 / im.height
                 save(im.resize((round(im.width * s), 1300), Image.LANCZOS), dir, name, 80)
             elif dir == 'scene':
