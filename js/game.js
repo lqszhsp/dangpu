@@ -1409,6 +1409,14 @@ function scavSearch() {
   sc.tries--;
   if (Math.random() < scavOdds().danger) {
     const hz = loc.hazard;
+    // 备着遁地符的，出事时符一燃就钻进地里：人货无损，只是这一趟到此为止
+    const dundi = owns('fu_dundi');
+    if (dundi) {
+      destroyItem(dundi);
+      sc.ended = true;
+      sc.lines.push({ text: `眼看要出事，你捏碎一张遁地符，身子一沉钻进土里，再冒头已在三里之外。背篓里的东西一样不少，这一趟却只能到此为止。`, cls: 'warn' });
+      return { escaped: true };
+    }
     // 拾荒遇险多半只是皮肉伤；倒霉时才伤得重
     if (hz.cond && Math.random() < 0.6) addCond('me', hz.cond[0], Math.random() < 0.25 ? hz.cond[1] : 1, `在${loc.name}`);
     if (hz.heat) addHeat(hz.heat);

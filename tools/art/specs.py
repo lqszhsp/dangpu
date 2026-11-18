@@ -144,6 +144,8 @@ STATES = [
     ('vine_seed', 'sprout', 'the seed has sprouted a thorny blood-red tendril'),
     ('treasure_rat', 'young', 'a small young baby version of the same rat, tiny and fluffy'),
     ('gold_bug', 'young', 'a small young larva version of the same beetle, soft pale gold'),
+    ('spirit_sparrow', 'young', 'a small young fledgling version of the same bird, round and fluffy with downy pale green feathers, no message on its leg'),
+    ('jade_cat', 'young', 'a small young kitten version of the same cat, fluffy and round-faced, the jade-green face marking smaller and fainter'),
 ]
 
 # 人物：pid → 画面描述。泛泛之辈的类型另生成 _f1、_f2 两张不同面孔

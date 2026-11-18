@@ -28,6 +28,7 @@ const BEHAVIORS = [
   { id: 'purify', name: '滤灵砂洗水', machine: 'pool', alt: [{ use: [['filter_sand', 1]], has: [['water', 1]] }], made: ['~purify'] },
   { id: 'purify_hi', name: '高纯灵砂洗琼浆', machine: 'pool', alt: [{ use: [['spirit_sand', 1]], has: [['water', 1]] }], made: ['~purify'] },
   { id: 'wine', name: '酿灵酒', machine: 'winejar', alt: [{ use: [['spirit_fruit', 2], ['yeast', 1]] }], made: ['spirit_wine'] },
+  { id: 'drunk_immortal', name: '灵酒泡迷魂花成醉仙酿', machine: 'winejar', alt: [{ use: [['spirit_wine', 1], ['mihun_flower', 1]], tech: ['brew', 1] }], made: ['drunk_immortal'] },
   { id: 'herb', name: '药圃种灵草', machine: 'herbbed', alt: [{ use: [['herb_seed', 1]] }], made: ['herb_blood', 'herb_dew'] },
   { id: 'mihun', name: '种迷魂花', machine: 'yaopot', alt: [{ use: [['mihun_seed', 1]] }], made: ['mihun_flower'] },
   { id: 'datura', name: '种曼陀罗收花粉', machine: 'yaopot', alt: [{ use: [['datura_seed', 1]] }], made: ['datura_pollen'] },
@@ -47,6 +48,7 @@ const BEHAVIORS = [
   { id: 'fu_charm', name: '画血纹护符', machine: 'fudesk', alt: [{ use: [['fu_paper', 1], ['cinnabar', 1], ['bones', 1]] }], made: ['demon_charm'] },
   { id: 'zhen_fu', name: '画聚火阵符', machine: 'fudesk', alt: [{ use: [['fu_paper', 1], ['cinnabar', 1], ['spirit_crystal', 1]], tech: ['talisman', 2] }], made: ['zhen_fu'] },
   { id: 'seal_xian', name: '画正派封印符', machine: 'fudesk', alt: [{ use: [['fu_paper', 1], ['cinnabar', 1], ['xian_talisman', 1]], tech: ['talisman', 3] }], made: ['seal_xian'] },
+  { id: 'fu_dundi', name: '画遁地符', machine: 'fudesk', alt: [{ use: [['fu_paper', 1], ['cinnabar', 1], ['iron_ore', 1]], tech: ['talisman', 1] }], made: ['fu_dundi'] },
   // 蛊、灵宠
   { id: 'gold_gu', name: '养出金蚕蛊', machine: 'gupot', alt: [{ has: [['gu', 1]], use: [['bones', 1]] }], made: ['~gold_gu'] },
   { id: 'gu_egg', name: '成蛊产卵', machine: 'gupot', alt: [{ has: [['gu', 2]], use: [['bones', 2]] }], made: ['gu_egg'] },

@@ -71,7 +71,7 @@ const ITEMS = {
   demon_charm:    { name: '血纹护符', cat: 'fu',  w: 1, h: 1, base: 55,  war: 0.6, desc: '魔宗弟子随身的护符。' },
   jade_pendant:   { name: '古玉佩',   cat: 'wan', w: 1, h: 1, base: 380, lux: true, desc: '前朝盘龙玉佩，仿品泛滥。', appraise: 'jade' },
   bronze_mirror:  { name: '青铜古镜', cat: 'wan', w: 2, h: 2, base: 600, lux: true, desc: '上古八瓣花镜，据说能照出妖形。', appraise: 'mirror' },
-  scroll_manual:  { name: '残卷功法', cat: 'wan', w: 1, h: 2, base: 150, lux: true, desc: '不知名功法的残页。' },
+  scroll_manual:  { name: '残卷功法', cat: 'ji',  w: 1, h: 2, base: 150, lux: true, desc: '不知名功法的残页，凑不齐、练不成。散修当它是机缘，权贵拿来装点书房。' },
   fire_disk:      { name: '聚火阵盘', cat: 'ju',  w: 1, h: 1, base: 160, desc: '炼器炉模组：每夜炉次 2→4，但成锭品质下降。', mod: 'furnace' },
   dan_fire:       { name: '丹火阵盘', cat: 'ju',  w: 1, h: 1, base: 90,  desc: '刻着丹炉的红铜阵盘，镇住炉火、常驻不焚。丹炉模组：每夜多炼一炉，成丹品质 +20。', mod: 'danlu' },
   soul_bell:      { name: '摄魂铃',   cat: 'qi',  w: 1, h: 1, base: 240, war: 0.5, mod: 'soulfurnace', desc: '摇之令人心神恍惚。挂进炼魂炉的模组格，引魂入炉，每夜多炼一炉。' },
@@ -80,7 +80,7 @@ const ITEMS = {
   soul_pearl:     { name: '炼魂珠',   cat: 'hun', w: 1, h: 1, base: 230, war: 1, desc: '魂魄炼成的宝珠，驱动法器、铁尸与傀儡的魔道之源。' },
   corpse:         { name: '无名尸',   cat: 'shi', w: 1, h: 2, base: 22,  war: 0.3, desc: '草席裹着的尸身。会腐烂，夏日尤快，烂透了只剩腐骨。' },
   iron_corpse:    { name: '铁尸',     cat: 'shi', w: 1, h: 3, base: 640, war: 1, desc: '炼尸棺中炼成的铁尸，刀枪不入，听令而行。' },
-  corpse_poison:  { name: '尸毒',     cat: 'za',  w: 1, h: 1, base: 45,  illicit: true, additive: 'poison', desc: '炼尸时滴下的尸毒。混进吃食里，神仙也难救。' },
+  corpse_poison:  { name: '尸毒',     cat: 'shi', w: 1, h: 1, base: 45,  illicit: true, additive: 'poison', desc: '炼尸时滴下的尸毒。混进吃食里，神仙也难救。' },
   puppet_doll:    { name: '机关傀儡', cat: 'shi', w: 1, h: 3, base: 520, war: 1, desc: '玄铁为骨、魂珠为心的机关傀儡。' },
   puppet_scroll:  { name: '傀儡图谱', cat: 'ji',  w: 1, h: 1, base: 320, desc: '傀儡台模组：两锭玄铁、一颗魂珠造一具机关傀儡。', mod: 'puppetbench' },
   mihun_seed:     { name: '迷魂花种', cat: 'zhi', w: 1, h: 1, base: 8,   desc: '种进妖植盆，两夜开花。' },
@@ -99,7 +99,7 @@ const ITEMS = {
   cinnabar:       { name: '朱砂',     cat: 'cai', w: 1, h: 1, base: 9,   desc: '画符的朱砂。' },
   fu_jingang:     { name: '金刚符',   cat: 'fu',  w: 1, h: 1, base: 70,  war: 1, desc: '一张可挡飞剑一击的护身符。战时人手一张。' },
   fu_shehun:      { name: '摄魂符',   cat: 'fu',  w: 1, h: 1, base: 140, war: 0.6, desc: '封了一缕游魂的攻伐符，魔修临阵必备。' },
-  zhen_fu:        { name: '聚火阵符', cat: 'ju',  w: 1, h: 1, base: 75,  mod: ['furnace', 'dihuo', 'danlu', 'forge'], desc: '阵法增益符。放进炼器炉、炼器台、地火炉或丹炉的模组格，当夜出炉翻倍，用后即焚。' },
+  zhen_fu:        { name: '聚火阵符', cat: 'fu',  w: 1, h: 1, base: 75,  mod: ['furnace', 'dihuo', 'danlu', 'forge'], desc: '阵法增益符。放进炼器炉、炼器台、地火炉或丹炉的模组格，当夜出炉翻倍，用后即焚。' },
   seal_xian:      { name: '正派封印符', cat: 'fu', w: 1, h: 1, base: 90, desc: '名门正派的封印符箓。贴在来路干净的法器、珍玩、丹药、符箓上，冒充名门所出，身价大涨——前提是没人看穿。' },
   jade_bottle:    { name: '玉净瓶',   cat: 'za',  w: 1, h: 1, base: 10,  desc: '白玉细颈瓶。灵液装进玉净瓶，修士们才肯出高价。' },
   xuan_essence:   { name: '玄铁精',   cat: 'cai', w: 1, h: 1, base: 150, war: 0.6, desc: '六块玄铁矿（或三锭玄铁）在地火炉里熬出的一块精华。四块玄铁精配夜里闭关，可炼天阶神兵胚料。' },
@@ -335,8 +335,8 @@ const SELL_POOLS = {
 
 // 顾客想买的品类权重
 const BUY_WANTS = {
-  ren:  { yin: 4, dan: 3, cai: 3, za: 1, wan: 1, zhi: 1, chong: 0.5, xin: 0.5 },
-  mo:   { qi: 4, dan: 4, yao: 3, fu: 2, gu: 2, cai: 1, hun: 2, shi: 2, yin: 2, xin: 0.8 },
+  ren:  { yin: 4, dan: 3, cai: 3, za: 1, wan: 1, zhi: 1, chong: 0.5, xin: 0.5, ji: 0.6, ju: 0.4 },
+  mo:   { qi: 4, dan: 4, yao: 3, fu: 2, gu: 2, cai: 1, hun: 2, shi: 2, yin: 2, xin: 0.8, ji: 0.6, ju: 1 },
   xian: { wan: 3, dan: 3, qi: 2, fu: 1, zhi: 1, yin: 3, xin: 1.2 },
   yao:  { yin: 6, cai: 2, gu: 1, zhi: 2, chong: 1, xin: 0.4 },
 };

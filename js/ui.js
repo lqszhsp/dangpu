@@ -1718,6 +1718,7 @@ const HANDLERS = {
   'scav-search': () => {
     const r = scavSearch();
     if (r && r.hazard) toast(r.hazard.text, 'bad');
+    if (r && r.escaped) toast('遁地符一燃，你从险地脱身了', '');
     if (r && r.tired) toast(r.tired, 'bad');
     if (checkOver()) return;
     renderScavenge(); renderTopbar();

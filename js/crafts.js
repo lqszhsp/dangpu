@@ -65,6 +65,11 @@ function dihuoRun(m, inputs, emit) {
 
 const RAT_FOOD = ['waste_pill', 'bones', 'spirit_fruit', 'beast_feed'];
 const BUG_FOOD = ['scrap_sword', 'broken_relic', 'broken_bowl', 'iron_ore', 'bones'];
+// 各灵宠吃什么、吃饱了产什么（货品册里的新灵宠在这两张表里登记）；没登记产出的当寻宝鼠
+const PET_FOOD = { treasure_rat: RAT_FOOD, gold_bug: BUG_FOOD };
+const PET_YIELD = {};
+// 两只成年的同类每夜添丁的机会（未登记的按 0.3）
+const PET_BREED = {};
 const RAT_LOOT = [['iron_ore', 4], ['herb_dew', 3], ['spirit_fruit', 3], ['bones', 3], ['broken_relic', 1.5], ['waste_pill', 2], ['spirit_crystal', 0.8], ['jade_pendant', 0.3]];
 
 function penCheck(m, inputs) {
@@ -82,14 +87,17 @@ function penRun(m, inputs) {
   };
   // 每只灵宠每夜吃 1 + 御兽重数 份
   for (const pet of itemsIn(out).filter(it => ITEMS[it.id].cat === 'chong')) for (let bite = 0; bite <= techLv('beast'); bite++) {
-    const menu = pet.id === 'gold_bug' ? BUG_FOOD : RAT_FOOD;
+    const menu = PET_FOOD[pet.id] || RAT_FOOD;
     const food = inputs.find(it => menu.includes(it.id));
     if (!food) { if (!bite) pet.growth = Math.max(0, (pet.growth || 0) - 5); break; }
     destroyItem(food); inputs.splice(inputs.indexOf(food), 1);
     // 灵兽饲料一份顶两份
     pet.growth = Math.min(100, (pet.growth || 0) + (25 + 10 * techLv('beast')) * (food.id === 'beast_feed' ? 2 : 1));
     if (pet.growth < 50) continue;
-    if (pet.id === 'gold_bug') {
+    if (PET_YIELD[pet.id]) {
+      const note = PET_YIELD[pet.id](pet, food, place, bq);
+      if (note) notes.push(note);
+    } else if (pet.id === 'gold_bug') {
       place(makeItem(food.id === 'bones' ? 'beast_feed' : 'spirit_sand', { q: clamp(food.q + 15 + bq, 5, 100) }));
     } else {
       if (food.id === 'waste_pill' && Math.random() < 0.35) place(makeItem('dan_guide', { q: 60 + bq }));
@@ -100,9 +108,9 @@ function penRun(m, inputs) {
     }
   }
   // 两只成年的同类，可能添丁
-  for (const kind of ['treasure_rat', 'gold_bug']) {
+  for (const kind of Object.keys(PET_FOOD)) {
     const adults = itemsIn(out).filter(it => it.id === kind && it.growth >= 100);
-    if (adults.length >= 2 && Math.random() < 0.3 + 0.1 * techLv('beast')) {
+    if (adults.length >= 2 && Math.random() < (PET_BREED[kind] != null ? PET_BREED[kind] : 0.3) + 0.1 * techLv('beast')) {
       const baby = makeItem(kind, { growth: 0, q: 50 });
       if (autoPlace(baby, [out])) notes.push(`一只小${ITEMS[kind].name}`); else destroyItem(baby);
     }
