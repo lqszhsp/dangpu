@@ -222,7 +222,7 @@ const noChoice = s => s.modalBtns && s.modalBtns.length === 1 && !s.inputs.lengt
 function gridsText(ctx, S) {
   const lines = vm.runInContext(`(() => {
     const name = gid => ({ store: '库房', display: '陈列柜', floor: '地上（夜里可能遭贼）', counter: '柜台', power: '灵力格', hidden: '夹层暗格', basket: '背篓', tool: '鉴定工具', tray: '交易盘' })[gid]
-      || (gid.startsWith('m') ? (() => { const [mid, slot] = gid.slice(1).split(':'); const m = S.machines.find(x => x.mid === +mid); return m ? MACHINES[m.type].name + '·' + ({ in: '入料', out: '产出', mod: '模块' })[slot] : gid; })() : gid);
+      || (gid.startsWith('m') ? (() => { const [mid, slot] = gid.slice(1).split(':'); const m = S.machines.find(x => x.mid === +mid); return m ? MACHINES[m.type].name + '·' + (({ in: '入料', out: '产出', mod: '模块' })[slot] || (/^f\\d+$/.test(slot) ? '兽栏' + (+slot.slice(1) + 1) + '饲料' : /^b\\d+$/.test(slot) ? '兽栏' + (+slot.slice(1) + 1) + '灵宠' : slot)) : gid; })() : gid);
     const by = {};
     for (const it of Object.values(S.items)) if (it.pos) (by[it.pos.g] = by[it.pos.g] || []).push(it);
     return Object.keys(S.grids).filter(g => g !== 'counter' || by[g]).map(g => {
@@ -330,7 +330,7 @@ const BEHAVIOR_HOOKS = `
   const wrap = (name, fn) => { const f = globalThis[name]; if (typeof f !== 'function') return; globalThis[name] = function (...a) { return fn(f, a, this); }; };
   const carry = {};
   const snap = m => {
-    const grids = ['in', 'out', 'mod'].map(k => gridOf(m, k)).concat(['floor']), o = {};
+    const grids = machineGridIds(m).concat(['floor']), o = {};
     for (const it of Object.values(S.items)) if (it.pos && grids.includes(it.pos.g))
       o[it.uid] = { id: it.id, g: it.pos.g, purity: it.purity, growth: it.growth, forged: !!it.forged, fake: !!it.fake };
     return o;
@@ -350,8 +350,9 @@ const BEHAVIOR_HOOKS = `
   });
   wrap('machineRun', (f, a) => {
     const m = a[0], before = snap(m), r = f(...a), after = snap(m);
-    const inG = gridOf(m, 'in'), outs = [gridOf(m, 'out'), 'floor'];
-    const used = Object.keys(before).filter(u => before[u].g === inG && !(after[u] && after[u].g === inG)).map(u => before[u].id);
+    // 入料格：一般设备是 in，灵兽圈是各栏的饲料格
+    const inGs = machineGridIds(m).filter(g => /:(in|f\\d+)$/.test(g)), outs = [gridOf(m, 'out'), 'floor'];
+    const used = Object.keys(before).filter(u => inGs.includes(before[u].g) && !(after[u] && inGs.includes(after[u].g))).map(u => before[u].id);
     const made = [];
     for (const [u, x] of Object.entries(after)) {
       const was = before[u];

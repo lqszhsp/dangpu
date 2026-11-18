@@ -64,7 +64,8 @@ function dihuoRun(m, inputs, emit) {
 // ───────────── 灵兽圈 ─────────────
 
 const RAT_FOOD = ['waste_pill', 'bones', 'spirit_fruit', 'beast_feed'];
-const BUG_FOOD = ['scrap_sword', 'broken_relic', 'broken_bowl', 'iron_ore', 'bones'];
+// 兽栏的饲料格一格一件，长条的残剑、残器放不进去；噬金虫啃玄铁矿与破铜钵
+const BUG_FOOD = ['broken_bowl', 'iron_ore', 'bones'];
 // 各灵宠吃什么、吃饱了产什么（货品册里的新灵宠在这两张表里登记）；没登记产出的当寻宝鼠
 const PET_FOOD = { treasure_rat: RAT_FOOD, gold_bug: BUG_FOOD };
 const PET_YIELD = {};
@@ -72,50 +73,136 @@ const PET_YIELD = {};
 const PET_BREED = {};
 const RAT_LOOT = [['iron_ore', 4], ['herb_dew', 3], ['spirit_fruit', 3], ['bones', 3], ['broken_relic', 1.5], ['waste_pill', 2], ['spirit_crystal', 0.8], ['jade_pendant', 0.3]];
 
-function penCheck(m, inputs) {
-  const pets = itemsIn(gridOf(m, 'out')).filter(it => ITEMS[it.id].cat === 'chong');
-  if (!pets.length) return { ok: false, msg: '圈里没有灵宠' };
-  const food = inputs.length;
-  return { ok: true, msg: food < pets.length ? `饲料不够（${food}/${pets.length}）` : `${pets.length} 只灵宠` };
+// 兽栏：灵兽圈每一栏一行，左边一排饲料格（f0、f1……）、右边一排灵兽格（b0、b1……），一栏只养一种；
+// 吃出来的东西落进产物格（out）。栏不够就加盖，至多 stallMax 栏
+const isPet = it => !!PET_FOOD[it.id];
+const petMenu = id => PET_FOOD[id] || RAT_FOOD;
+const PET_FOODS = () => [...new Set(Object.values(PET_FOOD).flat())];
+const stallCount = m => m.stalls || 0;
+const stallGrids = (m, i) => ({ feed: gridOf(m, `f${i}`), pen: gridOf(m, `b${i}`) });
+const stallSpecies = (m, i, skip) => { const pet = itemsIn(stallGrids(m, i).pen).find(it => it !== skip); return pet ? pet.id : null; };
+
+function addStall(m) {
+  const def = MACHINES[m.type], i = stallCount(m), n = def.stallSize;
+  S.grids[gridOf(m, `f${i}`)] = { w: n, h: 1 };
+  S.grids[gridOf(m, `b${i}`)] = { w: n, h: 1 };
+  m.stalls = i + 1;
 }
 
-function penRun(m, inputs) {
+// 开局往第几栏里放东西：栏不够就先补上（不收钱）
+function ensureStall(m, slot) {
+  const k = /^[fb](\d+)$/.exec(slot);
+  if (k) while (stallCount(m) <= +k[1]) addStall(m);
+}
+
+function stallPrice(m) { return supplierPrice(MACHINES[m.type].stallPrice); }
+
+function buyStall(m) {
+  const def = MACHINES[m.type];
+  if (stallCount(m) >= def.stallMax) return `${def.name}最多 ${def.stallMax} 栏`;
+  const price = stallPrice(m);
+  if (S.stones < price) return '灵石不够';
+  spend(price, `给${def.name}加盖了第${cn(stallCount(m) + 1)}栏。`);
+  addStall(m);
+  return null;
+}
+
+// 往兽栏里放东西：饲料格只收灵宠吃的东西；灵兽格只收灵宠，且不能和栏里已有的混养
+function stallReject(m, slot, it) {
+  const i = +slot.slice(1);
+  if (slot[0] === 'f') return PET_FOODS().includes(it.id) ? null : '灵宠不吃这个';
+  if (!isPet(it)) return '兽栏里只养灵宠';
+  const sp = stallSpecies(m, i, it);
+  return sp && sp !== it.id ? `这一栏养的是${ITEMS[sp].name}，不能混养` : null;
+}
+
+// 一栏此刻的情形：养的什么、几只，饲料里有几份对得上它的口；matched 就是今夜吃得上
+function stallState(m, i) {
+  const g = stallGrids(m, i), pets = itemsIn(g.pen), species = pets.length ? pets[0].id : null;
+  const feed = itemsIn(g.feed), menu = species ? petMenu(species) : [];
+  const fit = feed.filter(it => menu.includes(it.id)).length;
+  return { i, species, pets: pets.length, feed: feed.length, fit, need: pets.length * (1 + techLv('beast')), matched: pets.length > 0 && fit > 0 };
+}
+
+function penCheck(m) {
+  const st = [...Array(stallCount(m)).keys()].map(i => stallState(m, i)).filter(x => x.pets);
+  if (!st.length) return { ok: false, msg: '兽栏里没有灵宠' };
+  const pets = st.reduce((s, x) => s + x.pets, 0);
+  const hungry = st.filter(x => !x.matched);
+  if (hungry.length === st.length) return { ok: true, msg: `没有对口的饲料（${pets} 只灵宠）` };
+  return { ok: true, msg: hungry.length ? `${hungry.length} 栏缺饲料` : `${st.length} 栏 · ${pets} 只灵宠` };
+}
+
+function penRun(m) {
   const notes = [], out = gridOf(m, 'out'), bq = techLv('beast') * 10;
   const place = it => {
     if (autoPlace(it, [out]) || autoPlace(it, ['floor'])) { notes.push(itemName(it)); return; }
     destroyItem(it);
   };
-  // 每只灵宠每夜吃 1 + 御兽重数 份
-  for (const pet of itemsIn(out).filter(it => ITEMS[it.id].cat === 'chong')) for (let bite = 0; bite <= techLv('beast'); bite++) {
-    const menu = PET_FOOD[pet.id] || RAT_FOOD;
-    const food = inputs.find(it => menu.includes(it.id));
-    if (!food) { if (!bite) pet.growth = Math.max(0, (pet.growth || 0) - 5); break; }
-    destroyItem(food); inputs.splice(inputs.indexOf(food), 1);
-    // 灵兽饲料一份顶两份
-    pet.growth = Math.min(100, (pet.growth || 0) + (25 + 10 * techLv('beast')) * (food.id === 'beast_feed' ? 2 : 1));
-    if (pet.growth < 50) continue;
-    if (PET_YIELD[pet.id]) {
-      const note = PET_YIELD[pet.id](pet, food, place, bq);
-      if (note) notes.push(note);
-    } else if (pet.id === 'gold_bug') {
-      place(makeItem(food.id === 'bones' ? 'beast_feed' : 'spirit_sand', { q: clamp(food.q + 15 + bq, 5, 100) }));
-    } else {
-      if (food.id === 'waste_pill' && Math.random() < 0.35) place(makeItem('dan_guide', { q: 60 + bq }));
-      if (Math.random() < 0.45 + 0.1 * techLv('beast')) {
-        const id = weighted(RAT_LOOT.map(([k, w]) => [k, k === 'spirit_crystal' || k === 'jade_pendant' ? w * (1 + techLv('beast')) : w]));
-        place(makeItem(id, { q: rint(30, 70) + bq }));
+  for (let i = 0; i < stallCount(m); i++) {
+    const g = stallGrids(m, i), feed = itemsIn(g.feed);
+    // 每只灵宠每夜吃 1 + 御兽重数 份，只吃自己栏里的
+    for (const pet of itemsIn(g.pen)) for (let bite = 0; bite <= techLv('beast'); bite++) {
+      const food = feed.find(it => petMenu(pet.id).includes(it.id));
+      if (!food) { if (!bite) pet.growth = Math.max(0, (pet.growth || 0) - 5); break; }
+      destroyItem(food); feed.splice(feed.indexOf(food), 1);
+      // 灵兽饲料一份顶两份
+      pet.growth = Math.min(100, (pet.growth || 0) + (25 + 10 * techLv('beast')) * (food.id === 'beast_feed' ? 2 : 1));
+      if (pet.growth < 50) continue;
+      if (PET_YIELD[pet.id]) {
+        const note = PET_YIELD[pet.id](pet, food, place, bq);
+        if (note) notes.push(note);
+      } else if (pet.id === 'gold_bug') {
+        place(makeItem(food.id === 'bones' ? 'beast_feed' : 'spirit_sand', { q: clamp(food.q + 15 + bq, 5, 100) }));
+      } else {
+        if (food.id === 'waste_pill' && Math.random() < 0.35) place(makeItem('dan_guide', { q: 60 + bq }));
+        if (Math.random() < 0.45 + 0.1 * techLv('beast')) {
+          const id = weighted(RAT_LOOT.map(([k, w]) => [k, k === 'spirit_crystal' || k === 'jade_pendant' ? w * (1 + techLv('beast')) : w]));
+          place(makeItem(id, { q: rint(30, 70) + bq }));
+        }
       }
     }
-  }
-  // 两只成年的同类，可能添丁
-  for (const kind of Object.keys(PET_FOOD)) {
-    const adults = itemsIn(out).filter(it => it.id === kind && it.growth >= 100);
-    if (adults.length >= 2 && Math.random() < (PET_BREED[kind] != null ? PET_BREED[kind] : 0.3) + 0.1 * techLv('beast')) {
+    // 一栏里两只成年的，可能添丁：先放本栏，满了放同种的别栏、再放空栏
+    const kind = stallSpecies(m, i);
+    const adults = itemsIn(g.pen).filter(it => it.growth >= 100);
+    if (kind && adults.length >= 2 && Math.random() < (PET_BREED[kind] != null ? PET_BREED[kind] : 0.3) + 0.1 * techLv('beast')) {
       const baby = makeItem(kind, { growth: 0, q: 50 });
-      if (autoPlace(baby, [out])) notes.push(`一只小${ITEMS[kind].name}`); else destroyItem(baby);
+      const order = [i, ...[...Array(stallCount(m)).keys()].filter(j => j !== i && stallSpecies(m, j) === kind),
+        ...[...Array(stallCount(m)).keys()].filter(j => !stallSpecies(m, j))];
+      if (autoPlace(baby, order.map(j => stallGrids(m, j).pen))) notes.push(`一只小${ITEMS[kind].name}`);
+      else { destroyItem(baby); notes.push(`${ITEMS[kind].name}想下崽，兽栏满了`); }
     }
   }
   return notes.length ? `产出：${notes.join('、')}` : '灵宠们吃饱了，正在长';
+}
+
+// 旧存档：灵兽圈原来是一格饲料、一格圈内混养。拆成兽栏：同种的放一栏（四只一栏），饲料跟着对口的栏走
+function migratePen(m) {
+  const def = MACHINES[m.type];
+  if (m.stalls) return;
+  const lift = g => { const l = itemsIn(g); l.forEach(it => { it.pos = null; }); return l; };
+  const food = lift(gridOf(m, 'in')), inPen = lift(gridOf(m, 'out'));
+  delete S.grids[gridOf(m, 'in')];
+  S.grids[gridOf(m, 'out')] = { w: def.out[0], h: def.out[1] };
+  m.stalls = 0;
+  const kinds = [...new Set(inPen.filter(isPet).map(it => it.id))];
+  for (const k of kinds) {
+    const pets = inPen.filter(it => it.id === k);
+    for (let n = 0; n < pets.length; n += def.stallSize) if (stallCount(m) < def.stallMax) addStall(m);
+  }
+  while (stallCount(m) < def.stalls) addStall(m);
+  for (const pet of inPen.filter(isPet)) {
+    const ok = [...Array(stallCount(m)).keys()].filter(i => [pet.id, null].includes(stallSpecies(m, i))).sort((a, b) => !stallSpecies(m, a) - !stallSpecies(m, b));
+    if (!autoPlace(pet, ok.map(i => stallGrids(m, i).pen))) stow(pet);
+  }
+  for (const it of inPen.filter(it => !isPet(it))) if (!autoPlace(it, [gridOf(m, 'out')])) stow(it);
+  for (const it of food) {
+    const ok = [...Array(stallCount(m)).keys()].sort((a, b) => {
+      const fa = stallSpecies(m, a) && petMenu(stallSpecies(m, a)).includes(it.id), fb = stallSpecies(m, b) && petMenu(stallSpecies(m, b)).includes(it.id);
+      return fb - fa;
+    });
+    if (!autoPlace(it, ok.map(i => stallGrids(m, i).feed))) stow(it);
+  }
 }
 
 // ───────────── 符案 ─────────────

@@ -120,9 +120,12 @@ const dlbSourced = (id, not) => id === 'gu' || dlbTierOf(id) != null || BEHAVIOR
 const dlbMakeable = (b, depth = 0) => depth < 5 && b.alt.some(x => (x.use || []).every(([id]) => id === 'gu' || dlbTierOf(id) != null
   || BEHAVIORS.some(y => y.machine && y !== b && (y.made || []).includes(id) && dlbMakeable(y, depth + 1))));
 
+// 灵兽圈没有 in / out 两格：灵宠进第一栏，饲料进第一栏的饲料格
+const dlbSlot = (m, slot) => !MACHINES[m.type].stalls ? slot : slot === 'in' ? 'f0' : slot === 'out' ? 'b0' : slot;
+
 // 让设备的某个格子里有 n 件 id：缺的先弄到手，再挪进去
 function dlbStock(m, slot, id, n, D, depth) {
-  const lack = n - itemsIn(gridOf(m, slot)).filter(it => it.id === id).length;
+  const lack = n - itemsIn(gridOf(m, dlbSlot(m, slot))).filter(it => it.id === id).length;
   if (lack <= 0) return;
   dlbObtain(id, lack, D, depth);
   dlbLoad(m, slot, id, n);
@@ -130,7 +133,7 @@ function dlbStock(m, slot, id, n, D, depth) {
 
 // 把手上的 n 件 id 挪进设备的某个格子
 function dlbLoad(m, slot, id, n, extra = it => true) {
-  const gid = gridOf(m, slot);
+  const gid = gridOf(m, dlbSlot(m, slot));
   n -= itemsIn(gid).filter(it => it.id === id && extra(it)).length;   // 格子里已经有的不用再挪
   if (n <= 0) return;
   const list = dlbHeld(id).filter(extra).slice(0, n);

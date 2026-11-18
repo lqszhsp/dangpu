@@ -54,7 +54,7 @@ const BEHAVIORS = [
   { id: 'gu_egg', name: '成蛊产卵', machine: 'gupot', alt: [{ has: [['gu', 2]], use: [['bones', 2]] }], made: ['gu_egg'] },
   { id: 'rat_loot', name: '寻宝鼠叼货', machine: 'pen', alt: RAT_FOOD.map(f => ({ has: [['treasure_rat', 1]], use: [[f, 1]] })), made: ['*'] },
   { id: 'dan_guide', name: '寻宝鼠吃废丹吐丹引', machine: 'pen', alt: [{ has: [['treasure_rat', 1]], use: [['waste_pill', 1]] }], made: ['dan_guide'] },
-  { id: 'bug_sand', name: '噬金虫吞废铁吐高纯灵砂', machine: 'pen', alt: BUG_FOOD.filter(f => f !== 'bones').map(f => ({ has: [['gold_bug', 1]], use: [[f, 1]] })), made: ['spirit_sand'] },
+  { id: 'bug_sand', name: '噬金虫吞玄铁矿、破铜钵吐高纯灵砂', machine: 'pen', alt: BUG_FOOD.filter(f => f !== 'bones').map(f => ({ has: [['gold_bug', 1]], use: [[f, 1]] })), made: ['spirit_sand'] },
   { id: 'bug_feed', name: '噬金虫化腐骨为饲料', machine: 'pen', alt: [{ has: [['gold_bug', 1]], use: [['bones', 1]] }], made: ['beast_feed'] },
   // 作伪
   { id: 'dress', name: '作伪台以次充好', machine: 'forgery', alt: [{ tech: ['forgery', 1], dressable: true }], made: ['~dress'] },

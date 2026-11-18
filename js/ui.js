@@ -600,7 +600,7 @@ function tabWorkshop() {
       <div class="m-desc muted small">设备按卡片顺序取用灵力：先用基础灵力，不足时抽取灵晶。剩余的基础灵力会存进灵晶（每块上限 ${CRYSTAL_CAP}）。</div></div>`;
   else {
     const r = plan.rows.find(x => x.m.mid === openMid), m = r.m, def = MACHINES[m.type];
-    const grids = [
+    const grids = def.stalls ? stallsHTML(m, r.chk.ok && r.powered) : [
       def.in ? gridHTML(gridOf(m, 'in'), def.inLabel || '输入') : '',
       def.mod ? gridHTML(gridOf(m, 'mod'), def.modLabel || '模组', 'mod') : '',
       def.out ? gridHTML(gridOf(m, 'out'), def.outLabel || '产出', 'out') : '',
@@ -614,7 +614,7 @@ function tabWorkshop() {
           <button class="btn tiny" data-act="m-down" data-mid="${m.mid}" title="延后运转">↓</button>
           <button class="btn tiny" data-act="m-toggle" data-mid="${m.mid}">${m.on ? '停用' : '启用'}</button>
           <button class="btn tiny ghost" data-act="m-remove" data-mid="${m.mid}" title="拆除，退回三成">拆</button></div></div>
-      <div class="m-grids">${grids}</div>${extra}
+      <div class="m-grids${def.stalls ? ' stalls' : ''}">${grids}</div>${extra}
       <div class="m-desc muted small">${def.desc}</div></div>`;
   }
   const known = Object.entries(S.forgeKnown).filter(x => x[1]).map(([id, g]) => `${ITEMS[id].name}（${GRADE_NAMES[g]}）`);
@@ -624,6 +624,28 @@ function tabWorkshop() {
       <span class="muted small">鉴定术：${LENS_NAMES[appraiseLevel()]}${known.length ? ` · 会仿造：${known.join('、')}` : ''}</span></div>
     <div class="m-cards">${cards.join('')}</div>
     ${S.machines.length ? detail : `${detail}<p class="muted">后院空空如也。到「货郎」处购置设备。</p>`}</div>`;
+}
+
+// 灵兽圈：一栏一行，饲料 → 灵宠。饲料对口、今夜设备转得起来，箭头才亮着往灵宠那边流；否则暗着不动
+function stallsHTML(m, running) {
+  const def = MACHINES[m.type], n = stallCount(m);
+  const rows = [...Array(n).keys()].map(i => {
+    const st = stallState(m, i), g = stallGrids(m, i), live = st.matched && running;
+    const what = st.species ? `${ITEMS[st.species].name} ×${st.pets}` : '空栏';
+    const why = !st.species ? '放进一种灵宠' : !st.fit ? `缺对口饲料：${ITEMS[st.species].name}吃${petMenu(st.species).map(id => ITEMS[id].name).join('、')}`
+      : !m.on ? '设备已停用' : !running ? '灵力不足，今夜不转' : `今夜吃 ${Math.min(st.fit, st.need)}/${st.need} 份`;
+    return `<div class="stall ${live ? 'live' : ''}">
+      <div class="stall-head"><b>兽栏${cn(i + 1)}</b><span>${what}</span><span class="${live ? 'ok' : 'muted'}">${esc(why)}</span></div>
+      <div class="stall-row">${gridHTML(g.feed, '', 'feed')}
+        <div class="stall-flow ${live ? 'on' : ''}" title="${esc(why)}"><i></i><i></i><i></i></div>
+        ${gridHTML(g.pen, '', 'pen')}</div></div>`;
+  }).join('');
+  const more = n < def.stallMax
+    ? `<button class="btn small" data-act="buy-stall" data-mid="${m.mid}" ${S.stones >= stallPrice(m) ? '' : 'disabled'}>加盖兽栏（${stoneTxt(stallPrice(m))}）</button>`
+    : '<span class="muted small">兽栏已加盖到头</span>';
+  return `<div class="stall-cols muted small"><span style="width:${def.stallSize * CELL + 56 + 6}px">饲料</span><span>灵宠</span></div>${rows}
+    <div class="stall-foot"><span class="muted small">兽栏 ${n}/${def.stallMax}</span>${more}</div>
+    ${gridHTML(gridOf(m, 'out'), def.outLabel || '产出', 'out')}`;
 }
 
 function tabBroker() {
@@ -749,6 +771,13 @@ function selActions(s, inCard = false) {
     else if (low && (low.charge || 0) < (s.charge || 0)) out.push(`<button class="btn tiny" data-act="power-swap">换下阵眼里最空的一块（充能 ${low.charge || 0}）</button>`);
   }
   S.machines.filter(m => MACHINES[m.type].in).slice(0, 12).forEach(m => { if (out.length < 7) mv(gridOf(m, 'in'), `放进${MACHINES[m.type].name}`); });
+  // 灵兽圈：灵宠放进同种或空的栏；饲料只喂吃它的那几栏
+  S.machines.filter(m => MACHINES[m.type].stalls).forEach(m => [...Array(stallCount(m)).keys()].forEach(i => {
+    if (out.length >= 7) return;
+    const sp = stallSpecies(m, i), g = stallGrids(m, i);
+    if (isPet(s)) mv(g.pen, `放进兽栏${cn(i + 1)}`);
+    else if (sp && petMenu(sp).includes(s.id)) mv(g.feed, `喂兽栏${cn(i + 1)}（${ITEMS[sp].name}）`);
+  }));
   S.machines.filter(m => MACHINES[m.type].mod && modAccepts(s, m.type)).forEach(m => mv(gridOf(m, 'mod'), `装进${MACHINES[m.type].name}`));
   if (ITEMS[s.id].appraise) out.push(`<button class="btn tiny" data-act="appraise-own">${icon('ic_appraise')}鉴定</button>`);
   if (canLace(s) && additives().length) out.push(`<button class="btn tiny" data-act="lace">${icon('ic_lace')}加料</button>`);
@@ -1857,6 +1886,7 @@ const HANDLERS = {
   },
   collect: el => { collectPuppetCash(machineById(el)); renderAll(); },
   'buy-supply': el => { const err = buySupply(S.supply[+el.dataset.i]); if (err) toast(err, 'bad'); renderAll(); },
+  'buy-stall': el => { const m = S.machines.find(x => x.mid === +el.dataset.mid), err = buyStall(m); toast(err || `${MACHINES[m.type].name}加盖了一栏`, err ? 'bad' : 'good'); renderAll(); },
   'buy-machine': el => { const err = buyMachine(el.dataset.type); if (err) toast(err, 'bad'); else { tab = 'workshop'; toast('设备已安置在后院', 'good'); } renderAll(); },
   'buy-upgrade': el => { const err = buyUpgrade(el.dataset.id); if (err) toast(err, 'bad'); renderAll(); },
   'sell-broker': () => {

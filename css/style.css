@@ -349,6 +349,25 @@ img { user-select: none; -webkit-user-drag: none; }
 .lens-arm > img { position: absolute; max-width: none; pointer-events: none; }
 .lens-grip { position: absolute; left: calc(var(--g) * -.42); width: calc(var(--g) * .84); pointer-events: auto; touch-action: none; cursor: grab; }
 .ap-stage:active, .ap-stage:active .lens-grip { cursor: grabbing; }
+/* 灵兽圈：一栏一行，饲料 ››› 灵宠；对口又转得起来时箭头亮着往右流，否则暗着不动 */
+.m-grids.stalls { display: block; }
+/* 竖屏：兽栏一行八格加箭头，不留设备图那一截缩进 */
+body.tall .m-grids.stalls { margin-left: 0; }
+.stall-cols { display: flex; gap: 0; padding: 0 2px; }
+.stall { margin: 0 0 8px; padding: 4px 6px 6px; border-radius: 6px; background: rgba(0, 0, 0, .18); border: 1px solid rgba(255, 255, 255, .05); }
+.stall.live { border-color: rgba(160, 230, 70, .28); }
+.stall-head { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; font-size: 12px; margin-bottom: 3px; }
+.stall-head .ok { color: #a6dd52; }
+.stall-row { display: flex; align-items: center; gap: 0; }
+.stall-row .grid-wrap { margin: 0; }
+.stall-flow { flex: none; width: 56px; display: flex; justify-content: center; align-items: center; gap: 2px; }
+.stall-flow i { width: 10px; height: 10px; border-top: 3px solid #4a4452; border-right: 3px solid #4a4452; transform: rotate(45deg); opacity: .55; }
+.stall-flow.on i { border-color: #b8f04c; filter: drop-shadow(0 0 3px rgba(184, 240, 76, .8)); animation: stall-flow 1.1s linear infinite; }
+.stall-flow.on i:nth-child(2) { animation-delay: .22s; }
+.stall-flow.on i:nth-child(3) { animation-delay: .44s; }
+@keyframes stall-flow { 0% { opacity: .15; transform: translateX(-6px) rotate(45deg); } 40% { opacity: 1; } 100% { opacity: .15; transform: translateX(6px) rotate(45deg); } }
+@media (prefers-reduced-motion: reduce) { .stall-flow.on i { animation: none; opacity: 1; } }
+.stall-foot { display: flex; justify-content: space-between; align-items: center; margin: 2px 0 8px; }
 .ap-talk { display: flex; justify-content: space-between; gap: 10px; margin-top: 6px; padding: 6px 10px; font-size: 13px; background: rgba(142, 27, 43, .1); border-left: 3px solid var(--blood); }
 .ap-talk b { margin-left: 4px; color: var(--blood); }
 

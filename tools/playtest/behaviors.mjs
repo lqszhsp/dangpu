@@ -45,8 +45,10 @@ function feasibility() {
         if (a.tech) S.tech[a.tech[0]] = a.tech[1];
         const m = addMachine(b.machine), live = b.machine === 'pen' || b.machine === 'gupot';
         // 蛊、灵宠要先养到火候才出东西：放进去时就是快成的
-        for (const [id, n] of a.has || []) give(id, n, id === 'gu' ? { growth: 95 } : ITEMS[id].cat === 'chong' ? { growth: 60 } : {}, live ? gridOf(m, 'out') : gridOf(m, 'in'));
-        for (const [id, n] of a.use || []) give(id, n, id === 'water' ? { purity: 60 } : {}, gridOf(m, 'in'));
+        // 灵兽圈：灵宠进第一栏，饲料进第一栏的饲料格
+        const stalls = !!MACHINES[b.machine].stalls;
+        for (const [id, n] of a.has || []) give(id, n, id === 'gu' ? { growth: 95 } : ITEMS[id].cat === 'chong' ? { growth: 60 } : {}, stalls ? gridOf(m, 'b0') : live ? gridOf(m, 'out') : gridOf(m, 'in'));
+        for (const [id, n] of a.use || []) give(id, n, id === 'water' ? { purity: 60 } : {}, stalls ? gridOf(m, 'f0') : gridOf(m, 'in'));
         if (b.made.includes('~purify')) give('water', 1, { purity: 60 }, gridOf(m, 'in'));
         if (a.mod) give(a.mod, 1, {}, gridOf(m, 'mod'));
         if (a.modAny) { S.tech.forgery = 1; give(a.modAny, 1, {}, gridOf(m, 'mod')); S.forgeKnown = S.forgeKnown || {}; S.forgeKnown[a.known] = 1; }

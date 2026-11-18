@@ -129,7 +129,6 @@ PET_YIELD.spirit_sparrow = () => {
 PET_YIELD.jade_cat = () => null;
 // 灵猫一窝难得：添丁的机会只有寻宝鼠的四成
 PET_BREED.jade_cat = 0.12;
-MACHINES.pen.habitat.push('spirit_sparrow', 'jade_cat');
 MACHINES.pen.inputs.push('herb_seed');
 MACHINES.pen.desc += '传讯灵雀啄灵草种、灵果，夜里偶尔叼回密报；玉面灵猫吃灵兽饲料、腐骨，只管长和配种。';
 

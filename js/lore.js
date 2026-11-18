@@ -84,7 +84,7 @@ function buildLore() {
   R('wine', 'winejar', [['spirit_fruit', 2], ['yeast', 1]], 'spirit_wine', 'low', ['brew', 'farmer', 'trader'], '封坛两夜，');
   R('vine', 'yaopot', [['vine_seed', 1], ['bones', 3]], 'vine_fruit', 'mid', ['farmer', 'medic', 'yao'], '一夜喂一块，');
   if (has('water', 'filter_sand', 'spirit_sand')) add('rx_water', `${MACHINES.pool.name}的配方`, 'mid', ['trader', 'farmer', 'ren'],
-    `${loreN('filter_sand')}洗灵水最多洗到九成九，要洗成琼浆玉露得用${loreN('spirit_sand')}——噬金虫吞废铁就吐这个。`);
+    `${loreN('filter_sand')}洗灵水最多洗到九成九，要洗成琼浆玉露得用${loreN('spirit_sand')}——噬金虫吞玄铁矿、破铜钵就吐这个。`);
   // 治伤解毒
   add('cure', '伤毒怎么治', 'low', ['medic', 'ren', 'farmer'], Object.values(CONDS).map(c => `${c.name}用${loreList(c.cure)}`).join('；') + '。');
   const docs = Object.values(CAST).filter(d => d.healer);

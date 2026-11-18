@@ -58,6 +58,7 @@ function newGame(diffId, startId) {
   // 开局就放进设备里的东西：[设备, 格子, 物品, 数量, 额外属性]
   (start.into || []).forEach(([type, slot, id, n, extra]) => {
     const m = S.machines.find(x => x.type === type);
+    ensureStall(m, slot);
     for (let i = 0; i < n; i++) { const it = makeItem(id, Object.assign({}, extra)); if (!autoPlace(it, [gridOf(m, slot)])) autoPlace(it); }
   });
   autoPlace(makeItem('spirit_crystal', { charge: 6 }), ['power']);
@@ -92,6 +93,7 @@ function load() {
   initKarma(); initFate();
   initConditions();
   pruneUnknownItems();
+  S.machines.filter(m => MACHINES[m.type].stalls).forEach(migratePen);
   // 旧存档里掺了料的货都是你自己掺的（那时市面上还没有别人掺好的）
   Object.values(S.items).forEach(it => { if (it.laced && !it.lacedBy && !it.lacedSeen) it.lacedBy = 'me'; });
   if (!Object.keys(S.story).length) initStories();
@@ -215,6 +217,7 @@ function rejectReason(gid, it) {
     if (mg.m.type === 'forgery') return COUNTERFEITS[it.id] ? null : '只有能仿造的东西才能当样品';
     return modAccepts(it, mg.m.type) ? null : '不是这台设备的模组';
   }
+  if (/^[fb]\d+$/.test(mg.slot)) return stallReject(mg.m, mg.slot, it);
   if (mg.slot === 'in') return !def.inputs || def.inputs.includes(it.id) ? null : `${def.name}用不上这个`;
   if (mg.slot === 'out') return def.habitat && def.habitat.includes(it.id) ? null : '产出格只能取出';
   return null;
@@ -297,11 +300,14 @@ function addMachine(type) {
   ['in', 'out', 'mod'].forEach(slot => {
     if (def[slot]) S.grids[`m${m.mid}:${slot}`] = { w: def[slot][0], h: def[slot][1] };
   });
+  for (let i = 0; i < (def.stalls || 0); i++) addStall(m);
   S.machines.push(m);
   return m;
 }
 
 const gridOf = (m, slot) => `m${m.mid}:${slot}`;
+// 一台设备的全部格子（含灵兽圈的各栏）
+const machineGridIds = m => Object.keys(S.grids).filter(g => g.startsWith(`m${m.mid}:`));
 const countIn = (list, id) => list.filter(it => it.id === id).length;
 const hasMod = (m, id) => itemsIn(gridOf(m, 'mod')).some(it => it.id === id);
 const avgQ = list => Math.round(list.reduce((s, it) => s + it.q, 0) / list.length);
@@ -1374,8 +1380,7 @@ function moveMachine(m, dir) {
 
 // 拆除设备：格子里的东西退回库房或地面，放不下的拿在手上
 function removeMachine(m) {
-  ['in', 'out', 'mod'].forEach(slot => {
-    const gid = gridOf(m, slot);
+  machineGridIds(m).forEach(gid => {
     itemsIn(gid).forEach(stow);
     delete S.grids[gid];
   });

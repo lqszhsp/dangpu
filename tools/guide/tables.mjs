@@ -166,7 +166,7 @@ export function tables(h) {
         Object.entries(G.MACHINES).map(([k, m]) => {
           mark('machine', k);
           const [st, sp] = G.MACHINE_COST[k] || [0, 0];
-          return [`**${m.name}**`, Math.round(m.price * (1 + mk)), m.power, `${st}/${sp}`, m.in ? m.in.join('×') : '—', m.out ? m.out.join('×') : '—', m.desc || ''];
+          return [`**${m.name}**`, Math.round(m.price * (1 + mk)), m.power, `${st}/${sp}`, m.stalls ? `每栏饲料 ${m.stallSize} 格＋灵宠 ${m.stallSize} 格，${m.stalls}–${m.stallMax} 栏（加盖每栏 ${Math.round(m.stallPrice * (1 + mk))}）` : m.in ? m.in.join('×') : '—', m.out ? m.out.join('×') : '—', m.desc || ''];
         }));
     },
 
