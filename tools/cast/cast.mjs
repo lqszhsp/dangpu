@@ -128,10 +128,11 @@ defineCharacter({
 function artJobs(def) {
   const py = `import sys, json; sys.path.insert(0, ${JSON.stringify(path.join(GAME, 'tools/art'))}); from specs import PORTRAIT_PREFIX, MOODS; print(json.dumps({'p': PORTRAIT_PREFIX, 'm': MOODS}))`;
   const { p, m } = JSON.parse(execFileSync('python3', ['-c', py]).toString());
-  const sexWord = def.sex === 'f' ? 'a woman (actress)' : 'a man (actor)';
+  // artSubject 换掉“成年男女演员”的说法（孩子要写成童星）；moodArt 换掉不合这个人的神态说明（孩子不画成瘾、黑筋）
+  const sexWord = def.artSubject || (def.sex === 'f' ? 'a woman (actress)' : 'a man (actor)');
   const base = `raw/chars/${def.portrait}.png`;
   const jobs = [{ id: `char:${def.portrait}`, mood: 'neutral', prompt: p.replace('{d}', `${sexWord}: ${def.art}, neutral calm expression`), out: base, size: '1024x1536', quality: 'high', background: 'transparent' }];
-  for (const [k, c] of Object.entries(m)) {
+  for (const [k, c] of Object.entries({ ...m, ...(def.moodArt || {}) })) {
     jobs.push({ id: `char:${def.portrait}_${k}`, mood: k, refs: [base], out: `raw/chars/${def.portrait}_${k}.png`, size: '1024x1536', quality: 'high', background: 'transparent',
       prompt: `Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: ${c}. Keep the transparent background.` });
   }

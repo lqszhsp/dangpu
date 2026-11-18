@@ -950,3 +950,11 @@
 {"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794958520.2830405}
 {"id": "char:yao_tiger_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794958725.7939684}
 {"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794958726.3306448}
+{"id": "char:yao_tiger_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794959227.0643525}
+{"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794959229.5421634}
+{"id": "char:yao_tiger_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794959433.1917176}
+{"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794959435.564088}
+{"id": "char:yao_tiger_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794959639.0373163}
+{"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794959643.2618556}
+{"id": "char:yao_tiger_f1", "status": "fail", "info": "HTTP 502 gpt-image-2-pro b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794959848.787578}
+{"id": "char:yao_snake_f1", "status": "fail", "info": "HTTP 503 gpt-image-2-pro b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794959850.2478468}
