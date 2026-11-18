@@ -985,3 +985,150 @@
 {"id": "char:hua_lier_sly", "status": "ok", "info": "96s gpt-image-2.5-sunburst-adobe", "t": 1794969406.175255}
 {"id": "char:hua_lier_wasted", "status": "ok", "info": "66s gpt-image-2.5-sunburst-adobe", "t": 1794969454.168088}
 {"id": "char:hua_lier_thrall", "status": "ok", "info": "96s gpt-image-2.5-sunburst-adobe", "t": 1794969498.549752}
+{"id": "char:ling_bo", "status": "ok", "info": "65s gpt-image-2.5-sunburst-adobe", "t": 1794978099.3287125}
+{"id": "char:ling_bo_pleased", "status": "ok", "info": "63s gpt-image-2.5-sunburst-adobe", "t": 1794978162.5987236}
+{"id": "char:ling_bo_angry", "status": "ok", "info": "68s gpt-image-2.5-sunburst-adobe", "t": 1794978166.8384023}
+{"id": "char:ling_bo_afraid", "status": "ok", "info": "71s gpt-image-2.5-sunburst-adobe", "t": 1794978169.8539398}
+{"id": "char:ling_bo_sly", "status": "ok", "info": "65s gpt-image-2.5-sunburst-adobe", "t": 1794978169.8540668}
+{"id": "char:ling_bo_wasted", "status": "ok", "info": "73s gpt-image-2.5-sunburst-adobe", "t": 1794978236.0504646}
+{"id": "char:ling_bo_thrall", "status": "ok", "info": "73s gpt-image-2.5-sunburst-adobe", "t": 1794978236.9660275}
+{"id": "char:man_shu", "status": "ok", "info": "70s gpt-image-2.5-sunburst-adobe", "t": 1794978323.9698725}
+{"id": "char:man_shu_pleased", "status": "ok", "info": "72s gpt-image-2.5-sunburst-adobe", "t": 1794978396.0992913}
+{"id": "char:man_shu_angry", "status": "ok", "info": "77s gpt-image-2.5-sunburst-adobe", "t": 1794978401.1182363}
+{"id": "char:man_shu_afraid", "status": "ok", "info": "82s gpt-image-2.5-sunburst-adobe", "t": 1794978405.519211}
+{"id": "char:man_shu_sly", "status": "ok", "info": "76s gpt-image-2.5-sunburst-adobe", "t": 1794978405.5193033}
+{"id": "char:man_shu_wasted", "status": "ok", "info": "71s gpt-image-2.5-sunburst-adobe", "t": 1794978467.2201533}
+{"id": "char:man_shu_thrall", "status": "ok", "info": "91s gpt-image-2.5-sunburst-adobe", "t": 1794978491.807476}
+{"id": "char:zhu_qiniang", "status": "ok", "info": "89s gpt-image-2.5-sunburst-adobe", "t": 1794978594.3448985}
+{"id": "char:zhu_qiniang_pleased", "status": "ok", "info": "63s gpt-image-2.5-sunburst-adobe", "t": 1794978657.3335185}
+{"id": "char:zhu_qiniang_angry", "status": "ok", "info": "67s gpt-image-2.5-sunburst-adobe", "t": 1794978660.9060013}
+{"id": "char:zhu_qiniang_afraid", "status": "ok", "info": "71s gpt-image-2.5-sunburst-adobe", "t": 1794978665.1010234}
+{"id": "char:zhu_qiniang_sly", "status": "ok", "info": "85s gpt-image-2.5-sunburst-adobe", "t": 1794978679.4842958}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794978870.8006759}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794978872.112516}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794979080.5312068}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794979081.9423983}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794979290.1281319}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794979293.2850876}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794979810.0463834}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794979813.3885076}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794980023.5059063}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794980023.5060835}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794980234.3605044}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794980234.442139}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794980447.3121812}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794980449.157745}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794980669.5194995}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794980871.8979776}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794980958.8110116}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794980959.5179102}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794981078.510179}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794981168.2509787}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794981171.2374732}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794981281.0791037}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794981382.4211326}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794981382.4213102}
+{"id": "item:datura_pollen", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794981486.8927746}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794981595.0725396}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794981595.0727403}
+{"id": "item:datura_pollen", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794981689.5730402}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794982093.2131615}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794982093.2132154}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794982306.5384967}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794982306.5386622}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794982519.8671985}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794982519.8672705}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794982731.4979565}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794982731.4980927}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794982937.9458785}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794983141.0852058}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794983346.0253959}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794983550.6979823}
+{"id": "item:datura_pollen", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794983754.5968788}
+{"id": "item:datura_pollen", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794983960.126731}
+{"id": "item:datura_pollen", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794984163.8064811}
+{"id": "item:datura_pollen", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794984370.0889003}
+{"id": "item:spider_silk", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794984582.661953}
+{"id": "item:spider_silk", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794984786.611103}
+{"id": "item:spider_silk", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794984990.189359}
+{"id": "item:spider_silk", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794985193.9485195}
+{"id": "item:spider_venom", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794985401.3345656}
+{"id": "item:spider_venom", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794985607.1099162}
+{"id": "item:spider_venom", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794985811.155452}
+{"id": "item:spider_venom", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794986015.5456889}
+{"id": "item:narcissus_dew", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794986220.2240405}
+{"id": "item:narcissus_dew", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794986427.2652307}
+{"id": "item:narcissus_dew", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794986630.700926}
+{"id": "item:narcissus_dew", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794986835.5036533}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794987349.0901673}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794987349.0903487}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794987560.339785}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794987560.3399303}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794987771.2900403}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794987772.639504}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794987984.4999804}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794987984.5000346}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 500 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream gateway error\",\"type\":\"upstream_error\"}}'", "t": 1794988202.121108}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 500 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream gateway error\",\"type\":\"upstream_error\"}}'", "t": 1794988439.5746365}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794988656.0767698}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794988862.224952}
+{"id": "item:datura_pollen", "status": "ok", "info": "105s gpt-image-2.5-sunburst-adobe", "t": 1794988967.6071599}
+{"id": "item:datura_pollen_low", "status": "ok", "info": "113s gpt-image-2.5-sunburst-adobe", "t": 1794989080.8759677}
+{"id": "item:datura_pollen_high", "status": "ok", "info": "116s gpt-image-2.5-sunburst-adobe", "t": 1794989083.4859629}
+{"id": "item:datura_pollen_top", "status": "ok", "info": "118s gpt-image-2.5-sunburst-adobe", "t": 1794989085.7039783}
+{"id": "item:spider_silk", "status": "ok", "info": "93s gpt-image-2.5-sunburst-adobe", "t": 1794989181.6463265}
+{"id": "item:spider_silk_low", "status": "ok", "info": "72s gpt-image-2.5-sunburst-adobe", "t": 1794989253.677871}
+{"id": "item:spider_silk_high", "status": "ok", "info": "71s gpt-image-2.5-sunburst-adobe", "t": 1794989253.678013}
+{"id": "item:spider_silk_top", "status": "ok", "info": "72s gpt-image-2.5-sunburst-adobe", "t": 1794989253.6780548}
+{"id": "item:spider_venom", "status": "ok", "info": "126s gpt-image-2.5-sunburst-adobe", "t": 1794989381.877214}
+{"id": "item:spider_venom_low", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794989593.1113465}
+{"id": "item:spider_venom_high", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794989593.111503}
+{"id": "item:spider_venom_top", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794989598.6481657}
+{"id": "item:spider_venom_low", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794989809.273354}
+{"id": "item:spider_venom_high", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794989809.6453989}
+{"id": "item:spider_venom_top", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794989810.4903355}
+{"id": "item:spider_venom_low", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794990022.023917}
+{"id": "item:spider_venom_high", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794990023.2391412}
+{"id": "item:spider_venom_top", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794990024.2442672}
+{"id": "item:narcissus_dew", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794990265.3515632}
+{"id": "item:narcissus_dew", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794990470.5643215}
+{"id": "item:narcissus_dew", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794990673.2770822}
+{"id": "item:narcissus_dew", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794990878.9314864}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794991390.7043402}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794991394.656279}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794991608.1156447}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794991610.9424584}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794991827.487412}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794991827.4876027}
+{"id": "char:zhu_qiniang_wasted", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794992045.0606956}
+{"id": "char:zhu_qiniang_thrall", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794992045.0608478}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794992249.979565}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794992455.9186904}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794992661.4411209}
+{"id": "item:datura_seed", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794992866.7491243}
+{"id": "item:spider_venom_low", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794993084.9718506}
+{"id": "item:spider_venom_high", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794993084.972049}
+{"id": "item:spider_venom_top", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794993084.972113}
+{"id": "item:spider_venom_low", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794993298.5923262}
+{"id": "item:spider_venom_high", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794993298.5924807}
+{"id": "item:spider_venom_top", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794993300.6241078}
+{"id": "item:spider_venom_low", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794993513.2167292}
+{"id": "item:spider_venom_high", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794993513.2168815}
+{"id": "item:spider_venom_top", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794993513.216933}
+{"id": "item:spider_venom_low", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794993723.155662}
+{"id": "item:spider_venom_high", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794993725.8645334}
+{"id": "item:spider_venom_top", "status": "fail", "info": "HTTP 503 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"No available compatible accounts\",\"type\":\"api_error\"}}'", "t": 1794993725.8646734}
+{"id": "item:narcissus_dew", "status": "fail", "info": "HTTP 502 gpt-image-2.5-sunburst-adobe b'{\"error\":{\"message\":\"Upstream service temporarily unavailable\",\"type\":\"upstream_error\"}}'", "t": 1794993929.5343256}
+{"id": "item:narcissus_dew", "status": "ok", "info": "127s gpt-image-2.5-sunburst-adobe", "t": 1794994056.359947}
+{"id": "item:narcissus_dew_low", "status": "ok", "info": "209s gpt-image-2.5-sunburst-adobe", "t": 1794994573.8111165}
+{"id": "item:narcissus_dew_high", "status": "ok", "info": "71s gpt-image-2.5-sunburst-adobe", "t": 1794994573.811365}
+{"id": "item:narcissus_dew_top", "status": "ok", "info": "66s gpt-image-2.5-sunburst-adobe", "t": 1794994573.8114839}
+{"id": "char:zhu_qiniang_wasted", "status": "ok", "info": "79s gpt-image-2.5-sunburst-adobe", "t": 1794994954.9039335}
+{"id": "char:zhu_qiniang_thrall", "status": "ok", "info": "87s gpt-image-2.5-sunburst-adobe", "t": 1794994963.1501746}
+{"id": "item:datura_seed", "status": "ok", "info": "61s gpt-image-2.5-sunburst-adobe", "t": 1794995027.4581585}
+{"id": "item:datura_seed_low", "status": "ok", "info": "86s gpt-image-2.5-sunburst-adobe", "t": 1794995113.1032367}
+{"id": "item:datura_seed_high", "status": "ok", "info": "107s gpt-image-2.5-sunburst-adobe", "t": 1794995134.441414}
+{"id": "item:datura_seed_top", "status": "ok", "info": "85s gpt-image-2.5-sunburst-adobe", "t": 1794995134.4415088}
+{"id": "item:spider_venom_low", "status": "ok", "info": "156s gpt-image-2.5-sunburst-adobe", "t": 1794995292.4963405}
+{"id": "item:spider_venom_high", "status": "ok", "info": "164s gpt-image-2.5-sunburst-adobe", "t": 1794995300.1822362}
+{"id": "item:spider_venom_top", "status": "ok", "info": "162s gpt-image-2.5-sunburst-adobe", "t": 1794995300.182408}
