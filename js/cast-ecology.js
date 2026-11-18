@@ -30,7 +30,8 @@ function ecologyCharacter(d) {
     return { text: '买证的人没有留名，只留下正好的灵石。再有人来时，你只能拿出空匣。', go: ['aftermath', [3, 5]], summary: `你卖掉了${d.name}的证据。` };
   };
   return {
-    ...d, portrait: d.id, ecologyBatch: 'qwen3pro55', artProvider: 'bailian', artModel: 'qwen-image-3.0-pro',
+    // 立绘默认百炼 Qwen 画；个别重画过的写 artProvider: 'gpt'，走 cast.mjs art 的 GPT 流程（ecologyBatch 不变：并行上限照算）
+    portrait: d.id, ecologyBatch: 'qwen3pro55', artProvider: 'bailian', artModel: 'qwen-image-3.0-pro', ...d,
     bio: `${d.age}岁，${d.title}。${d.problem}`, intro: `${d.name}带来的不是一笔普通典当：${d.problem}`,
     savvy: d.age < 18 ? 0.3 : 0.55, power: d.age < 18 ? 10 : d.faction === 'mo' ? 36 : 26, eye: 2,
     traits: { greed: 0.35, integrity: 0.65, caution: 0.7, wish: d.item, budgetMul: d.age < 18 ? 0.65 : 1 },
