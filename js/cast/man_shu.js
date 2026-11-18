@@ -37,16 +37,16 @@ defineCharacter({
     pollen: {
       when: 'day',
       text: () => '一个黑衣女子倚在门边，发间别着几朵喇叭似的紫白大花。她把一只小陶罐放在柜上，罐口溢出一点金粉，甜香冲得你脑袋一晕：'
-        + '“曼陀罗花粉，吾自己的。掺进酒里、丹里，叫人飘飘欲仙——三罐能顶十包忘忧散。”'
+        + '“曼陀罗花粉，吾自己的。掺进酒里、丹里，叫人睡一夜、梦里有问必答——谁藏着什么身份，你一问便知。”'
         + '\n“吾不要灵石。执法堂在缉吾，借你的库房躲些日子，这罐归你。”',
       choices: () => [
-        { label: '收下，让她在库房后头躲着', hint: '得三份忘忧散；执法堂关注 +5；她若被搜出，你是窝藏', run: (st, p) => {
-          for (let i = 0; i < 3; i++) giveItem('wangyou', { q: 85 });
+        { label: '收下，让她在库房后头躲着', hint: '得三罐曼陀罗花粉（禁药）；执法堂关注 +5；她若被搜出，你是窝藏', run: (st, p) => {
+          for (let i = 0; i < 3; i++) giveItem('datura_pollen', { q: 85 });
           addHeat(5); remember(p, '你让她在你的库房里躲着。', 20, 'helped'); st.flags.hid = true;
           return { text: '她冲你眨了眨眼，钻进库房后头。那股甜香在铺子里绕了一整天。', go: ['raid', [2, 4]], summary: '你收留了曼殊，收下了她的花粉。', mood: 'pleased' };
         } },
-        { label: '花粉收下，人不留', hint: '+80 灵石的货价换给她；她自己去躲', req: needStones(80), run: (st, p) => {
-          spend(80, '收下曼殊的一罐花粉。'); for (let i = 0; i < 2; i++) giveItem('wangyou', { q: 80 });
+        { label: '花粉收下，人不留（80 灵石）', hint: `${costHint(80)}；得两罐曼陀罗花粉（禁药）；她自己去躲`, req: needStones(80), run: (st, p) => {
+          spend(80, '收下曼殊的两罐花粉。'); for (let i = 0; i < 2; i++) giveItem('datura_pollen', { q: 80 });
           remember(p, '你买了她的花粉，没留她。', 2);
           return { text: '“也是笔生意。”她把灵石收进袖里，走了，香味留了很久。', go: ['raid', [2, 4]], summary: '你买下了曼殊的花粉。' };
         } },
@@ -89,12 +89,12 @@ defineCharacter({
       when: 'night',
       cond: (st, p) => p.status === 'alive',
       text: st => '夜里，曼殊坐在你的柜台上，晃着脚：“执法堂那个巡查，吾去他梦里坐了坐，他这几天见了曼陀罗就绕道。”'
-        + '\n她从袖里摸出一枚紫色的花种：“种下去，三夜开花，花瓣能炼迷魂。'
+        + '\n她从袖里摸出两枚带刺的果子：“曼陀罗种。种进妖植盆，三夜开花，花粉你自己收——往后不必再求吾。'
         + (st.flags.hid ? '你替吾挡了一回，这个白送。' : '一百灵石，卖你。') + '”',
       choices: st => [
-        { label: st.flags.hid ? '收下' : '买下（100 灵石）', hint: `得两颗迷魂花种、一朵迷魂花${st.flags.hid ? '' : `；${costHint(100)}`}`, req: st.flags.hid ? undefined : needStones(100), run: (st, p) => {
-          if (!st.flags.hid) spend(100, '向曼殊买迷魂花种。');
-          giveItem('mihun_seed', { q: 90 }); giveItem('mihun_seed', { q: 90 }); giveItem('mihun_flower', { q: 90 });
+        { label: st.flags.hid ? '收下' : '买下（100 灵石）', hint: `得两枚曼陀罗种、一罐花粉${st.flags.hid ? '' : `；${costHint(100)}`}`, req: st.flags.hid ? undefined : needStones(100), run: (st, p) => {
+          if (!st.flags.hid) spend(100, '向曼殊买曼陀罗种。');
+          giveItem('datura_seed', { q: 90 }); giveItem('datura_seed', { q: 90 }); giveItem('datura_pollen', { q: 90 });
           remember(p, '你收下了她的花种。', 8); p.informant = true;
           let tail = '她跳下柜台，花瓣一合，人就不见了。往后执法堂要来巡查，你总会提前一夜闻到一股甜香。';
           if (strongEnough() && Math.random() < 0.35) {

@@ -37,15 +37,15 @@ defineCharacter({
     silk: {
       when: 'day',
       text: () => '一缕银丝从房梁上垂下来，接着一个红衣女子顺着丝轻轻落在柜台前，发间几支蜘蛛形的银簪一晃一晃。她把一卷亮得晃眼的丝线搁在柜上：'
-        + '“吾自己吐的，比灵蚕丝韧十倍。六卷能织一件云锦——小掌柜，收不收？”\n“只是……别让织坊的人知道是吾卖的。”',
+        + '“吾自己吐的，比灵蚕丝韧十倍。三卷配上三束灵丝，就能织一件云锦——小掌柜，收不收？”\n“只是……别让织坊的人知道是吾卖的。”',
       choices: () => [
-        { label: '照价收下三卷（150 灵石）', hint: `${costHint(150)}；得三束灵丝（上品）`, req: needStones(150), run: (st, p) => {
-          spend(150, '收下朱七娘的三卷丝。'); for (let i = 0; i < 3; i++) giveItem('silk', { q: 92 });
+        { label: '照价收下三卷（220 灵石）', hint: `${costHint(220)}；得三卷蛛丝（上品）`, req: needStones(220), run: (st, p) => {
+          spend(220, '收下朱七娘的三卷蛛丝。'); for (let i = 0; i < 3; i++) giveItem('spider_silk', { q: 92 });
           remember(p, '你照价收了她的丝。', 15, 'fair'); st.flags.bought = true;
           return { text: '她把灵石一枚枚数进荷包，冲你一笑：“爽快。往后吾的丝，先紧着你。”', go: ['boss', [3, 5]], summary: '你收下了朱七娘的丝。', mood: 'pleased' };
         } },
-        { label: '压价收（60 灵石）', hint: `${costHint(60)}；得三束灵丝；她会记着`, req: needStones(60), run: (st, p) => {
-          spend(60, '压价收下朱七娘的三卷丝。'); for (let i = 0; i < 3; i++) giveItem('silk', { q: 92 });
+        { label: '压价收（90 灵石）', hint: `${costHint(90)}；得三卷蛛丝；她会记着`, req: needStones(90), run: (st, p) => {
+          spend(90, '压价收下朱七娘的三卷蛛丝。'); for (let i = 0; i < 3; i++) giveItem('spider_silk', { q: 92 });
           remember(p, '你压价收了她的丝。', -8, 'lowballed'); st.flags.bought = true; st.flags.cheated = true;
           return { text: '她手里的丝绷了一下，又松开了：“行。杂役区的价，吾记住了。”', go: ['boss', [3, 5]] };
         } },

@@ -123,11 +123,11 @@ defineCharacter({
       cond: (st, p) => p.status === 'alive',
       mood: 'pleased',
       text: st => '凌波来了，鬓边的水仙开得比哪一回都盛。她把一面新磨的铜镜放在柜上，照了照自己，才转过来：'
-        + '“根养好了。这是吾谢你的——还有，吾的花露洗水，比你那洗灵池快。”'
+        + '“根养好了。这是吾谢你的——两瓶花露，添进丹炉，驻颜丹一炉出两颗；走火入魔了，喝一口也能镇住。”'
         + (st.flags.owes ? '\n“上回赊的水钱，也一并算上。”' : ''),
       choices: () => [
-        { label: '收下', hint: '得一份琼浆玉露；她往后替你看着丹房的风声', run: (st, p) => {
-          giveItem('water', { purity: 99.95, q: 90 }); p.informant = true; adjustRep('yao', 5);
+        { label: '收下', hint: '得两瓶水仙花露、一份琼浆玉露；她往后替你看着丹房的风声', run: (st, p) => {
+          giveItem('narcissus_dew', { q: 92 }); giveItem('narcissus_dew', { q: 92 }); giveItem('water', { purity: 99.95, q: 90 }); p.informant = true; adjustRep('yao', 5);
           remember(p, '你收下了她的谢礼。', 10);
           let tail = '她临走前在你的水缸里点了一滴花露。第二天，缸里的水清得照得见人影。';
           // 够强才有：她带来丹房的独门方子

@@ -158,6 +158,7 @@ function applyLace(p, it, via) {
     startScandal(p, 'laced', { item: name, lace: it.laced });
     return { caught: true };
   }
+  if (LACE[it.laced].apply) return LACE[it.laced].apply(p, it, name, knew) || {};
   switch (it.laced) {
     case 'addict': return hook(p, name, knew);
     case 'control':

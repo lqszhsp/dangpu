@@ -25,7 +25,7 @@ function itemVariant(it) {
   if (it.id === 'corpse' && it.fresh <= 2) return 'rotting';
   if (it.id === 'spirit_crystal') return (it.charge || 0) >= 8 ? 'charged' : (it.charge || 0) <= 2 ? 'dim' : null;
   if (it.id === 'intel') return intelExpired(it) ? 'expired' : null;
-  if (['herb_seed', 'mihun_seed', 'vine_seed'].includes(it.id) && it.growth >= 50) return 'sprout';
+  if (isSeed(it) && it.growth >= 50) return 'sprout';
   if (['treasure_rat', 'gold_bug'].includes(it.id)) return (it.growth || 0) < 100 ? 'young' : null;
   return hasQuality(it) ? TIER_OF(shownQ(it)) : null;
 }

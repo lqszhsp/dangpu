@@ -19,6 +19,7 @@ const BEHAVIORS = [
   { id: 'pill_blood', name: '炼血煞丹', machine: 'danlu', alt: [{ use: [['herb_blood', 1], ['yao_core', 1]] }], made: ['pill_blood'] },
   { id: 'pill_found', name: '炼筑基丹', machine: 'danlu', alt: [{ use: [['herb_blood', 2], ['yao_core', 1], ['herb_dew', 1]], mod: 'pill_recipe' }], made: ['pill_found'] },
   { id: 'zhuyan', name: '炼驻颜丹', machine: 'danlu', alt: [{ use: [['spirit_fruit', 2], ['herb_blood', 1]], tech: ['alchemy', 1] }], made: ['zhuyan_dan'] },
+  { id: 'zhuyan_dew', name: '添水仙花露炼驻颜丹（一炉两颗）', machine: 'danlu', alt: [{ use: [['narcissus_dew', 1], ['spirit_fruit', 2], ['herb_blood', 1]], tech: ['alchemy', 1] }], made: ['zhuyan_dan'] },
   { id: 'blood_infant', name: '炼血婴丹', machine: 'danlu', alt: [{ use: [['yao_core', 1], ['blood_essence', 2], ['herb_blood', 1]], tech: ['alchemy', 2] }], made: ['blood_infant'] },
   { id: 'wangyou', name: '炼忘忧散', machine: 'danlu', alt: [{ use: [['mihun_flower', 2]] }], made: ['wangyou'] },
   { id: 'waste', name: '废丹回炉', machine: 'danlu', alt: [{ use: [['waste_pill', 2]] }], made: ['pill_qi', 'pill_blood', 'pill_found'] },
@@ -29,9 +30,11 @@ const BEHAVIORS = [
   { id: 'wine', name: '酿灵酒', machine: 'winejar', alt: [{ use: [['spirit_fruit', 2], ['yeast', 1]] }], made: ['spirit_wine'] },
   { id: 'herb', name: '药圃种灵草', machine: 'herbbed', alt: [{ use: [['herb_seed', 1]] }], made: ['herb_blood', 'herb_dew'] },
   { id: 'mihun', name: '种迷魂花', machine: 'yaopot', alt: [{ use: [['mihun_seed', 1]] }], made: ['mihun_flower'] },
+  { id: 'datura', name: '种曼陀罗收花粉', machine: 'yaopot', alt: [{ use: [['datura_seed', 1]] }], made: ['datura_pollen'] },
   { id: 'vine', name: '养噬血藤结血藤果', machine: 'yaopot', alt: [{ use: [['vine_seed', 1], ['bones', 3]] }, { use: [['vine_seed', 1], ['corpse', 1]] }], made: ['vine_fruit'] },   // 一块腐骨喂一夜，三夜结果；一具尸身顶三夜
   { id: 'silk', name: '养蚕抽丝', machine: 'silkrack', alt: [{ use: [['silk_seed', 1], ['spirit_fruit', 2]] }], made: ['silk'] },
   { id: 'robe', name: '织云锦道袍', machine: 'silkrack', alt: [{ use: [['silk', 6]], tech: ['plant', 1] }], made: ['cloud_robe'] },
+  { id: 'robe_spider', name: '蛛丝配灵丝织云锦', machine: 'silkrack', alt: [{ use: [['spider_silk', 3], ['silk', 3]], tech: ['plant', 1] }], made: ['cloud_robe'] },
   // 魂、尸、傀儡
   { id: 'pearl', name: '炼魂珠', machine: 'soulfurnace', alt: [{ use: [['soul_wisp', 3]] }, { use: [['soul_wisp', 2]], tech: ['soul', 2] }, { use: [['soul_grudge', 1]] }], made: ['soul_pearl'] },
   { id: 'soul_crystal', name: '炼魂晶', machine: 'soulfurnace', alt: [{ use: [['live_soul', 1], ['soul_pearl', 1]] }], made: ['soul_crystal'] },

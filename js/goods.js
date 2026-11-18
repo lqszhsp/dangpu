@@ -30,7 +30,8 @@ defineItem({
     lace: true,                                //   能往里加料
   },
 });
-defineRecipe({ machine, in: [[id, 件数], ...], out, qty, mod, burnMod, tech: [技艺, 重数], q, batches, desc });
+defineRecipe({ machine, in: [[id, 件数], ...], out, qty, mod, burnMod, tech: [技艺, 重数], q, batches, first, desc });
+defineLace(kind, { name, verb, detect, desc, apply(p, it, name, knew), onMe(it) });   // 新的料；物品上写 additive: kind
 defineMachine({ type, name, price, power, in: [w, h], out: [w, h], mod: [w, h], modLabel, overflow, cost: [体力, 精神], tech, art, desc });
 */
 
@@ -44,7 +45,7 @@ function defineItem(def) {
   if (!CATS[def.cat]) throw new Error(`货品 ${def.id} 的品类 ${def.cat} 不存在（见 data.js 的 CATS）`);
   GOODS[def.id] = def;
   const it = { name: def.name, cat: def.cat, w: def.w || 1, h: def.h || 1, base: def.base, desc: def.desc };
-  for (const k of ['war', 'lux', 'contra', 'illicit', 'mod', 'icon']) if (def[k] != null) it[k] = def[k];
+  for (const k of ['war', 'lux', 'contra', 'illicit', 'mod', 'icon', 'additive']) if (def[k] != null) it[k] = def[k];
   ITEMS[def.id] = it;
   if (def.noTier) NO_QUALITY.add(def.id);
   const f = def.from || {}, t = def.to || {};
@@ -72,8 +73,19 @@ function defineRecipe(r) {
   const m = MACHINES[r.machine];
   if (!m) throw new Error(`配方 ${r.out} 的设备 ${r.machine} 不存在`);
   if (Array.isArray(m.inputs)) for (const [id] of r.in) if (!m.inputs.includes(id)) m.inputs.push(id);
-  RECIPES.push(Object.assign({ qty: 1, batches: 1, q: 0 }, r));
+  // first：排到同设备的其他配方前头（用料更专的配方，免得被通用配方先截走）
+  RECIPES[r.first ? 'unshift' : 'push'](Object.assign({ qty: 1, batches: 1, q: 0 }, r));
   return r;
+}
+
+// 新的“料”：可加进别的货里。apply(p, it, name, knew) 是货到了别人手里后的效果；onMe(it) 是你自己吃下别人掺了这料的货
+function defineLace(kind, def) {
+  if (LACE[kind]) throw new Error(`料 ${kind} 已经有了`);
+  const need = ['name', 'verb', 'desc', 'apply'];
+  const miss = need.filter(k => def[k] == null);
+  if (miss.length) throw new Error(`料 ${kind} 缺少 ${miss.join('、')}`);
+  LACE[kind] = Object.assign({ detect: 0 }, def);
+  return LACE[kind];
 }
 
 function defineMachine(def) {

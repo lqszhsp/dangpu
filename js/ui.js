@@ -91,7 +91,7 @@ function itemStats(it) {
   if (it.id === 'gu') rows.push(['成长', `${it.growth}/100`], ['毒性', it.tox]);
   if (it.id === 'gu_egg') rows.push(['毒性', it.tox]);
   if (it.id === 'spirit_crystal') rows.push(['充能', `${it.charge || 0}/${CRYSTAL_CAP}`]);
-  if (['herb_seed', 'mihun_seed', 'vine_seed'].includes(it.id) && it.growth) rows.push(['生长', `${it.growth}%`]);
+  if (isSeed(it) && it.growth) rows.push(['生长', `${it.growth}%`]);
   if (it.id === 'corpse') rows.push(['新鲜', `还能放 ${Math.max(0, Math.ceil(it.fresh / seasonOf().rot))} 日`]);
   if (it.cost != null) rows.push(['购入价', `${it.cost}`]);
   return rows;
@@ -120,7 +120,7 @@ function itemHTML(it, extraCls = '', attrs = '') {
   else if (isDressed(it) && knownFlaw(it)) badges.push(`<span class="stamp dressed">次</span>`);
   if (it.id === 'water') badges.push(`<span class="num">${Math.floor(it.purity)}%</span>`);
   if (it.id === 'gu' && it.growth < 100) badges.push(`<span class="bar"><i style="width:${it.growth}%"></i></span>`);
-  if (['herb_seed', 'mihun_seed', 'vine_seed'].includes(it.id) && it.growth) badges.push(`<span class="bar"><i style="width:${it.growth}%"></i></span>`);
+  if (isSeed(it) && it.growth) badges.push(`<span class="bar"><i style="width:${it.growth}%"></i></span>`);
   if (it.id === 'corpse') badges.push(`<span class="bar rot"><i style="width:${clamp(it.fresh / 6 * 100, 0, 100)}%"></i></span>`);
   if (lacedKnown(it)) badges.push(`<span class="laced-dot" title="${LACE[it.laced].verb}"></span>`);
   if (it.id === 'spirit_crystal') badges.push(`<span class="bar power"><i style="width:${(it.charge || 0) / CRYSTAL_CAP * 100}%"></i></span>`);

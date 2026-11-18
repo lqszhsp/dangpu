@@ -411,7 +411,7 @@ function machineCheck(m) {
       if (!outputHasRoom(m, 'puppet_doll')) return { ok: false, msg: '产出格与地面皆满' };
       return { ok: true, msg: '可造一具傀儡' };
     case 'yaopot': {
-      const seeds = countIn(inputs, 'mihun_seed') + countIn(inputs, 'vine_seed');
+      const seeds = inputs.filter(it => YAO_SEEDS[it.id]).length;
       if (!seeds) return { ok: false, msg: '未下种' };
       const vines = countIn(inputs, 'vine_seed'), food = countIn(inputs, 'bones') + countIn(inputs, 'corpse') * 3;
       return { ok: true, msg: vines && food < vines ? `噬血藤缺血食（${food}/${vines}）` : `${seeds} 株生长中` };
@@ -604,10 +604,14 @@ function gupotRun(m, bones) {
   return notes.length ? notes.join('；') : '蛊虫安静地蠕动';
 }
 
+// 妖植盆里能种的：种子 → [结出什么, 每夜长几成]；货品册可往里添
+const YAO_SEEDS = { mihun_seed: ['mihun_flower', 50], vine_seed: ['vine_fruit', 34] };
+const isSeed = it => it.id === 'herb_seed' || !!YAO_SEEDS[it.id];
+
 function yaopotRun(m, inputs) {
   const notes = [];
   const grow = seasonOf().growth;
-  inputs.filter(it => it.id === 'mihun_seed' || it.id === 'vine_seed').forEach(seed => {
+  inputs.filter(it => YAO_SEEDS[it.id]).forEach(seed => {
     if (seed.id === 'vine_seed') {
       // 噬血藤要血食：一块腐骨一夜，一具尸身顶三夜
       if (!seed.fed) {
@@ -617,9 +621,9 @@ function yaopotRun(m, inputs) {
       }
       seed.fed--;
     }
-    seed.growth = (seed.growth || 0) + Math.round((seed.id === 'vine_seed' ? 34 : 50) * grow * (1 + 0.25 * techLv('plant')));
+    const [id, rate] = YAO_SEEDS[seed.id];
+    seed.growth = (seed.growth || 0) + Math.round(rate * grow * (1 + 0.25 * techLv('plant')));
     if (seed.growth < 100) return;
-    const id = seed.id === 'vine_seed' ? 'vine_fruit' : 'mihun_flower';
     if (!findSpot(gridOf(m, 'out'), { id })) { notes.push('产出格已满'); return; }
     destroyItem(seed);
     const it = makeItem(id, { q: clamp(rint(45, 85) + techBonus('yaopot'), 5, 100) });

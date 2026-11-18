@@ -66,6 +66,7 @@ function consume(it) {
     it.lacedSeen = true;
     if (it.laced === 'poison') addCond('me', 'poisoned', 2, `${itemName(it)}里掺了尸毒`);
     else if (it.laced === 'control') addCond('me', 'injured', 1, `${itemName(it)}里藏着噬心蛊，你运功把它逼了出来`);
+    else if (LACE[it.laced].onMe) LACE[it.laced].onMe(it);
     else { drain(0, 30); log(`${itemName(it)}里掺了忘忧散，你飘飘然了半晌，精神 -30。`, 'loss'); }
   }
   const r = restoreOf(it);
