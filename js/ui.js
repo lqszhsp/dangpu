@@ -637,7 +637,7 @@ function tabWorkshop() {
           <button class="btn tiny" data-act="m-down" data-mid="${m.mid}" title="延后运转">↓</button>
           <button class="btn tiny" data-act="m-toggle" data-mid="${m.mid}">${m.on ? '停用' : '启用'}</button>
           <button class="btn tiny ghost" data-act="m-remove" data-mid="${m.mid}" title="拆除，退回三成">拆</button></div></div>
-      <div class="m-grids${def.stalls ? ' stalls' : ''}">${grids}</div>${extra}
+      <div class="m-grids${def.stalls ? ' stalls' : def.pot ? ' pot' : ''}">${grids}</div>${extra}
       <div class="m-desc muted small">${def.desc}</div></div>`;
   }
   const known = Object.entries(S.forgeKnown).filter(x => x[1]).map(([id, g]) => `${ITEMS[id].name}（${GRADE_NAMES[g]}）`);
@@ -660,13 +660,15 @@ function stallsHTML(m, running) {
     return `<div class="stall ${live ? 'live' : ''}">
       <div class="stall-head"><b>兽栏${cn(i + 1)}</b><span>${what}</span><span class="${live ? 'ok' : 'muted'}">${esc(why)}</span></div>
       <div class="stall-row">${gridHTML(g.feed, '', 'feed')}
-        <div class="stall-flow ${live ? 'on' : ''}" title="${esc(why)}"><i></i><i></i><i></i></div>
-        ${gridHTML(g.pen, '', 'pen')}</div></div>`;
+        <div class="flow-to"><div class="stall-flow ${live ? 'on' : ''}" title="${esc(why)}"><i></i><i></i><i></i></div>
+        ${gridHTML(g.pen, '', 'pen')}</div></div></div>`;
   }).join('');
   const more = n < def.stallMax
     ? `<button class="btn small" data-act="buy-stall" data-mid="${m.mid}" ${S.stones >= stallPrice(m) ? '' : 'disabled'}>加盖兽栏（${stoneTxt(stallPrice(m))}）</button>`
     : '<span class="muted small">兽栏已加盖到头</span>';
-  return `<div class="stall-cols muted small"><span style="width:${def.stallSize * CELL + 56 + 6}px">饲料</span><span>灵宠</span></div>${rows}
+  // 列头“灵宠”对准灵宠格：饲料格宽 + 箭头宽（与 .stall-flow 一致）+ 栏的内边距
+  const flowW = LAYOUT === 'tall' ? 20 : 56, padW = LAYOUT === 'tall' ? 4 : 6;
+  return `<div class="stall-cols muted small"><span style="width:${def.stallSize * CELL + flowW + padW}px">饲料</span><span>灵宠</span></div>${rows}
     <div class="stall-foot"><span class="muted small">兽栏 ${n}/${def.stallMax}</span>${more}</div>
     ${gridHTML(gridOf(m, 'out'), def.outLabel || '产出', 'out')}`;
 }
@@ -674,9 +676,9 @@ function stallsHTML(m, running) {
 // 蛊盅：原料 → 蛊虫 → 产物，三栏一行；今夜转得起来，箭头才亮着流
 function potHTML(m, running) {
   const def = MACHINES[m.type], flow = on => `<div class="stall-flow ${on ? 'on' : ''}" style="height:${S.grids[gridOf(m, 'pot')].h * CELL}px"><i></i><i></i><i></i></div>`;
-  return `<div class="pot-row">${gridHTML(gridOf(m, 'in'), def.inLabel, 'feed')}${flow(running && !m.seal)}
-    ${gridHTML(gridOf(m, 'pot'), def.potLabel, `pen${m.seal ? ' sealed' : ''}`)}${flow(running)}
-    ${gridHTML(gridOf(m, 'out'), def.outLabel, 'out')}</div>`;
+  return `<div class="pot-row">${gridHTML(gridOf(m, 'in'), def.inLabel, 'feed')}
+    <div class="flow-to">${flow(running && !m.seal)}${gridHTML(gridOf(m, 'pot'), def.potLabel, `pen${m.seal ? ' sealed' : ''}`)}</div>
+    <div class="flow-to">${flow(running)}${gridHTML(gridOf(m, 'out'), def.outLabel, 'out')}</div></div>`;
 }
 
 function tabBroker() {

@@ -354,13 +354,13 @@ body.wide .st-head { height: auto; min-height: 44px; padding: 2px 0; }
 /* 灵兽圈：一栏一行，饲料 ››› 灵宠；对口又转得起来时箭头亮着往右流，否则暗着不动 */
 .m-grids.stalls { display: block; }
 /* 竖屏：兽栏一行八格加箭头，不留设备图那一截缩进 */
-body.tall .m-grids.stalls { margin-left: 0; }
+body.tall .m-grids.stalls, body.tall .m-grids.pot { margin-left: 0; }
 .stall-cols { display: flex; gap: 0; padding: 0 2px; }
 .stall { margin: 0 0 8px; padding: 4px 6px 6px; border-radius: 6px; background: rgba(0, 0, 0, .18); border: 1px solid rgba(255, 255, 255, .05); }
 .stall.live { border-color: rgba(160, 230, 70, .28); }
 .stall-head { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; font-size: 12px; margin-bottom: 3px; }
 .stall-head .ok { color: #a6dd52; }
-.stall-row { display: flex; align-items: center; gap: 0; }
+.stall-row { display: flex; flex-wrap: wrap; row-gap: 4px; align-items: center; gap: 0; }
 .stall-row .grid-wrap { margin: 0; }
 .stall-flow { flex: none; width: 56px; display: flex; justify-content: center; align-items: center; gap: 2px; }
 .stall-flow i { width: 10px; height: 10px; border-top: 3px solid #4a4452; border-right: 3px solid #4a4452; transform: rotate(45deg); opacity: .55; }
@@ -373,8 +373,13 @@ body.tall .m-grids.stalls { margin-left: 0; }
 /* 蛊盅：原料 → 蛊虫 → 产物一行；封盅时蛊虫格泛血光 */
 .pot-row { display: flex; align-items: flex-end; flex-wrap: wrap; row-gap: 6px; }
 .pot-row .grid-wrap { margin: 0; }
+/* 箭头和它指向的格子连在一起：放不下折行时，下一行以箭头开头 */
+.flow-to { display: flex; align-items: center; }
 .grid-wrap.sealed .grid { box-shadow: inset 0 0 18px rgba(196, 58, 58, .55); border-color: var(--red); }
-body.tall .pot-row .stall-flow { width: 24px; }
+/* 竖屏窗口最窄约 368（让出菜单与柜台）：箭头收窄、栏内边距收紧，一栏八格才放得下；再窄就把灵宠格折到下一行 */
+body.tall .stall-flow { width: 20px; }
+body.tall .stall { padding: 4px 4px 6px; }
+body.tall .machine { padding: 8px 6px; }
 /* 饲料格里叠着的同种货：右下角记份数 */
 .item .stack-n { position: absolute; right: 2px; bottom: 0; font-size: 12px; font-weight: bold; color: #fff4d6; text-shadow: 0 0 3px #000, 0 0 2px #000, 0 0 2px #000; pointer-events: none; }
 .ap-talk { display: flex; justify-content: space-between; gap: 10px; margin-top: 6px; padding: 6px 10px; font-size: 13px; background: rgba(142, 27, 43, .1); border-left: 3px solid var(--blood); }
