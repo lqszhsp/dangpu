@@ -361,9 +361,11 @@ function bottle(it) {
 // ───────────── 烙印、抹印、封印 ─────────────
 
 // 赃物上原主留下的神识烙印：几重
+// 重宝（基价 DEEP_MARK_BASE 以上）的原主多半修为深，烙印也深，可达四重
+const DEEP_MARK_BASE = 1000;
 function stampMark(it, ownerFaction = 'mo') {
   const owner = newPerson(ownerFaction);
-  it.mark = { owner: owner.pid, str: +weighted([[1, 50], [2, 35], [3, 15]]) };
+  it.mark = { owner: owner.pid, str: +weighted(ITEMS[it.id].base >= DEEP_MARK_BASE ? [[2, 30], [3, 45], [4, 25]] : [[1, 50], [2, 35], [3, 15]]) };
 }
 
 const markVisible = it => !!it.mark && appraiseLevel() >= it.mark.str;

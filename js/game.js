@@ -1424,8 +1424,12 @@ function scavSearch() {
   sc.danger += S.flags.thugBoss ? 0.02 : 0.04;
   const mapped = treasureFind(loc.id);
   if (!mapped && Math.random() > loc.find) { sc.lines.push({ text: '翻了半天，一无所获。' }); return { none: true }; }
-  const id = mapped || weighted(loc.loot.concat(S.world.stage >= 2 && loc.warLoot ? loc.warLoot : []));
+  // 机遇：偶尔翻出一卷你正缺的高重秘籍（只翻得到这处地方有的那几门）
+  const scrolls = mapped ? [] : nextBooks().filter(b => (loc.scrolls || []).includes(b[1]) && !owns(b[0]));
+  const scroll = scrolls.length && Math.random() < SCROLL_FIND ? pick(scrolls)[0] : null;
+  const id = mapped || scroll || weighted(loc.loot.concat(S.world.stage >= 2 && loc.warLoot ? loc.warLoot : []));
   if (mapped) sc.lines.push({ text: '照着藏宝图，你一锄挖了下去——', cls: 'ok' });
+  if (scroll) sc.lines.push({ text: '一只朽烂的经匣里，压着一卷没被虫蛀透的手抄——', cls: 'ok' });
   const extra = {};
   if (ITEMS[id].appraise) extra.fake = !mapped && Math.random() < 0.6;
   const it = makeItem(id, Object.assign(extra, { q: mapped ? rint(55, 85) : rint(15, 70) }));

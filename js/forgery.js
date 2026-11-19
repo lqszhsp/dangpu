@@ -36,25 +36,30 @@ function learnTech(t, lv, teach) {
   (teach || []).forEach(x => { S.forgeKnown[x] = Math.max(S.forgeKnown[x] || 0, lv); });
 }
 
-// ───────────── 传艺 ─────────────
+// ───────────── 机遇：三四重 ─────────────
 
-// 三重往上鬼市不卖：除了拿功勋换，就是等哪位行家与你亲厚了、自己那桩事也了了，揣着手抄登门
+// 三四重鬼市不卖：除了拿功勋换，就是等机遇——行家登门传艺、拾荒偶得（scavSearch）、好人好报（BOONS）
+// 你眼下正缺、货郎又不卖的那几本：每门技艺的下一重
+const nextBooks = () => BOOKS.filter(([, t, lv]) => lv > BOOK_SHOP_MAX && lv === techLv(t) + 1);
+
+// 传艺：哪位行家与你亲厚了、自己那桩事也了了，就揣着手抄登门
 const teachKey = (t, lv) => `teach_${t}${lv}`;
 const teachBook = (t, lv) => BOOKS.find(b => b[1] === t && b[2] === lv);
+const teachAff = lv => TEACH_AFF[lv - BOOK_SHOP_MAX - 1];
 const TEACH_FEE = 0.2;   // 束脩：书价的几成
 const teachFee = (t, lv) => Math.round(teachBook(t, lv)[3] * TEACH_FEE);
 const teacherFree = p => p && p.status === 'alive' && (!S.story[p.pid] || S.story[p.pid].done);
 
-// 每天开铺前：够格的行家登门；已从别处学会的作罢；肯教的人死了、走了，换一位
+// 每天开铺前：够格的行家登门；已从别处学会的作罢；肯教的人死了、走了、被抓了，换一位
 function teachTick() {
-  for (const [t, lv, pids, aff] of TEACHERS) {
+  for (const [, t, lv] of BOOKS.filter(b => b[2] > BOOK_SHOP_MAX)) {
     const key = teachKey(t, lv), st = S.story[key];
     if (st && !st.done) {
       if (techLv(t) >= lv) st.done = true;
-      else if (['dead', 'gone'].includes(S.people[st.flags.pid].status)) delete S.story[key];
+      else if (S.people[st.flags.pid].status !== 'alive') delete S.story[key];
     }
     if (S.story[key] || techLv(t) !== lv - 1) continue;
-    const p = pids.map(id => S.people[id]).find(p => teacherFree(p) && p.aff >= aff);
+    const p = TEACHERS[t].who.map(id => S.people[id]).find(p => teacherFree(p) && p.aff >= teachAff(lv));
     if (p) startStory(key, 'mastery', 'teach', rint(1, 3), { pid: p.pid, tech: t, lv });
   }
 }
@@ -64,12 +69,9 @@ STORIES.mastery = {
     teach: {
       when: 'day',
       // 登门那天交情还得够、人在场；不够就往后拖
-      cond: st => {
-        const p = S.people[st.flags.pid], row = TEACHERS.find(x => x[0] === st.flags.tech && x[1] === st.flags.lv);
-        return p.status === 'alive' && p.aff >= row[3];
-      },
+      cond: st => { const p = S.people[st.flags.pid]; return p.status === 'alive' && p.aff >= teachAff(st.flags.lv); },
       text: (st, p) => {
-        const { tech: t, lv } = st.flags, line = TEACHERS.find(x => x[0] === t && x[1] === lv)[4];
+        const { tech: t, lv } = st.flags, line = TEACHERS[t].lines[lv - BOOK_SHOP_MAX - 1];
         return `${p.name}今日没带货来，从袖里抽出一卷磨毛了边的手抄，压在柜上不松手：《${teachBook(t, lv)[5]}》。\n“${line}”\n（学了，${TECHS[t].name}之术便到第${cn(lv)}重。）`;
       },
       choices: (st, p) => {

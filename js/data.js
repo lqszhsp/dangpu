@@ -128,54 +128,73 @@ const QUALITY_TIERS = [[85, '极品'], [65, '上品'], [35, '中品'], [0, '下�
 const GRADE_NAMES = ['', '粗劣', '寻常', '精良', '天衣无缝'];
 const LENS_NAMES = ['肉眼', '铜框照妖镜', '玉髓照妖镜', '照骨灵镜', '天目珠'];
 
-// 技艺：逐重提升——一二重读货郎卖的秘籍，三重往上拿功勋换秘籍，或等行家登门传艺（见 TEACHERS）。machines 为受其加持的设备
+// 技艺：逐重提升，各到四重——一二重读货郎卖的秘籍；三四重鬼市不卖，拿功勋换，或等机遇：行家登门传艺（TEACHERS）、拾荒偶得（LOCATIONS 的 scrolls）、好人好报。machines 为受其加持的设备
 const TECHS = {
-  refine:  { name: '炼器', icon: 'book_refine',  machines: ['furnace', 'forge'],     max: 3, desc: '炼器炉、炼器台出品每重品质 +8；三重时炼器炉每夜多一炉。' },
-  alchemy: { name: '炼丹', icon: 'book_alchemy', machines: ['danlu'],                max: 3, desc: '丹炉出品每重品质 +8；三重时每夜多一炉。' },
-  soul:    { name: '炼魂', icon: 'book_soul',    machines: ['soulfurnace'],          max: 2, desc: '魂珠每重品质 +8；二重时两缕游魂即可成珠。' },
-  corpse:  { name: '炼尸', icon: 'book_corpse',  machines: ['coffin'],               max: 2, desc: '铁尸每重品质 +8；二重时一夜即可开棺。' },
-  puppet:  { name: '傀儡', icon: 'book_puppet',  machines: ['puppetbench'],          max: 2, desc: '机关傀儡每重品质 +10。' },
-  plant:   { name: '栽培', icon: 'book_plant',   machines: ['herbbed', 'yaopot'],    max: 2, desc: '灵草、妖植每重长得快两成五，出品品质 +6。' },
-  brew:    { name: '酿酒', icon: 'book_brew',    machines: ['winejar'],              max: 2, desc: '灵酒每重品质 +10；二重时一夜即成。' },
-  water:   { name: '洗灵', icon: 'book_water',   machines: ['pool'],                 max: 2, desc: '每重提纯更快。' },
+  refine:  { name: '炼器', icon: 'book_refine',  machines: ['furnace', 'forge'],     max: 4, desc: '炼器炉、炼器台出品每重品质 +8；三重时炼器炉每夜多一炉。' },
+  alchemy: { name: '炼丹', icon: 'book_alchemy', machines: ['danlu'],                max: 4, desc: '丹炉出品每重品质 +8；三重时每夜多一炉。' },
+  soul:    { name: '炼魂', icon: 'book_soul',    machines: ['soulfurnace'],          max: 4, desc: '魂珠每重品质 +8；二重时两缕游魂即可成珠。' },
+  corpse:  { name: '炼尸', icon: 'book_corpse',  machines: ['coffin'],               max: 4, desc: '铁尸每重品质 +8；二重时一夜即可开棺。' },
+  puppet:  { name: '傀儡', icon: 'book_puppet',  machines: ['puppetbench'],          max: 4, desc: '机关傀儡每重品质 +10。' },
+  plant:   { name: '栽培', icon: 'book_plant',   machines: ['herbbed', 'yaopot'],    max: 4, desc: '灵草、妖植每重长得快两成五，出品品质 +6。' },
+  brew:    { name: '酿酒', icon: 'book_brew',    machines: ['winejar'],              max: 4, desc: '灵酒每重品质 +10；二重时一夜即成。' },
+  water:   { name: '洗灵', icon: 'book_water',   machines: ['pool'],                 max: 4, desc: '每重提纯更快。' },
   forgery: { name: '作伪', icon: 'book_forgery', machines: ['forgery'],              max: 4, desc: '每重提高以次充好与仿造的做工；做工越高，越少有人看得穿。' },
-  erase:   { name: '抹印', icon: 'book_erase',   machines: [],                       max: 3, desc: '抹去赃物上原主的神识烙印。烙印几重，就要几重抹印术。抹净的赃物再无人能循迹追来。' },
-  talisman:{ name: '符箓', icon: 'book_talisman', machines: ['fudesk'],              max: 3, desc: '每重多画一张、品质 +8；二重会画聚火阵符；三重会画正派封印符。' },
-  beast:   { name: '御兽', icon: 'book_beast',   machines: ['pen'],                  max: 2, desc: '每重让灵宠每夜多吃一份、多产一份，长得更快、产出品质 +10；寻宝鼠叼回的东西更值钱。' },
+  erase:   { name: '抹印', icon: 'book_erase',   machines: [],                       max: 4, desc: '抹去赃物上原主的神识烙印。烙印几重，就要几重抹印术；重宝的原主留得深，可达四重。抹净的赃物再无人能循迹追来。' },
+  talisman:{ name: '符箓', icon: 'book_talisman', machines: ['fudesk'],              max: 4, desc: '每重多画一张、品质 +8；二重会画聚火阵符；三重会画正派封印符。' },
+  beast:   { name: '御兽', icon: 'book_beast',   machines: ['pen'],                  max: 4, desc: '每重让灵宠每夜多吃一份、多产一份，长得更快、产出品质 +10；寻宝鼠叼回的东西更值钱。' },
 };
 
 // 秘籍：[id, 技艺, 第几重, 价钱, 魔宗声望要求, 名字, 附带的仿造之法]
 // 货郎只卖到第 BOOK_SHOP_MAX 重；再往上的价钱只定书的身价，换法见 market.js 的 MERIT_SHOP 与下面的 TEACHERS
 const BOOK_SHOP_MAX = 2;
 const BOOKS = [
-  ['bk_refine1', 'refine', 1, 180, -100, '炼器要诀'], ['bk_refine2', 'refine', 2, 420, 0, '炼器秘要'], ['bk_refine3', 'refine', 3, 900, 15, '百炼真解'],
-  ['bk_alchemy1', 'alchemy', 1, 200, -100, '丹道入门'], ['bk_alchemy2', 'alchemy', 2, 480, 0, '丹经'], ['bk_alchemy3', 'alchemy', 3, 1000, 15, '九转丹书'],
-  ['bk_soul1', 'soul', 1, 220, 5, '炼魂诀·上'], ['bk_soul2', 'soul', 2, 520, 15, '炼魂诀·下'],
-  ['bk_corpse1', 'corpse', 1, 240, 5, '养尸经'], ['bk_corpse2', 'corpse', 2, 560, 15, '炼尸大法'],
-  ['bk_puppet1', 'puppet', 1, 260, 0, '机关术'], ['bk_puppet2', 'puppet', 2, 600, 15, '偃师秘录'],
-  ['bk_plant1', 'plant', 1, 150, -100, '百草经'], ['bk_plant2', 'plant', 2, 380, 0, '妖植志'],
-  ['bk_brew1', 'brew', 1, 120, -100, '酒谱'], ['bk_brew2', 'brew', 2, 320, 0, '仙酿秘方'],
-  ['bk_water1', 'water', 1, 140, -100, '洗灵法'], ['bk_water2', 'water', 2, 340, 0, '净水真诀'],
+  ['bk_refine1', 'refine', 1, 180, -100, '炼器要诀'], ['bk_refine2', 'refine', 2, 420, 0, '炼器秘要'], ['bk_refine3', 'refine', 3, 900, 15, '百炼真解'], ['bk_refine4', 'refine', 4, 1500, 25, '器道通玄'],
+  ['bk_alchemy1', 'alchemy', 1, 200, -100, '丹道入门'], ['bk_alchemy2', 'alchemy', 2, 480, 0, '丹经'], ['bk_alchemy3', 'alchemy', 3, 1000, 15, '九转丹书'], ['bk_alchemy4', 'alchemy', 4, 1600, 25, '太上丹诀'],
+  ['bk_soul1', 'soul', 1, 220, 5, '炼魂诀·上'], ['bk_soul2', 'soul', 2, 520, 15, '炼魂诀·下'], ['bk_soul3', 'soul', 3, 1100, 25, '摄魂真经'], ['bk_soul4', 'soul', 4, 1700, 35, '万魂归宗'],
+  ['bk_corpse1', 'corpse', 1, 240, 5, '养尸经'], ['bk_corpse2', 'corpse', 2, 560, 15, '炼尸大法'], ['bk_corpse3', 'corpse', 3, 1150, 25, '尸解秘录'], ['bk_corpse4', 'corpse', 4, 1800, 35, '不化骨经'],
+  ['bk_puppet1', 'puppet', 1, 260, 0, '机关术'], ['bk_puppet2', 'puppet', 2, 600, 15, '偃师秘录'], ['bk_puppet3', 'puppet', 3, 1250, 25, '千机变'], ['bk_puppet4', 'puppet', 4, 1900, 35, '天工傀儡谱'],
+  ['bk_plant1', 'plant', 1, 150, -100, '百草经'], ['bk_plant2', 'plant', 2, 380, 0, '妖植志'], ['bk_plant3', 'plant', 3, 800, 15, '神农遗篇'], ['bk_plant4', 'plant', 4, 1300, 25, '草木通灵录'],
+  ['bk_brew1', 'brew', 1, 120, -100, '酒谱'], ['bk_brew2', 'brew', 2, 320, 0, '仙酿秘方'], ['bk_brew3', 'brew', 3, 680, 15, '百花酿经'], ['bk_brew4', 'brew', 4, 1100, 25, '杜康遗方'],
+  ['bk_water1', 'water', 1, 140, -100, '洗灵法'], ['bk_water2', 'water', 2, 340, 0, '净水真诀'], ['bk_water3', 'water', 3, 720, 15, '玉露真解'], ['bk_water4', 'water', 4, 1150, 25, '上善若水篇'],
   ['bk_forgery1', 'forgery', 1, 200, -100, '以次充好篇'], ['bk_forgery2', 'forgery', 2, 450, 10, '仿古秘录', ['jade_pendant', 'bronze_mirror']],
   ['bk_forgery3', 'forgery', 3, 800, 20, '丹形易容术', ['pill_found']], ['bk_forgery4', 'forgery', 4, 1400, 35, '天衣无缝'],
-  ['bk_erase1', 'erase', 1, 260, 0, '洗印诀·初'], ['bk_erase2', 'erase', 2, 600, 10, '洗印诀·中'], ['bk_erase3', 'erase', 3, 1100, 25, '洗印诀·上'],
-  ['bk_talisman1', 'talisman', 1, 160, -100, '符箓入门'], ['bk_talisman2', 'talisman', 2, 420, 0, '阵符要略'], ['bk_talisman3', 'talisman', 3, 900, 10, '正一符经'],
-  ['bk_beast1', 'beast', 1, 180, -100, '驯兽经'], ['bk_beast2', 'beast', 2, 450, 0, '万虫谱'],
+  ['bk_erase1', 'erase', 1, 260, 0, '洗印诀·初'], ['bk_erase2', 'erase', 2, 600, 10, '洗印诀·中'], ['bk_erase3', 'erase', 3, 1100, 25, '洗印诀·上'], ['bk_erase4', 'erase', 4, 1700, 35, '无痕诀'],
+  ['bk_talisman1', 'talisman', 1, 160, -100, '符箓入门'], ['bk_talisman2', 'talisman', 2, 420, 0, '阵符要略'], ['bk_talisman3', 'talisman', 3, 900, 10, '正一符经'], ['bk_talisman4', 'talisman', 4, 1450, 25, '天书符箓'],
+  ['bk_beast1', 'beast', 1, 180, -100, '驯兽经'], ['bk_beast2', 'beast', 2, 450, 0, '万虫谱'], ['bk_beast3', 'beast', 3, 950, 15, '御灵真经'], ['bk_beast4', 'beast', 4, 1500, 25, '万兽朝宗'],
 ];
 BOOKS.forEach(([id, tech, lv, price, , name, teach]) => {
   ITEMS[id] = { name: `《${name}》`, cat: 'ji', w: 1, h: 1, base: Math.round(price * 0.7), icon: TECHS[tech].icon, book: { tech, lv, teach },
-    desc: `${TECHS[tech].name}第${'一二三四'[lv - 1]}重秘籍。研读后${TECHS[tech].name}技艺升至第${'一二三四'[lv - 1]}重（须先通前一重）。${teach ? `附仿造${teach.map(t => ITEMS[t].name).join('、')}之法。` : ''}${lv > BOOK_SHOP_MAX ? '鬼市不卖：拿功勋换，或等行家登门传艺。' : ''}` };
+    desc: `${TECHS[tech].name}第${'一二三四'[lv - 1]}重秘籍。研读后${TECHS[tech].name}技艺升至第${'一二三四'[lv - 1]}重（须先通前一重）。${teach ? `附仿造${teach.map(t => ITEMS[t].name).join('、')}之法。` : ''}${lv > BOOK_SHOP_MAX ? '鬼市不卖：拿功勋换，或等机遇——行家传艺、拾荒偶得、好人好报。' : ''}` };
 });
 
-// 传艺：三重往上的另一条路。[技艺, 第几重, 肯教的行家（谁先与你亲厚、自己那桩事也了了，谁来）, 要多少好感, 他压着手抄时说的话]
-const TEACHERS = [
-  ['refine', 3, ['duan_yinghuo', 'li_duangang', 'lu_tiechui'], 55, '炉火这门手艺，教会一个就少一口饭。可你待我不薄——看完烧了，别说是我给的。'],
-  ['alchemy', 3, ['ye_danping', 'mu_qingdan', 'lu_pinxiang'], 55, '丹房里这卷只给嫡传看，嫡传拿它炼驻颜丹，卖给长老夫人。你学去，好歹炼点正经东西。'],
-  ['talisman', 3, ['fu_shoumo', 'mo_yanqing'], 55, '名门正派的立身之本——说穿了，就是教人怎么把符画得像名门画的。你这铺子用得上。'],
-  ['erase', 3, ['hui_qiaosuo', 'gui_dengpo'], 55, '神识烙印也是一把锁，是锁就有钥匙。这手艺原是替失主开锁的，后来找上门的，多半不是失主。'],
-  ['forgery', 3, ['qian_shiqi'], 55, '我验了一辈子的货，真假过眼就知——所以我也最清楚，假货要怎么做才验不出来。'],
-  ['forgery', 4, ['qian_shiqi'], 80, '这最后一手我从没教过人。教了你，往后我验出来的假货，怕有一半是你做的。'],
-];
+// 传艺：三四重的机遇之一。肯教的行家（谁先与你亲厚、自己那桩事也了了，谁来）与他压着手抄时说的话（三重、四重各一句）
+const TEACH_AFF = [55, 80];   // 三重、四重各要多少好感
+const TEACHERS = {
+  refine:   { who: ['duan_yinghuo', 'li_duangang', 'lu_tiechui'], lines: ['炉火这门手艺，教会一个就少一口饭。可你待我不薄——看完烧了，别说是我给的。',
+    '宗门的神兵都是这一手打的，打成了记在长老名下。你学会了，往后打的东西，好歹记在你自己名下。'] },
+  alchemy:  { who: ['ye_danping', 'mu_qingdan', 'lu_pinxiang'], lines: ['丹房里这卷只给嫡传看，嫡传拿它炼驻颜丹，卖给长老夫人。你学去，好歹炼点正经东西。',
+    '九转之后还有一转，丹房说那是长老的独门——其实是我替他炼了三十年。'] },
+  soul:     { who: ['gui_dengpo', 'dugu_que'], lines: ['魂这东西，炼的时候别听它说话。听多了，你就舍不得炼了——那可就做不成买卖了。',
+    '最后这一重，是把许多魂炼成一个。宗门管这叫“归宗”，我管这叫灭口。'] },
+  corpse:   { who: ['yan_fengjiu'], lines: ['尸身也有脾气，顺着它的筋络走，它就肯替你干活。比活人听话多了。',
+    '炼到这一重，死人连亲娘都认不出是谁——所以执法堂才这么爱用。'] },
+  puppet:   { who: ['hui_qiaosuo', 'wan_xiaomu'], lines: ['关节要装得比人还活，客人才肯掏钱。至于它伤了谁，那是装错的人的事。',
+    '傀儡做到这一步，连它自己都以为自己是人。别让它知道。'] },
+  plant:    { who: ['tao_yunhe', 'he_baizhi'], lines: ['草木不挑主人，你浇水它就长。比铺子里的熟客有良心。',
+    '这一重的口诀是从祖辈的种匣里抄来的——宗门征了药圃，可没征走记在心里的东西。'] },
+  brew:     { who: ['yue_chan', 'zhu_shanye'], lines: ['酒要窖得久，话要等人醉了再听——这铺子里，两样你都用得上。',
+    '这一坛的方子，喝过的都说是仙酿。其实只多放了一样东西：耐心。还有一点迷魂花。'] },
+  water:    { who: ['ling_bo', 'ao_xunlan'], lines: ['水清不清，看的不是水，是滤它的人肯不肯下功夫。你这儿的水，还差一口气。',
+    '上游截了水，下游才晓得一瓶干净水值多少钱。这门手艺，是让你把它卖得更贵的。'] },
+  forgery:  { who: ['qian_shiqi'], lines: ['我验了一辈子的货，真假过眼就知——所以我也最清楚，假货要怎么做才验不出来。',
+    '这最后一手我从没教过人。教了你，往后我验出来的假货，怕有一半是你做的。'] },
+  erase:    { who: ['hui_qiaosuo', 'gui_dengpo'], lines: ['神识烙印也是一把锁，是锁就有钥匙。这手艺原是替失主开锁的，后来找上门的，多半不是失主。',
+    '最深的烙印是重宝的原主留的。抹掉它，等于把一个人从这件东西的来历里抹掉。你确定要学？——好，你确定。'] },
+  talisman: { who: ['fu_shoumo', 'mo_yanqing'], lines: ['名门正派的立身之本——说穿了，就是教人怎么把符画得像名门画的。你这铺子用得上。',
+    '天书上的符，宗门说只有天人画得出。我画了一辈子，署的都是天人的名字。'] },
+  beast:    { who: ['wen_lingqi', 'tu_baigu'], lines: ['畜生最懂人心：谁喂它，它就认谁。人也一样，只是忘得快些。',
+    '灵兽阁的驯法，说白了就是饿着它，再救它。这一重教的，就是怎么救得恰到好处。'] },
+};
 
 // 仿造：放样品于作伪台模组格，按配方消耗原料，造出同款赝品
 const COUNTERFEITS = {
@@ -369,30 +388,37 @@ const PORTRAITS = {
 
 
 // 拾荒地点：loot 为 [id, 权重]，danger 为每次翻找的基础遇险率
+// scrolls：拾荒时偶尔翻出你正缺的那一重秘籍（三四重），每找到一件东西有 SCROLL_FIND 的机会是它
+const SCROLL_FIND = 0.03;
 const LOCATIONS = [
   { id: 'ruins', name: '宗门废墟', bg: 'loc_ruins', tries: 9, find: 0.7, danger: 0.08,
     desc: '被血煞宗灭门的古宗遗址。残器、废丹、丹方残页埋在瓦砾下，偶尔还有没散尽的护山禁制。',
     loot: [['broken_relic', 8], ['waste_pill', 7], ['iron_ore', 3], ['scroll_manual', 2], ['spirit_crystal', 1.2], ['jade_pendant', 1],
            ['jade_slip', 0.4], ['puppet_scroll', 0.3], ['pill_recipe', 0.2], ['bronze_mirror', 0.5]],
+    scrolls: ['refine', 'alchemy', 'talisman', 'water', 'forgery'],
     hazard: { text: '你触动了残存的护山禁制，被一道剑气削去半截衣袖，养伤花了些灵石。', cost: 25, cond: ['injured', 1], end: true } },
   { id: 'battlefield', name: '古战场', bg: 'loc_battlefield', tries: 8, find: 0.72, danger: 0.12,
     desc: '上古仙魔大战的遗址，残器与废丹埋在焦土下。如今战火重燃，新尸、怨魂一天比一天多——巡逻的仙门剑修也是。',
     loot: [['broken_relic', 7], ['waste_pill', 5], ['scrap_sword', 4], ['soul_wisp', 3], ['demon_charm', 2], ['pill_qi', 0.8], ['soul_grudge', 0.6], ['blood_essence', 0.8], ['xian_talisman', 0.4]],
     warLoot: [['corpse', 6], ['soul_wisp', 3], ['soul_grudge', 2], ['sword_std', 1.2], ['xian_talisman', 1], ['xian_sword', 0.25]],
+    scrolls: ['soul', 'refine', 'talisman'],
     hazard: { text: '一道剑光从天而降，你连滚带爬逃回杂役区，背上留了一道血口。', cost: 35, heat: 4, cond: ['injured', 2], end: true } },
   { id: 'scrapyard', name: '炼器坊废料场', bg: 'loc_scrapyard', tries: 6, find: 0.7, danger: 0.06,
     desc: '废剑残甲堆成山。被看守发现会引来执法堂注意。',
     loot: [['scrap_sword', 8], ['iron_ore', 6], ['broken_bowl', 3], ['iron_ingot', 2], ['sword_std', 1], ['fire_disk', 0.4], ['puppet_scroll', 0.2]],
+    scrolls: ['refine', 'puppet'],
     hazard: { text: '看守提灯巡来，你狼狈翻墙而逃。', heat: 8, end: true } },
   { id: 'graveyard', name: '乱葬岗', bg: 'loc_graveyard', tries: 6, find: 0.65, danger: 0.1,
     desc: '白骨与鬼火之间偶有陪葬的老物件。尸气伤身。',
     loot: [['bones', 10], ['broken_bowl', 3], ['demon_charm', 3], ['jade_pendant', 1.5], ['soul_bell', 1], ['bone_flute', 1], ['scroll_manual', 1],
            ['corpse', 4], ['soul_wisp', 4], ['soul_grudge', 0.6]],
+    scrolls: ['corpse', 'soul', 'erase'],
     hazard: { text: '尸气侵体，你咳着血回到铺子，买药花了些灵石。', cost: 15, cond: ['poisoned', 1], end: true } },
   { id: 'beastcave', name: '万魔窟外围', bg: 'loc_beastcave', tries: 5, find: 0.6, danger: 0.14,
     desc: '妖兽出没之地，妖材与灵草丰富。取走妖丹会被妖族记恨。',
     loot: [['herb_blood', 4], ['herb_dew', 4], ['beast_hide', 2], ['yao_core', 1.5], ['gu_egg', 2], ['spirit_crystal', 1.5], ['spirit_fruit', 3],
            ['mihun_seed', 2], ['vine_seed', 1.5], ['mihun_flower', 1]],
+    scrolls: ['beast', 'plant', 'brew'],
     hazard: { text: '洞中巨眼睁开，一爪掀翻了你。养伤花了不少灵石。', cost: 20, cond: ['injured', 2], end: true } },
 ];
 

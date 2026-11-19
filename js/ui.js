@@ -681,6 +681,8 @@ function potHTML(m, running) {
     <div class="flow-to">${flow(running)}${gridHTML(gridOf(m, 'out'), def.outLabel, 'out')}</div></div>`;
 }
 
+// 功勋页的秘籍只摆你眼下读得懂的那一重，免得一排书挤满窗口
+const meritShown = id => !ITEMS[id].book || ITEMS[id].book.lv === techLv(ITEMS[id].book.tech) + 1;
 function tabBroker() {
   const goods = S.supply.map((e, i) => `<div class="shop-row">
       <img src="${asset('items', e.id === 'water' ? 'water_murky' : e.id)}" alt=""><b>${ITEMS[e.id].name}</b>
@@ -697,11 +699,11 @@ function tabBroker() {
   const books = BOOKS.filter(([, tech, lv, , rep]) => lv === techLv(tech) + 1 && (lv > BOOK_SHOP_MAX || S.rep.mo >= rep)).map(([id, tech, lv, price]) => {
     const head = `<div class="shop-row"><img src="${asset('items', ITEMS[id].icon)}" alt=""><b>${ITEMS[id].name}</b>
       <span class="muted">${TECHS[tech].name}第${cn(lv)}重</span>`;
-    // 三重往上不卖：告诉你去哪儿换、谁肯教
+    // 三四重不卖：告诉你去哪儿换、谁肯教
     if (lv > BOOK_SHOP_MAX) {
       const [f, list] = Object.entries(MERIT_SHOP).find(([, l]) => l.some(([x]) => x === id)), cost = list.find(([x]) => x === id)[1];
-      const row = TEACHERS.find(x => x[0] === tech && x[1] === lv), who = row ? row[2].map(pid => CAST[pid] ? CAST[pid].name : pid).join('、') : '';
-      return `${head}<span class="muted small grow">不卖。${CHANNEL_NAME[f]} ${cost} 点功勋可换${who ? `；或与${who}亲厚，等人登门传艺` : ''}</span></div>`;
+      const who = TEACHERS[tech].who.map(pid => CAST[pid] ? CAST[pid].name : pid).join('、');
+      return `${head}<span class="muted small grow">不卖。${CHANNEL_NAME[f]} ${cost} 点功勋可换；或等机遇：与${who}亲厚，等人登门传艺，拾荒也偶尔翻得到</span></div>`;
     }
     const p = Math.round(price * (1 + diff().markup) * warStage().supply);
     return `${head}${stoneTxt(p)}
@@ -714,8 +716,8 @@ function tabBroker() {
   });
   const merit = Object.keys(MERIT_SHOP).map(f => `<div class="merit-row">
       <b style="color:${FACTIONS[f].color}">${CHANNEL_NAME[f]}</b><span class="muted small">${FACTIONS[f].name}功勋 ${S.merit[f]}${channelOpen(f) ? '' : ` · 未搭上线（${channelHint(f)}）`}</span>
-      <div class="merit-goods">${MERIT_SHOP[f].map(([id, cost], i) => `<button class="btn tiny" data-act="redeem" data-f="${f}" data-i="${i}"
-        ${channelOpen(f) && S.merit[f] >= cost ? '' : 'disabled'} title="${esc(ITEMS[id].desc)}"><img src="${asset('items', ITEMS[id].icon || id)}" alt="">${ITEMS[id].name} ${cost}</button>`).join('')}</div></div>`);
+      <div class="merit-goods">${MERIT_SHOP[f].map(([id, cost], i) => meritShown(id) ? `<button class="btn tiny" data-act="redeem" data-f="${f}" data-i="${i}"
+        ${channelOpen(f) && S.merit[f] >= cost ? '' : 'disabled'} title="${esc(ITEMS[id].desc)}"><img src="${asset('items', ITEMS[id].icon || id)}" alt="">${ITEMS[id].name} ${cost}</button>` : '').join('')}</div></div>`);
   const rows = { goods, machines, books, intel, ups, merit }[sub.cur];
   const pg = pager(rows, sub.cur === 'merit' ? 4 : rowsFit(40, 1), `broker-${sub.cur}`);
   return `<div class="broker">

@@ -136,6 +136,7 @@ const BOONS = [
   { text: '{n}送来一道护身符：“哪天大祸临头，拿它来找我。”（可免一次锁拿、驱逐或横死）', run: () => { S.flags.savior = (S.flags.savior || 0) + 1; } },
   { text: '{n}传了你一段压箱底的心法，又送来破境之物。', run: () => { S.cult.xp += Math.round((realm().need || 3000) * 0.7); giveItem(realm().key || 'soul_crystal'); } },
   { text: '{n}托人抬来一件重宝：“当年那份情，我一直记着。”', run: () => giveItem(pick(['god_blank', 'soul_banner', 'demon_blade', 'lens4'])) },
+  { text: '{n}托人送来一卷封皮写着“不外传”的手抄：“你缺的那一重，我替你寻来了。”', ok: () => nextBooks().length > 0, run: () => giveItem(pick(nextBooks())[0]) },
 ];
 
 // 大回报要两头都硬：他混出了头，你也得强到让人敢把重注押在你身上
@@ -146,7 +147,7 @@ function repay(p) {
   const rich = p.budgetMul >= 1.4 || npcLevel(p) >= 2;
   p.owed = 0;
   if (rich && strongEnough() && fateClean() && Math.random() < 0.15) {
-    const b = pick(BOONS);
+    const b = pick(BOONS.filter(b => !b.ok || b.ok()));
     b.run();
     remember(p, '报答了你当年的恩情。', 10);
     return { icon: 'ic_gift', title: '好人好报', text: fill_(b.text), cls: 'ok' };
@@ -237,7 +238,7 @@ function karmaTick() {
   }
   // 天道偶尔也开眼：善名在外、没有恶名，越到后来越可能撞上大机缘
   if (S.virtue >= 50 && fateClean() && (strongEnough() || S.day >= 45) && Math.random() < 0.004 + Math.max(0, S.day - 30) * 0.0002) {
-    const b = pick(BOONS);
+    const b = pick(BOONS.filter(b => !b.ok || b.ok()));
     b.run();
     out.push({ icon: 'ic_gift', title: '奇遇', text: fill(b.text, { n: '一位你早已忘了名字的故人' }), cls: 'ok' });
   }

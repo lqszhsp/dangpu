@@ -130,13 +130,17 @@ function visitMarket() {
 
 // 各方的特产：只换中高阶的货（基价六十以上），大多外头有钱也买不着；和货郎、鬼市、联盟、批发处每方至多重一样。
 // 功勋难攒，一点约抵五六十灵石的货；能再炼成更贵东西的（玄铁精四块炼神兵胚料）定得贵些
-// 三重往上的秘籍鬼市不卖，只在这里换（另一条路是行家传艺，见 TEACHERS）：执法堂收着洗印、作伪的书，仙门暗桩换的是教人仿名门符的正一符经
+// 三四重的秘籍鬼市不卖，只在这里换（另一条路是机遇：行家传艺、拾荒偶得、好人好报）。各方收着本行的书：
+// 执法堂管魔道（炼魂、炼尸、炼丹、抹印、作伪四重），仙门暗桩换符箓与洗灵，妖族线人换御兽与栽培，散修联盟换炉火、机关、酿酒与仿丹
 const MERIT_SHOP = {
   mo:   [['pill_blood', 3], ['fu_shehun', 3], ['live_soul', 6], ['cult_corpse', 8], ['soul_banner', 16], ['iron_corpse', 25],    // 血煞丹批发处也有
-         ['bk_alchemy3', 16], ['bk_erase3', 18], ['bk_forgery4', 24]],
-  xian: [['xian_talisman', 2], ['seal_xian', 3], ['xian_robe', 5], ['pill_found', 12], ['xian_sword', 20], ['bk_talisman3', 15]],   // 封印符鬼市也有
-  yao:  [['vine_fruit', 1], ['gold_bug', 2]],                                                                                   // 噬金虫货郎也有
-  ren:  [['zhen_fu', 1], ['dan_guide', 2], ['xuan_essence', 4], ['cloud_robe', 12], ['bk_forgery3', 13], ['bk_refine3', 15]],
+         ['bk_soul3', 18], ['bk_soul4', 28], ['bk_corpse3', 19], ['bk_corpse4', 30], ['bk_alchemy3', 16], ['bk_alchemy4', 26],
+         ['bk_erase3', 18], ['bk_erase4', 28], ['bk_forgery4', 24]],
+  xian: [['xian_talisman', 2], ['seal_xian', 3], ['xian_robe', 5], ['pill_found', 12], ['xian_sword', 20],                       // 封印符鬼市也有
+         ['bk_talisman3', 15], ['bk_talisman4', 24], ['bk_water3', 12], ['bk_water4', 19]],
+  yao:  [['vine_fruit', 1], ['gold_bug', 2], ['bk_beast3', 16], ['bk_beast4', 25], ['bk_plant3', 13], ['bk_plant4', 22]],       // 噬金虫货郎也有
+  ren:  [['zhen_fu', 1], ['dan_guide', 2], ['xuan_essence', 4], ['cloud_robe', 12], ['bk_refine3', 15], ['bk_refine4', 25],
+         ['bk_forgery3', 13], ['bk_puppet3', 21], ['bk_puppet4', 32], ['bk_brew3', 11], ['bk_brew4', 18]],
 };
 const CHANNEL_NAME = { mo: '执法堂', xian: '仙门暗桩', yao: '妖族线人', ren: '散修联盟' };
 
