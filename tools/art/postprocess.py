@@ -169,13 +169,13 @@ def process():
                 im = im.resize((1536, 1024), Image.LANCZOS)
                 save(im, dir, name, 78)
                 if name == 'shop_front':
-                    # 柜台面以下是前景；右侧天平立得高，一并算进前景
+                    # 柜台面以下是前景；右侧天平立得高，一并算进前景（从左盘起算，别把右门扇上的打烊牌切进来）
                     cut = float(arg('--cut', '0.755'))
                     fg = im.convert('RGBA')
                     a = Image.new('L', im.size, 0)
                     W, H = im.size
                     ImageDraw.Draw(a).rectangle([0, int(H * cut), W, H], fill=255)
-                    ImageDraw.Draw(a).rectangle([int(W * 0.76), int(H * 0.39), int(W * 0.985), H], fill=255)
+                    ImageDraw.Draw(a).rectangle([int(W * 0.795), int(H * 0.39), int(W * 0.985), H], fill=255)
                     fg.putalpha(a.filter(ImageFilter.GaussianBlur(3)))
                     save(fg, dir, 'counter_top', 80)
                     done.append('scene/counter_top')

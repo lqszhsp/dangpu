@@ -112,7 +112,8 @@ img { user-select: none; -webkit-user-drag: none; }
 #scene { grid-area: scene; position: relative; overflow: hidden; border-right: 2px solid var(--gold-d); background: #0b080e; }
 /* 场景各层都钉在一个 3:2 的画框里（与背景图同比例），像 cover 一样铺满、贴底；来客站位按画框算 */
 #scene { container-type: size; }
-#stagebox { position: absolute; left: 50%; bottom: 0; width: max(100cqw, 150cqh); aspect-ratio: 3 / 2; transform: translateX(-50%); }
+/* 画框比画面宽时居中裁两边；裁得太狠（4:3、平板横屏）就往左让一点，右门扇上的打烊牌（到画框 80%）总在画面里 */
+#stagebox { position: absolute; left: min(50%, calc(100cqw - .3 * max(100cqw, 150cqh))); bottom: 0; width: max(100cqw, 150cqh); aspect-ratio: 3 / 2; transform: translateX(-50%); }
 #stagebox .bg, #stagebox .fg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
 #stagebox .fg { z-index: 2; pointer-events: none; }
 /* 来客站位：柜台前（腰以下被柜台挡住）、门口、门外 */
@@ -128,18 +129,15 @@ img { user-select: none; -webkit-user-drag: none; }
 #scene:not(.realistic) #portrait.st-door { height: 62%; bottom: 10%; }
 #scene:not(.realistic) #portrait.st-outside { height: 55%; bottom: 14%; }
 #crowd { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-/* 门口：开门迎客、请下一位都点这里；门边挂着打烊牌。字号随画框缩放（#scene 是尺寸容器） */
+/* 门口：开门迎客、请下一位都点这里；右门扇上挂着打烊牌。字号随画框缩放（#scene 是尺寸容器） */
 #door { position: absolute; left: 34.5%; top: 15%; width: 33.5%; height: 45%; z-index: 1; padding: 0; display: flex; align-items: center; justify-content: center; background: none; border: 0; border-radius: 4px; cursor: pointer; }
 #door:hover { box-shadow: inset 0 0 50px rgba(242, 210, 122, .3); }
 #door span { padding: 4px 14px; font-family: var(--kai); font-size: max(15px, 1.6cqw); letter-spacing: 2px; white-space: nowrap; color: #fff4d6; background: rgba(42, 16, 32, .88); border: 1px solid var(--gold); border-radius: 16px; animation: doorcall 2.4s ease-in-out infinite; }
 @keyframes doorcall { 50% { box-shadow: 0 0 18px rgba(242, 210, 122, .75); } }
-#closesign { position: absolute; left: 60.5%; top: 21%; width: 3.6%; aspect-ratio: 1 / 2.3; z-index: 1; padding: 0; writing-mode: vertical-rl; font-family: var(--kai); font-size: max(2cqw, 3cqh); font-weight: bold; letter-spacing: .15em; cursor: pointer;
-  color: var(--gold2); background: linear-gradient(90deg, #2a140e, #4a2618 45%, #2a140e); border: 2px solid var(--gold-d); border-radius: 3px;
-  box-shadow: inset 0 0 0 1px rgba(242, 210, 122, .35), 0 4px 10px rgba(0, 0, 0, .7); transform-origin: 50% -30%; animation: swing 5s ease-in-out infinite; }
-#closesign::before { content: ""; position: absolute; left: 15%; right: 15%; bottom: 100%; height: 30%; background: linear-gradient(to top right, transparent 48%, #c9a04a 49%, #c9a04a 51%, transparent 52%) 0 0 / 50% 100% no-repeat, linear-gradient(to top left, transparent 48%, #c9a04a 49%, #c9a04a 51%, transparent 52%) 100% 0 / 50% 100% no-repeat; }
-#closesign:hover { filter: brightness(1.3); }
-#closesign.due { color: #fff4d6; border-color: var(--gold); animation: swing 1.6s ease-in-out infinite, signglow 1.6s ease-in-out infinite; }
-@keyframes swing { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+/* 打烊牌是画在背景右门扇上的旧木牌，按钮只是罩在牌面上的点击区 */
+#closesign { position: absolute; left: 69.6%; top: 24.9%; width: 9.4%; height: 39.6%; z-index: 1; padding: 0; font-size: 0; cursor: pointer; background: none; border: 0; border-radius: 3px; }
+#closesign:hover { box-shadow: inset 0 0 40px rgba(242, 210, 122, .3); }
+#closesign.due { animation: signglow 1.6s ease-in-out infinite; }
 @keyframes signglow { 50% { box-shadow: inset 0 0 0 1px rgba(242, 210, 122, .6), 0 0 18px rgba(242, 210, 122, .8); } }
 #crowd img { position: absolute; bottom: 38%; height: 31%; filter: brightness(.12) blur(1px); opacity: .85; }
 #crowd .w0 { left: 41%; } #crowd .w1 { left: 54%; height: 28%; bottom: 39%; }

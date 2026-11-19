@@ -185,8 +185,8 @@ function speechFor(c) {
   if (!c) {
     if (S.phase === 'morning') return `晨钟响过三遍。${todayText()}${S.market.text}${tipText()}`;
     if (S.phase === 'night') return '血月当空，杂役区只剩几盏灯笼。去拾些破烂，还是早些歇息？';
-    // 门口自有“请下一位”的牌子，人走光了才提醒去翻打烊牌
-    return S.queue.length ? '' : `今日的客人都走了。${LAYOUT === 'tall' ? '点右边的「打烊」' : '门边那块牌子翻过来'}，就算打烊。`;
+    // 门口自有“请下一位”的牌子，人走光了才提醒去点打烊牌
+    return S.queue.length ? '' : `今日的客人都走了。${LAYOUT === 'tall' ? '点左边的「打烊」' : '点门上那块打烊牌'}，就算打烊。`;
   }
   const it = customerItem();
   const sig = [c.kind, c.told, c.afterAppraisal, it && it.disputed].join('|');
@@ -288,7 +288,7 @@ function renderScene() {
      ${personTags(c)}` : '';
   $('#nameplate').style.display = c ? '' : 'none';
   renderSpeech(speechFor(c));
-  // 点门口开门迎客、请下一位；门边的打烊牌子白天一直挂着，客人走光了就晃一晃
+  // 点门口开门迎客、请下一位；门上的打烊牌白天点得动，客人走光了就亮一亮
   const door = $('#door'), act = S.phase === 'morning' ? 'open' : S.phase === 'day' && !c && S.queue.length ? 'next' : '';
   door.style.display = act ? '' : 'none';
   door.dataset.act = act;
