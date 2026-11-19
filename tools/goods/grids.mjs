@@ -21,7 +21,7 @@ function audit() {
     const nm = id => ITEMS[id].name, dim = id => ITEMS[id].w + '×' + ITEMS[id].h;
     const fitsIn = (id, g) => !!g && ITEMS[id].w <= g[0] && ITEMS[id].h <= g[1];
     const BOOSTS = ['fire_disk', 'dan_fire', 'soul_bell', 'zhen_fu', 'dan_guide'];
-    const out = {};
+    let out = {};
     const note = (t, kind, text) => ((out[t] = out[t] || { bad: [], warn: [], runs: [] })[kind]).push(text);
 
     // ── 一、放得下：设备收的每样东西，尺寸塞不塞得进那一格 ──
@@ -39,6 +39,12 @@ function audit() {
         if (big.length) note(t, 'warn', '输入格 ' + d.in.join('×') + ' 放不下 ' + big.length + ' 种货：' + big.map(nm).join('、'));
       }
     }
+    // 什么货都收的铺面格子（库房、陈列柜、地上、暗格、柜台、拾荒背篓）：每样货都得放得下，竖着三格的长条货也是
+    S.grids.hidden = { w: HIDDEN_SIZE[0], h: HIDDEN_SIZE[1] }; S.grids.basket = { w: BASKET[0], h: BASKET[1] };
+    for (const [gid, name] of [['store', '库房'], ['display', '陈列柜'], ['floor', '地上'], ['hidden', '暗格'], ['counter', '柜台'], ['basket', '拾荒背篓']]) {
+      const g = S.grids[gid], big = Object.keys(ITEMS).filter(id => !fitsIn(id, [g.w, g.h]));
+      if (big.length) note('_shop', 'bad', name + ' ' + g.w + '×' + g.h + ' 放不下：' + big.map(id => nm(id) + '（' + dim(id) + '）').join('、'));
+    }
     for (const b of BEHAVIORS.filter(b => b.machine)) {
       const d = MACHINES[b.machine];
       for (const id of b.made.filter(id => ITEMS[id])) {
@@ -54,7 +60,7 @@ function audit() {
       const m = addMachine(b.machine), d = MACHINES[b.machine];
       if (mode === 'nominal') S.grids[gridOf(m, 'in')] = { w: 12, h: 12 };
       if (mode !== 'real') S.grids[gridOf(m, 'out')] = { w: 12, h: 12 };
-      S.grids.floor = { w: 6, h: 2 };
+      S.grids.floor = { w: FLOOR_SIZE[0], h: FLOOR_SIZE[1] };
       const put = (id, gid, extra = {}) => { const it = makeItem(id, Object.assign({ q: 60 }, extra)); if (autoPlace(it, [gid])) return it; destroyItem(it); return null; };
       if (a.mod) put(a.mod, gridOf(m, 'mod'));
       if (a.modAny) { put(a.modAny, gridOf(m, 'mod')); S.forgeKnown[a.known] = 4; }
@@ -96,7 +102,9 @@ function audit() {
         else if (real.made < inn.made) note(b.machine, 'warn', what + '：产出格一夜只装得下 ' + real.made + ' 件（能出 ' + inn.made + ' 件），得天天清');
       }
     }
-    return Object.fromEntries(Object.entries(out).map(([t, v]) => [t, Object.assign(v, { name: MACHINES[t].name,
+    const shop = out._shop; delete out._shop;
+    if (shop) out = Object.assign({ _shop: Object.assign(shop, { name: '铺面格子', grids: '', starts: [] }) }, out);
+    return Object.fromEntries(Object.entries(out).map(([t, v]) => t === '_shop' ? [t, v] : [t, Object.assign(v, { name: MACHINES[t].name,
       grids: ['in', 'pot', 'out', 'mod'].filter(k => MACHINES[t][k]).map(k => k + ' ' + MACHINES[t][k].join('×')).concat(MACHINES[t].stalls ? ['栏 ' + MACHINES[t].stallSize + '×1 ×' + MACHINES[t].stallMax] : []).join('，'),
       starts: STARTS.filter(s => (s.machines || []).includes(t)).map(s => s.name) })]));
   })()`, ctx);
@@ -134,13 +142,13 @@ const rep = audit();
 let bad = 0;
 for (const [t, v] of Object.entries(rep)) {
   if (!v.bad.length && !v.warn.length && !argv.includes('--all')) continue;
-  console.log(`\n■ ${v.name}（${t}）  ${v.grids}${v.starts.length ? `  · 开局：${v.starts.join('、')}` : ''}`);
+  console.log(`\n■ ${v.name}${t === '_shop' ? '' : `（${t}）`}  ${v.grids}${v.starts.length ? `  · 开局：${v.starts.join('、')}` : ''}`);
   for (const r of v.runs) console.log(`    ${r.what}：设计 ${r.nominal} · 输入格喂得了 ${r.input} · 产出格装得下 ${r.real}${r.lost ? ` · 吞掉 ${r.lost}` : ''}${r.stowed ? ` · 搬进库房 ${r.stowed}` : ''}`);
   v.bad.forEach(x => console.log(`  ✗ ${x}`));
   v.warn.forEach(x => console.log(`  ! ${x}`));
   bad += v.bad.length;
 }
-console.log(bad ? `\n${bad} 处格子与玩法对不上` : '\n✓ 设备格子放得下该放的东西，一夜的料喂得满、产物装得下');
+console.log(bad ? `\n${bad} 处格子与玩法对不上` : '\n✓ 铺面与设备的格子放得下该放的东西，一夜的料喂得满、产物装得下');
 if (argv.includes('--mobile')) {
   const { result, errors } = await mobile();
   if (result.fatal || !Array.isArray(result)) { console.log(`✗ 量不了：${result.fatal || JSON.stringify(result).slice(0, 300)}`); process.exit(1); }

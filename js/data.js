@@ -333,7 +333,7 @@ const UPGRADES = [
   { id: 'store1',  name: '扩建库房',   price: 350,  desc: '储物架扩为 10×6。' },
   { id: 'store2',  name: '再扩库房',   price: 900,  desc: '储物架扩为 12×7。', need: 'store1' },
   { id: 'display', name: '紫檀陈列柜', price: 500,  desc: '陈列柜扩为 6×4，能摆更多货揽客。' },
-  { id: 'hidden',  name: '夹层暗格',   price: 600,  desc: '一个 3×2 暗格，执法堂巡查时搜不到。' },
+  { id: 'hidden',  name: '夹层暗格',   price: 600,  desc: '一个 2×3 暗格，竖着三格的长条货也藏得下；执法堂巡查时搜不到。' },
   { id: 'sign',    name: '鎏金招牌',   price: 700,  desc: '每日多来一位顾客。' },
   { id: 'hijack',  name: '私接灵脉',   price: 400,  desc: '每夜灵力 +6；但每夜有一成机会被察觉，执法堂关注 +10。' },
   { id: 'master',  name: '鉴宝心得',   price: 650,  desc: '鉴定委托酬金翻倍；说起真伪来更让人信服。' },

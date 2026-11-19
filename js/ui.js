@@ -864,8 +864,26 @@ function renderStorage() {
       <span class="st-tool" title="鉴宝台：放照妖镜，决定你的鉴定术">${gridHTML('tool', '', 'mod')}<small>${LENS_NAMES[appraiseLevel()]}</small></span>
       <span class="trash" data-drop="trash" title="拖到这里丢弃">弃</span></div>
     ${handItems().length ? `<div class="st-hand">${gridHTML('hand', '手上：铺里放不下了。拖进空处，或点开服用、摆出、放进设备、卖掉、丢弃腾地方；收拾好才能接着做事')}</div>` : ''}
-    <div class="st-body">${gridHTML('store', '')}
-      <div class="st-side">${gridHTML('floor', '地上（夜里可能遭贼）')}${S.grids.hidden ? gridHTML('hidden', '夹层暗格', 'stash') : ''}</div></div>`;
+    <div class="st-body ${storeFit.cls || 'beside-row'}">${gridHTML('store', '')}
+      <div class="st-side">${gridHTML('floor', '地上（夜里遭贼）')}${S.grids.hidden ? gridHTML('hidden', '夹层暗格', 'stash') : ''}</div></div>`;
+  fitStorage();
+}
+
+// 地上与暗格摆在哪：库房旁边横排、旁边竖排、库房下面横排，挑横向不撑出、又最矮的那种。
+// 排法只随屏幕和格子尺寸变，记下来，同样的尺寸不再量
+const storeFit = { key: null, cls: null };
+function fitStorage() {
+  const st = $('#storage'), body = st && st.querySelector('.st-body');
+  const key = [LAYOUT, CELL, ...['store', 'floor', 'hidden'].map(g => S.grids[g] ? `${S.grids[g].w}x${S.grids[g].h}` : '-')].join(' ');
+  if (!body || !st.clientWidth || storeFit.key === key) return;
+  let best = null;
+  for (const cls of ['beside-row', 'beside-col', 'below-row']) {
+    body.className = `st-body ${cls}`;
+    const over = st.scrollWidth > st.clientWidth + 1, h = st.scrollHeight;
+    if (!best || (!over && (best.over || h < best.h))) best = { cls, over, h };
+  }
+  body.className = `st-body ${best.cls}`;
+  Object.assign(storeFit, { key, cls: best.cls });
 }
 
 // 触屏点一件货：立刻弹出详情卡，能做的事也在卡上；点别处收起并取消选中

@@ -47,10 +47,10 @@ function newGame(diffId, startId) {
   initWorld();
   S.grids.store = { w: 8, h: 5 };
   S.grids.display = { w: 5, h: 3 };
-  S.grids.floor = { w: 6, h: 2 };
+  S.grids.floor = { w: FLOOR_SIZE[0], h: FLOOR_SIZE[1] };
   S.grids.counter = { w: 3, h: 3 };
   S.grids.power = { w: 3, h: 1 };
-  if (S.perks.hidden) { S.upgrades.hidden = true; S.grids.hidden = { w: 3, h: 2 }; }
+  if (S.perks.hidden) { S.upgrades.hidden = true; S.grids.hidden = { w: HIDDEN_SIZE[0], h: HIDDEN_SIZE[1] }; }
   (start.machines || []).forEach(addMachine);
   start.items.forEach(([id, n, extra]) => {
     for (let i = 0; i < n; i++) autoPlace(makeItem(id, Object.assign({}, extra)));
@@ -96,6 +96,7 @@ function load() {
   S.machines.filter(m => MACHINES[m.type].stalls).forEach(migratePen);
   S.machines.filter(m => MACHINES[m.type].pot).forEach(migrateGupot);
   S.machines.forEach(growGrids);
+  reshapeGrid('floor', FLOOR_SIZE); reshapeGrid('hidden', HIDDEN_SIZE);
   // 旧存档里掺了料的货都是你自己掺的（那时市面上还没有别人掺好的）
   Object.values(S.items).forEach(it => { if (it.laced && !it.lacedBy && !it.lacedSeen) it.lacedBy = 'me'; });
   if (!Object.keys(S.story).length) initStories();
@@ -320,6 +321,27 @@ function layoutHand() {
 const handItems = () => itemsIn('hand');
 
 function resizeGrid(gid, w, h) { S.grids[gid].w = w; S.grids[gid].h = h; }
+
+// 地上与暗格都要三格高：竖着三格的飞剑、铁尸、古琴才放得下（没有比两格更宽的货，所以两格宽就够）。面积与从前一样
+const FLOOR_SIZE = [3, 4], HIDDEN_SIZE = [2, 3];
+// 旧存档：地上 6×2、暗格 3×2 → 换成新的形状，货重新码一遍（大件先放）。
+// 地上码不下的收进库房；暗格码不下就把暗格放宽到 3×3，原样留着——藏起来的东西不能被翻到明处
+function reshapeGrid(gid, [w, h]) {
+  const g = S.grids[gid];
+  if (!g || (g.w === w && g.h === h) || g.h >= h) return;
+  const list = itemsIn(gid), saved = list.map(it => it.pos), area = it => ITEMS[it.id].w * ITEMS[it.id].h;
+  const old = { w: g.w, h: g.h };
+  list.forEach(it => { it.pos = null; });
+  S.grids[gid] = { w, h };
+  const left = list.slice().sort((a, b) => area(b) - area(a) || ITEMS[b.id].h - ITEMS[a.id].h).filter(it => !autoPlace(it, [gid]));
+  if (!left.length) return;
+  if (gid === 'hidden') {
+    S.grids[gid] = { w: Math.max(old.w, w), h: Math.max(old.h, h) };
+    list.forEach((it, i) => { it.pos = saved[i]; });
+    return;
+  }
+  left.forEach(stow);
+}
 
 // ───────────── 设备 ─────────────
 
@@ -1355,7 +1377,7 @@ function buyUpgrade(id) {
   if (id === 'store1') resizeGrid('store', 10, 6);
   if (id === 'store2') resizeGrid('store', 12, 7);
   if (id === 'display') resizeGrid('display', 6, 4);
-  if (id === 'hidden') S.grids.hidden = { w: 3, h: 2 };
+  if (id === 'hidden') S.grids.hidden = { w: HIDDEN_SIZE[0], h: HIDDEN_SIZE[1] };
   return null;
 }
 

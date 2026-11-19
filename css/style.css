@@ -840,7 +840,6 @@ body.tall .cp-actions .btn, body.tall .cp-actions:has(> .btn:nth-of-type(5)) .bt
 body.tall .cp-actions .btn.primary, body.tall .cp-actions:has(> .btn:nth-of-type(5)) .btn.primary { flex: 2 1 auto; font-size: 15px; }
 body.tall .cp-actions .btn.big { padding: 6px 10px; font-size: 16px; }
 body.tall .trade { gap: 8px; }
-body.tall .st-side { flex-direction: row; flex-wrap: wrap; gap: 6px 10px; }
 body.tall .st-head .muted { display: none; }
 body.tall .broker-head { display: none; }
 
@@ -864,17 +863,17 @@ body.wide #counter-panel .intel { margin-top: 3px; padding: 2px 8px; }
 .st-head { height: 44px; }
 .st-tool { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; font-size: 11px; color: var(--muted); }
 .st-tool + .trash { margin-left: 8px; }
-.st-side { flex-direction: row; flex-wrap: wrap; gap: 4px 10px; }
 body.wide #storage { padding: 4px 6px; }
-body.wide .st-side { flex-direction: column; }
 body.wide #storage { padding: 4px 3px; scrollbar-width: thin; }
 /* 库房的 .st-body 与故事对话框的 .st-body 同名，这里单独限定 */
-#storage .st-body { flex: none; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 4px 8px; }
+#storage .st-body { flex: none; display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 4px 8px; }
+/* 地上与暗格的三种摆法，由 fitStorage 量过挑一种：库房旁横排 / 库房旁竖排 / 库房下横排 */
+#storage .st-side { display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 4px 10px; }
+#storage .beside-row, #storage .beside-col { flex-direction: row; }
+#storage .beside-row .st-side, #storage .below-row .st-side { flex-direction: row; }
+#storage .beside-col .st-side { flex-direction: column; }
+#storage .below-row { flex-direction: column; }
 body.tall #storage .st-head { height: 30px; }
-body.tall #storage .st-body { display: grid; grid-template-columns: auto auto; gap: 2px 8px; }
-body.tall #storage .st-side { display: contents; }
-body.tall #storage .st-side > .grid-wrap { grid-column: 1; }
-body.tall #storage .st-side > .stash { grid-column: 2; grid-row: 1; }
 /* 夜里画面是街面：来客站在街上，离得近些 */
 #scene.realistic.night #portrait.st-outside, #scene.realistic.night #portrait.st-door { height: 70%; bottom: 2%; filter: brightness(.6) drop-shadow(0 0 10px #000); }
 .tb-cell.cond { padding: 1px 7px; font-size: 12px; color: #ffd0c8; background: rgba(142, 27, 43, .55); border: 1px solid var(--moon); border-radius: 10px; cursor: help; }
