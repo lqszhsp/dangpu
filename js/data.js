@@ -128,7 +128,7 @@ const QUALITY_TIERS = [[85, '极品'], [65, '上品'], [35, '中品'], [0, '下�
 const GRADE_NAMES = ['', '粗劣', '寻常', '精良', '天衣无缝'];
 const LENS_NAMES = ['肉眼', '铜框照妖镜', '玉髓照妖镜', '照骨灵镜', '天目珠'];
 
-// 技艺：读秘籍逐重提升。machines 为受其加持的设备
+// 技艺：逐重提升——一二重读货郎卖的秘籍，三重往上拿功勋换秘籍，或等行家登门传艺（见 TEACHERS）。machines 为受其加持的设备
 const TECHS = {
   refine:  { name: '炼器', icon: 'book_refine',  machines: ['furnace', 'forge'],     max: 3, desc: '炼器炉、炼器台出品每重品质 +8；三重时炼器炉每夜多一炉。' },
   alchemy: { name: '炼丹', icon: 'book_alchemy', machines: ['danlu'],                max: 3, desc: '丹炉出品每重品质 +8；三重时每夜多一炉。' },
@@ -145,6 +145,8 @@ const TECHS = {
 };
 
 // 秘籍：[id, 技艺, 第几重, 价钱, 魔宗声望要求, 名字, 附带的仿造之法]
+// 货郎只卖到第 BOOK_SHOP_MAX 重；再往上的价钱只定书的身价，换法见 market.js 的 MERIT_SHOP 与下面的 TEACHERS
+const BOOK_SHOP_MAX = 2;
 const BOOKS = [
   ['bk_refine1', 'refine', 1, 180, -100, '炼器要诀'], ['bk_refine2', 'refine', 2, 420, 0, '炼器秘要'], ['bk_refine3', 'refine', 3, 900, 15, '百炼真解'],
   ['bk_alchemy1', 'alchemy', 1, 200, -100, '丹道入门'], ['bk_alchemy2', 'alchemy', 2, 480, 0, '丹经'], ['bk_alchemy3', 'alchemy', 3, 1000, 15, '九转丹书'],
@@ -162,8 +164,18 @@ const BOOKS = [
 ];
 BOOKS.forEach(([id, tech, lv, price, , name, teach]) => {
   ITEMS[id] = { name: `《${name}》`, cat: 'ji', w: 1, h: 1, base: Math.round(price * 0.7), icon: TECHS[tech].icon, book: { tech, lv, teach },
-    desc: `${TECHS[tech].name}第${'一二三四'[lv - 1]}重秘籍。研读后${TECHS[tech].name}技艺升至第${'一二三四'[lv - 1]}重（须先通前一重）。${teach ? `附仿造${teach.map(t => ITEMS[t].name).join('、')}之法。` : ''}` };
+    desc: `${TECHS[tech].name}第${'一二三四'[lv - 1]}重秘籍。研读后${TECHS[tech].name}技艺升至第${'一二三四'[lv - 1]}重（须先通前一重）。${teach ? `附仿造${teach.map(t => ITEMS[t].name).join('、')}之法。` : ''}${lv > BOOK_SHOP_MAX ? '鬼市不卖：拿功勋换，或等行家登门传艺。' : ''}` };
 });
+
+// 传艺：三重往上的另一条路。[技艺, 第几重, 肯教的行家（谁先与你亲厚、自己那桩事也了了，谁来）, 要多少好感, 他压着手抄时说的话]
+const TEACHERS = [
+  ['refine', 3, ['duan_yinghuo', 'li_duangang', 'lu_tiechui'], 55, '炉火这门手艺，教会一个就少一口饭。可你待我不薄——看完烧了，别说是我给的。'],
+  ['alchemy', 3, ['ye_danping', 'mu_qingdan', 'lu_pinxiang'], 55, '丹房里这卷只给嫡传看，嫡传拿它炼驻颜丹，卖给长老夫人。你学去，好歹炼点正经东西。'],
+  ['talisman', 3, ['fu_shoumo', 'mo_yanqing'], 55, '名门正派的立身之本——说穿了，就是教人怎么把符画得像名门画的。你这铺子用得上。'],
+  ['erase', 3, ['hui_qiaosuo', 'gui_dengpo'], 55, '神识烙印也是一把锁，是锁就有钥匙。这手艺原是替失主开锁的，后来找上门的，多半不是失主。'],
+  ['forgery', 3, ['qian_shiqi'], 55, '我验了一辈子的货，真假过眼就知——所以我也最清楚，假货要怎么做才验不出来。'],
+  ['forgery', 4, ['qian_shiqi'], 80, '这最后一手我从没教过人。教了你，往后我验出来的假货，怕有一半是你做的。'],
+];
 
 // 仿造：放样品于作伪台模组格，按配方消耗原料，造出同款赝品
 const COUNTERFEITS = {

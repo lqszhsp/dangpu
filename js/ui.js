@@ -694,10 +694,17 @@ function tabBroker() {
       <b>${u.name}</b><span class="muted grow">${u.desc}</span>
       ${S.upgrades[u.id] ? '<span class="chip ok">已有</span>' : `${stoneTxt(u.price)}<button class="btn small" data-act="buy-upgrade" data-id="${u.id}" ${S.stones >= u.price ? '' : 'disabled'}>置办</button>`}</div>`);
   const sub = subtabs('broker', [['goods', '货品'], ['machines', '设备'], ['books', '秘籍'], ['intel', '消息'], ['ups', '铺面'], ['merit', '功勋']]);
-  const books = BOOKS.filter(([, tech, lv, , rep]) => lv === techLv(tech) + 1 && S.rep.mo >= rep).map(([id, tech, lv, price]) => {
+  const books = BOOKS.filter(([, tech, lv, , rep]) => lv === techLv(tech) + 1 && (lv > BOOK_SHOP_MAX || S.rep.mo >= rep)).map(([id, tech, lv, price]) => {
+    const head = `<div class="shop-row"><img src="${asset('items', ITEMS[id].icon)}" alt=""><b>${ITEMS[id].name}</b>
+      <span class="muted">${TECHS[tech].name}第${cn(lv)}重</span>`;
+    // 三重往上不卖：告诉你去哪儿换、谁肯教
+    if (lv > BOOK_SHOP_MAX) {
+      const [f, list] = Object.entries(MERIT_SHOP).find(([, l]) => l.some(([x]) => x === id)), cost = list.find(([x]) => x === id)[1];
+      const row = TEACHERS.find(x => x[0] === tech && x[1] === lv), who = row ? row[2].map(pid => CAST[pid] ? CAST[pid].name : pid).join('、') : '';
+      return `${head}<span class="muted small grow">不卖。${CHANNEL_NAME[f]} ${cost} 点功勋可换${who ? `；或与${who}亲厚，等人登门传艺` : ''}</span></div>`;
+    }
     const p = Math.round(price * (1 + diff().markup) * warStage().supply);
-    return `<div class="shop-row"><img src="${asset('items', ITEMS[id].icon)}" alt=""><b>${ITEMS[id].name}</b>
-      <span class="muted">${TECHS[tech].name}第${cn(lv)}重</span>${stoneTxt(p)}
+    return `${head}${stoneTxt(p)}
       <button class="btn small" data-act="buy-book" data-id="${id}" data-p="${p}" ${S.stones >= p ? '' : 'disabled'}>买</button></div>`;
   });
   const intel = intelShop().map((k, i) => {
@@ -1775,7 +1782,7 @@ const HANDLERS = {
   study: () => { const it = S.items[sel], err = studyFake(it); if (err) toast(err, 'bad'); else { if (!S.items[sel]) sel = null; toast('你摸清了门道。', 'good'); } renderAll(); },
   'buy-book': el => {
     const p = +el.dataset.p;
-    if (S.stones < p) return;
+    if (S.stones < p || ITEMS[el.dataset.id].book.lv > BOOK_SHOP_MAX) return;
     const it = giveItem(el.dataset.id);
     if (it) { spend(p, `买下${itemName(it)}。`); toast(`${itemName(it)}已放进库房，选中后可研读`, 'good'); }
     renderAll();

@@ -100,17 +100,24 @@ function dlbObtain(id, n, D, depth = 0) {
   }
 }
 
-// 学到某门功法的某一重：按顺序买书、读书
+// 学到某门功法的某一重：按顺序弄到书、读书——一二重在货郎那儿买，三重往上拿功勋换（传艺要看交情，不算刻意来路）
 function dlbTech(t, lv, D) {
   while (techLv(t) < lv) {
     const bk = BOOKS.find(b => b[1] === t && b[2] === techLv(t) + 1);
     if (!bk) throw new Error(`${TECHS[t].name}没有第${techLv(t) + 1}重的秘籍`);
-    dlbRep(D, Math.max(0, bk[4]));
-    spend(Math.round(bk[3] * (1 + diff().markup) * warStage().supply));
-    const it = giveItem(bk[0]);
+    let it;
+    if (bk[2] <= BOOK_SHOP_MAX) {
+      dlbRep(D, Math.max(0, bk[4]));
+      spend(Math.round(bk[3] * (1 + diff().markup) * warStage().supply));
+      it = giveItem(bk[0]);
+    } else {
+      if (!dlbMerit(bk[0])) throw new Error(`${ITEMS[bk[0]].name}鬼市不卖，功勋也换不到`);
+      dlbRedeem(bk[0], D);
+      it = dlbHeld(bk[0])[0];
+    }
     const err = readBook(it);
     if (err) throw new Error(err);
-    D.route[`${TECHS[t].name}${lv}重`] = '买秘籍';
+    D.route[`${TECHS[t].name}${bk[2]}重`] = bk[2] <= BOOK_SHOP_MAX ? '买秘籍' : D.route[ITEMS[bk[0]].name];
   }
 }
 

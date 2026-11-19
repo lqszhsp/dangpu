@@ -183,10 +183,17 @@ export function tables(h) {
     },
 
     techs() {
-      return table(['功法', '管哪些设备', '最高', '效果', '秘籍（价钱 · 要魔宗声望）'],
+      // 一二重写货郎的价钱与声望；三重往上写哪一方的功勋换、哪几位行家肯传艺
+      const merit = id => Object.entries(G.MERIT_SHOP).map(([f, l]) => [f, l.find(([x]) => x === id)]).find(([, x]) => x);
+      const higher = b => {
+        const m = merit(b[0]), row = G.TEACHERS.find(x => x[0] === b[1] && x[1] === b[2]);
+        if (row) row[2].forEach(pid => mark('char', pid));
+        return [m ? `${G.CHANNEL_NAME[m[0]]}功勋 ${m[1][1]}` : '', row ? `${row[2].map(pid => ref('char', pid)).join('、')}好感 ${row[3]} 传艺` : ''].filter(Boolean).join(' / ') || '无';
+      };
+      return table(['功法', '管哪些设备', '最高', '效果', '秘籍（价钱 · 要魔宗声望；三重往上：功勋 / 传艺）'],
         Object.entries(G.TECHS).map(([k, t]) => {
           mark('tech', k);
-          const books = G.BOOKS.filter(b => b[1] === k).map(b => { mark('item', b[0]); return `${b[2]}重《${b[5]}》${b[3]} · ${b[4] <= -100 ? '—' : b[4]}`; });
+          const books = G.BOOKS.filter(b => b[1] === k).map(b => { mark('item', b[0]); return `${b[2]}重《${b[5]}》${b[2] > G.BOOK_SHOP_MAX ? higher(b) : `${b[3]} · ${b[4] <= -100 ? '—' : b[4]}`}`; });
           return [`**${t.name}**`, t.machines.map(m => ref('machine', m)).join('、') || '—', t.max, t.desc, books.join('；') || '—'];
         }));
     },

@@ -759,6 +759,7 @@ function openShop() {
   queueNobles();
   queuePleas();
   castTick();
+  teachTick();
   queueStoryVisitors();
   log(`开门迎客。今日预计 ${S.queue.length} 位来客。`);
 }

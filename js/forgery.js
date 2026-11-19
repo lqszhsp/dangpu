@@ -26,12 +26,71 @@ function readBook(it) {
   const b = ITEMS[it.id].book, cur = techLv(b.tech), name = TECHS[b.tech].name;
   if (b.lv <= cur) return `${name}第${cn(b.lv)}重你早已通晓。`;
   if (b.lv > cur + 1) return `须先通${name}第${cn(cur + 1)}重，才读得懂这本。`;
-  S.tech[b.tech] = b.lv;
-  (b.teach || []).forEach(t => { S.forgeKnown[t] = Math.max(S.forgeKnown[t] || 0, b.lv); });
+  learnTech(b.tech, b.lv, b.teach);
   destroyItem(it);
   log(`你研读${ITEMS[it.id].name}，${name}之术升至第${cn(b.lv)}重。`, 'gold');
   return null;
 }
+function learnTech(t, lv, teach) {
+  S.tech[t] = lv;
+  (teach || []).forEach(x => { S.forgeKnown[x] = Math.max(S.forgeKnown[x] || 0, lv); });
+}
+
+// ───────────── 传艺 ─────────────
+
+// 三重往上鬼市不卖：除了拿功勋换，就是等哪位行家与你亲厚了、自己那桩事也了了，揣着手抄登门
+const teachKey = (t, lv) => `teach_${t}${lv}`;
+const teachBook = (t, lv) => BOOKS.find(b => b[1] === t && b[2] === lv);
+const TEACH_FEE = 0.2;   // 束脩：书价的几成
+const teachFee = (t, lv) => Math.round(teachBook(t, lv)[3] * TEACH_FEE);
+const teacherFree = p => p && p.status === 'alive' && (!S.story[p.pid] || S.story[p.pid].done);
+
+// 每天开铺前：够格的行家登门；已从别处学会的作罢；肯教的人死了、走了，换一位
+function teachTick() {
+  for (const [t, lv, pids, aff] of TEACHERS) {
+    const key = teachKey(t, lv), st = S.story[key];
+    if (st && !st.done) {
+      if (techLv(t) >= lv) st.done = true;
+      else if (['dead', 'gone'].includes(S.people[st.flags.pid].status)) delete S.story[key];
+    }
+    if (S.story[key] || techLv(t) !== lv - 1) continue;
+    const p = pids.map(id => S.people[id]).find(p => teacherFree(p) && p.aff >= aff);
+    if (p) startStory(key, 'mastery', 'teach', rint(1, 3), { pid: p.pid, tech: t, lv });
+  }
+}
+
+STORIES.mastery = {
+  nodes: {
+    teach: {
+      when: 'day',
+      // 登门那天交情还得够、人在场；不够就往后拖
+      cond: st => {
+        const p = S.people[st.flags.pid], row = TEACHERS.find(x => x[0] === st.flags.tech && x[1] === st.flags.lv);
+        return p.status === 'alive' && p.aff >= row[3];
+      },
+      text: (st, p) => {
+        const { tech: t, lv } = st.flags, line = TEACHERS.find(x => x[0] === t && x[1] === lv)[4];
+        return `${p.name}今日没带货来，从袖里抽出一卷磨毛了边的手抄，压在柜上不松手：《${teachBook(t, lv)[5]}》。\n“${line}”\n（学了，${TECHS[t].name}之术便到第${cn(lv)}重。）`;
+      },
+      choices: (st, p) => {
+        const { tech: t, lv } = st.flags, fee = teachFee(t, lv), name = `${TECHS[t].name}第${cn(lv)}重`;
+        const learn = () => { learnTech(t, lv, teachBook(t, lv)[6]); log(`${p.name}登门传艺，你的${TECHS[t].name}之术升至第${cn(lv)}重。`, 'gold'); };
+        return [
+          { label: `奉上束脩，拜师受艺`, hint: `${costHint(fee)}；${name}；好感+10`, req: needStones(fee), run: () => {
+            spend(fee, `给${p.name}的束脩。`); learn();
+            remember(p, `你恭恭敬敬受了${p.name}的手艺，还奉了束脩。`, 10, 'helped');
+            return { text: `${p.name}掂了掂灵石，收进怀里：“规矩不能坏。”这一夜你们对着手抄讲到三更，${p.name}走时把那卷纸也带走了。`, end: true, summary: `${p.name}传你${name}。`, mood: 'pleased' };
+          } },
+          { label: '受艺，只道一声谢', hint: `不花灵石；${name}`, run: () => {
+            learn(); remember(p, `你学了${p.name}压箱底的手艺。`, 0);
+            return { text: `${p.name}讲完最后一页，看了你一会儿：“往后这一行，又多一个人抢饭碗。”`, end: true, summary: `${p.name}传你${name}。` };
+          } },
+          { label: '今日铺里忙，改日再请教', hint: '过几天再来', run: () => ({ text: `${p.name}把手抄收回袖里：“也好，我再想想该不该教。”`, go: ['teach', [5, 8]] }) },
+        ];
+      },
+    },
+  },
+};
 
 // ───────────── 鉴定术 ─────────────
 
