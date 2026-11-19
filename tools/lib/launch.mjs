@@ -46,6 +46,8 @@ window.addEventListener('load', async () => {
   await new Promise(r => server.listen(0, '127.0.0.1', r));
   const port = server.address().port;
   fs.mkdirSync(PROFILE, { recursive: true });
+  // 每回都是 SIGTERM 收场，Firefox 当它崩了；崩的次数攒多了，启动时弹“安全模式”框挡住页面，测试就卡死。关掉这道检查
+  fs.writeFileSync(path.join(PROFILE, 'user.js'), 'user_pref("toolkit.startup.max_resumed_crashes", -1);\nuser_pref("browser.sessionstore.resume_from_crash", false);\n');
   const ff = spawn(FIREFOX, ['--headless', '--no-remote', '--profile', PROFILE, `http://127.0.0.1:${port}/__ready.html`], { stdio: 'ignore', detached: true });
   const timer = new Promise(r => setTimeout(() => r({ result: { fatal: `浏览器 ${timeout / 1000} 秒内没有回报（Firefox 起不来，或页面卡死）` }, errors: [] }), timeout));
   const out = await Promise.race([got, timer]);

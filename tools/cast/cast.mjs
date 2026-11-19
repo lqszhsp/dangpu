@@ -583,6 +583,10 @@ async function ready(only) {
     const bc = spawnSync(process.execPath, [path.join(GAME, 'tools/playtest/behaviors.mjs'), '--check'], { encoding: 'utf8' });
     if (bc.status) { console.log(`✗ 有多物品行为刻意去凑也做不成：\n${(bc.stdout + bc.stderr).split('\n').filter(l => /✗/.test(l)).slice(0, 12).join('\n')}`); bad++; }
     else if (!flag('quiet')) console.log('✓ 多物品行为刻意去凑都做得成');
+    // 设备格子：该放的东西放得下，一夜的料喂得满、产物装得下（不开浏览器量手机竖屏，那项用 grids.mjs --mobile 单独跑）
+    const gr = spawnSync(process.execPath, [path.join(GAME, 'tools/goods/grids.mjs'), '--check'], { encoding: 'utf8' });
+    if (gr.status) { console.log(`✗ 设备格子与玩法对不上：\n${(gr.stdout + gr.stderr).split('\n').filter(l => /✗/.test(l)).slice(0, 12).join('\n')}`); bad++; }
+    else if (!flag('quiet')) console.log('✓ 设备格子放得下、喂得满');
   }
   const quiet = flag('quiet');
   let okN = 0;

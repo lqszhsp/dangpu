@@ -95,6 +95,7 @@ function load() {
   pruneUnknownItems();
   S.machines.filter(m => MACHINES[m.type].stalls).forEach(migratePen);
   S.machines.filter(m => MACHINES[m.type].pot).forEach(migrateGupot);
+  S.machines.forEach(growGrids);
   // 旧存档里掺了料的货都是你自己掺的（那时市面上还没有别人掺好的）
   Object.values(S.items).forEach(it => { if (it.laced && !it.lacedBy && !it.lacedSeen) it.lacedBy = 'me'; });
   if (!Object.keys(S.story).length) initStories();
@@ -235,11 +236,12 @@ function rejectReason(gid, it) {
   return null;
 }
 
-// 饲料格（兽栏的饲料、蛊盅的原料）：同种的 1×1 小件叠在一格里，一格至多 feedStack 份。
-// 叠着的每一份仍是单独的一件货，品质、毒性各记各的——吃掉的是哪份、取出来的是哪份，都原样还原
+// 叠放格（兽栏的饲料、蛊盅的原料，炉台的料与产物）：同种的货叠在一处，一处至多 feedStack 份。
+// 叠着的每一份仍是单独的一件货，品质、毒性各记各的——吃掉的是哪份、取出来的是哪份，都原样还原。
+// 功法、模组让一夜多出几炉，料和产物却不多占格子：手机竖屏摆得下，一夜的料也喂得满
 function stackCap(gid) {
   const mg = machineOfGrid(gid);
-  return mg && MACHINES[mg.m.type].feedStack && /^(f\d+|in)$/.test(mg.slot) ? MACHINES[mg.m.type].feedStack : 0;
+  return mg && MACHINES[mg.m.type].feedStack && /^(f\d+|in|out)$/.test(mg.slot) ? MACHINES[mg.m.type].feedStack : 0;
 }
 const stackOf = it => it.pos && stackCap(it.pos.g)
   ? itemsIn(it.pos.g).filter(o => o.id === it.id && o.pos.x === it.pos.x && o.pos.y === it.pos.y) : [it];
@@ -247,7 +249,7 @@ const stackOf = it => it.pos && stackCap(it.pos.g)
 function fits(gid, it, x, y) {
   const g = S.grids[gid], d = ITEMS[it.id];
   if (!g || x < 0 || y < 0 || x + d.w > g.w || y + d.h > g.h) return false;
-  const cap = d.w === 1 && d.h === 1 ? stackCap(gid) : 0;
+  const cap = stackCap(gid);
   let same = 0;
   return itemsIn(gid).every(o => {
     if (o.uid === it.uid) return true;
@@ -333,6 +335,14 @@ function addMachine(type) {
 }
 
 const gridOf = (m, slot) => `m${m.mid}:${slot}`;
+// 旧存档：设备的格子后来加大了（作伪台放得下长条的货、样品格放得下铜镜），照新的尺寸撑开；只撑大不缩小，格子里的货不动
+function growGrids(m) {
+  const def = MACHINES[m.type];
+  ['in', 'pot', 'out', 'mod'].forEach(slot => {
+    const g = S.grids[gridOf(m, slot)];
+    if (g && def[slot]) { g.w = Math.max(g.w, def[slot][0]); g.h = Math.max(g.h, def[slot][1]); }
+  });
+}
 // 一台设备的全部格子（含灵兽圈的各栏）
 const machineGridIds = m => Object.keys(S.grids).filter(g => g.startsWith(`m${m.mid}:`));
 const countIn = (list, id) => list.filter(it => it.id === id).length;
@@ -350,8 +360,9 @@ function output(m, it) {
   const def = MACHINES[m.type];
   if (autoPlace(it, [gridOf(m, 'out')])) return 'out';
   if (def.overflow && autoPlace(it, ['floor'])) return 'floor';
-  destroyItem(it);
-  return null;
+  // 产出格、地面都放不下（长条的飞剑、魔剑溢不到地上）：搬进库房，不能白白没了
+  log(`${def.name}的产出格放不下${itemName(it)}，搬进了库房。`, 'warn');
+  return stow(it);
 }
 
 function outputHasRoom(m, id) {

@@ -32,7 +32,7 @@ defineItem({
 });
 defineRecipe({ machine, in: [[id, 件数], ...], out, qty, mod, burnMod, tech: [技艺, 重数], q, batches, first, desc });
 defineLace(kind, { name, verb, detect, desc, apply(p, it, name, knew), onMe(it) });   // 新的料；物品上写 additive: kind
-defineMachine({ type, name, price, power, in: [w, h], out: [w, h], mod: [w, h], modLabel, overflow, cost: [体力, 精神], tech, art, desc });
+defineMachine({ type, name, price, power, in: [w, h], out: [w, h], mod: [w, h], modLabel, overflow, feedStack, cost: [体力, 精神], tech, art, desc });   // feedStack：料与产物同种叠放，一处至多几份
 */
 
 const LOOT_LOC = id => LOCATIONS.find(l => l.id === id);
@@ -97,6 +97,7 @@ function defineMachine(def) {
   MACHINES[def.type] = { name: def.name, icon: def.icon || def.type, price: def.price, power: def.power, in: def.in, out: def.out,
     inputs: [], overflow: !!def.overflow, desc: def.desc, custom: true };
   if (def.mod) Object.assign(MACHINES[def.type], { mod: def.mod, modLabel: def.modLabel });
+  if (def.feedStack) MACHINES[def.type].feedStack = def.feedStack;
   MACHINE_COST[def.type] = def.cost || [4, 4];
   if (def.tech) TECHS[def.tech].machines.push(def.type);
   return def;

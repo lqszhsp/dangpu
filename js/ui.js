@@ -638,7 +638,7 @@ function tabWorkshop() {
           <button class="btn tiny" data-act="m-toggle" data-mid="${m.mid}">${m.on ? '停用' : '启用'}</button>
           <button class="btn tiny ghost" data-act="m-remove" data-mid="${m.mid}" title="拆除，退回三成">拆</button></div></div>
       <div class="m-grids${def.stalls ? ' stalls' : def.pot ? ' pot' : ''}">${grids}</div>${extra}
-      <div class="m-desc muted small">${def.desc}</div></div>`;
+      <div class="m-desc muted small" data-act="m-desc">${def.desc}</div></div>`;
   }
   const known = Object.entries(S.forgeKnown).filter(x => x[1]).map(([id, g]) => `${ITEMS[id].name}（${GRADE_NAMES[g]}）`);
   return `<div class="workshop">
@@ -649,6 +649,7 @@ function tabWorkshop() {
     ${S.machines.length ? detail : `${detail}<p class="muted">后院空空如也。到「货郎」处购置设备。</p>`}</div>`;
 }
 
+const STALLS_PER_PAGE = { tall: 1, wide: 2 };
 // 灵兽圈：一栏一行，饲料 → 灵宠。饲料对口、今夜设备转得起来，箭头才亮着往灵宠那边流；否则暗着不动
 function stallsHTML(m, running) {
   const def = MACHINES[m.type], n = stallCount(m);
@@ -662,14 +663,16 @@ function stallsHTML(m, running) {
       <div class="stall-row">${gridHTML(g.feed, '', 'feed')}
         <div class="flow-to"><div class="stall-flow ${live ? 'on' : ''}" title="${esc(why)}"><i></i><i></i><i></i></div>
         ${gridHTML(g.pen, '', 'pen')}</div></div></div>`;
-  }).join('');
+  });
   const more = n < def.stallMax
     ? `<button class="btn small" data-act="buy-stall" data-mid="${m.mid}" ${S.stones >= stallPrice(m) ? '' : 'disabled'}>加盖兽栏（${stoneTxt(stallPrice(m))}）</button>`
     : '<span class="muted small">兽栏已加盖到头</span>';
+  // 一屏放不下四栏：竖屏一栏一页、电脑两栏一页横着翻，翻页钮挤在“兽栏 n/4”那一行，不另占一行
+  const pg = pager(rows, STALLS_PER_PAGE[LAYOUT], `stalls-${m.mid}`);
   // 列头“灵宠”对准灵宠格：饲料格宽 + 箭头宽（与 .stall-flow 一致）+ 栏的内边距
   const flowW = LAYOUT === 'tall' ? 20 : 56, padW = LAYOUT === 'tall' ? 4 : 6;
-  return `<div class="stall-cols muted small"><span style="width:${def.stallSize * CELL + flowW + padW}px">饲料</span><span>灵宠</span></div>${rows}
-    <div class="stall-foot"><span class="muted small">兽栏 ${n}/${def.stallMax}</span>${more}</div>
+  return `<div class="stall-list"><div class="stall-cols muted small"><span style="width:${def.stallSize * CELL + flowW + padW}px">饲料</span><span>灵宠</span></div>${pg.items.join('')}
+    <div class="stall-foot"><span class="muted small">兽栏 ${n}/${def.stallMax}</span>${pg.nav}${more}</div></div>
     ${gridHTML(gridOf(m, 'out'), def.outLabel || '产出', 'out')}`;
 }
 
@@ -1699,6 +1702,7 @@ const machineById = el => S.machines.find(m => m.mid === +el.dataset.mid);
 const HANDLERS = {
   tab: el => { tab = el.dataset.tab; front = 'main'; renderSide(); },
   'speech-more': () => { talk.i++; renderSpeech(talk.text); },
+  'm-desc': el => el.classList.toggle('open'),
   page: el => { pages[el.dataset.key] = (pages[el.dataset.key] || 0) + +el.dataset.d; modal ? modal() : renderSide(); },
   sub: el => { subs[el.dataset.key] = el.dataset.id; modal ? modal() : renderSide(); },
   new: () => showSetup(),

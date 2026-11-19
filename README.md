@@ -300,6 +300,7 @@ js/karma.js         善名、求助的弱者、放贷与苦力、好报
 js/goods.js         货品册引擎：defineItem / defineRecipe / defineMachine
 js/goods/           货品册：一个文件一条货或一条生产链
 tools/goods/goods.mjs 货品册工具：browse / list / new / new-machine / art / check
+tools/goods/grids.mjs 设备格子对账：该放的放不放得下、一夜的料喂不喂得满、产物装不装得下；--mobile 用无界面 Firefox 量手机竖屏与电脑下的设备窗口
 tools/lib/          工具共用：无界面载入游戏、生图与后期
 tools/guide/        攻略 wiki：guide.mjs（build / check 生成与对账）、tables.mjs（攻略里的表格、名称引用、覆盖清单、实测探针）
 guide/src/          攻略源文件（写 {{ 表达式 }}、[[类型:id]]，不手写数字）；guide/*.md 是生成的攻略，勿手改
