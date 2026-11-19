@@ -112,8 +112,8 @@ img { user-select: none; -webkit-user-drag: none; }
 #scene { grid-area: scene; position: relative; overflow: hidden; border-right: 2px solid var(--gold-d); background: #0b080e; }
 /* 场景各层都钉在一个 3:2 的画框里（与背景图同比例），像 cover 一样铺满、贴底；来客站位按画框算 */
 #scene { container-type: size; }
-/* 画框比画面宽时居中裁两边；裁得太狠（4:3、平板横屏）就往左让一点，右门扇上的打烊牌（到画框 80%）总在画面里 */
-#stagebox { position: absolute; left: min(50%, calc(100cqw - .3 * max(100cqw, 150cqh))); bottom: 0; width: max(100cqw, 150cqh); aspect-ratio: 3 / 2; transform: translateX(-50%); }
+/* 画框比画面宽时居中裁两边；裁得太狠（4:3、平板横屏）就往左让一点，右门扇上的打烊牌（到画框 76%）总在画面里 */
+#stagebox { position: absolute; left: min(50%, calc(100cqw - .26 * max(100cqw, 150cqh))); bottom: 0; width: max(100cqw, 150cqh); aspect-ratio: 3 / 2; transform: translateX(-50%); }
 #stagebox .bg, #stagebox .fg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
 #stagebox .fg { z-index: 2; pointer-events: none; }
 /* 来客站位：柜台前（腰以下被柜台挡住）、门口、门外 */
@@ -135,7 +135,7 @@ img { user-select: none; -webkit-user-drag: none; }
 #door span { padding: 4px 14px; font-family: var(--kai); font-size: max(15px, 1.6cqw); letter-spacing: 2px; white-space: nowrap; color: #fff4d6; background: rgba(42, 16, 32, .88); border: 1px solid var(--gold); border-radius: 16px; animation: doorcall 2.4s ease-in-out infinite; }
 @keyframes doorcall { 50% { box-shadow: 0 0 18px rgba(242, 210, 122, .75); } }
 /* 打烊牌是画在背景右门扇上的旧木牌，按钮只是罩在牌面上的点击区 */
-#closesign { position: absolute; left: 69.6%; top: 24.9%; width: 9.4%; height: 39.6%; z-index: 1; padding: 0; font-size: 0; cursor: pointer; background: none; border: 0; border-radius: 3px; }
+#closesign { position: absolute; left: 68.9%; top: 21.5%; width: 6.3%; height: 21.5%; z-index: 1; padding: 0; font-size: 0; cursor: pointer; background: none; border: 0; border-radius: 3px; }
 #closesign:hover { box-shadow: inset 0 0 40px rgba(242, 210, 122, .3); }
 #closesign.due { animation: signglow 1.6s ease-in-out infinite; }
 @keyframes signglow { 50% { box-shadow: inset 0 0 0 1px rgba(242, 210, 122, .6), 0 0 18px rgba(242, 210, 122, .8); } }
