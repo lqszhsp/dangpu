@@ -121,7 +121,8 @@ img { user-select: none; -webkit-user-drag: none; }
 #portrait.arriving { transition: none; opacity: 0; }
 #portrait.leaving { opacity: 0; }
 #portrait.st-door, #portrait.st-outside { filter: brightness(.7) drop-shadow(0 0 10px rgba(0, 0, 0, .8)); }
-#scene.realistic #portrait.st-counter { height: 175%; bottom: -96%; }
+/* 柜台前：宽屏竖屏一个站法，头在画面上沿下，腰在窗口上沿；再放大立绘就糊了 */
+#scene.realistic #portrait.st-counter { height: 80%; bottom: 9%; }
 #scene.realistic #portrait.st-door { height: 41%; bottom: 36%; }
 #scene.realistic #portrait.st-outside { height: 33%; bottom: 39%; filter: brightness(.45) drop-shadow(0 0 8px #000); }
 #scene:not(.realistic) #portrait.st-door { height: 62%; bottom: 10%; }
@@ -836,8 +837,6 @@ body.tall #speech .kw { color: var(--gold2); }
 #speech .more { display: inline-block; margin-left: 6px; font-size: 12px; font-style: normal; color: var(--gold2); animation: blink 1s steps(2, start) infinite; }
 @keyframes blink { 50% { opacity: .2; } }
 body.tall #nameplate .tag { display: none; }
-/* 竖屏画面又高又窄：柜台前的来客站远些、画小些，头在顶栏下，腰在窗口上沿 */
-body.tall #scene.realistic #portrait.st-counter { height: 80%; bottom: 9%; }
 body.wide #counter-panel .cp-col { font-size: 13px; line-height: 1.5; }
 body.wide #counter-panel .cp-col p { margin: 2px 0; }
 body.wide #counter-panel .intel { margin-top: 3px; padding: 2px 8px; }
