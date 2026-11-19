@@ -3,7 +3,8 @@
 // 机会每夜开炉前判一次；实际次数从真实产出数：开炉前后各格子多了什么、少了什么（材料跨夜的，如封坛、封棺，记账到出货那夜）。
 // 只读游戏状态，不改行为、不多掷随机数。
 // 字段：machine 设备；alt 几种做法（任一）——use 要消耗的 [[id, n]]、has 只需在场的、mod 模块、tech [功法, 重]、retreat 闭关；
-//      made 产物 id（'~purify' 提纯、'~gold_gu' 长成金蚕、'~dress' 以次充好、'~fake' 仿造的假货 为原地变化）；act 非设备行为
+//      made 产物 id（'~purify' 提纯、'~gold_gu' 长成金蚕、'~wandu_gu' 相食成万毒蛊、'~dress' 以次充好、'~fake' 仿造的假货 为原地变化）；act 非设备行为；
+//      seal 封着盅（蛊盅封盅斗蛊）
 'use strict';
 
 const BEHAVIORS = [
@@ -52,6 +53,7 @@ const BEHAVIORS = [
   // 蛊、灵宠
   { id: 'gold_gu', name: '养出金蚕蛊', machine: 'gupot', alt: [{ has: [['gu', 1]], use: [['bones', 1]] }], made: ['~gold_gu'] },
   { id: 'gu_egg', name: '成蛊产卵', machine: 'gupot', alt: [{ has: [['gu', 2]], use: [['bones', 2]] }], made: ['gu_egg'] },
+  { id: 'gu_devour', name: '封盅斗蛊养出万毒蛊', machine: 'gupot', alt: [{ has: [['gu', 4]], seal: true }], made: ['~wandu_gu', 'gu_venom'] },
   { id: 'rat_loot', name: '寻宝鼠叼货', machine: 'pen', alt: RAT_FOOD.map(f => ({ has: [['treasure_rat', 1]], use: [[f, 1]] })), made: ['*'] },
   { id: 'dan_guide', name: '寻宝鼠吃废丹吐丹引', machine: 'pen', alt: [{ has: [['treasure_rat', 1]], use: [['waste_pill', 1]] }], made: ['dan_guide'] },
   { id: 'bug_sand', name: '噬金虫吞玄铁矿、破铜钵吐高纯灵砂', machine: 'pen', alt: BUG_FOOD.filter(f => f !== 'bones').map(f => ({ has: [['gold_bug', 1]], use: [[f, 1]] })), made: ['spirit_sand'] },

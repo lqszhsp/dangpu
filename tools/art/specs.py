@@ -35,6 +35,10 @@ ITEMS = {
     'gu_egg': 'one single speckled dark purple gu insect egg resting on a wisp of cobweb, only one egg',
     'gu_young': 'a young venomous gu worm, translucent pale purple centipede-like larva coiled on a black lacquer dish',
     'gu_gold': 'a golden silkworm gu: a fat glittering golden insect with metallic segments, menacing',
+    # 封盅相食进化出来的两级与吐出的毒（qwen-image-3.0-pro 绿底生成后抠图，原稿在 art/gu_evolution_qwen/）
+    'gu_wandu': 'a ten-thousand-poison gu: a large fierce armored centipede-like venomous insect with a glossy black-violet carapace covered in iridescent blue and crimson venom markings, many sharp hooked legs, a bead of dark venom on its mandibles, coiled and menacing',
+    'gu_king': 'the gu king: a huge regal venomous insect, segmented body of deep crimson and black lacquer-like plates edged with gold, a crown of short curved horns on its head, glowing red eyes, faint blood-red aura, coiled on itself',
+    'gu_venom': 'a small white porcelain medicine vial with a black wooden cork, thick glossy violet-black venom inside, one drop of the venom running down its side',
     'spirit_fruit': 'a luminous peach-like spirit fruit, pale pink skin glowing softly, with a green leaf',
     'yeast': 'a cake of Chinese wine yeast qu, rough grey-brown brick wrapped in rice straw',
     'spirit_wine': 'a tall glazed celadon wine jar sealed with red cloth and twine, fragrant mist rising, vertical',
@@ -127,7 +131,7 @@ TIERS = {
     'high': 'high-grade fine version: polished, finely crafted, rich materials, slight spiritual glow',
     'top': 'supreme masterwork version: exquisite, flawless, radiant golden-white spiritual aura surrounding it, small floating light motes',
 }
-NO_TIER = {'water_murky', 'water_clear', 'water_pure', 'water_jade', 'gu_egg', 'gu_young', 'gu_gold', 'spirit_crystal', 'intel',
+NO_TIER = {'water_murky', 'water_clear', 'water_pure', 'water_jade', 'gu_egg', 'gu_young', 'gu_gold', 'gu_wandu', 'gu_king', 'gu_venom', 'spirit_crystal', 'intel',
            'lens1', 'lens2', 'lens3', 'lens4'}
 
 # 状态变体：[底图, 变体名, 改什么]

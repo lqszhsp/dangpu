@@ -64,7 +64,7 @@ function dihuoRun(m, inputs, emit) {
 // ───────────── 灵兽圈 ─────────────
 
 const RAT_FOOD = ['waste_pill', 'bones', 'spirit_fruit', 'beast_feed'];
-// 兽栏的饲料格一格一件，长条的残剑、残器放不进去；噬金虫啃玄铁矿与破铜钵
+// 兽栏的饲料格只放 1×1 的小件（同种叠放，见 stackCap），长条的残剑、残器放不进去；噬金虫啃玄铁矿与破铜钵
 const BUG_FOOD = ['broken_bowl', 'iron_ore', 'bones'];
 // 各灵宠吃什么、吃饱了产什么（货品册里的新灵宠在这两张表里登记）；没登记产出的当寻宝鼠
 const PET_FOOD = { treasure_rat: RAT_FOOD, gold_bug: BUG_FOOD };
@@ -203,6 +203,106 @@ function migratePen(m) {
     });
     if (!autoPlace(it, ok.map(i => stallGrids(m, i).feed))) stow(it);
   }
+}
+
+// ───────────── 蛊盅 ─────────────
+
+// 三格：原料（腐骨，同种可叠）→ 蛊虫（养着的蛊、待孵的卵）→ 产物（下的卵、吐的蛊毒，只能取出）
+// 开盅喂养：卵孵化、幼蛊食骨长大、成蛊产卵，进化过的蛊食骨吐毒。封盅斗蛊：不喂不孵，每夜最凶的一只吞掉最弱的一只
+const potGu = m => itemsIn(gridOf(m, 'pot')).filter(it => it.id === 'gu');
+// 斗蛊谁凶：道行最要紧，其次毒性、个头，再看当夜的运气
+const guFight = it => guStage(it) * 40 + it.tox * 0.6 + it.growth * 0.2 + rint(0, 25);
+// 开盅喂养时，各级的蛊食一骨吐一份蛊毒的机会（万毒蛊一半，蛊王每夜都吐）
+const GU_VENOM = [0, 0, 0.5, 1];
+// 吞掉一只，夺来它几成毒性
+const GU_DEVOUR_TOX = 0.3;
+
+// 离下一级还差什么（悬停提示用）
+function guNext(it) {
+  const st = guStage(it), eat = it.eat || 0;
+  if (st === 3) return '已是蛊王';
+  if (st === 0) return eat >= GU_STAGES[2].eat ? `长满即成${GU_STAGES[guStage({ growth: 100, eat })].name}` : '长满成金蚕蛊；封盅相食也长得快';
+  return `封盅再吞 ${GU_STAGES[st + 1].eat - eat} 只成${GU_STAGES[st + 1].name}`;
+}
+
+function gupotCheck(m, bones) {
+  const pot = itemsIn(gridOf(m, 'pot')), gu = pot.filter(it => it.id === 'gu');
+  if (!pot.length) return { ok: false, msg: '蛊虫格里没有蛊' };
+  if (m.seal) return gu.length >= 2 ? { ok: true, msg: `封盅斗蛊：${gu.length} 只相食` } : { ok: false, msg: '封着盅，却只剩一只蛊，无可相食' };
+  const hungry = gu.filter(it => it.growth < 100 || GU_VENOM[guStage(it)]).length, n = countIn(bones, 'bones');
+  return { ok: true, msg: n < hungry ? `原料不足（腐骨 ${n}/${hungry}）` : `开盅喂养：${pot.length} 只蛊/卵` };
+}
+
+function gupotRun(m, bones) {
+  const notes = [];
+  const emit = (it, note) => {
+    if (autoPlace(it, [gridOf(m, 'out')])) notes.push(note);
+    else { destroyItem(it); notes.push(`产物格满了，${note}却没处放`); }
+  };
+  // 升到万毒蛊、蛊王那一夜蜕一回皮，吐出一份蛊毒
+  const shed = (gu, from) => {
+    if (guStage(gu) <= from || guStage(gu) < 2) return;
+    emit(makeItem('gu_venom', { tox: gu.tox }), `蜕变时吐出一份蛊毒（毒性 ${gu.tox}）`);
+  };
+  if (m.seal) guDuel(m, notes, shed); else guFeed(m, bones, notes, emit, shed);
+  return notes.length ? notes.join('；') : '蛊虫安静地蠕动';
+}
+
+function guFeed(m, bones, notes, emit, shed) {
+  itemsIn(gridOf(m, 'pot')).filter(it => it.id === 'gu_egg').forEach(egg => {
+    const pos = egg.pos;
+    destroyItem(egg);
+    placeItem(makeItem('gu', { growth: 0, tox: egg.tox }), pos.g, pos.x, pos.y);
+    notes.push('一枚蛊卵孵化');
+  });
+  let starved = 0;
+  potGu(m).filter(it => it.growth < 100).forEach(gu => {
+    const from = guStage(gu);
+    if (takeItems(bones, 'bones', 1).length) {
+      gu.growth = Math.min(100, gu.growth + 18 + Math.round(gu.tox / 8));
+      if (gu.growth >= 100) { notes.push(`一只蛊化为${itemName(gu)}（毒性 ${gu.tox}）`); shed(gu, from); }
+    } else {
+      gu.growth = Math.max(0, gu.growth - 5);
+      if (Math.random() < 0.15) { destroyItem(gu); notes.push('一只蛊饿死了'); } else starved++;
+    }
+  });
+  if (starved) notes.push(`${starved} 只蛊挨饿`);
+  // 万毒蛊、蛊王食一骨吐毒；没骨头吃就不吐，也饿不死
+  potGu(m).filter(it => GU_VENOM[guStage(it)]).forEach(gu => {
+    if (!takeItems(bones, 'bones', 1).length) return;
+    if (Math.random() < GU_VENOM[guStage(gu)]) emit(makeItem('gu_venom', { tox: gu.tox }), `${itemName(gu)}吐出一份蛊毒（毒性 ${gu.tox}）`);
+  });
+  const adults = potGu(m).filter(it => it.growth >= 60);
+  if (adults.length >= 2 && Math.random() < 0.35) {
+    const [a, b] = adults.sort(() => Math.random() - 0.5);
+    const egg = makeItem('gu_egg', { tox: clamp(Math.round((a.tox + b.tox) / 2) + rint(-6, 12), 0, 100) });
+    emit(egg, `产下一枚蛊卵（毒性 ${egg.tox}）`);
+  }
+}
+
+// 封盅斗蛊：最凶的吞掉最弱的，夺其毒性与道行（它吞过的也算进来），个头也长一截
+function guDuel(m, notes, shed) {
+  const gu = potGu(m);
+  if (gu.length < 2) { notes.push('盅里只剩一只，再无可吞'); return; }
+  const ranked = gu.map(it => [it, guFight(it)]).sort((a, b) => b[1] - a[1]);
+  const eater = ranked[0][0], prey = ranked[ranked.length - 1][0], from = guStage(eater);
+  const who = itemName(eater), whom = itemName(prey);
+  eater.tox = Math.min(100, eater.tox + Math.round(prey.tox * GU_DEVOUR_TOX) + 2);
+  eater.growth = Math.min(100, eater.growth + 35);
+  eater.eat = (eater.eat || 0) + 1 + (prey.eat || 0);
+  destroyItem(prey);
+  notes.push(`${who}吞了一只${whom}${guStage(eater) > from ? `，化为${itemName(eater)}` : ''}（毒性 ${eater.tox}）`);
+  shed(eater, from);
+}
+
+// 旧存档：蛊盅原来是饲料 2×2 + 盅内 3×2。添一格蛊虫，盅内的蛊与卵挪进去，产物格改成 3×1
+function migrateGupot(m) {
+  if (S.grids[gridOf(m, 'pot')]) return;
+  const def = MACHINES[m.type], old = itemsIn(gridOf(m, 'out'));
+  S.grids[gridOf(m, 'pot')] = { w: def.pot[0], h: def.pot[1] };
+  S.grids[gridOf(m, 'out')] = { w: def.out[0], h: def.out[1] };
+  old.forEach(it => { it.pos = null; });
+  for (const it of old) if (!autoPlace(it, def.habitat.includes(it.id) ? [gridOf(m, 'pot'), gridOf(m, 'out')] : [gridOf(m, 'out')])) stow(it);
 }
 
 // ───────────── 符案 ─────────────

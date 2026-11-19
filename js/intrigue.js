@@ -129,7 +129,8 @@ const laceSkill = kind => !!(S.laceKnown && S.laceKnown[kind]);
 function laceWith(target, add) {
   target.laced = ITEMS[add.id].additive;
   target.lacedBy = 'me';
-  if (add.id === 'gu') target.laceTox = add.growth >= 100 ? add.tox + 40 : add.tox;
+  // 成蛊比幼蛊难察觉，进化过的更难
+  if (add.id === 'gu') target.laceTox = add.tox + [0, 40, 55, 70][guStage(add)];
   destroyItem(add);
   tally('cruel');
   log(`你在${itemName(target)}里${LACE[target.laced].verb}。`, 'warn');

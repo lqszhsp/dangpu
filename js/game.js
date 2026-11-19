@@ -94,6 +94,7 @@ function load() {
   initConditions();
   pruneUnknownItems();
   S.machines.filter(m => MACHINES[m.type].stalls).forEach(migratePen);
+  S.machines.filter(m => MACHINES[m.type].pot).forEach(migrateGupot);
   // 旧存档里掺了料的货都是你自己掺的（那时市面上还没有别人掺好的）
   Object.values(S.items).forEach(it => { if (it.laced && !it.lacedBy && !it.lacedSeen) it.lacedBy = 'me'; });
   if (!Object.keys(S.story).length) initStories();
@@ -110,7 +111,7 @@ function makeItem(id, extra = {}) {
     if (it.growth == null) it.growth = rint(0, 40);
     if (it.tox == null) it.tox = rint(10, 45);
   }
-  if (id === 'gu_egg' && it.tox == null) it.tox = rint(10, 45);
+  if ((id === 'gu_egg' || id === 'gu_venom') && it.tox == null) it.tox = rint(10, 45);
   if (id === 'spirit_crystal' && it.charge == null) it.charge = rint(0, 5);
   if (id === 'corpse' && it.fresh == null) it.fresh = rint(3, 6);
   const kind = ITEMS[id].appraise;
@@ -122,23 +123,32 @@ function makeItem(id, extra = {}) {
 
 function destroyItem(it) { delete S.items[it.uid]; }
 
+// 蛊的道行：幼蛊长满化为金蚕蛊；封盅相食，吞满三只成万毒蛊、吞满八只成蛊王（吞的若也吞过，连它的一并算上）
+const GU_STAGES = [
+  { name: '噬心蛊', icon: 'gu_young', eat: 0 },
+  { name: '金蚕蛊', icon: 'gu_gold', eat: 0 },
+  { name: '万毒蛊', icon: 'gu_wandu', eat: 3 },
+  { name: '蛊王', icon: 'gu_king', eat: 8 },
+];
+const guStage = it => it.growth < 100 ? 0 : (it.eat || 0) >= GU_STAGES[3].eat ? 3 : (it.eat || 0) >= GU_STAGES[2].eat ? 2 : 1;
+
 function itemName(it) {
   if (it.id === 'intel') return it.info ? (intelExpired(it) ? `过时的${it.info.title}` : it.info.title) : '密报';
   if (it.id === 'water') return (it.bottled ? '瓶装' : '') + waterTier(it.purity);
-  if (it.id === 'gu') return it.growth >= 100 ? '金蚕蛊' : '噬心蛊';
+  if (it.id === 'gu') return GU_STAGES[guStage(it)].name;
   return ITEMS[it.id].name;
 }
 
 function itemIcon(it) {
   if (it.id === 'water') return it.purity >= 99.9 ? 'water_jade' : it.purity >= 99 ? 'water_pure' : it.purity >= 80 ? 'water_clear' : 'water_murky';
-  if (it.id === 'gu') return it.growth >= 100 ? 'gu_gold' : 'gu_young';
+  if (it.id === 'gu') return GU_STAGES[guStage(it)].icon;
   const base = ITEMS[it.id].icon || it.id, v = typeof itemVariant === 'function' ? itemVariant(it) : null;
   return v ? `${base}~${v}` : base;
 }
 
 function qualityName(q) { return QUALITY_TIERS.find(t => q >= t[0])[1]; }
 // 没有品相之分的货（货品册里 noTier 的也加进来）
-const NO_QUALITY = new Set(['water', 'gu', 'gu_egg', 'spirit_crystal', 'intel']);
+const NO_QUALITY = new Set(['water', 'gu', 'gu_egg', 'gu_venom', 'spirit_crystal', 'intel']);
 function hasQuality(it) { return !NO_QUALITY.has(it.id); }
 
 
@@ -171,8 +181,9 @@ function claimedValue(it) { return Math.round(rawValue(it) * (it.sealed ? 2 : 1)
 function rawValue(it) {
   const d = ITEMS[it.id];
   if (it.id === 'water') return Math.round(waterValue(it.purity) * bottleMul(it));
-  if (it.id === 'gu') return Math.round(it.growth >= 100 ? 260 + it.tox * 3 : 30 + it.growth * 1.2 + it.tox * 1.2);
+  if (it.id === 'gu') return Math.round([30 + it.growth * 1.2 + it.tox * 1.2, 260 + it.tox * 3, 560 + it.tox * 5, 1300 + it.tox * 9][guStage(it)]);
   if (it.id === 'gu_egg') return Math.round(d.base + it.tox * 0.4);
+  if (it.id === 'gu_venom') return Math.round(d.base + it.tox);
   if (it.id === 'spirit_crystal') return d.base + (it.charge || 0) * 2;
   if (it.id === 'intel') return intelValue(it);
   return valueAtQ(it, shownQ(it));
@@ -219,23 +230,39 @@ function rejectReason(gid, it) {
   }
   if (/^[fb]\d+$/.test(mg.slot)) return stallReject(mg.m, mg.slot, it);
   if (mg.slot === 'in') return !def.inputs || def.inputs.includes(it.id) ? null : `${def.name}用不上这个`;
-  if (mg.slot === 'out') return def.habitat && def.habitat.includes(it.id) ? null : '产出格只能取出';
+  if (mg.slot === 'pot') return def.habitat.includes(it.id) ? null : `${def.potLabel}格只养${def.habitat.map(id => ITEMS[id].name).join('、')}`;
+  if (mg.slot === 'out') return '产出格只能取出';
   return null;
 }
+
+// 饲料格（兽栏的饲料、蛊盅的原料）：同种的 1×1 小件叠在一格里，一格至多 feedStack 份。
+// 叠着的每一份仍是单独的一件货，品质、毒性各记各的——吃掉的是哪份、取出来的是哪份，都原样还原
+function stackCap(gid) {
+  const mg = machineOfGrid(gid);
+  return mg && MACHINES[mg.m.type].feedStack && /^(f\d+|in)$/.test(mg.slot) ? MACHINES[mg.m.type].feedStack : 0;
+}
+const stackOf = it => it.pos && stackCap(it.pos.g)
+  ? itemsIn(it.pos.g).filter(o => o.id === it.id && o.pos.x === it.pos.x && o.pos.y === it.pos.y) : [it];
 
 function fits(gid, it, x, y) {
   const g = S.grids[gid], d = ITEMS[it.id];
   if (!g || x < 0 || y < 0 || x + d.w > g.w || y + d.h > g.h) return false;
+  const cap = d.w === 1 && d.h === 1 ? stackCap(gid) : 0;
+  let same = 0;
   return itemsIn(gid).every(o => {
     if (o.uid === it.uid) return true;
     const od = ITEMS[o.id];
-    return x >= o.pos.x + od.w || x + d.w <= o.pos.x || y >= o.pos.y + od.h || y + d.h <= o.pos.y;
+    if (x >= o.pos.x + od.w || x + d.w <= o.pos.x || y >= o.pos.y + od.h || y + d.h <= o.pos.y) return true;
+    return cap && o.id === it.id && o.pos.x === x && o.pos.y === y && ++same < cap;
   });
 }
 
 function findSpot(gid, it) {
   const g = S.grids[gid];
   if (!g) return null;
+  // 饲料格先叠到已有的同种那一摞上，叠满了才另占一格
+  const pile = stackCap(gid) && itemsIn(gid).find(o => o.id === it.id && o.uid !== it.uid && fits(gid, it, o.pos.x, o.pos.y));
+  if (pile) return { x: pile.pos.x, y: pile.pos.y };
   for (let y = 0; y < g.h; y++) for (let x = 0; x < g.w; x++) if (fits(gid, it, x, y)) return { x, y };
   return null;
 }
@@ -297,7 +324,7 @@ function resizeGrid(gid, w, h) { S.grids[gid].w = w; S.grids[gid].h = h; }
 function addMachine(type) {
   const def = MACHINES[type];
   const m = { mid: S.nextMid++, type, on: true, brew: 0, cash: 0 };
-  ['in', 'out', 'mod'].forEach(slot => {
+  ['in', 'pot', 'out', 'mod'].forEach(slot => {
     if (def[slot]) S.grids[`m${m.mid}:${slot}`] = { w: def[slot][0], h: def[slot][1] };
   });
   for (let i = 0; i < (def.stalls || 0); i++) addStall(m);
@@ -387,13 +414,7 @@ function machineCheck(m) {
     case 'herbbed':
       if (!countIn(inputs, 'herb_seed')) return { ok: false, msg: '未下种' };
       return { ok: true, msg: `${countIn(inputs, 'herb_seed')} 株生长中` };
-    case 'gupot': {
-      const pot = itemsIn(gridOf(m, 'out'));
-      if (!pot.length) return { ok: false, msg: '盅内无蛊' };
-      const hungry = pot.filter(it => it.id === 'gu' && it.growth < 100).length;
-      const bones = countIn(inputs, 'bones');
-      return { ok: true, msg: bones < hungry ? `饲料不足（${bones}/${hungry}）` : `${pot.length} 只蛊/卵` };
-    }
+    case 'gupot': return gupotCheck(m, inputs);
     case 'winejar':
       if (m.brew > 0) return { ok: true, msg: `封坛中，还需 ${m.brew} 夜` };
       if (m.brew === 0 && m.ready) return outputHasRoom(m, 'spirit_wine') ? { ok: true, msg: '待出坛' } : { ok: false, msg: '产出格已满' };
@@ -577,37 +598,6 @@ function machineRun(m) {
   }
   if (!made.length) return '没有产出';
   return `产出：${made.join('、')}${floorCount ? `（${floorCount} 件溢到地上）` : ''}`;
-}
-
-function gupotRun(m, bones) {
-  const pot = itemsIn(gridOf(m, 'out'));
-  const notes = [];
-  pot.filter(it => it.id === 'gu_egg').forEach(egg => {
-    const pos = egg.pos;
-    destroyItem(egg);
-    const gu = makeItem('gu', { growth: 0, tox: egg.tox });
-    placeItem(gu, pos.g, pos.x, pos.y);
-    notes.push('一枚蛊卵孵化');
-  });
-  let starved = 0;
-  itemsIn(gridOf(m, 'out')).filter(it => it.id === 'gu' && it.growth < 100).forEach(gu => {
-    if (takeItems(bones, 'bones', 1).length) {
-      gu.growth = Math.min(100, gu.growth + 18 + Math.round(gu.tox / 8));
-      if (gu.growth >= 100) notes.push(`一只蛊化为金蚕蛊（毒性 ${gu.tox}）`);
-    } else {
-      gu.growth = Math.max(0, gu.growth - 5);
-      if (Math.random() < 0.15) { destroyItem(gu); notes.push('一只蛊饿死了'); } else starved++;
-    }
-  });
-  if (starved) notes.push(`${starved} 只蛊挨饿`);
-  const adults = itemsIn(gridOf(m, 'out')).filter(it => it.id === 'gu' && it.growth >= 60);
-  if (adults.length >= 2 && Math.random() < 0.35) {
-    const [a, b] = adults.sort(() => Math.random() - 0.5);
-    const egg = makeItem('gu_egg', { tox: clamp(Math.round((a.tox + b.tox) / 2) + rint(-6, 12), 0, 100) });
-    if (autoPlace(egg, [gridOf(m, 'out')])) notes.push(`产下一枚蛊卵（毒性 ${egg.tox}）`);
-    else destroyItem(egg);
-  }
-  return notes.length ? notes.join('；') : '蛊虫安静地蠕动';
 }
 
 // 妖植盆里能种的：种子 → [结出什么, 每夜长几成]；货品册可往里添

@@ -47,7 +47,9 @@ function feasibility() {
         // 蛊、灵宠要先养到火候才出东西：放进去时就是快成的
         // 灵兽圈：灵宠进第一栏，饲料进第一栏的饲料格
         const stalls = !!MACHINES[b.machine].stalls;
-        for (const [id, n] of a.has || []) give(id, n, id === 'gu' ? { growth: 95 } : ITEMS[id].cat === 'chong' ? { growth: 60 } : {}, stalls ? gridOf(m, 'b0') : live ? gridOf(m, 'out') : gridOf(m, 'in'));
+        // 蛊盅：蛊养在蛊虫格；封盅斗蛊的先封上
+        for (const [id, n] of a.has || []) give(id, n, id === 'gu' ? { growth: 95 } : ITEMS[id].cat === 'chong' ? { growth: 60 } : {}, stalls ? gridOf(m, 'b0') : MACHINES[b.machine].pot ? gridOf(m, 'pot') : live ? gridOf(m, 'out') : gridOf(m, 'in'));
+        m.seal = !!a.seal;
         for (const [id, n] of a.use || []) give(id, n, id === 'water' ? { purity: 60 } : {}, stalls ? gridOf(m, 'f0') : gridOf(m, 'in'));
         if (b.made.includes('~purify')) give('water', 1, { purity: 60 }, gridOf(m, 'in'));
         if (a.mod) give(a.mod, 1, {}, gridOf(m, 'mod'));
@@ -62,6 +64,7 @@ function feasibility() {
           if (fresh.some(it => b.made.includes(it.id) || b.made.includes('*') || (b.made.includes('~fake') && it.fake))
             || (b.made.includes('~purify') && Object.values(S.items).some(it => it.id === 'water' && it.purity > water0))
             || (b.made.includes('~gold_gu') && Object.values(S.items).some(it => it.id === 'gu' && it.growth >= 100))
+            || (b.made.includes('~wandu_gu') && Object.values(S.items).some(it => it.id === 'gu' && guStage(it) >= 2))
             || (b.made.includes('~dress') && Object.values(S.items).some(it => it.forged && !it.fake))) return true;
         }
         return false;

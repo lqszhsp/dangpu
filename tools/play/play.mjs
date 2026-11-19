@@ -222,7 +222,7 @@ const noChoice = s => s.modalBtns && s.modalBtns.length === 1 && !s.inputs.lengt
 function gridsText(ctx, S) {
   const lines = vm.runInContext(`(() => {
     const name = gid => ({ store: '库房', display: '陈列柜', floor: '地上（夜里可能遭贼）', counter: '柜台', power: '灵力格', hidden: '夹层暗格', basket: '背篓', tool: '鉴定工具', tray: '交易盘' })[gid]
-      || (gid.startsWith('m') ? (() => { const [mid, slot] = gid.slice(1).split(':'); const m = S.machines.find(x => x.mid === +mid); return m ? MACHINES[m.type].name + '·' + (({ in: '入料', out: '产出', mod: '模块' })[slot] || (/^f\\d+$/.test(slot) ? '兽栏' + (+slot.slice(1) + 1) + '饲料' : /^b\\d+$/.test(slot) ? '兽栏' + (+slot.slice(1) + 1) + '灵宠' : slot)) : gid; })() : gid);
+      || (gid.startsWith('m') ? (() => { const [mid, slot] = gid.slice(1).split(':'); const m = S.machines.find(x => x.mid === +mid); return m ? MACHINES[m.type].name + '·' + (({ in: '入料', pot: '蛊虫', out: '产出', mod: '模块' })[slot] || (/^f\\d+$/.test(slot) ? '兽栏' + (+slot.slice(1) + 1) + '饲料' : /^b\\d+$/.test(slot) ? '兽栏' + (+slot.slice(1) + 1) + '灵宠' : slot)) : gid; })() : gid);
     const by = {};
     for (const it of Object.values(S.items)) if (it.pos) (by[it.pos.g] = by[it.pos.g] || []).push(it);
     return Object.keys(S.grids).filter(g => g !== 'counter' || by[g]).map(g => {
@@ -332,7 +332,7 @@ const BEHAVIOR_HOOKS = `
   const snap = m => {
     const grids = machineGridIds(m).concat(['floor']), o = {};
     for (const it of Object.values(S.items)) if (it.pos && grids.includes(it.pos.g))
-      o[it.uid] = { id: it.id, g: it.pos.g, purity: it.purity, growth: it.growth, forged: !!it.forged, fake: !!it.fake };
+      o[it.uid] = { id: it.id, g: it.pos.g, purity: it.purity, growth: it.growth, eat: it.eat, forged: !!it.forged, fake: !!it.fake };
     return o;
   };
   wrap('nightResolve', (f, a) => {
@@ -361,6 +361,7 @@ const BEHAVIOR_HOOKS = `
       if (was && x.forged && !was.forged && !x.fake) made.push('~dress');
       if (was && x.id === 'water' && x.purity > was.purity) made.push('~purify');
       if (was && x.id === 'gu' && x.growth >= 100 && (was.growth || 0) < 100) made.push('~gold_gu');
+      if (was && x.id === 'gu' && guStage(x) >= 2 && guStage(was) < 2) made.push('~wandu_gu');
     }
     (carry[m.mid] = carry[m.mid] || []).push(...used);
     if (!made.length) return r;

@@ -160,7 +160,7 @@ function deliberateOne(b, D, depth = 0) {
   }
   const m = S.machines.find(x => x.type === b.machine), live = b.machine === 'pen' || b.machine === 'gupot';
   for (const [id, n] of a.has || []) {
-    if (id === 'gu') { dlbStock(m, 'out', 'gu_egg', n, D, depth); D.route[ITEMS.gu.name] = '买蛊卵孵'; continue; }
+    if (id === 'gu') { dlbStock(m, 'pot', 'gu_egg', n, D, depth); D.route[ITEMS.gu.name] = '买蛊卵孵'; continue; }
     dlbStock(m, live ? 'out' : 'in', id, n, D, depth);
   }
   for (const [id, n] of a.use || []) dlbStock(m, 'in', id, n, D, depth);
@@ -181,12 +181,15 @@ function deliberateOne(b, D, depth = 0) {
     if (b.made.includes('~purify') && !itemsIn(gridOf(m, 'in')).some(it => it.id === 'water')) dlbLoad(m, 'in', 'water', 1);
     if (a.dressable && !itemsIn(gridOf(m, 'in')).some(dressable)) dlbLoad(m, 'in', 'iron_ingot', 1, it => it.q < 80);
     S.retreat = !!a.retreat; S.vit.st = S.vit.sp = 100;
+    // 封盅斗蛊：买来的卵封着不孵，等都孵出来了再封
+    if (a.seal) m.seal = itemsIn(gridOf(m, 'pot')).every(it => it.id === 'gu');
     if (machineCheck(m).ok) machineRun(m);
     S.retreat = false;
     const fresh = outs().filter(it => !before.has(it.uid));
     if (fresh.some(it => b.made.includes(it.id) || b.made.includes('*') || (b.made.includes('~fake') && it.fake))
       || (b.made.includes('~purify') && Object.values(S.items).some(it => it.id === 'water' && it.purity > water0))
       || (b.made.includes('~gold_gu') && Object.values(S.items).some(it => it.id === 'gu' && it.growth >= 100))
+      || (b.made.includes('~wandu_gu') && Object.values(S.items).some(it => it.id === 'gu' && guStage(it) >= 2))
       || (b.made.includes('~dress') && Object.values(S.items).some(it => it.forged && !it.fake))) {
       // 产物挪回库房，给下一步腾地方
       outs().forEach(it => { if (!b.machine || !live || ITEMS[it.id].cat !== 'chong') autoPlace(it, ['store', 'floor']); });

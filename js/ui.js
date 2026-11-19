@@ -88,8 +88,8 @@ function itemStats(it) {
   if (ITEMS[it.id].tool) rows.push(['鉴定术', `第${cn(ITEMS[it.id].tool)}重`]);
   if (ITEMS[it.id].book) { const b = ITEMS[it.id].book; rows.push(['当前造诣', `${TECHS[b.tech].name}第${cn(techLv(b.tech) || 0) || '零'}重`]); }
   if (it.id === 'water') rows.push(['纯度', `${it.purity}%`]);
-  if (it.id === 'gu') rows.push(['成长', `${it.growth}/100`], ['毒性', it.tox]);
-  if (it.id === 'gu_egg') rows.push(['毒性', it.tox]);
+  if (it.id === 'gu') rows.push(['成长', `${it.growth}/100`], ['毒性', it.tox], ...(it.eat ? [['吞噬', `${it.eat} 只`]] : []), ['进化', guNext(it)]);
+  if (it.id === 'gu_egg' || it.id === 'gu_venom') rows.push(['毒性', it.tox]);
   if (it.id === 'spirit_crystal') rows.push(['充能', `${it.charge || 0}/${CRYSTAL_CAP}`]);
   if (isSeed(it) && it.growth) rows.push(['生长', `${it.growth}%`]);
   if (it.id === 'corpse') rows.push(['新鲜', `还能放 ${Math.max(0, Math.ceil(it.fresh / seasonOf().rot))} 日`]);
@@ -102,11 +102,21 @@ function itemTip(it) {
   const v = Math.round(knownValue(it) * priceMul(it.id));
   return `<h4>${esc(itemName(it))}</h4>
     <div class="tip-sub">${CATS[d.cat]} · ${d.w}×${d.h}</div>
+    ${pileLine(it)}
     <div class="tip-val">估值 ${stoneTxt(v)}${Math.abs(priceMul(it.id) - 1) > 0.005 ? `<span class="${priceMul(it.id) > 1 ? 'good' : 'bad'}">行情 ×${priceMul(it.id).toFixed(2)}</span>` : ''}</div>
     ${priceBreakdown(it.id).map(([k, x]) => `<div class="tip-row small muted"><span>· ${k}</span><span>${x > 0 ? '+' : ''}${Math.round(x * 100)}%</span></div>`).join('')}
     ${itemStats(it).map(([k, val]) => `<div class="tip-row"><span>${k}</span><span>${val}</span></div>`).join('')}
     <div class="tags">${itemTags(it).map(([c, t]) => `<span class="tag ${c}">${t}</span>`).join('')}</div>
     <p>${esc(it.info ? it.info.text : d.desc)}</p>`;
+}
+
+// 一摞饲料：几份、各是什么品相或毒性——叠在一起，每份仍记着自己的
+function pileLine(it) {
+  const pile = stackOf(it);
+  if (pile.length < 2) return '';
+  const each = pile.map(o => hasQuality(o) ? qualityName(o.q) : o.tox != null ? `毒${o.tox}` : '').filter(Boolean);
+  const kinds = Object.entries(each.reduce((c, k) => (c[k] = (c[k] || 0) + 1, c), {})).map(([k, n]) => `${k}${n > 1 ? `×${n}` : ''}`);
+  return `<div class="tip-row small"><span>这一格叠着 ${pile.length} 份</span><span>${kinds.join('、')}</span></div>`;
 }
 
 function itemHTML(it, extraCls = '', attrs = '') {
@@ -124,6 +134,8 @@ function itemHTML(it, extraCls = '', attrs = '') {
   if (it.id === 'corpse') badges.push(`<span class="bar rot"><i style="width:${clamp(it.fresh / 6 * 100, 0, 100)}%"></i></span>`);
   if (lacedKnown(it)) badges.push(`<span class="laced-dot" title="${LACE[it.laced].verb}"></span>`);
   if (it.id === 'spirit_crystal') badges.push(`<span class="bar power"><i style="width:${(it.charge || 0) / CRYSTAL_CAP * 100}%"></i></span>`);
+  const pile = stackOf(it).length;
+  if (pile > 1) badges.push(`<span class="stack-n">×${pile}</span>`);
   if (hasQuality(it) && it.q >= 85) extraCls += ' q-top';
   const style = it.pos && !extraCls.includes('preview') ? `left:${it.pos.x * CELL}px;top:${it.pos.y * CELL}px;` : 'position:relative;';
   return `<div class="item ${sel === it.uid ? 'sel' : ''} ${extraCls}" data-uid="${it.uid}" ${attrs}
@@ -137,7 +149,16 @@ function gridHTML(gid, label, cls = '') {
   if (!g) return '';
   return `<div class="grid-wrap ${cls}">${label ? `<div class="grid-label">${label}</div>` : ''}
     <div class="grid" data-gid="${gid}" style="width:${g.w * CELL}px;height:${g.h * CELL}px;background-size:${CELL}px ${CELL}px">
-      ${itemsIn(gid).map(it => gid !== 'counter' ? itemHTML(it) : itemHTML(it, `locked ${counterCls(it)}`, tradeCustomer() ? 'data-act="good"' : '')).join('')}</div></div>`;
+      ${pileTops(gid).map(it => gid !== 'counter' ? itemHTML(it) : itemHTML(it, `locked ${counterCls(it)}`, tradeCustomer() ? 'data-act="good"' : '')).join('')}</div></div>`;
+}
+
+// 饲料格里叠成一摞的，只画最上面那件：选中的那件，否则最后放上去的那件；拖走的也是它
+function pileTops(gid) {
+  const list = itemsIn(gid);
+  if (!stackCap(gid)) return list;
+  const top = {};
+  for (const it of list) { const k = `${it.pos.x},${it.pos.y}`; if (!top[k] || top[k].uid !== sel) top[k] = it; }
+  return Object.values(top);
 }
 
 const tradeCustomer = () => S.customer && ['sell', 'buy'].includes(S.customer.kind);
@@ -600,12 +621,14 @@ function tabWorkshop() {
       <div class="m-desc muted small">设备按卡片顺序取用灵力：先用基础灵力，不足时抽取灵晶。剩余的基础灵力会存进灵晶（每块上限 ${CRYSTAL_CAP}）。</div></div>`;
   else {
     const r = plan.rows.find(x => x.m.mid === openMid), m = r.m, def = MACHINES[m.type];
-    const grids = def.stalls ? stallsHTML(m, r.chk.ok && r.powered) : [
+    const grids = def.stalls ? stallsHTML(m, r.chk.ok && r.powered) : def.pot ? potHTML(m, r.chk.ok && r.powered) : [
       def.in ? gridHTML(gridOf(m, 'in'), def.inLabel || '输入') : '',
       def.mod ? gridHTML(gridOf(m, 'mod'), def.modLabel || '模组', 'mod') : '',
       def.out ? gridHTML(gridOf(m, 'out'), def.outLabel || '产出', 'out') : '',
     ].join('');
-    const extra = m.type === 'puppet' ? `<div class="m-extra">钱匣 ${stoneTxt(m.cash)} <button class="btn small" data-act="collect" data-mid="${m.mid}" ${m.cash ? '' : 'disabled'}>取出</button></div>` : '';
+    const extra = m.type === 'puppet' ? `<div class="m-extra">钱匣 ${stoneTxt(m.cash)} <button class="btn small" data-act="collect" data-mid="${m.mid}" ${m.cash ? '' : 'disabled'}>取出</button></div>`
+      : def.pot ? `<div class="m-extra"><span>${m.seal ? '<b class="bad">封盅斗蛊</b>：不喂不孵，今夜最凶的一只吞掉最弱的一只' : '<b>开盅喂养</b>：幼蛊食骨长大、成蛊产卵，万毒蛊与蛊王吐毒'}</span>
+          <button class="btn small" data-act="gu-seal" data-mid="${m.mid}">${m.seal ? '开盅喂养' : '封盅斗蛊'}</button></div>` : '';
     detail = `<div class="machine ${m.on ? '' : 'off'}">
       <div class="m-head"><img class="m-icon" src="${asset('machines', `${def.icon}~${r.chk.ok && r.powered ? 'running' : 'idle'}`)}" alt="">
         <div class="m-title"><b>${def.name}</b><span class="muted">${icon('ic_power')}${def.power}/夜</span> ${status(r)}</div>
@@ -646,6 +669,14 @@ function stallsHTML(m, running) {
   return `<div class="stall-cols muted small"><span style="width:${def.stallSize * CELL + 56 + 6}px">饲料</span><span>灵宠</span></div>${rows}
     <div class="stall-foot"><span class="muted small">兽栏 ${n}/${def.stallMax}</span>${more}</div>
     ${gridHTML(gridOf(m, 'out'), def.outLabel || '产出', 'out')}`;
+}
+
+// 蛊盅：原料 → 蛊虫 → 产物，三栏一行；今夜转得起来，箭头才亮着流
+function potHTML(m, running) {
+  const def = MACHINES[m.type], flow = on => `<div class="stall-flow ${on ? 'on' : ''}" style="height:${S.grids[gridOf(m, 'pot')].h * CELL}px"><i></i><i></i><i></i></div>`;
+  return `<div class="pot-row">${gridHTML(gridOf(m, 'in'), def.inLabel, 'feed')}${flow(running && !m.seal)}
+    ${gridHTML(gridOf(m, 'pot'), def.potLabel, `pen${m.seal ? ' sealed' : ''}`)}${flow(running)}
+    ${gridHTML(gridOf(m, 'out'), def.outLabel, 'out')}</div>`;
 }
 
 function tabBroker() {
@@ -759,9 +790,16 @@ function tabLedger() {
 function selActions(s, inCard = false) {
   const g = s.pos.g, out = [];
   const mv = (gid, label) => { if (S.grids[gid] && g !== gid && !rejectReason(gid, s) && findSpot(gid, s)) out.push(`<button class="btn tiny" data-act="move-to" data-g="${gid}">${label}</button>`); };
+  // 饲料格能叠：同一处还有同种的，多给一个“全放进去”
+  const mvAll = (gid, label) => {
+    if (!stackCap(gid) || !S.grids[gid] || g === gid || rejectReason(gid, s) || !findSpot(gid, s)) return;
+    const n = itemsIn(g).filter(o => o.id === s.id).length;
+    if (n > 1) out.push(`<button class="btn tiny" data-act="move-all" data-g="${gid}" title="${label}：同一处的 ${n} 份一并放进去，叠在一格">全部 ×${n}</button>`);
+  };
   if (tradeOpen()) mv('tray', '上货盘');
   mv('display', '摆上陈列');
   if (!['store', 'floor'].includes(g)) mv('store', '收回库房');
+  if (stackOf(s).length > 1) out.push(`<button class="btn tiny" data-act="unpile" title="这一格叠着的 ${stackOf(s).length} 份都收回库房，各占一格，品相照旧">整摞收回 ×${stackOf(s).length}</button>`);
   if (g === 'hand') mv('floor', '放在地上');
   mv('hidden', '藏进暗格');
   // 灵晶：嵌进聚灵阵眼；阵眼满了，就和里面最空的一块对调（手机上阵眼在工坊页，拖不过去）
@@ -770,13 +808,15 @@ function selActions(s, inCard = false) {
     if (findSpot('power', s)) mv('power', '嵌入阵眼');
     else if (low && (low.charge || 0) < (s.charge || 0)) out.push(`<button class="btn tiny" data-act="power-swap">换下阵眼里最空的一块（充能 ${low.charge || 0}）</button>`);
   }
-  S.machines.filter(m => MACHINES[m.type].in).slice(0, 12).forEach(m => { if (out.length < 7) mv(gridOf(m, 'in'), `放进${MACHINES[m.type].name}`); });
+  S.machines.filter(m => MACHINES[m.type].in).slice(0, 12).forEach(m => { if (out.length < 7) { mv(gridOf(m, 'in'), `放进${MACHINES[m.type].name}`); mvAll(gridOf(m, 'in'), `放进${MACHINES[m.type].name}`); } });
+  // 蛊、蛊卵放进蛊盅的蛊虫格
+  S.machines.filter(m => MACHINES[m.type].pot).forEach(m => mv(gridOf(m, 'pot'), `放进${MACHINES[m.type].name}养`));
   // 灵兽圈：灵宠放进同种或空的栏；饲料只喂吃它的那几栏
   S.machines.filter(m => MACHINES[m.type].stalls).forEach(m => [...Array(stallCount(m)).keys()].forEach(i => {
     if (out.length >= 7) return;
     const sp = stallSpecies(m, i), g = stallGrids(m, i);
     if (isPet(s)) mv(g.pen, `放进兽栏${cn(i + 1)}`);
-    else if (sp && petMenu(sp).includes(s.id)) mv(g.feed, `喂兽栏${cn(i + 1)}（${ITEMS[sp].name}）`);
+    else if (sp && petMenu(sp).includes(s.id)) { mv(g.feed, `喂兽栏${cn(i + 1)}（${ITEMS[sp].name}）`); mvAll(g.feed, `喂兽栏${cn(i + 1)}`); }
   }));
   S.machines.filter(m => MACHINES[m.type].mod && modAccepts(s, m.type)).forEach(m => mv(gridOf(m, 'mod'), `装进${MACHINES[m.type].name}`));
   if (ITEMS[s.id].appraise) out.push(`<button class="btn tiny" data-act="appraise-own">${icon('ic_appraise')}鉴定</button>`);
@@ -1821,6 +1861,22 @@ const HANDLERS = {
     if (!sp) { toast('放不下了', 'bad'); return; }
     placeMoved(it, gid, sp.x, sp.y); sel = peek = null; renderAll();
   },
+  // 同一处的同种货一并放进饲料格：一份一份叠，叠满了另起一格，放不下的留在原处
+  'move-all': el => {
+    const it = S.items[sel], gid = el.dataset.g, list = itemsIn(it.pos.g).filter(o => o.id === it.id);
+    let n = 0;
+    for (const o of [it, ...list.filter(o => o !== it)]) { const sp = findSpot(gid, o); if (!sp) break; placeMoved(o, gid, sp.x, sp.y); n++; }
+    toast(n < list.length ? `放进去 ${n} 份，还有 ${list.length - n} 份放不下` : `${n} 份${itemName(it)}都放进去了`, n < list.length ? 'bad' : 'good');
+    sel = peek = null; renderAll();
+  },
+  // 整摞取出：每份各占库房一格，品相照旧；库房满了放地上，再满就留在原处
+  unpile: () => {
+    const pile = stackOf(S.items[sel]);
+    let n = 0;
+    for (const o of pile) { const gid = ['store', 'floor'].find(x => findSpot(x, o)); if (!gid) break; const sp = findSpot(gid, o); placeMoved(o, gid, sp.x, sp.y); n++; }
+    toast(n < pile.length ? `取出 ${n} 份，库房和地上都满了，还剩 ${pile.length - n} 份` : `${n} 份都收回来了`, n < pile.length ? 'bad' : 'good');
+    sel = peek = null; renderAll();
+  },
   tidy: () => { if (!tidy()) toast('已经摆得够紧了，再要地方只能出手或丢弃', 'bad'); renderAll(); },
   'trash-sel': () => { const it = S.items[sel]; if (knownValue(it) > 30 && !confirm(`丢弃${itemName(it)}？`)) return; destroyItem(it); sel = null; renderAll(); },
   'buy-intel': el => { const err = buyIntel(+el.dataset.i); toast(err || '密报已放进库房，悬停可看写的什么', err ? 'bad' : 'good'); renderAll(); },
@@ -1886,6 +1942,7 @@ const HANDLERS = {
   },
   collect: el => { collectPuppetCash(machineById(el)); renderAll(); },
   'buy-supply': el => { const err = buySupply(S.supply[+el.dataset.i]); if (err) toast(err, 'bad'); renderAll(); },
+  'gu-seal': el => { const m = machineById(el); m.seal = !m.seal; toast(m.seal ? '封上盅口：今夜起蛊虫相食，最凶的吞掉最弱的' : '揭开盅口：照常喂养', m.seal ? 'bad' : ''); renderAll(); },
   'buy-stall': el => { const m = S.machines.find(x => x.mid === +el.dataset.mid), err = buyStall(m); toast(err || `${MACHINES[m.type].name}加盖了一栏`, err ? 'bad' : 'good'); renderAll(); },
   'buy-machine': el => { const err = buyMachine(el.dataset.type); if (err) toast(err, 'bad'); else { tab = 'workshop'; toast('设备已安置在后院', 'good'); } renderAll(); },
   'buy-upgrade': el => { const err = buyUpgrade(el.dataset.id); if (err) toast(err, 'bad'); renderAll(); },

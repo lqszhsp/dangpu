@@ -7,7 +7,7 @@ const DEALERS = {
     desc: '什么都卖，什么都收，赃物也收，不问来路。',
     sells: [['soul_wisp', 3], ['soul_grudge', 1], ['corpse', 2], ['wangyou', 2], ['corpse_poison', 1], ['soul_pearl', 1], ['broken_relic', 2], ['sword_std', 1], ['soul_bell', 1], ['bone_flute', 1], ['seal_xian', 2],
       ['pill_qi', 3], ['spirit_wine', 2], ['jade_pendant', 1], ['bronze_mirror', 1]],
-    buys: ['soul_pearl', 'iron_corpse', 'puppet_doll', 'fu_shehun', 'soul_banner', 'wangyou', 'xian_sword', 'xian_talisman', 'god_blank', 'beast_feed'],
+    buys: ['soul_pearl', 'iron_corpse', 'puppet_doll', 'fu_shehun', 'soul_banner', 'wangyou', 'xian_sword', 'xian_talisman', 'god_blank', 'beast_feed', 'gu_venom'],
     stolenOk: true },
   league: { name: '散修联盟', who: '联盟执事', portrait: 'ren_cultivator', faction: 'ren', price: 0.8, lag: 0.7, sellK: 0.85, eye: 1,
     desc: '散修们抱团的买卖，灵材便宜，收丹药、符箓、灵液。',

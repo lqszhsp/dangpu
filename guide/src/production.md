@@ -47,8 +47,12 @@
 
 - **[[machine:herbbed]]**：种下[[item:herb_seed]]，长成[[item:herb_blood]]或[[item:herb_dew]]；春夏长得快，冬天慢（见[时令与战事](calendar.md)）。
 - **[[machine:yaopot]]**：[[item:mihun_seed]]长成[[item:mihun_flower]]；[[item:vine_seed]]要喂[[item:bones]]或[[item:corpse]]才长，结出[[item:vine_fruit]]——治伤的好药。
-- **[[machine:gupot]]**：[[item:gu_egg]]孵出[[item:gu]]，每夜吃腐骨长大；两只成蛊可能下新卵。
+- **[[machine:gupot]]**：三格一行——原料格放[[item:bones]]，蛊虫格养[[item:gu]]、孵[[item:gu_egg]]，产物格收新下的卵和吐出的[[item:gu_venom]]。盅口开着还是封着，养法全然不同：
+  - **开盅喂养**：卵一夜孵化，幼蛊每夜吃一块腐骨长大，长满化为金蚕蛊；两只成蛊可能下卵，卵落进产物格，想孵就挪回蛊虫格。万毒蛊、蛊王每夜也吃一骨，吐出蛊毒（万毒蛊 {{ pct(GU_VENOM[2]) }}，蛊王夜夜都吐）。
+  - **封盅斗蛊**：不喂食、不孵卵，每夜最凶的一只吞掉最弱的一只，夺来对方 {{ pct(GU_DEVOUR_TOX) }} 的毒性，连它吞过的也算进自己的数里。吞满 {{ GU_STAGES[2].eat }} 只成**万毒蛊**，吞满 {{ GU_STAGES[3].eat }} 只成**蛊王**，每蜕变一回吐出一份蛊毒。养两只万毒蛊再封进一盅，胜者一夜便可成王。
+  - 毒性六十的金蚕蛊约值 {{ (fresh(), rawValue(makeItem('gu', { growth: 100, tox: 60 }))) }}，同样毒性的万毒蛊 {{ (fresh(), rawValue(makeItem('gu', { growth: 100, tox: 60, eat: GU_STAGES[2].eat }))) }}、蛊王 {{ (fresh(), rawValue(makeItem('gu', { growth: 100, tox: 60, eat: GU_STAGES[3].eat }))) }}；拿幼蛊去喂一只金蚕蛊最划算。蛊毒是魔宗禁药，鬼市收，擂台前也能拿来下药。
 - **[[machine:pen]]**：养[[item:treasure_rat]]夜里叼东西回来，养[[item:gold_bug]]吞废铁吐[[item:spirit_sand]]；喂[[item:beast_feed]]长得快。
+- 兽栏的饲料格、蛊盅的原料格里，同种的饲料叠在一格，一格至多 {{ MACHINES.pen.feedStack }} 份；叠着的每份照旧记着自己的品相，吃掉的是最早放进去的，取出来也各是各的。
 - **[[machine:forgery]]**：把货“做旧做好”，或照着样品仿造（要先学会，见下面的功法）。
 - **[[machine:puppet]]**：夜里替你摆摊卖货，钱放进钱匣。
 

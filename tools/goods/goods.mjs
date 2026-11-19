@@ -20,7 +20,7 @@ const TIERS = ['low', 'high', 'top'];
 // 老设备里写死的产物（game.js / crafts.js），仅供来路显示
 const BUILTIN_MADE = {
   iron_ingot: ['furnace'], sword_std: ['forge'], demon_blade: ['forge'], pill_qi: ['danlu'], pill_blood: ['danlu'], pill_found: ['danlu'], wangyou: ['danlu'],
-  blood_infant: ['danlu'], water: ['spring', 'pool'], herb_dew: ['herbbed'], herb_blood: ['herbbed'], gu: ['gupot'], gu_egg: ['gupot'], spirit_wine: ['winejar'],
+  blood_infant: ['danlu'], water: ['spring', 'pool'], herb_dew: ['herbbed'], herb_blood: ['herbbed'], gu: ['gupot'], gu_egg: ['gupot'], gu_venom: ['gupot'], spirit_wine: ['winejar'],
   soul_pearl: ['soulfurnace'], soul_crystal: ['soulfurnace'], iron_corpse: ['coffin'], corpse_king: ['coffin'], corpse_poison: ['coffin'], puppet_doll: ['puppetbench'],
   mihun_flower: ['yaopot'], vine_fruit: ['yaopot'], xuan_essence: ['dihuo'], god_blank: ['dihuo'], spirit_sand: ['pen'], beast_feed: ['pen'], dan_guide: ['pen'],
   fu_jingang: ['fudesk'], fu_shehun: ['fudesk'], demon_charm: ['fudesk'], zhen_fu: ['fudesk'], seal_xian: ['fudesk'], treasure_rat: ['pen'], gold_bug: ['pen'],
