@@ -405,7 +405,7 @@ async function browserCheck(ids) {
         for (const m of ${JSON.stringify(MOOD_KEYS)}) {
           const want = m === 'neutral' ? faceOf(p) + '.webp' : faceOf(p) + '_' + m + '.webp';
           const im = new Image(); im.src = asset('chars', faceOf(p) + '~' + m);
-          r.moods[m] = await im.decode().then(() => im.src.endsWith(want), () => false);
+          r.moods[m] = await im.decode().then(() => im.src.split('?')[0].endsWith(want), () => false);
         }
       } catch (e) { r.err = String(e && e.message || e); }
     }

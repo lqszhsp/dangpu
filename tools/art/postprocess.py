@@ -6,7 +6,7 @@
 - 设备 512、图标 128
 原图没有透明通道时，从四角泛洪抠掉纯色背景（兜底）。
 用法：python3 tools/art/postprocess.py [--sheets /tmp/sheets] [--cut 0.8]"""
-import json, os, subprocess, sys
+import hashlib, json, os, subprocess, sys
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -187,8 +187,11 @@ def process():
     # 清单以 assets 里实际有的 webp 为准（counter_top 这类派生图也算上）
     done = sorted(f'{d}/{f[:-5]}' for d in ['items', 'chars', 'scene', 'machines', 'ui']
                   if os.path.isdir(os.path.join(GAME, 'assets', d)) for f in os.listdir(os.path.join(GAME, 'assets', d)) if f.endswith('.webp'))
+    # 图片在浏览器里缓存一天：每张带上内容摘要，重画过的图换了网址，不会拿旧图配新代码
+    rev = {n: hashlib.md5(open(os.path.join(GAME, 'assets', f'{n}.webp'), 'rb').read()).hexdigest()[:6] for n in done}
     with open(os.path.join(GAME, 'assets/art.js'), 'w') as fp:
-        fp.write('// 由 tools/art/postprocess.py 生成：已有的写实图（webp）清单\nconst ART_LIST = ' + json.dumps(done) + ';\n')
+        fp.write('// 由 tools/art/postprocess.py 生成：已有的写实图（webp）清单\nconst ART_LIST = ' + json.dumps(done) + ';\n'
+                 '// 每张图的内容摘要，asset() 拼进网址\nconst ART_REV = ' + json.dumps(rev, separators=(',', ':')) + ';\n')
     print(f'{len(done)} webp')
     return done
 

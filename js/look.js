@@ -3,12 +3,15 @@
 
 // ART：已生成的写实图清单（assets/art.js 由 tools/art/postprocess.py 生成）；没有时为空，全部退回 svg
 const ART_SET = new Set(typeof ART_LIST !== 'undefined' ? ART_LIST : []);
+// 图片缓存一天：网址带上内容摘要，重画过的图浏览器会重新取
+const ART_V = typeof ART_REV !== 'undefined' ? ART_REV : {};
+const webp = key => `assets/${key}.webp${ART_V[key] ? `?v=${ART_V[key]}` : ''}`;
 
 // name 可带变体：'base~variant'。依次试 base_variant.webp、base.webp、base.svg
 function asset(dir, name) {
   const [base, variant] = String(name).split('~');
-  if (variant && ART_SET.has(`${dir}/${base}_${variant}`)) return `assets/${dir}/${base}_${variant}.webp`;
-  if (ART_SET.has(`${dir}/${base}`)) return `assets/${dir}/${base}.webp`;
+  if (variant && ART_SET.has(`${dir}/${base}_${variant}`)) return webp(`${dir}/${base}_${variant}`);
+  if (ART_SET.has(`${dir}/${base}`)) return webp(`${dir}/${base}`);
   return `assets/${dir}/${base.replace(/_f\d$/, '')}.svg`;
 }
 
