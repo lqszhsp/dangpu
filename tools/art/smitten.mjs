@@ -41,7 +41,7 @@ const MAIN = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(
 if (MAIN) await main();
 
 function specs() {
-  const py = `import sys, json; sys.path.insert(0, ${JSON.stringify(path.join(GAME, 'tools/art'))}); import specs; print(json.dumps({'s': specs.SMITTEN, 'n': specs.SMITTEN_NOTE, 'f': specs.SMITTEN_FACES, 'k': specs.SMITTEN_SCREEN, 'm': specs.SMITTEN_MAGENTA}))`;
+  const py = `import sys, json; sys.path.insert(0, ${JSON.stringify(path.join(GAME, 'tools/art'))}); import specs; print(json.dumps({'s': specs.SMITTEN, 'e': specs.SMITTEN_EXPR, 'c': specs.SMITTEN_CLOTH_FOR, 'n': specs.SMITTEN_NOTE, 'f': specs.SMITTEN_FACES, 'k': specs.SMITTEN_SCREEN, 'm': specs.SMITTEN_SCREEN_FOR}))`;
   return JSON.parse(execFileSync('python3', ['-c', py]).toString());
 }
 
@@ -50,13 +50,28 @@ async function main() {
   const raw = name => path.join(GAME, 'art/raw/chars', `${name}.png`);
 
   const faces = smittenFaces();
-  const { s: SMITTEN, n: NOTE, f: KIND, k: SCREEN, m: MAGENTA } = specs();
+  const { s: SMITTEN, e: EXPR, c: CLOTH_FOR, n: NOTE, f: KIND, k: SCREEN, m: SCREEN_FOR } = specs();
   const redo = (opt('redo') || '').split(',').filter(Boolean);
+  // 幕布色按底图挑：人物整体偏蓝（蓝比红高）的用绿幕，其余用蓝幕
+  const autoScreen = JSON.parse(execFileSync('python3', ['-c', `
+import json, os
+from PIL import Image
+out = {}
+for f in ${JSON.stringify(faces.map(r => r.face))}:
+    p = '${GAME}/assets/chars/' + f + '.webp'
+    if not os.path.exists(p): continue
+    im = Image.open(p).convert('RGBA'); px = im.load(); w, h = im.size; s = [0, 0, 0]
+    for y in range(0, h, 6):
+        for x in range(0, w, 6):
+            r, g, b, a = px[x, y]
+            if a > 240: s[0] += r; s[1] += g; s[2] += b
+    out[f] = 'green' if s[2] > s[0] * 1.03 else 'blue'
+print(json.dumps(out))`]).toString());
   for (const r of faces) {
     const note = KIND[r.face] ? ` ${NOTE[KIND[r.face]]}.` : '';
     // 背景画成一整片纯色幕布，回头用 chroma_key.py 抠：模型画“透明底”时常给假格子或纯黑，抠图会挖掉黑发深衣
-    r.key = MAGENTA.includes(r.face) ? 'magenta' : 'green';
-    r.prompt = `Same actor, same costume design, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: ${r.own || SMITTEN}.${note} `
+    r.key = SCREEN_FOR[r.face] || autoScreen[r.face] || 'blue';
+    r.prompt = `Same actor, same costume design, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: ${r.own || (CLOTH_FOR[r.face] ? `${EXPR}; ${CLOTH_FOR[r.face]}` : SMITTEN)}.${note} `
       + `Replace the whole background with a ${SCREEN[r.key]} studio screen: one flat uniform color everywhere around and between the limbs, no floor, no shadow, no gradient, no checkerboard; no ${r.key} on the person.`;
     r.done = has(`${r.face}_smitten`) && !redo.includes(r.face);
     r.base = fs.existsSync(raw(r.face));
@@ -82,11 +97,33 @@ async function main() {
   const env = Object.assign({}, process.env, { GPT_IMAGE_MODEL: 'gpt-image-2.5-sunburst-adobe', GPT_IMAGE_FALLBACK: 'gpt-image-2.5-sunburst-adobe' });
   const r = spawnSync('python3', [path.join(process.env.HOME, '.codex/skills/gpt-image/scripts/gpt_image.py'), 'batch', manifest, '--jobs', opt('jobs') || '4'], { stdio: 'inherit', env, cwd: path.join(GAME, 'art') });
   // 抠幕布：新画好的原图就地改成带透明的 PNG，再出 webp
-  for (const k of ['green', 'magenta']) {
+  for (const k of Object.keys(SCREEN)) {
     const files = todo.filter(x => x.key === k && fs.existsSync(raw(`${x.face}_smitten`)) && !has(`${x.face}_smitten`)).map(x => raw(`${x.face}_smitten`));
     if (files.length) spawnSync('python3', [path.join(GAME, 'tools/art/chroma_key.py'), ...files, '--key', k], { stdio: 'inherit' });
   }
   spawnSync('python3', [path.join(GAME, 'tools/art/postprocess.py')], { stdio: 'inherit' });
+  // 抠完看颜色：人物的整体颜色跟底图差太多（偏绿、发灰），多半是幕布色没选对或抠掉了暖色
+  const drift = JSON.parse(execFileSync('python3', ['-c', `
+import json
+from PIL import Image
+def mean(p):
+    im = Image.open(p).convert('RGBA'); px = im.load(); w, h = im.size; s = [0, 0, 0]; n = 0
+    for y in range(0, h, 4):
+        for x in range(0, w, 4):
+            r, g, b, a = px[x, y]
+            if a > 240: s[0] += r; s[1] += g; s[2] += b; n += 1
+    return [v / max(1, n) for v in s]
+out = {}
+for f in ${JSON.stringify(todo.map(r => r.face))}:
+    try:
+        a, b = mean('${GAME}/assets/chars/' + f + '.webp'), mean('${GAME}/assets/chars/' + f + '_smitten.webp')
+        # 色相偏移：比较两张图里三通道的相对比例（亮度变了不算）
+        ra, rb = [v / max(1, sum(a)) for v in a], [v / max(1, sum(b)) for v in b]
+        out[f] = round(max(abs(x - y) for x, y in zip(ra, rb)) * 100, 1)
+    except Exception: pass
+print(json.dumps(out))`]).toString());
+  const off = Object.entries(drift).filter(([, v]) => v >= 6);
+  if (off.length) console.log(`! 这几张的颜色跟底图差得多（通道比例偏 6% 以上），放到红底上看一眼：${off.map(([f, v]) => `${f} ${v}%`).join('、')}`);
   const left = todo.filter(r => !has(`${r.face}_smitten`));
   console.log(left.length ? `还缺 ${left.length} 张：${left.map(r => r.face).join('、')}（再跑一次会续上）` : `✓ ${todo.length} 张都画好了。放到红底上看一遍再上线。`);
   if (r.status && left.length) process.exit(1);

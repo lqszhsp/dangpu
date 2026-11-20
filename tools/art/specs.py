@@ -212,10 +212,17 @@ MOODS = {
 }
 
 # 情蛊神态（smitten）：只画成年女子的面孔（tools/art/smitten.mjs 挑人）。脸红花痴、妩媚，衣着换成更轻薄的同色系丝袍——雅致不露骨
-SMITTEN = ('helplessly infatuated under a love-gu spell: a strong, clearly visible rosy-pink blush across both cheeks, the bridge of the nose and the ear tips, '
-           'soft dreamy half-lidded eyes gazing adoringly at the viewer, a shy coquettish smile, head slightly tilted, one hand resting gently against her own blushing cheek (no gap between the hand and the head); '
-           'her outer garment is replaced by a lighter, thinner, loosely tied silk robe in the same colors and style as her costume, showing the collarbones and the tops of the shoulders, '
-           'tasteful and elegant, no cleavage, no lingerie, no nudity')
+SMITTEN_EXPR = ('helplessly infatuated under a love-gu spell: a strong, clearly visible rosy-pink blush across both cheeks, the bridge of the nose and the ear tips, '
+                'soft dreamy half-lidded eyes gazing adoringly at the viewer, a shy coquettish smile, head slightly tilted, one hand resting gently against her own blushing cheek (no gap between the hand and the head)')
+SMITTEN_CLOTH = ('her outer garment is replaced by a lighter, thinner, loosely tied silk robe in the same colors and style as her costume, showing the collarbones and the tops of the shoulders, '
+                 'tasteful and elegant, no cleavage, no lingerie, no nudity')
+SMITTEN = SMITTEN_EXPR + '; ' + SMITTEN_CLOTH
+# 本来就穿得少的（舞伶）：不加袍子、不多遮，只把原来那身做得更华丽，添几层半透明的纱
+SMITTEN_CLOTH_FOR = {
+    'wan_jinluo': ('do NOT add any robe or extra covering: keep her original dancer costume with exactly the same coverage as the reference (the same jeweled top and bare midriff), '
+                   'but make it more luxurious and ornate: richer gold embroidery, more gold chains and jewels, and add sheer translucent gauze sleeves and long trailing see-through silk ribbons, all in exactly the same deep crimson red as her costume (warm red, never purple, magenta, violet or pink); '
+                   'tasteful, no nudity'),
+}
 # 个别面孔另加的说明（年纪、身孕、面纱、妖相要保住）
 SMITTEN_NOTE = {
     'pregnant': 'she is visibly pregnant: keep the same pregnant belly, the light silk robe drapes loosely and comfortably over it, modest',
@@ -223,9 +230,11 @@ SMITTEN_NOTE = {
     'covered': 'keep the lighter robe closed and wrapped over the chest up to the collarbones: only the shoulders and neck show, the chest stays fully covered',
     'veiled': 'keep the veil over the lower face: the blush shows on the cheeks above the veil, on the forehead and the ear tips, and the eyes are dreamy and adoring',
 }
-# 抠图用的纯色幕布：默认纯绿；衣裳本身是绿的换纯品红（tools/art/chroma_key.py）
-SMITTEN_SCREEN = {'green': 'pure flat bright green RGB(0,255,0)', 'magenta': 'pure flat bright magenta RGB(255,0,255)'}
-SMITTEN_MAGENTA = ['yao_snake', 'ling_bo']
+# 抠图用的纯色幕布（tools/art/chroma_key.py）：smitten.mjs 按底图自动挑——衣裳偏蓝的用纯绿，其余（红、褐、粉、绿）用纯蓝。
+# 暖色的薄纱透着绿幕，模型会直接画成橄榄黄（不是抠图能还原的）；别用品红：情蛊的脸红就是粉红，会被一并抠掉。
+# 下面写明的优先
+SMITTEN_SCREEN = {'green': 'pure flat bright green RGB(0,255,0)', 'blue': 'pure flat bright blue RGB(0,0,255)'}
+SMITTEN_SCREEN_FOR = {'yao_snake': 'blue', 'ling_bo': 'blue'}
 SMITTEN_FACES = {
     'lu_zhiyao': 'pregnant', 'tao_yunhe': 'pregnant', 'sun_mihe': 'pregnant', 'mu_qingdan': 'pregnant',
     'xu_wenpo': 'elderly', 'he_baizhi': 'elderly', 'gui_dengpo': 'elderly', 'bai_chuandeng': 'elderly',
