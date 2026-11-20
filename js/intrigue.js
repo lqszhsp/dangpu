@@ -107,13 +107,19 @@ const LACE = {
   tonic:   { name: '血灵芝', verb: '添了血灵芝', detect: 0,    desc: '实打实的滋补：气血大补，更易破境，对方念你的好。' },
   poison:  { name: '尸毒',   verb: '下了尸毒',   detect: 0.4,  desc: '服者数日内暴毙。亲友若起疑，必追查到底。' },
 };
-const LACEABLE = ['pill_qi', 'pill_blood', 'pill_found', 'spirit_wine', 'water', 'spirit_fruit', 'vine_fruit'];
+// 能掺料的：服得下、对人有好处的吃食与药——补气力、涨修为、治伤毒的丹药、灵饮、灵果、草药、妖材入药都算；
+// 吞魂饮血的魂魄精血妖丹（不是丹药的）、点的香、本身就是料的、废料不算。货品册写 to.lace 的另补进 LACEABLE
+const LACEABLE = [];
+const LACE_CATS = ['dan', 'yin', 'zhi', 'cai', 'yao'];
+const isLaceable = id => LACEABLE.includes(id) || (LACE_CATS.includes(ITEMS[id].cat) && !ITEMS[id].additive && !JUNK.includes(id)
+  && !!(RESTORE[id] || CULT_XP[id] || id === 'water' || Object.values(CONDS).some(c => c.cure.includes(id)))
+  && !(CULT_XP[id] && CULT_XP[id][1] && ITEMS[id].cat !== 'dan'));
 
-const canLace = it => LACEABLE.includes(it.id) && !it.laced && !it.fake;
+const canLace = it => isLaceable(it.id) && !it.laced && !it.fake;
 
 // 市面上偶尔混着别人掺过料的货：成瘾的多，下毒、种蛊的少；chance 是这件货被掺过的机会
 function marketLace(id, extra, chance) {
-  if (!LACEABLE.includes(id) || Math.random() >= chance) return extra;
+  if (!isLaceable(id) || Math.random() >= chance) return extra;
   extra.laced = weighted([['addict', 6], ['poison', 1.5], ['control', 1]]);
   extra.laceGrade = rint(1, 3);
   if (extra.laced === 'control') extra.laceTox = rint(10, 45);
@@ -129,6 +135,7 @@ const laceSkill = kind => !!(S.laceKnown && S.laceKnown[kind]);
 function laceWith(target, add) {
   target.laced = ITEMS[add.id].additive;
   target.lacedBy = 'me';
+  if (target.laced === 'tonic') target.laceQ = add.q;
   // 成蛊比幼蛊难察觉，进化过的更难
   if (add.id === 'gu') target.laceTox = add.tox + [0, 40, 55, 70][guStage(add)];
   destroyItem(add);
@@ -168,8 +175,9 @@ function applyLace(p, it, via) {
       if (knew) commitSin('harm', { p, w: 2, what: `给${p.name}种噬心蛊`, virtue: 6 });
       return {};
     case 'tonic':
-      p.health = Math.min(130, (p.health || 100) + 25);
-      p.boost = { id: 'pill_qi', fake: false, q: 80, day: S.day };
+      // 补多少看那株血灵芝的品质
+      p.health = Math.min(130, (p.health || 100) + Math.round(25 * potency({ id: 'herb_blood', q: it.laceQ != null ? it.laceQ : 60 })));
+      p.boost = { id: 'pill_qi', fake: false, q: it.laceQ != null ? clamp(it.laceQ + 20, 5, 100) : 80, day: S.day };
       remember(p, `你在${name}里添了血灵芝，他气血大补。`, 10, 'pillHelped');
       return {};
     case 'poison':

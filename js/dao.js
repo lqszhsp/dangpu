@@ -28,7 +28,7 @@ function cultXp(it) {
   if (!e || it.fake) return 0;
   // 走火入魔涨不动，中毒涨得慢
   const state = Math.pow(0.4, condSev('me', 'deviation')) * (condSev('me', 'poisoned') ? 0.7 : 1);
-  return Math.round(e[0] * (hasQuality(it) ? 0.6 + it.q / 125 : 1) * state);
+  return Math.round(e[0] * potency(it) * state);
 }
 
 // 服炼：涨修为。吞魂饮血的，越炼越不像人

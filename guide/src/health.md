@@ -23,7 +23,9 @@
 
 ### 手上的药
 
-{{ Object.entries(CONDS).map(([k, c]) => `**${c.name}**：${c.cure.map(id => ref('item', id)).join('、')}`).join('；') }}。{{ CONDS.deviation.name }}要的是纯度够高的灵水（洗灵池洗出来的）。{{! (() => { fresh(); addCond('me', 'deviation', 1); return cureBy(makeItem('water', { purity: 98 })) == null && cureBy(makeItem('water', { purity: 99.5 })) === 'deviation'; })() }}
+{{ Object.entries(CONDS).map(([k, c]) => `**${c.name}**：${c.cure.map(id => ref('item', id)).join('、')}`).join('；') }}。
+
+药力看品质：**下品**（品质 {{ CURE_GRADES[1][0] }} 以下）只减一重，**中品**减两重，**上品**（品质 {{ CURE_GRADES[0][0] }} 起）除根——垂危的伤，下品药要连吃三颗。以次充好的药按真实品质算。{{! (() => { fresh(); addCond('me', 'injured', 3); consume(makeItem('vine_fruit', { q: 20 })); const a = condSev('me', 'injured'); consume(makeItem('vine_fruit', { q: 50 })); const b = condSev('me', 'injured'); addCond('me', 'injured', 3); consume(makeItem('vine_fruit', { q: 70 })); return a === 2 && b === 0 && condSev('me', 'injured') === 0; })() }}{{ CONDS.deviation.name }}要的是纯度够高的灵水（洗灵池洗出来的）。{{! (() => { fresh(); addCond('me', 'deviation', 1); return cureBy(makeItem('water', { purity: 98 })) == null && cureBy(makeItem('water', { purity: 99.5 })) === 'deviation'; })() }}
 
 [[item:vine_fruit]]用[[machine:yaopot]]种，[[item:pill_blood]]、[[item:pill_qi]]用[[machine:danlu]]炼，[[item:herb_blood]]用[[machine:herbbed]]种，货郎和鬼市也常有（见[设备与配方](production.md)、[经营](shop.md)）。身上带伤去冒险之前，最好备一两样。
 
@@ -39,6 +41,6 @@
 
 ## 人物也会伤、会病、会死
 
-- 卖给、送给人物的真药（不是赝品、没掺害人的料）当场治好他对症的伤毒；带伤中毒的人上门，多半就是来买药的。「人物」页的卡片上标着谁带伤，点开他，手里有对症的药就有「替他治伤」。{{! (() => { fresh(); const p = Object.values(S.people)[0]; addCond(p, 'injured', 2); npcCure(p, makeItem('vine_fruit', { q: 60 })); return !condSev(p, 'injured'); })() }}
+- 卖给、送给人物的真药（不是赝品、没掺害人的料）当场治他对症的伤毒，治几重同样看品质；带伤中毒的人上门，多半就是来买药的。「人物」页的卡片上标着谁带伤，点开他，手里有对症的药就有「替他治伤」。{{! (() => { fresh(); const p = Object.values(S.people)[0]; addCond(p, 'injured', 2); npcCure(p, makeItem('vine_fruit', { q: 60 })); return !condSev(p, 'injured'); })() }}
 - 人物中毒毒发以后会自己去寻郎中，寻不到就毒发身亡；{{ CONDS.injured.grade[2] }}的人每夜也有机会伤重不治。
 - 成瘾的人断了货，熬一阵会戒掉；一直有人供货，就一直虚下去。

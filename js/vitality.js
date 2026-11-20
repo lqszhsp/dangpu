@@ -18,15 +18,18 @@ const ACTION_NAME = { appraise: '鉴定', inspect: '验货', probe: '神识探�
   talk: '话术', erase: '抹印', seal: '贴封印', bottle: '装瓶', retreat: '闭关',
   cultivate: '服炼', breakthrough: '破境', kill: '动手', soulmark: '种魂印', flatter: '吹捧', command: '差遣' };
 
-// 服用后恢复的 [体力, 精神]
+// 服用后恢复的 [体力, 精神]：中品（品质 50）的数，品质高低按 potency 增减
 const RESTORE = {
   pill_qi: [0, 30], pill_blood: [25, 10], vine_fruit: [40, 0], spirit_wine: [15, 15], herb_dew: [0, 8], spirit_fruit: [10, 0],
   incense: [0, 40],
 };
 function restoreOf(it) {
   if (it.id === 'water') return it.purity >= 99.9 ? [25, 25] : it.purity >= 99 ? [0, 15] : null;
-  return RESTORE[it.id] && (RESTORE[it.id][0] || RESTORE[it.id][1]) ? RESTORE[it.id] : null;
+  return RESTORE[it.id] && (RESTORE[it.id][0] || RESTORE[it.id][1]) ? RESTORE[it.id].map(v => Math.round(v * potency(it))) : null;
 }
+
+// 药力：按真实品质算（以次充好的看着好，药力还是原来那点）。下品约七成，中品足量，极品近一倍半；灵泉水看纯度，不看这个
+const potency = it => hasQuality(it) ? 0.6 + it.q / 125 : 1;
 
 function initVitality() { S.vit = S.vit || { st: VIT_MAX, sp: VIT_MAX }; }
 
@@ -60,7 +63,10 @@ function costText(key, mult = 1) {
 // 服用
 function consume(it) {
   const cure = cureBy(it);
-  if (cure) { cureCond('me', cure); log(`服下${itemName(it)}，${CONDS[cure].name}好了。`, 'gain'); }
+  if (cure) {
+    const left = easeCond('me', cure, cureGrades(it));
+    log(`服下${itemName(it)}，${left ? `${CONDS[cure].name}减轻到${CONDS[cure].grade[left - 1]}——药力不够，没能除根` : `${CONDS[cure].name}好了`}。`, 'gain');
+  }
   // 吃下别人掺过料的货：自己吃这个亏（药效先到，料后发作）
   if (it.laced && it.laced !== 'tonic' && it.lacedBy !== 'me') {
     it.lacedSeen = true;

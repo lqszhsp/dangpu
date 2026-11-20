@@ -202,8 +202,11 @@ export function tables(h) {
       return table(['行动', '体力', '精神'], Object.entries(G.ACTION_COST).map(([k, [st, sp]]) => [ref('action', k), st, sp]));
     },
 
+    // 中品（品质 50）的数，另列下品（品质 15）与极品（品质 95）：真的拿这件货算一遍
     restores() {
-      return table(['服下', '体力', '精神'], Object.entries(G.RESTORE).filter(([, r]) => r[0] || r[1]).map(([id, [st, sp]]) => [itemName(id), `+${st}`, `+${sp}`]));
+      const at = (id, q) => G.restoreOf(G.makeItem(id, { q })).map(v => `+${v}`).join(' / ');
+      return table(['服下', '中品 体力 / 精神', '下品（15）', '极品（95）'], Object.entries(G.RESTORE).filter(([, r]) => r[0] || r[1])
+        .map(([id]) => [itemName(id), at(id, 50), at(id, 15), at(id, 95)]));
     },
 
     locations() {

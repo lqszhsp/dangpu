@@ -58,6 +58,14 @@ function dieMe(kind, why = '') {
 }
 
 function cureCond(who, kind) { const box = condBox(who); if (!box[kind]) return false; delete box[kind]; return true; }
+// 减轻几重，减到零就好了；返回剩下几重
+function easeCond(who, kind, n) {
+  const c = condBox(who)[kind];
+  if (!c) return 0;
+  c.sev -= n; c.day = S.day;
+  if (c.sev <= 0) { delete condBox(who)[kind]; return 0; }
+  return c.sev;
+}
 const condSev = (who, kind) => (condBox(who)[kind] || {}).sev || 0;
 const hasCond = (who, kind) => condSev(who, kind) > 0 || condList(who).some(c => c.kind === kind);
 
@@ -195,11 +203,16 @@ function cureBy(it, who = 'me') {
   return null;
 }
 
+// 药能治几重伤毒：看真实品质——下品减一重，中品减两重，上品以上除根；灵泉水只要纯度够就除根
+const CURE_GRADES = [[65, 3], [35, 2], [0, 1]];
+const cureGrades = it => hasQuality(it) ? CURE_GRADES.find(([q]) => it.q >= q)[1] : 3;
+const CURE_TEXT = ['', '减一重', '减两重', '除根'];
+
 // 人物服下你卖的、送的东西：真药治伤解毒（掺了血灵芝的照样管用）
 function npcCure(p, it) {
   if (it.fake || (it.laced && it.laced !== 'tonic')) return null;
   const k = cureBy(it, p);
-  if (k) { cureCond(p, k); lifeNote(p, `服下${itemName(it)}，${CONDS[k].name}好了。`); }
+  if (k) { const left = easeCond(p, k, cureGrades(it)); lifeNote(p, `服下${itemName(it)}，${left ? `${CONDS[k].name}减轻到${CONDS[k].grade[left - 1]}` : `${CONDS[k].name}好了`}。`); }
   return k;
 }
 

@@ -65,6 +65,8 @@ function itemTags(it) {
   if (it.sealed) tags.push(['laced', `贴了正派封印 · 做工${GRADE_NAMES[it.grade]}`]);
   if (it.bottled) tags.push(['real', '玉净瓶装']);
   if (restoreOf(it)) { const r = restoreOf(it); tags.push(['', `可服用：${r[0] ? `体力+${r[0]} ` : ''}${r[1] ? `精神+${r[1]}` : ''}`]); }
+  const cures = Object.entries(CONDS).filter(([, C]) => C.cure.includes(it.id)).map(([, C]) => C.name);
+  if (cures.length && it.id !== 'water') tags.push(['', `治${cures.join('、')}：${CURE_TEXT[cureGrades(it)]}`]);
   if (it.forged) tags.push(['laced', `你做的${it.fake ? '赝品' : '以次充好'} · ${GRADE_NAMES[it.grade]}`]);
   else if (isDressed(it) && knownFlaw(it)) tags.push(['fake', `以次充好 · 做工${GRADE_NAMES[it.grade]}`]);
   else if (dressable(it) && it.seen != null) tags.push(['', `已验货（${LENS_NAMES[it.seen]}）`]);
@@ -529,7 +531,7 @@ function tradePanel(c) {
   if (d.give.length || d.take.length || d.reject.length) info += `<p class="small muted">货盘上${ta(personOf(c))}要 ${d.give.length} 件（心理价约 ${Math.round(d.V)}）${d.reject.length ? `，<span class="bad">不要${d.reject.map(itemName).join('、')}</span>` : ''}；你要收 ${d.take.length} 件（开价 ${d.A}）。</p>`;
   const mid = `<div class="trade">${goods.length ? gridHTML('counter', `${ta(personOf(c))}的货 · 点选`) : ''}${gridHTML('tray', '你的货盘 · 拖货上来')}</div>${info}`;
   const acts = `${it && ITEMS[it.id].appraise && !it.told ? `<button class="btn small" data-act="appraise-counter">${icon('ic_appraise')}照妖镜</button>` : ''}
-    ${it && (dressable(it) || LACEABLE.includes(it.id)) && it.seen == null ? `<button class="btn small" data-act="inspect-item">${icon('ic_appraise')}验货</button>` : ''}
+    ${it && (dressable(it) || isLaceable(it.id)) && it.seen == null ? `<button class="btn small" data-act="inspect-item">${icon('ic_appraise')}验货</button>` : ''}
     ${it && dressable(it) && !it.disputed ? `<button class="btn small" data-act="dispute-flaw" title="${flawSeen ? '揭穿以次充好，压价' : '挑毛病压价'}">${flawSeen ? '揭穿' : '压价'}</button>` : ''}
     ${it ? `<button class="btn small" data-act="take-toggle">${taking ? '不收' : '收下'}</button>` : ''}
     ${canTray ? `<button class="btn small wide-only" data-act="to-tray">选中的放上货盘</button>` : ''}
@@ -841,7 +843,7 @@ function selActions(s, inCard = false) {
   if (canBottle(s)) out.push('<button class="btn tiny" data-act="bottle">装瓶</button>');
   if (s.mark && markVisible(s)) out.push(`<button class="btn tiny" data-act="erase" ${canErase(s) ? '' : `disabled title="须抹印术${cn(s.mark.str)}重"`}>抹印（${costText('erase', s.mark.str)}）</button>`);
   if (canSeal(s)) out.push('<button class="btn tiny" data-act="seal">贴封印</button>');
-  if ((dressable(s) || LACEABLE.includes(s.id)) && !s.forged && s.lacedBy !== 'me' && !s.lacedSeen) out.push('<button class="btn tiny" data-act="inspect-own">验货</button>');
+  if ((dressable(s) || isLaceable(s.id)) && !s.forged && s.lacedBy !== 'me' && !s.lacedSeen) out.push('<button class="btn tiny" data-act="inspect-own">验货</button>');
   if (knownFlaw(s) && !s.forged && (s.fake ? COUNTERFEITS[s.id] : isDressed(s))) out.push('<button class="btn tiny" data-act="study">拆解研究</button>');
   // 验出了别人掺的料：吃下这个亏、贱卖给货郎、当好货转手骗人（谈价时照常卖）、或者拆开学他的手法
   if (s.laced && s.lacedSeen && s.lacedBy !== 'me' && !laceSkill(s.laced)) out.push(`<button class="btn tiny" data-act="study">尝出手法（学会${LACE[s.laced].name}的掺法）</button>`);
@@ -1935,9 +1937,10 @@ const HANDLERS = {
   },
   treat: el => {
     const p = S.people[el.dataset.pid], it = S.items[el.dataset.uid], k = cureBy(it, p), name = itemName(it);
-    const r = giveGift(p, it);
     if (sel === it.uid) sel = null;
-    toast(r.caught ? `${p.name}发现药里动了手脚！` : condSev(p, k) ? `${p.name}服下${name}，可不见好` : `${p.name}服下${name}，${CONDS[k].name}好了（好感 +${r.gain}）`, r.caught || condSev(p, k) ? 'bad' : 'good');
+    const sev0 = condSev(p, k), r = giveGift(p, it), left = condSev(p, k);
+    toast(r.caught ? `${p.name}发现药里动了手脚！` : left >= sev0 ? `${p.name}服下${name}，可不见好`
+      : left ? `${p.name}服下${name}，${CONDS[k].name}减轻到${CONDS[k].grade[left - 1]}（好感 +${r.gain}）` : `${p.name}服下${name}，${CONDS[k].name}好了（好感 +${r.gain}）`, r.caught || left >= sev0 ? 'bad' : left ? 'warn' : 'good');
     openPerson(p.pid); renderAll();
   },
   'gift-give': el => {

@@ -60,7 +60,9 @@
 
 ## 加料
 
-回气丹、灵酒、灵泉水这类货里可以偷偷掺东西，外表看不出分别，照常卖或送出去：
+凡是能吃能喝、对人有好处的——补气力、涨修为、治伤毒的丹药、灵饮、灵果、草药、入药的妖材——都可以偷偷掺东西，外表看不出分别，照常卖或送出去。眼下能掺的有：{{ Object.keys(ITEMS).filter(isLaceable).map(id => ref('item', id)).join('、') }}。魂魄、精血、妖丹这类吞魂饮血的东西，点的香，本身就是料的，都掺不了。
+
+{{! Object.keys(ITEMS).filter(id => restoreOf(makeItem(id, { q: 50, purity: 99.95 })) || CULT_XP[id] || Object.values(CONDS).some(c => c.cure.includes(id))).every(id => isLaceable(id) || ['dan', 'yin', 'zhi'].indexOf(ITEMS[id].cat) < 0 || JUNK.includes(id) || ITEMS[id].additive) }}
 
 {{ T.laces() }}
 

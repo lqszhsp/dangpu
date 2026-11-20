@@ -649,6 +649,7 @@ body.tall .machine { padding: 8px 6px; }
 #toast.show { opacity: 1; transform: translate(-50%, 0); }
 #toast.bad { border-color: var(--moon); color: #ffcabc; }
 #toast.good { border-color: var(--jade2); color: #d0f5e8; }
+#toast.warn { border-color: var(--gold2); color: #ffe6b0; }
 
 * { scrollbar-width: thin; scrollbar-color: rgba(217, 164, 65, .35) transparent; }
 ::-webkit-scrollbar { width: 8px; height: 8px; }
