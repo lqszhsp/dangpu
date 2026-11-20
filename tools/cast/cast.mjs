@@ -126,13 +126,15 @@ defineCharacter({
 // ───────────── art：生成底图与神态 ─────────────
 
 function artJobs(def) {
-  const py = `import sys, json; sys.path.insert(0, ${JSON.stringify(path.join(GAME, 'tools/art'))}); from specs import PORTRAIT_PREFIX, MOODS; print(json.dumps({'p': PORTRAIT_PREFIX, 'm': MOODS}))`;
-  const { p, m } = JSON.parse(execFileSync('python3', ['-c', py]).toString());
+  const py = `import sys, json; sys.path.insert(0, ${JSON.stringify(path.join(GAME, 'tools/art'))}); from specs import PORTRAIT_PREFIX, MOODS, SMITTEN; print(json.dumps({'p': PORTRAIT_PREFIX, 'm': MOODS, 's': SMITTEN}))`;
+  const { p, m, s } = JSON.parse(execFileSync('python3', ['-c', py]).toString());
   // artSubject 换掉“成年男女演员”的说法（孩子要写成童星）；moodArt 换掉不合这个人的神态说明（孩子不画成瘾、黑筋）
   const sexWord = def.artSubject || (def.sex === 'f' ? 'a woman (actress)' : 'a man (actor)');
   const base = `raw/chars/${def.portrait}.png`;
   const jobs = [{ id: `char:${def.portrait}`, mood: 'neutral', prompt: p.replace('{d}', `${sexWord}: ${def.art}, neutral calm expression`), out: base, size: '1024x1536', quality: 'high', background: 'transparent' }];
-  for (const [k, c] of Object.entries({ ...m, ...(def.moodArt || {}) })) {
+  // 成年女子另画一张情蛊神态（中了情蛊见你时换这张）；未成年的不画
+  const smitten = def.sex === 'f' && !(def.age != null ? def.age < 18 : def.minor) ? { smitten: s } : {};
+  for (const [k, c] of Object.entries({ ...m, ...smitten, ...(def.moodArt || {}) })) {
     jobs.push({ id: `char:${def.portrait}_${k}`, mood: k, refs: [base], out: `raw/chars/${def.portrait}_${k}.png`, size: '1024x1536', quality: 'high', background: 'transparent',
       prompt: `Same actor, same costume, same framing, same camera angle and lighting, same style. Only change this: the facial expression and state: ${c}. Keep the transparent background.` });
   }
@@ -585,6 +587,11 @@ async function ready(only) {
     const bc = spawnSync(process.execPath, [path.join(GAME, 'tools/playtest/behaviors.mjs'), '--check'], { encoding: 'utf8' });
     if (bc.status) { console.log(`✗ 有多物品行为刻意去凑也做不成：\n${(bc.stdout + bc.stderr).split('\n').filter(l => /✗/.test(l)).slice(0, 12).join('\n')}`); bad++; }
     else if (!flag('quiet')) console.log('✓ 多物品行为刻意去凑都做得成');
+    // 情蛊神态：每一张成年女子的面孔都要有（tools/art/smitten.mjs 补画）；缺了不拦上线，见了情蛊的她会先用高兴的神态顶着
+    const { smittenFaces } = await import('../art/smitten.mjs');
+    const noLove = smittenFaces().filter(r => !artHas(`${r.face}_smitten`)).map(r => r.face);
+    if (noLove.length) console.log(`! ${noLove.length} 张成年女子的面孔没有情蛊神态（node tools/art/smitten.mjs 补画）：${noLove.slice(0, 8).join('、')}${noLove.length > 8 ? '……' : ''}`);
+    else if (!flag('quiet')) console.log('✓ 成年女子的面孔都有情蛊神态');
     // 设备格子：该放的东西放得下，一夜的料喂得满、产物装得下（不开浏览器量手机竖屏，那项用 grids.mjs --mobile 单独跑）
     const gr = spawnSync(process.execPath, [path.join(GAME, 'tools/goods/grids.mjs'), '--check'], { encoding: 'utf8' });
     if (gr.status) { console.log(`✗ 设备格子与玩法对不上：\n${(gr.stdout + gr.stderr).split('\n').filter(l => /✗/.test(l)).slice(0, 12).join('\n')}`); bad++; }

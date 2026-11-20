@@ -301,6 +301,7 @@ js/karma.js         善名、求助的弱者、放贷与苦力、好报
 js/goods.js         货品册引擎：defineItem / defineRecipe / defineMachine
 js/goods/           货品册：一个文件一条货或一条生产链
 tools/goods/goods.mjs 货品册工具：browse / list / new / new-machine / art / check
+tools/art/smitten.mjs 情蛊神态：给每张成年女子的面孔补“脸红花痴、衣着轻薄”的立绘（--list 查缺；纯色幕布出图，tools/art/chroma_key.py 抠图）
 tools/goods/grids.mjs 设备格子对账：该放的放不放得下、一夜的料喂不喂得满、产物装不装得下；--mobile 用无界面 Firefox 量手机竖屏与电脑下的设备窗口
 tools/lib/          工具共用：无界面载入游戏、生图与后期
 tools/guide/        攻略 wiki：guide.mjs（build / check 生成与对账）、tables.mjs（攻略里的表格、名称引用、覆盖清单、实测探针）

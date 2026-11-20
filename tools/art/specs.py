@@ -211,6 +211,28 @@ MOODS = {
     'thrall': 'mind-controlled thrall: eyes completely clouded milky white without pupils, blank slack face, black veins spreading over the face and neck, a faint dark mist around the head',
 }
 
+# 情蛊神态（smitten）：只画成年女子的面孔（tools/art/smitten.mjs 挑人）。脸红花痴、妩媚，衣着换成更轻薄的同色系丝袍——雅致不露骨
+SMITTEN = ('helplessly infatuated under a love-gu spell: a strong, clearly visible rosy-pink blush across both cheeks, the bridge of the nose and the ear tips, '
+           'soft dreamy half-lidded eyes gazing adoringly at the viewer, a shy coquettish smile, head slightly tilted, one hand resting gently against her own blushing cheek (no gap between the hand and the head); '
+           'her outer garment is replaced by a lighter, thinner, loosely tied silk robe in the same colors and style as her costume, showing the collarbones and the tops of the shoulders, '
+           'tasteful and elegant, no cleavage, no lingerie, no nudity')
+# 个别面孔另加的说明（年纪、身孕、面纱、妖相要保住）
+SMITTEN_NOTE = {
+    'pregnant': 'she is visibly pregnant: keep the same pregnant belly, the light silk robe drapes loosely and comfortably over it, modest',
+    'elderly': 'keep her exactly as old as in the reference (wrinkles, white hair, posture): an old woman blushing like a lovestruck young girl, the lighter robe only loosened slightly at the collar, modest and funny rather than sexy',
+    'covered': 'keep the lighter robe closed and wrapped over the chest up to the collarbones: only the shoulders and neck show, the chest stays fully covered',
+    'veiled': 'keep the veil over the lower face: the blush shows on the cheeks above the veil, on the forehead and the ear tips, and the eyes are dreamy and adoring',
+}
+# 抠图用的纯色幕布：默认纯绿；衣裳本身是绿的换纯品红（tools/art/chroma_key.py）
+SMITTEN_SCREEN = {'green': 'pure flat bright green RGB(0,255,0)', 'magenta': 'pure flat bright magenta RGB(255,0,255)'}
+SMITTEN_MAGENTA = ['yao_snake', 'ling_bo']
+SMITTEN_FACES = {
+    'lu_zhiyao': 'pregnant', 'tao_yunhe': 'pregnant', 'sun_mihe': 'pregnant', 'mu_qingdan': 'pregnant',
+    'xu_wenpo': 'elderly', 'he_baizhi': 'elderly', 'gui_dengpo': 'elderly', 'bai_chuandeng': 'elderly',
+    'yue_qingshi': 'covered',
+    'xian_spy': 'veiled', 'xian_spy_f1': 'veiled', 'xian_spy_f2': 'veiled',
+}
+
 SCENES = {
     'shop_front': ('1536x1024', 'the view from behind a pawnshop counter looking out across a small dim Chinese pawnshop to its wide-open wooden lattice front door, '
                    'the street of a demonic sect servant quarter visible outside through the door with red lanterns and a blood moon; the dark wooden counter top '
