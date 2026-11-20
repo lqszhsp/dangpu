@@ -40,7 +40,7 @@ export const COVER = {
   tech: G => Object.keys(G.TECHS),
   cond: G => Object.keys(G.CONDS),
   healer: G => Object.keys(G.CAST).filter(k => G.CAST[k].healer),
-  char: G => Object.keys(G.CAST),
+  char: G => Object.keys(G.CAST).filter(k => !G.CAST[k].hidden),   // 隐藏人物不进攻略，免得剧透
   clique: G => Object.keys(G.CLIQUES),
   dealer: G => Object.keys(G.DEALERS),
   lace: G => Object.keys(G.LACE),
@@ -128,7 +128,8 @@ export function tables(h) {
           const extra = [];
           if (s.heat) extra.push(`执法堂关注 ${s.heat}`);
           if (s.rep) extra.push(Object.entries(s.rep).map(([f, v]) => `${ref('faction', f)}声望${v > 0 ? '+' : ''}${v}`).join('、'));
-          if (s.perks) extra.push(Object.keys(s.perks).map(k => ({ fence: '熟识销赃门路', hidden: '自带夹层暗格', digger: `拾荒多翻 ${probe.diggerExtra()} 次` })[k] || k).join('、'));
+          if (s.perks) extra.push(Object.keys(s.perks).map(k => ({ fence: '熟识销赃门路', hidden: '自带夹层暗格', digger: `拾荒多翻 ${probe.diggerExtra()} 次`, gumaster: `独门${ref('tech', 'gumaster')}` })[k] || k).join('、'));
+          if (s.crystals) extra.push(`阵眼多 ${s.crystals} 块充满的灵晶`);
           return [`**${s.name}**${s.tag ? `（${s.tag}）` : ''}`, s.stones, (s.machines || []).map(t => ref('machine', t)).join('、') || '—',
             items((s.items || []).concat((s.into || []).map(x => [x[2], x[3]]))) || '—',
             Object.entries(s.tech || {}).map(([t, l]) => `${ref('tech', t)}${l}重`).join('、') || '—', extra.join('；') || '—', s.desc || ''];
@@ -193,7 +194,8 @@ export function tables(h) {
       return table(['功法', '管哪些设备', '最高', '效果', '秘籍（价钱 · 要魔宗声望；三四重：功勋 / 传艺）'],
         Object.entries(G.TECHS).map(([k, t]) => {
           mark('tech', k);
-          const books = G.BOOKS.filter(b => b[1] === k).map(b => { mark('item', b[0]); return `${b[2]}重《${b[5]}》${b[2] > G.BOOK_SHOP_MAX ? higher(b) : `${b[3]} · ${b[4] <= -100 ? '—' : b[4]}`}`; });
+          const books = t.exclusive ? [`养蛊人独门：没有秘籍，养蛊攒经验自动升重（${G.GU_XP.slice(2).map((x, i) => `${i + 2}重 ${x}`).join('、')}）`]
+            : G.BOOKS.filter(b => b[1] === k).map(b => { mark('item', b[0]); return `${b[2]}重《${b[5]}》${b[2] > G.BOOK_SHOP_MAX ? higher(b) : `${b[3]} · ${b[4] <= -100 ? '—' : b[4]}`}`; });
           return [`**${t.name}**`, t.machines.map(m => ref('machine', m)).join('、') || '—', t.max, t.desc, books.join('；') || '—'];
         }));
     },
@@ -328,7 +330,7 @@ export function tables(h) {
     },
 
     cast() {
-      return table(['人物', '身份', '族', '大约第几日登场', '登场机会', '想要', '懂医术'], Object.values(G.CAST)
+      return table(['人物', '身份', '族', '大约第几日登场', '登场机会', '想要', '懂医术'], Object.values(G.CAST).filter(d => !d.hidden)
         .sort((a, b) => (a.start.day || 1) - (b.start.day || 1))
         .map(d => {
           mark('char', d.id);

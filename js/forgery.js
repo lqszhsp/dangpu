@@ -291,6 +291,7 @@ function soldTick() {
 
 // 起了怨气：按势力与交情决定怎么办
 function grievance(p, g, what, e = {}) {
+  if (guShrug(p)) return { text: `${p.name}${what}，心口的蛊一紧，那点怨气就散了。`, cls: 'warn' };
   // 权贵最怕丢脸：被你骗了，多半打落牙齿和血吞；不吞的，报复也格外狠
   if (p.noble && Math.random() < 0.6 * (p.pride || 0.8)) {
     remember(p, `${what}，怕传出去丢脸，绝口不提。`, -Math.round(g / 3), 'swallowed');
@@ -319,6 +320,7 @@ function grievance(p, g, what, e = {}) {
 function retaliate(p, g) { return gx(p, retaliateBy(p, g)); }
 
 function retaliateBy(p, g) {
+  if (guShrug(p)) return '可话到嘴边，心口的蛊一紧，又咽了回去。';
   const pw = npcPower(p);
   if (pw >= 45 || p.official || (p.faction === 'xian' && Math.random() < 0.5)) {
     addHeat(6 + Math.round(g / 10));

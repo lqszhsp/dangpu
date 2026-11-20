@@ -59,6 +59,7 @@ function resolveChoice(key, idx) {
   const res = ch.run(st, p) || {};
   if (ch.sin) commitSin(ch.sin[0], { p, w: ch.sin[1], what: ch.label.replace(/[（(].*$/, ''), virtue: 3 * ch.sin[1] });
   res.mood = storyMood(node, ch, res, p, aff0);
+  loveBondCheck();
   if (res.summary) st.summary = res.summary;
   if (res.end) st.done = true;
   else if (res.go) {

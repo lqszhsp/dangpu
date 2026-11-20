@@ -38,6 +38,7 @@ function feasibility() {
           if (b.act === 'seal') { give('seal_xian'); const [t] = give('sword_std'); return !sealItem(t) && t.sealed; }
           if (b.act === 'erase') { S.tech.erase = 1; const [t] = give('sword_std', 1, { mark: { owner: 'beggar', str: 1 }, stolen: 5 }); return !eraseMark(t) && !t.mark; }
           if (b.act === 'soulmark') { S.tech.soul = 1; S.cult.lv = 3; give('soul_pearl'); const p = Object.values(S.people).find(p => !canSoulMark(p)); const r = p && soulMark(p); return !!(r && !r.err && p.soulBound); }
+          if (b.act === 'plantgu') { newGame('normal', 'gu'); S.stones = 99999; S.cult.lv = 2; Math.random = () => rv; const p = Object.values(S.people).find(p => p.status === 'alive'); p.visits = 1; const [g] = give('gu', 1, { growth: 100, tox: 40 }); const r = plantGu(p, g); return !!(r && r.ok && guBound(p)); }
           if (b.act === 'break') { S.cult.xp = realm().need; give(realm().key); const lv = S.cult.lv, r = breakthrough(); return !r.err && S.cult.lv === lv + 1; }
           return false;
         }
@@ -65,6 +66,7 @@ function feasibility() {
             || (b.made.includes('~purify') && Object.values(S.items).some(it => it.id === 'water' && it.purity > water0))
             || (b.made.includes('~gold_gu') && Object.values(S.items).some(it => it.id === 'gu' && it.growth >= 100))
             || (b.made.includes('~wandu_gu') && Object.values(S.items).some(it => it.id === 'gu' && guStage(it) >= 2))
+      || (b.made.includes('~love_gu') && Object.values(S.items).some(it => it.id === 'gu' && it.love))
             || (b.made.includes('~dress') && Object.values(S.items).some(it => it.forged && !it.fake))) return true;
         }
         return false;

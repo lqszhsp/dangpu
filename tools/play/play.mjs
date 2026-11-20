@@ -362,6 +362,7 @@ const BEHAVIOR_HOOKS = `
       if (was && x.id === 'water' && x.purity > was.purity) made.push('~purify');
       if (was && x.id === 'gu' && x.growth >= 100 && (was.growth || 0) < 100) made.push('~gold_gu');
       if (was && x.id === 'gu' && guStage(x) >= 2 && guStage(was) < 2) made.push('~wandu_gu');
+      if (was && x.id === 'gu' && x.love && !was.love) made.push('~love_gu');
     }
     (carry[m.mid] = carry[m.mid] || []).push(...used);
     if (!made.length) return r;
@@ -382,6 +383,7 @@ const BEHAVIOR_HOOKS = `
   wrap('sealItem', (f, a) => { const r = f(...a); if (!r) inc(B.done, 'seal'); return r; });
   wrap('eraseMark', (f, a) => { const r = f(...a); if (!r) inc(B.done, 'erase'); return r; });
   wrap('soulMark', (f, a) => { const r = f(...a); if (r && !r.err) inc(B.done, 'soulmark'); return r; });
+  wrap('plantGu', (f, a) => { const r = f(...a); if (r && r.ok) inc(B.done, 'plantgu'); return r; });
   wrap('breakthrough', (f, a) => { const r = f(...a); if (r && !r.err) inc(B.done, 'break'); return r; });
 `;
 

@@ -14,12 +14,18 @@ const retreatQ = () => (S.retreat ? 10 : 0);
 
 const SALVAGE_FORGE = [['sword_std', 5], ['soul_bell', 3], ['bone_flute', 3], ['demon_charm', 2], ['soul_banner', 0.6]];
 
-// 炼器台（器鼎）：残破法器 + 一锭玄铁 → 一件法宝，品质往往高过原物
+// 补残器的铁：一锭玄铁，或一柄残剑废铁，或两块玄铁矿（拾荒翻得到的都能用，没有炼器炉也补得上）
+const SALVAGE_METAL = [['iron_ingot', 1], ['scrap_sword', 1], ['iron_ore', 2]];
+const salvageMetal = inputs => SALVAGE_METAL.find(([id, n]) => countIn(inputs, id) >= n);
+const salvageReady = inputs => countIn(inputs, 'broken_relic') > 0 && !!salvageMetal(inputs);
+
+// 炼器台（器鼎）：残破法器 + 补料的铁 → 一件法宝，品质往往高过原物
 function salvageForge(m, inputs, emit) {
-  if (!countIn(inputs, 'broken_relic') || !countIn(inputs, 'iron_ingot')) return false;
-  const [relic] = takeItems(inputs, 'broken_relic', 1), [ingot] = takeItems(inputs, 'iron_ingot', 1);
+  if (!salvageReady(inputs)) return false;
+  const [id0, n] = salvageMetal(inputs);
+  const [relic] = takeItems(inputs, 'broken_relic', 1), metal = takeItems(inputs, id0, n);
   const id = weighted(SALVAGE_FORGE.map(([k, w]) => [k, k === 'soul_banner' ? w * (1 + techLv('refine')) : w]));
-  emit(makeItem(id, { q: clamp(Math.round((relic.q + ingot.q) / 2) + 22 + retreatQ() + techBonus('forge'), 5, 100) }));
+  emit(makeItem(id, { q: clamp(Math.round((relic.q + avgQ(metal)) / 2) + 22 + retreatQ() + techBonus('forge'), 5, 100) }));
   if (Math.random() < 0.2) emit(makeItem('xuan_essence', { q: rint(50, 80) }));
   return true;
 }
@@ -243,6 +249,7 @@ function gupotRun(m, bones) {
   const shed = (gu, from) => {
     if (guStage(gu) <= from || guStage(gu) < 2) return;
     emit(makeItem('gu_venom', { tox: gu.tox }), `蜕变时吐出一份蛊毒（毒性 ${gu.tox}）`);
+    guXp('shed');
   };
   if (m.seal) guDuel(m, notes, shed); else guFeed(m, bones, notes, emit, shed);
   return notes.length ? notes.join('；') : '蛊虫安静地蠕动';
@@ -254,13 +261,24 @@ function guFeed(m, bones, notes, emit, shed) {
     destroyItem(egg);
     placeItem(makeItem('gu', { growth: 0, tox: egg.tox }), pos.g, pos.x, pos.y);
     notes.push('一枚蛊卵孵化');
+    guXp('hatch');
   });
+  // 蛊虫精通每重：蛊长得快、产卵勤、子代更毒
+  const lv = guLv();
+  // 三重：迷魂花饲金蚕，一夜化一只情蛊
+  const gold = lv >= 3 && potGu(m).find(it => guStage(it) === 1 && !it.love && !it.eat);
+  if (gold && takeItems(bones, 'mihun_flower', 1).length) {
+    gold.love = true;
+    notes.push(`一只金蚕蛊吃了迷魂花，通体泛红——化为情蛊`);
+    guXp('love');
+  }
   let starved = 0;
   potGu(m).filter(it => it.growth < 100).forEach(gu => {
     const from = guStage(gu);
     if (takeItems(bones, 'bones', 1).length) {
-      gu.growth = Math.min(100, gu.growth + 18 + Math.round(gu.tox / 8));
-      if (gu.growth >= 100) { notes.push(`一只蛊化为${itemName(gu)}（毒性 ${gu.tox}）`); shed(gu, from); }
+      gu.growth = Math.min(100, gu.growth + 18 + 2 * lv + Math.round(gu.tox / 8));
+      guXp('feed');
+      if (gu.growth >= 100) { notes.push(`一只蛊化为${itemName(gu)}（毒性 ${gu.tox}）`); shed(gu, from); guXp('grown'); }
     } else {
       gu.growth = Math.max(0, gu.growth - 5);
       if (Math.random() < 0.15) { destroyItem(gu); notes.push('一只蛊饿死了'); } else starved++;
@@ -270,13 +288,14 @@ function guFeed(m, bones, notes, emit, shed) {
   // 万毒蛊、蛊王食一骨吐毒；没骨头吃就不吐，也饿不死
   potGu(m).filter(it => GU_VENOM[guStage(it)]).forEach(gu => {
     if (!takeItems(bones, 'bones', 1).length) return;
-    if (Math.random() < GU_VENOM[guStage(gu)]) emit(makeItem('gu_venom', { tox: gu.tox }), `${itemName(gu)}吐出一份蛊毒（毒性 ${gu.tox}）`);
+    if (Math.random() < GU_VENOM[guStage(gu)]) { emit(makeItem('gu_venom', { tox: gu.tox }), `${itemName(gu)}吐出一份蛊毒（毒性 ${gu.tox}）`); guXp('venom'); }
   });
   const adults = potGu(m).filter(it => it.growth >= 60);
-  if (adults.length >= 2 && Math.random() < 0.35) {
+  if (adults.length >= 2 && Math.random() < 0.35 + 0.03 * lv) {
     const [a, b] = adults.sort(() => Math.random() - 0.5);
-    const egg = makeItem('gu_egg', { tox: clamp(Math.round((a.tox + b.tox) / 2) + rint(-6, 12), 0, 100) });
+    const egg = makeItem('gu_egg', { tox: clamp(Math.round((a.tox + b.tox) / 2) + rint(-6, 12) + 2 * lv, 0, 100) });
     emit(egg, `产下一枚蛊卵（毒性 ${egg.tox}）`);
+    guXp('egg');
   }
 }
 
@@ -291,6 +310,7 @@ function guDuel(m, notes, shed) {
   eater.growth = Math.min(100, eater.growth + 35);
   eater.eat = (eater.eat || 0) + 1 + (prey.eat || 0);
   destroyItem(prey);
+  guXp('devour');
   notes.push(`${who}吞了一只${whom}${guStage(eater) > from ? `，化为${itemName(eater)}` : ''}（毒性 ${eater.tox}）`);
   shed(eater, from);
 }

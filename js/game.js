@@ -62,6 +62,7 @@ function newGame(diffId, startId) {
     for (let i = 0; i < n; i++) { const it = makeItem(id, Object.assign({}, extra)); if (!autoPlace(it, [gridOf(m, slot)])) autoPlace(it); }
   });
   autoPlace(makeItem('spirit_crystal', { charge: 6 }), ['power']);
+  for (let i = 0; i < (start.crystals || 0); i++) autoPlace(makeItem('spirit_crystal', { charge: CRYSTAL_CAP }), ['power']);
   initForgery();
   initVitality();
   initMarket();
@@ -97,6 +98,8 @@ function load() {
   S.machines.filter(m => MACHINES[m.type].pot).forEach(migrateGupot);
   S.machines.forEach(growGrids);
   reshapeGrid('floor', FLOOR_SIZE); reshapeGrid('hidden', HIDDEN_SIZE);
+  // 旧存档的养蛊人：补上独门的蛊虫精通
+  if (S.start === 'gu' && !S.perks.gumaster) { S.perks.gumaster = true; S.tech.gumaster = Math.max(1, S.tech.gumaster || 0); }
   // 旧存档里掺了料的货都是你自己掺的（那时市面上还没有别人掺好的）
   Object.values(S.items).forEach(it => { if (it.laced && !it.lacedBy && !it.lacedSeen) it.lacedBy = 'me'; });
   if (!Object.keys(S.story).length) initStories();
@@ -137,13 +140,13 @@ const guStage = it => it.growth < 100 ? 0 : (it.eat || 0) >= GU_STAGES[3].eat ? 
 function itemName(it) {
   if (it.id === 'intel') return it.info ? (intelExpired(it) ? `过时的${it.info.title}` : it.info.title) : '密报';
   if (it.id === 'water') return (it.bottled ? '瓶装' : '') + waterTier(it.purity);
-  if (it.id === 'gu') return GU_STAGES[guStage(it)].name;
+  if (it.id === 'gu') return it.love ? '情蛊' : GU_STAGES[guStage(it)].name;
   return ITEMS[it.id].name;
 }
 
 function itemIcon(it) {
   if (it.id === 'water') return it.purity >= 99.9 ? 'water_jade' : it.purity >= 99 ? 'water_pure' : it.purity >= 80 ? 'water_clear' : 'water_murky';
-  if (it.id === 'gu') return GU_STAGES[guStage(it)].icon;
+  if (it.id === 'gu') return it.love ? (ART_SET.has('items/gu_love') ? 'gu_love' : 'gu_gold') : GU_STAGES[guStage(it)].icon;
   const base = ITEMS[it.id].icon || it.id, v = typeof itemVariant === 'function' ? itemVariant(it) : null;
   return v ? `${base}~${v}` : base;
 }
@@ -183,6 +186,7 @@ function claimedValue(it) { return Math.round(rawValue(it) * (it.sealed ? 2 : 1)
 function rawValue(it) {
   const d = ITEMS[it.id];
   if (it.id === 'water') return Math.round(waterValue(it.purity) * bottleMul(it));
+  if (it.id === 'gu' && it.love) return Math.round(900 + it.tox * 6);
   if (it.id === 'gu') return Math.round([30 + it.growth * 1.2 + it.tox * 1.2, 260 + it.tox * 3, 560 + it.tox * 5, 1300 + it.tox * 9][guStage(it)]);
   if (it.id === 'gu_egg') return Math.round(d.base + it.tox * 0.4);
   if (it.id === 'gu_venom') return Math.round(d.base + it.tox);
@@ -420,9 +424,9 @@ function machineCheck(m) {
       if (!outputHasRoom(m, 'iron_ingot')) return { ok: false, msg: '产出格与地面皆满' };
       return { ok: true, msg: `可炼 ${(hasMod(m, 'fire_disk') ? 4 : 2) * (hasBoostFu(m) ? 2 : 1)} 炉` };
     case 'forge':
-      if (countIn(inputs, 'broken_relic') && countIn(inputs, 'iron_ingot'))
+      if (salvageReady(inputs))
         return outputHasRoom(m, 'sword_std') ? { ok: true, msg: '重新祭炼残破法器' } : { ok: false, msg: '产出格与地面皆满' };
-      if (!hasMod(m, 'jade_slip')) return { ok: false, msg: '模组槽缺器谱玉简（或放残破法器＋玄铁锭重新祭炼）' };
+      if (!hasMod(m, 'jade_slip')) return { ok: false, msg: '模组槽缺器谱玉简（或放残破法器，配一锭玄铁、一柄残剑或两块玄铁矿重新祭炼）' };
       if (bladeReady(inputs)) return outputHasRoom(m, 'demon_blade') ? { ok: true, msg: '以魂晶为神兵胚料开锋，铸噬魂魔剑' } : { ok: false, msg: '产出格与地面皆满' };
       if (countIn(inputs, 'iron_ingot') < 3) return { ok: false, msg: '缺原料：三锭玄铁' };
       if (!outputHasRoom(m, 'sword_std')) return { ok: false, msg: '产出格与地面皆满' };
@@ -1155,6 +1159,14 @@ function runInspection(offer = 0) {
 }
 
 function checkHeat() {
+  loveBondCheck();
+  // 情蛊种在了执法堂巡查使身上：卷宗到了她手里，就再也递不上去
+  const law = S.loveGu && S.people[S.loveGu];
+  if (S.heat >= 100 && !S.over && law && isLawman(law) && law.status === 'alive') {
+    S.heat = 80;
+    log(`${law.name}把你的卷宗压进了案底，还顺手替你把关注抹掉了一截。`, 'gold');
+    return;
+  }
   if (S.heat >= 100 && !S.over && savedByBenefactor('heat')) return;
   if (S.heat >= 100 && !S.over) {
     S.over = { win: false, cause: 'heat', title: '锁拿入狱', text: '执法堂认定你私通仙门，铁链加身，押入血狱。当铺被查封，所有货物充公。' };

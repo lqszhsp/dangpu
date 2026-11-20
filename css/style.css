@@ -566,6 +566,8 @@ body.tall .machine { padding: 8px 6px; }
 .item .bar.rot i { background: linear-gradient(90deg, #6b7d5a, #c9a04a); }
 .p-traits { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; margin: 4px 0 !important; }
 .paper .laced-txt { color: #5b3474; font-weight: bold; }
+/* 情蛊：桃红 */
+.tag.love { background: #8a2b52; color: #ffd6e6; } .love-txt { color: #ffb3cf; } .paper .love-txt { color: #a3245a; font-weight: bold; }
 .p-actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0; }
 .m-gift, .m-lace { width: 640px; }
 .gift-list, .lace-list { max-height: 440px; overflow: auto; display: flex; flex-direction: column; gap: 4px; }

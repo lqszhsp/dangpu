@@ -108,10 +108,11 @@ const LACE = {
   poison:  { name: '尸毒',   verb: '下了尸毒',   detect: 0.4,  desc: '服者数日内暴毙。亲友若起疑，必追查到底。' },
 };
 // 能掺料的：服得下、对人有好处的吃食与药——补气力、涨修为、治伤毒的丹药、灵饮、灵果、草药、妖材入药都算；
-// 吞魂饮血的魂魄精血妖丹（不是丹药的）、点的香、本身就是料的、废料不算。货品册写 to.lace 的另补进 LACEABLE
+// 吞魂饮血的魂魄精血妖丹（不是丹药的）、点的香、本身就是料的、废料不算。货品册写 to.lace 的另补进 LACEABLE。
+// 蛊虫例外：蛊身上也能掺别的料，下蛊得手时料随蛊入体（见 js/gu.js）
 const LACEABLE = [];
 const LACE_CATS = ['dan', 'yin', 'zhi', 'cai', 'yao'];
-const isLaceable = id => LACEABLE.includes(id) || (LACE_CATS.includes(ITEMS[id].cat) && !ITEMS[id].additive && !JUNK.includes(id)
+const isLaceable = id => LACEABLE.includes(id) || id === 'gu' || (LACE_CATS.includes(ITEMS[id].cat) && !ITEMS[id].additive && !JUNK.includes(id)
   && !!(RESTORE[id] || CULT_XP[id] || id === 'water' || Object.values(CONDS).some(c => c.cure.includes(id)))
   && !(CULT_XP[id] && CULT_XP[id][1] && ITEMS[id].cat !== 'dan'));
 
@@ -119,7 +120,7 @@ const canLace = it => isLaceable(it.id) && !it.laced && !it.fake;
 
 // 市面上偶尔混着别人掺过料的货：成瘾的多，下毒、种蛊的少；chance 是这件货被掺过的机会
 function marketLace(id, extra, chance) {
-  if (!isLaceable(id) || Math.random() >= chance) return extra;
+  if (!isLaceable(id) || id === 'gu' || Math.random() >= chance) return extra;
   extra.laced = weighted([['addict', 6], ['poison', 1.5], ['control', 1]]);
   extra.laceGrade = rint(1, 3);
   if (extra.laced === 'control') extra.laceTox = rint(10, 45);
@@ -149,7 +150,7 @@ function laceDetectChance(p, it) {
   const tox = it.laced === 'control' ? 1 - Math.min(0.7, (it.laceTox || 0) / 200) : 1;
   // 你亲手掺的：学过手法的干净，生手的粗糙
   const hand = it.lacedBy === 'me' ? (laceSkill(it.laced) ? 0.6 : 1.4) : 1;
-  return clamp(L.detect * (0.4 + (p ? p.savvy : 0.4)) * tox * hand * (1 - clamp(p ? p.aff : 0, 0, 80) / 160), 0.02, 0.9);
+  return clamp(L.detect * (0.4 + (p ? p.savvy : 0.4)) * tox * hand * (1 - clamp(p ? p.aff : 0, 0, 80) / 160), 0.02, 0.9) * (1 - guShield(p));
 }
 
 // 货到了对方手里（买去或收礼）之后的效果；返回 { caught }
@@ -157,7 +158,8 @@ function applyLace(p, it, via) {
   if (!p) return {};
   const name = itemName(it);
   if (it.id === 'wangyou') return hook(p, name);
-  if (!it.laced) return {};
+  // 蛊是拿来下的，不是拿来吃的：买去、收下一只蛊，身上什么也不会多
+  if (!it.laced || it.id === 'gu') return {};
   // 明知掺了料还卖、还送，才算你作的恶；不知情的，只是替别人背了锅
   const knew = lacedKnown(it);
   if (Math.random() < laceDetectChance(p, it)) {
@@ -166,6 +168,11 @@ function applyLace(p, it, via) {
     startScandal(p, 'laced', { item: name, lace: it.laced });
     return { caught: true };
   }
+  return laceEffect(p, it, name, knew);
+}
+
+// 料入了体之后的效果
+function laceEffect(p, it, name, knew) {
   if (LACE[it.laced].apply) return LACE[it.laced].apply(p, it, name, knew) || {};
   switch (it.laced) {
     case 'addict': return hook(p, name, knew);
@@ -255,7 +262,11 @@ function storyGiftHook(p, it, res) {
 // 灵石之外，药瘾、利益、修为、魂魄都能拴住一个人；拴得越死，越听话，代价各不相同
 // odds：差遣成算；pay：差遣前付出的代价（返回错误则不能用）；cut：上贡时他交几成；fail：不听话的后果
 const LEVERS = {
-  soul: { name: '噬心蛊', has: p => !!p.controlled, odds: () => 1, cut: 1, note: p => `每次约 ${Math.round(exposureChance(p) * 100)}% 被逼出` },
+  soul: { name: '噬心蛊', has: p => !!p.controlled && p.controlled.by !== 'gu', odds: () => 1, cut: 1, note: p => `每次约 ${Math.round(exposureChance(p) * 100)}% 被逼出` },
+  // 亲手下的蛊：不从就蛊噬其心，重伤——要不了命，也不会被逼出来
+  gu: { name: '蛊', has: p => guBound(p), odds: p => clamp(0.55 + 0.1 * p.controlled.stage + 0.06 * guLv(), 0, 0.97), cut: 1, note: () => '不从，蛊噬其心：重伤，要不了命',
+    fail: p => guBite(p) },
+  love: { name: '情蛊', has: p => !!p.loveGu, odds: () => 1, cut: 1, note: p => `${ta(p)}什么都肯为你做` },
   bond: { name: '魂印', has: p => !!p.soulBound, odds: () => 0.95, cut: 1, note: () => '识海里的印记，难违',
     fail: p => { p.soulBound = null; remember(p, '魂印松动，他清醒了片刻，记起了一切。', -50, 'controlled'); return `${p.name}抱着头惨叫一声，魂印碎了。`; } },
   drug: { name: '药瘾', has: p => (p.addict || 0) >= 2, odds: p => clamp(0.45 + 0.1 * p.addict, 0, 0.95), cut: 0.7, note: () => '拿一份忘忧散吊着他',
@@ -307,10 +318,10 @@ const SPECIAL_COMMANDS = {
 
 const leversOf = p => p.status === 'alive' ? Object.keys(LEVERS).filter(k => LEVERS[k].has(p)) : [];
 
-// 只有蛊与魂印拴得住的人，才肯替你办那件“方便”
+// 只有蛊、情蛊与魂印拴得住的人，才肯替你办那件“方便”
 function commandList(p, lever) {
   const list = ['tribute', 'spy', 'scout'];
-  if (SPECIAL_COMMANDS[p.pid] && ['soul', 'bond'].includes(lever)) list.push('special');
+  if (SPECIAL_COMMANDS[p.pid] && ['soul', 'bond', 'gu', 'love'].includes(lever)) list.push('special');
   return list.map(id => {
     const c = COMMANDS[id];
     const last = (p.ctrlUsed || {})[id];
@@ -377,9 +388,9 @@ function intrigueTick() {
       continue;
     }
     if (!p.addict && p.health < 100) p.health = Math.min(100, p.health + 2);
-    if (p.controlled && Math.random() < 0.008 + p.savvy * 0.015) {
+    if (p.controlled && Math.random() < (guBound(p) ? (0.004 + p.savvy * 0.008) * (1 - 0.2 * guLv()) : 0.008 + p.savvy * 0.015)) {
       exposeControl(p);
-      news.push({ text: `${p.name}身上的噬心蛊被一位游方高人逼了出来。`, cls: 'bad' });
+      news.push({ text: `${p.name}身上的蛊被一位游方高人逼了出来。`, cls: 'bad' });
     }
     p.desperate = p.budgetMul < 0.55 || p.health < 40 || (!!p.addict && S.day - (p.lastFix || 0) > 3);
   }
@@ -397,6 +408,7 @@ function die(p, text) {
   if (p.pid === 'qian' && S.flags.landlord === 'qian') { S.flags.landlord = 'sun'; S.flags.rentMul = 0.9; S.flags.rentExtra = 0; ensureSun(); }
   if (p.pid === 'sun' && S.flags.landlord === 'sun') S.flags.landlord = S.people.qian && S.people.qian.status === 'alive' ? 'qian' : 'tu';
   if (p.pid === 'enforcer') S.flags.enforcerOwned = false;
+  loveBondCheck();
 }
 
 function ensureSun() {
@@ -415,6 +427,7 @@ const OFFICIALS = {
 };
 
 function official(pid) {
+  if (pid === 'enforcer' && S.flags.enforcerPid && S.people[S.flags.enforcerPid]) return S.people[S.flags.enforcerPid];
   if (!S.people[pid]) {
     const o = OFFICIALS[pid];
     const p = newPerson(o.faction, Object.assign({ pid, story: 'official' }, o));
@@ -653,6 +666,7 @@ const SEVERITY = { fakepill: 300, laced: 160, addictdeath: 420, poison: 520, con
 
 // 苦主也见风使舵：你势大，他可能忍了；怨气大，他先报复再上门
 function startScandal(p, kind, extra = {}) {
+  if (guShrug(p)) { log(`${p.name}心里起了疑，蛊一动，又把这事忘了。`, 'warn'); return; }
   const st = stance(p, SEVERITY[kind] / 5);
   if (st === 'swallow') {
     remember(p, '吃了你的亏，掂量了一下你的势力，忍了。', -10, 'swallowed');

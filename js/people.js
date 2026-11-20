@@ -110,7 +110,9 @@ const personOf = c => c && c.pid ? S.people[c.pid] : null;
 // 记下一件事。kind 用于日后的回忆台词；a 为好感变化
 function remember(p, text, a = 0, kind = null) {
   if (!p) return;
-  p.aff = clamp(Math.round(p.aff + a), -100, 100);
+  // 中了蛊的人多半不记你的仇；情蛊的那位好感锁在顶上，什么都不往心里去
+  if (a < 0 && guShrug(p)) a = 0;
+  p.aff = p.loveGu ? 100 : clamp(Math.round(p.aff + a), -100, 100);
   p.mem.push({ d: S.day, t: gx(p, text), a, k: kind });
   if (p.mem.length > 30) p.mem.shift();
 }

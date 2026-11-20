@@ -112,7 +112,8 @@ function strengthOf(who) {
     const g = Object.values(S.items).filter(it => HELD(it) && ['iron_corpse', 'corpse_king', 'puppet_doll'].includes(it.id)).length;
     if (g) parts.push(['护卫', Math.min(15, g * 6)]);
   } else {
-    parts.push([`境界·${realmName(npcLevel(who))}`, npcLevel(who) * 18]);
+    const lv = Math.max(0, npcLevel(who) - guDrop(who));   // 中了你的蛊，跟你动手跌一境
+    parts.push([`境界·${realmName(lv)}${guDrop(who) ? '（中蛊）' : ''}`, lv * 18]);
     parts.push(['身手', Math.round(npcBasePower(who) / 5)]);
   }
   for (const c of condList(who)) parts.push([c.label, -c.combat]);

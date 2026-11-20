@@ -102,7 +102,8 @@ function npcLevel(p) {
 
 const PROTECTED = ['qian', 'sun', 'tu'];
 const killable = p => p && p.status === 'alive' && !p.official && !PROTECTED.includes(p.pid);
-const cultGap = p => S.cult.lv - npcLevel(p);
+// 跟你动手时，中了你的蛊的人跌一境
+const cultGap = p => S.cult.lv - (npcLevel(p) - guDrop(p));
 
 function canKill(p) {
   if (!killable(p)) return '动不得：此人是宗门官差';

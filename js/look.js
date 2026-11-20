@@ -40,6 +40,8 @@ const FEAR_MEM = ['swallowed', 'controlled', 'blackmailed', 'poisoned'];   // �
 const RECENT_DAYS = 5;
 
 function moodOf(c, p) {
+  // 情蛊的那位见了你只会脸红；中了别的蛊、魂印的只剩失神，笑不出来
+  if (p && p.loveGu) return smittenMood(p);
   if (p && (p.controlled || p.soulBound)) return 'thrall';
   if (p && ((p.addict || 0) >= 2 || (p.health != null && p.health < 40))) return 'wasted';
   if (c && c.mood) return c.mood;

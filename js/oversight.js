@@ -8,7 +8,7 @@ const bannedShown = () => itemsIn('display').filter(isBanned);
 // 管理者对你的容忍：看交情、收过多少好处、贪念与操守，也看你的势力
 function tolerance(p) {
   if (!p || p.status !== 'alive') return 'report';
-  if (p.controlled || S.flags.chenShelter || (p.pid === 'enforcer' && S.flags.enforcerOwned)) return 'ignore';
+  if (p.controlled || p.loveGu || S.flags.chenShelter || (isLawman(p) && S.flags.enforcerOwned)) return 'ignore';
   const score = p.aff + (p.bribes || 0) * 8 + p.greed * 30 - p.integrity * 50 + (playerPower() - npcPower(p)) * 0.2;
   // 清官不收黑钱：要么网开一面，要么公事公办
   if (p.integrity >= 0.7) return score >= 50 ? 'ignore' : 'report';

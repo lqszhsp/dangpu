@@ -11,7 +11,7 @@ const BEHAVIORS = [
   // 炼器
   { id: 'ingot', name: '炼玄铁锭', machine: 'furnace', alt: [{ use: [['iron_ore', 2]] }, { use: [['scrap_sword', 1]] }, { use: [['broken_relic', 1]] }], made: ['iron_ingot', 'spirit_crystal'] },
   { id: 'sword', name: '炼制式飞剑', machine: 'forge', alt: [{ use: [['iron_ingot', 3]], mod: 'jade_slip' }], made: ['sword_std'] },
-  { id: 'salvage', name: '残器重炼', machine: 'forge', alt: [{ use: [['broken_relic', 1], ['iron_ingot', 1]] }], made: ['soul_bell', 'bone_flute', 'demon_charm', 'soul_banner', 'sword_std', 'xuan_essence'] },
+  { id: 'salvage', name: '残器重炼', machine: 'forge', alt: [{ use: [['broken_relic', 1], ['iron_ingot', 1]] }, { use: [['broken_relic', 1], ['scrap_sword', 1]] }, { use: [['broken_relic', 1], ['iron_ore', 2]] }], made: ['soul_bell', 'bone_flute', 'demon_charm', 'soul_banner', 'sword_std', 'xuan_essence'] },
   { id: 'demon_blade', name: '炼噬魂魔剑', machine: 'forge', alt: [{ use: [['god_blank', 1], ['soul_crystal', 1]], mod: 'jade_slip', tech: ['refine', 2] }], made: ['demon_blade'] },
   { id: 'essence', name: '熬玄铁精', machine: 'dihuo', alt: [{ use: [['iron_ore', 6]] }, { use: [['iron_ingot', 3]] }], made: ['xuan_essence'] },
   { id: 'god_blank', name: '闭关炼神兵胚料', machine: 'dihuo', alt: [{ use: [['xuan_essence', 4]], retreat: true }], made: ['god_blank'] },
@@ -67,6 +67,8 @@ const BEHAVIORS = [
   { id: 'seal', name: '贴正派封印', act: 'seal' },
   { id: 'erase', name: '抹去原主烙印', act: 'erase' },
   { id: 'soulmark', name: '种魂印', act: 'soulmark' },
+  { id: 'plantgu', name: '下蛊（养蛊人）', act: 'plantgu' },
+  { id: 'lovegu', name: '炼情蛊', machine: 'gupot', alt: [{ has: [['gu', 1]], use: [['bones', 2], ['mihun_flower', 1]], tech: ['gumaster', 3] }], made: ['~love_gu'] },
   { id: 'break', name: '持破境之物冲关', act: 'break' },
 ];
 
@@ -98,6 +100,8 @@ function bhvActMissing(b, held) {
     case 'erase': return held.some(canErase) ? [] : [held.some(it => it.mark) ? '功法·抹印（重数不够）' : '材料·带原主烙印的赃物'];
     case 'soulmark': return Object.values(S.people).some(p => p.status === 'alive' && !canSoulMark(p)) ? []
       : [!techLv('soul') ? '功法·炼魂1重' : !owns('soul_pearl') ? '材料·炼魂珠' : '对象·修为低于你的人'];
+    case 'plantgu': return !guLv() ? ['开局·养蛊人'] : !plantableGu().length ? ['材料·蛊']
+      : Object.values(S.people).some(p => plantableGu().some(it => !plantBlock(p, it))) ? [] : ['对象·修为不高于你、见过面的人'];
     case 'break': return !canBreak() && owns(realm().key) ? [] : [canBreak() || `材料·${realm().key ? ITEMS[realm().key].name : '破境之物'}`];
   }
   return ['？'];

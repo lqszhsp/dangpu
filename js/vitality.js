@@ -12,11 +12,11 @@ const MACHINE_COST = {
 const ACTION_COST = {
   appraise: [0, 4], inspect: [0, 2], probe: [0, 8], haggle: [0, 2], dispute: [0, 3], dig: [6, 2], market: [10, 2],
   talk: [0, 6], erase: [3, 12], seal: [1, 5], bottle: [1, 0], retreat: [30, 10],
-  cultivate: [0, 4], breakthrough: [20, 30], kill: [25, 10], soulmark: [5, 20], flatter: [0, 6], command: [0, 5],
+  cultivate: [0, 4], breakthrough: [20, 30], kill: [25, 10], soulmark: [5, 20], plantgu: [2, 14], flatter: [0, 6], command: [0, 5],
 };
 const ACTION_NAME = { appraise: '鉴定', inspect: '验货', probe: '神识探查', haggle: '议价', dispute: '挑毛病', dig: '翻找', market: '去鬼市',
   talk: '话术', erase: '抹印', seal: '贴封印', bottle: '装瓶', retreat: '闭关',
-  cultivate: '服炼', breakthrough: '破境', kill: '动手', soulmark: '种魂印', flatter: '吹捧', command: '差遣' };
+  cultivate: '服炼', breakthrough: '破境', kill: '动手', soulmark: '种魂印', plantgu: '下蛊', flatter: '吹捧', command: '差遣' };
 
 // 服用后恢复的 [体力, 精神]：中品（品质 50）的数，品质高低按 potency 增减
 const RESTORE = {

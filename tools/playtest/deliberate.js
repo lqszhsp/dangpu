@@ -102,6 +102,11 @@ function dlbObtain(id, n, D, depth = 0) {
 
 // 学到某门功法的某一重：按顺序弄到书、读书——一二重在货郎那儿买，三重往上拿功勋换（传艺要看交情，不算刻意来路）
 function dlbTech(t, lv, D) {
+  // 独门手艺（蛊虫精通）没有书：当养蛊人，养蛊攒经验升上去
+  if (TECHS[t].exclusive) {
+    if (techLv(t) < lv) { S.perks.gumaster = true; S.guXp = GU_XP[lv]; S.tech[t] = lv; D.route[`${TECHS[t].name}${lv}重`] = '养蛊人养蛊攒经验'; }
+    return;
+  }
   while (techLv(t) < lv) {
     const bk = BOOKS.find(b => b[1] === t && b[2] === techLv(t) + 1);
     if (!bk) throw new Error(`${TECHS[t].name}没有第${techLv(t) + 1}重的秘籍`);
@@ -197,6 +202,7 @@ function deliberateOne(b, D, depth = 0) {
       || (b.made.includes('~purify') && Object.values(S.items).some(it => it.id === 'water' && it.purity > water0))
       || (b.made.includes('~gold_gu') && Object.values(S.items).some(it => it.id === 'gu' && it.growth >= 100))
       || (b.made.includes('~wandu_gu') && Object.values(S.items).some(it => it.id === 'gu' && guStage(it) >= 2))
+      || (b.made.includes('~love_gu') && Object.values(S.items).some(it => it.id === 'gu' && it.love))
       || (b.made.includes('~dress') && Object.values(S.items).some(it => it.forged && !it.fake))) {
       // 产物挪回库房，给下一步腾地方
       outs().forEach(it => { if (!b.machine || !live || ITEMS[it.id].cat !== 'chong') autoPlace(it, ['store', 'floor']); });
@@ -217,6 +223,21 @@ function dlbAct(b, D) {
       dlbObtain('spirit_fruit', 1, D);
       const t = dlbHeld('spirit_fruit')[0], a = Object.values(S.items).find(it => HELD(it) && it.id === add);
       laceWith(t, a); return t.laced === b.kind;
+    }
+    case 'plantgu': {
+      dlbTech('gumaster', 1, D);
+      deliberateOne(BEHAVIORS.find(x => x.id === 'gold_gu'), D);
+      for (let k = 0; k < 20; k++) {
+        S.vit.st = S.vit.sp = 100; S.day++;
+        const g = plantableGu().find(it => guStage(it) <= guLv());
+        if (!g) deliberateOne(BEHAVIORS.find(x => x.id === 'gold_gu'), D);
+        const it = plantableGu().find(it => guStage(it) <= guLv());
+        const p = it && Object.values(S.people).find(p => (p.visits = p.visits || 1) && !plantBlock(p, it) && !guBound(p));
+        if (!p) throw new Error('没有能下蛊的人');
+        const r = plantGu(p, it);
+        if (r.ok) return true;
+      }
+      return false;
     }
     case 'bottle': {
       dlbObtain('jade_bottle', 1, D); dlbObtain('water', 1, D);

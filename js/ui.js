@@ -645,7 +645,7 @@ function tabWorkshop() {
   const known = Object.entries(S.forgeKnown).filter(x => x[1]).map(([id, g]) => `${ITEMS[id].name}（${GRADE_NAMES[g]}）`);
   return `<div class="workshop">
     <div class="techs">${Object.entries(TECHS).filter(([k]) => techLv(k)).map(([k, t]) => `<span class="tech on" title="${t.desc}">
-      <img src="${asset('items', t.icon)}" alt="">${t.name}<b>${cn(techLv(k))}重</b></span>`).join('')}
+      <img src="${asset('items', t.icon)}" alt="">${t.name}<b>${cn(techLv(k))}重</b>${k === 'gumaster' && guXpNext() ? `<small class="muted">${S.guXp || 0}/${guXpNext()}</small>` : ''}</span>`).join('')}
       <span class="muted small">鉴定术：${LENS_NAMES[appraiseLevel()]}${known.length ? ` · 会仿造：${known.join('、')}` : ''}</span></div>
     <div class="m-cards">${cards.join('')}</div>
     ${S.machines.length ? detail : `${detail}<p class="muted">后院空空如也。到「货郎」处购置设备。</p>`}</div>`;
@@ -1262,7 +1262,7 @@ function tabPeople() {
       <div class="pc-face"><img src="${asset('chars', personFace(p))}" alt=""></div>
       <div class="pc-info"><div><b>${esc(p.name)}</b> <span class="muted small">${esc(p.title || '')}</span>
         ${p.story && !p.official ? '<span class="tag gold">有故事</span>' : ''}${p.official ? '<span class="tag">官差</span>' : ''}${p.status !== 'alive' ? `<span class="tag fake">${STATUS_NAME[p.status]}</span>` : ''}
-        ${p.status === 'alive' && p.addict ? '<span class="tag fake">成瘾</span>' : ''}${p.status === 'alive' && p.controlled ? '<span class="tag laced">受控</span>' : ''}${p.status === 'alive' && p.wish ? `<span class="tag real">求${ITEMS[p.wish].name}</span>` : ''}
+        ${p.status === 'alive' && p.addict ? '<span class="tag fake">成瘾</span>' : ''}${p.status === 'alive' && p.controlled ? `<span class="tag laced">${guBound(p) ? '中蛊' : '受控'}</span>` : ''}${p.status === 'alive' && p.loveGu ? '<span class="tag love">情蛊</span>' : ''}${p.status === 'alive' && p.wish ? `<span class="tag real">求${ITEMS[p.wish].name}</span>` : ''}
         ${p.status === 'alive' ? condList(p).filter(c => CONDS[c.kind]).map(c => `<span class="tag fake">${c.label}</span>`).join('') : ''}${isHealer(p) && p.status === 'alive' ? '<span class="tag real">懂医术</span>' : ''}</div>
         <div class="pc-aff"><span style="color:${f.color}">${f.name}</span><span class="aff-bar"><i class="${p.aff >= 0 ? 'pos' : 'neg'}" style="width:${Math.abs(p.aff) / 2}%"></i></span>
           <span class="mood-${m}">${MOOD_NAME[m]}</span></div>
@@ -1329,7 +1329,8 @@ function personTraits(p) {
   if (isHealer(p)) t.push(`<span class="good">懂医术：治${CAST[p.pid].healer.heals.map(k => CONDS[k].name).join('、')}</span>`);
   if (p.desperate) t.push('<span class="bad">走投无路</span>');
   if (p.addict) t.push(`<span class="bad">成瘾 ${p.addict}</span>`);
-  if (p.controlled) t.push('<span class="laced-txt">受你控心</span>');
+  if (p.controlled) t.push(`<span class="laced-txt">${guBound(p) ? `中了你的${GU_STAGES[p.controlled.stage].name}` : '受你控心'}</span>`);
+  if (p.loveGu) t.push(`<span class="love-txt">中了你的情蛊：${ta(p)}死你也活不成</span>`);
   return t.join('');
 }
 
@@ -1342,6 +1343,9 @@ function personActions(p) {
   if (isHealer(p) && p.status === 'alive') out.push(healButton(p));
   if (p.status === 'alive') out.push(...treatButtons(p));
   if (p.controlled) out.push(`<button class="btn small ghost" data-act="uncontrol" data-pid="${p.pid}">解蛊</button>`);
+  // 养蛊人：手里有蛊就能给人下
+  if (guLv() && p.status === 'alive' && p.visits && plantableGu().some(it => !plantHidden(p, it)))
+    out.push(`<button class="btn small danger" data-act="plant-open" data-pid="${p.pid}">${icon('ic_lace')}下蛊</button>`);
   if (p.indentured) out.push(`<span class="small bad">在你后院做苦力</span><button class="btn small" data-act="release" data-pid="${p.pid}">放${ta(p)}走</button>`);
   if (S.phase === 'night' && killable(p) && p.pid !== 'beggar') {
     const why = canKill(p);
@@ -1428,9 +1432,25 @@ function openGift(pid) {
     <div class="h-btns"><button class="btn ghost" data-act="person" data-pid="${pid}">返回</button></div>`, 'm-gift'); });
 }
 
+// 下蛊：挑一只蛊，看成算；下不了的写明缘由
+function openPlantGu(pid) {
+  const p = S.people[pid];
+  openModal(() => modalHTML(`<h3>${icon('ic_lace')}下蛊 · ${esc(p.name)}</h3>
+    <p class="muted small">蛊虫精通${cn(guLv())}重。下中的人或听你差遣、或被蛊噬成重伤，跟你动手跌一境，与你打交道多半不再给你添堵；蛊要不了人命。蛊身上掺的料，下中时一并入体。${isLawman(p) ? `<b class="bad">执法堂的人：种上种不上，约 ${pct(lawSpotOdds())} 会被察觉，关注大涨。</b>` : ''}</p>
+    <div class="lace-list">${plantableGu().filter(it => !plantHidden(p, it)).map(it => {
+      const why = plantBlock(p, it);
+      return `<div class="lace-row"><div class="lace-ic">${itemHTML(Object.assign({}, it, { pos: null }), 'preview mini')}</div>
+        <div><b>${esc(itemName(it))}</b>${it.laced ? `<em class="laced-txt">（${LACE[it.laced].verb}）</em>` : ''}<p class="small muted">毒性 ${it.tox}${it.love ? ' · 一生只认一人：好感锁在顶上，事事顺着你；她死你也活不成' : ''}</p>
+        ${why ? `<p class="small bad">${esc(why)}</p>` : ''}</div>
+        <button class="btn small danger" data-act="plant-do" data-pid="${pid}" data-uid="${it.uid}" ${why ? 'disabled' : ''}>下蛊${why ? '' : `（成算 ${pct(plantOdds(p, it))}）`}</button></div>`;
+    }).join('')}</div>
+    <div class="h-btns"><button class="btn ghost" data-act="person" data-pid="${pid}">返回</button></div>`, 'm-lace'));
+}
+
 function openLace() {
   const it = S.items[sel];
-  const adds = additives();
+  // 蛊身上掺别的料，不掺蛊
+  const adds = additives().filter(a => !(it.id === 'gu' && a.id === 'gu'));
   openModal(() => modalHTML(`<h3>${icon('ic_lace')}加料 · ${esc(itemName(it))}</h3>
     <p class="muted small">加了料的货外表看不出分别，照常估价、照常出售或送人。买下或收下它的人，会在不知不觉中受其影响——除非他够精明。</p>
     <div class="lace-list">${adds.map(a => {
@@ -1958,6 +1978,13 @@ const HANDLERS = {
   command: el => {
     const p = S.people[el.dataset.pid], r = runCommand(p, el.dataset.id, el.dataset.lever);
     toast(gx(p, r.text), r.exposed ? 'bad' : 'good'); openPerson(p.pid); renderAll(); checkOver();
+  },
+  'plant-open': el => openPlantGu(el.dataset.pid),
+  'plant-do': el => {
+    const p = S.people[el.dataset.pid], r = plantGu(p, S.items[el.dataset.uid]);
+    if (r.err) { toast(r.err, 'bad'); return; }
+    if (sel === +el.dataset.uid) sel = null;
+    closeModal(); showIntel({ text: r.text, cls: r.cls }); renderAll(); checkOver();
   },
   uncontrol: el => { releaseControl(S.people[el.dataset.pid]); openPerson(el.dataset.pid); renderAll(); },
   lace: () => openLace(),

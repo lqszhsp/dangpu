@@ -276,7 +276,8 @@ function checkOne(g, def, report, { live: doLive = true } = {}) {
   // 模拟玩家乱选抉择，钱、关注、性命、恶名都替他兜着（每天补满护身符、清掉恶名），免得局早早结束、扩展人物不再登场
   const days = Math.max(+opt('days', 150), (def.start.day || 1) + 50), runs = doLive ? +opt('runs', 6) : 0, live = [];
   for (let r = 0; r < runs; r++) {
-    run(`newGame('normal', 'apprentice'); S.stones = 5000; var __log = { start: null, visits: 0, beats: 0, end: null, regular: 0 };
+    // 隐藏人物：先替模拟玩家把触发她的那件事做了（trigger），再看她登不登场、走不走得完
+    run(`newGame('normal', 'apprentice'); S.stones = 5000; if (CAST[__def.id].trigger) CAST[__def.id].trigger(); var __log = { start: null, visits: 0, beats: 0, end: null, regular: 0 };
       for (let d = 0; d < ${days} && !S.over; d++) {
         S.flags.savior = 9; if (S.fate) S.fate.infamy = 0; openShop(); if (S.story[__def.id] && __log.start == null) __log.start = S.day;
         let c, g = 0;
@@ -355,6 +356,7 @@ function popSim(ids, runs, days) {
     const choose = (key, i) => { try { resolveChoice(key, i); } catch (e) { const t = tally[key]; if (t && t.errors.length < 3) t.errors.push(S.story[key].node + '：' + e.message); if (S.story[key]) S.story[key].done = true; } };
     for (let r = 0; r < ${runs}; r++) {
       newGame('normal', 'apprentice'); S.stones = 5000;
+      for (const id of __ids) if (CAST[id].trigger) CAST[id].trigger();
       const seen = {};
       for (let d = 0; d < ${days} && !S.over; d++) {
         S.flags.savior = 9; if (S.fate) S.fate.infamy = 0; openShop(); let c, k = 0;
@@ -513,7 +515,7 @@ async function ready(only) {
       // 5 登场：全员同场
       const pt = pops[id], runs = +opt('runs', 3), days = +opt('days', 100), errs5 = [];
       let startOk = true;
-      try { if (def.start.cond) { g.__d = def; vm.runInContext('newGame("normal", "apprentice"); __d.start.cond()', g); } } catch (e) { startOk = false; errs5.push(`start.cond 出错：${e.message}`); }
+      try { if (def.start.cond) { g.__d = def; vm.runInContext('newGame("normal", "apprentice"); if (CAST[__d.id].trigger) CAST[__d.id].trigger(); CAST[__d.id].start.cond()', g); } } catch (e) { startOk = false; errs5.push(`start.cond 出错：${e.message}`); }
       if (pt.errors.length) errs5.push(`实战里出错：${pt.errors[0]}`);
       if (startOk && !pt.runs) errs5.push(`全员同场模拟 ${runs} 局×${days} 天，一次都没登场（start.day ${def.start.day}，chance ${def.start.chance ?? 1}）`);
       else if (startOk && pt.runs < runs / 2) errs5.push(`全员同场 ${runs} 局只登场 ${pt.runs} 局`);
@@ -609,6 +611,6 @@ try {
   ({ faces, list, new: () => scaffold(id), art: () => makeArt(id), check: () => check(id && !id.startsWith('--') ? id : null), ready: () => ready(id && !id.startsWith('--') ? id : null) }[cmd] || (() => {
     console.log(fs.readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n').slice(1, 8).join('\n').replace(/^\/\/ ?/gm, ''));
   }))();
-} catch (e) { console.error(`✗ ${e.message}`); process.exit(1); }
+} catch (e) { console.error(`✗ ${e.message}`); if (process.env.DEBUG) console.error(e.stack); process.exit(1); }
 // ready 是异步的：它抛出的错误也要拦下来，退出码非零
 process.on('unhandledRejection', e => { console.error(`✗ 检查本身出错：${e && e.stack || e}`); process.exit(2); });

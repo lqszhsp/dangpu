@@ -14,6 +14,7 @@ defineCharacter({
   art: 'a cute cheerful little cat-spirit girl who looks about ten years old, small and round-faced, big bright amber cat eyes, '
     + 'fluffy orange-and-white cat ears and a long striped orange tail, messy short hair tied with a red ribbon, a smudge of dust on one cheek, '
     + 'a simple patched orange cotton jacket and loose trousers fully covering arms and legs, cloth shoes, holding a small dried fish in both hands, wholesome and innocent',
+  minor: true,
   moodArt: {
     wasted: 'sick and worn out: pale face, tired droopy eyes, ears flat and drooping, hugging herself as if cold',
     thrall: 'dazed and entranced: eyes glazed with a soft purple glow, blank sleepy face, a faint purple mist around her head',
