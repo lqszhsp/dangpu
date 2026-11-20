@@ -112,7 +112,7 @@ const LACE = {
 // 蛊虫例外：蛊身上也能掺别的料，下蛊得手时料随蛊入体（见 js/gu.js）
 const LACEABLE = [];
 const LACE_CATS = ['dan', 'yin', 'zhi', 'cai', 'yao'];
-const isLaceable = id => LACEABLE.includes(id) || id === 'gu' || (LACE_CATS.includes(ITEMS[id].cat) && !ITEMS[id].additive && !JUNK.includes(id)
+const isLaceable = id => LACEABLE.includes(id) || id === 'gu' || id === 'love_gu' || (LACE_CATS.includes(ITEMS[id].cat) && !ITEMS[id].additive && !JUNK.includes(id)
   && !!(RESTORE[id] || CULT_XP[id] || id === 'water' || Object.values(CONDS).some(c => c.cure.includes(id)))
   && !(CULT_XP[id] && CULT_XP[id][1] && ITEMS[id].cat !== 'dan'));
 
@@ -120,7 +120,7 @@ const canLace = it => isLaceable(it.id) && !it.laced && !it.fake;
 
 // 市面上偶尔混着别人掺过料的货：成瘾的多，下毒、种蛊的少；chance 是这件货被掺过的机会
 function marketLace(id, extra, chance) {
-  if (!isLaceable(id) || id === 'gu' || Math.random() >= chance) return extra;
+  if (!isLaceable(id) || id === 'gu' || id === 'love_gu' || Math.random() >= chance) return extra;
   extra.laced = weighted([['addict', 6], ['poison', 1.5], ['control', 1]]);
   extra.laceGrade = rint(1, 3);
   if (extra.laced === 'control') extra.laceTox = rint(10, 45);
@@ -159,7 +159,7 @@ function applyLace(p, it, via) {
   const name = itemName(it);
   if (it.id === 'wangyou') return hook(p, name);
   // 蛊是拿来下的，不是拿来吃的：买去、收下一只蛊，身上什么也不会多
-  if (!it.laced || it.id === 'gu') return {};
+  if (!it.laced || it.id === 'gu' || it.id === 'love_gu') return {};
   // 明知掺了料还卖、还送，才算你作的恶；不知情的，只是替别人背了锅
   const knew = lacedKnown(it);
   if (Math.random() < laceDetectChance(p, it)) {

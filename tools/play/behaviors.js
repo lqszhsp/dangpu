@@ -68,7 +68,7 @@ const BEHAVIORS = [
   { id: 'erase', name: '抹去原主烙印', act: 'erase' },
   { id: 'soulmark', name: '种魂印', act: 'soulmark' },
   { id: 'plantgu', name: '下蛊（养蛊人）', act: 'plantgu' },
-  { id: 'lovegu', name: '炼情蛊', machine: 'gupot', alt: [{ has: [['gu', 1]], use: [['bones', 2], ['mihun_flower', 1]], tech: ['gumaster', 3] }], made: ['~love_gu'] },
+  { id: 'lovegu', name: '炼情蛊', machine: 'gupot', alt: [{ has: [['gu', 1]], use: [['bones', 2], ['mihun_flower', 1]], tech: ['gumaster', 3] }], made: ['love_gu'] },
   { id: 'break', name: '持破境之物冲关', act: 'break' },
 ];
 

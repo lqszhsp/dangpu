@@ -266,10 +266,11 @@ function guFeed(m, bones, notes, emit, shed) {
   // 蛊虫精通每重：蛊长得快、产卵勤、子代更毒
   const lv = guLv();
   // 三重：迷魂花饲金蚕，一夜化一只情蛊
-  const gold = lv >= 3 && potGu(m).find(it => guStage(it) === 1 && !it.love && !it.eat);
-  if (gold && takeItems(bones, 'mihun_flower', 1).length) {
-    gold.love = true;
-    notes.push(`一只金蚕蛊吃了迷魂花，通体泛红——化为情蛊`);
+  const gold = lv >= 3 && potGu(m).find(it => guStage(it) === 1 && !it.eat);
+  if (gold && countIn(bones, 'mihun_flower') && findSpot(gridOf(m, 'out'), { id: 'love_gu' })) {
+    takeItems(bones, 'mihun_flower', 1);
+    destroyItem(gold);
+    emit(makeItem('love_gu', { q: clamp(40 + gold.tox, 5, 100) }), '一只金蚕蛊吃了迷魂花，通体泛红，一分为二——炼成一对情蛊');
     guXp('love');
   }
   let starved = 0;

@@ -35,7 +35,7 @@ function addCond(who, kind, sev = 1, why = '') {
   if (who === 'me') {
     log(`${why}${why ? '，' : ''}你${C.grade[c.sev - 1]}（${C.name}）。${C.lethal && c.sev === 3 ? '再不医治，随时会丢了性命。' : ''}`, 'loss');
     if (C.lethal && was === 3) dieMe(kind, why);
-  } else lifeNote(who, `${why}${why ? '，' : ''}${C.grade[c.sev - 1]}。`);
+  } else { if (kind === 'injured') guHold(who); lifeNote(who, `${why}${why ? '，' : ''}${C.grade[c.sev - 1]}。`); }
   return c;
 }
 
@@ -183,6 +183,7 @@ function condTick() {
       cureCond(p, 'poisoned'); lifeNote(p, '寻到郎中，解了身上的毒。');
     }
     // 垂危没人救，随时可能咽气
+    guHold(p);
     if (condSev(p, 'injured') === 3 && Math.random() < CONDS.injured.lethal) {
       die(p, `${p.name}伤重不治，咽了气。`);
       out.push({ icon: 'ic_ledger', title: '坊间传闻', text: p.life[p.life.length - 1].t, cls: 'bad' });

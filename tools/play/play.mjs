@@ -362,7 +362,6 @@ const BEHAVIOR_HOOKS = `
       if (was && x.id === 'water' && x.purity > was.purity) made.push('~purify');
       if (was && x.id === 'gu' && x.growth >= 100 && (was.growth || 0) < 100) made.push('~gold_gu');
       if (was && x.id === 'gu' && guStage(x) >= 2 && guStage(was) < 2) made.push('~wandu_gu');
-      if (was && x.id === 'gu' && x.love && !was.love) made.push('~love_gu');
     }
     (carry[m.mid] = carry[m.mid] || []).push(...used);
     if (!made.length) return r;
@@ -399,6 +398,7 @@ function behaviorsOf(ctx) {
     else if (b.act === 'erase') seen = !!B.seenAct.marked;
     else if (b.act === 'soulmark') seen = B.seen.has('soul_pearl') && !!B.seenAct.soulTech;
     else if (b.act === 'break') seen = vm.runInContext('REALMS', ctx).some(r => r.key && B.seen.has(r.key));
+    else if (b.act === 'plantgu') seen = B.seen.has('gu') || B.seen.has('love_gu');
     else seen = b.alt.some(a => seenAll(vm.runInContext('bhvIds', ctx)(b, a)) && (!a.tech || true));
     out[b.id] = { name: b.name, seen, opp: B.opp[b.id] || 0, done: B.done[b.id] || 0, units: B.units[b.id] || 0, miss: B.miss[b.id] || {} };
   }
@@ -472,7 +472,7 @@ function replay(instrument = false) {
   const log = fs.existsSync(LOG) ? fs.readFileSync(LOG, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l)) : [];
   for (const [i, l] of log.entries()) {
     const [op, ...a] = l.cmd.split(' ');
-    try { act(ctx, l.cmd, null); }
+    try { act(ctx, l.cmd, null); if (String(instrument).startsWith('dumpat:') && !ctx.__dump && vm.runInContext('S.day', ctx) >= +String(instrument).slice(7) && vm.runInContext('S.phase', ctx) === 'morning' && !vm.runInContext('!!modal', ctx)) ctx.__dump = vm.runInContext('JSON.stringify(S)', ctx); }
     catch (e) { throw new Error(`重放第 ${i + 1} 条命令（${l.cmd}）出错：${e.message}——日志被改过，或游戏代码变了`); }
   }
   return { ctx, meta, log };
@@ -496,6 +496,8 @@ try {
     rest.splice(0, 1, 'look');
   }
   if (rest[0] === 'tactics') { const r = replay('tactics'); console.log(JSON.stringify(tacticsOf(r.ctx, r.log))); process.exit(0); }
+  // 导出第 N 日早上的存档（JSON），给 tools/playtest/gu 的实测当起点：node tools/play/play.mjs <局目录> dumpat <日>
+  if (rest[0].startsWith('dumpat')) { const r = replay('dumpat:' + rest[0].split(' ')[1]); console.log(r.ctx.__dump || 'none'); process.exit(0); }
   if (rest[0] === 'behaviors') { const r = replay('behaviors'); console.log(JSON.stringify(behaviorsOf(r.ctx))); process.exit(0); }
   const { ctx, log, meta } = replay();
   const capped = () => meta.cap && vm.runInContext('S.day', ctx) > meta.cap;

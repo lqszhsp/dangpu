@@ -20,7 +20,7 @@ const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; cha
 export async function browserRun(testSrc, { timeout = 120000 } = {}) {
   const html = fs.readFileSync(INDEX, 'utf8').replace('</body>', `<script>
 window.__errors = [];
-window.addEventListener('error', e => __errors.push(String(e.message || e.target && e.target.src || e)), true);
+window.addEventListener('error', e => { __errors.push(String(e.message || e.target && e.target.src || e)); window.__pageErr = true; }, true);
 window.addEventListener('load', async () => {
   let result;
   try { result = await (async () => { ${testSrc} })(); } catch (e) { result = { fatal: String(e && e.stack || e) }; }
@@ -50,7 +50,9 @@ window.addEventListener('load', async () => {
   fs.writeFileSync(path.join(PROFILE, 'user.js'), 'user_pref("toolkit.startup.max_resumed_crashes", -1);\nuser_pref("browser.sessionstore.resume_from_crash", false);\n');
   const ff = spawn(FIREFOX, ['--headless', '--no-remote', '--profile', PROFILE, `http://127.0.0.1:${port}/__ready.html`], { stdio: 'ignore', detached: true });
   const timer = new Promise(r => setTimeout(() => r({ result: { fatal: `浏览器 ${timeout / 1000} 秒内没有回报（Firefox 起不来，或页面卡死）` }, errors: [] }), timeout));
-  const out = await Promise.race([got, timer]);
+  // Firefox 半路崩了、退了：别傻等到超时
+  const died = new Promise(r => ff.on('exit', code => setTimeout(() => r({ result: { fatal: `Firefox 中途退出了（退出码 ${code}）` }, errors: [] }), 3000)));
+  const out = await Promise.race([got, timer, died]);
   try { process.kill(-ff.pid, 'SIGTERM'); } catch (e) { /* 已退出 */ }
   server.close();
   return out;

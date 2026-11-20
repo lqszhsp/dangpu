@@ -1440,7 +1440,7 @@ function openPlantGu(pid) {
     <div class="lace-list">${plantableGu().filter(it => !plantHidden(p, it)).map(it => {
       const why = plantBlock(p, it);
       return `<div class="lace-row"><div class="lace-ic">${itemHTML(Object.assign({}, it, { pos: null }), 'preview mini')}</div>
-        <div><b>${esc(itemName(it))}</b>${it.laced ? `<em class="laced-txt">（${LACE[it.laced].verb}）</em>` : ''}<p class="small muted">毒性 ${it.tox}${it.love ? ' · 一生只认一人：好感锁在顶上，事事顺着你；她死你也活不成' : ''}</p>
+        <div><b>${esc(itemName(it))}</b>${it.laced ? `<em class="laced-txt">（${LACE[it.laced].verb}）</em>` : ''}<p class="small muted">${isLoveGu(it) ? '一生只认一名成年女子：好感锁在顶上，事事顺着你；她死你也活不成' : `毒性 ${it.tox}`}</p>
         ${why ? `<p class="small bad">${esc(why)}</p>` : ''}</div>
         <button class="btn small danger" data-act="plant-do" data-pid="${pid}" data-uid="${it.uid}" ${why ? 'disabled' : ''}>下蛊${why ? '' : `（成算 ${pct(plantOdds(p, it))}）`}</button></div>`;
     }).join('')}</div>
@@ -1450,7 +1450,7 @@ function openPlantGu(pid) {
 function openLace() {
   const it = S.items[sel];
   // 蛊身上掺别的料，不掺蛊
-  const adds = additives().filter(a => !(it.id === 'gu' && a.id === 'gu'));
+  const adds = additives().filter(a => !(['gu', 'love_gu'].includes(it.id) && a.id === 'gu'));
   openModal(() => modalHTML(`<h3>${icon('ic_lace')}加料 · ${esc(itemName(it))}</h3>
     <p class="muted small">加了料的货外表看不出分别，照常估价、照常出售或送人。买下或收下它的人，会在不知不觉中受其影响——除非他够精明。</p>
     <div class="lace-list">${adds.map(a => {

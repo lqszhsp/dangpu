@@ -140,13 +140,13 @@ const guStage = it => it.growth < 100 ? 0 : (it.eat || 0) >= GU_STAGES[3].eat ? 
 function itemName(it) {
   if (it.id === 'intel') return it.info ? (intelExpired(it) ? `过时的${it.info.title}` : it.info.title) : '密报';
   if (it.id === 'water') return (it.bottled ? '瓶装' : '') + waterTier(it.purity);
-  if (it.id === 'gu') return it.love ? '情蛊' : GU_STAGES[guStage(it)].name;
+  if (it.id === 'gu') return GU_STAGES[guStage(it)].name;
   return ITEMS[it.id].name;
 }
 
 function itemIcon(it) {
   if (it.id === 'water') return it.purity >= 99.9 ? 'water_jade' : it.purity >= 99 ? 'water_pure' : it.purity >= 80 ? 'water_clear' : 'water_murky';
-  if (it.id === 'gu') return it.love ? (ART_SET.has('items/gu_love') ? 'gu_love' : 'gu_gold') : GU_STAGES[guStage(it)].icon;
+  if (it.id === 'gu') return GU_STAGES[guStage(it)].icon;
   const base = ITEMS[it.id].icon || it.id, v = typeof itemVariant === 'function' ? itemVariant(it) : null;
   return v ? `${base}~${v}` : base;
 }
@@ -186,7 +186,6 @@ function claimedValue(it) { return Math.round(rawValue(it) * (it.sealed ? 2 : 1)
 function rawValue(it) {
   const d = ITEMS[it.id];
   if (it.id === 'water') return Math.round(waterValue(it.purity) * bottleMul(it));
-  if (it.id === 'gu' && it.love) return Math.round(900 + it.tox * 6);
   if (it.id === 'gu') return Math.round([30 + it.growth * 1.2 + it.tox * 1.2, 260 + it.tox * 3, 560 + it.tox * 5, 1300 + it.tox * 9][guStage(it)]);
   if (it.id === 'gu_egg') return Math.round(d.base + it.tox * 0.4);
   if (it.id === 'gu_venom') return Math.round(d.base + it.tox);

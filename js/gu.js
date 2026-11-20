@@ -36,7 +36,9 @@ const isLawman = p => LAWMEN.includes(p.pid);
 
 // ───────────── 下蛊 ─────────────
 
-const plantableGu = () => Object.values(S.items).filter(it => HELD(it) && it.id === 'gu' && !it.fake);
+// 能下的蛊：养大的蛊，和情蛊（货品册里那对同心蛊：三重时自己炼，鬼市也有现成的）
+const isLoveGu = it => it.id === 'love_gu';
+const plantableGu = () => Object.values(S.items).filter(it => HELD(it) && (it.id === 'gu' || isLoveGu(it)) && !it.fake);
 const guReach = () => S.cult.lv + (guLv() >= 4 ? 1 : 0);
 
 // 能不能拿这只蛊给他下：能返回 null，否则返回缘由；情蛊对未成年人不列出来（hidden）
@@ -45,7 +47,7 @@ function plantBlock(p, it) {
   if (p.status !== 'alive') return `${ta(p)}已不在了`;
   if (!p.visits) return `还没和${ta(p)}打过照面`;
   if (p.plantDay === S.day) return `今日已对${ta(p)}下过手`;
-  if (it.love) {
+  if (isLoveGu(it)) {
     if (guLv() < 3) return '蛊虫精通三重才驾驭得住情蛊';
     if (!isAdultWoman(p)) return '情蛊只认成年女子，近不了这人的身';
     if (S.loveGu === p.pid) return `情蛊早已在${ta(p)}心头`;
@@ -58,12 +60,12 @@ function plantBlock(p, it) {
   if (npcLevel(p) > guReach()) return `${p.name}是${realmName(npcLevel(p))}，蛊近不了${ta(p)}的身${guLv() < 4 ? '（蛊虫精通四重可下到高你一境的人）' : ''}`;
   return null;
 }
-const plantHidden = (p, it) => it.love && isMinor(p);
+const plantHidden = (p, it) => isLoveGu(it) && isMinor(p);
 
 // 成算：手艺、修为差距、蛊的道行；对方越精越难；交情好的不设防
 function plantOdds(p, it) {
   const gap = S.cult.lv - npcLevel(p);
-  return clamp(0.3 + 0.12 * guLv() + 0.15 * gap + 0.05 * guStage(it) + (it.love ? 0.1 : 0) - 0.2 * (p.savvy || 0.4) + clamp(p.aff, -50, 50) / 250, 0.05, 0.95);
+  return clamp(0.3 + 0.12 * guLv() + 0.15 * gap + 0.05 * guStage(it) + (isLoveGu(it) ? 0.1 : 0) - 0.2 * (p.savvy || 0.4) + clamp(p.aff, -50, 50) / 250, 0.05, 0.95);
 }
 
 // 执法堂的人：种上种不上，都可能被察觉
@@ -75,11 +77,11 @@ function plantGu(p, it) {
   const err = exert('plantgu');
   if (err) return { err };
   p.plantDay = S.day;
-  const name = itemName(it), love = !!it.love, ok = Math.random() < plantOdds(p, it);
+  const name = itemName(it), love = isLoveGu(it), ok = Math.random() < plantOdds(p, it);
   let text, cls = 'good';
   if (ok) {
     if (love) {
-      p.loveGu = { day: S.day, tox: it.tox };
+      p.loveGu = { day: S.day };
       S.loveGu = p.pid;
       p.aff = 100;
       remember(p, '那天在你铺子里，心口忽然一热——从此眼里就只有你了。', 0, 'loved');
@@ -114,10 +116,18 @@ function plantGu(p, it) {
 function guBite(p) {
   const s = condSev(p, 'injured');
   if (s < 2) addCond(p, 'injured', 2 - s, '蛊虫噬心');
+  guHold(p);
   return `${p.name}咬牙不从，心口的蛊猛地一噬——${ta(p)}捂着胸口跪倒在地，吐了一口黑血，伤得不轻。`;
 }
 
 // ───────────── 中蛊的人 ─────────────
+
+// 蛊要宿主活着：中了你的蛊的人，伤再重也被蛊吊着一口气，压在重伤，不到垂危
+function guHold(p) {
+  const c = p && p.conds && p.conds.injured;
+  if (c && c.sev > 2 && guAnyHost(p)) { c.sev = 2; c.day = S.day; }
+}
+const guAnyHost = p => !!(p && ((p.controlled && p.controlled.by === 'gu') || p.loveGu));
 
 const guBound = p => !!(p && p.controlled && p.controlled.by === 'gu');
 const guAny = p => guBound(p) || !!(p && p.loveGu);
@@ -148,7 +158,7 @@ function loveBondCheck() {
   S.over = { win: false, cause: 'lovegu', scene: ART_SET.has('scene/end_lovegu') ? 'end_lovegu' : 'end_death', title: '情蛊同命',
     text: `${p.name}咽气的那一刻，你心口的母蛊翻了个身，再没动过。南疆的老话说得一点不错：情蛊认的不是一个人，是两条命。`
       + `第二天街坊推开当铺的门，只见柜上并排摆着两只茶碗——一碗凉透了，一碗你一直留给${ta(p)}。仵作验完，在卷宗上写下死因“相思”，`
-      + `执法堂不知该定个什么罪，只好把案子归进“风月”一栏，至今无人结案。你欠孙管事的那期租子，到底也没还上。` };
+      + `执法堂不知该定个什么罪，只好把案子归进“风月”一栏，至今无人结案。你欠${landlordName()}的那期租子，到底也没还上。` };
 }
 
 // ───────────── 执法堂换人 ─────────────

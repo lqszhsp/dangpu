@@ -202,7 +202,6 @@ function deliberateOne(b, D, depth = 0) {
       || (b.made.includes('~purify') && Object.values(S.items).some(it => it.id === 'water' && it.purity > water0))
       || (b.made.includes('~gold_gu') && Object.values(S.items).some(it => it.id === 'gu' && it.growth >= 100))
       || (b.made.includes('~wandu_gu') && Object.values(S.items).some(it => it.id === 'gu' && guStage(it) >= 2))
-      || (b.made.includes('~love_gu') && Object.values(S.items).some(it => it.id === 'gu' && it.love))
       || (b.made.includes('~dress') && Object.values(S.items).some(it => it.forged && !it.fake))) {
       // 产物挪回库房，给下一步腾地方
       outs().forEach(it => { if (!b.machine || !live || ITEMS[it.id].cat !== 'chong') autoPlace(it, ['store', 'floor']); });

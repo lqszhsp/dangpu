@@ -66,7 +66,6 @@ function feasibility() {
             || (b.made.includes('~purify') && Object.values(S.items).some(it => it.id === 'water' && it.purity > water0))
             || (b.made.includes('~gold_gu') && Object.values(S.items).some(it => it.id === 'gu' && it.growth >= 100))
             || (b.made.includes('~wandu_gu') && Object.values(S.items).some(it => it.id === 'gu' && guStage(it) >= 2))
-      || (b.made.includes('~love_gu') && Object.values(S.items).some(it => it.id === 'gu' && it.love))
             || (b.made.includes('~dress') && Object.values(S.items).some(it => it.forged && !it.fake))) return true;
         }
         return false;
