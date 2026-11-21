@@ -106,9 +106,9 @@ def ensure_alpha(im, enclosed=False):
         for p in border:
             if m.getpixel(p) == 255: ImageDraw.floodfill(m, p, 128, thresh=0)
         # 只给人物立绘抠围住的格子：物品图上的灰白斑纹会被误认
-        # 真格子是深浅两种灰；两种“灰”只差一点（模型给了一整片纯黑、纯白底）就不是格子——
-        # 这时再去抠围住的“格子”，会把黑发、深色衣裳当成格子挖成窟窿
-        if enclosed and levels and len(levels) == 2 and levels[1] - levels[0] >= 24: enclosed_checker(m, rgb, levels)
+        # 真格子是两种浅灰（实测差 12–60）；两种“灰”几乎一样（差不到 8，模型给了一整片纯黑、纯白底）就不是格子，
+        # 偏暗的（浅的那格不到 150）更不是——这时再去抠围住的“格子”，会把黑发、深色衣裳当成格子挖成窟窿
+        if enclosed and levels and len(levels) == 2 and levels[1] - levels[0] >= 8 and levels[1] >= 150: enclosed_checker(m, rgb, levels)
         bg = m.point(lambda v: 255 if v == 128 else 0).filter(ImageFilter.MaxFilter(5))
     else:
         # 纯色底：四角泛洪

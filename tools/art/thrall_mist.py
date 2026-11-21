@@ -22,6 +22,15 @@ def add_mist(name):
     xs = sorted(x for y in range(t, t + head_h, 2) for x in range(l, r, 2) if a.getpixel((x, y)) > 200)
     if not xs: xs = [(l + r) // 2]
     x0, x1 = xs[len(xs) // 10], xs[len(xs) * 9 // 10]
+    # 头旁边举着幡、扛着扁担的：最上面这一段不止一个头。按身子的中线挑离它最近的那一团（中间断开 ≥ 12 像素就算两团）
+    mid = sum(x for y in range(t + (b - t) // 3, t + (b - t) // 2, 4) for x in range(l, r, 4) if a.getpixel((x, y)) > 200)
+    cnt = sum(1 for y in range(t + (b - t) // 3, t + (b - t) // 2, 4) for x in range(l, r, 4) if a.getpixel((x, y)) > 200)
+    body = mid / cnt if cnt else (l + r) / 2
+    runs, start = [], xs[0]
+    for p0, p1 in zip(xs, xs[1:] + [10 ** 9]):
+        if p1 - p0 >= 12: runs.append((start, p0)); start = p1
+    if len(runs) > 1:
+        x0, x1 = min(runs, key=lambda rr: 0 if rr[0] <= body <= rr[1] else min(abs(rr[0] - body), abs(rr[1] - body)))
     cx, cy, rad = (x0 + x1) // 2, t + head_h // 2, max(60, (x1 - x0) * 0.9)
     rng = random.Random(name)
     mist = Image.new('L', (w, h), 0)
