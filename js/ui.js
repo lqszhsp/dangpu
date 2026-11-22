@@ -242,15 +242,15 @@ function composeLine(c) {
     const vars = { item: goods.map(itemName).join('、'), ask: goods.reduce((s, g) => s + g.ask, 0) };
     let line = goods.some(g => ITEMS[g.id].contra) ? voice(f, 'contra', vars) : lineOf(c, 'sell', vars);
     if (goods.some(g => g.stolen)) line += voice(f, 'stolen');
-    if (c.wantId) line += `顺便……有${ITEMS[c.wantId].name}的话，我也要。`;
+    if (c.wantId) line += `顺便……有${ITEMS[c.wantId].name}的话，我也要${needCn(c.need || 1)}${needUnit(c)}。`;
     return peek + greeting(c) + line;
   }
   if (c.noble) return nobleLine(c);
-  if (c.craving) return gx(personOf(c), voice(f, 'crave'));
+  if (c.craving) return gx(personOf(c), voice(f, 'crave') + needLine(c));
   if (c.wishId) return greeting(c) + voice(f, c.wishSeen ? 'wish' : 'wishAsk', { item: ITEMS[c.wishId].name });
   if (c.forGift) return greeting(c) + `（压低声音）${addr}，在下要备一份${CATS[c.wantCat]}送人。不必是真的——只要做得够像，收礼的人看不出来便好。价钱嘛，自然不能按真货算。`;
   if (c.wantFake) return greeting(c) + `（压低声音）${addr}，上回那种“好东西”还有么？就是看着像真的那种。`;
-  if (c.kind === 'buy') return peek + greeting(c) + lineOf(c, c.attracted ? 'attracted' : 'buy', { cat: c.wantId ? ITEMS[c.wantId].name : CATS[c.wantCat] }) + brought;
+  if (c.kind === 'buy') return peek + greeting(c) + lineOf(c, c.attracted ? 'attracted' : 'buy', { cat: c.wantId ? ITEMS[c.wantId].name : CATS[c.wantCat] }) + needLine(c) + brought;
   return greeting(c) + voice(f, 'appraise', { item: itemName(it), fee: c.fee });
 }
 
@@ -516,6 +516,15 @@ function tabClique() {
     ${pg.items.join('') || '<p class="muted small">还没有哪一系肯给你机会。好感到 10 才有往来。</p>'}${pg.nav}</div>`;
 }
 
+// 货盘上的货凑得怎样：要的凑了几件、急需的药、顺带的、多出来压价的
+function trayTally(c, d) {
+  const n = r => d.give.filter(g => g.role === r).length, u = needUnit(c), extra = n('extra');
+  if (!c.wantCat) return `货盘上${ta(personOf(c))}收 ${d.give.length} 件`;
+  return `货盘上凑了 <b class="${d.got >= d.need ? 'good' : ''}">${Math.min(d.got, d.need)}/${d.need}</b>`
+    + (n('cure') ? `，急需的药 ${n('cure')} ${u}` : '') + (n('side') ? `，顺带 ${n('side')} 样` : '')
+    + (extra ? `，<span class="bad">多出 ${extra} 件只肯出五成</span>` : '');
+}
+
 // 交易盘：他的货在柜台上，你的货摆在货盘上，一并谈价
 function tradePanel(c) {
   const it = customerItem(), d = dealOf(c), goods = goodsOf();
@@ -523,7 +532,7 @@ function tradePanel(c) {
   const taking = it && (c.take || []).includes(it.uid);
   const flawSeen = it && isDressed(it) && (it.seen || 0) >= it.grade;
   const s = sel && S.items[sel], canTray = s && HELD(s) && s.pos.g !== 'tray';
-  let info = c.wantCat ? `<p>${c.attracted ? '冲着陈列柜里的' : '想要'} <b class="cat">${esc(wantText(c))}</b>${c.need > 1 ? ` ${c.need} 件` : ''}${c.noble ? '' : '，别的对口的也肯顺带捎上两样（只出六五成）；多出来的只肯出五成'}，预算约 ${stoneTxt(`${lo}–${hi}`)} ${patienceHTML(c)}</p>`
+  let info = c.wantCat ? `<p>${c.attracted ? '冲着陈列柜里的' : '想要'} <b class="cat">${esc(wantText(c))}</b> <b class="need">要 ${needText(c)}</b>${c.noble ? '' : '，别的对口的也肯顺带捎上两样（只出六五成）；多出来的只肯出五成'}，预算约 ${stoneTxt(`${lo}–${hi}`)} ${patienceHTML(c)}</p>`
     : `<p>只想出手，不买什么。${patienceHTML(c)}</p>`;
   if (c.noble) info += `<p class="small laced-txt">权贵眼高于顶：嫌便宜货寒碜，眼力却不怎么样；捧得越高，看得越马虎。${c.flatter ? `（已捧了 ${c.flatter} 回）` : ''}</p>`;
   if (it) {
@@ -531,7 +540,7 @@ function tradePanel(c) {
       ${ITEMS[it.id].appraise && !it.told ? '<span class="muted">· 可用照妖镜鉴定，当面指为赝品压价</span>' : ''}</p>`;
     if (dressable(it) && it.seen != null) info += `<p class="small ${flawSeen ? 'bad' : 'muted'}">${flawSeen ? `验出来了：以次充好，表面${it.sq}，实际只有${it.q}。` : `以你的眼力（${LENS_NAMES[it.seen]}）看不出毛病。`}</p>`;
   }
-  if (d.give.length || d.take.length || d.reject.length) info += `<p class="small muted">货盘上${ta(personOf(c))}要 ${d.give.length} 件（心理价约 ${Math.round(d.V)}）${d.reject.length ? `，<span class="bad">不要${d.reject.map(itemName).join('、')}</span>` : ''}；你要收 ${d.take.length} 件（开价 ${d.A}）。</p>`;
+  if (d.give.length || d.take.length || d.reject.length) info += `<p class="small muted">${trayTally(c, d)}（心理价约 ${Math.round(d.V)}）${d.reject.length ? `，<span class="bad">不要${d.reject.map(itemName).join('、')}</span>` : ''}${d.take.length ? `；你要收 ${d.take.length} 件（开价 ${d.A}）` : ''}。</p>`;
   const mid = `<div class="trade">${goods.length ? gridHTML('counter', `${ta(personOf(c))}的货 · 点选`) : ''}${gridHTML('tray', '你的货盘 · 拖货上来')}</div>${info}`;
   const acts = `${it && ITEMS[it.id].appraise && !it.told ? `<button class="btn small" data-act="appraise-counter">${icon('ic_appraise')}照妖镜</button>` : ''}
     ${it && (dressable(it) || isLaceable(it.id)) && it.seen == null ? `<button class="btn small" data-act="inspect-item">${icon('ic_appraise')}验货</button>` : ''}
@@ -1014,7 +1023,7 @@ function openDeal() {
           ${d.reject.length ? `<p class="muted small">${TA}不要：${d.reject.map(itemName).join('、')}</p>` : ''}</div>
         <div class="d-col"><h4>收下${TA}的</h4>${(tp = pager(d.take, 4, 'deal-take')).items.map(t => `<div class="d-row">${itemHTML(Object.assign({}, t.it, { pos: null }), 'preview mini')}<span>${esc(itemName(t.it))}</span>
           <span class="muted">开价 ${t.a} · 你估 ${Math.round(knownValue(t.it) * priceMul(t.it.id))}</span></div>`).join('') || '<p class="muted small">不收他的货。</p>'}${tp.nav}</div></div>
-      ${d.give.length ? `<div class="tip-row"><span>${TA}要的件数</span><span>${d.need} 件，货盘上凑了 ${Math.min(d.got, d.need)} 件${d.give.some(g => g.role === 'extra') ? '<span class="muted">；多出的只肯出五成</span>' : ''}</span></div>` : ''}
+      ${c.wantCat ? `<div class="tip-row"><span>${TA}要 ${needText(c)}</span><span>${trayTally(c, d)}</span></div>` : ''}
       ${compliant(c) ? `<div class="tip-row laced-txt"><span>${TA}由你摆布</span><span>开什么价都认，只是掏不出钱袋里没有的</span></div>` : ''}
       <div class="tip-row"><span>${TA}心里的公道差价</span><span>${netTxt(d.N0)}</span></div>
       ${d.give.length ? `<div class="tip-row"><span>对方预算</span><span>约 ${Math.round(c.budget * 0.85 / 10) * 10}–${Math.round(c.budget * 1.15 / 10) * 10}${d.N0 > c.budget * PURSE_OFFER ? '<span class="bad">，掏不出公道价</span>' : ''}</span></div>` : ''}

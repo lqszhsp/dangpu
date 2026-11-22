@@ -63,6 +63,18 @@ function wantNeed(c, p) {
   return +weighted(NEED_ODDS[k && k.ids.includes(c.wantId) ? 'craft' : isConsumable(c.wantId) ? 'consume' : 'gear']);
 }
 
+// 要的件数怎么说：用了就没的论份，经用的论件
+const needUnit = c => c.craving || (c.wantId && isConsumable(c.wantId)) ? '份' : '件';
+// 说出口的件数：两份，不说二份
+const needCn = n => n === 2 ? '两' : cn(n);
+const needText = c => `${c.need || 1} ${needUnit(c)}`;
+// 他开口说要几件；心心念念的、冲着柜里那件来的、送礼的、权贵，一听就是一件，不必多说
+function needLine(c) {
+  if (!c.wantCat || c.noble || c.attracted || c.wishId || c.wantFake) return '';
+  const n = c.need || 1;
+  return voice(c.faction, n > 1 ? 'qty' : 'qtyOne', { n: needCn(n) + needUnit(c) });
+}
+
 // 1 为正中下怀；SIDE_BUY 为顺带捎上；0 为不要
 function wantMatch(c, it) {
   const d = ITEMS[it.id];
