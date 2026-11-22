@@ -64,8 +64,8 @@ function itemTags(it) {
   if (it.mark) tags.push(['stolen', markVisible(it) ? `原主烙印 · ${cn(it.mark.str)}重` : '似有残存神识，看不真切']);
   if (it.sealed) tags.push(['laced', `贴了正派封印 · 做工${GRADE_NAMES[it.grade]}`]);
   if (it.bottled) tags.push(['real', '玉净瓶装']);
-  if (restoreOf(it)) { const r = restoreOf(it); tags.push(['', `可服用：${r[0] ? `体力+${r[0]} ` : ''}${r[1] ? `精神+${r[1]}` : ''}`]); }
-  const cures = Object.entries(CONDS).filter(([, C]) => C.cure.includes(it.id)).map(([, C]) => C.name);
+  if (restoreOf(seemOf(it))) { const r = restoreOf(seemOf(it)); tags.push(['', `可服用：${r[0] ? `体力+${r[0]} ` : ''}${r[1] ? `精神+${r[1]}` : ''}`]); }
+  const cures = Object.entries(CONDS).filter(([, C]) => C.cure.includes(bodyOf(seemOf(it)).id)).map(([, C]) => C.name);
   if (cures.length && it.id !== 'water') tags.push(['', `治${cures.join('、')}：${CURE_TEXT[cureGrades(it)]}`]);
   if (it.forged) tags.push(['laced', `你做的${it.fake ? '赝品' : '以次充好'} · ${GRADE_NAMES[it.grade]}`]);
   else if (isDressed(it) && knownFlaw(it)) tags.push(['fake', `以次充好 · 做工${GRADE_NAMES[it.grade]}`]);
@@ -449,15 +449,18 @@ function pleaPanel(c) {
 }
 
 // 修为：服炼、破境、杀伐的规矩
+// 面上看得出的药力：看不出毛病的赝品、以次充好的，照它装出来的样子算；吃下去才见真章（见 bodyOf、potency）
+const seemOf = it => knownFlaw(it) || !(it.fake || isDressed(it)) ? it : Object.assign({}, it, { fake: false, q: it.sq != null ? it.sq : it.q });
+
 function openDao() {
   const r = realm(), why = canBreak();
-  const goods = Object.values(S.items).filter(it => HELD(it) && cultXp(it)).sort((a, b) => cultXp(b) - cultXp(a));
+  const goods = Object.values(S.items).filter(it => HELD(it) && cultXp(seemOf(it))).sort((a, b) => cultXp(seemOf(b)) - cultXp(seemOf(a)));
   openModal(() => { const pg = pager(goods.filter(it => S.items[it.uid]), 6, 'dao'); modalHTML(`<h3>${icon('ic_dao')}修为 · ${realmName()}</h3>
     <p>${r.need ? `修为 <b>${S.cult.xp}</b> / ${r.need}，破入${realmName(S.cult.lv + 1)}还要一件<b>${ITEMS[r.key].name}</b>作钥匙。成算约 ${pct(breakOdds())}${S.retreat ? '（今夜闭关，加一成五）' : '（夜里闭关时冲关更稳）'}。` : '你已至此界尽头。'}</p>
     <p class="small muted">境界越高，势力越大、夜里恢复越多、说谎越不易被识破。修为高过对方，就能在柜台上“关门打狗”或夜里截杀，夺他的货、灵石、尸身与魂魄；也能以修为威压、种魂印叫人听话。
       吞魂饮血也能涨修为，只是越炼越不像人。</p>
     <div class="gift-list">${pg.items.map(it => `<div class="gift-row" data-act="cultivate" data-uid="${it.uid}">${itemHTML(Object.assign({}, it, { pos: null }), 'preview mini')}
-      <span>${esc(itemName(it))}${it.id === r.key ? '<em class="laced-txt">（破境之物）</em>' : ''}</span><span class="good">修为 +${cultXp(it)}</span>${(CULT_XP[it.id] || [])[1] ? '<span class="bad small">损阴德</span>' : ''}</div>`).join('') || '<p class="muted">手头没有能服炼的东西：丹药、魂魄、妖丹、精血、琼浆玉露……</p>'}</div>${pg.nav}
+      <span>${esc(itemName(it))}${it.id === r.key ? '<em class="laced-txt">（破境之物）</em>' : ''}</span><span class="good">修为 +${cultXp(seemOf(it))}</span>${(CULT_XP[it.id] || [])[1] ? '<span class="bad small">损阴德</span>' : ''}</div>`).join('') || '<p class="muted">手头没有能服炼的东西：丹药、魂魄、妖丹、精血、琼浆玉露……</p>'}</div>${pg.nav}
     <div class="h-btns"><button class="btn danger" data-act="breakthrough" ${why ? `disabled title="${esc(why)}"` : ''}>冲关破境（${costText('breakthrough')}）</button>
       <button class="btn primary" data-act="modal-close">合上</button></div>`, 'm-gift'); });
 }
@@ -838,8 +841,9 @@ function selActions(s, inCard = false) {
   if (ITEMS[s.id].appraise) out.push(`<button class="btn tiny" data-act="appraise-own">${icon('ic_appraise')}鉴定</button>`);
   if (canLace(s) && additives().length) out.push(`<button class="btn tiny" data-act="lace">${icon('ic_lace')}加料</button>`);
   if (ITEMS[s.id].book) out.push('<button class="btn tiny" data-act="read-book">研读</button>');
-  if (restoreOf(s) || cureBy(s)) out.push(`<button class="btn tiny" data-act="consume">服用${cureBy(s) ? `（治${CONDS[cureBy(s)].name}）` : ''}</button>`);
-  if (cultXp(s)) out.push(`<button class="btn tiny" data-act="cultivate" data-uid="${s.uid}">服炼 +${cultXp(s)}</button>`);
+  const seem = seemOf(s);
+  if (restoreOf(seem) || cureBy(seem)) out.push(`<button class="btn tiny" data-act="consume">服用${cureBy(seem) ? `（治${CONDS[cureBy(seem)].name}）` : ''}</button>`);
+  if (cultXp(seem)) out.push(`<button class="btn tiny" data-act="cultivate" data-uid="${s.uid}">服炼 +${cultXp(seem)}</button>`);
   if (canBottle(s)) out.push('<button class="btn tiny" data-act="bottle">装瓶</button>');
   if (s.mark && markVisible(s)) out.push(`<button class="btn tiny" data-act="erase" ${canErase(s) ? '' : `disabled title="须抹印术${cn(s.mark.str)}重"`}>抹印（${costText('erase', s.mark.str)}）</button>`);
   if (canSeal(s)) out.push('<button class="btn tiny" data-act="seal">贴封印</button>');
@@ -1851,7 +1855,7 @@ const HANDLERS = {
   dao: () => openDao(),
   cultivate: el => {
     const it = S.items[el.dataset.uid];
-    if (it.id === realm().key && !confirm(`${itemName(it)}是你破境的钥匙，真要直接服炼？`)) return;
+    if (it.id === realm().key && !(flawedKey(it) && knownFlaw(it)) && !confirm(`${itemName(it)}是你破境的钥匙，真要直接服炼？`)) return;
     const err = cultivate(it); if (err) toast(err, 'bad'); else if (!S.items[sel]) sel = null; if (modal) openDao(); renderAll(); },
   breakthrough: () => { const r = breakthrough(); if (r.err) { toast(r.err, 'bad'); return; } closeModal(); showIntel({ text: r.text, cls: r.ok ? 'good' : 'bad' }); renderAll(); },
   kill: () => {

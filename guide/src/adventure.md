@@ -22,6 +22,7 @@
 
 - 标着“损善名”的是邪物，服一次善名掉一点。
 - 冲关的成算：修为刚够时约 {{ pct((fresh(), S.cult.xp = REALMS[1].need, breakOdds())) }}，闭关时更高，修为攒得越多越高；带伤中毒都会拖累。冲关失败修为折损，还会[[cond:deviation]]。{{! (() => { fresh(); S.cult.xp = REALMS[1].need; const a = breakOdds(); S.retreat = true; const b = breakOdds(); S.retreat = false; addCond('me', 'injured', 1); return b > a && breakOdds() < a; })() }}
+- **破境之物要真、要足**：赝品、以次充好的服得下去（赝品的药力只有里头裹着的那味，假筑基丹吃出来是回气丹），可冲不开关。看出毛病的冲不了；看不出的，冲关时白白耗去，关没冲开，修为倒不折损。手里有真的，冲关先用真的。{{! (() => { fresh(); S.cult.xp = REALMS[1].need; const f = giveItem('pill_found', { fake: true }); const xp = cultXp(f) > 0 && cultXp(f) < cultXp(makeItem('pill_found')); const r0 = Math.random; Math.random = () => 0.001; const r = breakthrough(); Math.random = r0; const failed = !r.ok && S.cult.lv === 1 && S.cult.xp === REALMS[1].need && !condSev('me', 'deviation'); giveItem('pill_found', { fake: true, revealed: true }); const blocked = !!canBreak(); fresh(); S.cult.lv = 2; S.cult.xp = REALMS[2].need; const d = giveItem('blood_infant', { q: 30 }); dressUp(d, 2); Math.random = () => 0.001; const r2 = breakthrough(); Math.random = r0; return xp && failed && blocked && !r2.ok && S.cult.lv === 2; })() }}
 - 境界高过对方，才能对人动手（关门打狗、夜里截杀）。{{! (() => { fresh(); const p = Object.values(S.people).find(p => killable(p) && npcLevel(p) >= S.cult.lv); return !p || !!canKill(p); })() }}
 
 ## 擂台

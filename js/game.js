@@ -179,6 +179,13 @@ function knownFlaw(it) {
   return isDressed(it) && (it.seen || 0) >= it.grade;
 }
 
+// 赝品吃下去是什么：照样仿造的头一味料（假筑基丹里裹着的是回气丹）；真货、以次充好的就是它自己（药力看真实品质）
+const bodyOf = it => it.fake && COUNTERFEITS[it.id] ? { id: COUNTERFEITS[it.id].use[0][0], q: it.q != null ? it.q : 50 } : it;
+// 吃出来是假的：药力只有里头那味的份
+function tasteFake(it) {
+  if (it.fake && !knownFlaw(it) && bodyOf(it) !== it) log(`药力只有${ITEMS[bodyOf(it).id].name}那点——这${ITEMS[it.id].name}是假的。`, 'loss');
+}
+
 // 按某个品质估值
 function valueAtQ(it, q) { return Math.round(ITEMS[it.id].base * (0.6 + q / 125)); }
 

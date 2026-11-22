@@ -200,7 +200,7 @@ const condRegenPenalty = () => condSev('me', 'injured') * CONDS.injured.regen;
 // 服下能治状态的东西
 function cureBy(it, who = 'me') {
   for (const [k, C] of Object.entries(CONDS)) {
-    if (!condSev(who, k) || !C.cure.includes(it.id)) continue;
+    if (!condSev(who, k) || !C.cure.includes(bodyOf(it).id)) continue;
     if (k === 'deviation' && it.id === 'water' && it.purity < 99) continue;
     return k;
   }

@@ -24,6 +24,7 @@ const RESTORE = {
   incense: [0, 40],
 };
 function restoreOf(it) {
+  it = bodyOf(it);
   if (it.id === 'water') return it.purity >= 99.9 ? [25, 25] : it.purity >= 99 ? [0, 15] : null;
   return RESTORE[it.id] && (RESTORE[it.id][0] || RESTORE[it.id][1]) ? RESTORE[it.id].map(v => Math.round(v * potency(it))) : null;
 }
@@ -64,7 +65,7 @@ function costText(key, mult = 1) {
 function consume(it) {
   const cure = cureBy(it);
   if (cure) {
-    const left = easeCond('me', cure, cureGrades(it));
+    const left = easeCond('me', cure, cureGrades(bodyOf(it)));
     log(`服下${itemName(it)}，${left ? `${CONDS[cure].name}减轻到${CONDS[cure].grade[left - 1]}——药力不够，没能除根` : `${CONDS[cure].name}好了`}。`, 'gain');
   }
   // 吃下别人掺过料的货：自己吃这个亏（药效先到，料后发作）；自己掺的料、蛊，自己吃了不算数
@@ -76,11 +77,12 @@ function consume(it) {
     else { drain(0, 30); log(`${itemName(it)}里掺了忘忧散，你飘飘然了半晌，精神 -30。`, 'loss'); }
   }
   const r = restoreOf(it);
-  if (!r) { if (cure) { destroyItem(it); return null; } return '这东西补不了气力。'; }
+  if (!r) { if (cure) { tasteFake(it); destroyItem(it); return null; } return '这东西补不了气力。'; }
   const before = { ...S.vit };
   S.vit.st = Math.min(VIT_MAX, S.vit.st + r[0]);
   S.vit.sp = Math.min(VIT_MAX, S.vit.sp + r[1]);
   log(`服下${itemName(it)}，体力 +${S.vit.st - before.st}，精神 +${S.vit.sp - before.sp}。`, 'gain');
+  tasteFake(it);
   destroyItem(it);
   return null;
 }

@@ -117,7 +117,8 @@ const isLaceable = id => LACEABLE.includes(id) || (LACE_CATS.includes(ITEMS[id].
   && !!(RESTORE[id] || CULT_XP[id] || id === 'water' || Object.values(CONDS).some(c => c.cure.includes(id)))
   && !(CULT_XP[id] && CULT_XP[id][1] && ITEMS[id].cat !== 'dan'));
 
-const canLace = it => isLaceable(it.id) && !it.laced && !it.fake;
+// 赝品、以次充好的照样掺得进去：看的是这一样东西能不能吃，不看真假
+const canLace = it => isLaceable(it.id) && !it.laced;
 
 // 市面上偶尔混着别人掺过料的货：成瘾的多，下毒、种蛊的少；chance 是这件货被掺过的机会
 function marketLace(id, extra, chance) {

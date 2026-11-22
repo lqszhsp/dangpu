@@ -22,7 +22,9 @@ function initDao() { S.cult = S.cult || { lv: 1, xp: 0 }; }
 const realm = (lv = S.cult.lv) => REALMS[lv];
 const realmName = (lv = S.cult.lv) => REALMS[lv].name;
 
+// 赝品照样服得下，炼出的是里头那味的修为（见 bodyOf）
 function cultXp(it) {
+  it = bodyOf(it);
   if (it.id === 'water') return it.purity >= 99.9 ? 20 : 0;
   const e = CULT_XP[it.id];
   if (!e || it.fake) return 0;
@@ -38,8 +40,9 @@ function cultivate(it) {
   const err = exert('cultivate');
   if (err) return err;
   S.cult.xp += xp;
-  if ((CULT_XP[it.id] || [])[1]) karmaShift(-1);
+  if ((CULT_XP[bodyOf(it).id] || [])[1]) karmaShift(-1);
   log(`你服炼${itemName(it)}，修为 +${xp}（${S.cult.xp}/${realm().need || '—'}）。`, 'gain');
+  tasteFake(it);
   destroyItem(it);
   return null;
 }
@@ -50,12 +53,17 @@ function breakOdds() {
   return clamp(0.55 + (S.retreat ? 0.15 : 0) + Math.min(0.2, (S.cult.xp - r.need) / r.need * 0.4) - hurt, 0.05, 0.95);
 }
 
+// 破境之物要真、要足：赝品、以次充好的服得下去，冲不开关
+const flawedKey = it => !!it.fake || isDressed(it);
+// 冲关用哪一件：先挑真的；没有真的，就是你看不出毛病、当成真的那件
+const breakKey = (r = realm()) => r.key && (ownItem(it => it.id === r.key && !flawedKey(it)) || ownItem(it => it.id === r.key && !knownFlaw(it)));
+
 function canBreak() {
   const r = realm();
   if (!r.need) return '已至此界尽头';
   if (S.cult.xp < r.need) return `修为未满（${S.cult.xp}/${r.need}）`;
   if (condSev('me', 'deviation')) return '走火入魔未愈，冲不了关';
-  if (!owns(r.key)) return `缺破境之物：${ITEMS[r.key].name}`;
+  if (!breakKey(r)) { const bad = owns(r.key); return bad ? `手里的${ITEMS[r.key].name}是${bad.fake ? '赝品' : '以次充好的'}，冲不开关` : `缺破境之物：${ITEMS[r.key].name}`; }
   return null;
 }
 
@@ -65,8 +73,13 @@ function breakthrough() {
   if (why) return { err: why };
   const err = exert('breakthrough');
   if (err) return { err };
-  const r = realm();
-  takeItem(owns(r.key));
+  const r = realm(), key = breakKey(r);
+  takeItem(key);
+  // 赝品、以次充好的：药力撑不到关口，白白耗去一件，修为倒不折损
+  if (flawedKey(key)) {
+    log(`你服下${ITEMS[r.key].name}冲关，药力撑不到关口就散了——那是${key.fake ? '一件赝品' : '以次充好的货'}。`, 'loss');
+    return { ok: false, text: `药力虚浮，冲到关口就散了，关没冲开。你细细一品才明白：这${ITEMS[r.key].name}是${key.fake ? '假的' : '以次充好的，药性早被作伪伤了'}。` };
+  }
   if (Math.random() < breakOdds()) {
     S.cult.xp -= r.need;
     S.cult.lv++;

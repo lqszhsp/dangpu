@@ -64,6 +64,10 @@
 
 {{! Object.keys(ITEMS).filter(id => restoreOf(makeItem(id, { q: 50, purity: 99.95 })) || CULT_XP[id] || Object.values(CONDS).some(c => c.cure.includes(id))).every(id => isLaceable(id) || ['dan', 'yin', 'zhi'].indexOf(ITEMS[id].cat) < 0 || JUNK.includes(id) || ITEMS[id].additive) }}
 
+{{! Object.keys(ITEMS).filter(isLaceable).every(id => { const it = makeItem(id, { q: 50, purity: 99.95 }); return !ITEMS[id].additive && ITEMS[id].cat !== 'gu' && (restoreOf(it) || cultXp(it) || id === 'water' || Object.values(CONDS).some(c => c.cure.includes(id))); }) }}
+
+掺得进料的只有能服用的东西；拿来掺的料本身——尸毒、蛛毒、忘忧散、蛊虫、情蛊这些——掺不了别的料。赝品、以次充好的照样掺得进去：看的是这一样东西能不能吃，不看真假。{{! (() => { fresh(); const f = giveItem('pill_found', { fake: true }), d = giveItem('pill_qi', { q: 30 }); dressUp(d, 1); return canLace(f) && canLace(d) && ['corpse_poison', 'spider_venom', 'wangyou', 'gu', 'love_gu', 'gu_venom'].every(id => !isLaceable(id)); })() }}
+
 {{ T.laces() }}
 
 对方越精明、越不信你，越可能识破；识破了就是一桩事端，苦主会上门讨说法。

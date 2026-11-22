@@ -103,7 +103,7 @@ function bhvActMissing(b, held) {
       : [!techLv('soul') ? '功法·炼魂1重' : !owns('soul_pearl') ? '材料·炼魂珠' : '对象·修为低于你的人'];
     case 'plantgu': return !guLv() ? ['开局·养蛊人'] : !plantableGu().some(g => !guLaceBlock(g)) ? ['材料·驾驭得住的蛊']
       : held.some(canLace) ? [] : ['材料·能掺料的吃食'];
-    case 'break': return !canBreak() && owns(realm().key) ? [] : [canBreak() || `材料·${realm().key ? ITEMS[realm().key].name : '破境之物'}`];
+    case 'break': return !canBreak() && breakKey() ? [] : [canBreak() || `材料·${realm().key ? ITEMS[realm().key].name : '破境之物'}`];
   }
   return ['？'];
 }
