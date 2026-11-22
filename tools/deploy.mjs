@@ -5,8 +5,11 @@
 //   node tools/deploy.mjs status          线上是哪个版本、main 比它多了哪些提交、线上有没有仓库里没有的改动
 //   node tools/deploy.mjs list            服务器上留着的版本
 //   node tools/deploy.mjs rollback [版本]  切回上一个（或指定的）版本
+// 一个版本三处一样：本地 main、origin（服务器上的裸仓库）、GitHub（lqszhsp/dangpu，main 同时是 GitHub Pages 试玩页）是同一串提交。
+// 上线就是把 main 推到 origin 与 GitHub，再把它传到线上；提交一律用 GitHub 的身份（仓库的 user.name / user.email 已设好）
 // 防呆：
-//   - 只上线 main，且 main 必须和 origin 对得上（落后就停，领先就先推上去）；
+//   - 只上线 main，且 main 必须包含 origin 与 GitHub 上的全部提交（落后或分叉就停，领先就先推上去）；
+//   - 要推的新提交，作者、提交者都得是 GitHub 身份，不然停下（换身份就成了另一串提交，两边又分叉）；
 //   - 用 git archive 打包：没提交的改动、别的分支上的改动都传不上去；
 //   - 线上若有文件的内容在仓库历史里从没出现过（有人绕开本工具直接改了线上），停下来列出——先合进 main 再上线；
 //   - 换软链前查新版本：首页引用的文件都在、谁都读得了，不满足就不换；
@@ -23,6 +26,8 @@ const BASE = process.env.DANGPU_BASE || '/srv/dangpu';
 const DOMAIN = process.env.DANGPU_DOMAIN || 'dangpu.photohaha.net';
 const SHIP = ['index.html', 'css', 'js', 'assets'];   // 只传游戏要用的；tools、art、guide、说明文档不上线
 const KEEP = 8;                                        // 服务器上留几个版本（当前与上一个总会留着）
+const REMOTES = ['origin', 'github'];                  // main 要推到的地方：服务器上的裸仓库、GitHub
+const IDENT = 'lqszhsp <91576981+lqszhsp@users.noreply.github.com>';   // 提交身份，与 GitHub 上的历史一致
 
 const args = process.argv.slice(2);
 const cmd = args.find(a => !a.startsWith('--')) || 'deploy';
@@ -83,16 +88,25 @@ const brief = (list, n = 12) => list.slice(0, n).join('、') + (list.length > n 
 
 // ───────────── 本地 main ─────────────
 
+// 每个远端的 main 都得在本地 main 的历史里；本地领先的，上线时先推上去（GitHub 很慢时推送要等一会儿）
 function checkMain() {
-  run('git', ['fetch', '-q', 'origin'], { ok: true });
-  const rev = git('rev-parse', 'main');
-  const remote = run('git', ['rev-parse', '-q', '--verify', 'origin/main'], { ok: true }).stdout.trim();
-  if (remote && remote !== rev) {
+  const rev = git('rev-parse', 'main'), ahead = [];
+  for (const r of REMOTES) {
+    if (run('git', ['remote', 'get-url', r], { ok: true }).status !== 0) die(`没有 ${r} 远端：git remote add github git@github.com:lqszhsp/dangpu.git`);
+    // 不顺手 gc、不写提交图：GitHub 那头慢，fetch 本身只要几秒
+    if (run('git', ['fetch', '-q', '--no-auto-gc', '--no-write-commit-graph', r, 'main'], { ok: true }).status !== 0) die(`取不到 ${r} 的 main`);
+    const remote = run('git', ['rev-parse', '-q', '--verify', `${r}/main`], { ok: true }).stdout.trim();
+    if (!remote || remote === rev) continue;
     if (run('git', ['merge-base', '--is-ancestor', remote, rev], { ok: true }).status !== 0)
-      die(`origin 上的 main（${remote.slice(0, 7)}）有本地 main 没有的提交：先 git pull 合进来再上线`);
-    if (cmd === 'deploy' && flag('yes')) { console.log(`· 本地 main 领先 origin，先推上去`); git('push', '-q', 'origin', 'main'); }
-    else console.log(`· 本地 main 领先 origin（上线时会先推上去）`);
+      die(`${r} 上的 main（${remote.slice(0, 7)}）有本地 main 没有的提交：先 git pull ${r} main 合进来再上线`);
+    ahead.push(r);
   }
+  if (!ahead.length) return rev;
+  const base = ahead.map(r => `^${r}/main`);
+  const alien = git('log', '--format=%h %an <%ae> / %cn <%ce>', rev, ...base).split('\n').filter(l => l && !l.endsWith(`${IDENT} / ${IDENT}`));
+  if (alien.length) die(`有 ${alien.length} 个要推的提交不是 GitHub 身份（${IDENT}）：\n  ${alien.slice(0, 8).join('\n  ')}\n  先 git config user.name lqszhsp、user.email 91576981+lqszhsp@users.noreply.github.com，再把这几个提交改作者（git rebase --exec 'git commit --amend --no-edit --reset-author'）`);
+  if (cmd === 'deploy' && flag('yes')) for (const r of ahead) { console.log(`· 本地 main 领先 ${r}，先推上去`); git('push', '-q', r, 'main'); }
+  else console.log(`· 本地 main 领先 ${ahead.join('、')}（上线时会先推上去）`);
   return rev;
 }
 
