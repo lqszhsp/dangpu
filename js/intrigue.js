@@ -85,15 +85,22 @@ function personPriceRows(c, it) {
   if (c.wishId === it.id) rows.push(['正是他想要的', '+60%']);
   if (c.noble) rows.push(['权贵的排场', `+${10 + 12 * (c.flatter || 0)}%`]);
   if (c.craving && isAddictive(it)) rows.push(['瘾头上来了', `+${p.addict * 40}%`]);
+  const cure = cureFor(c, it);
+  if (cure) rows.push([`急着${cure === 'injured' ? '治伤' : cure === 'poisoned' ? '解毒' : '镇住心魔'}`, `+${Math.round(CURE_MUL * 100) * cureSev(c, cure)}%`]);
   if (p.aff) rows.push(['好感', `${p.aff > 0 ? '+' : ''}${Math.round(p.aff / 5)}%`]);
   return rows;
 }
+
+const CURE_MUL = 0.2;   // 救命的药：每重伤病多出两成
 
 function personValueMul(c, it) {
   const p = personOf(c);
   let k = 1;
   if (c.wishId === it.id) k *= 1.6;
   if (p && c.craving && isAddictive(it)) k *= 1 + 0.4 * p.addict;
+  // 带着伤、中着毒的人，救命的药肯多出钱：伤病越重出得越多
+  const cure = cureFor(c, it);
+  if (cure) k *= 1 + CURE_MUL * cureSev(c, cure);
   if (c.noble) k *= 1.1 + 0.12 * (c.flatter || 0);
   if (it.id === 'intel') k *= intelMul(c, it);
   return k;

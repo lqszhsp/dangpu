@@ -6,19 +6,40 @@ function initTrade() {
   S.grids.counter = { w: 4, h: 3 };
 }
 
-// 不是他专程来找的，但对他有用的货，只肯出六五成；同样的东西多买一件，就少稀罕一分
+// 不是他专程来找的，但对他有用的货，只肯出六五成，至多捎上两样；他要的件数凑够了、顺带的也捎满了，再多的只按货郎的收价算
 const SIDE_BUY = 0.65;
-const DUP_DECAY = 0.7;
+const SIDE_MAX = 2;
 
 const goodsOf = () => itemsIn('counter');
 const tradeOpen = () => !!S.customer && ['sell', 'buy'].includes(S.customer.kind) && !S.customer.refuse && !S.customer.offended;
 const trayItems = () => itemsIn('tray');
+
+// 能治好他眼下伤病的药：返回治的是哪一样（几天前被下过毒、心里发慌的，也当中毒急着解）
+function cureFor(c, it) {
+  const p = personOf(c);
+  if (!p || !p.conds && !p.poisonedDay) return null;
+  return Object.keys(CONDS).find(k => CONDS[k].cure.includes(it.id)
+    && (condSev(p, k) || (k === 'poisoned' && p.poisonedDay && S.day - p.poisonedDay <= 5))) || null;
+}
+const cureSev = (c, k) => Math.max(1, condSev(personOf(c), k));
+
+// 他要几件：心心念念的、送礼的、冲着柜里那件来的、问药治伤的只要一件；问丹药灵饮符箓灵材这类耗用的，一到三件；瘾越深要得越多
+const BULK_CATS = ['dan', 'yin', 'fu', 'cai', 'yao', 'zhi'];
+const NEED_ODDS = [[1, 55], [2, 30], [3, 15]];
+const wantNeedMax = () => Math.max(...NEED_ODDS.map(([n]) => n));
+function wantNeed(c, p) {
+  if (c.craving) return clamp(1 + Math.floor(((p && p.addict) || 1) / 2), 1, 3);
+  if (c.wishId || c.wantFake || c.attracted || c.noble || !c.wantId || !BULK_CATS.includes(ITEMS[c.wantId].cat)) return 1;
+  if (p && Object.keys(CONDS).some(k => condSev(p, k) && CONDS[k].cure.includes(c.wantId))) return 1;
+  return +weighted(NEED_ODDS);
+}
 
 // 1 为正中下怀；SIDE_BUY 为顺带捎上；0 为不要
 function wantMatch(c, it) {
   const d = ITEMS[it.id];
   if (c.craving && isAddictive(it)) return 1;
   if (c.wishId && it.id === c.wishId) return 1;
+  if (cureFor(c, it)) return 1;
   if (c.wantFake) return isFlawed(it) && knownFlaw(it) && d.cat === c.wantCat && (!c.forGift || (it.grade || 1) >= 2) ? 1 : 0;
   if (c.wantId && it.id === c.wantId) return 1;
   if (!c.wantCat || d.tool || d.book || JUNK.includes(it.id) || (it.id === 'intel' && intelExpired(it))) return 0;
@@ -26,44 +47,105 @@ function wantMatch(c, it) {
   return wants[d.cat] ? SIDE_BUY : 0;
 }
 
-// 这笔交易的全貌：他要的、他不要的、你要收的
+// 这笔交易的全貌：他要的、他不要的、你要收的。
+// 他要的货按值钱的先算：治伤病的药每样一份、他要的东西凑够件数、顺带的捎两样，都按他的心理价；再多的（role 'extra'）只值货郎的收价
 function dealOf(c) {
   const take = (c.take || []).map(uid => S.items[uid]).filter(it => it && it.pos && it.pos.g === 'counter').map(it => ({ it, a: it.ask }));
-  const give = [], reject = [], seen = {};
-  for (const it of trayItems().sort((a, b) => wantMatch(c, b) - wantMatch(c, a))) {
-    let m = wantMatch(c, it);
+  const give = [], reject = [], need = c.need || 1, seen = {}, cured = {};
+  let got = 0, side = 0;
+  const offered = trayItems().map(it => ({ it, m: wantMatch(c, it), cure: cureFor(c, it), b: buyerValuation(c, it) }))
+    .sort((a, b) => b.m - a.m || b.b - a.b);
+  for (const { it, m, cure, b } of offered) {
     if (!m) { reject.push(it); continue; }
-    if (seen[it.id]) m = Math.min(m, SIDE_BUY) * Math.pow(DUP_DECAY, seen[it.id]);
-    seen[it.id] = (seen[it.id] || 0) + 1;
-    give.push({ it, m, v: buyerValuation(c, it) * m });
+    let role = 'extra';
+    if (cure && !cured[cure]) { cured[cure] = true; role = 'cure'; if (it.id === c.wantId) got++; }
+    else if (m === 1 && !cure && got < need) { got++; role = 'want'; }
+    else if (m < 1 && !seen[it.id] && side < SIDE_MAX) { side++; role = 'side'; }
+    seen[it.id] = true;
+    const v = role === 'extra' ? Math.min(brokerPrice(it), b * SIDE_BUY) : b * m;
+    give.push({ it, m, role, v, sev: role === 'cure' ? cureSev(c, cure) : 0 });
   }
   const V = give.reduce((s, g) => s + g.v, 0), A = take.reduce((s, t) => s + t.a, 0);
-  return { give, take, reject, V, A, N0: Math.round(V - A), scale: Math.max(1, V + A) };
+  return { give, take, reject, need, got, V, A, N0: Math.round(V - A), scale: Math.max(1, V + A) };
 }
 
-// 他的盘算：k 为你要价高出公道价的比例。买与卖两头的脾气不同，按份量调和
-function dealOdds(c, d, net) {
-  const w = d.V / d.scale;
-  const k = (net - d.N0) / d.scale * (c.noble ? 0.6 : 1);
-  const tired = (4 - c.patience) * 0.08;
+// 由你摆布的人：中了你的蛊、识海里种着你的魂印、情蛊认了你——你开什么价他都认，只是掏不出钱袋里没有的
+function compliant(c) {
   const p = personOf(c);
-  const urgent = d.take.some(t => t.it.stolen || ITEMS[t.it.id].contra) || c.wanted || (p && p.desperate) ? 0.15 * (1 - w) : 0;
-  if (net > 0 && net > c.budget * 1.02) {
-    const leave = clamp(0.35 + (net / c.budget - 1) + tired, 0, 1);
-    return { accept: 0, counter: 1 - leave, leave };
-  }
-  const accept = clamp(0.84 * w + 0.98 * (1 - w) - (1.6 * w + 1.75 * (1 - w)) * k + urgent, 0.02, 0.98);
-  const leave = clamp(w * (k - 0.1) * 0.9 + (1 - w) * (k - 0.2) * 1.2 + tired - urgent, 0, 0.9) * (1 - accept);
+  return !!(p && (guBound(p) || p.soulBound || p.loveGu));
+}
+
+// 急不急：治眼下伤病的药（伤越重越急）、心心念念的东西、瘾头上来的那一口；按这几样在他要的货里占的份量算，0～1
+function urgency(c, d) {
+  if (!d.V) return 0;
+  const p = personOf(c);
+  const u = g => g.role === 'cure' ? [0.45, 0.65, 0.85][g.sev - 1]
+    : g.role !== 'want' ? 0 : c.wishId === g.it.id ? 0.5 : c.craving && p ? Math.min(0.9, 0.25 + 0.15 * (p.addict || 1)) : 0;
+  return d.give.reduce((s, g) => s + g.v * u(g), 0) / d.V;
+}
+
+// 他对价钱有多在乎（1 为寻常）：权贵不屑计较；急着要药、要东西的，急着脱手赃物违禁品、被通缉、走投无路的，都顾不上讨价
+function calmOf(c, d) {
+  const w = d.V / d.scale, p = personOf(c);
+  const rush = d.take.some(t => t.it.stolen || ITEMS[t.it.id].contra) || c.wanted || (p && p.desperate) ? 0.35 : 0;
+  return (c.noble ? 0.6 : 1) * (1 - 0.5 * urgency(c, d) * w) * (1 - rush * (1 - w));
+}
+
+// 掏得出钱袋几成还不心疼：自动报价、他还价都不过这个数
+const PURSE_EASY = 0.8, PURSE_OFFER = 0.85;
+
+const smooth = t => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
+
+// 他的盘算：k 为你要价高出公道价的比例（按他在乎价钱的程度折过）。处处连续，多一两枚灵石，几成的变化都是一点点地挪
+//   成交：公道价上八成五肯，高出两三成剩一半；他掏钱时，价钱过了钱袋八成越来越舍不得，过了钱袋根本拿不出
+//   拂袖：要价过了他心里那道坎才动气，往上越来越快；耐心越少坎越低、火越大，但公道价上谁也不会翻脸
+function dealOdds(c, d, net) {
+  if (compliant(c)) return net > 0 && net > c.budget ? { accept: 0, counter: 1, leave: 0 } : { accept: 1, counter: 0, leave: 0 };
+  const w = d.V / d.scale, tired = 4 - c.patience;
+  const k = (net - d.N0) / d.scale * calmOf(c, d);
+  let accept = 0.97 / (1 + Math.exp((k - 0.25 - 0.05 * (1 - w)) / 0.125));
+  if (net > 0) accept *= c.budget > 0 ? 1 - smooth((net / c.budget - PURSE_EASY) / (1 - PURSE_EASY)) : 0;
+  const x = Math.max(0, k - Math.max(0.03, 0.12 - 0.03 * tired));
+  const leave = Math.min(0.9, 1 - accept, 2.8 * (1 + 0.15 * tired) * x * x);
   return { accept, counter: Math.max(0, 1 - accept - leave), leave };
+}
+
+const PRESET_SAFE = 0.008, PRESET_BOLD = 0.09;
+
+// 自动报价：让利、公道照他心里的公道价走；小赚是他几乎不会翻脸（拂袖不到百分之一）的最高价，狠宰是十个里约一个甩手走人的价。
+// 他掏钱时都不过他痛快掏得出的数（钱袋八成五）；由你摆布的人不会走，小赚只多要一成，狠宰要到滑杆的顶、钱袋见底为止
+function dealPresets(c, d, [lo, hi]) {
+  const tame = compliant(c);
+  const top = Math.max(lo, Math.min(hi, Math.max(0, Math.round(c.budget * (tame ? 1 : PURSE_OFFER)))));
+  const fit = n => clamp(Math.round(n), lo, top);
+  const fair = fit(d.N0);
+  const upTo = cap => {
+    let a = fair, b = top;
+    if (dealOdds(c, d, b).leave <= cap) return b;
+    while (b - a > 1) { const m = Math.floor((a + b) / 2); if (dealOdds(c, d, m).leave <= cap) a = m; else b = m; }
+    return a;
+  };
+  // 小买卖一枚灵石就差好几成：拂袖离一成近的那一档
+  const near = n => { const o = dealOdds(c, d, n + 1).leave; return n < top && o <= 0.1 && o - PRESET_BOLD < PRESET_BOLD - dealOdds(c, d, n).leave ? n + 1 : n; };
+  return [['让利', fit(d.N0 - d.scale * 0.12)], ['公道', fair],
+    ['小赚', tame ? fit(d.N0 + d.scale * 0.1) : upTo(PRESET_SAFE)], ['狠宰', tame ? top : near(upTo(PRESET_BOLD))]];
+}
+
+// 谈价滑杆的范围：公道价上下拉开；他钱袋比公道价还瘪，就让滑杆够得着他掏得出的数
+function dealRange(c, d) {
+  let lo = Math.round(d.N0 - d.scale * 0.6);
+  const hi = Math.round(d.N0 + d.scale * 0.9);
+  if (c.budget * PURSE_OFFER < lo && lo > 0) lo = Math.max(0, Math.round(c.budget * 0.5));
+  return [lo, hi];
 }
 
 // 一笔买卖件数越多，谈起来越费神
 function dealEffort(d) { return 1 + 0.6 * Math.max(0, d.give.length + d.take.length - 1); }
 
-// 他还的价：在你的价和他心里的价之间折个中
+// 他还的价：从他心里的价朝你的价让一步（越不在乎价钱让得越多）；钱袋不够就报个八成五身家（由你摆布的，全掏出来）
 function dealCounter(c, d, net) {
-  let n = Math.round((net + d.N0) / 2);
-  if (n > 0) n = Math.min(n, c.budget);
+  let n = Math.round(d.N0 + (net - d.N0) * (1 - 0.5 * calmOf(c, d)));
+  if (n > 0) n = Math.min(n, Math.round(c.budget * (compliant(c) ? 1 : PURSE_OFFER)));
   return Math.min(n, net);
 }
 
@@ -93,8 +175,11 @@ function settleDeal(c, d, net) {
   const k = (net - d.N0) / d.scale;
   const prices = d.give.map(g => Math.max(1, Math.round(g.v * (1 + k))));
   const pays = d.take.map(t => Math.max(0, Math.round(t.a * (1 - k))));
-  const drift = net - (prices.reduce((a, b) => a + b, 0) - pays.reduce((a, b) => a + b, 0));
-  if (prices.length) prices[0] = Math.max(1, prices[0] + drift); else if (pays.length) pays[0] = Math.max(0, pays[0] - drift);
+  // 摊剩的零头记在最大的一笔上；那一笔扣不下（卖价至少一枚、收价不能倒贴）的，挪到另一头，总数和谈定的分毫不差
+  let drift = net - (prices.reduce((a, b) => a + b, 0) - pays.reduce((a, b) => a + b, 0));
+  const big = a => a.indexOf(Math.max(...a));
+  if (drift && prices.length) { const i = big(prices), to = Math.max(1, prices[i] + drift); drift -= to - prices[i]; prices[i] = to; }
+  if (drift && pays.length) { const i = big(pays), to = Math.max(0, pays[i] - drift); drift -= pays[i] - to; pays[i] = to; }
   const out = { sold: [], bought: [], income: 0, paid: 0 };
   for (let i = 0; i < d.give.length; i++) {
     const { it, v } = d.give[i], name = itemName(it);

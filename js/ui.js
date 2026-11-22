@@ -523,7 +523,7 @@ function tradePanel(c) {
   const taking = it && (c.take || []).includes(it.uid);
   const flawSeen = it && isDressed(it) && (it.seen || 0) >= it.grade;
   const s = sel && S.items[sel], canTray = s && HELD(s) && s.pos.g !== 'tray';
-  let info = c.wantCat ? `<p>${c.attracted ? '冲着陈列柜里的' : '想要'} <b class="cat">${esc(wantText(c))}</b>${c.noble ? '' : '，别的对口的也肯顺带捎上（只出六五成）'}，预算约 ${stoneTxt(`${lo}–${hi}`)} ${patienceHTML(c)}</p>`
+  let info = c.wantCat ? `<p>${c.attracted ? '冲着陈列柜里的' : '想要'} <b class="cat">${esc(wantText(c))}</b>${c.need > 1 ? ` ${c.need} 件` : ''}${c.noble ? '' : '，别的对口的也肯顺带捎上两样（只出六五成）；多出来的只按货郎价'}，预算约 ${stoneTxt(`${lo}–${hi}`)} ${patienceHTML(c)}</p>`
     : `<p>只想出手，不买什么。${patienceHTML(c)}</p>`;
   if (c.noble) info += `<p class="small laced-txt">权贵眼高于顶：嫌便宜货寒碜，眼力却不怎么样；捧得越高，看得越马虎。${c.flatter ? `（已捧了 ${c.flatter} 回）` : ''}</p>`;
   if (it) {
@@ -851,7 +851,7 @@ function selActions(s, inCard = false) {
   if (knownFlaw(s) && !s.forged && (s.fake ? COUNTERFEITS[s.id] : isDressed(s))) out.push('<button class="btn tiny" data-act="study">拆解研究</button>');
   // 验出了别人掺的料：吃下这个亏、贱卖给货郎、当好货转手骗人（谈价时照常卖）、或者拆开学他的手法
   if (s.laced && s.lacedSeen && s.lacedBy !== 'me' && !laceSkill(s.laced)) out.push(`<button class="btn tiny" data-act="study">尝出手法（学会${LACE[s.laced].name}的掺法）</button>`);
-  out.push(`<button class="btn tiny" data-act="sell-broker">卖给货郎 ${Math.max(1, Math.round(trueValue(s) * (s.laced && s.lacedBy !== 'me' && s.lacedSeen ? 0.1 : 0.4)))}</button>`);
+  out.push(`<button class="btn tiny" data-act="sell-broker">卖给货郎 ${brokerPrice(s)}</button>`);
   if (inCard) out.push('<button class="btn tiny ghost" data-act="trash-sel">丢弃</button>');
   return out.join('');
 }
@@ -967,25 +967,33 @@ function openModal(fn) { modal = fn; fn(); }
 function closeModal() { modal = null; $('#modal-layer').innerHTML = ''; $('#modal-layer').className = ''; }
 function modalHTML(html, cls = '') { $('#modal-layer').className = 'on'; $('#modal-layer').innerHTML = `<div class="modal paper ${cls}">${html}</div>`; }
 
+// 拂袖的机会小的时候差一点都要紧：一成以下精确到千分
+const leavePct = p => p > 0 && p < 0.1 ? `${(Math.floor(p * 1000) / 10).toFixed(1)}%` : pct(p);
+
 function oddsBar(o) {
   return `<div class="odds"><i class="a" style="width:${o.accept * 100}%"></i><i class="c" style="width:${o.counter * 100}%"></i><i class="l" style="width:${o.leave * 100}%"></i></div>
-    <div class="odds-txt"><span class="good">成交 ${pct(o.accept)}</span><span>还价 ${pct(o.counter)}</span><span class="bad">拂袖 ${pct(o.leave)}</span></div>`;
+    <div class="odds-txt"><span class="good">成交 ${pct(o.accept)}</span><span>还价 ${pct(o.counter)}</span><span class="bad">拂袖 ${leavePct(o.leave)}</span></div>`;
 }
+
+// 货盘上每件货在这笔买卖里算什么
+const ROLE_TXT = { cure: '急需', want: '正中下怀', side: '顺带', extra: '多余' };
+const ROLE_CLS = { cure: 'good', want: 'good', side: 'muted', extra: 'bad' };
 
 // 谈价：货盘上的货卖给他、柜台上点中的货收下来，谈一个总价
 function openDeal() {
   const c = S.customer;
   const h = { counter: null, result: null };
   let d = dealOf(c);
-  h.net = Math.round(d.N0 + d.scale * 0.08);
-  const presets = [['让利', -0.12], ['公道', 0], ['小赚', 0.1], ['狠宰', 0.25]];
-  const range = () => [Math.round(d.N0 - d.scale * 0.6), Math.round(d.N0 + d.scale * 0.9)];
+  const range = () => dealRange(c, d);
+  // 滑杆先停在“小赚”：他几乎不会翻脸的最高价
+  const safe = () => dealPresets(c, d, range())[2][1];
+  h.net = safe();
   const TA = ta(personOf(c));
   const netTxt = n => n >= 0 ? `${TA}付你 <b>${n}</b>` : `你付${TA} <b>${-n}</b>`;
   const giveRow = g => {
     const it = g.it, canLie = knownFlaw(it) && !c.wantFake;
     return `<div class="d-row">${itemHTML(Object.assign({}, it, { pos: null }), 'preview mini')}<span>${esc(itemName(it))}
-      <small class="${g.m === 1 ? 'good' : 'muted'}">${g.m === 1 ? '正中下怀' : '顺带'}</small></span><span class="muted">心理价 ${Math.round(g.v)}</span>
+      <small class="${ROLE_CLS[g.role]}">${ROLE_TXT[g.role]}</small></span><span class="muted">${g.role === 'extra' ? '货郎价' : '心理价'} ${Math.round(g.v)}</span>
       ${canLie ? `<span class="d-claim"><label class="${claimOf(c, it) !== 'honest' ? 'on' : ''}" data-act="d-claim" data-uid="${it.uid}" data-v="genuine">当真货</label><label class="${claimOf(c, it) === 'honest' ? 'on' : ''}" data-act="d-claim" data-uid="${it.uid}" data-v="honest">告知实情</label></span>` : ''}</div>`;
   };
   let gp, tp;
@@ -997,7 +1005,7 @@ function openDeal() {
         <div class="h-btns"><button class="btn primary" data-act="h-accept">接受</button>
         <button class="btn" data-act="h-again" ${c.patience > 0 ? '' : 'disabled'}>再议</button>
         <button class="btn ghost" data-act="h-quit">作罢</button></div>`;
-    else body = `<div class="h-presets">${presets.map(([n, k]) => `<button class="btn small" data-act="h-preset" data-k="${k}">${n} ${Math.round(d.N0 + d.scale * k)}</button>`).join('')}</div>
+    else body = `<div class="h-presets">${dealPresets(c, d, [lo, hi]).map(([n, v]) => `<button class="btn small" data-act="h-preset" data-v="${v}">${n} ${v}</button>`).join('')}</div>
         <div class="h-slider"><input type="range" id="h-range" min="${lo}" max="${hi}" value="${clamp(h.net, lo, hi)}"><b id="h-price">${netTxt(h.net)}</b></div>
         <div id="h-odds">${oddsBar(dealOdds(c, d, h.net))}</div>
         <div class="h-btns"><span class="muted small">每回报价 ${costText('haggle', dealEffort(d))}</span><button class="btn primary" data-act="h-offer">报价</button><button class="btn ghost" data-act="haggle-close">再想想</button></div>`;
@@ -1006,8 +1014,10 @@ function openDeal() {
           ${d.reject.length ? `<p class="muted small">${TA}不要：${d.reject.map(itemName).join('、')}</p>` : ''}</div>
         <div class="d-col"><h4>收下${TA}的</h4>${(tp = pager(d.take, 4, 'deal-take')).items.map(t => `<div class="d-row">${itemHTML(Object.assign({}, t.it, { pos: null }), 'preview mini')}<span>${esc(itemName(t.it))}</span>
           <span class="muted">开价 ${t.a} · 你估 ${Math.round(knownValue(t.it) * priceMul(t.it.id))}</span></div>`).join('') || '<p class="muted small">不收他的货。</p>'}${tp.nav}</div></div>
+      ${d.give.length ? `<div class="tip-row"><span>${TA}要的件数</span><span>${d.need} 件，货盘上凑了 ${Math.min(d.got, d.need)} 件${d.give.some(g => g.role === 'extra') ? '<span class="muted">；多出的只按货郎价</span>' : ''}</span></div>` : ''}
+      ${compliant(c) ? `<div class="tip-row laced-txt"><span>${TA}由你摆布</span><span>开什么价都认，只是掏不出钱袋里没有的</span></div>` : ''}
       <div class="tip-row"><span>${TA}心里的公道差价</span><span>${netTxt(d.N0)}</span></div>
-      ${d.give.length ? `<div class="tip-row"><span>对方预算</span><span>约 ${Math.round(c.budget * 0.85 / 10) * 10}–${Math.round(c.budget * 1.15 / 10) * 10}</span></div>` : ''}
+      ${d.give.length ? `<div class="tip-row"><span>对方预算</span><span>约 ${Math.round(c.budget * 0.85 / 10) * 10}–${Math.round(c.budget * 1.15 / 10) * 10}${d.N0 > c.budget * PURSE_OFFER ? '<span class="bad">，掏不出公道价</span>' : ''}</span></div>` : ''}
       <hr>${body}`, 'm-deal');
     const r = $('#h-range');
     if (r) r.oninput = () => { h.net = +r.value; $('#h-price').innerHTML = netTxt(h.net); $('#h-odds').innerHTML = oddsBar(dealOdds(c, d, h.net)); };
@@ -1024,12 +1034,13 @@ function openDeal() {
     if (sel && !S.items[sel]) sel = null;
     // 被你狠宰了一刀还是买了：心里不痛快
     const k = (net - d.N0) / d.scale;
-    feel(c, out.caught || k > 0.2 ? 'angry' : k > 0.12 ? null : 'pleased');
+    feel(c, out.caught ? 'angry' : compliant(c) ? null : k > 0.2 ? 'angry' : k > 0.12 ? null : 'pleased');
     dismissCustomer(false);
   };
   const respond = () => {
     if (!ready(h.net)) return;
-    const caught = dealInspect(c, d);
+    // 由你摆布的人看出货不对也不敢声张
+    const caught = !compliant(c) && dealInspect(c, d);
     if (caught) {
       h.result = { cls: 'bad', text: `“拿${esc(itemName(caught))}糊弄我？”对方一眼看穿，拂袖而去。` };
       feel(c, 'angry');
@@ -1038,13 +1049,13 @@ function openDeal() {
     }
     const out = roll(dealOdds(c, d, h.net));
     if (out === 'accept') finish(h.net);
-    else if (out === 'counter') { c.patience--; h.counter = dealCounter(c, d, h.net); }
+    else if (out === 'counter') { if (!compliant(c)) c.patience--; h.counter = dealCounter(c, d, h.net); }
     else { h.result = { cls: 'bad', text: `“${voice(c.faction, 'leave')}”对方转身走了。` }; feel(c, 'angry'); dismissCustomer(true); }
   };
   modal = render;
   render();
-  HANDLERS['d-claim'] = el => { S.items[el.dataset.uid].claim = el.dataset.v; d = dealOf(c); h.net = Math.round(d.N0 + d.scale * 0.08); render(); };
-  HANDLERS['h-preset'] = el => { h.net = Math.round(d.N0 + d.scale * +el.dataset.k); render(); };
+  HANDLERS['d-claim'] = el => { S.items[el.dataset.uid].claim = el.dataset.v; d = dealOf(c); h.net = safe(); render(); };
+  HANDLERS['h-preset'] = el => { h.net = +el.dataset.v; render(); };
   HANDLERS['h-offer'] = () => tiredOr('haggle', () => { respond(); render(); renderAll(); }, dealEffort(d));
   HANDLERS['h-accept'] = () => { if (!ready(h.counter)) return; finish(h.counter); h.counter = null; render(); renderAll(); };
   HANDLERS['h-again'] = () => { h.net = h.counter; h.counter = null; render(); };

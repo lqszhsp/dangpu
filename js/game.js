@@ -817,7 +817,7 @@ function genCustomer() {
     const fw = {};
     for (const [f, w] of Object.entries(CAT_FACTION[cat])) fw[f] = w * Math.max(0.2, 1 + S.rep[f] / 120) * trafficMul(f);
     const c = makeCustomer(weighted(fw), 'buy');
-    Object.assign(c, { wantCat: cat, wantId: target.id, targetUid: target.uid, attracted: true });
+    Object.assign(c, { wantCat: cat, wantId: target.id, targetUid: target.uid, attracted: true, need: 1 });
     c.patience = Math.min(5, c.patience + 1);
     c.budget = Math.round(Math.max(c.budget, claimedValue(target) * priceMul(target.id) * rnd(1.05, 1.5)));
     return c;
@@ -876,6 +876,11 @@ function makeCustomer(faction, kind, person = pickPerson(faction)) {
     c.fee = rint(3, 7) * 10 * (S.upgrades.master ? 2 : 1);
   }
   if (c.wantCat && !c.wantId && !c.wishId && !c.craving && !c.wantFake) c.wantId = inquiryItem(c.wantCat);
+  // 要几件：要得多的，钱也带得多些
+  if (c.wantCat) {
+    c.need = wantNeed(c, person);
+    c.budget = Math.round(c.budget * (1 + 0.4 * (c.need - 1)));
+  }
   return c;
 }
 
@@ -1414,9 +1419,11 @@ function buyUpgrade(id) {
   return null;
 }
 
+// 货郎（鬼市牙人）的收价：四成；掺过料的货牙人一闻就知道，只肯出一成
+function brokerPrice(it) { return Math.max(1, Math.round(trueValue(it) * (it.laced && it.lacedBy !== 'me' && it.lacedSeen ? 0.1 : 0.4))); }
+
 function sellToBroker(it) {
-  // 掺过料的货牙人一闻就知道，只肯出一成
-  const price = Math.max(1, Math.round(trueValue(it) * (it.laced && it.lacedBy !== 'me' && it.lacedSeen ? 0.1 : 0.4)));
+  const price = brokerPrice(it);
   if (ITEMS[it.id].contra) addHeat(2);
   earn(price, `把${itemName(it)}折价 ${price} 灵石卖给了鬼市牙人。`);
   destroyItem(it);
