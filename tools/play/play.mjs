@@ -377,12 +377,12 @@ const BEHAVIOR_HOOKS = `
     carry[m.mid] = [];
     return r;
   });
-  wrap('laceWith', (f, a) => { inc(B.done, 'lace_' + ITEMS[a[1].id].additive); return f(...a); });
+  wrap('laceWith', (f, a) => { const kind = ITEMS[a[1].id].additive, r = f(...a); if (!r) inc(B.done, 'lace_' + kind); return r; });
   wrap('bottle', (f, a) => { const r = f(...a); if (!r) inc(B.done, 'bottle'); return r; });
   wrap('sealItem', (f, a) => { const r = f(...a); if (!r) inc(B.done, 'seal'); return r; });
   wrap('eraseMark', (f, a) => { const r = f(...a); if (!r) inc(B.done, 'erase'); return r; });
   wrap('soulMark', (f, a) => { const r = f(...a); if (r && !r.err) inc(B.done, 'soulmark'); return r; });
-  wrap('plantGu', (f, a) => { const r = f(...a); if (r && r.ok) inc(B.done, 'plantgu'); return r; });
+  wrap('guTakes', (f, a) => { const had = guAny(a[0]), r = f(...a); if (!had && guAny(a[0])) inc(B.done, 'plantgu'); return r; });
   wrap('breakthrough', (f, a) => { const r = f(...a); if (r && !r.err) inc(B.done, 'break'); return r; });
 `;
 

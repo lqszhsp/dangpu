@@ -1,6 +1,7 @@
-// 蛊虫精通：养蛊人独门的手艺，别处学不来——养蛊攒经验自动升重；会下蛊：下中的人或听话、或被蛊噬成重伤，
-// 蛊要不了人命，中蛊的人跟你动手跌一境、与你打交道也多半不再给你添堵。情蛊一生只认一名女子，她死你也活不成。
-// 给执法堂的人下蛊可能被察觉；察觉了却没被锁拿，执法堂会换一位新巡查来（见 js/cast/leng_fei.js）
+// 蛊虫精通：养蛊人独门的手艺，别处学不来——养蛊攒经验自动升重。蛊不能当面往人身上放，只能掺进吃食里（加料，见 js/intrigue.js）：
+// 谁吃下去谁中蛊——买去转送别人的，中蛊的就是吃的那个人；不懂蛊的人掺进去的只是一只死虫，你自己吃了也什么都不会发生。
+// 中蛊的人或听话、或被蛊噬成重伤，蛊要不了人命，跟你动手跌一境、与你打交道也多半不再给你添堵。情蛊一生只认一名女子，她死你也活不成。
+// 执法堂的人吃下你的蛊可能察觉；察觉了却没被锁拿，执法堂会换一位新巡查来（见 js/cast/leng_fei.js）
 'use strict';
 
 // 升到第 n 重要的累计经验；养蛊的每样活计各记多少
@@ -34,82 +35,63 @@ const isAdultWoman = p => !!p && sexOf(p) === 'f' && !isMinor(p);
 const LAWMEN = ['enforcer', 'leng_fei'];
 const isLawman = p => LAWMEN.includes(p.pid);
 
-// ───────────── 下蛊 ─────────────
+// ───────────── 下蛊：掺进吃食，谁吃谁中 ─────────────
 
-// 能下的蛊：养大的蛊，和情蛊（货品册里那对同心蛊：三重时自己炼，鬼市也有现成的）
+// 手里的蛊：养大的蛊，和情蛊（货品册里那对同心蛊：三重时自己炼，鬼市也有现成的）
 const isLoveGu = it => it.id === 'love_gu';
 const plantableGu = () => Object.values(S.items).filter(it => HELD(it) && (it.id === 'gu' || isLoveGu(it)) && !it.fake);
 const guReach = () => S.cult.lv + (guLv() >= 4 ? 1 : 0);
+const isGuLace = kind => kind === 'control' || kind === 'love';
 
-// 能不能拿这只蛊给他下：能返回 null，否则返回缘由；情蛊对未成年人不列出来（hidden）
-function plantBlock(p, it) {
-  if (!guLv()) return '你不懂下蛊';
-  if (p.status !== 'alive') return `${ta(p)}已不在了`;
-  if (!p.visits) return `还没和${ta(p)}打过照面`;
-  if (p.plantDay === S.day) return `今日已对${ta(p)}下过手`;
-  if (isLoveGu(it)) {
+// 能不能把这只蛊掺进吃食：能返回 null，否则返回缘由
+function guLaceBlock(add) {
+  if (!guLv()) return '你不懂蛊：掺进去也只是一只死虫，谁吃了都不会中蛊';
+  if (isLoveGu(add)) {
     if (guLv() < 3) return '蛊虫精通三重才驾驭得住情蛊';
-    if (!isAdultWoman(p)) return '情蛊只认成年女子，近不了这人的身';
-    if (S.loveGu === p.pid) return `情蛊早已在${ta(p)}心头`;
-    if (S.loveGu) return `情蛊一生只认一人——它绕着${p.name}转了一圈，又爬回了你袖中`;
-  } else {
-    if (p.loveGu) return `${ta(p)}心里已有情蛊，别的蛊不敢近`;
-    if (p.controlled && p.controlled.by === 'gu') return `${ta(p)}身上已种着你的蛊`;
-    if (guStage(it) > guLv()) return `${itemName(it)}太凶，蛊虫精通${cn(guStage(it))}重才驾驭得住`;
-  }
-  if (npcLevel(p) > guReach()) return `${p.name}是${realmName(npcLevel(p))}，蛊近不了${ta(p)}的身${guLv() < 4 ? '（蛊虫精通四重可下到高你一境的人）' : ''}`;
+    if (S.loveGu) return `情蛊一生只认一人——你心口的母蛊已经认了${S.people[S.loveGu].name}`;
+  } else if (guStage(add) > guLv()) return `${itemName(add)}太凶，蛊虫精通${cn(guStage(add))}重才驾驭得住`;
   return null;
 }
-const plantHidden = (p, it) => isLoveGu(it) && isMinor(p);
 
-// 成算：手艺、修为差距、蛊的道行；对方越精越难；交情好的不设防
-function plantOdds(p, it) {
-  const gap = S.cult.lv - npcLevel(p);
-  return clamp(0.3 + 0.12 * guLv() + 0.15 * gap + 0.05 * guStage(it) + (isLoveGu(it) ? 0.1 : 0) - 0.2 * (p.savvy || 0.4) + clamp(p.aff, -50, 50) / 250, 0.05, 0.95);
-}
-
-// 执法堂的人：种上种不上，都可能被察觉
+// 执法堂的人：吃下你的蛊，种上种不上都可能察觉
 const lawSpotOdds = () => clamp(0.4 - 0.06 * guLv(), 0.1, 0.4);
 
-function plantGu(p, it) {
-  const why = plantBlock(p, it);
-  if (why) return { err: why };
-  const err = exert('plantgu');
-  if (err) return { err };
-  p.plantDay = S.day;
-  const name = itemName(it), love = isLoveGu(it), ok = Math.random() < plantOdds(p, it);
-  let text, cls = 'good';
-  if (ok) {
+// 掺了蛊的吃食被 p 吃下去。蛊是你亲手掺的、你又懂蛊才种得上；种不上的蛊死在肚里，什么也不会发生。
+// 返回 { text, cls } 写进夜里的消息；没种上、或不是你的蛊，返回 {}
+function guTakes(p, it, name, knew) {
+  if (it.lacedBy !== 'me' || !guLv()) return {};
+  const love = it.laced === 'love';
+  let text = '', cls = 'good';
+  const block = love ? (!isAdultWoman(p) || S.loveGu ? 'skip' : null)
+    : p.loveGu || guBound(p) ? 'skip' : npcLevel(p) > guReach() ? 'strong' : null;
+  if (!block) {
     if (love) {
       p.loveGu = { day: S.day };
       S.loveGu = p.pid;
       p.aff = 100;
-      remember(p, '那天在你铺子里，心口忽然一热——从此眼里就只有你了。', 0, 'loved');
-      commitSin('harm', { p, w: 2, what: `给${p.name}种情蛊`, virtue: 6 });
-      text = `你指尖一弹，情蛊没入${p.name}的衣襟。${ta(p)}怔了一怔，再抬眼看你时，脸一下红到了耳根。母蛊在你心口轻轻一跳——从今往后，你们是一条命了。`;
+      remember(p, `吃了${name}，心口忽然一热——从此眼里就只有你了。`, 0, 'loved');
+      if (knew) commitSin('harm', { p, w: 2, what: `给${p.name}种情蛊`, virtue: 6 });
+      text = `${p.name}吃下了藏着情蛊的${name}。母蛊在你心口轻轻一跳——从今往后，你们是一条命了。`;
     } else {
-      p.controlled = { day: S.day, by: 'gu', stage: guStage(it), tox: it.tox };
-      remember(p, `你在${ta(p)}身上种下了${name}。`, 0);
-      commitSin('harm', { p, w: 1 + Math.min(2, guStage(it)), what: `给${p.name}下${name}`, virtue: 3 + 2 * guStage(it) });
-      text = `${name}钻进${p.name}的袖口，没了踪影。${ta(p)}眼神空了一瞬，再看你时，已经不大敢直视了。`;
+      const stage = it.laceStage || 0, gu = GU_STAGES[stage].name;
+      p.controlled = { day: S.day, by: 'gu', stage };
+      remember(p, `吃了${name}，肚里像有什么东西在爬。`, 0);
+      if (knew) commitSin('harm', { p, w: 1 + Math.min(2, stage), what: `给${p.name}下${gu}`, virtue: 3 + 2 * stage });
+      text = `${p.name}吃下了藏着${gu}的${name}，中了你的蛊。`;
     }
-    if (it.laced) { laceEffect(p, it, name, true); text += `蛊身上${LACE[it.laced].verb}，一并入了${ta(p)}的身。`; }
-  } else {
-    remember(p, '有人想在他身上下蛊，他疑心是你。', -30, 'controlled');
-    text = `${name}刚爬上${p.name}的衣角，就被${ta(p)}一掌拍落、碾死在地。${ta(p)}狐疑地盯着你看了半晌。`;
-    cls = 'bad';
-    if (Math.random() < 0.4) startScandal(p, 'control');
+  } else if (block === 'strong') {
+    text = `${p.name}吃下了藏着蛊的${name}——${ta(p)}是${realmName(npcLevel(p))}，蛊种不上，死在了肚里。`;
+    cls = 'warn';
   }
-  destroyItem(it);
   // 执法堂的人：察觉了，关注大涨；没被当场锁拿，过几日执法堂会换一位新巡查来
   if (isLawman(p) && Math.random() < lawSpotOdds()) {
     addHeat(45);
-    text += `\n${p.name}${ok ? '回衙之后' : '当场'}就察觉了不对，执法堂的卷宗上添了你的名字（关注 +45）。`;
+    text = `${text ? text + '\n' : ''}${p.name}察觉吃下的东西不对，执法堂的卷宗上添了你的名字（关注 +45）。`;
     cls = 'bad';
     if (p.pid === 'enforcer' && !S.flags.guCaught) S.flags.guCaught = S.day;
     checkHeat();
   }
-  return { ok, text, cls };
+  return text ? { text, cls } : {};
 }
 
 // 不从的下场：蛊噬其心，重伤——只到重伤，要不了命

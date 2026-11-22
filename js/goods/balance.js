@@ -59,9 +59,9 @@ MACHINES.winejar.desc += '通酿酒一重后，灵酒一坛泡一朵迷魂花，
 
 // 情蛊：现成炼好的一对蛊，不必自己养——鬼市有一批，妖族客人偶尔拿来卖；世家小姐、长老亲眷暗地里求
 defineItem({
-  id: 'love_gu', name: '情蛊', cat: 'gu', w: 1, h: 1, base: 280, lux: true,
+  id: 'love_gu', name: '情蛊', cat: 'gu', w: 1, h: 1, base: 280, lux: true, additive: 'love',
   art: "a pair of tiny crimson and rose-pink gu insects entwined together inside a small open red lacquer box lined with silk, a faint rosy glow around them",
-  desc: '一雌一雄同心而生的小蛊。雄蛊种进谁身上，谁的心就系在持雌蛊的人那儿——一生只认一名成年女子，她死，持雌蛊的人也活不成。养蛊人蛊虫精通三重才种得下，也是三重时以迷魂花饲金蚕炼成的。世家小姐、长老亲眷暗地里出高价求，鬼市照收不误。',
+  desc: '一雌一雄同心而生的小蛊。雄蛊掺进吃食里，谁吃下去，谁的心就系在持雌蛊的人那儿——一生只认一名成年女子，她死，持雌蛊的人也活不成。养蛊人蛊虫精通三重才掺得进去，也是三重时以迷魂花饲金蚕炼成的。世家小姐、长老亲眷暗地里出高价求，鬼市照收不误。',
   from: {
     dealer: { ghost: 1 },
     sell: { yao: 0.4 },

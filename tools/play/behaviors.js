@@ -67,7 +67,7 @@ const BEHAVIORS = [
   { id: 'seal', name: '贴正派封印', act: 'seal' },
   { id: 'erase', name: '抹去原主烙印', act: 'erase' },
   { id: 'soulmark', name: '种魂印', act: 'soulmark' },
-  { id: 'plantgu', name: '下蛊（养蛊人）', act: 'plantgu' },
+  { id: 'plantgu', name: '下蛊：掺了蛊的吃食被人吃下（养蛊人）', act: 'plantgu' },
   { id: 'lovegu', name: '炼情蛊', machine: 'gupot', alt: [{ has: [['gu', 1]], use: [['bones', 2], ['mihun_flower', 1]], tech: ['gumaster', 3] }], made: ['love_gu'] },
   { id: 'break', name: '持破境之物冲关', act: 'break' },
 ];
@@ -94,14 +94,15 @@ const bhvAltReady = (b, a, held) => !bhvMissing(b, a, held).length;
 function bhvActMissing(b, held) {
   switch (b.act) {
     case 'lace': return [...(held.some(it => ITEMS[it.id].additive === b.kind) ? [] : [`材料·${Object.keys(ITEMS).filter(id => ITEMS[id].additive === b.kind).map(id => ITEMS[id].name).join('或')}`]),
-      ...(held.some(canLace) ? [] : ['材料·能掺料的货'])];
+      ...(held.some(canLace) ? [] : ['材料·能掺料的货']),
+      ...(!isGuLace(b.kind) ? [] : !guLv() ? ['开局·养蛊人'] : b.kind === 'love' && guLv() < 3 ? ['功法·蛊虫精通三重'] : [])];
     case 'bottle': return held.some(canBottle) ? [] : [held.some(it => it.id === 'water' && !it.bottled) ? '材料·玉净瓶' : '材料·没装瓶的灵水'];
     case 'seal': return held.some(canSeal) ? [] : [owns('seal_xian') ? '材料·能贴封印的货' : '材料·正派封印符'];
     case 'erase': return held.some(canErase) ? [] : [held.some(it => it.mark) ? '功法·抹印（重数不够）' : '材料·带原主烙印的赃物'];
     case 'soulmark': return Object.values(S.people).some(p => p.status === 'alive' && !canSoulMark(p)) ? []
       : [!techLv('soul') ? '功法·炼魂1重' : !owns('soul_pearl') ? '材料·炼魂珠' : '对象·修为低于你的人'];
-    case 'plantgu': return !guLv() ? ['开局·养蛊人'] : !plantableGu().length ? ['材料·蛊']
-      : Object.values(S.people).some(p => plantableGu().some(it => !plantBlock(p, it))) ? [] : ['对象·修为不高于你、见过面的人'];
+    case 'plantgu': return !guLv() ? ['开局·养蛊人'] : !plantableGu().some(g => !guLaceBlock(g)) ? ['材料·驾驭得住的蛊']
+      : held.some(canLace) ? [] : ['材料·能掺料的吃食'];
     case 'break': return !canBreak() && owns(realm().key) ? [] : [canBreak() || `材料·${realm().key ? ITEMS[realm().key].name : '破境之物'}`];
   }
   return ['？'];

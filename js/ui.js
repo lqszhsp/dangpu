@@ -1262,7 +1262,7 @@ function tabPeople() {
       <div class="pc-face"><img src="${asset('chars', personFace(p))}" alt=""></div>
       <div class="pc-info"><div><b>${esc(p.name)}</b> <span class="muted small">${esc(p.title || '')}</span>
         ${p.story && !p.official ? '<span class="tag gold">有故事</span>' : ''}${p.official ? '<span class="tag">官差</span>' : ''}${p.status !== 'alive' ? `<span class="tag fake">${STATUS_NAME[p.status]}</span>` : ''}
-        ${p.status === 'alive' && p.addict ? '<span class="tag fake">成瘾</span>' : ''}${p.status === 'alive' && p.controlled ? `<span class="tag laced">${guBound(p) ? '中蛊' : '受控'}</span>` : ''}${p.status === 'alive' && p.loveGu ? '<span class="tag love">情蛊</span>' : ''}${p.status === 'alive' && p.wish ? `<span class="tag real">求${ITEMS[p.wish].name}</span>` : ''}
+        ${p.status === 'alive' && p.addict ? '<span class="tag fake">成瘾</span>' : ''}${p.status === 'alive' && guBound(p) ? '<span class="tag laced">中蛊</span>' : ''}${p.status === 'alive' && p.soulBound ? '<span class="tag laced">受控</span>' : ''}${p.status === 'alive' && p.loveGu ? '<span class="tag love">情蛊</span>' : ''}${p.status === 'alive' && p.wish ? `<span class="tag real">求${ITEMS[p.wish].name}</span>` : ''}
         ${p.status === 'alive' ? condList(p).filter(c => CONDS[c.kind]).map(c => `<span class="tag fake">${c.label}</span>`).join('') : ''}${isHealer(p) && p.status === 'alive' ? '<span class="tag real">懂医术</span>' : ''}</div>
         <div class="pc-aff"><span style="color:${f.color}">${f.name}</span><span class="aff-bar"><i class="${p.aff >= 0 ? 'pos' : 'neg'}" style="width:${Math.abs(p.aff) / 2}%"></i></span>
           <span class="mood-${m}">${MOOD_NAME[m]}</span></div>
@@ -1322,14 +1322,14 @@ function personTraits(p) {
   if (isWeak(p)) t.push('<span class="muted">弱者</span>');
   if (p.informant) t.push('<span class="good">你的耳目</span>');
   if (p.owed >= 2) t.push('<span class="good">欠你人情</span>');
-  if (p.soulBound) t.push('<span class="laced-txt">种了魂印</span>');
+  if (p.soulBound) t.push('<span class="laced-txt">受控：识海里种着你的魂印，难违你意</span>');
   if (p.wantsFakes) t.push('<span class="laced-txt">爱收假货转手</span>');
   if (p.official || p.integrity > 0.5) t.push(`<span>守规矩${p.integrity > 0.7 ? '极严' : p.integrity > 0.4 ? '尚严' : '松'}</span>`);
   if (p.wish) t.push(`<span class="good">所求：${ITEMS[p.wish].name}</span>`);
   if (isHealer(p)) t.push(`<span class="good">懂医术：治${CAST[p.pid].healer.heals.map(k => CONDS[k].name).join('、')}</span>`);
   if (p.desperate) t.push('<span class="bad">走投无路</span>');
   if (p.addict) t.push(`<span class="bad">成瘾 ${p.addict}</span>`);
-  if (p.controlled) t.push(`<span class="laced-txt">${guBound(p) ? `中了你的${GU_STAGES[p.controlled.stage].name}` : '受你控心'}</span>`);
+  if (guBound(p)) t.push(`<span class="laced-txt">中蛊：吃下了你的${GU_STAGES[p.controlled.stage || 0].name}，不从就蛊噬其心</span>`);
   if (p.loveGu) t.push(`<span class="love-txt">中了你的情蛊：${ta(p)}死你也活不成</span>`);
   return t.join('');
 }
@@ -1342,10 +1342,7 @@ function personActions(p) {
   if (p.secret && p.secret.known && !p.secret.filed) out.push(`<button class="btn small" data-act="file-secret" data-pid="${p.pid}">${icon('ic_secret')}录成密报</button>`);
   if (isHealer(p) && p.status === 'alive') out.push(healButton(p));
   if (p.status === 'alive') out.push(...treatButtons(p));
-  if (p.controlled) out.push(`<button class="btn small ghost" data-act="uncontrol" data-pid="${p.pid}">解蛊</button>`);
-  // 养蛊人：手里有蛊就能给人下
-  if (guLv() && p.status === 'alive' && p.visits && plantableGu().some(it => !plantHidden(p, it)))
-    out.push(`<button class="btn small danger" data-act="plant-open" data-pid="${p.pid}">${icon('ic_lace')}下蛊</button>`);
+  if (guBound(p)) out.push(`<button class="btn small ghost" data-act="uncontrol" data-pid="${p.pid}">解蛊</button>`);
   if (p.indentured) out.push(`<span class="small bad">在你后院做苦力</span><button class="btn small" data-act="release" data-pid="${p.pid}">放${ta(p)}走</button>`);
   if (S.phase === 'night' && killable(p) && p.pid !== 'beggar') {
     const why = canKill(p);
@@ -1432,33 +1429,17 @@ function openGift(pid) {
     <div class="h-btns"><button class="btn ghost" data-act="person" data-pid="${pid}">返回</button></div>`, 'm-gift'); });
 }
 
-// 下蛊：挑一只蛊，看成算；下不了的写明缘由
-function openPlantGu(pid) {
-  const p = S.people[pid];
-  openModal(() => modalHTML(`<h3>${icon('ic_lace')}下蛊 · ${esc(p.name)}</h3>
-    <p class="muted small">蛊虫精通${cn(guLv())}重。下中的人或听你差遣、或被蛊噬成重伤，跟你动手跌一境，与你打交道多半不再给你添堵；蛊要不了人命。蛊身上掺的料，下中时一并入体。${isLawman(p) ? `<b class="bad">执法堂的人：种上种不上，约 ${pct(lawSpotOdds())} 会被察觉，关注大涨。</b>` : ''}</p>
-    <div class="lace-list">${plantableGu().filter(it => !plantHidden(p, it)).map(it => {
-      const why = plantBlock(p, it);
-      return `<div class="lace-row"><div class="lace-ic">${itemHTML(Object.assign({}, it, { pos: null }), 'preview mini')}</div>
-        <div><b>${esc(itemName(it))}</b>${it.laced ? `<em class="laced-txt">（${LACE[it.laced].verb}）</em>` : ''}<p class="small muted">${isLoveGu(it) ? '一生只认一名成年女子：好感锁在顶上，事事顺着你；她死你也活不成' : `毒性 ${it.tox}`}</p>
-        ${why ? `<p class="small bad">${esc(why)}</p>` : ''}</div>
-        <button class="btn small danger" data-act="plant-do" data-pid="${pid}" data-uid="${it.uid}" ${why ? 'disabled' : ''}>下蛊${why ? '' : `（成算 ${pct(plantOdds(p, it))}）`}</button></div>`;
-    }).join('')}</div>
-    <div class="h-btns"><button class="btn ghost" data-act="person" data-pid="${pid}">返回</button></div>`, 'm-lace'));
-}
-
 function openLace() {
   const it = S.items[sel];
-  // 蛊身上掺别的料，不掺蛊
-  const adds = additives().filter(a => !(['gu', 'love_gu'].includes(it.id) && a.id === 'gu'));
   openModal(() => modalHTML(`<h3>${icon('ic_lace')}加料 · ${esc(itemName(it))}</h3>
-    <p class="muted small">加了料的货外表看不出分别，照常估价、照常出售或送人。买下或收下它的人，会在不知不觉中受其影响——除非他够精明。</p>
-    <div class="lace-list">${adds.map(a => {
-      const L = LACE[ITEMS[a.id].additive];
+    <p class="muted small">加了料的货外表看不出分别，照常估价、照常出售或送人。料要吃下去才发作：买下或收下的人揣回去，自己吃了，或转送给别人——谁吃下去，谁受其害；收货时够精明的会当场识破。</p>
+    <div class="lace-list">${additives().map(a => {
+      const L = LACE[ITEMS[a.id].additive], why = laceBlock(it, a);
       return `<div class="lace-row"><div class="lace-ic">${itemHTML(Object.assign({}, a, { pos: null }), 'preview mini')}</div>
         <div><b>${esc(itemName(a))}</b> → ${L.verb}<p class="small">${L.desc}</p>
-        <p class="small muted">${L.detect ? `被识破的基础几率 ${Math.round(L.detect * 100)}%，对方越精明、越不信你越容易识破${a.id === 'gu' ? '；蛊越毒越隐蔽' : ''}。` : '无害，不必担心被识破。'}</p></div>
-        <button class="btn small ${L.detect ? 'danger' : ''}" data-act="lace-do" data-uid="${a.uid}">${L.verb.replace('了', '')}</button></div>`;
+        <p class="small muted">${L.detect ? `被识破的基础几率 ${Math.round(L.detect * 100)}%，对方越精明、越不信你越容易识破${a.id === 'gu' ? '；蛊越毒越隐蔽' : ''}。` : '无害，不必担心被识破。'}</p>
+        ${why ? `<p class="small bad">${esc(why)}</p>` : ''}</div>
+        <button class="btn small ${L.detect ? 'danger' : ''}" data-act="lace-do" data-uid="${a.uid}" ${why ? 'disabled' : ''}>${L.verb.replace('了', '')}</button></div>`;
     }).join('')}</div>
     <div class="h-btns"><button class="btn ghost" data-act="modal-close">作罢</button></div>`, 'm-lace'));
 }
@@ -1979,16 +1960,9 @@ const HANDLERS = {
     const p = S.people[el.dataset.pid], r = runCommand(p, el.dataset.id, el.dataset.lever);
     toast(gx(p, r.text), r.exposed ? 'bad' : 'good'); openPerson(p.pid); renderAll(); checkOver();
   },
-  'plant-open': el => openPlantGu(el.dataset.pid),
-  'plant-do': el => {
-    const p = S.people[el.dataset.pid], r = plantGu(p, S.items[el.dataset.uid]);
-    if (r.err) { toast(r.err, 'bad'); return; }
-    if (sel === +el.dataset.uid) sel = null;
-    closeModal(); showIntel({ text: r.text, cls: r.cls }); renderAll(); checkOver();
-  },
   uncontrol: el => { releaseControl(S.people[el.dataset.pid]); openPerson(el.dataset.pid); renderAll(); },
   lace: () => openLace(),
-  'lace-do': el => { laceWith(S.items[sel], S.items[el.dataset.uid]); closeModal(); renderAll(); toast('料已下好。从外面看，什么也看不出来。'); },
+  'lace-do': el => { const err = laceWith(S.items[sel], S.items[el.dataset.uid]); if (err) { toast(err, 'bad'); return; } closeModal(); renderAll(); toast('料已下好。从外面看，什么也看不出来。'); },
   'report-ok': () => {
     closeModal();
     if (S.landlordVisit) { S.landlordVisit = false; showLandlord(); }

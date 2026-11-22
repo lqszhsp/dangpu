@@ -103,16 +103,17 @@ function personValueMul(c, it) {
 
 const LACE = {
   addict:  { name: '忘忧散', verb: '掺了忘忧散', detect: 0.35, desc: '服者成瘾：越来越常来、越来越肯出钱，也越来越虚、越来越穷，直到油尽灯枯。' },
-  control: { name: '噬心蛊', verb: '种了噬心蛊', detect: 0.5,  desc: '服者心神受你摆布，可令其上贡、打探、替你行方便。蛊越毒越难察觉。一旦被识破，后果极重。' },
+  control: { name: '蛊虫',   verb: '藏了蛊虫',   detect: 0.5,  desc: '吃下去的人中蛊：听你差遣，不从就蛊噬其心、重伤（要不了命）。只有养蛊人掺得进去；吃的人修为高过你的蛊、或身上已有蛊，蛊种不上。蛊越毒越难察觉。' },
+  love:    { name: '情蛊',   verb: '藏了情蛊',   detect: 0.2,  desc: '只认成年女子：她吃下去，好感锁在顶上、事事顺着你；她死你也活不成，一生只认一人。男子、孩子吃下去，蛊不认，白白死在肚里。' },
   tonic:   { name: '血灵芝', verb: '添了血灵芝', detect: 0,    desc: '实打实的滋补：气血大补，更易破境，对方念你的好。' },
   poison:  { name: '尸毒',   verb: '下了尸毒',   detect: 0.4,  desc: '服者数日内暴毙。亲友若起疑，必追查到底。' },
 };
 // 能掺料的：服得下、对人有好处的吃食与药——补气力、涨修为、治伤毒的丹药、灵饮、灵果、草药、妖材入药都算；
-// 吞魂饮血的魂魄精血妖丹（不是丹药的）、点的香、本身就是料的、废料不算。货品册写 to.lace 的另补进 LACEABLE。
-// 蛊虫例外：蛊身上也能掺别的料，下蛊得手时料随蛊入体（见 js/gu.js）
+// 吞魂饮血的魂魄精血妖丹（不是丹药的）、点的香、本身就是料的（蛊虫也是料）、废料不算。货品册写 to.lace 的另补进 LACEABLE。
+// 料要吃下去才发作：买去、收下的人揣回去，自己吃了或转送别人，谁吃谁中（见 eatStash）
 const LACEABLE = [];
 const LACE_CATS = ['dan', 'yin', 'zhi', 'cai', 'yao'];
-const isLaceable = id => LACEABLE.includes(id) || id === 'gu' || id === 'love_gu' || (LACE_CATS.includes(ITEMS[id].cat) && !ITEMS[id].additive && !JUNK.includes(id)
+const isLaceable = id => LACEABLE.includes(id) || (LACE_CATS.includes(ITEMS[id].cat) && !ITEMS[id].additive && !JUNK.includes(id)
   && !!(RESTORE[id] || CULT_XP[id] || id === 'water' || Object.values(CONDS).some(c => c.cure.includes(id)))
   && !(CULT_XP[id] && CULT_XP[id][1] && ITEMS[id].cat !== 'dan'));
 
@@ -120,7 +121,7 @@ const canLace = it => isLaceable(it.id) && !it.laced && !it.fake;
 
 // 市面上偶尔混着别人掺过料的货：成瘾的多，下毒、种蛊的少；chance 是这件货被掺过的机会
 function marketLace(id, extra, chance) {
-  if (!isLaceable(id) || id === 'gu' || id === 'love_gu' || Math.random() >= chance) return extra;
+  if (!isLaceable(id) || Math.random() >= chance) return extra;
   extra.laced = weighted([['addict', 6], ['poison', 1.5], ['control', 1]]);
   extra.laceGrade = rint(1, 3);
   if (extra.laced === 'control') extra.laceTox = rint(10, 45);
@@ -133,15 +134,24 @@ const lacedKnown = it => !!it.laced && (it.lacedBy === 'me' || !!it.lacedSeen);
 // 掺料的手法：钻研识破的掺料货、或打听到偏门门道才学得会；学会了手脚更干净
 const laceSkill = kind => !!(S.laceKnown && S.laceKnown[kind]);
 
+// 能不能把这味料掺进这件货：能返回 null，否则返回缘由；蛊只有养蛊人掺得进去
+function laceBlock(target, add) {
+  if (!canLace(target)) return `${itemName(target)}掺不了料`;
+  return isGuLace(ITEMS[add.id].additive) ? guLaceBlock(add) : null;
+}
+
 function laceWith(target, add) {
+  const why = laceBlock(target, add);
+  if (why) return why;
   target.laced = ITEMS[add.id].additive;
   target.lacedBy = 'me';
   if (target.laced === 'tonic') target.laceQ = add.q;
-  // 成蛊比幼蛊难察觉，进化过的更难
-  if (add.id === 'gu') target.laceTox = add.tox + [0, 40, 55, 70][guStage(add)];
+  // 成蛊比幼蛊难察觉，进化过的更难；吃下去中的是哪一等蛊，也记在货上
+  if (add.id === 'gu') { target.laceTox = add.tox + [0, 40, 55, 70][guStage(add)]; target.laceStage = guStage(add); }
   destroyItem(add);
   tally('cruel');
   log(`你在${itemName(target)}里${LACE[target.laced].verb}。`, 'warn');
+  return null;
 }
 
 function laceDetectChance(p, it) {
@@ -153,13 +163,14 @@ function laceDetectChance(p, it) {
   return clamp(L.detect * (0.4 + (p ? p.savvy : 0.4)) * tox * hand * (1 - clamp(p ? p.aff : 0, 0, 80) / 160), 0.02, 0.9) * (1 - guShield(p));
 }
 
-// 货到了对方手里（买去或收礼）之后的效果；返回 { caught }
-function applyLace(p, it, via) {
+// 货到了对方手里（买去或收礼）：当面识破就摔回来；没识破的揣回去，吃下去才发作。
+// pass：买来送人的，转手就送出去，吃的是别人。返回 { caught }
+function applyLace(p, it, via, pass = false) {
   if (!p) return {};
   const name = itemName(it);
   if (it.id === 'wangyou') return hook(p, name);
-  // 蛊是拿来下的，不是拿来吃的：买去、收下一只蛊，身上什么也不会多
-  if (!it.laced || it.id === 'gu' || it.id === 'love_gu') return {};
+  // 蛊是拿来掺进吃食的，不是拿来吃的：买去、收下一只蛊，身上什么也不会多
+  if (!it.laced || ITEMS[it.id].cat === 'gu') return {};
   // 明知掺了料还卖、还送，才算你作的恶；不知情的，只是替别人背了锅
   const knew = lacedKnown(it);
   if (Math.random() < laceDetectChance(p, it)) {
@@ -168,7 +179,29 @@ function applyLace(p, it, via) {
     startScandal(p, 'laced', { item: name, lace: it.laced });
     return { caught: true };
   }
-  return laceEffect(p, it, name, knew);
+  const { laced, lacedBy, laceQ, laceTox, laceStage } = it;
+  (p.stash = p.stash || []).push({ id: it.id, name, laced, lacedBy, laceQ, laceTox, laceStage, knew, pass, day: S.day });
+  return {};
+}
+
+// 揣回去的吃食：多半自己吃了，也可能转送给同族的人（买来送人的一定送出去）——谁吃下去，料就在谁身上发作。
+// 放了五天的总要吃掉
+function eatStash(p) {
+  const out = [];
+  p.stash = (p.stash || []).filter(x => {
+    const r = Math.random();
+    const give = x.pass || r < 0.15, eat = give || r < 0.75 || S.day - x.day >= 5;
+    if (!eat) return true;
+    const other = give && pick(Object.values(S.people).filter(t => t !== p && t.status === 'alive' && t.faction === p.faction))
+      || give && pick(Object.values(S.people).filter(t => t !== p && t.status === 'alive'));
+    const eater = other || p;
+    const r2 = laceEffect(eater, x, x.name, x.knew);
+    // 你亲手掺的才知道下落：转了手的告诉你吃的是谁
+    if (x.lacedBy === 'me' && eater !== p) out.push({ text: `${p.name}把${x.name}转送给了${eater.name}，${eater.name}吃了下去。${r2.text ? `\n${r2.text}` : ''}`, cls: r2.cls || 'warn' });
+    else if (r2.text) out.push({ text: r2.text, cls: r2.cls });
+    return false;
+  });
+  return out;
 }
 
 // 料入了体之后的效果
@@ -176,11 +209,7 @@ function laceEffect(p, it, name, knew) {
   if (LACE[it.laced].apply) return LACE[it.laced].apply(p, it, name, knew) || {};
   switch (it.laced) {
     case 'addict': return hook(p, name, knew);
-    case 'control':
-      p.controlled = { day: S.day };
-      remember(p, `你借${name}在他身上种下了噬心蛊。`, 0);
-      if (knew) commitSin('harm', { p, w: 2, what: `给${p.name}种噬心蛊`, virtue: 6 });
-      return {};
+    case 'control': case 'love': return guTakes(p, it, name, knew);
     case 'tonic':
       // 补多少看那株血灵芝的品质
       p.health = Math.min(130, (p.health || 100) + Math.round(25 * potency({ id: 'herb_blood', q: it.laceQ != null ? it.laceQ : 60 })));
@@ -262,7 +291,6 @@ function storyGiftHook(p, it, res) {
 // 灵石之外，药瘾、利益、修为、魂魄都能拴住一个人；拴得越死，越听话，代价各不相同
 // odds：差遣成算；pay：差遣前付出的代价（返回错误则不能用）；cut：上贡时他交几成；fail：不听话的后果
 const LEVERS = {
-  soul: { name: '噬心蛊', has: p => !!p.controlled && p.controlled.by !== 'gu', odds: () => 1, cut: 1, note: p => `每次约 ${Math.round(exposureChance(p) * 100)}% 被逼出` },
   // 亲手下的蛊：不从就蛊噬其心，重伤——要不了命，也不会被逼出来
   gu: { name: '蛊', has: p => guBound(p), odds: p => clamp(0.55 + 0.1 * p.controlled.stage + 0.06 * guLv(), 0, 0.97), cut: 1, note: () => '不从，蛊噬其心：重伤，要不了命',
     fail: p => guBite(p) },
@@ -330,7 +358,6 @@ function commandList(p, lever) {
   });
 }
 
-function exposureChance(p) { return clamp(0.05 + 0.03 * (p.ctrlUses || 0) + p.savvy * 0.06, 0.05, 0.6); }
 
 function runCommand(p, id, lever = 'soul') {
   const L = LEVERS[lever];
@@ -340,19 +367,19 @@ function runCommand(p, id, lever = 'soul') {
   p.ctrlUsed = p.ctrlUsed || {};
   p.ctrlUsed[id] = S.day;
   p.ctrlUses = (p.ctrlUses || 0) + 1;
-  if (lever === 'soul' && Math.random() < exposureChance(p)) { exposeControl(p); return { exposed: true, text: `${p.name}忽然浑身一颤，捂着心口惨叫——噬心蛊被他自己逼出来了！他死死盯着你。` }; }
   if (Math.random() >= L.odds(p)) return { exposed: true, text: L.fail(p) };
   return { text: COMMANDS[id].run(p, L) };
 }
 
 function exposeControl(p) {
+  const gu = GU_STAGES[p.controlled.stage || 0].name;
   p.controlled = null;
-  remember(p, '他身上的噬心蛊被逼出，他知道是你干的。', -80, 'controlled');
+  remember(p, `${ta(p)}身上的${gu}被逼了出来，${ta(p)}知道是你下的蛊。`, -80, 'controlled');
   adjustRep(p.faction, -12); addHeat(20);
   startScandal(p, 'control');
 }
 
-function releaseControl(p) { p.controlled = null; remember(p, '你悄悄解了他身上的噬心蛊。', 0); }
+function releaseControl(p) { remember(p, `你悄悄解了${ta(p)}身上的${GU_STAGES[p.controlled.stage || 0].name}。`, 0); p.controlled = null; }
 
 // ───────────── 每夜：瘾、毒、蛊 ─────────────
 
@@ -361,6 +388,7 @@ function intrigueTick() {
   for (const p of Object.values(S.people)) {
     if (p.status !== 'alive') continue;
     initTraits(p);
+    news.push(...eatStash(p));
     if (p.addict) {
       p.health -= 2 * p.addict;
       if (S.day - (p.lastFix || 0) > 3) {
@@ -388,7 +416,7 @@ function intrigueTick() {
       continue;
     }
     if (!p.addict && p.health < 100) p.health = Math.min(100, p.health + 2);
-    if (p.controlled && Math.random() < (guBound(p) ? (0.004 + p.savvy * 0.008) * (1 - 0.2 * guLv()) : 0.008 + p.savvy * 0.015)) {
+    if (guBound(p) && Math.random() < (0.004 + p.savvy * 0.008) * (1 - 0.2 * guLv())) {
       exposeControl(p);
       news.push({ text: `${p.name}身上的蛊被一位游方高人逼了出来。`, cls: 'bad' });
     }
@@ -615,7 +643,7 @@ Object.assign(STORIES, {
             laced: `“你卖的${f.item}里${(LACE[f.lace] || {}).verb || '动了手脚'}！当我们是傻子？”`,
             addictdeath: `“${p.name}吃了你的忘忧散，瘦成一把骨头，昨夜咽了气。他屋里翻出来的药包，印着你铺子的记号！”`,
             poison: `“${p.name}喝了你那里出去的东西，七窍流血而死。仵作验过了，是尸毒！”`,
-            control: `“${p.name}身上的${p.soulBound ? '魂印' : '噬心蛊'}，是你种的！”`,
+            control: `“${p.name}身上的${p.soulBound ? '魂印，是你种' : '蛊，是你下'}的！”`,
             murder: `“${p.name}那天进了你的铺子，就再没出来过！有人看见你夜里往乱葬岗拖东西！”`,
           }[f.kind];
           return `${f.damage ? `（${f.damage}）\n` : ''}来人一掌拍在柜上：${lead}\n“今日你若不给个说法，我们就告到执法堂，再把你这黑店的名声传遍杂役区！”`;

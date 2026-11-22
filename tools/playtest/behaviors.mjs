@@ -33,12 +33,13 @@ function feasibility() {
       const r0 = Math.random; Math.random = () => rv;
       try {
         if (b.act) {
-          if (b.act === 'lace') { const add = Object.keys(ITEMS).find(id => ITEMS[id].additive === b.kind); const [a] = give(add); const [t] = give('pill_qi'); laceWith(t, a); return t.laced === b.kind; }
+          if (b.act === 'lace') { if (isGuLace(b.kind)) { newGame('normal', 'gu'); S.stones = 99999; S.tech.gumaster = 3; } const add = Object.keys(ITEMS).find(id => ITEMS[id].additive === b.kind); const [a] = give(add); const [t] = give('pill_qi'); laceWith(t, a); return t.laced === b.kind; }
           if (b.act === 'bottle') { give('jade_bottle'); const [w] = give('water', 1, { purity: 99.5 }); return !bottle(w) && w.bottled; }
           if (b.act === 'seal') { give('seal_xian'); const [t] = give('sword_std'); return !sealItem(t) && t.sealed; }
           if (b.act === 'erase') { S.tech.erase = 1; const [t] = give('sword_std', 1, { mark: { owner: 'beggar', str: 1 }, stolen: 5 }); return !eraseMark(t) && !t.mark; }
           if (b.act === 'soulmark') { S.tech.soul = 1; S.cult.lv = 3; give('soul_pearl'); const p = Object.values(S.people).find(p => !canSoulMark(p)); const r = p && soulMark(p); return !!(r && !r.err && p.soulBound); }
-          if (b.act === 'plantgu') { newGame('normal', 'gu'); S.stones = 99999; S.cult.lv = 2; Math.random = () => rv; const p = Object.values(S.people).find(p => p.status === 'alive'); p.visits = 1; const [g] = give('gu', 1, { growth: 100, tox: 40 }); const r = plantGu(p, g); return !!(r && r.ok && guBound(p)); }
+          // 下蛊：蛊掺进吃食送出去，对方揣回去吃下才中
+          if (b.act === 'plantgu') { newGame('normal', 'gu'); S.stones = 99999; S.cult.lv = 2; Math.random = () => rv; const p = Object.values(S.people).find(p => p.status === 'alive' && !isLawman(p) && npcLevel(p) <= guReach()); p.visits = 1; const [g] = give('gu', 1, { growth: 100, tox: 40 }); const [t] = give('pill_qi'); if (laceWith(t, g) || giveGift(p, t).caught) return false; S.day += 5; eatStash(p); return guBound(p); }
           if (b.act === 'break') { S.cult.xp = realm().need; give(realm().key); const lv = S.cult.lv, r = breakthrough(); return !r.err && S.cult.lv === lv + 1; }
           return false;
         }

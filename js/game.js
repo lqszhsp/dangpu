@@ -102,6 +102,8 @@ function load() {
   if (S.start === 'gu' && !S.perks.gumaster) { S.perks.gumaster = true; S.tech.gumaster = Math.max(1, S.tech.gumaster || 0); }
   // 旧存档里掺了料的货都是你自己掺的（那时市面上还没有别人掺好的）
   Object.values(S.items).forEach(it => { if (it.laced && !it.lacedBy && !it.lacedSeen) it.lacedBy = 'me'; });
+  // 旧存档里不懂蛊也能掺蛊、掺了就叫人受控：那不是蛊，作数的只有养蛊人亲手下的
+  Object.values(S.people).forEach(p => { if (p.controlled && p.controlled.by !== 'gu') p.controlled = null; });
   if (!Object.keys(S.story).length) initStories();
   return S;
 }
@@ -976,7 +978,7 @@ function completeSale(c, it, price, v = buyerValuation(c, it)) {
     return { stolenCaught: true };
   }
   const p = personOf(c);
-  if (applyLace(p, it, 'sale').caught) {
+  if (applyLace(p, it, 'sale', !!c.forGift).caught) {
     log(`${c.name}察觉${name}被动了手脚，当场摔了回来！`, 'loss');
     return { lacedCaught: true };
   }

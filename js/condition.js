@@ -18,7 +18,8 @@ const DERIVED = {
   exhausted: { name: '力竭', combat: 10 },   // 你：体力或精神见底
   sickly:    { name: '病弱', combat: 12 },   // 人物：体魄不足四十
   addicted:  { name: '药瘾', combat: 5 },    // 人物：每重瘾
-  dazed:     { name: '受控', combat: 6 },    // 人物：蛊或魂印在身，出手迟滞
+  gu:        { name: '中蛊', combat: 6 },    // 人物：身中你的蛊，出手迟滞
+  dazed:     { name: '受控', combat: 6 },    // 人物：识海里种着魂印，神志受控
 };
 
 function initConditions() { S.conds = S.conds || {}; }
@@ -83,7 +84,8 @@ function condList(who) {
       out.push({ kind: 'poisoned', name: '中毒', sev: 2, label: '身中尸毒', combat: 20 });
     if (who.health != null && who.health < 40) out.push({ kind: 'sickly', name: '病弱', sev: 1, label: '病弱', combat: DERIVED.sickly.combat });
     if ((who.addict || 0) >= 2) out.push({ kind: 'addicted', name: '药瘾', sev: who.addict, label: `药瘾${who.addict}重`, combat: DERIVED.addicted.combat * who.addict });
-    if (who.controlled || who.soulBound) out.push({ kind: 'dazed', name: '受控', sev: 1, label: '神志受控', combat: DERIVED.dazed.combat });
+    if (guBound(who)) out.push({ kind: 'gu', name: '中蛊', sev: 1, label: `身中${GU_STAGES[who.controlled.stage || 0].name}`, combat: DERIVED.gu.combat });
+    if (who.soulBound) out.push({ kind: 'dazed', name: '受控', sev: 1, label: '神志受控（魂印）', combat: DERIVED.dazed.combat });
   }
   return out;
 }

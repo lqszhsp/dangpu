@@ -96,7 +96,7 @@ function buildLore() {
   add('law_bribe', '执法堂', 'high', ['law', 'shady'], '巡查能打点：清官要价高、收惯了的越来越好说话；给少了反倒觉得受辱。替执法堂盯着通缉犯，举报能领赏、关注也降。', true);
   // 作恶的门道
   add('evil_fake', '偏门生意', 'high', ['shady', 'smith', 'mo'], `做旧的手法是这样的……作伪台配上手艺能以次充好，读到${loreList(BOOKS.filter(b => b[1] === 'forgery' && b[6]).map(b => b[6][0]))}的仿法还能照样仿造；做工越精越少人看得穿。`, true);
-  add('evil_lace', '偏门生意', 'high', ['shady', 'medic', 'gu'], `${loreList(Object.keys(ITEMS).filter(id => ITEMS[id].additive && ITEMS[id].additive !== 'tonic'))}都能掺进${loreList(['pill_qi', 'spirit_wine', 'water', 'zhuyan_dan'])}这类能吃能喝的货里，外表看不出；手法是这样的……学会了掺得干净，别人掺过的你一验就知道。对方越精、越不信你越容易识破。`, true);
+  add('evil_lace', '偏门生意', 'high', ['shady', 'medic', 'gu'], `${loreList(Object.keys(ITEMS).filter(id => ITEMS[id].additive && !['tonic', 'control', 'love'].includes(ITEMS[id].additive)))}都能掺进${loreList(['pill_qi', 'spirit_wine', 'water', 'zhuyan_dan'])}这类能吃能喝的货里，外表看不出；手法是这样的……学会了掺得干净，别人掺过的你一验就知道。对方越精、越不信你越容易识破。`, true);
   add('evil_erase', '偏门生意', 'mid', ['shady', 'mo'], '赃物上有原主的神识烙印，照妖镜够好才看得见，抹印术够重才抹得掉；抹不干净，原主会循迹找上门。', true);
   add('evil_seal', '偏门生意', 'mid', ['shady', 'talisman', 'xian'], `给货贴一道${loreN('seal_xian')}，看着像名门所出，身价翻倍。`, true);
   // 因果
@@ -110,7 +110,7 @@ const loreAll = () => LORE || (LORE = buildLore());
 
 // 偏门门道听懂了就是手艺：加料的手法、以次充好的入门
 const LORE_GRANTS = {
-  evil_lace: () => { S.laceKnown = S.laceKnown || {}; Object.keys(LACE).filter(k => k !== 'tonic').forEach(k => { S.laceKnown[k] = 1; }); log('你学会了掺料的手法：往后掺得干净，别人掺过的货你也闻得出来。', 'gold'); },
+  evil_lace: () => { S.laceKnown = S.laceKnown || {}; Object.keys(LACE).filter(k => !['tonic', 'control', 'love'].includes(k)).forEach(k => { S.laceKnown[k] = 1; }); log('你学会了掺料的手法：往后掺得干净，别人掺过的货你也闻得出来。', 'gold'); },
   evil_fake: () => { if (!techLv('forgery')) { S.tech.forgery = 1; log('你学会了以次充好的入门手法（作伪一重）。', 'gold'); } },
 };
 const loreTip = id => loreAll().find(t => t.id === id);

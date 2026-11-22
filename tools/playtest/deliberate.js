@@ -218,23 +218,29 @@ function dlbAct(b, D) {
   switch (b.act) {
     case 'lace': {
       const add = Object.keys(ITEMS).find(id => ITEMS[id].additive === b.kind && dlbSourced(id));
+      // 蛊只有养蛊人掺得进去，情蛊要三重
+      if (isGuLace(b.kind)) dlbTech('gumaster', b.kind === 'love' ? 3 : 1, D);
       if (add === 'gu') { deliberateOne(BEHAVIORS.find(x => x.id === 'gold_gu'), D); } else dlbObtain(add, 1, D);
       dlbObtain('spirit_fruit', 1, D);
       const t = dlbHeld('spirit_fruit')[0], a = Object.values(S.items).find(it => HELD(it) && it.id === add);
-      laceWith(t, a); return t.laced === b.kind;
+      return !laceWith(t, a) && t.laced === b.kind;
     }
+    // 下蛊：蛊掺进灵果送出去，对方揣回去吃下才中
     case 'plantgu': {
       dlbTech('gumaster', 1, D);
-      deliberateOne(BEHAVIORS.find(x => x.id === 'gold_gu'), D);
       for (let k = 0; k < 20; k++) {
         S.vit.st = S.vit.sp = 100; S.day++;
-        const g = plantableGu().find(it => guStage(it) <= guLv());
-        if (!g) deliberateOne(BEHAVIORS.find(x => x.id === 'gold_gu'), D);
-        const it = plantableGu().find(it => guStage(it) <= guLv());
-        const p = it && Object.values(S.people).find(p => (p.visits = p.visits || 1) && !plantBlock(p, it) && !guBound(p));
-        if (!p) throw new Error('没有能下蛊的人');
-        const r = plantGu(p, it);
-        if (r.ok) return true;
+        if (!plantableGu().some(it => !guLaceBlock(it))) deliberateOne(BEHAVIORS.find(x => x.id === 'gold_gu'), D);
+        const g = plantableGu().find(it => !guLaceBlock(it));
+        dlbObtain('spirit_fruit', 1, D);
+        const t = dlbHeld('spirit_fruit')[0];
+        if (!g || laceWith(t, g)) throw new Error('掺不进蛊');
+        const p = Object.values(S.people).find(p => p.status === 'alive' && !guAny(p) && !isLawman(p) && npcLevel(p) <= guReach());
+        if (!p) throw new Error('没有吃得下蛊的人');
+        p.visits = p.visits || 1; p.giftedDay = null;
+        if (giveGift(p, t).caught) continue;
+        for (let d = 0; d < 6 && p.stash.length; d++) { S.day++; eatStash(p); }
+        if (guBound(p)) return true;
       }
       return false;
     }
