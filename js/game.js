@@ -929,6 +929,7 @@ const affOf = c => (personOf(c) || { aff: 0 }).aff;
 function dismissCustomer(angry) {
   const c = S.customer;
   if (c && angry && c.faction) { adjustRep(c.faction, -1); remember(personOf(c), '在你这儿谈崩了买卖。', -3); }
+  if (c) settleReports(c);
   clearCounter();
   returnTray();
   S.customer = null;
@@ -1036,14 +1037,26 @@ function completePurchase(c, it, offer) {
   stow(it);
 }
 
-function reportWanted(c) {
-  earn(c.wanted, `你向执法堂举报了通缉犯${c.name}，领得赏金 ${c.wanted} 灵石。`);
+// 举报是暗中递状子：当面不动声色，买卖照做；客人出了这道门才被拿下，赏金随后送到
+function reportWanted(c) { c.reportedWanted = true; }
+
+function payWanted(c, p) {
+  earn(c.wanted, `执法堂在巷口按住了通缉犯${c.name}，你领得赏金 ${c.wanted} 灵石。`);
   adjustRep('mo', 4); adjustRep(c.faction, -6); addHeat(-8);
   S.merit.mo += 2;
-  const p = personOf(c);
   if (p) { remember(p, '你向执法堂举报了他。', -80, 'betrayed'); p.status = 'jailed'; lifeNote(p, '被你举报，押入血狱。'); }
   commitSin('betray', { p: p || { pid: null, name: c.name, faction: c.faction }, w: 1, what: `举报通缉犯${c.name}`, virtue: 2 });
-  dismissCustomer(false);
+  return { text: `${c.name}前脚出门，执法堂的人后脚就在巷口按住了${ta(p)}。赏金 ${c.wanted} 灵石送到。`, cls: 'good' };
+}
+
+// 客人走了（成交、谈崩、送客、打烊都算）：先前暗中递的状子这才兑现；人要是已经没了，状子作废
+const NOTICES = [];
+function settleReports(c) {
+  const p = personOf(c);
+  if (!c.reportedWanted && !c.reportedSecret) return;
+  if (p && p.status !== 'alive') return;
+  if (c.reportedWanted) NOTICES.push(payWanted(c, p));
+  if (c.reportedSecret && p && p.secret) NOTICES.push(paySecret(p));
 }
 
 // ───────────── 鉴定话术 ─────────────
