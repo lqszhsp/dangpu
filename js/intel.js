@@ -45,10 +45,16 @@ function maybeConfide(c) {
 }
 
 // 举报：赏金、功勋、受益方声望；被举报者的同族记恨，风声也可能走漏
-// 举报：可以当面，也可以凭线索在「人物」页暗中递上去
+// 当面不动声色，暗中递上去：买卖照做，等他出了门才被带走，赏金随后送到（见 settleReports）
 function reportSecret(c) {
-  const p = c.pid ? S.people[c.pid] : personOf(c), s = p.secret;
+  const p = personOf(c), s = p.secret;
   if (!channelOpen(s.to)) return { err: `还没和${CHANNEL_NAME[s.to]}搭上线（${channelHint(s.to)}）` };
+  c.reportedSecret = true;
+  return { text: `你借口去后堂取货，托人给${CHANNEL_NAME[s.to]}捎了个信。\n${p.name}还蒙在鼓里——买卖照做，等${ta(p)}出了这道门，自会有人接着。`, cls: 'warn' };
+}
+
+function paySecret(p) {
+  const s = p.secret;
   // 战事越紧，细作越值钱
   s.bounty = Math.round(s.bounty * (1 + 0.4 * S.world.stage) / 10) * 10;
   s.merit += S.world.stage >= 2 ? 1 : 0;
@@ -65,8 +71,7 @@ function reportSecret(c) {
     adjustRep(p.faction, -8);
     leak = `风声走漏，${FACTIONS[p.faction].name}都知道是你告的密。`;
   }
-  if (S.customer && S.customer.pid === p.pid) dismissCustomer(false);
-  return { text: `${CHANNEL_NAME[s.to]}的人当天就把${p.name}带走了。赏金 ${s.bounty} 灵石，${FACTIONS[s.to].name}功勋 +${s.merit}。${leak}`, cls: leak ? 'bad' : 'good' };
+  return { text: `${p.name}一出门就被${CHANNEL_NAME[s.to]}的人带走了。赏金 ${s.bounty} 灵石，${FACTIONS[s.to].name}功勋 +${s.merit}。${leak}`, cls: leak ? 'bad' : 'good' };
 }
 
 // 要挟：他掂量你的势力，给钱或翻脸

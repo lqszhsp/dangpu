@@ -392,9 +392,9 @@ function renderCounter() {
   const intel = !pp || pp.story || pp.official || ['story', 'inspect'].includes(c.kind) ? ''
     : secretKnown ? `<div class="intel">${icon('ic_secret')}<b>${esc(pp.secret.type)}</b>${c.confided ? `（${ta(pp)}自己向你吐露的）` : ''}——
         向${CHANNEL_NAME[pp.secret.to]}举报可得赏金约 ${pp.secret.bounty}、${FACTIONS[pp.secret.to].name}功勋 ${pp.secret.merit}${channelOpen(pp.secret.to) ? '' : `（尚未搭上线：${channelHint(pp.secret.to)}）`}
-        <span class="intel-acts"><button class="btn tiny danger" data-act="secret-report" title="${esc(sinHint(['betray', 2]))}" ${channelOpen(pp.secret.to) ? '' : 'disabled'}>举报</button>
+        ${c.reportedSecret ? `<span class="intel-acts muted small">已暗中递了信，等${ta(pp)}出门</span>` : `<span class="intel-acts"><button class="btn tiny danger" data-act="secret-report" title="${esc(sinHint(['betray', 2]))}" ${channelOpen(pp.secret.to) ? '' : 'disabled'}>举报</button>
         <button class="btn tiny" data-act="secret-blackmail" title="${esc(sinHint(['betray', 2]))}">要挟 ${Math.round(Math.min(0.95, overpowerOdds(pp) + 0.1) * 100)}%</button>
-        ${pp.owes ? `<span class="muted small">${ta(pp)}欠你人情</span>` : '<button class="btn tiny" data-act="secret-keep">守口如瓶</button>'}</span></div>`
+        ${pp.owes ? `<span class="muted small">${ta(pp)}欠你人情</span>` : '<button class="btn tiny" data-act="secret-keep">守口如瓶</button>'}</span>`}</div>`
       : !c.probed && !pp.cleared ? `<div class="intel muted small">${icon('ic_secret')}<button class="btn tiny" data-act="probe" title="${costText('probe')}，看透约 ${Math.round(probeOdds(pp) * 100)}%">神识探查 ${Math.round(probeOdds(pp) * 100)}%</button></div>` : '';
   const dark = pp && !pp.story && ['sell', 'buy', 'plea'].includes(c.kind) && !c.refuse && killable(pp) ? `<div class="intel small">
       ${icon('ic_dao')}<span class="muted">${esc(c.name)}是${realmName(npcLevel(pp))}，你是${realmName()}。</span>
@@ -540,7 +540,7 @@ function tradePanel(c) {
     ${canTray ? `<button class="btn small wide-only" data-act="to-tray">选中的放上货盘</button>` : ''}
     ${c.noble ? `<button class="btn small" data-act="flatter" title="${costText('flatter')}">吹捧</button>` : ''}
     <button class="btn primary" data-act="deal" ${d.give.length || d.take.length ? '' : 'disabled'}>谈价成交</button>
-    ${c.wanted ? `<button class="btn small danger" data-act="report" title="${esc(sinHint(['betray', 1]))}">举报 赏${c.wanted}</button>` : ''}
+    ${c.wanted ? c.reportedWanted ? `<span class="muted small">已暗中报官，等${ta(personOf(c))}出门</span>` : `<button class="btn small danger" data-act="report" title="${esc(sinHint(['betray', 1]))}">暗中举报 赏${c.wanted}</button>` : ''}
     <button class="btn ghost small" data-act="dismiss">送客</button>`;
   return { mid, acts };
 }
@@ -957,6 +957,8 @@ function renderAll() {
   handSeen = held;
   renderTopbar(); renderScene(); renderCounter(); renderSide(); renderStorage(); renderCard();
   if (modal) modal();
+  // 暗中举报的人出了门：赏金送到
+  if (NOTICES.length) { const n = NOTICES.splice(0); toast(n.map(x => x.text.split('\n').join('<br>')).join('<br>'), n.some(x => x.cls === 'bad') ? 'bad' : 'good'); }
 }
 
 // ───────────── 弹窗 ─────────────
@@ -1766,7 +1768,7 @@ const HANDLERS = {
   },
   flatter: () => tiredOr('flatter', () => { const r = flatter(S.customer); feel(S.customer, r.ok ? 'pleased' : 'angry'); toast(r.text, r.ok ? 'good' : 'bad'); renderAll(); }),
   'haggle-close': () => { closeModal(); renderAll(); checkOver(); },
-  report: () => { reportWanted(S.customer); renderAll(); toast('赏金到手，执法堂对你另眼相看', 'good'); },
+  report: () => { reportWanted(S.customer); renderAll(); toast(`你不动声色地托人报了执法堂。买卖照做，等${ta(personOf(S.customer))}出了门，赏金自会送到`, 'warn'); },
   'appraise-counter': () => tiredOr('appraise', () => openAppraise('counter', S.customer.item)),
   'appraise-commission': () => tiredOr('appraise', () => openAppraise('commission', S.customer.item)),
   'appraise-own': () => tiredOr('appraise', () => openAppraise('own', sel)),
