@@ -523,7 +523,7 @@ function tradePanel(c) {
   const taking = it && (c.take || []).includes(it.uid);
   const flawSeen = it && isDressed(it) && (it.seen || 0) >= it.grade;
   const s = sel && S.items[sel], canTray = s && HELD(s) && s.pos.g !== 'tray';
-  let info = c.wantCat ? `<p>${c.attracted ? '冲着陈列柜里的' : '想要'} <b class="cat">${esc(wantText(c))}</b>${c.need > 1 ? ` ${c.need} 件` : ''}${c.noble ? '' : '，别的对口的也肯顺带捎上两样（只出六五成）；多出来的只按货郎价'}，预算约 ${stoneTxt(`${lo}–${hi}`)} ${patienceHTML(c)}</p>`
+  let info = c.wantCat ? `<p>${c.attracted ? '冲着陈列柜里的' : '想要'} <b class="cat">${esc(wantText(c))}</b>${c.need > 1 ? ` ${c.need} 件` : ''}${c.noble ? '' : '，别的对口的也肯顺带捎上两样（只出六五成）；多出来的只肯出五成'}，预算约 ${stoneTxt(`${lo}–${hi}`)} ${patienceHTML(c)}</p>`
     : `<p>只想出手，不买什么。${patienceHTML(c)}</p>`;
   if (c.noble) info += `<p class="small laced-txt">权贵眼高于顶：嫌便宜货寒碜，眼力却不怎么样；捧得越高，看得越马虎。${c.flatter ? `（已捧了 ${c.flatter} 回）` : ''}</p>`;
   if (it) {
@@ -993,7 +993,7 @@ function openDeal() {
   const giveRow = g => {
     const it = g.it, canLie = knownFlaw(it) && !c.wantFake;
     return `<div class="d-row">${itemHTML(Object.assign({}, it, { pos: null }), 'preview mini')}<span>${esc(itemName(it))}
-      <small class="${ROLE_CLS[g.role]}">${ROLE_TXT[g.role]}</small></span><span class="muted">${g.role === 'extra' ? '货郎价' : '心理价'} ${Math.round(g.v)}</span>
+      <small class="${ROLE_CLS[g.role]}">${ROLE_TXT[g.role]}</small></span><span class="muted">${g.role === 'extra' ? '压价收' : '心理价'} ${Math.round(g.v)}</span>
       ${canLie ? `<span class="d-claim"><label class="${claimOf(c, it) !== 'honest' ? 'on' : ''}" data-act="d-claim" data-uid="${it.uid}" data-v="genuine">当真货</label><label class="${claimOf(c, it) === 'honest' ? 'on' : ''}" data-act="d-claim" data-uid="${it.uid}" data-v="honest">告知实情</label></span>` : ''}</div>`;
   };
   let gp, tp;
@@ -1014,7 +1014,7 @@ function openDeal() {
           ${d.reject.length ? `<p class="muted small">${TA}不要：${d.reject.map(itemName).join('、')}</p>` : ''}</div>
         <div class="d-col"><h4>收下${TA}的</h4>${(tp = pager(d.take, 4, 'deal-take')).items.map(t => `<div class="d-row">${itemHTML(Object.assign({}, t.it, { pos: null }), 'preview mini')}<span>${esc(itemName(t.it))}</span>
           <span class="muted">开价 ${t.a} · 你估 ${Math.round(knownValue(t.it) * priceMul(t.it.id))}</span></div>`).join('') || '<p class="muted small">不收他的货。</p>'}${tp.nav}</div></div>
-      ${d.give.length ? `<div class="tip-row"><span>${TA}要的件数</span><span>${d.need} 件，货盘上凑了 ${Math.min(d.got, d.need)} 件${d.give.some(g => g.role === 'extra') ? '<span class="muted">；多出的只按货郎价</span>' : ''}</span></div>` : ''}
+      ${d.give.length ? `<div class="tip-row"><span>${TA}要的件数</span><span>${d.need} 件，货盘上凑了 ${Math.min(d.got, d.need)} 件${d.give.some(g => g.role === 'extra') ? '<span class="muted">；多出的只肯出五成</span>' : ''}</span></div>` : ''}
       ${compliant(c) ? `<div class="tip-row laced-txt"><span>${TA}由你摆布</span><span>开什么价都认，只是掏不出钱袋里没有的</span></div>` : ''}
       <div class="tip-row"><span>${TA}心里的公道差价</span><span>${netTxt(d.N0)}</span></div>
       ${d.give.length ? `<div class="tip-row"><span>对方预算</span><span>约 ${Math.round(c.budget * 0.85 / 10) * 10}–${Math.round(c.budget * 1.15 / 10) * 10}${d.N0 > c.budget * PURSE_OFFER ? '<span class="bad">，掏不出公道价</span>' : ''}</span></div>` : ''}

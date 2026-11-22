@@ -869,6 +869,8 @@ function makeCustomer(faction, kind, person = pickPerson(faction)) {
     // 带伤中毒的人，多半是来买药的
     const heal = healingWant(person);
     if (heal && !c.wishId && !c.craving && Math.random() < 0.7) { c.wantId = heal; c.wantCat = ITEMS[heal].cat; }
+    // 手艺人多半来买本行的料
+    else if (!c.wishId && !c.craving && !c.wantFake && !c.noble) { const m = craftWant(person); if (m) { c.wantId = m; c.wantCat = ITEMS[m].cat; } }
     // 有的人顺便带了东西来出手
     if (!c.noble && Math.random() < 0.3) c.itemSpecs = [sellSpec(faction)];
   } else if (c.kind === 'appraise') {

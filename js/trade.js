@@ -6,9 +6,11 @@ function initTrade() {
   S.grids.counter = { w: 4, h: 3 };
 }
 
-// 不是他专程来找的，但对他有用的货，只肯出六五成，至多捎上两样；他要的件数凑够了、顺带的也捎满了，再多的只按货郎的收价算
+// 不是他专程来找的，但对他有用的货，只肯出六五成，至多捎上两样；他要的件数凑够了、顺带的也捎满了，再多的只当囤货压价收下：
+// 出他心理价的五成（不低于货郎的收价）
 const SIDE_BUY = 0.65;
 const SIDE_MAX = 2;
+const EXTRA_BUY = 0.5;
 
 const goodsOf = () => itemsIn('counter');
 const tradeOpen = () => !!S.customer && ['sell', 'buy'].includes(S.customer.kind) && !S.customer.refuse && !S.customer.offended;
@@ -23,15 +25,42 @@ function cureFor(c, it) {
 }
 const cureSev = (c, k) => Math.max(1, condSev(personOf(c), k));
 
-// 他要几件：心心念念的、送礼的、冲着柜里那件来的、问药治伤的只要一件；问丹药灵饮符箓灵材这类耗用的，一到三件；瘾越深要得越多
-const BULK_CATS = ['dan', 'yin', 'fu', 'cai', 'yao', 'zhi'];
-const NEED_ODDS = [[1, 55], [2, 30], [3, 15]];
-const wantNeedMax = () => Math.max(...NEED_ODDS.map(([n]) => n));
+// 手艺人：称号看得出是哪一行，来买的多是本行的料，一买就是好几份
+// 先认得窄的：兽医不算郎中，药圃不算药堂
+const CRAFTS = [
+  { re: /铁匠|炼器|铸器|鉴器|锁匠|傀儡/, name: '炼器', ids: ['iron_ore', 'iron_ingot', 'scrap_sword', 'xuan_essence', 'spirit_sand'] },
+  { re: /兽医|驯兽/, name: '养灵兽', ids: ['beast_feed', 'spirit_fruit'] },
+  { re: /灵植|药圃|采药/, name: '种灵植', ids: ['herb_seed', 'mihun_seed', 'vine_seed', 'water', 'filter_sand'] },
+  { re: /丹师|药|医|郎中|接生/, name: '炼药', ids: ['herb_dew', 'herb_blood', 'spirit_fruit', 'vine_fruit', 'mihun_flower', 'water'] },
+  { re: /符|墨|纸/, name: '制符', ids: ['fu_paper', 'cinnabar', 'blood_essence'] },
+  { re: /蛊/, name: '养蛊', ids: ['gu_egg', 'gu_venom', 'bones'] },
+  { re: /阵|勘脉/, name: '布阵', ids: ['spirit_crystal', 'spirit_sand', 'filter_sand'] },
+  { re: /炼尸|祭炼/, name: '炼尸', ids: ['corpse', 'blood_essence', 'corpse_poison', 'bones'] },
+];
+const craftOf = p => (p && p.title && CRAFTS.find(k => k.re.test(p.title))) || null;
+const CRAFT_PICK = 0.45;   // 手艺人专程来买本行料的机会
+function craftWant(p) {
+  const k = craftOf(p);
+  return k && Math.random() < CRAFT_PICK ? pick(k.ids.filter(id => ITEMS[id])) : null;
+}
+
+// 他要几件：心心念念的、送礼的、冲着柜里那件来的、问药治伤的只要一件；
+// 丹药灵饮符箓灵材这类用了就没的，常要两三件；手艺人买本行的料要得更多；法器珍玩这类经用的，多半一件、至多两件。瘾越深要得越多
+const CONSUME_CATS = ['dan', 'yin', 'fu', 'cai', 'zhi', 'yao'];
+const CONSUME_IDS = ['beast_feed', 'incense', 'gu_egg', 'gu_venom', 'corpse_poison', 'bones'];
+const NEED_ODDS = {
+  consume: [[1, 40], [2, 35], [3, 25]],
+  craft:   [[1, 15], [2, 35], [3, 30], [4, 20]],
+  gear:    [[1, 80], [2, 20]],
+};
+const isConsumable = id => CONSUME_CATS.includes(ITEMS[id].cat) || CONSUME_IDS.includes(id);
+const wantNeedMax = kind => Math.max(...NEED_ODDS[kind].map(([n]) => n));
 function wantNeed(c, p) {
   if (c.craving) return clamp(1 + Math.floor(((p && p.addict) || 1) / 2), 1, 3);
-  if (c.wishId || c.wantFake || c.attracted || c.noble || !c.wantId || !BULK_CATS.includes(ITEMS[c.wantId].cat)) return 1;
+  if (c.wishId || c.wantFake || c.attracted || c.noble || !c.wantId) return 1;
   if (p && Object.keys(CONDS).some(k => condSev(p, k) && CONDS[k].cure.includes(c.wantId))) return 1;
-  return +weighted(NEED_ODDS);
+  const k = craftOf(p);
+  return +weighted(NEED_ODDS[k && k.ids.includes(c.wantId) ? 'craft' : isConsumable(c.wantId) ? 'consume' : 'gear']);
 }
 
 // 1 为正中下怀；SIDE_BUY 为顺带捎上；0 为不要
@@ -48,7 +77,7 @@ function wantMatch(c, it) {
 }
 
 // 这笔交易的全貌：他要的、他不要的、你要收的。
-// 他要的货按值钱的先算：治伤病的药每样一份、他要的东西凑够件数、顺带的捎两样，都按他的心理价；再多的（role 'extra'）只值货郎的收价
+// 他要的货按值钱的先算：治伤病的药每样一份、他要的东西凑够件数、顺带的捎两样，都按他的心理价；再多的（role 'extra'）压价收下
 function dealOf(c) {
   const take = (c.take || []).map(uid => S.items[uid]).filter(it => it && it.pos && it.pos.g === 'counter').map(it => ({ it, a: it.ask }));
   const give = [], reject = [], need = c.need || 1, seen = {}, cured = {};
@@ -62,7 +91,7 @@ function dealOf(c) {
     else if (m === 1 && !cure && got < need) { got++; role = 'want'; }
     else if (m < 1 && !seen[it.id] && side < SIDE_MAX) { side++; role = 'side'; }
     seen[it.id] = true;
-    const v = role === 'extra' ? Math.min(brokerPrice(it), b * SIDE_BUY) : b * m;
+    const v = role === 'extra' ? Math.min(b * SIDE_BUY, Math.max(brokerPrice(it), b * EXTRA_BUY)) : b * m;
     give.push({ it, m, role, v, sev: role === 'cure' ? cureSev(c, cure) : 0 });
   }
   const V = give.reduce((s, g) => s + g.v, 0), A = take.reduce((s, t) => s + t.a, 0);
@@ -206,6 +235,8 @@ function wantText(c) {
   if (c.wishId) return ITEMS[c.wishId].name;
   if (c.forGift) return `送礼用的高仿${CATS[c.wantCat]}（做工寻常以上，你知道是假的）`;
   if (c.wantFake) return `能以假乱真的${CATS[c.wantCat]}`;
+  const k = craftOf(personOf(c));
+  if (c.wantId && k && k.ids.includes(c.wantId)) return `${ITEMS[c.wantId].name}（${k.name}用料）`;
   if (c.wantId) return `${ITEMS[c.wantId].name}（${CATS[c.wantCat]}）`;
   return c.wantCat ? CATS[c.wantCat] : '';
 }
