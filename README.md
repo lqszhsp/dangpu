@@ -1,111 +1,118 @@
 <div align="center">
 
-<img src="docs/readme/title.webp" alt="魔门当铺·来路不明" width="100%">
+**English** · [简体中文](README.zh-CN.md)
 
-# 魔门当铺 · 来路不明
+<img src="docs/readme/title.webp" alt="Demon Sect Pawnshop: Of Dubious Origin" width="100%">
 
-**在魔道宗门的杂役区开一间当铺。<br>收赃、验伪、撒谎、下蛊、杀人夺宝——只为攒够灵石，买下铺契。**
+# Demon Sect Pawnshop · Of Dubious Origin
 
-[![在线试玩](https://img.shields.io/badge/▶_在线试玩-点开即玩-b3262e?style=for-the-badge)](https://lqszhsp.github.io/dangpu/)
+<sub>魔门当铺 · 来路不明</sub>
+
+**Run a pawnshop in the servants' quarter of a demonic sect.<br>Fence stolen goods, spot forgeries, lie, plant gu, kill for treasure — all to save enough spirit stones to buy the deed.**
+
+[![Play online](https://img.shields.io/badge/▶_Play_online-click_and_play-b3262e?style=for-the-badge)](https://lqszhsp.github.io/dangpu/)
 &nbsp;
 [![License: MIT](https://img.shields.io/badge/License-MIT-d4a24c?style=for-the-badge)](LICENSE)
 
-![浏览器](https://img.shields.io/badge/浏览器直接玩-无需安装-3a2633?style=flat-square)
-![手机](https://img.shields.io/badge/手机竖屏·电脑宽屏-都能玩-3a2633?style=flat-square)
-![AI 共创](https://img.shields.io/badge/人类设计·Claude_编程·gpt--image_美术-3a2633?style=flat-square)
+![Browser](https://img.shields.io/badge/runs_in_the_browser-no_install-3a2633?style=flat-square)
+![Mobile](https://img.shields.io/badge/phone_portrait_·_desktop_widescreen-both_work-3a2633?style=flat-square)
+![Language](https://img.shields.io/badge/game_text-Simplified_Chinese-3a2633?style=flat-square)
+![Made with AI](https://img.shields.io/badge/human_design_·_Claude_code_·_gpt--image_art-3a2633?style=flat-square)
 
 </div>
 
-> 人、仙、魔、妖四方争斗。你在血煞宗杂役区开了间当铺。
-> 租子七日一涨——买下铺契之前，别被执法堂锁走。
+> Mortals, immortal sects, demon sects and yao spirits are at war. You've opened a pawnshop in the servants' quarter of the Blood Fiend Sect.
+> The rent goes up every seven days — buy the deed before the Enforcement Hall drags you away.
 
-压低斗笠的仙门剑客来卖筑基丹，顺便打听一份密报；拾荒的凡人背着一篓不知从哪座坟里刨出来的东西；妖修的眼睛在门外的夜色里发着光。
+A masked immortal swordsman comes to sell a Foundation Pill and quietly asks after a secret report. A mortal scavenger hauls in a basket of things dug out of who-knows-whose grave. Outside, a yao spirit's eyes glow in the dark.
 
-**你可以做个好人。只是好人在这里，未必付得起下一期的租子。**
+**You can be a good person. It's just that, here, good people can't always pay next week's rent.**
 
 <p align="center">
-  <img src="docs/readme/counter_wide.webp" alt="柜台接客" width="100%">
+  <img src="docs/readme/counter_wide.webp" alt="Serving a customer at the counter" width="100%">
 </p>
 
-## 你会在这里做什么
+## What you'll do
 
 <table>
 <tr>
 <td width="55%" valign="top">
 
-**🔍 用照妖镜辨真假**<br>
-丹药、玉佩、古镜，赝品泛滥。按住照妖镜在货上移动，作伪的地方会泛出荧光。
+**🔍 Tell real from fake with the demon-revealing mirror**<br>
+Pills, jade pendants, ancient mirrors — forgeries are everywhere. Slide the mirror over an item and the forged spots light up.
 
-**🎭 决定说不说实话**<br>
-把真品说成赝品压价收下，把赝品当真货卖出去——只要别被当场识破。
+**🎭 Decide whether to tell the truth**<br>
+Call a genuine piece fake and buy it cheap; sell a fake as the real thing — as long as no one catches you on the spot.
 
-**🗡️ 修为够了，关门打狗**<br>
-修为高过客人，就能在柜台上动手。他的灵石、货物、魂魄都归你——如果没人看见的话。
+**🗡️ Strong enough? Lock the door.**<br>
+If your cultivation outranks a customer's, you can strike right at the counter. Their stones, their goods, even their soul are yours — if no one saw.
 
-**🌙 夜里开炉、养蛊、拾荒**<br>
-炼丹炼器、封盅斗蛊养出蛊王，或去乱葬岗翻找宝贝。越险的地方越值钱。
+**🌙 Furnaces, gu jars and grave-robbing by night**<br>
+Refine pills and artifacts, seal gu in a jar until a Gu King devours the rest, or dig through the mass graves for treasure. The more dangerous the place, the richer the haul.
 
-**👁️ 在四方势力之间周旋**<br>
-人族、仙门、魔宗、妖族各有脾气，执法堂一直盯着你。杂役区的每个人，都记得你做过的事。
+**👁️ Play four factions against each other**<br>
+Mortals, immortal sects, the demon sect and the yao each have their own temper, and the Enforcement Hall never stops watching. Everyone in the quarter remembers what you did.
 
 </td>
 <td width="45%" valign="top">
-<img src="docs/readme/appraise_tall.webp" alt="照妖镜鉴定：作伪处泛出荧光" width="100%">
+<img src="docs/readme/appraise_tall.webp" alt="Appraising with the demon-revealing mirror: forged spots glow" width="100%">
 </td>
 </tr>
 </table>
 
-## 众生相
+## A world of faces
 
-六十多位有名有姓的人物，各有来历与命数。
-
-<p align="center">
-  <img src="docs/readme/cast.webp" alt="人物立绘" width="100%">
-</p>
-
-你对一个人做过什么，都会写在他脸上——欢喜、恼怒、惊惧，中了情蛊，或被你种下魂印、任你摆布。
+Over sixty named characters, each with a past and a fate of their own.
 
 <p align="center">
-  <img src="docs/readme/moods.webp" alt="同一个人的不同神态" width="100%">
+  <img src="docs/readme/cast.en.webp" alt="Character portraits" width="100%">
 </p>
 
-## 一百五十种货，四档品相
+Whatever you do to someone shows on their face — joy, anger, fear, the spell of a love gu, or the blank stare of someone whose soul you've branded and now control.
 
 <p align="center">
-  <img src="docs/readme/items.webp" alt="货物的四档品相" width="100%">
+  <img src="docs/readme/moods.en.webp" alt="One character, eight moods" width="100%">
 </p>
 
-## 夜里去哪儿
+## 150 goods, four grades
 
 <p align="center">
-  <img src="docs/readme/places.webp" alt="拾荒地点与鬼市" width="100%">
+  <img src="docs/readme/items.en.webp" alt="Four quality grades of goods" width="100%">
 </p>
 
-## 结局：赢了，也是一种讽刺
-
-攒够灵石买下铺契——然后发现，契税、印钱、执法堂的平安钱，会把你剩下的灵石和货一样一样刮走。
-
-收场时，游戏按你这一局的所作所为画出脾性蛛网图，给你定个名号：
+## Where to go at night
 
 <p align="center">
-  <img src="docs/readme/ending.webp" alt="结局：铺契到手" width="49%">
-  <img src="docs/readme/ending_profile.webp" alt="掌柜画像：笑面奸商" width="49%">
+  <img src="docs/readme/places.en.webp" alt="Scavenging grounds and the ghost market" width="100%">
 </p>
 
-> **笑面奸商** —— 笑脸迎客，转身把赝品当真货卖了出去。街坊都说你厚道——说这话的人还没发现。
+## The ending: winning is its own irony
 
-你会是哪一种？
+Save enough to buy the deed — then watch deed tax, seal fees and the Enforcement Hall's "protection money" scrape away your remaining stones and goods, one by one.
 
-## 手机上也能玩
+When it's over, the game draws a personality web from everything you did this run and gives you a title:
+
+<p align="center">
+  <img src="docs/readme/ending.webp" alt="Ending: the deed is yours" width="49%">
+  <img src="docs/readme/ending_profile.webp" alt="Shopkeeper profile: The Smiling Swindler" width="49%">
+</p>
+
+> **The Smiling Swindler** — All smiles at the counter, then sells fakes as the real thing the moment your back is turned. The neighbors say you're an honest dealer — they just haven't found out yet.
+
+Which one will you be?
+
+## Plays on your phone too
 
 <table>
 <tr>
-<td width="40%"><img src="docs/readme/counter_tall.webp" alt="手机竖屏" width="100%"></td>
+<td width="40%"><img src="docs/readme/counter_tall.webp" alt="Phone portrait layout" width="100%"></td>
 <td valign="middle">
 
-手机竖屏、电脑宽屏，界面自动适配。
+Phone portrait or desktop widescreen — the layout adapts.
 
-不用安装，不用注册，**点开链接就能玩**，进度自动存在浏览器里。
+No install, no sign-up: **just open the link and play**. Progress is saved in your browser.
+
+The game text is currently in **Simplified Chinese** only.
 
 <br>
 
@@ -115,39 +122,39 @@
 </tr>
 </table>
 
-## 制作
+## Credits
 
-这是一款**人类与 AI 共同完成**的游戏。
+A game made **by a human and AI together**.
 
 <table>
 <tr>
 <td align="center" width="33%">
 <img src="https://github.com/lqszhsp.png" width="96"><br>
-<b>游戏设计</b><br>
+<b>Game design</b><br>
 <a href="https://github.com/lqszhsp">@lqszhsp</a>
 </td>
 <td align="center" width="33%">
 <img src="https://img.shields.io/badge/Claude-Opus_5.5-d97757?style=for-the-badge" height="40"><br><br>
-<b>程序</b><br>
+<b>Code</b><br>
 Claude Opus 5.5
 </td>
 <td align="center" width="33%">
-<img src="https://img.shields.io/badge/gpt--image-美术-10a37f?style=for-the-badge" height="40"><br><br>
-<b>美术</b><br>
+<img src="https://img.shields.io/badge/gpt--image-art-10a37f?style=for-the-badge" height="40"><br><br>
+<b>Art</b><br>
 gpt-image
 </td>
 </tr>
 </table>
 
-玩法灵感来自 **《Probably Stolen》**，改编进仙侠魔道的世界。
+Gameplay inspired by **Probably Stolen**, transplanted into a xianxia world of demonic sects.
 
-## 更多
+## More
 
-- 📖 [玩家攻略](guide/README.md) —— 开局、配方、拾荒、人物、执法堂……
-- 🛠️ [开发说明](docs/开发说明.md) —— 机制设计、本地运行、测试与工具
-- 📄 [MIT 许可](LICENSE) —— 欢迎 Fork、改编，做你自己的当铺
+- 📖 [Player guide](guide/README.md) (Chinese) — openings, recipes, scavenging, characters, the Enforcement Hall…
+- 🛠️ [Developer notes](docs/开发说明.md) (Chinese) — mechanics, running locally, tests and tools
+- 📄 [MIT License](LICENSE) — fork it, remix it, open your own pawnshop
 
 <div align="center">
 <br>
-<sub>血月当空，杂役区的门又开了。<b>下一位客人，请进。</b></sub>
+<sub>The blood moon hangs high, and the quarter's door opens again. <b>Next customer, please.</b></sub>
 </div>
